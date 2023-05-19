@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+
+<settings>
+<setting name="jdbcTypeForNull" value="NULL"/>
+</settings>
+
+<typeAliases>
+<!-- 		<typeAlias type="camp.kh.semi.member.model.vo.Camp" alias="camp"/>		 -->
+</typeAliases>
+
+<mappers>
+<mapper resource="/mappers/movie-mapper.xml"/>
+</mappers>
+
+</configuration>
