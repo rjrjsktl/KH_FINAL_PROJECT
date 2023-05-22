@@ -1,0 +1,511 @@
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 1em;
+    font-family: "GmarketSansMedium";
+    color: rgb(222, 222, 222);
+    list-style-type: none;
+}
+
+* a {
+    text-decoration: none;
+    color: rgb(222, 222, 222);
+}
+
+
+body {
+    background-color: rgb(33, 33, 33);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+/* 헤더 */
+header {
+    width: 100%;
+    padding: 40px 0 0 0;
+}
+
+/* 헤더내부 위쪽 섹션 */
+header>section:nth-child(1) {
+    width: 1160px;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+
+}
+
+/* 로고에어리어 */
+header>section:nth-child(1)>div:nth-child(1) {
+    width: 35%;
+    height: 100%;
+    display: flex;
+}
+
+/* 로고에어리어 이미지div */
+header>section:nth-child(1)>div:nth-child(1)>div:first-child {
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+
+/* 로고에어리어 이미지 사이즈*/
+header>section:nth-child(1)>div:nth-child(1)>div:first-child>a>img {
+    width: 160px;
+    height: 70px;
+}
+
+/* 헤드 첫번째섹션 khtheater */
+header>section:nth-child(1)>div:nth-child(1)>div:last-child {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+/* 헤드 첫번째 섹션 왼쪽부분 */
+header>section:nth-child(1)>div:nth-child(2) {
+    width: 45%;
+    display: flex;
+}
+
+/* 헤더 광고 에어리어*/
+header>section:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+
+/* 헤더 내정보, 로그인, 고객센터 Ul*/
+header>section:nth-child(1)>div:nth-child(2)>ul {
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* 리스트 */
+header>section:nth-child(1)>div:nth-child(2)>ul>li {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/*리스트 내부 속성*/
+header>section:nth-child(1)>div:nth-child(2)>ul>li>* {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 리스트 내부 스타일*/
+header>section:nth-child(1)>div:nth-child(2)>ul>li>*>span {
+    font-size: 1.5rem;
+    margin: 0 auto;
+}
+
+/* 리스트 내부 Ptag*/
+header>section:nth-child(1)>div:nth-child(2)>ul>li>*>p {
+    text-align: center;
+}
+
+header>nav {
+    width: 100%;
+    height: 60px;
+    border-top: 1px solid rgb(99, 99, 99);
+    border-bottom: 1px solid rgb(99, 99, 99);
+    display: flex;
+
+}
+
+header>nav>div {
+    width: 1160px;
+    height: 60px;
+    padding: 0 20px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+header>nav ul {
+    display: flex;
+    line-height: 58px;
+
+}
+
+header>nav ul>li {
+    padding-right: 50px;
+    font-weight: bold;
+}
+
+header>nav ul>li:nth-child(3)>a {
+    color: red;
+}
+
+header>nav>div>div {
+    width: 30%;
+    display: flex;
+}
+
+header>nav>div>div>form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid rgb(99, 99, 99);
+    border-right: 1px solid rgb(99, 99, 99);
+}
+
+header>nav>div>div>form>input {
+    width: 80%;
+    background-color: transparent;
+    border: none;
+
+    outline: none;
+    padding-left: 10px;
+    height: 80%;
+}
+
+header>nav>div>div>form button {
+    width: 20%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+}
+
+header>nav ul>li>a:hover {
+    color: rgb(237, 49, 36);
+}
+
+footer>section {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+footer>section>div:nth-child(1) {
+
+    height: 30%;
+
+    border-top: 1px solid rgb(99, 99, 99);
+    border-bottom: 1px solid rgb(99, 99, 99);
+
+}
+
+footer>section>div:nth-child(1)>ul {
+    width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    line-height: 58px;
+    padding: 0 20px;
+}
+
+footer>section>div:nth-child(1)>ul>li {
+    padding-right: 20px;
+    font-weight: bold;
+}
+
+footer>section>div:nth-child(1)>ul>li>a:hover {
+    color: rgb(200, 200, 200)
+}
+
+footer>section>div:nth-child(1)>ul>span {
+    padding-right: 20px;
+}
+
+footer>section>div:nth-child(2) {
+    width: 1160px;
+    margin: 0 auto;
+    height: 70%;
+    padding: 20px 0 0 20px;
+    font-weight: 200;
+    display: flex;
+    flex-direction: column;
+}
+
+footer>section>div:nth-child(2) span {
+    margin-bottom: 3px;
+}
+
+footer>section>div:nth-child(2) span:first-child {
+    margin-bottom: 13px;
+    font-weight: 500;
+}
+
+footer>section>div:nth-child(2) span:last-child {
+    font-size: 0.7rem;
+    margin-top: 13px;
+}
+
+/* =============================================================== */
+/* 아래부터 추가하세요. */
+
+main {
+    /* width: 1160px;
+    height: 3000px;
+    border: 1px solid red;
+    margin: 0 auto;
+    padding: 0 20px; */
+
+    width: 1160px;
+    height: 2000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    border: 1px solid red;
+}
+
+/* ==================================================수정 필요할듯 mypage */
+.myPage-content{
+    width: 1000px;
+    height: 800px;
+    margin: 50px auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* myinfo 고정으로 내 정보 나타내는 곳 */
+.myinfo{
+    width: 100%;
+    height: 20%;
+    border: 1px solid red;
+}
+
+
+/* 왼쪽 사이드 메뉴 */
+.left-side{
+    width: 25%;
+    border-right : 2px solid #ddd;
+    /* border-right : 2px solid gray; */
+}
+
+.list-group{
+    width: 100%;
+    padding: 0 20px 0 0;
+           /*상 우  하 좌  */
+}
+
+.list-group > li{
+    list-style: none;
+    height: 50px;
+    font-size: 18px;
+}
+
+.list-group > li > a{
+    text-decoration: none;
+    color : black;
+    height: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-bottom : 2px solid #ddd;
+}
+
+.list-group > li:hover{
+    background-color: #f2f2f2;
+}
+
+
+
+/* 마이페이지 공통 부분 */
+.myPage-main{
+    width: 75%;
+    padding: 0 50px;
+}
+
+.myPage-title{
+    margin : 0 0 10px 0;
+    font-size: 30px;
+}
+
+.myPage-explanation{
+    display: block;
+    margin-bottom: 30px;   
+    font-size: 14px;
+    letter-spacing: -1px;
+}
+
+.myPage-row{
+    width: 500px;
+    height: 50px;
+    margin-top: 20px;
+
+    display: flex;
+    align-items: center;
+    border-bottom : 2px solid #ddd;
+}
+
+.myPage-row > *{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.myPage-row > label{
+    width: 30%;
+    color : #455ba8;
+}
+
+.myPage-row > span{
+    width : 70%;
+}
+
+.myPage-row > input{
+    width: 100%;
+    height: 100%;
+    border : 0;
+    outline: 0;
+    font-weight: normal;
+}
+
+.myPage-row:focus-within{
+    border-bottom: 2px solid #455ba8;
+}
+
+form[name="myPage-form"]{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 내 정보 */
+.info-title{
+    color : #455ba8;
+    border : 0;
+}
+
+.info-address{ margin : 0; }
+
+/* 검색버튼 */
+#info-address-btn{
+    width: 30%;
+    height: 70%;
+
+    font-size: 14px;
+    font-weight: normal;
+
+    background-color: white;
+    border : 1px solid gray;
+    cursor: pointer;
+}
+
+#info-update-btn {
+    width: 100%;
+    padding: 10px;
+    margin: 50px 0;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #455ba8;
+    color: white;
+    cursor: pointer;
+}
+
+/* 비밀번호 변경 */
+.myPage-row > input[type="password"]{
+    width: 70%;
+}
+
+
+/* 회원 탈퇴 약관 */
+#secession-terms{
+    width : 500px;
+    height: 300px;
+    border : 1px solid black;
+    font-size : 16px;
+
+    /* 내용이 지정한 사이즈를 초과한 경우에 대한 속성 */
+    overflow : auto; /* 초과한 방향의 스크롤을 자동 생성 */
+}
+
+
+
+/* 프로필 */
+
+/* 프로필 이미지 영역 */
+.profile-image-area{
+    width: 150px;
+    height: 150px;
+    border : 3px solid #ddd;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position : relative;
+}
+
+/* 프로필 이미지 */
+#profile-image{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+/* 프로필 버튼 영역 */
+.profile-btn-area{
+    width: 230px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* 프로필 버튼 영역의 모든 자식 요소 */
+.profile-btn-area > *{
+    width: 110px;
+    height: 33px;
+
+    padding: 5px 10px;
+    border: 1px solid black;
+    background-color: white;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* 파일 선택 버튼 */
+#input-image{
+    display: none;
+}
+
+/* 변경하기 버튼 */
+.profile-btn-area > button{
+    background-color: #455ba8;
+    color : white;
+    border: 0;
+}
+
+/* 프로필 이미지 삭제 버튼 */
+#delete-image{
+    position : absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+
+
+
+
