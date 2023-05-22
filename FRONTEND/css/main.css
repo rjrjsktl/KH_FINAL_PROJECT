@@ -97,6 +97,7 @@ header>section:nth-child(1)>div:nth-child(2)>ul {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    font-size:0.rem;
 }
 
 /* 리스트 */
@@ -291,14 +292,12 @@ main>section:nth-child(2)>div:nth-child(1) {
     padding: 40px 20px;
     margin: 0 auto;
     width: 1160px;
-    height: 500px;
     display: flex;
     flex-direction: column;
 }
 
 main>section:nth-child(2)>div>div:nth-child(1) {
-    width: 100%;
-    height: 20%;
+    height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -312,7 +311,7 @@ main>section:nth-child(2)>div>div:nth-child(1)>div:nth-child(1) * {
 
 main>section:nth-child(2)>div>div:nth-child(1)>div:nth-child(2) {
     width: 150px;
-    height: 50%;
+    height: 42px;
     border-radius: 15px;
     border: 2px solid rgb(99, 99, 99);
     font-size: 1.2rem;
@@ -325,61 +324,90 @@ main>section:nth-child(2)>div>div:nth-child(1)>div:nth-child(2) {
 main>section:nth-child(2)>div>div:nth-child(2) {
     height: 80%;
     display: flex;
+
 }
 
-main>section:nth-child(2)>div>div:nth-child(2)>ol {
-    height: 100%;
+main> section:nth-child(2) > div > div:nth-child(2) > ol {
     display: flex;
 }
 
-main>section:nth-child(2)>div>div:nth-child(2)>ol>li {
-    width:190px;
-    height: 100%;
-    margin-right:43px;
-}
-
-main>section:nth-child(2)>div>div:nth-child(2)>ol>li >div:nth-child(1) {
-    width: 190px;
-    height: 268px;
-}
-
-main>section:nth-child(2)>div>div:nth-child(2)>ol>li>div:nth-child(1)> img {
-    width: 190px;
-    height: 268px;
-    border-radius: 20px;
-    border: 1px solid lightgray;
-}
-
-main>section:nth-child(2)>div>div:nth-child(2)>ol>li>div:nth-child(2)  {
+main> section:nth-child(2) > div > div:nth-child(2) > ol > li {
+    margin: 30px 0;
     width: 100%;
-    height: 20%;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    margin-right:45px;
 }
 
-main>section:nth-child(2)>div>div:nth-child(2)>ol>li>div:nth-child(2) > a  {
-
-    text-overflow: ellipsis;
+main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(1) {
     width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-align: center;
-    height: 60%;
+    height: 80%;
+}
+
+main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(1)>span {
+    position: absolute;
+    width:30px;
+    height:30px;
+    margin:20px;
+    line-height: 28px;
+    font-size: 2rem;
+    z-index: 1;
+   }
+
+   main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(1)>a>img {
+    width: 246px;
+    height: 324px;
+    border-radius: 10px;
+    position: relative;
+}
+main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(2){
+    margin-top:10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/*  */
+main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(2) > a {
+    font-size: 1.5rem;
+ }
+/*  */
+
+main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(2) > div {
+    display: flex;
     align-items: center;
-    font-size: 1.2rem;
-    line-height: 39px;
-    
-}
+    margin:10px 0 ;
+    font-size: 0.9rem;
+ }
 
+ main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(2) > div > p:nth-child(1) {
+    width:42%;
+   margin-right:16px;
+ }
 
-main>section:nth-child(2)>div>div:nth-child(2)>ol>li>div:nth-child(2) >span {
-    width: 48%;
-    text-align: center;
-    height: 40%;
-}
+ main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(3) {
+    display: flex;
+ }
 
+ main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(3) >button {
+    height:40px;
+    background-color: transparent;
+    outline: none;
+    border:1px solid lightgray;
+    padding:0 5px;
+    border-radius: 10px;
+    cursor:pointer;
+ }
 
+ main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(3) >button:nth-child(1) {
+    width:30%;
+    margin-right:10px;
+ }
+
+ main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(3) >button:nth-child(2) {
+    width:70%;
+    color:black;
+    background-color: white;
+ }
 
 
 /* 세번재 섹션 이벤트세션 ------------------------------------------------------------------ */
