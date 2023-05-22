@@ -1,0 +1,421 @@
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 1em;
+    font-family: "GmarketSansMedium";
+    color: rgb(222, 222, 222);
+    list-style-type: none;
+}
+
+* a {
+    text-decoration: none;
+    color: rgb(222, 222, 222);
+}
+
+
+body {
+    background-color: rgb(33, 33, 33);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+/* 헤더 */
+header {
+    width: 100%;
+    padding: 40px 0 0 0;
+}
+
+/* 헤더내부 위쪽 섹션 */
+header>section:nth-child(1) {
+    width: 1160px;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+
+}
+
+/* 로고에어리어 */
+header>section:nth-child(1)>div:nth-child(1) {
+    width: 35%;
+    height: 100%;
+    display: flex;
+}
+
+/* 로고에어리어 이미지div */
+header>section:nth-child(1)>div:nth-child(1)>div:first-child {
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+
+/* 로고에어리어 이미지 사이즈*/
+header>section:nth-child(1)>div:nth-child(1)>div:first-child>a>img {
+    width: 160px;
+    height: 70px;
+}
+
+/* 헤드 첫번째섹션 khtheater */
+header>section:nth-child(1)>div:nth-child(1)>div:last-child {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+/* 헤드 첫번째 섹션 왼쪽부분 */
+header>section:nth-child(1)>div:nth-child(2) {
+    width: 45%;
+    display: flex;
+}
+
+/* 헤더 광고 에어리어*/
+header>section:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+
+/* 헤더 내정보, 로그인, 고객센터 Ul*/
+header>section:nth-child(1)>div:nth-child(2)>ul {
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size:0.8rem;
+}
+
+
+/* 리스트 */
+header>section:nth-child(1)>div:nth-child(2)>ul>li {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/*리스트 내부 속성*/
+header>section:nth-child(1)>div:nth-child(2)>ul>li>* {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 리스트 내부 스타일*/
+header>section:nth-child(1)>div:nth-child(2)>ul>li>*>span {
+    font-size: 1.5rem;
+    margin: 0 auto;
+}
+
+/* 리스트 내부 Ptag*/
+header>section:nth-child(1)>div:nth-child(2)>ul>li>*>p {
+    text-align: center;
+}
+
+header>nav {
+    width: 100%;
+    height: 60px;
+    border-top: 1px solid rgb(99, 99, 99);
+    border-bottom: 1px solid rgb(99, 99, 99);
+    display: flex;
+
+}
+
+header>nav>div {
+    width: 1160px;
+    height: 60px;
+    padding: 0 20px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+header>nav ul {
+    display: flex;
+    line-height: 58px;
+
+}
+
+header>nav ul>li {
+    padding-right: 50px;
+    font-weight: bold;
+}
+
+header>nav ul>li:nth-child(3)>a {
+    color: red;
+}
+
+header>nav>div>div {
+    width: 30%;
+    display: flex;
+}
+
+header>nav>div>div>form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid rgb(99, 99, 99);
+    border-right: 1px solid rgb(99, 99, 99);
+}
+
+header>nav>div>div>form>input {
+    width: 80%;
+    background-color: transparent;
+    border: none;
+
+    outline: none;
+    padding-left: 10px;
+    height: 80%;
+}
+
+header>nav>div>div>form button {
+    width: 20%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+}
+
+header>nav ul>li>a:hover {
+    color: rgb(237, 49, 36);
+}
+
+footer>section {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+footer>section>div:nth-child(1) {
+
+    height: 30%;
+
+    border-top: 1px solid rgb(99, 99, 99);
+    border-bottom: 1px solid rgb(99, 99, 99);
+
+}
+
+footer>section>div:nth-child(1)>ul {
+    width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    line-height: 58px;
+    padding: 0 20px;
+}
+
+footer>section>div:nth-child(1)>ul>li {
+    padding-right: 20px;
+    font-weight: bold;
+}
+
+footer>section>div:nth-child(1)>ul>li>a:hover {
+    color: rgb(200, 200, 200)
+}
+
+footer>section>div:nth-child(1)>ul>span {
+    padding-right: 20px;
+}
+
+footer>section>div:nth-child(2) {
+    width: 1160px;
+    margin: 0 auto;
+    height: 70%;
+    padding: 20px 0 0 20px;
+    font-weight: 200;
+    display: flex;
+    flex-direction: column;
+}
+
+footer>section>div:nth-child(2) span {
+    margin-bottom: 3px;
+}
+
+footer>section>div:nth-child(2) span:first-child {
+    margin-bottom: 13px;
+    font-weight: 500;
+}
+
+footer>section>div:nth-child(2) span:last-child {
+    font-size: 0.7rem;
+    margin-top: 13px;
+}
+
+
+/* 요기서부터 위에껀 전부 날리면됩니다. */
+
+main {
+    width: 1190px;
+    height: 100%;
+    padding: 20px;
+}
+
+main>div:nth-child(1) {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 15px;
+    border-bottom: 3px solid lightgray;
+}
+
+
+
+
+/* 
+main > div:nth-child(2) > ol{
+    flex:1;
+    display: flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+}
+
+main > div:nth-child(2) > ol > li{
+    width:30%;
+    height:700px;
+    display: flex;
+    margin-bottom:22px;
+    flex-direction: column;
+} */
+/* ranked span */
+/* main > div:nth-child(2) > ol > li > :nth-child(1){
+    width:100%;
+    height:8%;
+    text-align: center;
+    font-weight: bold;
+    background-color: black;
+    margin-bottom: 20px;
+    line-height: 53px;
+    font-size: 1.3rem;
+} */
+
+/* image Zone */
+/* main > div:nth-child(2) > ol > li > :nth-child(2){
+    width:100%;
+    height:70%;
+    display: flex;
+} */
+
+/* moviename , movieinfo, movie reserve */
+/* main > div:nth-child(2) > ol > li > :nth-child(3){
+    display: flex;
+    height:20%;
+    flex-direction: column;
+    background-color: red;
+} */
+
+/* main > div:nth-child(2) > ol > li > div:nth-child(2) > img{
+    width:380px;
+    height:100%;
+    border-radius: 10px;
+    border:1px solid red;
+} */
+
+
+/* 카드 랩퍼 */
+main>div:nth-child(2) {
+    margin: 30px 0;
+    width: 100%;
+    display: flex;
+}
+
+/* 카드 스타일 */
+main>div:nth-child(2)>ol {
+    margin-top: 30px;
+    flex:1;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+main>div:nth-child(2)>ol>li {
+    width: 23%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+/* 카드 이미지 div */
+main>div:nth-child(2)>ol>li>div:nth-child(1) {
+    width: 100%;
+    height: 80%;
+}
+
+/* 카드 내 벨류의 순위 */
+main>div:nth-child(2)>ol>li>div:nth-child(1)>span {
+    position: absolute;
+    width:30px;
+    height:30px;
+    margin:20px;
+    line-height: 28px;
+    font-size: 2rem;
+    z-index: 1;
+   }
+
+/* 카드 이미지 절대크기 */
+main>div:nth-child(2)>ol>li>div:nth-child(1)>a>img {
+    width: 262px;
+    height: 398px;
+    border-radius: 10px;
+    position: relative;
+}
+
+
+main>div:nth-child(2)>ol>li>div:nth-child(2){
+    margin-top:10px;
+    display: flex;
+    flex-direction: column;
+}
+
+main>div:nth-child(2)>ol>li>div:nth-child(2) > a {
+   font-size: 1.5rem;
+}
+
+main>div:nth-child(2)>ol>li>div:nth-child(2) > div {
+    display: flex;
+    align-items: center;
+    margin:10px 0 ;
+    font-size: 0.9rem;
+ }
+
+ main>div:nth-child(2)>ol>li>div:nth-child(2) > div > p:nth-child(1) {
+    width:40%;
+   margin-right:20px;
+ }
+
+ main>div:nth-child(2)>ol>li>div:nth-child(3) {
+    display: flex;
+ }
+
+ main>div:nth-child(2)>ol>li>div:nth-child(3) >button {
+    height:40px;
+    background-color: transparent;
+    outline: none;
+    border:1px solid lightgray;
+    padding:0 5px;
+    border-radius: 10px;
+    margin-right:10px;
+ }
+
+ main>div:nth-child(2)>ol>li>div:nth-child(3) >button:nth-child(1) {
+    width:30%;
+ }
+
+ main>div:nth-child(2)>ol>li>div:nth-child(3) >button:nth-child(2) {
+    width:70%;
+    color:black;
+    background-color: white;
+ }
