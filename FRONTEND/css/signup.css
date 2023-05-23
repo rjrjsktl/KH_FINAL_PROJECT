@@ -264,6 +264,9 @@ main {
     margin: 0 auto;
     padding: 0 20px; */
 
-    width: 100%;
+    width: 1160px;
+    height: 2000px;
     margin: 0 auto;
+    padding: 0 20px;
+    border: 1px solid red;
 }
