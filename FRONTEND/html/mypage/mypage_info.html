@@ -74,7 +74,6 @@
 
             <!-- nav bar-->
             <nav>
-
                 <div>
                     <ul>
                         <li><a href="#">영화</a></li>
@@ -104,35 +103,37 @@
             <div>
                 <section>
                     <div class="profile-image-area">
-                        <c:if test="${empty loginMember.profileImage}">
-                            <img src="${contextPath}/resources/images/user.png" id="profile-image" alt="이미지삽입영역">
-                        </c:if>
+                        <div>
+                            <c:if test="${empty loginMember.profileImage}">
+                                <img src="${contextPath}/resources/images/user.png" id="profile-image" alt="이미지삽입영역">
+                            </c:if>
 
-                        <c:if test="${!empty loginMember.profileImage}">
-                            <img src="${contextPath}${loginMember.profileImage}" id="profile-image">
-                        </c:if>
+                            <c:if test="${!empty loginMember.profileImage}">
+                                <img src="${contextPath}${loginMember.profileImage}" id="profile-image">
+                            </c:if>
+                        </div>
                     </div>
                     <div class="profile-info-area">
 
-                        <div class="myPage-row">
+                        <div class="myPage-mainrow">
                             <label>이&nbsp;&nbsp;&nbsp;름</label>
                             <span>ㅋㅋㄹㅃㅃ</span>
                             <!-- <span>${loginMember.memberNick}</span> -->
                         </div>
 
-                        <div class="myPage-row">
+                        <div class="myPage-mainrow">
                             <label>닉네임</label>
                             <span>ㅋㅋㄹㅃㅃ</span>
                             <!-- <span>${loginMember.memberNick}</span> -->
                         </div>
 
-                        <div class="myPage-row">
+                        <div class="myPage-mainrow">
                             <label>이메일</label>
                             <span>zzfQQ@gmail.com</span>
                             <!-- <span>${loginMember.memberEmail}</span> -->
                         </div>
 
-                        <div class="myPage-row">
+                        <div class="myPage-mainrow">
                             <label>연락처</label>
                             <span>010-0000-0000</span>
                             <!-- <span>${loginMember.enrollDate}</span> -->
@@ -182,43 +183,42 @@
                     -->
                     <form action="info" method="POST" name="myPage-form" onsubmit="return infoValidate()">
 
-                        <div>
+                        <div class="mypage-row">
                             <label>닉네임</label>
+                        </div>
+                        <div class="mypage-row">
                             <input type="text" name="updateNickname" id="memberNickname"
-                                value="${loginMember.memberNickname}" maxlength="10">
+                            value="${loginMember.memberNickname}" maxlength="10">
                         </div>
 
-                        <div>
-                            <label>전화번호</label>
+                        <div class="mypage-row">
+                            <label>연락처</label>
+                        </div>
+                        <div class="mypage-row">
                             <input type="text" name="updateTel" id="memberTel" value="${loginMember.memberTel}"
-                                maxlength="11">
+                            maxlength="11">
+                        </div>
+                        <div class="mypage-row">
+                            <label><pre>주   소</pre></label>
                         </div>
 
-                        <!-- 주소 --> <!--  fn:split(문자열, '구분자')  -->
-                        <c:set var="addr" value="${fn:split(loginMember.memberAddress, ',,')}" />
-
-
-                        <div>
-                            <label>주소</label>
-
-
-                            <div>
-                                <input type="text" name="updateAddress" id="postcode" value="${addr[0]}" maxlength="6">
-
-                                <button type="button" id="info-address-btn"
-                                    onclick="return execDaumPostcode()">검색</button>
-                            </div>
-
-                            <div>
-                                <input type="text" name="updateAddress" id="address" value="${addr[1]}">
-                            </div>
-
-                            <div>
-                                <input type="text" name="updateAddress" id="detailAddress" value="${addr[2]}">
-                            </div>
+                        <div class="mypage-row">
+                            <input type="text" id="sample4_postcode" name="memberAddress" placeholder="우편번호" maxlength="6">
+    
+                            <button type="button" onclick="return sample4_execDaumPostcode()">검색</button>
                         </div>
-                        <button id="info-update-btn">수정하기</button>
-                    </form>
+    
+                        <div class="mypage-row">
+                            <input type="text" id="sample4_roadAddress" name="memberAddress" placeholder="도로명주소">
+                        </div>
+    
+                        <div class="mypage-row">
+                            <input type="text" id="sample4_detailAddress" name="memberAddress" placeholder="상세주소">
+                        </div>
+    
+                        <button type="submit" id="signUp-btn">가입하기</button>
+    
+                     </form>
 
                 </section>
 
