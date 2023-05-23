@@ -7,7 +7,14 @@
 </settings>
 
 <typeAliases>
-<!-- 		<typeAlias type="camp.kh.semi.member.model.vo.Camp" alias="camp"/>		 -->
+
+<typeAlias type="com.kh.kgv.customer.model.vo.User" alias="user"/>
+<typeAlias type="com.kh.kgv.customer.model.vo.Like" alias="like"/>
+<typeAlias type="com.kh.kgv.customer.model.vo.Review" alias="review"/>
+<typeAlias type="com.kh.kgv.customer.model.vo.Book" alias="book"/>
+
+<typeAlias type="com.kh.kgv.items.model.vo.Movie" alias="movie"/>
+
 </typeAliases>
 
 <mappers>
