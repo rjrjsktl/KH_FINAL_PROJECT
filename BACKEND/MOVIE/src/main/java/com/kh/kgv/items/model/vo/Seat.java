@@ -1,4 +1,4 @@
-package com.kh.kgv.customer.model.vo;
+package com.kh.kgv.items.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,15 +9,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Book {
-	// 예매 테이블
-	private int bookNo;
-	private int userNo;
-	private int playNo;
+public class Seat {
+	// 좌석 테이블
 	private int seatId;
-	private String bookDt;
-	private int bookBefore;
-	private int bookDiscount;
-	private int bookPrice;
-	private String bookSt;
+	private String seatNumber;
+	private String seatType;
+	private int screenNo;
+	private int spNo;
+	private int daNo;
 }
