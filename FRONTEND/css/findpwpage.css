@@ -97,9 +97,7 @@ header>section:nth-child(1)>div:nth-child(2)>ul {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    font-size:0.8rem;
 }
-
 
 /* 리스트 */
 header>section:nth-child(1)>div:nth-child(2)>ul>li {
@@ -256,166 +254,129 @@ footer>section>div:nth-child(2) span:last-child {
     margin-top: 13px;
 }
 
-
-/* 요기서부터 위에껀 전부 날리면됩니다. */
+/* =============================================================== */
+/* 아래부터 추가하세요. */
 
 main {
-    width: 1190px;
+    /* width: 1160px;
+    height: 3000px;
+    border: 1px solid red;
+    margin: 0 auto;
+    padding: 0 20px; */
+
+    width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    padding: 0 20px;
+    border: 1px solid rgba(255, 255, 255, 0);
+}
+
+main>div {
+    width: 100%;
     height: 100%;
+
     padding: 20px;
-}
 
-main>div:nth-child(1) {
-    font-size: 2rem;
-    font-weight: bold;
-    padding: 15px;
-    border-bottom: 3px solid lightgray;
-}
-
-
-
-
-/* 
-main > div:nth-child(2) > ol{
-    flex:1;
     display: flex;
-    justify-content:space-between;
-    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
 }
 
-main > div:nth-child(2) > ol > li{
-    width:30%;
-    height:700px;
+
+main>div>div {
+    width: 60%;
+    height: 30%;
+    border: 1px solid rgb(255, 0, 0);
+
     display: flex;
-    margin-bottom:22px;
     flex-direction: column;
-} */
-/* ranked span */
-/* main > div:nth-child(2) > ol > li > :nth-child(1){
-    width:100%;
-    height:8%;
-    text-align: center;
-    font-weight: bold;
-    background-color: black;
-    margin-bottom: 20px;
-    line-height: 53px;
-    font-size: 1.3rem;
-} */
+    align-items: center;
+    justify-content: baseline;
 
-/* image Zone */
-/* main > div:nth-child(2) > ol > li > :nth-child(2){
-    width:100%;
-    height:70%;
-    display: flex;
-} */
+}
 
-/* moviename , movieinfo, movie reserve */
-/* main > div:nth-child(2) > ol > li > :nth-child(3){
+/* 프레임 */
+main>div>div>div {
+    width: 80%;
+    height: 70%;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    background-color: rgb(33, 33, 33);
+
     display: flex;
-    height:20%;
     flex-direction: column;
-    background-color: red;
-} */
+    align-items: center;
+    justify-content: baseline;
+}
 
-/* main > div:nth-child(2) > ol > li > div:nth-child(2) > img{
-    width:380px;
-    height:100%;
-    border-radius: 10px;
-    border:1px solid red;
-} */
+/* 4가지 다 */
+main>div>div>div>* {
+    width: 365px;
+    height: 100px;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-/* 카드 랩퍼 */
-main>div:nth-child(2) {
-    margin: 30px 0;
+/* 로고 */
+main>div>div>div>:nth-child(1)>a>img {
     width: 100%;
-    display: flex;
-}
+    height: 100px;
+    border: 1px solid blue;
 
-/* 카드 스타일 */
-main>div:nth-child(2)>ol {
-    margin-top: 30px;
-    flex:1;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-main>div:nth-child(2)>ol>li {
-    width: 23%;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 40px;
-}
-
-/* 카드 이미지 div */
-main>div:nth-child(2)>ol>li>div:nth-child(1) {
-    width: 100%;
-    height: 80%;
-}
-
-/* 카드 내 벨류의 순위 */
-main>div:nth-child(2)>ol>li>div:nth-child(1)>span {
-    position: absolute;
-    width:30px;
-    height:30px;
-    margin:20px;
-    line-height: 28px;
-    font-size: 2rem;
-    z-index: 1;
-   }
-
-/* 카드 이미지 절대크기 */
-main>div:nth-child(2)>ol>li>div:nth-child(1)>a>img {
-    width: 262px;
-    height: 398px;
-    border-radius: 10px;
-    position: relative;
-}
-
-
-main>div:nth-child(2)>ol>li>div:nth-child(2){
-    margin-top:10px;
-    display: flex;
-    flex-direction: column;
-}
-
-main>div:nth-child(2)>ol>li>div:nth-child(2) > a {
-   font-size: 1.5rem;
-}
-
-main>div:nth-child(2)>ol>li>div:nth-child(2) > div {
     display: flex;
     align-items: center;
-    margin:10px 0 ;
-    font-size: 0.9rem;
- }
+    justify-content: center;
+}
 
- main>div:nth-child(2)>ol>li>div:nth-child(2) > div > p:nth-child(1) {
-    width:40%;
-   margin-right:20px;
- }
+/* 비밀번호 찾기 */
+main>div>div>div>:nth-child(2) {
+    font-size: 30px;
 
- main>div:nth-child(2)>ol>li>div:nth-child(3) {
+    width: 100%;
+    height: 50px;
+}
+
+/* input id */
+main>div>div>div>:nth-child(3)>input {
+    margin: 10px;
+
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+
+    background-image: url(../images/loginpage_images/id_image.png);
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    background-size: 20px;
+    padding-left: 30px
+}
+
+/* 다음 btn */
+main>div>div>div>:nth-child(4)>button {
+    color: #666;
+
+    border-radius: 5px;
+
+    width: 100%;
+    height: 50px;
+}
+
+/* 아이디찾기 */
+main>div>div>div>:nth-child(5) {
     display: flex;
- }
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+}
 
- main>div:nth-child(2)>ol>li>div:nth-child(3) >button {
-    height:40px;
-    background-color: transparent;
-    outline: none;
-    border:1px solid lightgray;
-    padding:0 5px;
-    border-radius: 10px;
-    margin-right:10px;
- }
+/* 아이디찾기 btn */
+main>div>div>div>:nth-child(5)>a {
+    margin-left: 10px;
+    cursor: pointer; 
+}
 
- main>div:nth-child(2)>ol>li>div:nth-child(3) >button:nth-child(1) {
-    width:30%;
- }
-
- main>div:nth-child(2)>ol>li>div:nth-child(3) >button:nth-child(2) {
-    width:70%;
-    color:black;
-    background-color: white;
- }
+main>div>div>div>:nth-child(5)>a:hover {
+    text-decoration: underline;
+}

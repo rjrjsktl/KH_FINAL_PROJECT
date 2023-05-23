@@ -97,9 +97,7 @@ header>section:nth-child(1)>div:nth-child(2)>ul {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    font-size:0.8rem;
 }
-
 
 /* 리스트 */
 header>section:nth-child(1)>div:nth-child(2)>ul>li {
@@ -196,6 +194,9 @@ header>nav ul>li>a:hover {
     color: rgb(237, 49, 36);
 }
 
+
+
+
 footer>section {
     height: 200px;
     display: flex;
@@ -256,166 +257,218 @@ footer>section>div:nth-child(2) span:last-child {
     margin-top: 13px;
 }
 
-
-/* 요기서부터 위에껀 전부 날리면됩니다. */
+/* =============================================================== */
+/* 아래부터 추가하세요. */
 
 main {
-    width: 1190px;
-    height: 100%;
-    padding: 20px;
+    /* width: 1160px;
+    height: 3000px;
+    border: 1px solid red;
+    margin: 0 auto;
+    padding: 0 20px; */
+
+    width: 1160px;
+    margin: 0 auto;
+    padding: 0 20px;
+
 }
 
-main>div:nth-child(1) {
-    font-size: 2rem;
-    font-weight: bold;
-    padding: 15px;
-    border-bottom: 3px solid lightgray;
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px rgb(66, 66, 66) inset;
+    -webkit-text-fill-color: white;
 }
 
 
-
-
-/* 
-main > div:nth-child(2) > ol{
-    flex:1;
+/* 회원가입 영역 */
+.signUp-content {
     display: flex;
-    justify-content:space-between;
-    flex-wrap: wrap;
+    justify-content: center;
 }
 
-main > div:nth-child(2) > ol > li{
-    width:30%;
-    height:700px;
-    display: flex;
-    margin-bottom:22px;
-    flex-direction: column;
-} */
-/* ranked span */
-/* main > div:nth-child(2) > ol > li > :nth-child(1){
-    width:100%;
-    height:8%;
-    text-align: center;
-    font-weight: bold;
-    background-color: black;
-    margin-bottom: 20px;
-    line-height: 53px;
-    font-size: 1.3rem;
-} */
-
-/* image Zone */
-/* main > div:nth-child(2) > ol > li > :nth-child(2){
-    width:100%;
-    height:70%;
-    display: flex;
-} */
-
-/* moviename , movieinfo, movie reserve */
-/* main > div:nth-child(2) > ol > li > :nth-child(3){
-    display: flex;
-    height:20%;
-    flex-direction: column;
-    background-color: red;
-} */
-
-/* main > div:nth-child(2) > ol > li > div:nth-child(2) > img{
-    width:380px;
-    height:100%;
-    border-radius: 10px;
-    border:1px solid red;
-} */
-
-
-/* 카드 랩퍼 */
-main>div:nth-child(2) {
-    margin: 30px 0;
-    width: 100%;
-    display: flex;
+/* 필수 */
+.required {
+    color: red;
+    padding: 0 5px;
 }
 
-/* 카드 스타일 */
-main>div:nth-child(2)>ol {
+/* 회원가입 폼 */
+form[name="signUp-form"] {
     margin-top: 30px;
-    flex:1;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
 }
 
-main>div:nth-child(2)>ol>li {
-    width: 23%;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 40px;
+/* 회원가입 폼 내부 input 제목(label) */
+form[name="signUp-form"]>label {
+    display: block;
+    margin-top: 40px;
+    margin-bottom: 5px;
+    font-size: 18px;
 }
 
-/* 카드 이미지 div */
-main>div:nth-child(2)>ol>li>div:nth-child(1) {
-    width: 100%;
-    height: 80%;
-}
+/* input을 감싸고있는 div */
+.signUp-input-area {
+    width: 500px;
+    height: 40px;
+    margin-bottom: 10px;
 
-/* 카드 내 벨류의 순위 */
-main>div:nth-child(2)>ol>li>div:nth-child(1)>span {
-    position: absolute;
-    width:30px;
-    height:30px;
-    margin:20px;
-    line-height: 28px;
-    font-size: 2rem;
-    z-index: 1;
-   }
+    /* border-bottom: 2px solid #ddd; */
 
-/* 카드 이미지 절대크기 */
-main>div:nth-child(2)>ol>li>div:nth-child(1)>a>img {
-    width: 262px;
-    height: 398px;
-    border-radius: 10px;
-    position: relative;
-}
-
-
-main>div:nth-child(2)>ol>li>div:nth-child(2){
-    margin-top:10px;
-    display: flex;
-    flex-direction: column;
-}
-
-main>div:nth-child(2)>ol>li>div:nth-child(2) > a {
-   font-size: 1.5rem;
-}
-
-main>div:nth-child(2)>ol>li>div:nth-child(2) > div {
     display: flex;
     align-items: center;
-    margin:10px 0 ;
-    font-size: 0.9rem;
- }
+    /* 세로 중앙 */
+}
 
- main>div:nth-child(2)>ol>li>div:nth-child(2) > div > p:nth-child(1) {
-    width:40%;
-   margin-right:20px;
- }
 
- main>div:nth-child(2)>ol>li>div:nth-child(3) {
-    display: flex;
- }
 
- main>div:nth-child(2)>ol>li>div:nth-child(3) >button {
-    height:40px;
-    background-color: transparent;
+
+
+/* input태그 */
+.signUp-input-area>input {
+    width: 100%;
+    height: 100%;
+    padding: 10px 15px 10px 15px;
+    /* 상, 좌우, 하 */
+    /* border-radius: 5px; */
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: rgb(66, 66, 66);
+    border: 0;
+    outline: 0;
+    /* input 선택 시 테두리 */
+    color: white;
+}
+
+/* 성별태그 */
+.sel {
+    width: 100%;
+    height: 100%;
+    color: white;
+    background-color: rgb(66, 66, 66);
+    border-radius: 5px;
     outline: none;
-    border:1px solid lightgray;
-    padding:0 5px;
-    border-radius: 10px;
-    margin-right:10px;
- }
+    border: none;
+}
 
- main>div:nth-child(2)>ol>li>div:nth-child(3) >button:nth-child(1) {
-    width:30%;
- }
+/* .sel option[value="1"] {
+    color: red;
+} */
 
- main>div:nth-child(2)>ol>li>div:nth-child(3) >button:nth-child(2) {
-    width:70%;
-    color:black;
-    background-color: white;
- }
+.sel>option {
+    color: white;
+
+}
+
+
+
+/* .sel>option:first-child {
+    color: rgb(116, 110, 110);
+    ;
+} */
+
+
+
+
+
+/* 생년월일 */
+.bir_yy {
+
+    width: 40%;
+    height: 100%;
+}
+
+.bir_yy>input {
+    background-color: rgb(66, 66, 66);
+    width: 100%;
+    height: 100%;
+    color: white;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+
+}
+
+.bir_mm {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 35%;
+    height: 100%;
+}
+
+.bir_mm>select {
+    background-color: rgb(66, 66, 66);
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+}
+
+.bir_dd {
+
+    width: 35%;
+    height: 100%;
+}
+
+.bir_dd>input {
+    background-color: rgb(66, 66, 66);
+    color: white;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+/* button 태그 */
+.signUp-input-area>button {
+    width: 30%;
+    height: 100%;
+    background-color: rgb(116, 110, 110);
+    border: 1px solid rgb(116, 110, 110);
+    cursor: pointer;
+    color: white;
+    margin-left: 10px;
+    border-radius: 5px;
+
+}
+
+
+
+#emailMessage {
+    /* display: none; */
+
+}
+
+/* 회원가입 관련 메세지 */
+.signUp-message {
+    font-size: 14px;
+    letter-spacing: -1px;
+    /* 자간 */
+    /* display: none; */
+    /*display: block;*/
+}
+
+.confirm {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+
+
+/* 가입하기 버튼 */
+#signUp-btn {
+    width: 100%;
+    padding: 10px;
+    margin: 50px 0;
+    border: 0;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    color: white;
+    background-color: rgb(187, 30, 19);
+    border-radius: 5px;
+    cursor: pointer;
+}
