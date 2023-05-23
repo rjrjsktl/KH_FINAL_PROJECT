@@ -1,4 +1,4 @@
-package com.kh.movie;
+package com.kh.kgv;
 
 import java.text.DateFormat;
 import java.util.Date;
