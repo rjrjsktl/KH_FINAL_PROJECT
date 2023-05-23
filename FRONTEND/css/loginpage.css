@@ -16,6 +16,8 @@ main>div {
     width: 100%;
     height: 100%;
 
+    padding: 20px;
+
     display: flex;
     align-content: center;
     justify-content: center;
@@ -30,11 +32,11 @@ main>div>div {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-items: center;
-    
+    justify-content: center;
+
 }
 
-/* 로그인영역 */
+/* 프레임 */
 main>div>div>div {
     width: 80%;
     height: 80%;
@@ -43,32 +45,141 @@ main>div>div>div {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
 }
 
-/* 로고 이미지  */
+/* 로고 영역  */
 main>div>div>div>:nth-child(1) {
     width: 80%;
-    height: 80%;
+    height: 15%;
     border: 1px solid blue;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
 
-/* 로그인폼 */
+/* 로고 */
+main>div>div>div>:nth-child(1)>div>a> {
+    width: 150px;
+    height: 100px;
+}
+
+main>div>div>div>:nth-child(1)>div>a>img {
+    width: 150px;
+    height: 50px;
+}
+
+/* 로그인 영역 */
 main>div>div>div>:nth-child(2) {
     width: 80%;
-    height: 80%;
+    height: 50%;
     border: 1px solid blue;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* SNS 로그인 */
-main>div>div>div>:nth-child(3) {
+main>div>div>div>:nth-child(2)>form {
+    width: 90%;
+    height: 80%;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main>div>div>div>:nth-child(2)>form>div {
     width: 80%;
     height: 80%;
     border: 1px solid blue;
 
     display: flex;
+    flex-direction: column;
+}
+
+main>div>div>div>:nth-child(2)>form>div>:nth-child(1) {
+    display: flex;
     flex-direction: row;
+}
+
+/* id&pw input */
+main>div>div>div>:nth-child(2)>form>div>:nth-child(1)>:nth-child(1)>input {
+    margin-top: 5px;
+    height: 50px;
+
+    border-radius: 5px;
+    border: 1px solid red;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+/* 로그인 버튼 */
+main>div>div>div>:nth-child(2)>form>div>div>div>button {
+    margin-top: 5px;
+    width: 75px;
+    height: 105px;
+
+    border-radius: 5px;
+    border: 1px solid red;
+    background-color: rgba(255, 255, 255, 0);
+
+    cursor: pointer;
+}
+
+/* 아이디 저장 부분*/
+main>div>div>div>:nth-child(2)>form>div>:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+
+    margin-top: 5px;
+    
+    cursor: pointer;
+}
+
+/* 아이디 저장 부분 > i 태그 */
+.circle {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border: 2px solid #666;
+    box-sizing: border-box;
+    border-radius: 10px;
+    position: relative;
+    top: 4px;
+    cursor: pointer;
+
+    background-image: url(../images/check_gray.png);
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#chk:checked+.circle {
+    background-color: rgb(128, 0, 0);
+    border-color: rgb(128, 0, 0);
+    background-image: url(../images/check_white.png);
+}
+
+
+/* 체크박스는 display:none;을 주면 데이터 처리가 안됨 */
+#chk {
+    position: absolute;
+    left: -999em;
+}
+
+/* SNS 로그인 */
+main>div>div>div>:nth-child(3) {
+    width: 80%;
+    height: 15%;
+    border: 1px solid blue;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 
@@ -80,5 +191,3 @@ main>div>div>ul {
     display: flex;
     flex-direction: row;
 }
-
-
