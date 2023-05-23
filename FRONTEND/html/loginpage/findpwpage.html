@@ -9,9 +9,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인페이지</title>
-    <link rel="stylesheet" href="../../css/outline.css">
-    <link rel="stylesheet" href="../../css/loginpage.css">
+    <title>비민번호찾기페이지</title>
+    <link rel="stylesheet" href="../../css/findpwpage.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
 </head>
@@ -103,58 +102,25 @@
             <!-- 여기서 부터 작업하세요. -->
             <div>
                 <div>
-                    <!-- 프레임 -->
-                    <div> 
-
-                        <!-- 로고 영역 -->
+                    <div>
                         <div>
-                            <div>
-                                <a href="#"><img src="../../images/logo2.png" alt="로고 이미지 삽입 w160 h70"></a>
-                            </div>
+                            <a href=""><img src="../../images/logo2.png" alt="로고 w160 h70"></a>
                         </div>
-
-                        <!-- 로그인 영역 -->
-                        <div> 
-                            <form action="#" method="POST" onsubmit="return loginValidate()">
-                                <div>
-                                    <div>
-                                        <div>
-                                            <input type="text" placeholder="아이디" id="inputId" maxlength="41">
-                                            <input type="password" placeholder="비밀번호" id="inputPw" maxlength="41">
-                                            <label for="chk">
-                                                &nbsp;
-                                                <input type="checkbox" id="chk">
-                                                <i class="circle"></i>
-                                                &nbsp;
-                                                <span class="text">아이디 저장하기</span>
-                                            </label>        
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <button>로그인</button>
-                                    </div>
-                                </div>
-                            </form>
+                        <div>
+                            <span>비밀번호 찾기</span>
                         </div>
-
-                        <!-- SNS 로그인 -->
-                        <ul>
-                            <li><a href="#"><img src="../../images/loginpage_images/kakaotalk_btn_icon_square.png" alt="카카오톡"></a></li>
-                            <li><a href="#"><img src="../../images/loginpage_images/naver_btn_icon_square.png" alt="네이버"></a></li>
-                            <li><a href="#"><img src="../../images/loginpage_images/google_btn_icon_square.png" alt="구글"></a></li>
-                        </ul>
-
+                        <div>
+                            <span>찾고싶은 비밀번호의 해당하는 아이디를 기입하세요</span>
+                            <input type="text" placeholder="아이디" id="inputId" maxlength="41">
+                        </div>
+                        <div>
+                            <button>다음</button>
+                        </div>
+                        <div>
+                            아이디도 기억이 안나시나요?
+                            <a href="">아이디 찾기</a> 
+                        </div>
                     </div>
-
-                     <!-- 하단 버튼 영역 -->
-                    <ul>
-                        <li><a href="#">비밀번호 찾기</a></li>
-                        <span>|</span>
-                        <li><a href="#">아이디 찾기</a></li>
-                        <span>|</span>
-                        <li><a href="#">회원가입</a></li>
-                    </ul>
                 </div>
             </div>
             <!-- 여기까지 작업하세요. -->
@@ -204,8 +170,6 @@
 				<c:remove var="message" scope="session" />
 			</c:if>
             -->
-
-    <script src="../../js/loginpage/loginpage.js"></script>
 </body>
 
 </html>
