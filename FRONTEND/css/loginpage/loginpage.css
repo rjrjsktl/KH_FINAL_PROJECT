@@ -22,7 +22,7 @@
 
 
 body {
-    background-color: rgb(33, 33, 33);
+    background-color: rgb(21, 21, 21);
 }
 
 main {
@@ -155,7 +155,7 @@ header>nav ul>li {
 }
 
 header>nav ul>li:nth-child(3)>a {
-    color: red;
+    color: rgb(250, 227, 0);
 }
 
 header>nav>div>div {
@@ -191,7 +191,7 @@ header>nav>div>div>form button {
 }
 
 header>nav ul>li>a:hover {
-    color: rgb(237, 49, 36);
+    color: rgb(250, 227, 0);
 }
 
 footer>section {
@@ -258,243 +258,218 @@ footer>section>div:nth-child(2) span:last-child {
 /* 아래부터 추가하세요. */
 
 main {
-    width: 1160px;
-    height: 2000px;
-    margin: 0 auto;
-    padding: 0 20px;
+    /* width: 1160px;
+    height: 3000px;
     border: 1px solid red;
-}
-
-main > section{
-    display: flex;
-    width: 100%;
-    height: 800px;
-
     margin: 0 auto;
-    padding-top: 20px; 
+    padding: 0 20px; */
+
+    width: 100%;
+    margin: 0 auto;
 }
 
-/* 예매 절차 */
-
-main > section > :nth-child(1){
-  width: 8%;
-  height: 100%;
-}
-
-main > section > :nth-child(1) > ul {
-  display: flex;
-  flex-direction: column;
-}
-
-main > section > :nth-child(1) > ul > li {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
-
-  border-top: 1px solid lightgray;
-  border-left: 1px solid lightgray;
-  cursor: pointer;
-}
-
-main > section > :nth-child(1) > ul > li:last-child { 
-  border-bottom: 1px solid lightgray;
+main>div {
+    padding: 100px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 
 
+main>div>div {
+    width:  400px;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: baseline;
+    border-radius: 10px;
+    background-color: rgb(33,33,33);
+}
 
-main > section > :nth-child(1) > ul > li:nth-child(1) {
-  background-color: #FF243E;
+/* 프레임 */
+main>div>div>div {
+    width: 80%;
+    height: 100%;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 로고 영역  */
+main>div>div>div>:nth-child(1) {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main>div>div>div>:nth-child(1) > p{
+    font-size:1.8rem;
+    font-weight: bold;
+    color:rgb(250, 227, 0);
+    padding:25px;
+}
+
+/* 로고 */
+main>div>div>div>:nth-child(1)>div>a> {
+    width: 150px;
+    height: 100px;
+}
+
+main>div>div>div>:nth-child(1)>div>a>img {
+    width: 150px;
+    height: 50px;
+}
+
+/* 로그인 영역 */
+main>div>div>div>:nth-child(2) {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main>div>div>div>:nth-child(2)>form {
+    width: 90%;
+    height: 80%;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main>div>div>div>:nth-child(2)>form>div {
+    width: 100%;
+    height: 80%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+main>div>div>div>:nth-child(2)>form>div>:nth-child(1)>div {
+    display: flex;
+    flex-direction: column;
+}
+
+/* id&pw input */
+main>div>div>div>:nth-child(2)>form>div>:nth-child(1)>:nth-child(1)>:nth-child(1) {
+
+    width: 365px;
+    height: 40px;
+
+    border-radius: 5px;
+    background-color: rgba(100, 100, 100);
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    background-size: 20px;
+    padding-left: 10px;
+    margin:10px 0;
+    outline: none;
+    border:none;
+}
+
+/* id&pw input */
+main>div>div>div>:nth-child(2)>form>div>:nth-child(1)>:nth-child(1)>:nth-child(2) {
+    margin-top: 5px;
+    width: 365px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: rgba(100, 100, 100);
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    background-size: 20px;
+    padding-left: 10px;
+    margin:10px 0;
+    outline: none;
+    border:none;
+
+}
+
+/* 아이디 저장 부분*/
+main>div>div>div>:nth-child(2)>form>div>:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+
+    margin-top: 5px;
+    
+    cursor: pointer;
+}
+
+/* 아이디 저장 부분 > i 태그 */
+.circle {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 10px;
+    position: relative;
+    top: 4px;
+    cursor: pointer;
+
+    background-image: url(/images/loginpage_images/check_gray.png);
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#saveId:checked+.circle {
+    border: 1px solid rgb(250, 227, 0);
+    background-image: url(/images/loginpage_images/check_white.png);
 }
 
 
-/* 현재 절차 */
-
-main > section > div:nth-child(2) {
-  display: flex;
-  width: 92%;
-  height: 800px;
-}   
-
-
-/* 극장, 영화, 상영 트로이카 */
-
-main > section > :nth-child(2) > div {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  height: 100%;
-  border: 1px solid lightgray;
+/* 체크박스는 display:none;을 주면 데이터 처리가 안됨 */
+#saveId {
+    position: absolute;
+    left: -999em;
 }
 
-main > section > :nth-child(2) > div:last-child {
-  width: 40%;
+/* 로그인 버튼 */
+main>div>div>div>:nth-child(2)>form>div>:nth-child(2)>button {
+    margin-top: 5px;
+    width: 365px;
+    height: 40px;
+
+    margin: 10px 0;
+
+    color: #DEDEDE;
+    border:none;
+    outline: none;
+
+    border-radius: 5px;
+    background-color: rgba(100, 100, 100);
+
+    cursor: pointer;
 }
 
-
-/* 각 트로이카 제목 */
-
-main > section > :nth-child(2) > div > div:first-child {
-  height: calc(200px / 3);
-  line-height: calc(200px / 3);
-  border-bottom: 1px solid lightgray;
-  font-size: 20px;
-  text-align: center;
+main>div>div>div>:nth-child(2)>form>div>:nth-child(2)>button:hover {
+    color:rgb(250, 227, 0)
 }
 
-
-/* 극장 선택 영역 */
-
-main > section > :nth-child(2) > div:first-child > div:nth-child(2) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  height: calc(200px / 3);
-  line-height: calc(200px / 3);
-  border-bottom: 1px solid white;
+/* SNS 로그인 */
+main>div>div>div>:nth-child(3) {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
 }
 
-main > section > :nth-child(2) > div:first-child > div:nth-child(3) {
-  display: flex;
-  height: 100%;
-}
-
-main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div {
-  width: 50%; 
-}
-
-main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div:first-child {
-  border-right: 1px solid lightgray;
-}
-
-main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div:last-child > ul {
-  display: none;
-}
-
-main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div > ul > li {
-  border-bottom: 1px solid white;
-  height: calc(200px / 3);
-}
-
-
-main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div > ul > li > a {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100%; 
-  background-color: transparent;
-  padding: 18px;
-  font-size: 16px;
-  line-height: 16px;
-}
-
-/* 영화 선택 */
-
-
-main > section > :nth-child(2) > div:nth-child(2) > div:nth-child(2) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  height: calc(200px / 3);
-  line-height: calc(200px / 3);
-  border-bottom: 1px solid white;
-}
-
-main > section > :nth-child(2) > div:nth-child(2) > div:nth-child(3) > ul > li {
-  border-bottom: 1px solid white;
-  height: calc(200px / 3);
-}
-
-main > section > :nth-child(2) > div:nth-child(2) > div:nth-child(3) > ul > li > a {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100%; 
-  background-color: transparent;
-  padding: 18px;
-  line-height: 18px;
-}
-
-/* 영화 리스트 - 연령 */
-#movielist_text > li > a > div:first-child {
-  width: 30px;
-  height: 30px;
-  font-size: 18px;
-  line-height: 33px;
-  text-align: center;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  margin-right: 12px;
-}
-
-#movielist_text > li > a > div:nth-child(2) {
-  display: flex;
-  width: 80%;
-  height: 30px;
-  line-height: 33px;
-  font-size: 19px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.age12 {
-  background-color: #E9b630;
-}
-
-.age15 {
-  background-color: #DD7430;
-}
-
-.age19 {
-  background-color: #D92B36;
-}
-
-
-
-
-/* 날짜 선택 */
-
-main > section > :nth-child(2) > div:last-child > div:nth-child(2) {
-  display: flex;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  height: calc(200px * 2 / 3);
-  padding: 0 3%;
-  border-bottom: 1px solid white;
-}
-
-main > section > :nth-child(2) > div:last-child > div:nth-child(2) > .swiper {
-  width: 80%;
-  height: 50%;
-}
-
-main > section > :nth-child(2) > div:last-child > div:nth-child(2) > .swiper .swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  border: none;
-  cursor: pointer;
-}
-
-main > section > :nth-child(2) > div:last-child > div:nth-child(2) > .swiper-button-next::after {
-  color: #f05650;
-}
-
-main > section > :nth-child(2) > div:last-child > div:nth-child(2) > .swiper-button-prev::after {
-  color: #f05650;
-}
-
-.holiday {
-  color: #f05650;
+main>div>div>div>:nth-child(3)>li>a>img {
+    margin:10px 5px;
+    width: 40px;
+    height: 40px;
+    align-items: center;
 }
 
 
@@ -502,3 +477,19 @@ main > section > :nth-child(2) > div:last-child > div:nth-child(2) > .swiper-but
 
 
 
+/* 하단 버튼 영역 */
+main>div>div>ul {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+main>div>div>ul>li:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* span | 태그 */
+main>div>div>ul>span {
+    margin: 10px;
+}

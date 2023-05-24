@@ -9,9 +9,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인 페이지</title>
-    
-    <link rel="stylesheet" href="../../css/loginpage/loginpage.css">
+    <title>아이디찾기_2 페이지</title>
+
+    <link rel="stylesheet" href="../../css/loginpage/findemailpage_2.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
 </head>
@@ -31,7 +31,7 @@
                         <!-- <a href="${contextPath}">
 				<img src="${contextPath}/resources/images/logo.jpg" id="home-logo">
 			</a> -->
-                        <a href="#"><img src="../../images/logo3.png" alt="로고 이미지 삽입 w160 h70 "></a>
+                        <a href="#"><img src="../../imagesd/logo3.png" alt="로고 이미지 삽입 w160 h70 "></a>
                     </div>
                     <div>
                         <span>K H T H E A T E R</span>
@@ -104,54 +104,39 @@
             <div>
                 <div>
                     <!-- 프레임 -->
-                    <div> 
+                    <div>
 
                         <!-- 로고 영역 -->
                         <div>
-                        <p>Login</p>
+                            <p>아이디 찾기</p>
+                            <p>발송된 인증번호를 기입해주세요</p>
                         </div>
 
-                        <!-- 로그인 영역 -->
-                        <div> 
-                            <form action="member/login" method="POST" onsubmit="return loginValidate()">
+                        <!-- form -->
+                        <div>
+                            <form action="#" method="POST" onsubmit="return findId_2_Validate()">
                                 <div>
                                     <div>
-
                                         <div>
-                                            <input type="text" placeholder="이메일" id="inputEmail" maxlength="41">
-                                            <input type="password" placeholder="비밀번호" id="inputPw" maxlength="41">
-                                            <label for="saveId">
-                                                <input type="checkbox" id="saveId">
-                                                <i class="circle"></i>
-                                                <span class="text">아이디 저장하기</span>
-                                            </label>        
+                                            <input type="text" placeholder="인증번호" id="cNumber" maxlength="41">
+                                            <!-- 시간 타이멍 input 오른쪽 끝에 넣기 -->
+                                            <button>재발송</button>
                                         </div>
                                     </div>
 
                                     <div>
-                                        <button>로그인</button>
+                                        <button id="cBtn">인증하기</button>
+                                        <!-- 인증완료되면, 이메일로 변경된 비밀번호 발송되었다는 alert창 -->
                                     </div>
                                 </div>
                             </form>
                         </div>
 
-                        <!-- SNS 로그인 -->
-                        <ul>
-                            <li><a href="#"><img src="../../images/loginpage_images/kakaotalk_btn_icon_square.png" alt="카카오톡"></a></li>
-                            <li><a href="#"><img src="../../images/loginpage_images/naver_btn_icon_square.png" alt="네이버"></a></li>
-                            <li><a href="#"><img src="../../images/loginpage_images/google_btn_icon_square.png" alt="구글"></a></li>
-                        </ul>
+                        
 
                     </div>
 
-                     <!-- 하단 버튼 영역 -->
-                    <ul>
-                        <li><a href="#">비밀번호 찾기</a></li>
-                        <span>|</span>
-                        <li><a href="#">아이디 찾기</a></li>
-                        <span>|</span>
-                        <li><a href="#">회원가입</a></li>
-                    </ul>
+                    
                 </div>
             </div>
             <!-- 여기까지 작업하세요. -->
