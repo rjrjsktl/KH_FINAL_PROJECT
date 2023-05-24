@@ -104,13 +104,15 @@
                 <section>
                     <div class="profile-image-area">
                         <div>
-                            <c:if test="${empty loginMember.profileImage}">
-                                <img src="${contextPath}/resources/images/user.png" id="profile-image" alt="이미지삽입영역">
+                            <img src="../../images/18.png" id="profile-image" alt="이미지삽입 w,h=182">
+                            <!-- 밑 이거 살려서 써야함 -->
+                            <!-- <c:if test="${empty loginMember.profileImage}">
+                                <img src="${contextPath}/resources/images/user.png" id="profile-image" alt="이미지삽입 w,h=182">
                             </c:if>
 
                             <c:if test="${!empty loginMember.profileImage}">
                                 <img src="${contextPath}${loginMember.profileImage}" id="profile-image">
-                            </c:if>
+                            </c:if> -->
                         </div>
                     </div>
                     <div class="profile-info-area">
@@ -141,8 +143,34 @@
                     </div>
                 </section>
 
-                <section>
-                    내가 예약하고 다가오는 영화 보이게 하기
+                <section class="comemove">
+                    <div>
+                        당신의 영화가 오고 있따옹
+                    </div>
+
+
+                    <div>
+                        <div>
+                            <!-- 나중에 db건들 때 따오는 값 바꿔줘야함 -->
+                            <img src="../../images/123123.jpg" alt="영화 포스터 w=155px,h=173px">
+                        </div>
+
+                        <div>
+                            <div>
+                                영화 제목
+                            </div>
+                            <ul>
+                                <li>번호</li>
+                                <li>품번</li>
+                                <li>배우</li>
+                                <li>감독</li>
+                            </ul>
+                            <div>
+                                영화 예매 취소
+                            </div>
+
+                        </div>
+                    </div>
                 </section>
             </div>
 
@@ -155,11 +183,12 @@
                         <!-- <li> <a href="${contextPath}/member/myPage/profile">정보 수정</a> </li> -->
 
                         <!-- /community/member/myPage/myboard -->
-                        <li> <a href="mypage_myboard.html">내 글 확인</a></li>
+                        <!-- 리뷰나 평점이라고 말 바꿔야함 -->
+                        <li> <a href="mypage_myboard.html">내가 쓴 리뷰</a></li>
                         <!-- <li> <a href="${contextPath}/member/myPage/myboard">내 글 확인</a> </li> -->
 
                         <!-- /community/member/myPage/reservationCf -->
-                        <li> <a href="mypage_reservationCf.html">예약 확인</a> </li>
+                        <li> <a href="mypage_reservationCf.html">내가 본 영화</a> </li>
                         <!-- <li> <a href="${contextPath}/member/myPage/reservationCf">예약확인</a> </li> -->
 
                         <!-- /community/member/myPage/changePw -->
