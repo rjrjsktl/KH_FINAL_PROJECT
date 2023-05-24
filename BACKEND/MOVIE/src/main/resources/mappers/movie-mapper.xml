@@ -7,9 +7,4 @@
 		<result property="memberEmail" column="MEMBER_EMAIL" />
 	</resultMap> -->
 	
-<!-- 		<select id="test1" resultType="_int">
-		SELECT COUNT(*) FROM MEMBER
-	</select> -->
-	
 </mapper>
-

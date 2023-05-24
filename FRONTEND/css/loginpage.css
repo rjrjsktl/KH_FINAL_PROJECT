@@ -1,0 +1,226 @@
+main {
+    width:100%;
+}
+
+main>div {
+    padding: 100px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+
+main>div>div {
+    width:30%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: baseline;
+    border-radius: 10px;
+    background-color: rgb(33,33,33);
+}
+
+/* 프레임 */
+main>div>div>div {
+    width: 80%;
+    height: 100%;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 로고 영역  */
+main>div>div>div>:nth-child(1) {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main>div>div>div>:nth-child(1) > p{
+    font-size:1.8rem;
+    font-weight: bold;
+    color:rgb(250, 227, 0);
+    padding:25px;
+}
+
+/* 로고 */
+main>div>div>div>:nth-child(1)>div>a> {
+    width: 150px;
+    height: 100px;
+}
+
+main>div>div>div>:nth-child(1)>div>a>img {
+    width: 150px;
+    height: 50px;
+}
+
+/* 로그인 영역 */
+main>div>div>div>:nth-child(2) {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main>div>div>div>:nth-child(2)>form {
+    width: 90%;
+    height: 80%;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main>div>div>div>:nth-child(2)>form>div {
+    width: 100%;
+    height: 80%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+main>div>div>div>:nth-child(2)>form>div>:nth-child(1)>div {
+    display: flex;
+    flex-direction: column;
+}
+
+/* id&pw input */
+main>div>div>div>:nth-child(2)>form>div>:nth-child(1)>:nth-child(1)>:nth-child(1) {
+
+    width: 365px;
+    height: 40px;
+
+    border-radius: 5px;
+    background-color: rgba(100, 100, 100);
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    background-size: 20px;
+    padding-left: 10px;
+    margin:10px 0;
+    outline: none;
+    border:none;
+}
+
+main>div>div>div>:nth-child(2)>form>div>:nth-child(1)>:nth-child(1)>:nth-child(2) {
+    margin-top: 5px;
+    width: 365px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: rgba(100, 100, 100);
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    background-size: 20px;
+    padding-left: 10px;
+    margin:10px 0;
+    outline: none;
+    border:none;
+
+}
+
+/* 로그인 버튼 */
+main>div>div>div>:nth-child(2)>form>div>:nth-child(2)>button {
+    margin-top: 5px;
+    width: 365px;
+    height: 40px;
+
+    margin: 10px 0;
+
+    color: #DEDEDE;
+    border:none;
+    outline: none;
+
+    border-radius: 5px;
+    background-color: rgba(100, 100, 100);
+
+    cursor: pointer;
+}
+
+/* 아이디 저장 부분*/
+main>div>div>div>:nth-child(2)>form>div>:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+
+    margin-top: 5px;
+    
+    cursor: pointer;
+}
+
+/* 아이디 저장 부분 > i 태그 */
+.circle {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 10px;
+    position: relative;
+    top: 4px;
+    cursor: pointer;
+
+    background-image: url(/images/loginpage_images/check_gray.png);
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#chk:checked+.circle {
+    border: 1px solid rgb(250, 227, 0);
+    background-image: url(/images/loginpage_images/check_white.png);
+}
+
+
+/* 체크박스는 display:none;을 주면 데이터 처리가 안됨 */
+#chk {
+    position: absolute;
+    left: -999em;
+}
+
+
+
+/* SNS 로그인 */
+main>div>div>div>:nth-child(3) {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+}
+
+main>div>div>div>:nth-child(3)>li>a>img {
+    margin:10px 5px;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+}
+
+
+
+
+
+
+/* 하단 버튼 영역 */
+main>div>div>ul {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+main>div>div>ul>li:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* span | 태그 */
+main>div>div>ul>span {
+    margin: 10px;
+}
