@@ -22,7 +22,7 @@
 
 
 body {
-    background-color: rgb(33, 33, 33);
+    background-color: rgb(21, 21, 21);
 }
 
 main {
@@ -155,7 +155,7 @@ header>nav ul>li {
 }
 
 header>nav ul>li:nth-child(3)>a {
-    color: red;
+    color: rgb(250, 227, 0);
 }
 
 header>nav>div>div {
@@ -191,7 +191,7 @@ header>nav>div>div>form button {
 }
 
 header>nav ul>li>a:hover {
-    color: rgb(237, 49, 36);
+    color: rgb(250, 227, 0);
 }
 
 footer>section {
@@ -264,19 +264,12 @@ main {
     margin: 0 auto;
     padding: 0 20px; */
 
-    width: 1160px;
+    width: 100%;
     margin: 0 auto;
-    display: flex;
-    padding: 0 20px;
-    border: 1px solid rgba(255, 255, 255, 0);
 }
 
 main>div {
-    width: 100%;
-    height: 100%;
-
-    padding: 20px;
-
+    padding: 100px;
     display: flex;
     align-content: center;
     justify-content: center;
@@ -284,99 +277,144 @@ main>div {
 
 
 main>div>div {
-    width: 60%;
+    width:  400px;
     height: 30%;
-    border: 1px solid rgb(255, 0, 0);
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: baseline;
-
+    border-radius: 10px;
+    background-color: rgb(33,33,33);
 }
 
 /* 프레임 */
 main>div>div>div {
     width: 80%;
-    height: 70%;
-    border: 1px solid rgb(255, 255, 255);
+    height: 100%;
     border-radius: 5px;
-    background-color: rgb(33, 33, 33);
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: baseline;
+    justify-content: center;
 }
 
-/* 4가지 다 */
-main>div>div>div>* {
-    width: 365px;
-    height: 100px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* 로고 */
-main>div>div>div>:nth-child(1)>a>img {
+/* 로고 영역  */
+main>div>div>div>:nth-child(1) {
     width: 100%;
-    height: 100px;
-    border: 1px solid blue;
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 아이디 찾기 */
+main>div>div>div>:nth-child(1)>:nth-child(1) {
+    font-size:1.8rem;
+    font-weight: bold;
+    color:rgb(250, 227, 0);
+    padding:25px;
+}
+
+/* 발송된 인증번호를 기입해주세요 */
+main>div>div>div>:nth-child(1)>:nth-child(2) {
+    font-size:0.8rem;
+    font-weight: bold;
+    color:rgb(250, 227, 0);
+    padding:15px;
+}
+
+/* form */
+main>div>div>div>:nth-child(2) {
+    width: 100%;
+    height: 100%;
 
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* 비밀번호 찾기 */
-main>div>div>div>:nth-child(2) {
-    font-size: 30px;
+main>div>div>div>:nth-child(2)>form {
+    width: 90%;
+    height: 80%;
 
-    width: 100%;
-    height: 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-/* input id */
-main>div>div>div>:nth-child(3)>input {
-    margin: 10px;
-
+main>div>div>div>:nth-child(2)>form>div {
     width: 100%;
-    height: 50px;
-    border-radius: 5px;
+    height: 80%;
 
-    background-image: url(../images/loginpage_images/id_image.png);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+main>div>div>div>:nth-child(2)>form>div>:nth-child(1)>div {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 받은 인증번호 input */
+main>div>div>div>:nth-child(2)>form>div>:nth-child(1)>:nth-child(1)>:nth-child(1) {
+    width: 365px;
+    height: 40px;
+
+    border-radius: 5px;
+    background-color: rgba(100, 100, 100);
     background-repeat: no-repeat;
     background-position: 5px center;
     background-size: 20px;
-    padding-left: 30px
+    padding-left: 10px;
+    margin:10px 0;
+    outline: none;
+    border:none;
 }
 
-/* 다음 btn */
-main>div>div>div>:nth-child(4)>button {
-    color: #666;
+/* 재발송 btn */
+main>div>div>div>:nth-child(2)>form>div>:nth-child(1)>:nth-child(1)>:nth-child(2) {
+    width: 365px;
+    height: 40px;
 
     border-radius: 5px;
-
-    width: 100%;
-    height: 50px;
+    background-color: rgba(100, 100, 100);
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    background-size: 20px;
+    margin: 25px 0 0 0;
+    outline: none;
+    border: none;
 }
 
-/* 아이디찾기 */
-main>div>div>div>:nth-child(5) {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: center;
+main>div>div>div>:nth-child(2)>form>div>:nth-child(1)>:nth-child(1)>:nth-child(2):hover {
+    color:rgb(250, 227, 0)
 }
 
-/* 아이디찾기 btn */
-main>div>div>div>:nth-child(5)>a {
-    margin-left: 10px;
-    cursor: pointer; 
+/* 인증하기 버튼 */
+main>div>div>div>:nth-child(2)>form>div>:nth-child(2)>button {
+    width: 365px;
+    height: 40px;
+
+    margin: 5px 0 20px 0;
+
+    color: #DEDEDE;
+
+    border: none;
+    outline: none;
+    border-radius: 5px;
+
+    background-color: rgba(100, 100, 100);
+
+    cursor: pointer;
 }
 
-main>div>div>div>:nth-child(5)>a:hover {
-    text-decoration: underline;
+main>div>div>div>:nth-child(2)>form>div>:nth-child(2)>button:hover {
+    color:rgb(250, 227, 0)
 }
+
