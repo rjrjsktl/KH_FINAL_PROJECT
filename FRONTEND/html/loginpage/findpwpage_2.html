@@ -9,8 +9,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>아이디찾기페이지</title>
-    <link rel="stylesheet" href="../../css/findidpage.css">
+    <title>비밀번호찾기_2 페이지</title>
+
+    <link rel="stylesheet" href="../../css/loginpage/findpwpage_2.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
 </head>
@@ -30,7 +31,7 @@
                         <!-- <a href="${contextPath}">
 				<img src="${contextPath}/resources/images/logo.jpg" id="home-logo">
 			</a> -->
-                        <a href="#"><img src="../../images/logo3.png" alt="로고 이미지 삽입 w160 h70 "></a>
+                        <a href="#"><img src="../../imagesd/logo3.png" alt="로고 이미지 삽입 w160 h70 "></a>
                     </div>
                     <div>
                         <span>K H T H E A T E R</span>
@@ -38,7 +39,7 @@
                 </div>
 
                 <div>
-                    <div> <a href="#"><img src="" alt="광고 이미지삽입width:200px height:100px"></a></div>
+                    <div> <a href="#"><img src="" alt="광고 width:200px height:100px"></a></div>
 
                     <ul>
                         <li>
@@ -102,23 +103,38 @@
             <!-- 여기서 부터 작업하세요. -->
             <div>
                 <div>
+                    <!-- 프레임 -->
                     <div>
+
+                        <!-- 로고 영역 -->
                         <div>
-                            <a href=""><img src="../../images/logo2.png" alt="로고 w160 h70"></a>
+                            <p>비밀번호 찾기</p>
+                            <p>이름과 전화번호를 기입해주세요</p>
                         </div>
+
+                        <!-- form -->
                         <div>
-                            <span>아이디 찾기</span>
+                            <form action="#" method="POST" onsubmit="return findPw_2_Validate()">
+                                <div>
+                                    <div>
+                                        <div>
+                                            <input type="text" placeholder="이름" id="inputName" maxlength="41">
+                                            <input type="text" placeholder="전화번호" id="inputTel" maxlength="41">
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <button>이메일로 인증번호 발송</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div>
-                            <span>아이디의 이름과 이메일을 기입해주세요</span>
-                            <input type="text" placeholder="이름" id="inputId" maxlength="41">
-                            <input type="text" placeholder="이메일" id="inputEmail" maxlength="41">
-                        </div>
-                        <div>
-                            <button>다음</button>
-                        </div>
+
                         
+
                     </div>
+
+                    
                 </div>
             </div>
             <!-- 여기까지 작업하세요. -->
@@ -168,6 +184,8 @@
 				<c:remove var="message" scope="session" />
 			</c:if>
             -->
+
+    <script src="../../js/loginpage/loginpage.js"></script>
 </body>
 
 </html>

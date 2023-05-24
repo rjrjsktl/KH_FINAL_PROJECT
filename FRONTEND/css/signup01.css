@@ -22,7 +22,7 @@
 
 
 body {
-    background-color: rgb(33, 33, 33);
+    background-color: rgb(21, 21, 21);
 }
 
 main {
@@ -155,7 +155,7 @@ header>nav ul>li {
 }
 
 header>nav ul>li:nth-child(3)>a {
-    color: red;
+    color: #FAE300;
 }
 
 header>nav>div>div {
@@ -191,7 +191,7 @@ header>nav>div>div>form button {
 }
 
 header>nav ul>li>a:hover {
-    color: rgb(237, 49, 36);
+    color: #FAE300;
 }
 
 
@@ -260,17 +260,10 @@ footer>section>div:nth-child(2) span:last-child {
 /* =============================================================== */
 /* 아래부터 추가하세요. */
 
-main {
-    /* width: 1160px;
-    height: 3000px;
-    border: 1px solid red;
-    margin: 0 auto;
-    padding: 0 20px; */
-
-    width: 1160px;
-    margin: 0 auto;
-    padding: 0 20px;
-
+main>section>form {
+    background-color: rgb(33, 33, 33);
+    padding: 50px;
+    margin-bottom: 30px;
 }
 
 
@@ -279,6 +272,10 @@ input:-webkit-autofill {
     -webkit-text-fill-color: white;
 }
 
+main>section>form>div:nth-child(1) {
+    font-size: 1.5rem;
+    color: #FAE300;
+}
 
 /* 회원가입 영역 */
 .signUp-content {
@@ -288,7 +285,7 @@ input:-webkit-autofill {
 
 /* 필수 */
 .required {
-    color: red;
+    color: #FAE300;
     padding: 0 5px;
 }
 
@@ -338,6 +335,20 @@ form[name="signUp-form"]>label {
     /* input 선택 시 테두리 */
     color: white;
 }
+
+
+/* 생년월일 select 태그 */
+.bir_select {
+    width: 100%;
+    height: 100%;
+    color: white;
+    background-color: rgb(66, 66, 66);
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+
 
 /* 성별태그 */
 .sel {
@@ -423,8 +434,8 @@ form[name="signUp-form"]>label {
 .signUp-input-area>button {
     width: 30%;
     height: 100%;
-    background-color: rgb(116, 110, 110);
-    border: 1px solid rgb(116, 110, 110);
+    background-color: #646464;
+    border: 1px solid #646464;
     cursor: pointer;
     color: white;
     margin-left: 10px;
@@ -453,7 +464,8 @@ form[name="signUp-form"]>label {
 }
 
 .error {
-    color: red;
+    color: #FAE300;
+    ;
 }
 
 
@@ -467,8 +479,8 @@ form[name="signUp-form"]>label {
     font-size: 20px;
     font-weight: bold;
 
-    color: white;
-    background-color: rgb(187, 30, 19);
+    color: #DEDEDE;
+    background-color: #646464;
     border-radius: 5px;
     cursor: pointer;
 }

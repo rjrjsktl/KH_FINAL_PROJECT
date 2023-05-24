@@ -104,13 +104,15 @@
                 <section>
                     <div class="profile-image-area">
                         <div>
-                            <c:if test="${empty loginMember.profileImage}">
-                                <img src="${contextPath}/resources/images/user.png" id="profile-image" alt="이미지삽입영역">
+                            <img src="../../images/18.png" id="profile-image" alt="이미지삽입 w,h=182">
+                            <!-- 밑 이거 살려서 써야함 -->
+                            <!-- <c:if test="${empty loginMember.profileImage}">
+                                <img src="${contextPath}/resources/images/user.png" id="profile-image" alt="이미지삽입 w,h=182">
                             </c:if>
 
                             <c:if test="${!empty loginMember.profileImage}">
                                 <img src="${contextPath}${loginMember.profileImage}" id="profile-image">
-                            </c:if>
+                            </c:if> -->
                         </div>
                     </div>
                     <div class="profile-info-area">
@@ -141,8 +143,34 @@
                     </div>
                 </section>
 
-                <section>
-                    내가 예약하고 다가오는 영화 보이게 하기
+                <section class="comemove">
+                    <div>
+                        당신의 영화가 오고 있따옹
+                    </div>
+
+
+                    <div>
+                        <div>
+                            <!-- 나중에 db건들 때 따오는 값 바꿔줘야함 -->
+                            <img src="../../images/123123.jpg" alt="영화 포스터 w=155px,h=173px">
+                        </div>
+
+                        <div>
+                            <div>
+                                영화 제목
+                            </div>
+                            <ul>
+                                <li>번호</li>
+                                <li>품번</li>
+                                <li>배우</li>
+                                <li>감독</li>
+                            </ul>
+                            <div>
+                                영화 예매 취소
+                            </div>
+
+                        </div>
+                    </div>
                 </section>
             </div>
 
@@ -151,29 +179,30 @@
                 <section class="side-main">
                     MY KGV HOME
                     <ul class="list-group">
-                        <li> <a href="#">정보 수정</a> </li>
+                        <li> <a href="mypage_info.html">정보 수정</a> </li>
                         <!-- <li> <a href="${contextPath}/member/myPage/profile">정보 수정</a> </li> -->
 
                         <!-- /community/member/myPage/myboard -->
-                        <li> <a href="#">내 글 확인</a></li>
+                        <!-- 리뷰나 평점이라고 말 바꿔야함 -->
+                        <li> <a href="mypage_myboard.html">내가 쓴 리뷰</a></li>
                         <!-- <li> <a href="${contextPath}/member/myPage/myboard">내 글 확인</a> </li> -->
 
                         <!-- /community/member/myPage/reservationCf -->
-                        <li> <a href="#">예약 확인</a> </li>
+                        <li> <a href="mypage_reservationCf.html">내가 본 영화</a> </li>
                         <!-- <li> <a href="${contextPath}/member/myPage/reservationCf">예약확인</a> </li> -->
 
                         <!-- /community/member/myPage/changePw -->
-                        <li> <a href="#">비밀번호 변경</a> </li>
+                        <li> <a href="mypage_changePw.html">비밀번호 변경</a> </li>
                         <!-- <li> <a href="${contextPath}/member/myPage/changePw">비밀번호 변경</a> </li> -->
 
                         <!-- /community/member/myPage/secession -->
-                        <li> <a href="#">회원 탈퇴</a> </li>
+                        <li> <a href="mypage_secession.html">회원 탈퇴</a> </li>
                         <!-- <li> <a href="${contextPath}/member/myPage/secession">회원 탈퇴</a> </li> -->
 
                     </ul>
                 </section>
                 <section class="myPage-main">
-                    정보 수정
+                    MY KGV HOME <정보 수정>
 
                     <!-- <span class="myPage-explanation">원하는 회원 정보를 수정할 수 있습니다.</span> -->
 
@@ -198,25 +227,28 @@
                             <input type="text" name="updateTel" id="memberTel" value="${loginMember.memberTel}"
                             maxlength="11">
                         </div>
-                        <div class="mypage-row">
-                            <label><pre>주   소</pre></label>
-                        </div>
+
+                        <!-- 주소 -->			<!--  fn:split(문자열, '구분자')  -->
+					    <c:set var="addr"  value="${fn:split(loginMember.memberAddress, ',,')}"  />                    
 
                         <div class="mypage-row">
-                            <input type="text" id="sample4_postcode" name="memberAddress" placeholder="우편번호" maxlength="6">
-    
-                            <button type="button" onclick="return sample4_execDaumPostcode()">검색</button>
+                            <label>주 소</label>
+                        </div>
+                        <div class="mypage-row">
+                            <input type="text" name="updateAddress" id="postcode" value="${addr[0]}"  maxlength="6">
+
+                            <button type="button" id="info-address-btn" onclick="return execDaumPostcode()">검색</button>
                         </div>
     
                         <div class="mypage-row">
-                            <input type="text" id="sample4_roadAddress" name="memberAddress" placeholder="도로명주소">
+                            <input type="text" name="updateAddress" id="address" value="${addr[1]}">
                         </div>
     
                         <div class="mypage-row">
-                            <input type="text" id="sample4_detailAddress" name="memberAddress" placeholder="상세주소">
+                            <input type="text" name="updateAddress" id="detailAddress" value="${addr[2]}">
                         </div>
     
-                        <button type="submit" id="signUp-btn">가입하기</button>
+                        <button id="info-update-btn">수정하기</button>
     
                      </form>
 
@@ -272,6 +304,16 @@
                  <c:remove var="message" scope="session" />
              </c:if>
              -->
+
+
+    <!-- <%-- 다음 주소 API --%> -->
+    <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:11;-webkit-overflow-scrolling:touch;">
+        <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+    </div>           
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+    <!-- myPage.js 추가 -->
+    <script src="../../js/mypage/mypage.js"></script>
 </body>
 
 </html>

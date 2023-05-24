@@ -148,7 +148,7 @@ header>nav ul>li {
 }
 
 header>nav ul>li:nth-child(3)>a {
-    color: red;
+    color: #FAE300;
 }
 
 header>nav>div>div {
@@ -184,7 +184,7 @@ header>nav>div>div>form button {
 }
 
 header>nav ul>li>a:hover {
-    color: rgb(237, 49, 36);
+    color: #FAE300;
 }
 
 footer>section {
@@ -216,7 +216,7 @@ footer>section>div:nth-child(1)>ul>li {
 }
 
 footer>section>div:nth-child(1)>ul>li>a:hover {
-    color: rgb(200, 200, 200)
+    color: rgb(200, 200, 200);
 }
 
 footer>section>div:nth-child(1)>ul>span {
@@ -251,10 +251,10 @@ footer>section>div:nth-child(2) span:last-child {
 /* 아래부터 추가하세요. */
 main {
     width: 1160px;
-    height: 750px;
+    /* height: 750px; */
     margin: 0 auto;
     padding: 0 20px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -262,9 +262,10 @@ main {
 /* 첫번째 프로필 info 및 - 뒤에 뭐넣을까 */
 main>div:nth-child(1){
     width: 100%;
-    height: 30%;
+    height: 250px;
     border-bottom: 3px solid rgb(200, 200, 200);
-    margin: 20px 0 0 0;
+    /* border-bottom: 3px solid #FAE300; */
+    margin: 30px 0 30px 0;
     display: flex;
 
 }
@@ -272,6 +273,7 @@ main>div:nth-child(1)>section:nth-child(1){
     width: 50%;
     height: 100%;
     border-right: 3px solid rgb(200, 200, 200);
+    /* border-right: 3px solid #FAE300; */
     padding: 20px;
     display: flex;
 }
@@ -283,7 +285,8 @@ main>div:nth-child(1)>section:nth-child(1){
 .profile-image-area>div {
     width: 182px;
     height: 182px;
-    border : 3px solid rgb(200, 200, 200);
+    /* border : 3px solid rgb(200, 200, 200); */
+    border: 3px solid #FAE300;
     border-radius: 50%;
 
     display: flex;
@@ -295,22 +298,13 @@ main>div:nth-child(1)>section:nth-child(1){
 #profile-image{
     width: 100%;
     height: 100%;
+    border-radius: 50%;
 }
-
-
 /* 프로필 설정 정보 영역 */
 .profile-info-area{
     width: 60%;
     height: 100%;
     /* border : 1px solid #ddd; */
-    
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    position : relative;
 }
 .myPage-mainrow {
     width: 100%;
@@ -318,7 +312,7 @@ main>div:nth-child(1)>section:nth-child(1){
 
     display: flex;
     align-items: center;
-    border-bottom : 2px solid #ddd;
+    border-bottom : 2px solid #FAE300;
 }
 .myPage-mainrow > * {
     font-size: 1rem;
@@ -326,48 +320,132 @@ main>div:nth-child(1)>section:nth-child(1){
 }
 .myPage-mainrow > label {
     width: 25%;
-    color: rgb(237, 49, 36);
+    color: #FAE300;
 }
 .myPage-mainrow > span{
     width : 75%;
 }
-/* ------------------------ 생각해보고 추가 (다가오는 예약 할듯?) ------------------------------- */
-main>div:nth-child(1)>section:nth-child(2){
+/* ------------------------ 다가오는 예약 ------------------------------- */
+.comemove{
     width: 50%;
     height: 100%;
-    /* border: 1px solid red; */
+    border: 1px solid red;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
+
+.comemove>div:nth-child(1){
+    width: 100%;
+    height: 15%;
+
+    border: 1px solid red;
+    font-size: 1rem;
+}
+.comemove>div:nth-child(2){
+    width: 100%;
+    height: 85%;
+
+    border: 1px solid red;
+    display: flex;
+}
+/* 다가오는 영화 포스터 */
+.comemove>div:nth-child(2)>div:nth-child(1){
+    width: 30%;
+    height: 100%;
+    border: 3px solid #FAE300;
+    border-radius: 5%;
+}
+.comemove>div:nth-child(2)>div:nth-child(1)>img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5%;
+}
+/* 다가오는 영화 정보 */
+.comemove>div:nth-child(2)>div:nth-child(2){
+    width: 65%;
+    height: 100%;
+
+    border: 1px solid yellow;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.comemove>div:nth-child(2)>div:nth-child(2)>div:nth-child(1){
+    width: 100%;
+    height: 15%;
+
+    border: 1px solid red;
+}
+.comemove>div:nth-child(2)>div:nth-child(2)>ul{
+    width: 100%;
+    height: 75%;
+
+    border: 1px solid red;
+
+    /* margin: 20px 0 0 0; */
+    /* border-top: 2px solid rgb(200, 200, 200); */
+    /* border-top: 2px solid #FAE300; */
+}
+.comemove>div:nth-child(2)>div:nth-child(2)>ul>li{
+    height: 25%;
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+    /* align-items: center; */
+    /* height: 60px; */
+    font-size: 1rem;
+    /* margin: 10px 0 10px 0; */
+}
+.comemove>div:nth-child(2)>div:nth-child(2)>div:nth-child(3){
+    width: 100%;
+    height: 15%;
+    
+    border: 1px solid red;
+}
+
+
+
+
+
+
+
+
 
 /* section2 리스트와 수정 페이지 후기 등등 기능 페이지 */
 main>div:nth-child(2){
     width: 100%;
-    height: 70%;
-    border: 1px solid red;
-    margin: 0 0 20px 0;
+    height: 100%;
+    border-top: 3px solid rgb(200, 200, 200);
+    /* border-top: 3px solid #FAE300; */
+    margin: 30px 0 30px 0;
     display: flex;
 
 }
 /* 사이드 css */
 /* main>div:nth-child(2)>section:nth-child(1) */
 .side-main {
-    width: 30%;
+    width: 25%;
     height: 100%;
-    border-right: 3px solid rgb(200, 200, 200);
-    padding: 25px;
+    /* border-left: 3px solid rgb(200, 200, 200);
+    border-bottom: 3px solid rgb(200, 200, 200);     */
+    padding: 20px;
     font-size: 1.5rem;
     text-align: center;
     font-weight: bold;
+    color: #FAE300;
 }
 .list-group{
     width: 100%;
     margin: 20px 0 0 0;
-    border-top: 2px solid rgb(200, 200, 200);
+    /* border-top: 2px solid rgb(200, 200, 200); */
+    border-top: 2px solid #FAE300;
 }
 .list-group > li{
     list-style: none;
     height: 60px;
-    font-size: 1.3rem;
+    font-size: 1rem;
     /* margin: 10px 0 10px 0; */
 }
 .list-group > li > a{
@@ -375,28 +453,32 @@ main>div:nth-child(2){
     height: 100%;
 
     display: flex;
-
+    font-size: 1rem;
     justify-content: center;
     align-items: center;
 
     margin-top: 10px;
     padding-bottom: 10px;
-    border-bottom : 2px solid rgb(200, 200, 200);
+    /* border-bottom : 2px solid rgb(200, 200, 200); */
+    border-bottom: 2px solid #FAE300;
 }
 .list-group > li > a:hover{
-    color: rgb(237, 49, 36);
-    border-bottom : 2px solid rgb(237, 49, 36);
+    color: #FAE300;
+    border-bottom : 2px solid #FAE300;
 }
-/* 개인정보 및 후기 등을 누를경우 바뀌는 from */
+/* mypage 공통 부분 */
 /* main>div:nth-child(2)>section:nth-child(2)  */
 .myPage-main{
-    width: 70%;
+    width: 75%;
     height: 100%;
-    border: 1px solid red;
-    padding: 25px;
+    border-left: 3px solid rgb(200, 200, 200);
+    /* border-left: 3px solid #FAE300; */
+    padding: 20px;
     font-size: 1.5rem;
-    /* text-align: center; */
+    text-align: center;
     font-weight: bold;
+    margin: 0 auto;
+    color: #FAE300;
 }
 
 /* form속 div class주던가 해서 정렬해야함 생각 좀 해보기 왜냐하면 페이지마다 보여지는 형식이 다름
@@ -407,220 +489,89 @@ form[name="myPage-form"]{
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    border-top: 2px solid rgb(200, 200, 200);
+    border-top: 2px solid #FAE300;
 }
 .mypage-row {
-    width: 100%;
-    height: 8%;
+    width: 500px;
+    height: 40px;
+    margin-top: 5px;
 
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
+    align-items: center;
 }
 .mypage-row >label{
-    /* height: 60px; */
-    padding: 0 0 5px 0;
-    font-size: 1.3rem;
-    margin-top: 10px;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: rgb(200, 200, 200);
 }
 .mypage-row>input{
     width: 100%;
     height: 100%;
-    padding: 0 0 5px 0;
-    /* 상, 좌우, 하 */
-    /* border-radius: 5px; */
+    padding: 10px 5px 10px 5px;
     font-size: 1rem;
     font-weight: bold;
-    margin-top: 5px;
-
-   
-    /* input 선택 시 테두리 */
-    color: black;
+    background-color: rgb(66, 66, 66);
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
+    color: rgb(200, 200, 200);
 }
-
-
-
-
-
-
-
-.info-title{
-    color : #455ba8;
-    border : 0;
-}
-
-
-/* 검색버튼 */
-#info-address-btn{
+.mypage-row>button {
     width: 30%;
-    height: 70%;
-
-    font-size: 14px;
-    font-weight: normal;
-
-    background-color: white;
-    border : 1px solid gray;
+    height: 100%;
+    background-color: #646464;
+    /* border: 1px solid rgb(200, 200, 200); */
     cursor: pointer;
+    color: rgb(200, 200, 200);
+    font-size: 1rem;
+    margin-left: 10px;
+    border-radius: 5px;
 }
-
 #info-update-btn {
-    width: 100%;
+    width: 500px;
     padding: 10px;
-    margin: 50px 0;
-    border: none;
-    font-size: 20px;
+    margin: 30px 0 10px 0;
+    border: 0;
+
+    font-size: 1rem;
     font-weight: bold;
-    background-color: #455ba8;
-    color: white;
+
+    color: rgb(200, 200, 200);
+    /* 뭔색하지 */
+    background-color: #646464;
+    border-radius: 5px;
     cursor: pointer;
 }
+#info-update-btn:hover{
+    color: #FAE300;
+}
+button:hover {
+    color: #FAE300;
+}
 
-
-
-
-
-
-
-
-
-/* form[name="myPage-form"]>div:nth-child(1){
-    width: 100%;
-    height: 50px;
-
+/* 탈퇴 session 템플릿 */
+.agree-title{
+    width: 500px;
+    font-size: 1rem;
     display: flex;
-    align-items: center;
-    border-bottom : 2px solid #ddd;
-} */
-/* form[name="myPage-form"]>div:nth-child(2){
-    width: 100%;
-    height: 50px;
-
-    display: flex;
-    align-items: center;
-    border-bottom : 2px solid #ddd;
-} */
-
-
-
-
-/* ==================================================수정 필요할듯 mypage */
-
-
-
-
-
-
-
-/* 마이페이지 공통 부분 */
-
-
-
-
-
-/* 내 정보 */
-.info-title{
-    color : #455ba8;
-    border : 0;
+    margin-left: 5px;
 }
-
-.info-address{ margin : 0; }
-
-/* 검색버튼 */
-#info-address-btn{
-    width: 30%;
-    height: 70%;
-
-    font-size: 14px;
-    font-weight: normal;
-
-    background-color: white;
-    border : 1px solid gray;
-    cursor: pointer;
-}
-
-#info-update-btn {
-    width: 100%;
-    padding: 10px;
-    margin: 50px 0;
-    border: none;
-    font-size: 20px;
-    font-weight: bold;
-    background-color: #455ba8;
-    color: white;
-    cursor: pointer;
-}
-
-/* 비밀번호 변경 */
-.myPage-row > input[type="password"]{
-    width: 70%;
-}
-
-
-/* 회원 탈퇴 약관 */
 #secession-terms{
     width : 500px;
     height: 300px;
-    border : 1px solid black;
-    font-size : 16px;
+    border : 1px solid rgb(200, 200, 200);
+    font-size : 0.8rem;
+    margin: 5px 0 5px 0;
 
     /* 내용이 지정한 사이즈를 초과한 경우에 대한 속성 */
     overflow : auto; /* 초과한 방향의 스크롤을 자동 생성 */
 }
 
-
-
-/* 프로필 */
-
-
-
-
-/* 프로필 이미지 */
-#profile-image{
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-}
-
-/* 프로필 버튼 영역 */
-.profile-btn-area{
-    width: 230px;
-    margin: 20px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-/* 프로필 버튼 영역의 모든 자식 요소 */
-.profile-btn-area > *{
-    width: 110px;
-    height: 33px;
-
-    padding: 5px 10px;
-    border: 1px solid black;
-    background-color: white;
-    font-size: 14px;
-    cursor: pointer;
-    text-align: center;
-}
-
-/* 파일 선택 버튼 */
-#input-image{
-    display: none;
-}
-
-/* 변경하기 버튼 */
-.profile-btn-area > button{
-    background-color: #455ba8;
-    color : white;
-    border: 0;
-}
-
-/* 프로필 이미지 삭제 버튼 */
-#delete-image{
-    position : absolute;
-    top: 0;
-    right: 0;
-    cursor: pointer;
-}
 
 
 

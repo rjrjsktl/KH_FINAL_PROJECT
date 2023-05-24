@@ -30,7 +30,7 @@
                         <!-- <a href="${contextPath}">
 				<img src="${contextPath}/resources/images/logo.jpg" id="home-logo">
 			</a> -->
-                        <a href="#"><img src="../images/logo3.png" alt="로고 이미지 삽입 w160 h70 "></a>
+                        <a href="#"><img src="../imageds/logo3.png" alt="로고 이미지 삽입 w160 h70 "></a>
                     </div>
                     <div>
                         <span>K H T H E A T E R</span>
@@ -104,18 +104,11 @@
 
             <section class="signUp-content">
 
-                <!-- 회원가입 화면 전환 주소(GET)와 같은 주소로 
-            실제 회원가입을 요청(POST)
-            -> 요청 주소가 같아도 데이터 전달 방식이 다르면 중복 허용
-        -->
 
-                <!-- 
-            절대경로 : /community/member/signUp
-            상대경로 : signUp
-         -->
 
                 <form action="signUp" method="POST" name="signUp-form" onsubmit="return signUpValidate()">
 
+                    <div>회원가입</div>
                     <label for="memberEmail">
                         <span class="required">*</span> 아이디(이메일)
                     </label>
@@ -124,14 +117,11 @@
                         <input type="text" id="memberEmail" name="memberEmail" placeholder="아이디(이메일)" maxlength="30"
                             autocomplete="off" required>
 
-                        <!-- autocomplete="off" : 자동완성 미사용 -->
-                        <!-- required : 필수 작성 input 태그 -->
 
-                        <!-- 자바스크립로 코드 추가 예정 -->
                         <button type="button" id="sendBtn">인증번호 받기</button>
                     </div>
 
-                    <span class="signUp-message" id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요.</span>
+                    <span class="signUp-message" id="emailMessage"></span>
 
 
 
@@ -146,7 +136,7 @@
                         <button type="button" id="cBtn">인증하기</button>
                     </div>
 
-                    <!-- 5:00 타이머 / 인증되었습니다(녹색) / 인증 시간이 만료되었습니다.(빨간색) -->
+                    <!-- 5:00 타이머 -->
                     <span class="signUp-message" id="cMessage"></span>
 
 
@@ -163,7 +153,7 @@
                         <input type="password" id="memberPwConfirm" placeholder="비밀번호 확인" maxlength="30">
                     </div>
 
-                    <span class="signUp-message" id="pwMessage">영어, 숫자, 특수문자(!,@,#,-,_) 6~20글자 사이로 작성해주세요.</span>
+                    <span class="signUp-message" id="pwMessage"></span>
 
 
 
@@ -176,7 +166,7 @@
                         <input type="text" id="memberNickname" name="memberNickname" placeholder="닉네임" maxlength="10">
                     </div>
 
-                    <span class="signUp-message" id="nicknameMessage">영어/숫자/한글 2~10글자 사이로 작성해주세요.</span>
+                    <span class="signUp-message" id="nicknameMessage"></span>
 
 
 
@@ -189,73 +179,21 @@
 
                     </div>
 
-                    <span class="signUp-message" id="nameMessage">한글 2~10글자 사이로 작성해주세요.</span>
+                    <span class="signUp-message" id="nameMessage"></span>
 
-                    <label for="membername">
+                    <label for="birthday">
                         <span class="required">*</span> 생년월일
                     </label>
 
                     <div class="signUp-input-area">
 
 
-                        <div class="bir_yy">
 
-                            <input type="text" id="yy" placeholder="년(4자)" aria-label="년(4자)" class="int" maxlength="4">
-
-                        </div>
-                        <div class="bir_mm">
-
-                            <select id="mm" class="sel" aria-label="월">
-                                <option value="">월</option>
-                                <option value="01">
-                                    1
-                                </option>
-                                <option value="02">
-                                    2
-                                </option>
-                                <option value="03">
-                                    3
-                                </option>
-                                <option value="04">
-                                    4
-                                </option>
-                                <option value="05">
-                                    5
-                                </option>
-                                <option value="06">
-                                    6
-                                </option>
-                                <option value="07">
-                                    7
-                                </option>
-                                <option value="08">
-                                    8
-                                </option>
-                                <option value="09">
-                                    9
-                                </option>
-                                <option value="10">
-                                    10
-                                </option>
-                                <option value="11">
-                                    11
-                                </option>
-                                <option value="12">
-                                    12
-                                </option>
-                            </select>
-
-                        </div>
-                        <div class="bir_dd">
-
-                            <input type="text" id="dd" placeholder="일" aria-label="일" class="int" maxlength="2">
-
-
-                        </div>
+                        <input type="text" id="birthdayInput" placeholder="생년월일 8자리" class="input" value=""
+                            maxlength="8">
 
                     </div>
-
-
+                    <span class="error_box" id="birMessage"></span>
 
                     <label for="membername">
                         <span class="required">*</span> 성별
@@ -263,7 +201,7 @@
 
                     <div class="signUp-input-area">
                         <select id="gender" name="gender" class="sel" aria-label="성별">
-                            <option value="G" selected="">성별</option>
+                            <option value="" selected="">성별</option>
                             <option value="M">남자</option>
                             <option value="F">여자</option>
                             <option value="U">선택 안함</option>
@@ -271,7 +209,7 @@
 
                     </div>
 
-                    <span class="signUp-message" id="selMessage">필수 정보입니다.</span>
+                    <span class="signUp-message" id="selMessage"></span>
 
 
                     <label for="memberTel">
@@ -282,7 +220,7 @@
                         <input type="text" id="memberTel" name="memberTel" placeholder="(- 없이 숫자만 입력)" maxlength="11">
                     </div>
 
-                    <span class="signUp-message" id="telMessage">휴대폰번호를 입력해주세요.(- 제외)</span>
+                    <span class="signUp-message" id="telMessage"></span>
 
 
 
@@ -291,20 +229,21 @@
                     </label>
 
                     <div class="signUp-input-area">
-                        <input type="text" id="sample4_postcode" name="memberAddress" placeholder="우편번호" maxlength="6">
+                        <input type="text" id="sample4_postcode" name="memberAddress" placeholder="우편번호" maxlength="6"
+                            readonly>
 
                         <button type="button" onclick="return sample4_execDaumPostcode()">검색</button>
                     </div>
 
                     <div class="signUp-input-area">
-                        <input type="text" id="sample4_roadAddress" name="memberAddress" placeholder="도로명주소">
+                        <input type="text" id="sample4_roadAddress" name="memberAddress" placeholder="도로명주소" readonly>
                     </div>
 
                     <div class="signUp-input-area">
-                        <input type="text" id="sample4_detailAddress" name="memberAddress" placeholder="상세주소">
+                        <input type="text" id="sample4_detailAddress" name="memberAddress" placeholder="상세주소" readonly>
                     </div>
 
-                    <button type="submit" id="signUp-btn">가입하기</button>
+                    <button type="button" id="signUp-btn">가입하기</button>
 
                 </form>
 
