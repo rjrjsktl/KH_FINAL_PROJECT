@@ -251,10 +251,10 @@ footer>section>div:nth-child(2) span:last-child {
 /* 아래부터 추가하세요. */
 main {
     width: 1160px;
-    height: 1000px;
+    /* height: 750px; */
     margin: 0 auto;
     padding: 0 20px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -277,8 +277,12 @@ main>div:nth-child(1)>section:nth-child(1){
 }
 /* 프로필 이미지 영역 */
 .profile-image-area{
-    width: 50%;
+    width: 40%;
     height: 100%;
+}
+.profile-image-area>div {
+    width: 182px;
+    height: 182px;
     border : 3px solid rgb(200, 200, 200);
     border-radius: 50%;
 
@@ -287,11 +291,16 @@ main>div:nth-child(1)>section:nth-child(1){
     align-items: center;
 
     position : relative;
-    margin: 0 20px 0 0;
 }
+#profile-image{
+    width: 100%;
+    height: 100%;
+}
+
+
 /* 프로필 설정 정보 영역 */
 .profile-info-area{
-    width: 50%;
+    width: 60%;
     height: 100%;
     /* border : 1px solid #ddd; */
     
@@ -303,7 +312,7 @@ main>div:nth-child(1)>section:nth-child(1){
 
     position : relative;
 }
-.myPage-row {
+.myPage-mainrow {
     width: 100%;
     height: 50px;
 
@@ -311,18 +320,18 @@ main>div:nth-child(1)>section:nth-child(1){
     align-items: center;
     border-bottom : 2px solid #ddd;
 }
-.myPage-row > * {
+.myPage-mainrow > * {
     font-size: 1rem;
     font-weight: bold;
 }
-.myPage-row > label {
+.myPage-mainrow > label {
     width: 25%;
-    color: rgb(237, 49, 36);
+    /* color: rgb(237, 49, 36); */
 }
-.myPage-row > span{
+.myPage-mainrow > span{
     width : 75%;
 }
-/* ------------------------ 생각해보고 추가 다가오는 예약 할듯?) ------------------------------- */
+/* ------------------------ 생각해보고 추가 (다가오는 예약 할듯?) ------------------------------- */
 main>div:nth-child(1)>section:nth-child(2){
     width: 50%;
     height: 100%;
@@ -334,7 +343,7 @@ main>div:nth-child(1)>section:nth-child(2){
 main>div:nth-child(2){
     width: 100%;
     height: 70%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin: 0 0 20px 0;
     display: flex;
 
@@ -344,9 +353,10 @@ main>div:nth-child(2){
 .side-main {
     width: 25%;
     height: 100%;
-    border-right: 3px solid rgb(200, 200, 200);
+    border-left: 3px solid rgb(200, 200, 200);
+    border-bottom: 3px solid rgb(200, 200, 200);    
     padding: 20px;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     text-align: center;
     font-weight: bold;
 }
@@ -373,22 +383,24 @@ main>div:nth-child(2){
     margin-top: 10px;
     padding-bottom: 10px;
     border-bottom : 2px solid rgb(200, 200, 200);
-
 }
 .list-group > li > a:hover{
     color: rgb(237, 49, 36);
     border-bottom : 2px solid rgb(237, 49, 36);
 }
-/* 개인정보 및 후기 등을 누를경우 바뀌는 from */
+/* mypage 공통 부분 */
 /* main>div:nth-child(2)>section:nth-child(2)  */
 .myPage-main{
     width: 75%;
     height: 100%;
-    border: 1px solid red;
+    border-right: 3px solid rgb(200, 200, 200);
+    border-bottom: 3px solid rgb(200, 200, 200);
+    border-left: 3px solid rgb(200, 200, 200);
     padding: 20px;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     text-align: center;
     font-weight: bold;
+    margin: 0 auto;
 }
 
 /* form속 div class주던가 해서 정렬해야함 생각 좀 해보기 왜냐하면 페이지마다 보여지는 형식이 다름
@@ -398,147 +410,82 @@ form[name="myPage-form"]{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 20px;
+    border-top: 2px solid rgb(200, 200, 200);
 }
-form[name="myPage-form"]>div:nth-child(1){
-    width: 100%;
-    height: 50px;
+.mypage-row {
+    width: 500px;
+    height: 40px;
+    margin-top: 5px;
 
+    /* border: 1px solid red; */
     display: flex;
     align-items: center;
-    border-bottom : 2px solid #ddd;
 }
-form[name="myPage-form"]>div:nth-child(2){
-    width: 100%;
-    height: 50px;
-
-    display: flex;
-    align-items: center;
-    border-bottom : 2px solid #ddd;
-}
-
-
-
-
-/* ==================================================수정 필요할듯 mypage */
-
-
-
-
-
-
-
-/* 마이페이지 공통 부분 */
-
-
-
-
-
-/* 내 정보 */
-.info-title{
-    color : #455ba8;
-    border : 0;
-}
-
-.info-address{ margin : 0; }
-
-/* 검색버튼 */
-#info-address-btn{
-    width: 30%;
-    height: 70%;
-
-    font-size: 14px;
-    font-weight: normal;
-
-    background-color: white;
-    border : 1px solid gray;
-    cursor: pointer;
-}
-
-#info-update-btn {
-    width: 100%;
-    padding: 10px;
-    margin: 50px 0;
-    border: none;
-    font-size: 20px;
+.mypage-row >label{
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    font-size: 1rem;
     font-weight: bold;
-    background-color: #455ba8;
+}
+.mypage-row>input{
+    width: 100%;
+    height: 100%;
+    padding: 10px 5px 10px 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: rgb(66, 66, 66);
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
     color: white;
+}
+.mypage-row>button {
+    width: 30%;
+    height: 100%;
+    background-color: rgb(200, 200, 200);
+    border: 1px solid rgb(200, 200, 200);
+    cursor: pointer;
+    color: white;
+    font-size: 1rem;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+#info-update-btn {
+    width: 500px;
+    padding: 10px;
+    margin: 30px 0 10px 0;
+    border: 0;
+
+    font-size: 1.3rem;
+    font-weight: bold;
+
+    color: white;
+    /* 뭔색하지 */
+    background-color: rgb(187, 30, 19);
+    border-radius: 5px;
     cursor: pointer;
 }
-
-/* 비밀번호 변경 */
-.myPage-row > input[type="password"]{
-    width: 70%;
+/* 탈퇴 session 템플릿 */
+.agree-title{
+    width: 500px;
+    font-size: 1rem;
+    display: flex;
+    margin-left: 5px;
 }
-
-
-/* 회원 탈퇴 약관 */
 #secession-terms{
     width : 500px;
     height: 300px;
-    border : 1px solid black;
-    font-size : 16px;
+    border : 1px solid rgb(200, 200, 200);
+    font-size : 0.8rem;
+    margin: 5px 0 5px 0;
 
     /* 내용이 지정한 사이즈를 초과한 경우에 대한 속성 */
     overflow : auto; /* 초과한 방향의 스크롤을 자동 생성 */
 }
 
-
-
-/* 프로필 */
-
-
-
-
-/* 프로필 이미지 */
-#profile-image{
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-}
-
-/* 프로필 버튼 영역 */
-.profile-btn-area{
-    width: 230px;
-    margin: 20px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-/* 프로필 버튼 영역의 모든 자식 요소 */
-.profile-btn-area > *{
-    width: 110px;
-    height: 33px;
-
-    padding: 5px 10px;
-    border: 1px solid black;
-    background-color: white;
-    font-size: 14px;
-    cursor: pointer;
-    text-align: center;
-}
-
-/* 파일 선택 버튼 */
-#input-image{
-    display: none;
-}
-
-/* 변경하기 버튼 */
-.profile-btn-area > button{
-    background-color: #455ba8;
-    color : white;
-    border: 0;
-}
-
-/* 프로필 이미지 삭제 버튼 */
-#delete-image{
-    position : absolute;
-    top: 0;
-    right: 0;
-    cursor: pointer;
-}
 
 
 
