@@ -1,21 +1,9 @@
 main {
-    /* width: 1160px;
-    height: 3000px;
-    border: 1px solid red;
-    margin: 0 auto;
-    padding: 0 20px; */
-
-    width: 1160px;
-    margin: 0 auto;
-    display: flex;
-    padding: 0 20px;
-    border: 1px solid rgba(255, 255, 255, 0);
+    width:100%;
 }
 
 main>div {
-    width: 100%;
     padding: 100px;
-
     display: flex;
     align-content: center;
     justify-content: center;
@@ -23,24 +11,21 @@ main>div {
 
 
 main>div>div {
-    width: 60%;
+    width:30%;
     height: 30%;
-    border: 1px solid rgb(255, 0, 0);
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: baseline;
-
+    border-radius: 10px;
+    background-color: rgb(33,33,33);
 }
 
 /* 프레임 */
 main>div>div>div {
     width: 80%;
-    height: 70%;
-    border: 1px solid rgb(255, 255, 255);
+    height: 100%;
     border-radius: 5px;
-    background-color: rgb(33, 33, 33);
 
     display: flex;
     flex-direction: column;
@@ -52,12 +37,16 @@ main>div>div>div {
 main>div>div>div>:nth-child(1) {
     width: 100%;
     height: 15%;
-    border: 1px solid blue;
-
     display: flex;
     align-items: center;
     justify-content: center;
+}
 
+main>div>div>div>:nth-child(1) > p{
+    font-size:1.8rem;
+    font-weight: bold;
+    color:rgb(250, 227, 0);
+    padding:25px;
 }
 
 /* 로고 */
@@ -75,7 +64,6 @@ main>div>div>div>:nth-child(1)>div>a>img {
 main>div>div>div>:nth-child(2) {
     width: 100%;
     height: 100%;
-    border: 1px solid blue;
 
     display: flex;
     align-items: center;
@@ -96,7 +84,6 @@ main>div>div>div>:nth-child(2)>form {
 main>div>div>div>:nth-child(2)>form>div {
     width: 100%;
     height: 80%;
-    border: 1px solid blue;
 
     display: flex;
     flex-direction: column;
@@ -111,45 +98,50 @@ main>div>div>div>:nth-child(2)>form>div>:nth-child(1)>div {
 
 /* id&pw input */
 main>div>div>div>:nth-child(2)>form>div>:nth-child(1)>:nth-child(1)>:nth-child(1) {
-    margin-top: 5px;
+
     width: 365px;
-    height: 50px;
+    height: 40px;
 
     border-radius: 5px;
-    border: 1px solid rgba(255, 0, 0, 0);
     background-color: rgba(100, 100, 100);
-    background-image: url(/images/loginpage_images/id_image.png);
     background-repeat: no-repeat;
     background-position: 5px center;
     background-size: 20px;
-    padding-left: 30px
+    padding-left: 10px;
+    margin:10px 0;
+    outline: none;
+    border:none;
 }
 
 main>div>div>div>:nth-child(2)>form>div>:nth-child(1)>:nth-child(1)>:nth-child(2) {
     margin-top: 5px;
     width: 365px;
-    height: 50px;
-
+    height: 40px;
     border-radius: 5px;
-    border: 1px solid rgba(255, 0, 0, 0);
     background-color: rgba(100, 100, 100);
-    background-image: url(/images/loginpage_images/lock_white.png);
     background-repeat: no-repeat;
     background-position: 5px center;
     background-size: 20px;
-    padding-left: 30px
+    padding-left: 10px;
+    margin:10px 0;
+    outline: none;
+    border:none;
+
 }
 
 /* 로그인 버튼 */
 main>div>div>div>:nth-child(2)>form>div>:nth-child(2)>button {
     margin-top: 5px;
     width: 365px;
-    height: 50px;
+    height: 40px;
 
-    color: #666;
+    margin: 10px 0;
+
+    color: #DEDEDE;
+    border:none;
+    outline: none;
 
     border-radius: 5px;
-    border: 1px solid rgba(255, 0, 0, 0);
     background-color: rgba(100, 100, 100);
 
     cursor: pointer;
@@ -170,7 +162,6 @@ main>div>div>div>:nth-child(2)>form>div>:nth-child(2) {
     width: 20px;
     height: 20px;
     display: inline-block;
-    border: 2px solid #666;
     box-sizing: border-box;
     border-radius: 10px;
     position: relative;
@@ -184,8 +175,7 @@ main>div>div>div>:nth-child(2)>form>div>:nth-child(2) {
 }
 
 #chk:checked+.circle {
-    background-color: rgb(128, 0, 0);
-    border-color: rgb(128, 0, 0);
+    border: 1px solid rgb(250, 227, 0);
     background-image: url(/images/loginpage_images/check_white.png);
 }
 
@@ -202,19 +192,15 @@ main>div>div>div>:nth-child(2)>form>div>:nth-child(2) {
 main>div>div>div>:nth-child(3) {
     width: 100%;
     height: 15%;
-    border: 1px solid blue;
-
     display: flex;
-    flex-direction: row;
     justify-content: center;
 }
 
 main>div>div>div>:nth-child(3)>li>a>img {
-    margin-right: 20px;
-
+    margin:10px 5px;
     width: 40px;
     height: 40px;
-
+    align-items: center;
 }
 
 
