@@ -265,118 +265,196 @@ main {
     padding: 0 20px; */
 
     width: 1160px;
+    height: 2000px;
     margin: 0 auto;
-    display: flex;
     padding: 0 20px;
-    border: 1px solid rgba(255, 255, 255, 0);
+    border: 1px solid red;
 }
 
-main>div {
-    width: 100%;
-    height: 100%;
+/* 극장 선택 */
 
-    padding: 20px;
+main > div:nth-child(1) {
+  width: 100%;
+  height: 720px;
+  margin-top: 60px;
+  background-color: green;
+  display:flex;
+  font-size: 30px;
+}
 
-    display: flex;
-    align-content: center;
-    justify-content: center;
+main > div:nth-child(1) > div:nth-child(1) {
+  width: 22.5%;
+  height: 100%;
+  background-color: red;
+}
+
+main > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) {
+  height: 90px;
+  border-bottom: 1px solid white;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+main > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div {
+  height: 100%;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div > select {
+  width: 80%;
+  height: 50%;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding-left: 3.5%;
+  border-radius: 4px;
+}
+
+/* 영화 선택 */
+
+main > div:nth-child(1) > div:nth-child(2) {
+  width: 32.5%;
+  height: 100%;
+  background-color: purple;
+}
+
+main > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) {
+  height: 90px;
+  border-bottom: 1px solid white;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+main > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div {
+  height: 100%;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+main > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div > select {
+  width: 60%;
+  height: 50%;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding-left: 3.5%;
+  border-radius: 4px;
 }
 
 
-main>div>div {
-    width: 60%;
-    height: 30%;
-    border: 1px solid rgb(255, 0, 0);
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: baseline;
+/* 날짜, 상영 선택 */
 
+main > div:nth-child(1) > div:nth-child(3) {
+  width: 45%;
+  height: 100%;
+  background-color: royalblue;
 }
 
-/* 프레임 */
-main>div>div>div {
-    width: 80%;
-    height: 70%;
-    border: 1px solid rgb(255, 255, 255);
-    border-radius: 5px;
-    background-color: rgb(33, 33, 33);
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: baseline;
+/* 날짜 선택 */
+main > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) {
+  position: relative;
 }
 
-/* 4가지 다 */
-main>div>div>div>* {
-    width: 365px;
-    height: 100px;
+/* 날짜 슬라이더 */
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+main > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) {
+  height: 150px;
+  border-bottom: 1px solid white;
+  display: flex;
+  padding: 0 3%;
+  align-items: center;
 }
 
-/* 로고 */
-main>div>div>div>:nth-child(1)>a>img {
-    width: 100%;
-    height: 100px;
-    border: 1px solid blue;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+button.swiper-slide  {
+  border: none;
+  cursor: pointer;
 }
 
-/* 비밀번호 찾기 */
-main>div>div>div>:nth-child(2) {
-    font-size: 30px;
 
-    width: 100%;
-    height: 50px;
+.holiday {
+  color: #f05650;
 }
 
-/* input id */
-main>div>div>div>:nth-child(3)>input {
-    margin: 10px;
 
-    width: 100%;
-    height: 50px;
-    border-radius: 5px;
+/* 날짜 swiper */
+/* 외부 API이므로 클래스 이름 절대 수정 X */
 
-    background-image: url(../images/loginpage_images/id_image.png);
-    background-repeat: no-repeat;
-    background-position: 5px center;
-    background-size: 20px;
-    padding-left: 30px
+.swiper {
+  width: 90%;
+  height: 50%;
 }
 
-/* 다음 btn */
-main>div>div>div>:nth-child(4)>button {
-    color: #666;
-
-    border-radius: 5px;
-
-    width: 100%;
-    height: 50px;
+.swiper-button-prev {
+  position: relative;
+  left: 20%;
 }
 
-/* 아이디찾기 */
-main>div>div>div>:nth-child(5) {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: center;
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* 아이디찾기 btn */
-main>div>div>div>:nth-child(5)>a {
-    margin-left: 10px;
-    cursor: pointer; 
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-main>div>div>div>:nth-child(5)>a:hover {
-    text-decoration: underline;
+.swiper-button-next::after, .swiper-button-prev::after {
+  color: #f05650;
+}
+
+
+/* 상영 */
+
+main > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) {
+  height: 77%;
+  overflow-y: auto;
+}
+
+main > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div {
+  width: 95%;
+  margin: 40px auto;
+  border: 1px solid white;
+  font-size: 16px;
+}
+
+main > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+main > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) ul > li {
+  width: 23.5%;
+  margin-right: 2%;
+  margin-bottom: 12px;
+  height: 75px;
+}
+
+main > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) ul > li:nth-child(4n) {
+  margin-right: 0;
+}
+
+main > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) ul > li > a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
 }
