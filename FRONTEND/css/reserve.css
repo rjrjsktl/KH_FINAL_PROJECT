@@ -258,203 +258,168 @@ footer>section>div:nth-child(2) span:last-child {
 /* 아래부터 추가하세요. */
 
 main {
-    /* width: 1160px;
-    height: 3000px;
-    border: 1px solid red;
-    margin: 0 auto;
-    padding: 0 20px; */
-
-    width: 1160px;
+    width: 1200px;
     height: 2000px;
     margin: 0 auto;
     padding: 0 20px;
     border: 1px solid red;
 }
 
-/* 극장 선택 */
+main > section{
+    display: flex;
+    width: 100%;
+    height: 900px;
 
-main > div:nth-child(1) {
-  width: 100%;
-  height: 720px;
-  margin-top: 60px;
-  background-color: green;
-  display:flex;
-  font-size: 30px;
+    margin: 0 auto;
+    padding: 20px; 
 }
 
-main > div:nth-child(1) > div:nth-child(1) {
-  width: 22.5%;
+/* 예매 절차 */
+
+main > section > :nth-child(1){
+  width: 8%;
   height: 100%;
-  background-color: red;
 }
 
-main > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) {
-  height: 90px;
-  border-bottom: 1px solid white;
-  font-size: 16px;
+main > section > :nth-child(1) > ul {
   display: flex;
-  align-items: center;
-}
-
-main > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div {
+  flex-direction: column;
   height: 100%;
-  width: 90%;
-  margin: 0 auto;
+}
+
+main > section > :nth-child(1) > ul > li {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  flex: 1 1 0;
+
+  border-top: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+  cursor: pointer;
 }
 
-main > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div > select {
-  width: 80%;
-  height: 50%;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  padding-left: 3.5%;
-  border-radius: 4px;
+main > section > :nth-child(1) > ul > li:last-child { 
+  border-bottom: 1px solid lightgray;
 }
 
-/* 영화 선택 */
 
-main > div:nth-child(1) > div:nth-child(2) {
-  width: 32.5%;
+
+main > section > :nth-child(1) > ul > li:nth-child(1) {
+  background-color: #FF243E;
+}
+
+
+/* 현재 절차 */
+
+main > section > div:nth-child(2) {
+  display: flex;
+  width: 92%;
+  height: 100%; 
+}   
+
+
+/* 극장, 영화, 상영 트로이카 */
+
+main > section > :nth-child(2) > div {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% / 3);
+  border: 1px solid lightgray;
+}
+
+
+/* 각 트로이카 제목 */
+
+main > section > :nth-child(2) > div > div:first-child {
+  height: 60px;
+  line-height: 60px;
+  border-bottom: 1px solid lightgray;
+  font-size: 20px;
+  text-align: center;
+}
+
+
+/* 극장 선택 영역 */
+
+main > section > :nth-child(2) > div:first-child > div:nth-child(2) {
+  display: flex;
   height: 100%;
-  background-color: purple;
 }
 
-main > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) {
-  height: 90px;
+main > section > :nth-child(2) > div:first-child > div:nth-child(2) > div {
+  width: 50%; 
+}
+
+main > section > :nth-child(2) > div:first-child > div:nth-child(2) > div:first-child {
+  border-right: 1px solid lightgray;
+}
+
+main > section > :nth-child(2) > div:first-child > div:nth-child(2) > div:last-child > ul {
+  display: none;
+}
+
+main > section > :nth-child(2) > div:first-child > div:nth-child(2) > div > ul > li {
   border-bottom: 1px solid white;
-  font-size: 16px;
+}
+
+
+main > section > :nth-child(2) > div:first-child > div:nth-child(2) > div > ul > li > a {
   display: flex;
   align-items: center;
-}
-
-main > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div {
-  height: 100%;
-  width: 80%;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-}
-
-main > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div > select {
-  width: 60%;
-  height: 50%;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  padding-left: 3.5%;
-  border-radius: 4px;
+  width: 100%;
+  height: 100%; 
+  background-color: transparent;
+  padding: 18px;
+  font-size: 15px;
+  line-height: 15px;
 }
 
 
-
-/* 날짜, 상영 선택 */
-
-main > div:nth-child(1) > div:nth-child(3) {
-  width: 45%;
-  height: 100%;
-  background-color: royalblue;
-}
+/* 상영 선택 */
 
 /* 날짜 선택 */
-main > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) {
-  position: relative;
-}
 
-/* 날짜 슬라이더 */
-
-main > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) {
-  height: 150px;
-  border-bottom: 1px solid white;
+main > section > :nth-child(2) > div:last-child > div:nth-child(2) {
   display: flex;
-  padding: 0 3%;
   align-items: center;
+  position: relative;
+  width: 100%;
+  height: 154px;
+  padding: 0 3%;
+  border-bottom: 1px solid white;
 }
 
-button.swiper-slide  {
+main > section > :nth-child(2) > div:last-child > div:nth-child(2) > .swiper {
+  width: 80%;
+  height: 50%;
+}
+
+main > section > :nth-child(2) > div:last-child > div:nth-child(2) > .swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
   border: none;
   cursor: pointer;
 }
 
+main > section > :nth-child(2) > div:last-child > div:nth-child(2) > .swiper-button-next::after {
+  color: #f05650;
+}
+
+main > section > :nth-child(2) > div:last-child > div:nth-child(2) > .swiper-button-prev::after {
+  color: #f05650;
+}
 
 .holiday {
   color: #f05650;
 }
 
 
-/* 날짜 swiper */
-/* 외부 API이므로 클래스 이름 절대 수정 X */
-
-.swiper {
-  width: 90%;
-  height: 50%;
-}
-
-.swiper-button-prev {
-  position: relative;
-  left: 20%;
-}
-
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.swiper-button-next::after, .swiper-button-prev::after {
-  color: #f05650;
-}
 
 
-/* 상영 */
 
-main > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) {
-  height: 77%;
-  overflow-y: auto;
-}
 
-main > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div {
-  width: 95%;
-  margin: 40px auto;
-  border: 1px solid white;
-  font-size: 16px;
-}
-
-main > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) ul {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
-main > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) ul > li {
-  width: 23.5%;
-  margin-right: 2%;
-  margin-bottom: 12px;
-  height: 75px;
-}
-
-main > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) ul > li:nth-child(4n) {
-  margin-right: 0;
-}
-
-main > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) ul > li > a {
-  display: block;
-  width: 100%;
-  height: 100%;
-  font-size: 14px;
-  background-color: transparent;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  cursor: pointer;
-}

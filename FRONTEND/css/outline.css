@@ -22,7 +22,7 @@
 
 
 body {
-    background-color: rgb(33, 33, 33);
+    background-color: rgb(21, 21, 21);
 }
 
 main {
@@ -155,7 +155,7 @@ header>nav ul>li {
 }
 
 header>nav ul>li:nth-child(3)>a {
-    color: red;
+    color: rgb(250, 227, 0);
 }
 
 header>nav>div>div {
@@ -191,7 +191,7 @@ header>nav>div>div>form button {
 }
 
 header>nav ul>li>a:hover {
-    color: rgb(237, 49, 36);
+    color: rgb(250, 227, 0);
 }
 
 footer>section {
