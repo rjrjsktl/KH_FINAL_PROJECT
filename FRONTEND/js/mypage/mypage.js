@@ -1,3 +1,4 @@
+// 내 정보 수정 페이지 ----------------------------------------------
 // 내 정보 수정 유효성 검사
 function infoValidate(){
 
@@ -45,6 +46,7 @@ function printAlert(el, message){ // 매개변수 el은 요소
     return false;
 }
 
+// 비밀번호 변경 페이지 ----------------------------------
 // 비밀번호 변경 제출 시 유효성 검사
 function changePwValidate(){
 
@@ -99,6 +101,7 @@ function changePwValidate(){
     return true; // 위 조건을 모두 수행하지 않은 경우 true 반환
 }
 
+// 회원 탈퇴 페이지----------------------------------
 // 회원 탈퇴 유효성 검사
 function secessionValidate(){
 

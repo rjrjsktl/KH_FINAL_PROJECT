@@ -134,7 +134,7 @@
                       <div>
                         <p id="test_cinema_select">극장 선택</p>
                       </div>
-            
+                      <div>Tab</div>
                       <div>
                           <div>
                               <ul>
@@ -162,7 +162,64 @@
                       <div>
                         <p>영화 선택</p>
                       </div>
-                      <div></div>
+                      <div>
+                        <div><a href="#none" id="test_movie1">버전 1</a></div>
+                        <div><a href="#none" id="test_movie2">버전 2</a></div>
+                      </div>
+                      <div>
+                        <ul id="movielist_text">
+                          <li><a href="#none">
+                            <div class="age12">12</div>
+                            <div><span>메이플스토리</span></div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div class="age15">15</div>
+                            <div><span>던전앤파이터</span></div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div class="age19">19</div>
+                            <div><span>크레이지아케이드</span></div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div class="age12">12</div>
+                            <div><span>피파온라인4</span></div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div class="age00">All</div>
+                            <div><span>원신</span></div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div class="age19">19</div>
+                            <div><span>카트라이더</span></div>
+                          </a></li>
+                        </ul>
+                        <ul id="movielist_thumb">
+                          <li><a href="#none">
+                            <div><span>1</span></div>
+                            <div>메이플스토리</div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div><span>2</span></div>
+                            <div>던전앤파이터</div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div><span>3</span></div>
+                            <div>크레이지아케이드</div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div><span>4</span></div>
+                            <div>피파온라인4</div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div><span>5</span></div>
+                            <div>원신</div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div><span>6</span></div>
+                            <div>카트라이더</div>
+                          </a></li>
+                        </ul>
+                      </div>
                   </div>
                   <div>
                       <div>
@@ -278,6 +335,16 @@
 
       document.getElementById("test_cinema4").addEventListener("click", function(){
         document.getElementById("test_cinema_select").innerHTML = this.innerHTML;
+      });
+
+      document.getElementById("test_movie1").addEventListener("click", function() {
+        document.getElementById("movielist_text").style.display = 'block';
+        document.getElementById("movielist_thumb").style.display = 'none';
+      });
+
+      document.getElementById("test_movie2").addEventListener("click", function() {
+        document.getElementById("movielist_text").style.display = 'none';
+        document.getElementById("movielist_thumb").style.display = 'block';
       });
 
   
