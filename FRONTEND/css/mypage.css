@@ -333,16 +333,18 @@ main>div:nth-child(1)>section:nth-child(1){
     height: 100%;
     /* 카드 형식으로 만들건데 border 어떻게 꾸밀지 고민해보기 */
     border: 1px solid red;
-    padding: 20px;
+    padding: 15px 20px 20px 20px;
     /* margin: 30px; */
     display: flex;
     flex-direction: column;
+    font-weight: bold;
 }
 .comemove>div:nth-child(1){
     width: 100%;
     height: 15%;
 
-    /* border: 1px solid red; */
+    /* margin-bottom: 5px; */
+
     font-size: 1.5rem;
     color: #FAE300;
 }
@@ -361,14 +363,14 @@ main>div:nth-child(1)>section:nth-child(1){
     border: 1px solid #FAE300;
     border-radius: 5%;
     display: flex;
+    justify-content: center;
     align-items: center;
-    
+    position: relative;
 }
 .comemove>div:nth-child(2)>div:nth-child(1)>img{
     width: 155px;
-    height: 169px;
+    height: 173px;
     border-radius: 5%;
-    margin: auto;
 }
 /* 다가오는 영화 정보 */
 .comemove>div:nth-child(2)>div:nth-child(2){
@@ -397,6 +399,8 @@ main>div:nth-child(1)>section:nth-child(1){
 .comemove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1){
     width: 20%;
     height: 100%;
+
+    font-weight: bold;
     /* border: 1px solid red; */
 
     /* margin: 20px 0 0 0; */
@@ -406,6 +410,8 @@ main>div:nth-child(1)>section:nth-child(1){
 .comemove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(2){
     width: 80%;
     height: 100%;
+
+    font-weight: lighter;
 }
 .comemove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1)>li{
     height: 25%;
@@ -439,6 +445,7 @@ main>div:nth-child(1)>section:nth-child(1){
     cursor: pointer;
     color: rgb(200, 200, 200);
     font-size: 1rem;
+    /* font-weight: bold; */
     
     border-radius: 5px;
 }
@@ -456,6 +463,7 @@ main>div:nth-child(1)>section:nth-child(1){
     cursor: pointer;
     color: rgb(200, 200, 200);
     font-size: 1rem;
+    /* font-weight: bold; */
     margin-left: 10px;
     
     border-radius: 5px;
@@ -527,7 +535,7 @@ main>div:nth-child(2){
 /* main>div:nth-child(2)>section:nth-child(2)  */
 .mypage-main{
     width: 75%;
-    height: 100%;
+    min-height: 435px;
     border-left: 3px solid rgb(33, 33, 33);
     /* border-left: 3px solid #FAE300; */
     padding: 20px;
@@ -541,6 +549,8 @@ main>div:nth-child(2){
 /* form속 div class주던가 해서 정렬해야함 생각 좀 해보기 왜냐하면 페이지마다 보여지는 형식이 다름
 그러니 어떻게 넣을건지 생각 좀 더 해보자!! */
 form[name="myPage-form"]{
+    /* width: 100%;
+    height: 100%; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -597,6 +607,7 @@ form[name="myPage-form"]{
 }
 #info-update-btn {
     width: 500px;
+    height: 40px;
     padding: 10px;
     margin: 30px 0 10px 0;
     border: 0;
@@ -642,48 +653,44 @@ button:hover {
 /* ------------------------------------------------------------------- */
 /* 내가 본 영화 페이지 css */
 .mymove{
-    width: 50%;
-    height: 100%;
-    border: 1px solid red;
+    width: 700px;
+    height: 250px;
+    /* border: 1px solid red; */
     padding: 20px;
-    /* margin: 30px; */
+    margin-top: 10px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
+    background-color: rgb(44, 44, 44);
+    font-size: 1rem;
+    font-weight: bold;
 }
-.mymove>div:nth-child(1){
+.mymove>div{
     width: 100%;
-    height: 15%;
-
-    /* border: 1px solid red; */
-    font-size: 1.5rem;
-    color: #FAE300;
-}
-.mymove>div:nth-child(2){
-    width: 100%;
-    height: 85%;
-    padding-top: 1%;
+    height: 100%;
+    /* padding-top: 1%; */
 
     /* border: 1px solid red; */
     display: flex;
 }
-/* 다가오는 영화 포스터 */
-.mymove>div:nth-child(2)>div:nth-child(1){
-    width: 30%;
+/* 내가본 영화 포스터 */
+.mymove>div>div:nth-child(1){
+    width: 25%;
     height: 100%;
     border: 1px solid #FAE300;
     border-radius: 5%;
     display: flex;
+    justify-content: center;
     align-items: center;
-    
+    position: relative;
 }
-.mymove>div:nth-child(2)>div:nth-child(1)>img{
-    width: 155px;
-    height: 169px;
+.mymove>div>div:nth-child(1)>img{
+    width: 165px;
+    height: 210px;
     border-radius: 5%;
-    margin: auto;
 }
-/* 다가오는 영화 정보 */
-.mymove>div:nth-child(2)>div:nth-child(2){
+/* 내가본 영화 정보 */
+.mymove>div>div:nth-child(2){
     width: 65%;
     height: 100%;
 
@@ -691,58 +698,64 @@ button:hover {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    text-align: left;
+    font-size: 1rem;
 }
-.mymove>div:nth-child(2)>div:nth-child(2)>div:nth-child(1){
+.mymove>div>div:nth-child(2)>div:nth-child(1){
     width: 100%;
     height: 15%;
 
-    margin-bottom: 2%;
+    margin-bottom: 1%;
+
+    display: flex;
+    justify-content: space-between;
+    
     /* border: 1px solid red; */
 }
-.mymove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2){
+.mymove>div>div:nth-child(2)>div:nth-child(2){
     width: 100%;
-    height: 66%;
+    height: 67%;
 
     display: flex;
 
 }
-.mymove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1){
-    width: 20%;
+.mymove>div>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1){
+    width: 15%;
     height: 100%;
+    margin-right: 10px;
     /* border: 1px solid red; */
 
     /* margin: 20px 0 0 0; */
     /* border-top: 2px solid rgb(200, 200, 200); */
     /* border-top: 2px solid #FAE300; */
 }
-.mymove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(2){
+.mymove>div>div:nth-child(2)>div:nth-child(2)>ul:nth-child(2){
     width: 80%;
     height: 100%;
 }
-.mymove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1)>li{
+.mymove>div>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1)>li{
     height: 25%;
     list-style: none;
     display: flex;
     align-items: center;
-    font-size: 1rem;
 }
-.mymove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(2)>li{
+.mymove>div>div:nth-child(2)>div:nth-child(2)>ul:nth-child(2)>li{
     height: 25%;
     list-style: none;
     display: flex;
     align-items: center;
-    font-size: 1rem;
+    font-weight: lighter;
 }
-.mymove>div:nth-child(2)>div:nth-child(2)>div:nth-child(3){
+.mymove>div>div:nth-child(2)>div:nth-child(3){
     width: 100%;
     height: 15%;
     
     margin-top: 2%;
     /* border: 1px solid red; */
 }
-/* 예매 취소 버튼 */
-#cancel-btn{
-    width: 150px;
+/* 리뷰 남기러 가기 버튼 */
+#ckreview-btn{
+    width: 250px;
     height: 100%;
     background-color: #646464;
     border: 0;
@@ -754,13 +767,18 @@ button:hover {
     
     border-radius: 5px;
 }
-#cancel-btn:hover {
+#ckreview-btn:hover {
     color: #FAE300;
-    background-color: rgb(44,44,44);
+    background-color: rgb(55,55,55);
 }
-#change-btn{
-    width: 150px;
-    height: 100%;
+/* .listmore-btn{
+    width: 700px;
+    height: 40px;
+    border-radius: 5px;
+} */
+#listmore-btn{
+    width: 700px;
+    height: 40px;
     background-color: #646464;
     border: 0;
     outline: 0;
@@ -768,13 +786,20 @@ button:hover {
     cursor: pointer;
     color: rgb(200, 200, 200);
     font-size: 1rem;
-    margin-left: 10px;
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 5px;
 }
-#change-btn:hover {
+#listmore-btn:hover {
     color: #FAE300;
     background-color: rgb(44,44,44);
 }
+
+/* 내가 쓴 리뷰 페이지 구동 */
+
+
+
+
 
 
