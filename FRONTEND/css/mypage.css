@@ -21,7 +21,7 @@
 }
 
 body {
-    background-color: rgb(33, 33, 33);
+    background-color: rgb(21, 21, 21);
 }
 
 /* 헤더 */
@@ -248,6 +248,7 @@ footer>section>div:nth-child(2) span:last-child {
 }
 
 /* =============================================================== */
+/* mypage 공통 부분 ====================까지 */
 /* 아래부터 추가하세요. */
 main {
     width: 1160px;
@@ -263,7 +264,7 @@ main {
 main>div:nth-child(1){
     width: 100%;
     height: 250px;
-    border-bottom: 3px solid rgb(200, 200, 200);
+    border-bottom: 3px solid rgb(33, 33, 33);
     /* border-bottom: 3px solid #FAE300; */
     margin: 30px 0 30px 0;
     display: flex;
@@ -272,7 +273,7 @@ main>div:nth-child(1){
 main>div:nth-child(1)>section:nth-child(1){
     width: 50%;
     height: 100%;
-    border-right: 3px solid rgb(200, 200, 200);
+    border-right: 3px solid rgb(33, 33, 33);
     /* border-right: 3px solid #FAE300; */
     padding: 20px;
     display: flex;
@@ -286,7 +287,7 @@ main>div:nth-child(1)>section:nth-child(1){
     width: 182px;
     height: 182px;
     /* border : 3px solid rgb(200, 200, 200); */
-    border: 3px solid #FAE300;
+    border: 1px solid #FAE300;
     border-radius: 50%;
 
     display: flex;
@@ -306,67 +307,75 @@ main>div:nth-child(1)>section:nth-child(1){
     height: 100%;
     /* border : 1px solid #ddd; */
 }
-.myPage-mainrow {
+.mypage-main-frame {
     width: 100%;
     height: 50px;
 
     display: flex;
     align-items: center;
-    border-bottom : 2px solid #FAE300;
+    /* border-bottom : 2px solid rgb(100, 100, 100); */
 }
-.myPage-mainrow > * {
+.mypage-main-frame > * {
     font-size: 1rem;
     font-weight: bold;
 }
-.myPage-mainrow > label {
+.mypage-main-frame > label {
     width: 25%;
-    color: #FAE300;
+    font-size: 1rem;
 }
-.myPage-mainrow > span{
+.mypage-main-frame > span{
     width : 75%;
+    font-weight: lighter;
 }
 /* ------------------------ 다가오는 예약 ------------------------------- */
 .comemove{
     width: 50%;
     height: 100%;
+    /* 카드 형식으로 만들건데 border 어떻게 꾸밀지 고민해보기 */
     border: 1px solid red;
     padding: 20px;
+    /* margin: 30px; */
     display: flex;
     flex-direction: column;
 }
-
 .comemove>div:nth-child(1){
     width: 100%;
     height: 15%;
 
-    border: 1px solid red;
-    font-size: 1rem;
+    /* border: 1px solid red; */
+    font-size: 1.5rem;
+    color: #FAE300;
 }
 .comemove>div:nth-child(2){
     width: 100%;
     height: 85%;
+    padding-top: 1%;
 
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
 }
 /* 다가오는 영화 포스터 */
 .comemove>div:nth-child(2)>div:nth-child(1){
     width: 30%;
     height: 100%;
-    border: 3px solid #FAE300;
+    border: 1px solid #FAE300;
     border-radius: 5%;
+    display: flex;
+    align-items: center;
+    
 }
 .comemove>div:nth-child(2)>div:nth-child(1)>img{
-    width: 100%;
-    height: 100%;
+    width: 155px;
+    height: 169px;
     border-radius: 5%;
+    margin: auto;
 }
 /* 다가오는 영화 정보 */
 .comemove>div:nth-child(2)>div:nth-child(2){
     width: 65%;
     height: 100%;
 
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -375,49 +384,93 @@ main>div:nth-child(1)>section:nth-child(1){
     width: 100%;
     height: 15%;
 
-    border: 1px solid red;
+    margin-bottom: 2%;
+    /* border: 1px solid red; */
 }
-.comemove>div:nth-child(2)>div:nth-child(2)>ul{
+.comemove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2){
     width: 100%;
-    height: 75%;
+    height: 66%;
 
-    border: 1px solid red;
+    display: flex;
+
+}
+.comemove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1){
+    width: 20%;
+    height: 100%;
+    /* border: 1px solid red; */
 
     /* margin: 20px 0 0 0; */
     /* border-top: 2px solid rgb(200, 200, 200); */
     /* border-top: 2px solid #FAE300; */
 }
-.comemove>div:nth-child(2)>div:nth-child(2)>ul>li{
+.comemove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(2){
+    width: 80%;
+    height: 100%;
+}
+.comemove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1)>li{
     height: 25%;
     list-style: none;
-
     display: flex;
     align-items: center;
-    /* align-items: center; */
-    /* height: 60px; */
     font-size: 1rem;
-    /* margin: 10px 0 10px 0; */
+}
+.comemove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(2)>li{
+    height: 25%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
 }
 .comemove>div:nth-child(2)>div:nth-child(2)>div:nth-child(3){
     width: 100%;
     height: 15%;
     
-    border: 1px solid red;
+    margin-top: 2%;
+    /* border: 1px solid red; */
 }
-
-
-
-
-
-
-
+/* 예매 취소 버튼 */
+#cancel-btn{
+    width: 150px;
+    height: 100%;
+    background-color: #646464;
+    border: 0;
+    outline: 0;
+    /* border: 1px solid rgb(200, 200, 200); */
+    cursor: pointer;
+    color: rgb(200, 200, 200);
+    font-size: 1rem;
+    
+    border-radius: 5px;
+}
+#cancel-btn:hover {
+    color: #FAE300;
+    background-color: rgb(44,44,44);
+}
+#change-btn{
+    width: 150px;
+    height: 100%;
+    background-color: #646464;
+    border: 0;
+    outline: 0;
+    /* border: 1px solid rgb(200, 200, 200); */
+    cursor: pointer;
+    color: rgb(200, 200, 200);
+    font-size: 1rem;
+    margin-left: 10px;
+    
+    border-radius: 5px;
+}
+#change-btn:hover {
+    color: #FAE300;
+    background-color: rgb(44,44,44);
+}
 
 
 /* section2 리스트와 수정 페이지 후기 등등 기능 페이지 */
 main>div:nth-child(2){
     width: 100%;
     height: 100%;
-    border-top: 3px solid rgb(200, 200, 200);
+    border-top: 3px solid rgb(33, 33, 33);
     /* border-top: 3px solid #FAE300; */
     margin: 30px 0 30px 0;
     display: flex;
@@ -440,7 +493,7 @@ main>div:nth-child(2){
     width: 100%;
     margin: 20px 0 0 0;
     /* border-top: 2px solid rgb(200, 200, 200); */
-    border-top: 2px solid #FAE300;
+    /* border-top: 2px solid #FAE300; */
 }
 .list-group > li{
     list-style: none;
@@ -450,6 +503,7 @@ main>div:nth-child(2){
 }
 .list-group > li > a{
     text-decoration: none;
+    /* width: 150px; */
     height: 100%;
 
     display: flex;
@@ -458,20 +512,23 @@ main>div:nth-child(2){
     align-items: center;
 
     margin-top: 10px;
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
+
+    background-color: rgb(33, 33, 33);
     /* border-bottom : 2px solid rgb(200, 200, 200); */
-    border-bottom: 2px solid #FAE300;
+    /* border-bottom: 2px solid #FAE300; */
 }
 .list-group > li > a:hover{
     color: #FAE300;
-    border-bottom : 2px solid #FAE300;
+    background-color: rgb(44, 44, 44);
+    /* border-bottom : 2px solid #FAE300; */
 }
-/* mypage 공통 부분 */
+
 /* main>div:nth-child(2)>section:nth-child(2)  */
-.myPage-main{
+.mypage-main{
     width: 75%;
     height: 100%;
-    border-left: 3px solid rgb(200, 200, 200);
+    border-left: 3px solid rgb(33, 33, 33);
     /* border-left: 3px solid #FAE300; */
     padding: 20px;
     font-size: 1.5rem;
@@ -488,10 +545,14 @@ form[name="myPage-form"]{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    border-top: 2px solid #FAE300;
+    margin-top: 10px;
+    /* border-top: 3px solid rgb(200, 200, 200); */
+    /* border-top: 2px solid #FAE300; */
 }
-.mypage-row {
+/* 공통 끝 */
+/* ====================================================================================== */
+/* 정보 수정, 비밀번호 변경, 회원 탈퇴 등에 사용된 info변경할때 사용하는 frame */
+.mypage-info-frame {
     width: 500px;
     height: 40px;
     margin-top: 5px;
@@ -500,7 +561,7 @@ form[name="myPage-form"]{
     display: flex;
     align-items: center;
 }
-.mypage-row >label{
+.mypage-info-frame >label{
     display: block;
     margin-top: 20px;
     margin-bottom: 5px;
@@ -509,7 +570,7 @@ form[name="myPage-form"]{
     font-weight: bold;
     color: rgb(200, 200, 200);
 }
-.mypage-row>input{
+.mypage-info-frame>input{
     width: 100%;
     height: 100%;
     padding: 10px 5px 10px 5px;
@@ -521,10 +582,12 @@ form[name="myPage-form"]{
     outline: 0;
     color: rgb(200, 200, 200);
 }
-.mypage-row>button {
+.mypage-info-frame>button {
     width: 30%;
     height: 100%;
     background-color: #646464;
+    border: 0;
+    outline: 0;
     /* border: 1px solid rgb(200, 200, 200); */
     cursor: pointer;
     color: rgb(200, 200, 200);
@@ -537,6 +600,7 @@ form[name="myPage-form"]{
     padding: 10px;
     margin: 30px 0 10px 0;
     border: 0;
+    outline: 0;
 
     font-size: 1rem;
     font-weight: bold;
@@ -549,11 +613,14 @@ form[name="myPage-form"]{
 }
 #info-update-btn:hover{
     color: #FAE300;
+    background-color: rgb(44, 44, 44);
 }
 button:hover {
     color: #FAE300;
+    background-color: rgb(44, 44, 44);
 }
 
+/* ----------------------------------------------------------------- */
 /* 탈퇴 session 템플릿 */
 .agree-title{
     width: 500px;
@@ -572,8 +639,142 @@ button:hover {
     overflow : auto; /* 초과한 방향의 스크롤을 자동 생성 */
 }
 
+/* ------------------------------------------------------------------- */
+/* 내가 본 영화 페이지 css */
+.mymove{
+    width: 50%;
+    height: 100%;
+    border: 1px solid red;
+    padding: 20px;
+    /* margin: 30px; */
+    display: flex;
+    flex-direction: column;
+}
+.mymove>div:nth-child(1){
+    width: 100%;
+    height: 15%;
 
+    /* border: 1px solid red; */
+    font-size: 1.5rem;
+    color: #FAE300;
+}
+.mymove>div:nth-child(2){
+    width: 100%;
+    height: 85%;
+    padding-top: 1%;
 
+    /* border: 1px solid red; */
+    display: flex;
+}
+/* 다가오는 영화 포스터 */
+.mymove>div:nth-child(2)>div:nth-child(1){
+    width: 30%;
+    height: 100%;
+    border: 1px solid #FAE300;
+    border-radius: 5%;
+    display: flex;
+    align-items: center;
+    
+}
+.mymove>div:nth-child(2)>div:nth-child(1)>img{
+    width: 155px;
+    height: 169px;
+    border-radius: 5%;
+    margin: auto;
+}
+/* 다가오는 영화 정보 */
+.mymove>div:nth-child(2)>div:nth-child(2){
+    width: 65%;
+    height: 100%;
 
+    /* border: 1px solid yellow; */
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.mymove>div:nth-child(2)>div:nth-child(2)>div:nth-child(1){
+    width: 100%;
+    height: 15%;
+
+    margin-bottom: 2%;
+    /* border: 1px solid red; */
+}
+.mymove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2){
+    width: 100%;
+    height: 66%;
+
+    display: flex;
+
+}
+.mymove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1){
+    width: 20%;
+    height: 100%;
+    /* border: 1px solid red; */
+
+    /* margin: 20px 0 0 0; */
+    /* border-top: 2px solid rgb(200, 200, 200); */
+    /* border-top: 2px solid #FAE300; */
+}
+.mymove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(2){
+    width: 80%;
+    height: 100%;
+}
+.mymove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1)>li{
+    height: 25%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+}
+.mymove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(2)>li{
+    height: 25%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+}
+.mymove>div:nth-child(2)>div:nth-child(2)>div:nth-child(3){
+    width: 100%;
+    height: 15%;
+    
+    margin-top: 2%;
+    /* border: 1px solid red; */
+}
+/* 예매 취소 버튼 */
+#cancel-btn{
+    width: 150px;
+    height: 100%;
+    background-color: #646464;
+    border: 0;
+    outline: 0;
+    /* border: 1px solid rgb(200, 200, 200); */
+    cursor: pointer;
+    color: rgb(200, 200, 200);
+    font-size: 1rem;
+    
+    border-radius: 5px;
+}
+#cancel-btn:hover {
+    color: #FAE300;
+    background-color: rgb(44,44,44);
+}
+#change-btn{
+    width: 150px;
+    height: 100%;
+    background-color: #646464;
+    border: 0;
+    outline: 0;
+    /* border: 1px solid rgb(200, 200, 200); */
+    cursor: pointer;
+    color: rgb(200, 200, 200);
+    font-size: 1rem;
+    margin-left: 10px;
+    
+    border-radius: 5px;
+}
+#change-btn:hover {
+    color: #FAE300;
+    background-color: rgb(44,44,44);
+}
 
 
