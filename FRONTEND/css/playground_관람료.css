@@ -1,6 +1,4 @@
-
 /* 첫번째 영역 */
-
 main>div:nth-child(1) {
     width: 100%;
     background-color: black;
@@ -27,12 +25,10 @@ main>div:nth-child(1)>div > ul > li {
     z-index: 1;
     }
 
-
 main>div:nth-child(1)>div > ul > li > a {
     border-bottom: 1px solid white;
     font-size: 0.8rem;
 }
-
 
 main>div:nth-child(1)>div>img {
     width: 1120px;
@@ -47,9 +43,7 @@ main > div:nth-child(2){
     width: 100%;   
 }
 
-
 /* 두번째 영역 */
-
 main > div:nth-child(2) > div {
     width:1160px;
     padding:50px 20px;
@@ -58,9 +52,6 @@ main > div:nth-child(2) > div {
     display: flex;
     justify-content: center;
 }
-
-
-/*  */
 
 main > div:nth-child(2) > div > span{
     flex: 1 1 0;
@@ -81,16 +72,12 @@ main > div:nth-child(2) > div > span:last-child{
     border-bottom:1px solid white;
 }
 
-
 /* 세번째 영역 */
-
 main > div:nth-child(3) {
     width:100%;
 }
 
-
-main > div:nth-child(3) > div:nth-child(1) {
-
+main > div:nth-child(3) > div {
     width: 1160px;
     padding:0 20px 50px 0;
     margin:0 auto;
@@ -107,36 +94,3 @@ main > div:nth-child(3) > div > strong {
     padding:10px;
     font-size: 1.5rem;
 }
-
-/* 상영 관람료 테이블 */
-main > div:nth-child(3) > div:nth-child(2) {
-    width: 1160px;
-    padding-left: 20px;
-    margin:0 auto;
-    height:180px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: baseline;
-}
-
-/* table */
-
-main > div:nth-child(3) > div:nth-child(2)>:nth-child(2)>table {
-    
-    border-collapse: collapse;
-}
-
-.fee_view>thead>tr>th {
-    width: 131px;
-}
-
-.fee_view>tbody>tr>th {
-    text-align: center;
-}
-
-main > div:nth-child(3) > div:nth-child(2)>:nth-child(2)>table tr td {
-    
-    border: 1px solid rgb(122, 120, 120);
-}
-
