@@ -359,6 +359,7 @@ form[name="signUp-form"]>label {
     border-radius: 5px;
     outline: none;
     border: none;
+    padding: 10px 15px 10px 15px;
 }
 
 /* .sel option[value="1"] {
@@ -445,10 +446,7 @@ form[name="signUp-form"]>label {
 
 
 
-#emailMessage {
-    /* display: none; */
 
-}
 
 /* 회원가입 관련 메세지 */
 .signUp-message {
@@ -483,4 +481,8 @@ form[name="signUp-form"]>label {
     background-color: #646464;
     border-radius: 5px;
     cursor: pointer;
+}
+
+#signUp-btn:hover {
+    color: #FAE300;
 }
