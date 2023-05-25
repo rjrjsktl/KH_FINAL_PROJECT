@@ -221,47 +221,50 @@
                      http://localhost:8080/community/member/myPage/info (GET)
                      http://localhost:8080/community/member/myPage/info (POST) 
                      -->
-                        <form action="info" method="POST" name="myPage-form" onsubmit="return infoValidate()">
+                        <form action="myboard" method="POST" name="myPage-form" onsubmit="return infoValidate()">
+                            <ul class="more-load">
+                                <!-- 나중에 append나 폼 추가 할 때 이 li을 그대로 가져가면 됨 -->
+                                <li class="mymove">
+                                    <div>
+                                        <div>
+                                            <!-- 나중에 db건들 때 따오는 값 바꿔줘야함 -->
+                                            <img src="../../images/123123.jpg" alt="영화 포스터 w=165px,h=210px">
+                                        </div>
 
-                            <div class="mypage-row">
-                                <label>닉네임</label>
-                            </div>
-                            <div class="mypage-row">
-                                <input type="text" name="updateNickname" id="memberNickname"
-                                    value="${loginMember.memberNickname}" maxlength="10">
-                            </div>
+                                        <div>
+                                            <div>
+                                                <div>영화 제목</div>
+                                                <div><i>del</i></div>
+                                            </div>
+                                            <div>
+                                                <ul>
+                                                    <!-- db에 들어가는거 보고 영화 날짜, 시간, 인원, 몇관 등 추가 해야함 -->
+                                                    <li>날&nbsp;&nbsp;&nbsp;짜 :</li>
+                                                    <li>시&nbsp;&nbsp;&nbsp;간 :</li>
+                                                    <li>인&nbsp;&nbsp;&nbsp;원 :</li>
+                                                    <li>상영관 :</li>
+                                                </ul>
+                                                <ul>
+                                                    <!-- db에 들어가는거 보고 영화 날짜, 시간, 인원, 몇관 등 추가 해야함 -->
+                                                    <li>2069.69.69 </li>
+                                                    <li>69:74 ~ 69:74</li>
+                                                    <li>3썸</li>
+                                                    <li>A 강의실</li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <button id="ckreview-btn">리뷰 남기러 가볼까옹~</button>
+                                            </div>
 
-                            <div class="mypage-row">
-                                <label>연락처</label>
-                            </div>
-                            <div class="mypage-row">
-                                <input type="text" name="updateTel" id="memberTel" value="${loginMember.memberTel}"
-                                    maxlength="11">
-                            </div>
+                                        </div>
+                                    </div>
+                                </li>
 
-                            <!-- 주소 --> <!--  fn:split(문자열, '구분자')  -->
-                            <c:set var="addr" value="${fn:split(loginMember.memberAddress, ',,')}" />
+                            </ul>
 
-                            <div class="mypage-row">
-                                <label>주 소</label>
-                            </div>
-                            <div class="mypage-row">
-                                <input type="text" name="updateAddress" id="postcode" value="${addr[0]}" maxlength="6">
 
-                                <button type="button" id="info-address-btn"
-                                    onclick="return execDaumPostcode()">검색</button>
-                            </div>
-
-                            <div class="mypage-row">
-                                <input type="text" name="updateAddress" id="address" value="${addr[1]}">
-                            </div>
-
-                            <div class="mypage-row">
-                                <input type="text" name="updateAddress" id="detailAddress" value="${addr[2]}">
-                            </div>
-
-                            <button id="info-update-btn">수정하기</button>
-
+                            <!-- 더보기 버튼 만들 영역 -->
+                            <div id="listmore-wrap"><a href="javascript:;" id="listmore-btn">내 영화 더 보기</a></div>
                         </form>
 
                 </section>
