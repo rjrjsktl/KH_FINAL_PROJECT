@@ -22,6 +22,13 @@
     <!-- jQuery 라이브러리 추가(CDN) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
 </head>
 
 <body>
@@ -29,7 +36,7 @@
         <div class="main_Wrapper">
             <div id="left_Nav_Container">
                 <div class="nav_Title">
-
+                    로고영역
                 </div>
 
                 <ul class="nav_Slide">
@@ -200,22 +207,38 @@
                     <div class="header_Container">
                         <div class="header_loge_Area">
                         </div>
-                        <div class="header_logout_Area">
-                            <div></div>
-                        </div>
+                        <button class="header_logout_Area">
+                            <div>로그아웃</div>
+                        </button>
                     </div>
                 </div>
                 <div id="items_Wrapper">
                     <div class="left_Item_Container">
-                        <div class="content1"></div>
-                        <div class="content2"></div>
-                        <div class="content3"></div>
-                        <div class="content4"></div>
-                        <div class="content5"></div>
-                        <div class="content6"></div>
+                        <div class="left_Inner_Contents">
+
+                            <!-- <div class="inner_Top">
+                                <span class="inner_Top_Text">방문자 현황</span>
+                            </div> -->
+
+                            <div id="inner_Main">
+                                <figure class="highcharts-figure"></figure>
+                            </div>
+                        </div>
+                        <div class="left_Inner_Contents algin_Left"></div>
+                        <div class="left_Inner_Contents"></div>
+                        <div class="left_Inner_Contents algin_Left"></div>
+                        <div class="left_Inner_Contents"></div>
+                        <div class="left_Inner_Contents algin_Left"></div>
                     </div>
                     <div class="right_Item_Container">
+                        <div class="top_Click_area">
+                            <div class="top_items top_click1 active">메모</div>
+                            <div class="top_items top_click2">일정표</div>
+                            <div class="top_items top_click3">ㅁㄴㅇㄹ</div>
+                        </div>
+                        <div class="right_Items_Area">
 
+                        </div>
                     </div>
                 </div>
             </div>

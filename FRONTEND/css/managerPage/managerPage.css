@@ -17,7 +17,7 @@
     display: flex;
     width: 100vw;
     height: 100vh;
-    background-color: #eeeeee;
+    background-color: #eee;
 }
 
 /* Nav 영역 */
@@ -33,6 +33,8 @@
     width: 100%;
     height: 85px;
     border: 1px solid red;
+
+    color: white;
 }
 
 /* Nav 안 슬라이더 */
@@ -55,7 +57,6 @@
 .slide_Title {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid white;
 }
 
 .title_move li:hover {
@@ -68,7 +69,7 @@
     width: 100%;
     flex-direction: column;
     cursor: pointer;
-    border-bottom: 1px solid white;
+    /* border-bottom: 1px solid white; */
     margin-bottom: 10px;
 }
 
@@ -153,15 +154,14 @@
     display: flex;
     flex-direction: column;
     flex: 8.5;
-    border: 1px solid red;
     height: 100%;
 }
 
 #header_Wrapper {
     width: 100%;
     height: 85px;
-    border: 1px solid red;
     padding: 0 20px;
+    background-color: white;
 }
 
 .header_Container {
@@ -177,7 +177,7 @@
     align-items: center;
     border: 1px solid red;
     width: 160px;
-    height: 65px;
+    height: 85px;
     margin-left: 20px;
 }
 
@@ -185,65 +185,138 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid red;
-    width: 200px;
-    height: 65px;
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50px;
 }
 
 /* 내부 아이템 영역 */
 #items_Wrapper {
     display: flex;
     flex: 1;
-    border: 1px solid red;
 }
 
 .left_Item_Container {
     flex: 7;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
     align-items: center;
-    border: 1px solid red;
+    justify-content: space-evenly;
+    padding: 10px 5px;
 }
 
-.content1 {
-    width: 550px;
-    height: 300px;
-    border: 1px solid red;
+.left_Inner_Contents {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    height: 31%;
+    background-color: white;
 }
 
-.content2 {
-    width: 550px;
-    height: 300px;
-    border: 1px solid red;
+.left_Inner_Contents.algin_Left {
+    margin-left: 5px;
 }
 
-.content3 {
-    width: 550px;
-    height: 300px;
-    border: 1px solid red;
+.inner_Top {
+    flex: 1.5;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding-left: 20px;
 }
 
-.content4 {
-    width: 550px;
-    height: 300px;
-    border: 1px solid red;
+.inner_Top_Text {}
+
+#inner_Main {
+    flex: 1;
 }
 
-.content5 {
-    width: 550px;
-    height: 300px;
-    border: 1px solid red;
-}
 
-.content6 {
-    width: 550px;
-    height: 300px;
-    border: 1px solid red;
-}
 
 
 .right_Item_Container {
     flex: 3;
-    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.top_Click_area {
+    display: flex;
+    width: 100%;
+    height: 70px;
+    background-color: #333333;
+}
+
+.top_Click_area div:hover {
+    background-color: #FAE300;
+    color: black;
+}
+
+.top_items {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+}
+
+.top_items.active {
+    background-color: #FAE300;
+    color: black;
+}
+
+.right_Items_Area {
+    flex: 1;
+}
+
+
+
+
+/* 방문자 현황용 그래프 */
+
+.highcharts-figure,
+.highcharts-data-table table {
+    width: 500px;
+    margin: 1em auto;
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
 }
