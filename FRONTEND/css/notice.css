@@ -1,0 +1,73 @@
+main>section {
+    width: 100%;
+}
+
+main>section>div {
+    width: 1160px;
+    height: 70vh;
+    margin: 0 auto;
+    padding: 50px 20px;
+    display: flex;
+}
+
+main>section>div>aside {
+    width: 22%;
+    padding-right: 30px;
+    display: flex;
+}
+
+main>section>div>aside>div {
+    flex: 1 1 0;
+    border-radius: 10px;
+    border: 3px solid red;
+
+    /* display: flex;
+    flex-direction: column; */
+    display: block;
+
+}
+
+main>section>div>aside>div>nav {
+    /* display: flex; */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+
+    background-color: blue;
+}
+
+
+/* main>section>div>aside>div>div {
+    flex: 1 1 0;
+    border: 1px solid red;
+} */
+
+
+
+
+
+
+/* 오른쪽 div */
+main>section>div>div {
+    width: 70%;
+}
+
+
+
+
+/* 고객센터 판 */
+
+main>section>div>aside>div>div:nth-child(1) {
+    background-color: rgb(211, 58, 20);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+main>section>div>aside>div>div:nth-child(1)>p>a {
+    color: white;
+}
