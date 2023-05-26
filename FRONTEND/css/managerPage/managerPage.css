@@ -229,10 +229,91 @@
     padding-left: 20px;
 }
 
-.inner_Top_Text {}
-
-#inner_Main {
+.inner_Top_Text {
     flex: 1;
+}
+
+.inner_Top_Content {
+    flex: 8.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner_Top_Content thead th {
+    padding: 0 70px;
+}
+
+#daily_Enter {
+    flex: 1;
+}
+
+#daily_Movie_Watch {
+    flex: 1;
+}
+
+
+
+/* 공지사항 및 1:1 문의 */
+.noticeTable {
+    flex: 8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: auto;
+}
+
+.boardNum {
+    flex: 1;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.boardTItle {
+    flex: 3;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.boardWriter {
+    flex: 2;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.boardDate {
+    flex: 3;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.boardWatch {
+    flex: 1;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.tableWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.tableWrapper th {
+    background-color: #ddd;
+    font-size: 14px;
+    border-bottom: 3px solid #aaa;
+}
+
+.tableWrapper td {
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.tableWrapper tr:nth-child(2n) {
+    background-color: #d4e4fe;
 }
 
 
@@ -278,11 +359,12 @@
 
 
 
-/* 방문자 현황용 그래프 */
+/* 그래프 */
 
 .highcharts-figure,
 .highcharts-data-table table {
     width: 500px;
+    height: 290px;
     margin: 1em auto;
 }
 
