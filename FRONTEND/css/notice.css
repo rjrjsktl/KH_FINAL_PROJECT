@@ -1,10 +1,11 @@
+/* aside 레이아웃 짜기 */
 main>section {
     width: 100%;
 }
 
 main>section>div {
     width: 1160px;
-    height: 70vh;
+    height: 800px;
     margin: 0 auto;
     padding: 50px 20px;
     display: flex;
@@ -13,37 +14,67 @@ main>section>div {
 main>section>div>aside {
     width: 22%;
     padding-right: 30px;
-    display: flex;
+    /* display: flex; */
 }
 
 main>section>div>aside>div {
     flex: 1 1 0;
-    border-radius: 10px;
-    border: 3px solid red;
+    border-radius: 14px;
+    border: 2px solid rgb(71, 70, 70);
 
-    /* display: flex;
-    flex-direction: column; */
+
+}
+
+
+
+
+/* 고객센터 p*/
+main>section>div>aside>div>nav>p>a {
     display: block;
-
-}
-
-main>section>div>aside>div>nav {
-    /* display: flex; */
+    width: 100%;
+    font-size: 1.2em;
+    line-height: 90px;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 15%;
-
-    background-color: blue;
+    color: #fff;
+    /* text-decoration: none; */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgb(71, 70, 70)
 }
 
 
-/* main>section>div>aside>div>div {
-    flex: 1 1 0;
-    border: 1px solid red;
-} */
 
+/* 고객센터 ul */
+main>section>div>aside>div>nav>ul>li>a {
+    display: block;
+    color: #222;
+    padding: 10px 15px;
+    font-weight: 400;
+    background-color: #f2f4f5;
+    border-bottom: 1px solid rgb(199, 198, 198);
+    text-align: center;
+}
+
+
+/* 고객센터 맨밑 div */
+main>section>div>aside>div>nav>div {
+    width: 100%;
+    height: 95px;
+    background-color: white;
+    border-bottom-left-radius: 13px;
+    border-bottom-right-radius: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+
+
+
+}
+
+main>section>div>aside>div>nav>div>p {
+    color: #6b6b6b;
+}
 
 
 
@@ -51,23 +82,212 @@ main>section>div>aside>div>nav {
 
 /* 오른쪽 div */
 main>section>div>div {
-    width: 70%;
+    width: 80%;
+
+
+}
+
+main>section>div>div>div {
+    width: 100%;
+    height: 100%;
+    /* border: solid 1px red; */
+}
+
+/* 공지사항 p*/
+main>section>div>div>div>p {
+    padding: 0 0 26px 0;
+    font-size: 1.8666em;
+    font-weight: 400;
+    letter-spacing: -1px;
+    line-height: 1.1;
+
+}
+
+
+/* 버튼쪽 ul*/
+main>section>div>div>div>div:nth-child(2) {
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgb(199, 198, 198);
+}
+
+
+main>section>div>div>div>div:nth-child(2)>ul>li>button {
+
+    display: block;
+    /* width: 100%; */
+    height: 34px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    line-height: 34px;
+    text-align: center;
+    background-color: transparent;
+
+}
+
+main>section>div>div>div>div:nth-child(3) {
+
+    margin: 30px 0 15px 0;
+    display: flex;
+    justify-content: flex-end;
+
 }
 
 
 
 
-/* 고객센터 판 */
 
-main>section>div>aside>div>div:nth-child(1) {
-    background-color: rgb(211, 58, 20);
-    border-radius: 4px;
+
+
+
+main>section>div>div>div>div:nth-child(3)>form {
+    /* text-align: right; */
+    width: 30%;
+    height: 30px;
+    border: 1px solid #d8d9db;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    justify-content: space-evenly;
+    /* border: 0; */
+}
+
+main>section>div>div>div>div:nth-child(3)>form>input {
+
+
+    background-color: transparent;
+    border: none;
+    outline: none;
+    /* padding-left: 30px; */
+
+    /* height: 80%; */
+}
+
+main>section>div>div>div>div:nth-child(3)>form>button {
+    background-color: transparent;
+    border: 0;
+    /* width: 10px;
+    height: 10px; */
+
+
+}
+
+main>section>div>div>div>div:nth-child(3)>form>button>i {
     display: flex;
     justify-content: center;
+}
+
+/**/
+/* table {
+    width: 100%;
+    padding: 20px;
+    border-collapse: collapse;
+
+}
+
+thead {
+    background-color: #6b6b6b;
+    color: white;
+} */
+
+
+
+/* 공지사항 게시판 */
+
+.notice_wrap {
+    /* width: 1160px; */
+    padding: 20px;
+    padding-bottom: 40px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.notice_wrap>div:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding: 10px 0 20px 0;
+}
+
+.notice_wrap>div>span:nth-child(1) {
+    font-size: 1.5rem;
+    font-weight: bold;
+
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    height: 270px;
+
+}
+
+thead {
+    height: 45px;
+    font-size: 1.3rem;
+    background-color: rgb(33, 33, 33);
+}
+
+thead th:nth-child(1) {
+    width: 20%;
+}
+
+thead th:nth-child(2) {
+    width: 50%;
+}
+
+thead th:nth-child(3) {
+    width: 15%;
+}
+
+thead th:nth-child(4) {
+    width: 15%;
+}
+
+tbody {
+    text-align: center;
+}
+
+tbody th {
+    text-align: left;
+    padding-left: 20px;
+    padding: 10px;
+}
+
+tbody td {
+    padding: 10px;
+}
+
+.row {
+    border-bottom: 1px solid white;
+
 }
 
 
-main>section>div>aside>div>div:nth-child(1)>p>a {
+
+/* 페이지 */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.pagination>nav>a {
+
+    display: inline-block;
+    position: relative;
+    min-width: 32px;
+    height: 32px;
+    margin: 0;
+    padding: 0 8px;
+    border: 1px solid #ebebeb;
+    text-decoration: none;
+    line-height: 30px;
     color: white;
+
+    border-radius: 4px;
+    text-align: center;
 }
