@@ -18,16 +18,22 @@ main>div:nth-child(1)>div {
 main>div:nth-child(1)>div > ul {
     display: flex;
     justify-content: center;
+    border-bottom: 1px solid white;;
 }
 
 main>div:nth-child(1)>div > ul > li {
-    padding:15px 15px;
+    padding:15px 30px;
     z-index: 1;
     }
 
 main>div:nth-child(1)>div > ul > li > a {
-    border-bottom: 1px solid white;
     font-size: 0.8rem;
+}
+
+main>div:nth-child(1)>div > p{
+  text-align: center;
+  line-height: 137px;
+  font-size: 1.5rem;
 }
 
 main>div:nth-child(1)>div>img {
@@ -72,25 +78,86 @@ main > div:nth-child(2) > div > span:last-child{
     border-bottom:1px solid white;
 }
 
+
+
 /* 세번째 영역 */
-main > div:nth-child(3) {
-    width:100%;
+.price_wrap {
+   width:1160px;
+   padding:20px;
+   margin: 0 auto;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
 }
 
-main > div:nth-child(3) > div {
-    width: 1160px;
-    padding:0 20px 50px 0;
+.price_wrap > :nth-child(1){
+    width:100%;
+    font-size: 1.5rem;
+    padding:20px 0;
+}
+
+.price_wrap>div{
+    width:48%;
+    padding-bottom: 20px;;
+
+}
+
+.price_wrap>div>table{
+    width:100%;
+  
+}
+
+table{
+    border-collapse: collapse;
+    border-top: 1px solid white;
+}
+
+thead th{
+    width:23%;
+    height:43px;
+    padding:10px;
+    background-color: rgb(43,43,43);
+}
+thead th:nth-child(2), th:nth-child(3){
+    border:1px solid lightgray;
+}
+
+
+tbody th{
+    padding:10px;
+}
+
+tbody td{
+    text-align: center;
+    height:43px;
+    padding:10px;
+}
+
+tbody  td:nth-child(2), td:nth-child(1) {
+    border:1px solid lightgray;
+}
+
+tbody > tr:nth-child(1) >td:nth-child(3){
+    border-right:1px solid lightgray;
+}
+
+tbody > tr:nth-child(3) >td:nth-child(3){
+    border-right:1px solid lightgray;
+}
+
+.onlyText{
+    width:1160px;
     margin:0 auto;
-    height:180px;
+    padding:20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
 }
 
-main > div:nth-child(3) > div > strong {
-    padding:10px;
+.onlyText > span:nth-child(1), span:nth-child(5){
     font-size: 1.5rem;
+    padding:20px 0;
+}
+.onlyText > span:nth-child(2),span:nth-child(6){
+padding-left:10px;
+font-size: 0.8rem;
 }
