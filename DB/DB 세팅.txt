@@ -1,4 +1,4 @@
-﻿-- 계정 생성
+-- 계정 생성
 
 ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
 
