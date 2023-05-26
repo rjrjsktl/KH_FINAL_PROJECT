@@ -117,25 +117,25 @@
                     </div>
                     <div class="profile-info-area">
 
-                        <div class="myPage-mainrow">
+                        <div class="mypage-main-frame">
                             <label>이&nbsp;&nbsp;&nbsp;름</label>
                             <span>ㅋㅋㄹㅃㅃ</span>
                             <!-- <span>${loginMember.memberNick}</span> -->
                         </div>
 
-                        <div class="myPage-mainrow">
+                        <div class="mypage-main-frame">
                             <label>닉네임</label>
                             <span>ㅋㅋㄹㅃㅃ</span>
                             <!-- <span>${loginMember.memberNick}</span> -->
                         </div>
 
-                        <div class="myPage-mainrow">
+                        <div class="mypage-main-frame">
                             <label>이메일</label>
                             <span>zzfQQ@gmail.com</span>
                             <!-- <span>${loginMember.memberEmail}</span> -->
                         </div>
 
-                        <div class="myPage-mainrow">
+                        <div class="mypage-main-frame">
                             <label>연락처</label>
                             <span>010-0000-0000</span>
                             <!-- <span>${loginMember.enrollDate}</span> -->
@@ -152,21 +152,32 @@
                     <div>
                         <div>
                             <!-- 나중에 db건들 때 따오는 값 바꿔줘야함 -->
-                            <img src="../../images/123123.jpg" alt="영화 포스터 w=155px,h=173px">
+                            <a href="#"><img src="../../images/123123.jpg" alt="영화 포스터 w=155px,h=173px"></a>
                         </div>
 
                         <div>
                             <div>
                                 영화 제목
                             </div>
-                            <ul>
-                                <li>번호</li>
-                                <li>품번</li>
-                                <li>배우</li>
-                                <li>감독</li>
-                            </ul>
                             <div>
-                                영화 예매 취소
+                                <ul>
+                                    <!-- db에 들어가는거 보고 영화 날짜, 시간, 인원, 몇관 등 추가 해야함 -->
+                                    <li>날&nbsp;&nbsp;&nbsp;짜 :</li>
+                                    <li>시&nbsp;&nbsp;&nbsp;간 :</li>
+                                    <li>인&nbsp;&nbsp;&nbsp;원 :</li>
+                                    <li>상영관 :</li>
+                                </ul>
+                                <ul>
+                                    <!-- db에 들어가는거 보고 영화 날짜, 시간, 인원, 몇관 등 추가 해야함 -->
+                                    <li>2069.69.69 </li>
+                                    <li>69:74 ~ 69:74</li>
+                                    <li>3썸</li>
+                                    <li>A 강의실</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <button id="cancel-btn">예매 취소</button>
+                                <button id="change-btn">예매 변경</button>
                             </div>
 
                         </div>
@@ -201,7 +212,7 @@
 
                     </ul>
                 </section>
-                <section class="myPage-main">
+                <section class="mypage-main">
                     MY KGV HOME <정보 수정>
 
                     <!-- <span class="myPage-explanation">원하는 회원 정보를 수정할 수 있습니다.</span> -->
@@ -212,18 +223,18 @@
                     -->
                     <form action="info" method="POST" name="myPage-form" onsubmit="return infoValidate()">
 
-                        <div class="mypage-row">
+                        <div class="mypage-info-frame">
                             <label>닉네임</label>
                         </div>
-                        <div class="mypage-row">
+                        <div class="mypage-info-frame">
                             <input type="text" name="updateNickname" id="memberNickname"
                             value="${loginMember.memberNickname}" maxlength="10">
                         </div>
 
-                        <div class="mypage-row">
+                        <div class="mypage-info-frame">
                             <label>연락처</label>
                         </div>
-                        <div class="mypage-row">
+                        <div class="mypage-info-frame">
                             <input type="text" name="updateTel" id="memberTel" value="${loginMember.memberTel}"
                             maxlength="11">
                         </div>
@@ -231,20 +242,20 @@
                         <!-- 주소 -->			<!--  fn:split(문자열, '구분자')  -->
 					    <c:set var="addr"  value="${fn:split(loginMember.memberAddress, ',,')}"  />                    
 
-                        <div class="mypage-row">
+                        <div class="mypage-info-frame">
                             <label>주 소</label>
                         </div>
-                        <div class="mypage-row">
+                        <div class="mypage-info-frame">
                             <input type="text" name="updateAddress" id="postcode" value="${addr[0]}"  maxlength="6">
 
                             <button type="button" id="info-address-btn" onclick="return execDaumPostcode()">검색</button>
                         </div>
     
-                        <div class="mypage-row">
+                        <div class="mypage-info-frame">
                             <input type="text" name="updateAddress" id="address" value="${addr[1]}">
                         </div>
     
-                        <div class="mypage-row">
+                        <div class="mypage-info-frame">
                             <input type="text" name="updateAddress" id="detailAddress" value="${addr[2]}">
                         </div>
     

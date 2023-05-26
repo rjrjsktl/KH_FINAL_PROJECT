@@ -1,0 +1,63 @@
+main > section{
+    width:100%;
+
+}
+
+/* 리스트랩퍼 */
+.theaterList{
+    width: 1160px;
+    padding: 0 20px;
+    height:100%;
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 전체극장 div */
+.theaterList > div:nth-child(1){
+    width:100%;
+    height:350px;
+    display: flex;
+    flex-direction: column;
+}
+
+.theaterList > div:nth-child(1) > p{
+    font-size: 1.5rem;
+    padding:50px 0 20px 0;
+}
+
+.theaterList > div:nth-child(1) > div{
+    border:4px solid lightgray;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.theater_name{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.theater_name  li {
+
+}
+
+.location_name{
+    display: flex;
+    position: relative;
+    height:20%;
+}
+
+
+
+.area_name{
+    width:100px;
+    text-align: center;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    line-height:28px;
+    padding:5px;
+}

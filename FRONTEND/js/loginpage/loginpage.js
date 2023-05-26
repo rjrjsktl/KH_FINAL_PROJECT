@@ -1,7 +1,10 @@
 console.log("loginPage.js loaded..")
 
 // 로그인 유효성 검사
-function loginValidate(){ 
+function loginValidate(){
+    
+    console.log("loginValidate function loaded..")
+    
     // validate : 유효하다    
     // invalidate : 무효하다    
 
