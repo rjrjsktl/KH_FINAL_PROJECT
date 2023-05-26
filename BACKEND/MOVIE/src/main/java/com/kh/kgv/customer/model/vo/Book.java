@@ -11,13 +11,13 @@ import lombok.NoArgsConstructor;
 
 public class Book {
 	// 예매 테이블
-private int bookNo;
-private int userNo;
-private int playNo;
-private int seatId;
-private String bookDt;
-private int bookBefore;
-private int bookDiscount;
-private int bookPrice;
-private String bookSt;
+	private int bookNo;
+	private int userNo;
+	private int playNo;
+	private int seatId;
+	private String bookDt;
+	private int bookBefore;
+	private int bookDiscount;
+	private int bookPrice;
+	private String bookSt;
 }

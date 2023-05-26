@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />  
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
 </head>
 
 <body>
@@ -100,138 +101,214 @@
 
         </header>
 
-        <main>
-            <!-- 여기서 부터 작업하세요. -->
+        <!-- 예매 페이지  -->
 
-            <div>
+        <main>
+          <section>
+              <!-- 예매 절차 영역 -->
               <div>
-                <div>
-                  <div>
-                    <select>
-                      <option>서울</option>
-                      <option>경기</option>
-                      <option>인천</option>
-                    </select>
-                  </div>
-                </div>
-                <div></div>
+                  <ul>
+                      <!-- 클릭 이벤트 리스너 + 두번재 div를 순서대로 출력 만약 값이 F면 작동x -->
+                      <li>
+                          <p>01</p>
+                          <p>상영시간</p>
+                      </li>
+                      <li>
+                          <p>02</p>
+                          <p>인원/좌석</p>
+                      </li>
+                      <li>
+                          <p>03</p>
+                          <p>결제</p>
+                      </li>
+                      <li>
+                          <p>04</p>
+                          <p>결제완료</p>
+                      </li>
+                  </ul>
               </div>
+
+              <!-- 현재 예매 절차 -->
               <div>
-                <div>
                   <div>
-                    <select>
-                      <option value="A">예매순</option>
-                      <option value="B">관객순</option>
-                      <option value="C">평점순</option>
-                    </select>
+                      <div>
+                        <p id="test_cinema_select">극장 선택</p>
+                      </div>
+                      <div>Tab</div>
+                      <div>
+                          <div>
+                              <ul>
+                                  <li><a href="#none" id="test_seoul"><P>서울</P></a></li>
+                                  <li><a href="#none" id="test_gg"><P>경기/인천</P></a></li>
+                                  <li><a href="#none"><P>충청/대전</P></a></li>
+                              </ul>
+                          </div>
+                          <div>
+                              <ul id="seoul_cinema">
+                                  <li><a href="#none" id="test_cinema1"><P>강동 호스텔</P></a></li>
+                                  <li><a href="#none" id="test_cinema2"><P>강서 빅딜</P></a></li>
+                                  <li><a href="#none" id="test_cinema3"><P>강남 일해회</P></a></li>
+                                  <li><a href="#none" id="test_cinema4"><P>강북 갓독</P></a></li>
+                              </ul>
+                              <ul id="gg_cinema">
+                                  <li><a href="#none"><P>인천</P></a></li>
+                                  <li><a href="#none"><P>안산</P></a></li>  
+                                  <li><a href="#none"><P>수원</P></a></li>
+                              </ul>
+                          </div>
+                      </div>
                   </div>
-                  
-                </div>
-                <div>2</div>
-              </div>
-              <div>
-                <div>
-                  
                   <div>
-                    <div class="swiper mySwiper">
-                      <div class="swiper-wrapper">
-                        <button class="swiper-slide">24</button>
-                        <button class="swiper-slide">25</button>
-                        <button class="swiper-slide">26</button>
-                        <button class="swiper-slide holiday">27</button>
-                        <button class="swiper-slide holiday">28</button>
-                        <button class="swiper-slide holiday">29</button>
-                        <button class="swiper-slide">30</button>
-                        <button class="swiper-slide">31</button>
-                        <button class="swiper-slide">01</button>
-                        <button class="swiper-slide">02</button>
-                        <button class="swiper-slide holiday">03</button>
-                        <button class="swiper-slide holiday">04</button>
-                        <button class="swiper-slide">05</button>
-                        <button class="swiper-slide holiday">06</button>
-                        <button class="swiper-slide">07</button>
-                        <button class="swiper-slide">08</button>
-                        <button class="swiper-slide">09</button>
+                      <div>
+                        <p>영화 선택</p>
+                      </div>
+                      <div>
+                        <div><a href="#none" id="test_movie1">버전 1</a></div>
+                        <div><a href="#none" id="test_movie2">버전 2</a></div>
+                      </div>
+                      <div>
+                        <ul id="movielist_text">
+                          <li><a href="#none">
+                            <div class="age12">12</div>
+                            <div><span>메이플스토리</span></div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div class="age15">15</div>
+                            <div><span>던전앤파이터</span></div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div class="age19">19</div>
+                            <div><span>크레이지아케이드</span></div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div class="age12">12</div>
+                            <div><span>피파온라인4</span></div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div class="age00">All</div>
+                            <div><span>원신</span></div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div class="age19">19</div>
+                            <div><span>카트라이더</span></div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div class="age12">12</div>
+                            <div><span>마비노기</span></div>
+                          </a></li>
+                        </ul>
+                        <ul id="movielist_thumb">
+                          <li><a href="#none">
+                            <div><span>1</span></div>
+                            <div>
+                              <div>
+                                <div class="age12">12</div>
+                                <div><span>메이플스토리</span></div>
+                              </div>
+                              <div>
+                                <div>예매율 : <strong>10.2%</strong></div>
+                              </div>
+                            </div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div><span>2</span></div>
+                            <div>던전앤파이터</div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div><span>3</span></div>
+                            <div>크레이지아케이드</div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div><span>4</span></div>
+                            <div>피파온라인4</div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div><span>5</span></div>
+                            <div>원신</div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div><span>6</span></div>
+                            <div>카트라이더</div>
+                          </a></li>
+                          <li><a href="#none">
+                            <div><span>7</span></div>
+                            <div>마비노기</div>
+                          </a></li>
+                        </ul>
+                      </div>
+                  </div>
+                  <div>
+                      <div>
+                        <p>상영 선택</p>
+                      </div>
+                      <div>
+                        <div class="swiper mySwiper">
+                          <div class="swiper-wrapper">
+                            <button class="swiper-slide">24</button>
+                            <button class="swiper-slide">25</button>
+                            <button class="swiper-slide">26</button>
+                            <button class="swiper-slide holiday">27</button>
+                            <button class="swiper-slide holiday">28</button>
+                            <button class="swiper-slide holiday">29</button>
+                            <button class="swiper-slide">30</button>
+                            <button class="swiper-slide">31</button>
+                            <button class="swiper-slide">01</button>
+                            <button class="swiper-slide">02</button>
+                            <button class="swiper-slide holiday">03</button>
+                            <button class="swiper-slide holiday">04</button>
+                            <button class="swiper-slide">05</button>
+                            <button class="swiper-slide holiday">06</button>
+                            <button class="swiper-slide">07</button>
+                            <button class="swiper-slide">08</button>
+                            <button class="swiper-slide">09</button>
+                            
+                          </div>
+                          
+                        </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
                         
                       </div>
                       
-                    </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                    
-                    
-    
-                  </div>
-                  <div>
-                    <!--
-                    <div>&lt;</div>
-                    <div>&gt;</div>
-                    -->
-                  </div>
-                </div>
-                <div>
-                  <div>
-                    <div><span>메이플스토리</span></div>
-                    <div>
-                      <ul>
-                        <li><a role="button" id="test1">클릭테스트</a></li>
-                        <li><a role="button">2</a></li>
-                        <li><a role="button">3</a></li>
-                        <li><a role="button">4</a></li>
-                        <li><a role="button">5</a></li>
-                        <li><a role="button">6</a></li>
-                        <li><a role="button">7</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div>
-                    <div><span>오버워치</span></div>
-                    <div>
-                      <ul>
-                        <li><a role="button">1</a></li>
-                        <li><a role="button">2</a></li>
-                        <li><a role="button">3</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div>
-                    <div><span>리그오브레전드</span></div>
-                    <div>
-                      <ul>
-                        <li><a role="button">1</a></li>
-                        <li><a role="button">2</a></li>
-                        <li><a role="button">3</a></li>
-                        <li><a role="button">4</a></li>
-                        <li><a role="button">5</a></li>
-                        <li><a role="button">6</a></li>
-                        <li><a role="button">7</a></li>
-                        <li><a role="button">8</a></li>
-                        <li><a role="button">9</a></li>
-                        <li><a role="button">10</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div>4</div>
-                  <div>5</div>
-                  <div>6</div>
-                </div>
-              </div> 
-            </div>
-            
+                      <div>
+                        <ul>
+                          <li>
+                            <div>메이플스토리</div>
+                            <div><ul class="playlist">
+                              <li><a href="#none">1</a></li>
+                              <li><a href="#none">2</a></li>
+                              <li><a href="#none">3</a></li>
+                              <li><a href="#none">4</a></li>
+                              <li><a href="#none">5</a></li>
+                              <li><a href="#none">6</a></li>
+                              <li><a href="#none">7</a></li>
+                            </ul></div>
+                          </li>
+                          <li>
+                            <div>원신</div>
+                            <div><ul class="playlist">
+                              <li><a href="#none">1</a></li>
+                              <li><a href="#none">2</a></li>
+                              <li><a href="#none">3</a></li>
+                              <li><a href="#none">4</a></li>
+                              <li><a href="#none">5</a></li>
+                            </ul></div>
+                          </li>
+                          <li>
+                            <div>카트라이더</div>
+                            <div><ul class="playlist">
+                              <li><a href="#none">1</a></li>
+                              <li><a href="#none">2</a></li>
+                            </ul></div>
+                          </li>
+                        </ul>
+
+                      </div>
+                  </div>  
+              </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-            <!-- 여기까지 작업하세요. -->
+          </section>
         </main>
 
     </div>
@@ -279,26 +356,60 @@
 			</c:if>
             -->
 
-            <script>
-              var swiper = new Swiper(".mySwiper", {
-                slidesPerView: 8,
-                spaceBetween: 10,
-                touchRatio: 0,  // 드래그 방지
-                
-            
-                // grabCursor: true,
-                navigation: {
-                  nextEl: ".swiper-button-next",
-                  prevEl: ".swiper-button-prev",
-                },
-              });
+    <script>
+      // 지역 선택 테스트
+      // 지금은 기능 구현 테스트이므로, 반복문 등을 통해 효율적으로 수정하겠습니다. 
 
-              document.getElementById("test1").addEventListener("click", function(){
-                alert("비회원이면 로그인창, 회원이면 좌석선택창");
-              });
-            </script>
+      document.getElementById("test_seoul").addEventListener("click", function(){
+        document.getElementById("seoul_cinema").style.display = 'block';
+        document.getElementById("gg_cinema").style.display = 'none';
+      });
+
+      document.getElementById("test_gg").addEventListener("click", function(){
+        document.getElementById("seoul_cinema").style.display = 'none';
+        document.getElementById("gg_cinema").style.display = 'block';
+      });
+
+      document.getElementById("test_cinema1").addEventListener("click", function(){
+        document.getElementById("test_cinema_select").innerHTML = this.innerHTML;
+      });
+
+      document.getElementById("test_cinema2").addEventListener("click", function(){
+        document.getElementById("test_cinema_select").innerHTML = this.innerHTML;
+      });
+
+      document.getElementById("test_cinema3").addEventListener("click", function(){
+        document.getElementById("test_cinema_select").innerHTML = this.innerHTML;
+      });
+
+      document.getElementById("test_cinema4").addEventListener("click", function(){
+        document.getElementById("test_cinema_select").innerHTML = this.innerHTML;
+      });
+
+      document.getElementById("test_movie1").addEventListener("click", function() {
+        document.getElementById("movielist_text").style.display = 'block';
+        document.getElementById("movielist_thumb").style.display = 'none';
+      });
+
+      document.getElementById("test_movie2").addEventListener("click", function() {
+        document.getElementById("movielist_text").style.display = 'none';
+        document.getElementById("movielist_thumb").style.display = 'block';
+      });
+
+  
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 7,
+        spaceBetween: 10,
+        touchRatio: 0,  // 드래그 방지. 드래그하려면 1
+        // grabCursor: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
     
-
+      
+    </script>
 </body>
 
 </html>
