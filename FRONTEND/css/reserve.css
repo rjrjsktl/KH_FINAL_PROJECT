@@ -383,6 +383,10 @@ main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div:last-c
   display: none;
 }
 
+main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div:last-child > ul:first-child {
+  display: block;
+}
+
 main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div > ul > li {
   border-bottom: 1px solid white;
   height: calc(200px / 3);
@@ -578,7 +582,7 @@ main > section > :nth-child(2) > div:nth-child(2) > div:nth-child(3) > #movielis
   padding: 3px;
 }
 
-/* 영화 리스트 (2) - 내용 - 연령 + 제목 */
+/* 영화 리스트 (2) - 내용 : 연령 + 제목 */
 
 #movielist_thumb > li > a > div:last-child > div:first-child {
   display: flex;
@@ -586,11 +590,11 @@ main > section > :nth-child(2) > div:nth-child(2) > div:nth-child(3) > #movielis
   width: 100%;
   height: 25px;
   font-size: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 
-/* 영화 리스트 (2) - 내용 - 연령 */
+/* 영화 리스트 (2) - 내용 : 연령 */
 
 #movielist_thumb > li > a > div:last-child > div:first-child > div:first-child {
   width: 22px;
@@ -602,21 +606,43 @@ main > section > :nth-child(2) > div:nth-child(2) > div:nth-child(3) > #movielis
   margin-right: 8px;
 }
 
-/* 영화 리스트 (2) - 내용 - 제목 */
+/* 영화 리스트 (2) - 내용 : 제목 */
 
 #movielist_thumb > li > a > div:last-child > div:first-child > div:last-child {
   height: 22px;
   line-height: 25px;
 }
 
-/* 영화 리스트 (2) - 내용 - 예매율 */
+/* 영화 리스트 (2) - 내용 : 예매율 + 평점 + 개봉일 */
 
-#movielist_thumb > li > a > div:last-child > div:nth-child(2) > div:first-child {
+#movielist_thumb > li > a > div:last-child > div:nth-child(2) {
   font-size: 12px;
 }
 
-#movielist_thumb > li > a > div:last-child > div:nth-child(2) > div:first-child > strong {
+/* 영화 리스트 (2) - 내용 : 예매율 + 평점 */
+
+#movielist_thumb > li > a > div:last-child > div:nth-child(2) > div:first-child {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+#movielist_thumb > li > a > div:last-child > div:nth-child(2) > div:first-child > div > strong {
   font-size: 14px;
+}
+
+#movielist_thumb > li > a > div:last-child > div:nth-child(2) > div:first-child > div:first-child::after {
+  content: "";
+  position: relative;
+  bottom: 1.5px;
+  margin: 0 10px; 
+  border-right: 1px solid white;
+}
+
+/* 영화 리스트 (2) - 내용 : 평점 */
+
+#movielist_thumb > li > a > div:last-child > div:nth-child(2) > div:first-child > div:last-child > i {
+  color: #ffd400;
+  margin-right: 6.5px;
 }
 
 
@@ -709,6 +735,37 @@ main > section > :nth-child(2) > div:last-child > div:nth-child(3) > ul > li > d
   border-radius: 3px;
   width: 100%;
   height: 80px;
+}
+
+.playlist > li > a > div:first-child {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+}
+
+.playlist > li > a > div:first-child > div:first-child {
+  text-align: center;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.playlist > li > a > div:first-child > div:last-child {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+/* 상영 선택 - 잔여석 */
+
+.playlist > li > a > div:first-child > div:last-child > div:first-child > span:first-child {
+  color: #FF243E;
+}
+
+
+/* 상영 선택 - 종료 시간 */
+.playlist > li > a > div:nth-child(2) {
+  display: none;
 }
 
 

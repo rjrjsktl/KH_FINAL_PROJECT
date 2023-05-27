@@ -1,63 +1,186 @@
 main > section{
-    width:100%;
-
+    width:1160px;
+    margin:0 auto;
+    padding:20px;
 }
 
 /* 리스트랩퍼 */
 .theaterList{
-    width: 1160px;
+    width: 1120px;
     padding: 0 20px;
     height:100%;
     margin:0 auto;
     display: flex;
     flex-direction: column;
+    border:3px solid lightgray;
+    border-radius: 10px;
+    padding-top: 15px;
 }
 
 /* 전체극장 div */
 .theaterList > div:nth-child(1){
     width:100%;
-    height:350px;
     display: flex;
     flex-direction: column;
 }
 
-.theaterList > div:nth-child(1) > p{
+/* 전체극장 제목 P태그 */
+section> p{
     font-size: 1.5rem;
     padding:50px 0 20px 0;
 }
 
-.theaterList > div:nth-child(1) > div{
-    border:4px solid lightgray;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-}
-
-.theater_name{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    flex-wrap: wrap;
-}
-
-.theater_name  li {
-
-}
-
+/* 서울 경기 인천 대전.. 로케이션네임 */
 .location_name{
     display: flex;
-    position: relative;
     height:20%;
 }
 
 
 
+
 .area_name{
     width:100px;
-    text-align: center;
+    height:20px;
+    padding:5px;
+    position: relative;
+}
+.area_name > button {
     background-color: transparent;
     outline: none;
     border: none;
-    line-height:28px;
-    padding:5px;
+}
+
+.theater_area {
+    width:1120px;
+    height:135px;
+    z-index: 1;
+    padding-top:20px;
+  
+}
+
+.theater_area > ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.theater_area > ul > li {
+    width:33%;
+    padding:5px
+}
+
+.dummy{
+    width:1120px;
+    height:140px;
+    z-index: -99;
+    display: flex;
+    padding-top:30px;
+}
+
+.dummy > div{
+    height:73%;
+    border-right:1px solid lightgray;
+    z-index: 100;
+    width:33%;
+}
+
+.event-wrap{
+    width:1160px;
+    padding:20px;
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-wrap > div:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px 0 20px 0;
+}
+
+.event-wrap > div > span:nth-child(1){
+    font-size: 1.5rem;
+    font-weight: bold;
+    
+}
+
+.event-wrap > div:nth-child(2){
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.event_card{
+    width:49%;
+    height:250px;
+    background-color: red;
+    border-radius: 10px;
+}
+
+.notice_wrap{
+    width:1160px;
+    padding:20px;
+    padding-bottom: 100px;
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.notice_wrap > div:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px 0 20px 0;
+}
+
+.notice_wrap > div > span:nth-child(1){
+    font-size: 1.5rem;
+    font-weight: bold;
+    
+}
+
+table{
+    width:100%;
+    border-collapse: collapse;
+    height:270px;
+
+}
+
+thead{
+    height:45px;
+    font-size: 1.3rem;
+    background-color: rgb(33,33,33);
+}
+
+thead th:nth-child(1){
+    width:20%;
+}
+thead th:nth-child(2){
+    width:50%;
+}
+thead th:nth-child(3){
+    width:15%;
+}
+thead th:nth-child(4){
+    width:15%;
+}
+
+tbody{
+    text-align: center;
+}
+
+tbody th{
+    text-align: left;
+    padding-left: 20px;
+    padding:10px;
+}
+
+tbody td{
+    padding:10px;
+}
+
+.row{
+    border-bottom: 1px solid white;
+
 }
