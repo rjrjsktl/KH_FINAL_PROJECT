@@ -232,6 +232,7 @@
     width: 100%;
     height: 5vh;
     border-bottom: 2px solid black;
+    justify-content: space-between;
 }
 
 .table_Title span {
@@ -240,29 +241,27 @@
     margin-bottom: 15px;
 }
 
-.table_main {}
-
-.table_main tr {
-    width: 100%;
-    height: 6.5vh;
-    text-align: center;
+.search_Box {
+    display: flex;
+    width: 350px;
+    height: 25px;
+    margin-bottom: 15px;
 }
 
-.table_main th,
-.table_main td {
-    vertical-align: middle;
+.search_Box input {
+    flex: 9;
 }
 
-.table_main th {
-    font-weight: bold;
+.search_Box button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 2;
 }
 
-.table_main td {
-    font-size: 0.8rem;
-}
-
-.table_main tr:nth-child(2n) {
-    background-color: #dbdbdb;
+.table_main {
+    display: flex;
+    flex-direction: column;
 }
 
 .page_Nation {

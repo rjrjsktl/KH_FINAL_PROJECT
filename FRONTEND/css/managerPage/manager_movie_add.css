@@ -213,6 +213,7 @@
 
 .set_Edge {
     flex: 1;
+    display: flex;
     margin: 20px 18px;
     background-color: white;
 }
