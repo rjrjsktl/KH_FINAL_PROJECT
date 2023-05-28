@@ -23,6 +23,15 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
+    <!-- 그래프용 CDN -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <!-- 달력 API -->
+
 
 </head>
 
@@ -221,30 +230,24 @@
                         <div class="table_Wrapper">
                             <div class="table_Title">
                                 <span>회원목록</span>
-                                <div class="search_Box">
-                                    <input placeholder="검색" />
-                                    <button>
-                                        <i class="fa-solid fa-magnifying-glass fa-2xs"></i>
-                                    </button>
-                                </div>
                             </div>
                             <table class="table_main">
                                 <tr>
                                     <th class="table1">번호</th>
                                     <th class="table2">아이디</th>
-                                    <th class="table3">이름</th>
-                                    <th class="table4">닉네임</th>
-                                    <th class="table5">연락처</th>
-                                    <th class="table6">주소</th>
-                                    <th class="table7">생년월일</th>
-                                    <th class="table8">성별</th>
-                                    <th class="table9">가입일</th>
-                                    <th class="table10">탈퇴일</th>
-                                    <th class="table11">탈퇴 여부</th>
-                                    <th class="table12">보유 포인트</th>
-                                    <th class="table13">SNS 가입</th>
-                                    <th class="table14">관리자</th>
-                                    <th class="table15">이용제한</th>
+                                    <th class="table4">이름</th>
+                                    <th class="table3">닉네임</th>
+                                    <th class="table7">연락처</th>
+                                    <th class="table8">주소</th>
+                                    <th class="table5">생년월일</th>
+                                    <th class="table6">성별</th>
+                                    <th class="table8">가입일</th>
+                                    <th class="table8">탈퇴일</th>
+                                    <th class="table8">탈퇴 여부</th>
+                                    <th class="table8">보유 포인트</th>
+                                    <th class="table8">SNS 가입</th>
+                                    <th class="table8">관리자</th>
+                                    <th class="table8">이용제한</th>
                                 </tr>
                                 <tr>
                                     <td>1</td>
@@ -261,15 +264,15 @@
                                     <td>1,000,000</td>
                                     <td>Y</td>
                                     <td>
-                                        <select name="Is_Manager">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
+                                        <select>
+                                            <option selected>N</option>
+                                            <option>Y</option>
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="Is_Blocked">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
+                                        <select>
+                                            <option selected>N</option>
+                                            <option>Y</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -294,9 +297,9 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="Is_Blocked">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
+                                        <select>
+                                            <option selected>N</option>
+                                            <option>Y</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -321,9 +324,9 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="Is_Blocked">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
+                                        <select>
+                                            <option selected>N</option>
+                                            <option>Y</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -348,9 +351,9 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="Is_Blocked">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
+                                        <select>
+                                            <option selected>N</option>
+                                            <option>Y</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -375,9 +378,9 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="Is_Blocked">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
+                                        <select>
+                                            <option selected>N</option>
+                                            <option>Y</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -402,9 +405,9 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="Is_Blocked">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
+                                        <select>
+                                            <option selected>N</option>
+                                            <option>Y</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -429,9 +432,9 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="Is_Blocked">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
+                                        <select>
+                                            <option selected>N</option>
+                                            <option>Y</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -456,9 +459,9 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="Is_Blocked">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
+                                        <select>
+                                            <option selected>N</option>
+                                            <option>Y</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -483,9 +486,9 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="Is_Blocked">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
+                                        <select>
+                                            <option selected>N</option>
+                                            <option>Y</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -510,9 +513,9 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="Is_Blocked">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
+                                        <select>
+                                            <option selected>N</option>
+                                            <option>Y</option>
                                         </select>
                                     </td>
                                 </tr>

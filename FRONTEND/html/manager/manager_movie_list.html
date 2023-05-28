@@ -22,6 +22,17 @@
     <!-- jQuery 라이브러리 추가(CDN) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- 그래프용 CDN -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <!-- 달력 API -->
+
+
 </head>
 
 <body class="dark light">
@@ -216,211 +227,9 @@
 
                 <div id="items_Wrapper">
                     <div class="set_Edge">
-                        <div class="table_Wrapper">
-                            <div class="table_Title">
-                                <span>영화 목록</span>
-                                <div class="search_Box">
-                                    <input placeholder="검색" />
-                                    <button>
-                                        <i class="fa-solid fa-magnifying-glass fa-2xs"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <table class="table_main">
-                                <tr>
-                                    <th class="table1">번호</th>
-                                    <th class="table2">영화 제목</th>
-                                    <th class="table3">상영 시간</th>
-                                    <th class="table4">영화 제작 국가</th>
-                                    <th class="table5">영화 개봉일</th>
-                                    <th class="table6">관람 등급</th>
-                                    <th class="table7">영화 줄거리</th>
-                                    <th class="table8">누적 상영회차</th>
-                                    <th class="table9">누적 관객 수</th>
-                                    <th class="table10">영화 등록일</th>
-                                    <th class="table11">영화 등록자</th>
-                                    <th class="table12">영화 수정일</th>
-                                    <th class="table13">영화 수정자</th>
-                                    <th class="table14">장르</th>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
-                                    <td>100분</td>
-                                    <td>대한민국</td>
-                                    <td>2023.05.27</td>
-                                    <td>성인</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>12</td>
-                                    <td>1,000,000</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>관리자1</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>관리자2</td>
-                                    <td>액숀, 서릴러, 코뮈리</td>
-
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
-                                    <td>100분</td>
-                                    <td>대한민국</td>
-                                    <td>2023.05.27</td>
-                                    <td>성인</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>12</td>
-                                    <td>1,000,000</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>관리자1</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>관리자2</td>
-                                    <td>액숀, 서릴러, 코뮈리</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
-                                    <td>100분</td>
-                                    <td>대한민국</td>
-                                    <td>2023.05.27</td>
-                                    <td>성인</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>12</td>
-                                    <td>1,000,000</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>관리자1</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>관리자2</td>
-                                    <td>액숀, 서릴러, 코뮈리</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
-                                    <td>100분</td>
-                                    <td>대한민국</td>
-                                    <td>2023.05.27</td>
-                                    <td>성인</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>12</td>
-                                    <td>1,000,000</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>관리자1</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>관리자2</td>
-                                    <td>액숀, 서릴러, 코뮈리</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
-                                    <td>100분</td>
-                                    <td>대한민국</td>
-                                    <td>2023.05.27</td>
-                                    <td>성인</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>12</td>
-                                    <td>1,000,000</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>관리자1</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>관리자2</td>
-                                    <td>액숀, 서릴러, 코뮈리</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
-                                    <td>100분</td>
-                                    <td>대한민국</td>
-                                    <td>2023.05.27</td>
-                                    <td>성인</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>12</td>
-                                    <td>1,000,000</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>관리자1</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>관리자2</td>
-                                    <td>액숀, 서릴러, 코뮈리</td>
-                                </tr>
-                                <tr>
-                                    <td>7</td>
-                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
-                                    <td>100분</td>
-                                    <td>대한민국</td>
-                                    <td>2023.05.27</td>
-                                    <td>성인</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>12</td>
-                                    <td>1,000,000</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>관리자1</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>관리자2</td>
-                                    <td>액숀, 서릴러, 코뮈리</td>
-                                </tr>
-                                <tr>
-                                    <td>8</td>
-                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
-                                    <td>100분</td>
-                                    <td>대한민국</td>
-                                    <td>2023.05.27</td>
-                                    <td>성인</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>12</td>
-                                    <td>1,000,000</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>관리자1</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>관리자2</td>
-                                    <td>액숀, 서릴러, 코뮈리</td>
-                                </tr>
-                                <tr>
-                                    <td>9</td>
-                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
-                                    <td>100분</td>
-                                    <td>대한민국</td>
-                                    <td>2023.05.27</td>
-                                    <td>성인</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>12</td>
-                                    <td>1,000,000</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>관리자1</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>관리자2</td>
-                                    <td>액숀, 서릴러, 코뮈리</td>
-                                </tr>
-                                <tr>
-                                    <td>10</td>
-                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
-                                    <td>100분0</td>
-                                    <td>대한민국</td>
-                                    <td>2023.05.27</td>
-                                    <td>성인</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>12</td>
-                                    <td>1,000,000</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>관리자1</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>관리자2</td>
-                                    <td>액숀, 서릴러, 코뮈리</td>
-                                </tr>
-
-                            </table>
-                            <div class="page_Nation">
-                                <div>&lt;</div>
-                                <div class="selected_Cp">1</div>
-                                <div>2</div>
-                                <div>3</div>
-                                <div>4</div>
-                                <div>5</div>
-                                <div>6</div>
-                                <div>7</div>
-                                <div>&gt;</div>
-                            </div>
-                        </div>
+                        <div></div>
                     </div>
                 </div>
-
             </div>
 
         </div>

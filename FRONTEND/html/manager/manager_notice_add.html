@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항 등록</title>
 
-    <link rel="stylesheet" href="../../css/managerPage/manager_notice_add.css">
+    <link rel="stylesheet" href="../../css/managerPage/manager_event_list.css">
     <link rel="stylesheet" href="../../css/managerPage/reset.css">
 
     <!-- fontawesome -->
@@ -23,7 +23,15 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-    <script src="/ckeditor5/build/ckeditor.js"></script>
+    <!-- 그래프용 CDN -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <!-- 달력 API -->
+
 
 </head>
 
@@ -219,21 +227,7 @@
 
                 <div id="items_Wrapper">
                     <div class="set_Edge">
-                        <div class="table_Wrapper">
-                            <div class="table_Title">
-                                <span>공지사항 등록</span>
-                            </div>
-                            <div class="table_main">
-                                <div class="enter_Title"><input type="text" placeholder="제목을 입력하세요."></div>
-                                <div class="editor">
-                                    <p>아무말이나 넣어보자</p>
-                                </div>
-                            </div>
-                            <div class="table_bottom">
-                                <button class="bottom_Submit">저장</button>
-                                <button class="bottom_Cancel">취소</button>
-                            </div>
-                        </div>
+                        <div></div>
                     </div>
                 </div>
             </div>
@@ -242,8 +236,8 @@
 
     </main>
 
-    <script src="../../js/managerPage/manager_notice_add.js"></script>
 
+    <script src="../../js/managerPage/manager_event_list.js"></script>
 </body>
 
 </html>
