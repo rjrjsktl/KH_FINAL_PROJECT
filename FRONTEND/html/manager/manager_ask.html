@@ -22,17 +22,6 @@
     <!-- jQuery 라이브러리 추가(CDN) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-    <!-- 그래프용 CDN -->
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
-    <!-- 달력 API -->
-
-
 </head>
 
 <body class="dark light">
@@ -227,12 +216,146 @@
 
                 <div id="items_Wrapper">
                     <div class="set_Edge">
-                        <div></div>
+                        <div class="table_Wrapper">
+                            <div class="table_Title">
+                                <span>1 : 1 문의 목록</span>
+                                <div class="search_Box">
+                                    <input placeholder="검색" />
+                                    <button>
+                                        <i class="fa-solid fa-magnifying-glass fa-2xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <table class="table_main">
+                                <tr>
+                                    <th class="table1">번호</th>
+                                    <th class="table2">문의 회원 아이디</th>
+                                    <th class="table3">문의 제목</th>
+                                    <th class="table4">문의 내용</th>
+                                    <th class="table5">문의 일자</th>
+                                    <th class="table6">답변 일자</th>
+                                    <th class="table8">담당자</th>
+                                    <th class="table7">답변상태</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>cropruch@naver.com</td>
+                                    <td>문의 제목1</td>
+                                    <td>무니는 호구마가 먹고싶어요</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>-</td>
+                                    <td>담당자1</td>
+                                    <td>미답변</td>
+
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>cropruch@naver.com</td>
+                                    <td>문의 제목2</td>
+                                    <td>무니는 호구마가 먹고싶어요</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>-</td>
+                                    <td>담당자1</td>
+                                    <td>미답변</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>cropruch@naver.com</td>
+                                    <td>문의 제목3</td>
+                                    <td>무니는 호구마가 먹고싶어요</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>2023.05.27 16:34:05</td>
+                                    <td>담당자1</td>
+                                    <td>답변완료</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>cropruch@naver.com</td>
+                                    <td>문의 제목4</td>
+                                    <td>무니는 호구마가 먹고싶어요</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>2023.05.27 16:34:05</td>
+                                    <td>담당자1</td>
+                                    <td>답변완료</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>cropruch@naver.com</td>
+                                    <td>문의 제목5</td>
+                                    <td>무니는 호구마가 먹고싶어요</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>2023.05.27 16:34:05</td>
+                                    <td>담당자1</td>
+                                    <td>답변완료</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>cropruch@naver.com</td>
+                                    <td>문의 제목6</td>
+                                    <td>무니는 호구마가 먹고싶어요</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>2023.05.27 16:34:05</td>
+                                    <td>담당자1</td>
+                                    <td>답변완료</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>cropruch@naver.com</td>
+                                    <td>문의 제목7</td>
+                                    <td>무니는 호구마가 먹고싶어요</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>2023.05.27 16:34:05</td>
+                                    <td>담당자1</td>
+                                    <td>답변완료</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>cropruch@naver.com</td>
+                                    <td>문의 제목8</td>
+                                    <td>무니는 호구마가 먹고싶어요</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>2023.05.27 16:34:05</td>
+                                    <td>담당자1</td>
+                                    <td>답변완료</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>cropruch@naver.com</td>
+                                    <td>문의 제목9</td>
+                                    <td>무니는 호구마가 먹고싶어요</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>2023.05.27 16:34:05</td>
+                                    <td>담당자1</td>
+                                    <td>선택안함</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>cropruch@naver.com</td>
+                                    <td>문의 제목10</td>
+                                    <td>무니는 호구마가 먹고싶어요</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>2023.05.27 16:34:05</td>
+                                    <td>담당자1</td>
+                                    <td>답변완료</td>
+                                </tr>
+
+                            </table>
+                            <div class="page_Nation">
+                                <div>&lt;</div>
+                                <div class="selected_Cp">1</div>
+                                <div>2</div>
+                                <div>3</div>
+                                <div>4</div>
+                                <div>5</div>
+                                <div>6</div>
+                                <div>7</div>
+                                <div>&gt;</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
 
     </main>
 
