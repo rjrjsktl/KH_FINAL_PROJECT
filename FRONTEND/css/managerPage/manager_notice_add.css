@@ -213,6 +213,92 @@
 
 .set_Edge {
     flex: 1;
+    display: flex;
     margin: 20px 18px;
     background-color: white;
+}
+
+.table_Wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 30px 30px;
+
+}
+
+.table_Title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 5vh;
+    border-bottom: 2px solid black;
+    justify-content: space-between;
+}
+
+.table_Title span {
+    margin-left: 30px;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.table_main {
+    flex: 9;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 6.5vh;
+}
+
+.enter_Title {
+    flex: 1;
+    display: flex;
+}
+
+.enter_Title input {
+    width: 100%;
+    border: none;
+    font-size: 2rem;
+}
+
+.ck {
+    flex: 9;
+    height: 28vw;
+}
+
+.table_bottom {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table_bottom button {
+    color: white;
+}
+
+.table_bottom button:hover {
+    background-color: #FAE300;
+    color: black;
+}
+
+.bottom_Submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    background-color: #333333;
+}
+
+.bottom_Cancel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    margin-left: 30px;
+    cursor: pointer;
+    background-color: #333333;
 }
