@@ -100,7 +100,7 @@
     <!-- footer -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-    </footer>
+    
     <!--
      <%-- session에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
              <c:if test="${ !empty sessionScope.message }">
@@ -124,7 +124,7 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <!-- myPage.js 추가 -->
-    <script src="../../js/mypage/mypage.js"></script>
+    <script src="${contextPath}/resources/js/myPage/myPage.js"></script>
 </body>
 
 </html>
