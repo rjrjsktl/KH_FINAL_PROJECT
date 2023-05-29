@@ -12,45 +12,105 @@ var swiper = new Swiper(".mySwiper", {
 });
 
 
+// 날짜 초기화
+// 공휴일과 음력 명절은 자바 공휴일 api로 처리할 수 있으므로
+// 날짜 초기화는 java로 변경하겠습니다.
+
+let date = new Date();
+let weeks = ['일', '월', '화', '수', '목', '금', '토'];
+
+$('.swiper-slide.date').each(function(index, item){
+  $(this).attr('data-month', date.getMonth()+1);  // 월
+  $(this).attr('data-date', date.getDate());      // 일
+  $(this).attr('data-day', weeks[date.getDay()]); // 요일
+  $(this).text(date.getDate());
+
+  if(date.getDay() == 6 || date.getDay() == 0) {
+    $(this).addClass("holiday");
+  }
+
+  date.setDate(date.getDate()+1);
+});
+
+
+// 날짜 선택
+
+let today = new Date();
+let playDay = (today.getMonth()+1) + "월 " + today.getDate() + "일 " + weeks[today.getDay()] + "요일";
+
+$('.swiper-slide.date').click(function(){
+  playDay = $(this).data('month') + "월 ";
+  playDay += $(this).data('date') + "일 ";
+  playDay += $(this).data('day') + "요일";
+  $('#play_select').html(playDay);
+});
+
+
+
+// 지역 선택
+
+let region = $('#region_list > li > a');
+let regionName;
+
+region.click(function(){
+  regionName = this.text.substr(0, 2);
+  $('.cinema_list').css('display', 'none');
+  $('.cinema_list[data-region="' + regionName +'"]').css('display', 'block');
+});
+
+
 // 극장 선택 
 
-$('.cinema_list > li > a').click(function(){
-  $('#cinema_select').html(this.text);
+let cinema = $('.cinema_list > li > a');
+let cinemaName = "강남"; // 디폴트 값은 본사
+
+cinema.click(function(){
+  cinemaName = this.text;
+  $('#cinema_select').html(cinemaName);
+});
+
+
+// 영화 리스트 버전 선택
+
+$('#movie_option1').click(function(){
+  $("#movielist_text").css('display', 'block');
+  $("#movielist_thumb").css('display', 'none');
+});
+
+$('#movie_option2').click(function(){
+  $("#movielist_text").css('display', 'none');
+  $("#movielist_thumb").css('display', 'block');
 });
 
 
 // 영화 선택
-/*
-const test = $('#movielist_text > li > a');
-$(test).on('click', function(event){
-  $('#movie_select').html(event.target.find(".movie_name").text);
-});
-*/
 
-// 테스트 버전입니다. 나중에 제이쿼리로 수정할 것입니다.
+let movie = $('.movielist > li > a');
+let movieName;
 
-document.getElementById("test_seoul").addEventListener("click", function(){
-  document.getElementById("seoul_cinema").style.display = 'block';
-  document.getElementById("gg_cinema").style.display = 'none';
-});
-
-document.getElementById("test_gg").addEventListener("click", function(){
-  document.getElementById("seoul_cinema").style.display = 'none';
-  document.getElementById("gg_cinema").style.display = 'block';
+movie.click(function(){
+  movieName = this.querySelector('.movie_name').innerText;
+  $('#movie_select').html(movieName);
+  $('.movie_play').css('display', 'none');
+  $('.movie_play[data-movie="' + movieName + '"]').css('display', 'block');
 });
 
 
+// 상영 선택
 
-document.getElementById("test_movie1").addEventListener("click", function() {
-  document.getElementById("movielist_text").style.display = 'block';
-  document.getElementById("movielist_thumb").style.display = 'none';
-});
+let play = $('.playlist > li > a');
+let openHour;
+let openMinute;
+let cinemaRoom;
 
-document.getElementById("test_movie2").addEventListener("click", function() {
-  document.getElementById("movielist_text").style.display = 'none';
-  document.getElementById("movielist_thumb").style.display = 'block';
-});
+play.click(function(){
+  movieName = $(this).closest("[data-movie]").data('movie');
+  $('#movie_select').html(movieName);
 
+  cinemaRoom = this.querySelector(".cinema_room").innerText;
+  openHour = this.querySelector(".open_hour").innerText;
+  openMinute = this.querySelector(".open_minute").innerText;
 
-// 날짜 슬라이더 
-
+  alert(cinemaName + " " + cinemaRoom + "관 " + playDay + " " + 
+        openHour + "시 " + openMinute + "분 " + movieName);
+})

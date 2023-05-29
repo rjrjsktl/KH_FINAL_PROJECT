@@ -59,10 +59,11 @@
     align-items: center;
 }
 
-.slide_Title.selected_Title {
+.selected_Title .slide_Title {
     background-color: #FAE300;
     color: black !important;
 }
+
 
 .title_move li:hover {
     background-color: #FAE300;
