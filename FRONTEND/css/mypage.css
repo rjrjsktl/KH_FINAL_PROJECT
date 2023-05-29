@@ -9,7 +9,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-size: 1em;
+    font-size: 1rem;
     font-family: "GmarketSansMedium";
     color: rgb(222, 222, 222);
     list-style-type: none;
@@ -328,7 +328,7 @@ main>div:nth-child(1)>section:nth-child(1){
     font-weight: lighter;
 }
 /* ------------------------ 다가오는 예약 ------------------------------- */
-.comemove{
+.comemovie{
     width: 50%;
     height: 100%;
     /* 카드 형식으로 만들건데 border 어떻게 꾸밀지 고민해보기 */
@@ -339,7 +339,7 @@ main>div:nth-child(1)>section:nth-child(1){
     flex-direction: column;
     font-weight: bold;
 }
-.comemove>div:nth-child(1){
+.comemovie>div:nth-child(1){
     width: 100%;
     height: 15%;
 
@@ -348,7 +348,7 @@ main>div:nth-child(1)>section:nth-child(1){
     font-size: 1.5rem;
     color: #FAE300;
 }
-.comemove>div:nth-child(2){
+.comemovie>div:nth-child(2){
     width: 100%;
     height: 85%;
     padding-top: 1%;
@@ -357,23 +357,28 @@ main>div:nth-child(1)>section:nth-child(1){
     display: flex;
 }
 /* 다가오는 영화 포스터 */
-.comemove>div:nth-child(2)>div:nth-child(1){
+.comemovie>div:nth-child(2)>div:nth-child(1){
     width: 30%;
     height: 100%;
     border: 1px solid #FAE300;
+    border-radius: 5%;
+}
+.comemovie>div:nth-child(2)>div:nth-child(1)>a{
+    width: 100%;
+    height: 100%;
     border-radius: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
 }
-.comemove>div:nth-child(2)>div:nth-child(1)>img{
+.comemovie>div:nth-child(2)>div:nth-child(1)>a>img{
     width: 155px;
     height: 173px;
     border-radius: 5%;
 }
 /* 다가오는 영화 정보 */
-.comemove>div:nth-child(2)>div:nth-child(2){
+.comemovie>div:nth-child(2)>div:nth-child(2){
     width: 65%;
     height: 100%;
 
@@ -382,21 +387,21 @@ main>div:nth-child(1)>section:nth-child(1){
     flex-direction: column;
     margin: 0 auto;
 }
-.comemove>div:nth-child(2)>div:nth-child(2)>div:nth-child(1){
+.comemovie>div:nth-child(2)>div:nth-child(2)>div:nth-child(1){
     width: 100%;
     height: 15%;
 
     margin-bottom: 2%;
     /* border: 1px solid red; */
 }
-.comemove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2){
+.comemovie>div:nth-child(2)>div:nth-child(2)>div:nth-child(2){
     width: 100%;
     height: 66%;
 
     display: flex;
 
 }
-.comemove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1){
+.comemovie>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1){
     width: 20%;
     height: 100%;
 
@@ -407,27 +412,27 @@ main>div:nth-child(1)>section:nth-child(1){
     /* border-top: 2px solid rgb(200, 200, 200); */
     /* border-top: 2px solid #FAE300; */
 }
-.comemove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(2){
+.comemovie>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(2){
     width: 80%;
     height: 100%;
 
     font-weight: lighter;
 }
-.comemove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1)>li{
+.comemovie>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1)>li{
     height: 25%;
     list-style: none;
     display: flex;
     align-items: center;
     font-size: 1rem;
 }
-.comemove>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(2)>li{
+.comemovie>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>ul:nth-child(2)>li{
     height: 25%;
     list-style: none;
     display: flex;
     align-items: center;
     font-size: 1rem;
 }
-.comemove>div:nth-child(2)>div:nth-child(2)>div:nth-child(3){
+.comemovie>div:nth-child(2)>div:nth-child(2)>div:nth-child(3){
     width: 100%;
     height: 15%;
     
@@ -652,7 +657,7 @@ button:hover {
 
 /* ------------------------------------------------------------------- */
 /* 내가 본 영화 페이지 css */
-.mymove{
+.mymovie{
     width: 700px;
     height: 250px;
     /* border: 1px solid red; */
@@ -665,7 +670,7 @@ button:hover {
     font-size: 1rem;
     font-weight: bold;
 }
-.mymove>div{
+.mymovie>div{
     width: 100%;
     height: 100%;
     /* padding-top: 1%; */
@@ -674,23 +679,28 @@ button:hover {
     display: flex;
 }
 /* 내가본 영화 포스터 */
-.mymove>div>div:nth-child(1){
+.mymovie>div>div:nth-child(1){
     width: 25%;
     height: 100%;
     border: 1px solid #FAE300;
+    border-radius: 5%;
+}
+.mymovie>div>div:nth-child(1)>a{
+    width: 100%;
+    height: 100%;
     border-radius: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
 }
-.mymove>div>div:nth-child(1)>img{
+.mymovie>div>div:nth-child(1)>a>img{
     width: 165px;
     height: 210px;
     border-radius: 5%;
 }
 /* 내가본 영화 정보 */
-.mymove>div>div:nth-child(2){
+.mymovie>div>div:nth-child(2){
     width: 65%;
     height: 100%;
 
@@ -701,7 +711,7 @@ button:hover {
     text-align: left;
     font-size: 1rem;
 }
-.mymove>div>div:nth-child(2)>div:nth-child(1){
+.mymovie>div>div:nth-child(2)>div:nth-child(1){
     width: 100%;
     height: 15%;
 
@@ -712,14 +722,14 @@ button:hover {
     
     /* border: 1px solid red; */
 }
-.mymove>div>div:nth-child(2)>div:nth-child(2){
+.mymovie>div>div:nth-child(2)>div:nth-child(2){
     width: 100%;
     height: 67%;
 
     display: flex;
 
 }
-.mymove>div>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1){
+.mymovie>div>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1){
     width: 15%;
     height: 100%;
     margin-right: 10px;
@@ -729,24 +739,24 @@ button:hover {
     /* border-top: 2px solid rgb(200, 200, 200); */
     /* border-top: 2px solid #FAE300; */
 }
-.mymove>div>div:nth-child(2)>div:nth-child(2)>ul:nth-child(2){
+.mymovie>div>div:nth-child(2)>div:nth-child(2)>ul:nth-child(2){
     width: 80%;
     height: 100%;
 }
-.mymove>div>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1)>li{
+.mymovie>div>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1)>li{
     height: 25%;
     list-style: none;
     display: flex;
     align-items: center;
 }
-.mymove>div>div:nth-child(2)>div:nth-child(2)>ul:nth-child(2)>li{
+.mymovie>div>div:nth-child(2)>div:nth-child(2)>ul:nth-child(2)>li{
     height: 25%;
     list-style: none;
     display: flex;
     align-items: center;
     font-weight: lighter;
 }
-.mymove>div>div:nth-child(2)>div:nth-child(3){
+.mymovie>div>div:nth-child(2)>div:nth-child(3){
     width: 100%;
     height: 15%;
     
@@ -754,7 +764,7 @@ button:hover {
     /* border: 1px solid red; */
 }
 /* 리뷰 남기러 가기 버튼 */
-#ckreview-btn{
+#goreview-btn{
     width: 250px;
     height: 100%;
     background-color: #646464;
@@ -767,7 +777,7 @@ button:hover {
     
     border-radius: 5px;
 }
-#ckreview-btn:hover {
+#goreview-btn:hover {
     color: #FAE300;
     background-color: rgb(55,55,55);
 }
@@ -796,8 +806,187 @@ button:hover {
     background-color: rgb(44,44,44);
 }
 
-/* 내가 쓴 리뷰 페이지 구동 */
+/* 내가 쓴 리뷰 페이지 구동 ------------------------------------------------------------- */
+.myreview{
+    width: 700px;
+    height: 250px;
+    /* border: 1px solid red; */
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(44, 44, 44);
+    font-size: 1rem;
+    font-weight: bold;
+}
+.myreview>div{
+    width: 100%;
+    height: 100%;
+    /* padding-top: 1%; */
 
+    /* border: 1px solid red; */
+    display: flex;
+}
+/* 내가본 영화 포스터 */
+.myreview>div>div:nth-child(1){
+    width: 25%;
+    height: 100%;
+    border: 1px solid #FAE300;
+    border-radius: 5%;
+}
+.myreview>div>div:nth-child(1)>a{
+    width: 100%;
+    height: 100%;
+    border-radius: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.myreview>div>div:nth-child(1)>a>img{
+    width: 165px;
+    height: 210px;
+    border-radius: 5%;
+}
+/* 내가본 영화 정보 */
+.myreview>div>div:nth-child(2){
+    width: 65%;
+    height: 100%;
+
+    /* border: 1px solid yellow; */
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    text-align: left;
+    font-size: 1rem;
+}
+.myreview>div>div:nth-child(2)>div:nth-child(1){
+    width: 100%;
+    height: 15%;
+
+    margin-bottom: 1%;
+
+    display: flex;
+    justify-content: space-between;
+    
+    /* border: 1px solid red; */
+}
+/* i태그 delete 버튼 */
+.fa-regular{
+    font-size: 1.5rem;
+}
+.fa-regular:hover{
+    content: "\f057";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 1.5rem;
+    /* margin-right: 10px; */
+    color: #FAE300;
+}
+
+.myreview>div>div:nth-child(2)>div:nth-child(2){
+    width: 100%;
+    height: 33%;
+
+    display: flex;
+}
+.myreview>div>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1){
+    width: 20%;
+    height: 100%;
+    margin-right: 10px;
+    /* border: 1px solid red; */
+
+    /* margin: 20px 0 0 0; */
+    /* border-top: 2px solid rgb(200, 200, 200); */
+    /* border-top: 2px solid #FAE300; */
+}
+.myreview>div>div:nth-child(2)>div:nth-child(2)>ul:nth-child(2){
+    width: 80%;
+    height: 100%;
+
+    
+}
+.myreview>div>div:nth-child(2)>div:nth-child(2)>ul:nth-child(1)>li{
+    height: 50%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+.myreview>div>div:nth-child(2)>div:nth-child(2)>ul:nth-child(2)>li{
+    height: 50%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    font-weight: lighter;
+}
+.myreview>div>div:nth-child(2)>div:nth-child(3){
+    width: 100%;
+    height: 33%;
+    
+    margin-top: 1%;
+    font-size: 1rem;
+    font-weight: lighter;
+    /* border: 1px solid red; */
+}
+.myreview>div>div:nth-child(2)>div:nth-child(3)>p{
+    width: 430px;
+    height: 100%;
+
+    /* 지정된 범위에 가면 자동 줄바꿈이 이뤄짐 개꿀 */
+    word-wrap: break-word;
+    
+    /* border: 1px solid red; */
+}
+.myreview>div>div:nth-child(2)>div:nth-child(4){
+    width: 100%;
+    height: 15%;
+    
+    margin-top: 2%;
+    /* border: 1px solid red; */
+}
+/* 리뷰 남기러 가기 버튼 */
+#updatereview-btn{
+    width: 250px;
+    height: 100%;
+    background-color: #646464;
+    border: 0;
+    outline: 0;
+    /* border: 1px solid rgb(200, 200, 200); */
+    cursor: pointer;
+    color: rgb(200, 200, 200);
+    font-size: 1rem;
+    
+    border-radius: 5px;
+}
+#updatereview-btn:hover {
+    color: #FAE300;
+    background-color: rgb(55,55,55);
+}
+/* .listmore-btn{
+    width: 700px;
+    height: 40px;
+    border-radius: 5px;
+} */
+#listmore-btn{
+    width: 700px;
+    height: 40px;
+    background-color: #646464;
+    border: 0;
+    outline: 0;
+    /* border: 1px solid rgb(200, 200, 200); */
+    cursor: pointer;
+    color: rgb(200, 200, 200);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+#listmore-btn:hover {
+    color: #FAE300;
+    background-color: rgb(44,44,44);
+}
 
 
 

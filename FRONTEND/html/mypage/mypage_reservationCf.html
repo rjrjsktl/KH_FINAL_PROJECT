@@ -143,7 +143,7 @@
                     </div>
                 </section>
 
-                <section class="comemove">
+                <section class="comemovie">
                     <div>
                         당신의 영화가 오고 있따옹
                     </div>
@@ -152,7 +152,7 @@
                     <div>
                         <div>
                             <!-- 나중에 db건들 때 따오는 값 바꿔줘야함 -->
-                            <img src="../../images/123123.jpg" alt="영화 포스터 w=155px,h=173px">
+                            <a href="#"><img src="../../images/123123.jpg" alt="영화 포스터 w=155px,h=173px"></a>
                         </div>
 
                         <div>
@@ -221,23 +221,26 @@
                      http://localhost:8080/community/member/myPage/info (GET)
                      http://localhost:8080/community/member/myPage/info (POST) 
                      -->
+
+                        <!-- 내가 본 영화, 내가 쓴 리뷰 페이지 form이 필요 없을듯? -->
                         <form action="reservationCf" method="POST" name="myPage-form" onsubmit="return moveValidate()">
                             <ul class="more-load">
                                 <!-- 나중에 append나 폼 추가 할 때 이 li을 그대로 가져가면 됨 -->
-                                <li class="mymove">
-                                    
+                                <li class="mymovie">
+
                                     <div>
                                         <div>
                                             <!-- 나중에 db건들 때 따오는 값 바꿔줘야함 -->
-                                            <img src="../../images/123123.jpg" alt="영화 포스터 w=165px,h=210px">
+                                            <a href="#"><img src="../../images/123123.jpg"
+                                                    alt="영화 포스터 w=165px,h=210px"></a>
                                         </div>
 
                                         <div>
                                             <div>
                                                 <div>영화 제목</div>
-                                                <div><i>del</i></div>
+                                                <a href="#"><i class="fa-regular fa-circle-xmark"></i></a>
                                             </div>
-                                            
+
                                             <div>
                                                 <ul>
                                                     <!-- db에 들어가는거 보고 영화 날짜, 시간, 인원, 몇관 등 추가 해야함 -->
@@ -255,7 +258,7 @@
                                                 </ul>
                                             </div>
                                             <div>
-                                                <button id="ckreview-btn">리뷰 남기러 가볼까옹~</button>
+                                                <button id="goreview-btn">리뷰 남기러 가볼까옹~</button>
                                             </div>
 
                                         </div>

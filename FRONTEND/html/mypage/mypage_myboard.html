@@ -107,12 +107,12 @@
                             <img src="../../images/18.png" id="profile-image" alt="이미지삽입 w,h=182">
                             <!-- 밑 이거 살려서 써야함 -->
                             <!-- <c:if test="${empty loginMember.profileImage}">
-                                            <img src="${contextPath}/resources/images/user.png" id="profile-image" alt="이미지삽입 w,h=182">
-                                        </c:if>
+                                    <img src="${contextPath}/resources/images/user.png" id="profile-image" alt="이미지삽입 w,h=182">
+                                </c:if>
             
-                                        <c:if test="${!empty loginMember.profileImage}">
-                                            <img src="${contextPath}${loginMember.profileImage}" id="profile-image">
-                                        </c:if> -->
+                                <c:if test="${!empty loginMember.profileImage}">
+                                    <img src="${contextPath}${loginMember.profileImage}" id="profile-image">
+                                </c:if> -->
                         </div>
                     </div>
                     <div class="profile-info-area">
@@ -143,7 +143,7 @@
                     </div>
                 </section>
 
-                <section class="comemove">
+                <section class="comemovie">
                     <div>
                         당신의 영화가 오고 있따옹
                     </div>
@@ -152,7 +152,7 @@
                     <div>
                         <div>
                             <!-- 나중에 db건들 때 따오는 값 바꿔줘야함 -->
-                            <img src="../../images/123123.jpg" alt="영화 포스터 w=155px,h=170px">
+                            <a href="#"><img src="../../images/123123.jpg" alt="영화 포스터 w=155px,h=173px"></a>
                         </div>
 
                         <div>
@@ -221,39 +221,41 @@
                      http://localhost:8080/community/member/myPage/info (GET)
                      http://localhost:8080/community/member/myPage/info (POST) 
                      -->
+
+                        <!-- 내가 본 영화, 내가 쓴 리뷰 페이지 form이 필요 없을듯? -->
                         <form action="myboard" method="POST" name="myPage-form" onsubmit="return infoValidate()">
                             <ul class="more-load">
                                 <!-- 나중에 append나 폼 추가 할 때 이 li을 그대로 가져가면 됨 -->
-                                <li class="mymove">
+                                <li class="myreview">
                                     <div>
                                         <div>
                                             <!-- 나중에 db건들 때 따오는 값 바꿔줘야함 -->
-                                            <img src="../../images/123123.jpg" alt="영화 포스터 w=165px,h=210px">
+                                            <a href="#"><img src="../../images/123123.jpg" alt="영화 포스터 w=165px,h=210px"></a>
                                         </div>
 
                                         <div>
                                             <div>
                                                 <div>영화 제목</div>
-                                                <div><i>del</i></div>
+                                                <a class="i-dlt-btn" href="#"><i class="fa-regular fa-circle-xmark"></i></a>
                                             </div>
                                             <div>
                                                 <ul>
                                                     <!-- db에 들어가는거 보고 영화 날짜, 시간, 인원, 몇관 등 추가 해야함 -->
-                                                    <li>날&nbsp;&nbsp;&nbsp;짜 :</li>
-                                                    <li>시&nbsp;&nbsp;&nbsp;간 :</li>
-                                                    <li>인&nbsp;&nbsp;&nbsp;원 :</li>
-                                                    <li>상영관 :</li>
+                                                    <li>작성 날짜 :</li>
+                                                    <li>작성 시간 :</li>
                                                 </ul>
                                                 <ul>
                                                     <!-- db에 들어가는거 보고 영화 날짜, 시간, 인원, 몇관 등 추가 해야함 -->
                                                     <li>2069.69.69 </li>
                                                     <li>69:74 ~ 69:74</li>
-                                                    <li>3썸</li>
-                                                    <li>A 강의실</li>
                                                 </ul>
+                                                
                                             </div>
                                             <div>
-                                                <button id="ckreview-btn">리뷰 남기러 가볼까옹~</button>
+                                                <p>zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</p>
+                                            </div>
+                                            <div>
+                                                <button id="updatereview-btn">수정 가즈아</button>
                                             </div>
 
                                         </div>
