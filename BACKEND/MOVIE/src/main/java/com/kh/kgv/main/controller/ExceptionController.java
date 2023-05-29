@@ -1,4 +1,4 @@
-package com.kh.kgv.common.error.controller;
+package com.kh.kgv.main.controller;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
