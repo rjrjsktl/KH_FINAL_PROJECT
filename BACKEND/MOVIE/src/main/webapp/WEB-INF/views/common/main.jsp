@@ -232,7 +232,7 @@
                         <div>
                             <a href="#">상영관안내</a>
                         </div>
-                        <div><a href="">전체보기 ></a></div>
+                        <div><a href="#">전체보기 ></a></div>
                     </div>
 
 
