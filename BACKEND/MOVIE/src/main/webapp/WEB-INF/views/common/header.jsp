@@ -38,7 +38,7 @@
                 <li>
 
 
-                    <a href="#">
+                    <a href="${pageContext.request.contextPath}/myPage/info">
                         <span><i class="fa-regular fa-user"></i></span>
                         <p>MY PAGE</p>
                     </a>
