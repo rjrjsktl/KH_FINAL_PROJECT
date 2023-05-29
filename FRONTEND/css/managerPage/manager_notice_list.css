@@ -282,6 +282,16 @@
     background-color: #dbdbdb;
 }
 
+.table_main td button {
+    width: 25px;
+    height: 25px;
+}
+
+.table_main td button i {
+    padding-top: 4px;
+    padding-right: 2px;
+}
+
 .page_Nation {
     flex: 1;
     display: flex;
