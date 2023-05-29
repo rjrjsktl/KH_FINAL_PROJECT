@@ -339,9 +339,17 @@ main > section > :nth-child(2) > div:last-child {
 main > section > :nth-child(2) > div > div:first-child {
   height: calc(200px / 3);
   line-height: calc(200px / 3);
-  border-bottom: 1px solid lightgray;
   font-size: 20px;
   text-align: center;
+  border-bottom: 1px solid lightgray;
+  padding: 0 18px;
+}
+
+main > section > :nth-child(2) > div > div:first-child > p {
+  height: calc(200px / 3);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 
@@ -365,33 +373,15 @@ main > section > :nth-child(2) > div:first-child > div:nth-child(3) {
 
 main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div {
   width: 50%; 
-}
-
-/* 지역(大) */
-
-main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div:first-child {
-  border-right: 1px solid lightgray;
-}
-
-main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div:first-child > ul > li > a > p:hover {
-  color: #E9b630;
-}
-
-/* 지역(小) */
-
-main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div:last-child > ul {
-  display: none;
-}
-
-main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div:last-child > ul:first-child {
-  display: block;
+  height: calc(2000px/3 - 1px);
+  position: relative;
+  overflow-y: scroll;
 }
 
 main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div > ul > li {
   border-bottom: 1px solid white;
   height: calc(200px / 3);
 }
-
 
 main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div > ul > li > a {
   display: flex;
@@ -403,6 +393,27 @@ main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div > ul >
   font-size: 16px;
   line-height: 16px;
 }
+
+main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div > ul > li > a > p:hover {
+  color: #E9b630;
+}
+
+/* 극장 */
+
+main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div:last-child {
+  border-left: 1px solid lightgray;
+}
+
+main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div:last-child > ul {
+  margin-bottom: calc(100px/3);
+  display: none;
+}
+
+main > section > :nth-child(2) > div:first-child > div:nth-child(3) > div:last-child > ul:first-child {
+  display: block;
+}
+
+
 
 /* 영화 선택 */
 
@@ -456,7 +467,7 @@ main > section > :nth-child(2) > div:nth-child(2) > div:nth-child(3) > ul {
   display: none;
 }
 
-main > section > :nth-child(2) > div:nth-child(2) > div:nth-child(3) > #movielist_text {
+main > section > :nth-child(2) > div:nth-child(2) > div:nth-child(3) > #movielist_thumb {
   display: block;
 }
 
@@ -475,6 +486,7 @@ main > section > :nth-child(2) > div:nth-child(2) > div:nth-child(3) > #movielis
   height: 100%; 
   background-color: transparent;
   padding: 18px;
+  padding-right: 12px;
   line-height: 18px;
 }
 
@@ -510,10 +522,14 @@ main > section > :nth-child(2) > div:nth-child(2) > div:nth-child(3) > #movielis
 
 #movielist_text > li > a > div:nth-child(2) {
   display: flex;
-  width: 80%;
+  width: 82.5%;
   height: 30px;
   line-height: 33px;
   font-size: 19px;
+}
+
+#movielist_text > li > a > div:nth-child(2) > span {
+  overflow:hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -609,8 +625,12 @@ main > section > :nth-child(2) > div:nth-child(2) > div:nth-child(3) > #movielis
 /* 영화 리스트 (2) - 내용 : 제목 */
 
 #movielist_thumb > li > a > div:last-child > div:first-child > div:last-child {
+  width: 82.5%;
   height: 22px;
   line-height: 25px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* 영화 리스트 (2) - 내용 : 예매율 + 평점 + 개봉일 */
@@ -743,16 +763,20 @@ main > section > :nth-child(2) > div:last-child > div:nth-child(3) > ul > li > d
   padding: 12px;
 }
 
+/* 상영 시작 시간 */
+
 .playlist > li > a > div:first-child > div:first-child {
   text-align: center;
   margin-bottom: 12px;
   font-size: 16px;
 }
 
+/* 상영 좌석 수 + 관 번호 */
+
 .playlist > li > a > div:first-child > div:last-child {
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 14px;
 }
 
@@ -767,6 +791,3 @@ main > section > :nth-child(2) > div:last-child > div:nth-child(3) > ul > li > d
 .playlist > li > a > div:nth-child(2) {
   display: none;
 }
-
-
-
