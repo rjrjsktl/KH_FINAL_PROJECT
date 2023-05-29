@@ -250,11 +250,66 @@ $(document).on('click', () => {
 
 
 // ===============================================================================
+// 날짜 비교
+
+
+let startDate = $('.start_date');
+let endDate = $('.end_date');
+let getCurrentDate = new Date();
+let currentDate = getCurrentDate.getFullYear() + "-" + ('0' + (getCurrentDate.getMonth() + 1)).slice(-2) + "-" + getCurrentDate.getDate();
+// ('0' + (getCurrentDate.getMonth() + 1)).slice(-2) 을 사용하는 이유
+// -> 앞에 0을 추가해준 상태로 출력하면, 011월 012월 같은 혼종이 나오기 때문에, 뒤에서 두자리만 자르게끔 한다.
+
+// 상영 종료일
+endDate.on('change', () => {
+
+    let startValue = startDate.val(); // 시작일의 값
+    let endValue = endDate.val(); // 종료일의 값
+
+    let startArray = startValue.split('-');
+    let endArray = endValue.split('-');
+
+    // 월은 01월, 02월 같이 0부터 시작하므로 1을 뺀다.
+    let checkStartDate = new Date(startArray[0], startArray[1] - 1, startArray[2]);
+    let checkEndDate = new Date(endArray[0], endArray[1] - 1, endArray[2]);
+
+
+    if (checkStartDate.getTime() > checkEndDate.getTime()) {
+        alert('종료일은 시작일보다 빠를 수 없습니다.');
+        $('.end_date').val("");
+        return false;
+    }
+
+    if (!startDate.val()) {
+        alert('시작일을 먼저 선택해 주세요.');
+        $('.end_date').val("");
+    }
+});
+
+// 상영 시작일
+startDate.on('change', () => {
+
+    let currentValue = currentDate;
+    let startValue = startDate.val(); // 시작일의 값
+
+    let currentArray = currentValue.split('-');
+    let startArray = startValue.split('-');
+
+    // 월은 01월, 02월 같이 0부터 시작하므로 1을 뺀다.
+    let checkCurrentDate = new Date(currentArray[0], currentArray[1] - 1, currentArray[2]);
+    let checkStartDate = new Date(startArray[0], startArray[1] - 1, startArray[2]);
+
+    if (checkStartDate.getTime() < checkCurrentDate.getTime()) {
+        alert('시작일은 오늘 (' + currentDate + ') 보다 빠를 수 없습니다.');
+        $('.start_date').val("");
+        return false;
+    }
+});
+// ===============================================================================
 // 결과값 확인용
 
 const submitBtn = $('.bottom_Submit');
-const startDate = $('.start_date');
-const endDate = $('.end_date');
+
 
 submitBtn.on('click', () => {
     console.log('상영 영화관 : ' + cinema_Arr);

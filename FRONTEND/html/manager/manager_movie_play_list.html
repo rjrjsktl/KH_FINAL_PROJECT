@@ -9,9 +9,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1 : 1 문의 답변</title>
+    <title>상영영화 목록</title>
 
-    <link rel="stylesheet" href="../../css/managerPage/manager_ask_reply.css">
+    <link rel="stylesheet" href="../../css/managerPage/manager_movie_play_list.css">
     <link rel="stylesheet" href="../../css/managerPage/reset.css">
 
     <!-- fontawesome -->
@@ -52,7 +52,7 @@
                             </li>
                         </a>
                         <li class="slide_Content">
-                            <div class="slide_Wrapper selected_Title active">
+                            <div class="slide_Wrapper">
                                 <div class="slide_Left_Icon">
                                     <i class="fa-solid fa-headset"></i>
                                 </div>
@@ -61,7 +61,7 @@
                                     <i class="fa-solid fa-caret-down"></i>
                                 </div>
                             </div>
-                            <div class="slide_Down_items" style="display: block;">
+                            <div class="slide_Down_items">
                                 <ul>
 
                                     <a href="#">
@@ -78,7 +78,7 @@
                             </div>
                         </li>
                         <li class="slide_Content">
-                            <div class="slide_Wrapper">
+                            <div class="slide_Wrapper selected_Title active">
                                 <div class="slide_Left_Icon">
                                     <i class="fa-brands fa-youtube"></i>
                                 </div>
@@ -87,7 +87,7 @@
                                     <i class="fa-solid fa-caret-down"></i>
                                 </div>
                             </div>
-                            <div class="slide_Down_items">
+                            <div class="slide_Down_items" style="display: block;">
                                 <ul>
                                     <a href="#">
                                         <li>
@@ -110,7 +110,7 @@
                                         </li>
                                     </a>
                                     <a href="#">
-                                        <li>
+                                        <li class="selected_Title">
                                             <div class="inner_align">
                                                 <div class="inner_Left_Icon">
                                                     <i class="fa-solid fa-play fa-2xs"></i>
@@ -226,9 +226,136 @@
 
                 <div id="items_Wrapper">
                     <div class="set_Edge">
-                        <div></div>
+                        <div class="table_Wrapper">
+                            <div class="table_Title">
+                                <span>상영영화 목록</span>
+                                <div class="search_Box">
+                                    <input placeholder="검색" />
+                                    <button>
+                                        <i class="fa-solid fa-magnifying-glass fa-2xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <table class="table_main">
+                                <tr>
+                                    <th>번호</th>
+                                    <th>영화 제목</th>
+                                    <th>영화 상영 시작일</th>
+                                    <th>영화 상영 종료일</th>
+                                    <th>등록일</th>
+                                    <th>등록자</th>
+                                    <th>수정</th>
+                                    <th>삭제</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>2023.06.27 12:22:55</td>
+                                    <td>2023.05.27 16:34:05</td>
+                                    <td>관리자2</td>
+                                    <td><button class="editBtn"><i
+                                                class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
+                                    <td><button class="delBtn"><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>2023.06.27 12:22:55</td>
+                                    <td>2023.05.27 16:34:05</td>
+                                    <td>관리자2</td>
+                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
+                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
+                                <tr>
+                                    <td>3</td>
+                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>2023.06.27 12:22:55</td>
+                                    <td>2023.05.27 16:34:05</td>
+                                    <td>관리자2</td>
+                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
+                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
+                                <tr>
+                                    <td>4</td>
+                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>2023.06.27 12:22:55</td>
+                                    <td>2023.05.27 16:34:05</td>
+                                    <td>관리자2</td>
+                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
+                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
+                                <tr>
+                                    <td>5</td>
+                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>2023.06.27 12:22:55</td>
+                                    <td>2023.05.27 16:34:05</td>
+                                    <td>관리자2</td>
+                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
+                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
+                                <tr>
+                                    <td>6</td>
+                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>2023.06.27 12:22:55</td>
+                                    <td>2023.05.27 16:34:05</td>
+                                    <td>관리자2</td>
+                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
+                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
+                                <tr>
+                                    <td>7</td>
+                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>2023.06.27 12:22:55</td>
+                                    <td>2023.05.27 16:34:05</td>
+                                    <td>관리자2</td>
+                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
+                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
+                                <tr>
+                                    <td>8</td>
+                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>2023.06.27 12:22:55</td>
+                                    <td>2023.05.27 16:34:05</td>
+                                    <td>관리자2</td>
+                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
+                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
+                                <tr>
+                                    <td>9</td>
+                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>2023.06.27 12:22:55</td>
+                                    <td>2023.05.27 16:34:05</td>
+                                    <td>관리자2</td>
+                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
+                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
+                                <tr>
+                                    <td>10</td>
+                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
+                                    <td>2023.05.27 14:51:52</td>
+                                    <td>2023.06.27 12:22:55</td>
+                                    <td>2023.05.27 16:34:05</td>
+                                    <td>관리자2</td>
+                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
+                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
+
+                            </table>
+                            <div class="page_Nation">
+                                <div>&lt;</div>
+                                <div class="selected_Cp">1</div>
+                                <div>2</div>
+                                <div>3</div>
+                                <div>4</div>
+                                <div>5</div>
+                                <div>6</div>
+                                <div>7</div>
+                                <div>&gt;</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
 
         </div>
@@ -236,7 +363,7 @@
     </main>
 
 
-    <script src="../../js/managerPage/manager_ask_reply.js"></script>
+    <script src="../../js/managerPage/manager_movie_play_list.js"></script>
 </body>
 
 </html>
