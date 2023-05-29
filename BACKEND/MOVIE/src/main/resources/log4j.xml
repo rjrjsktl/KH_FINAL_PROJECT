@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.kh.movie">
+	<logger name="com.kh.kgv">
 		<level value="info" />
 	</logger>
 	

@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지<회원 탈퇴>
     </title>
-    <link rel="stylesheet" href="../../css/mypage.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
     
 </head>
@@ -32,7 +32,7 @@
             </div>
 
             <div>
-                <!-- 이거 나중에 <jsp:include page="/WEB-INF/views/member/sideMenu.jsp"/>이런식으로 넣어줄 생각 -->
+                <%--  이거 나중에 <jsp:include page="/WEB-INF/views/member/sideMenu.jsp"/>이런식으로 넣어줄 생각 --%>
                 <!-- myPage_sideMenu.jsp -->
                 <jsp:include page="/WEB-INF/views/myPage/myPage_sideMenu.jsp" />
                 
@@ -116,8 +116,13 @@
    
                    <%-- message 1회 출력 후 session에서 제거 --%>
                    <c:remove var="message" scope="session" />
-               </c:if>
-               -->
+               </c:if> -->
+               
+               
+
+    <!-- myPage.js 추가 -->
+    <script src="${contextPath}/resources/js/myPage/myPage.js"></script>
+    
 </body>
 
 </html>
