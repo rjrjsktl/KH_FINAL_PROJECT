@@ -195,6 +195,7 @@ header>nav ul>li>a:hover {
 }
 
 footer>section {
+    margin-top:100px;
     height: 200px;
     display: flex;
     flex-direction: column;

@@ -9,9 +9,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>비밀번호찾기_4 페이지</title>
+    <title>비밀번호찾기_2 페이지</title>
 
-    <link rel="stylesheet" href="../../css/loginpage/findpwpage_4.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login/findPw_2.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
 </head>
@@ -108,18 +108,23 @@
 
                         <!-- 로고 영역 -->
                         <div>
-                            <p>인증 성공!</p>
-                            <p>입력하신 이메일로 비밀번호가 발송되었습니다.</p>
+                            <p>비밀번호 찾기</p>
+                            <p>이름과 전화번호를 기입해주세요</p>
                         </div>
 
                         <!-- form -->
                         <div>
-                            <form action="#" method="POST" onsubmit="return findPw_3_Validate()">
+                            <form action="#" method="POST" onsubmit="return findPw_2_Validate()">
                                 <div>
                                     <div>
                                         <div>
-                                            <button>로그인 하러가기</button>
+                                            <input type="text" placeholder="이름" id="inputName" maxlength="41">
+                                            <input type="text" placeholder="전화번호" id="inputTel" maxlength="41">
                                         </div>
+                                    </div>
+
+                                    <div>
+                                        <button>이메일로 인증번호 발송</button>
                                     </div>
                                 </div>
                             </form>
