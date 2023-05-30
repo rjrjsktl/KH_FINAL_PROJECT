@@ -61,9 +61,9 @@
 
                         <!-- SNS 로그인 -->
                         <ul>
-                            <li><a href="#"><img src="${pageContext.request.contextPath}/resources/images/login_images/KakaoTalk_btn_icon_square.png" alt="카카오톡"></a></li>
-                            <li><a href="#"><img src="${pageContext.request.contextPath}/resources/images/login_images/naver_btn_icon_square.png" alt="네이버"></a></li>
-                            <li><a href="#"><img src="${pageContext.request.contextPath}/resources/images/login_images/google_btn_icon_square.png" alt="구글"></a></li>
+                            <li><a href="#"><img src="${contextPath}/resources/images/login_images/KakaoTalk_btn_icon_square.png" alt="카카오톡"></a></li>
+                            <li><a href="#"><img src="${contextPath}/resources/images/login_images/naver_btn_icon_square.png" alt="네이버"></a></li>
+                            <li><a href="#"><img src="${contextPath}/resources/images/login_images/google_btn_icon_square.png" alt="구글"></a></li>
                         </ul>
 
                     </div>
