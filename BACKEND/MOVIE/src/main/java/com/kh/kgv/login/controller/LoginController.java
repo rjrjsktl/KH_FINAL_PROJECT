@@ -21,11 +21,14 @@ public class LoginController {
 			
 	}
 	
+	// 아이디 찾기
 	@RequestMapping("/findEmail")
 	public String findEmail() {
 		return "login/findEmail_1";
 			
 	}
+	
+
 	
 	
 }
