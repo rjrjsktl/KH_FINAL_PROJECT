@@ -29,7 +29,7 @@
 
             <ul>
                 <li>
-                    <a href="${pageContext.request.contextPath}/login">
+                    <a href="${contextPath}/login">
                         <span><i class="fa-solid fa-lock"></i></span>
                         <p>SIGN IN</p>
                     </a>
