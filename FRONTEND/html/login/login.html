@@ -129,11 +129,11 @@
                                         <div>
                                             <input type="text" placeholder="아이디" name="inputEmail" maxlength="41">
                                             <input type="password" placeholder="비밀번호" name="inputPw" maxlength="41">
-                                            <label for="saveId">
-                                                <input type="checkbox" id="saveId">
-                                                <i class="fa-thin fa-circle-check circle" ></i>
-                                                <span class="text">아이디 저장하기</span>
-                                            </label>        
+                                            <div class="keep_area">
+                                                <input type="checkbox" id="aa">
+                                                <label for="aa" class="bb"></label>
+                                                <label for="aa" class="cc">아이디 저장</label>
+                                            </div>      
                                         </div>
                                     </div>
 
@@ -145,10 +145,11 @@
                         </div>
 
                         <!-- SNS 로그인 -->
+                        
                         <ul>
-                            <li><a href="#"><img src="../../images/loginpage_images/kakaotalk_btn_icon_square.png" alt="카카오톡"></a></li>
-                            <li><a href="#"><img src="../../images/loginpage_images/naver_btn_icon_square.png" alt="네이버"></a></li>
-                            <li><a href="#"><img src="../../images/loginpage_images/google_btn_icon_square.png" alt="구글"></a></li>
+                            <li><a href="javascript:kakaoLogin();"><img src="${contextPath}/resources/images/login_images/KakaoTalk_btn_icon_square.png" alt="카카오톡"></a></li>
+                            <li><a href="#"><img src="${contextPath}/resources/images/login_images/naver_btn_icon_square.png" alt="네이버"></a></li>
+                            <li><a href="#"><img src="${contextPath}/resources/images/login_images/google_btn_icon_square.png" alt="구글"></a></li>
                         </ul>
 
                     </div>
@@ -212,6 +213,28 @@
             -->
 
     <script src="../../js/loginpage/loginpage.js"></script>
+    <script src="http://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+        //9f354c9ffa0072a14ba9a9bd5cdc644d
+        window.kakao.init("9f354c9ffa0072a14ba9a9bd5cdc644d");
+
+        function kakaoLogin() {
+            window.Kakao.Auth.login({
+                scope:'profile, account_email, gender',
+                success: function(authObj){
+                    console.log(authObj);
+                    window.Kakao.API.request({
+                        url:'/v2/user/me',
+                        success: res => {
+                            const kakao_account = res.kakao_account;
+                            console.log(kakao_account);
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+    
 </body>
 
 </html>
