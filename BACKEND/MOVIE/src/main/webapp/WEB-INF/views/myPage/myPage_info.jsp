@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지<정보 수정>
     </title>
-    <link rel="stylesheet" href="../../css/mypage.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
@@ -32,7 +32,7 @@
             </div>
 
             <div>
-                <!-- 이거 나중에 <jsp:include page="/WEB-INF/views/member/sideMenu.jsp"/>이런식으로 넣어줄 생각 -->
+                <%--  이거 나중에 <jsp:include page="/WEB-INF/views/member/sideMenu.jsp"/>이런식으로 넣어줄 생각 --%>
                 <!-- myPage_sideMenu.jsp -->
                 <jsp:include page="/WEB-INF/views/myPage/myPage_sideMenu.jsp" />
 
@@ -100,7 +100,7 @@
     <!-- footer -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-    </footer>
+    
     <!--
      <%-- session에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
              <c:if test="${ !empty sessionScope.message }">
@@ -124,7 +124,7 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <!-- myPage.js 추가 -->
-    <script src="../../js/mypage/mypage.js"></script>
+    <script src="${contextPath}/resources/js/myPage/myPage.js"></script>
 </body>
 
 </html>

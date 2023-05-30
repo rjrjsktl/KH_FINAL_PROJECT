@@ -29,7 +29,7 @@
 
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="${contextPath}/login">
                         <span><i class="fa-solid fa-lock"></i></span>
                         <p>SIGN IN</p>
                     </a>
@@ -38,7 +38,7 @@
                 <li>
 
 
-                    <a href="#">
+                    <a href="${contextPath}/myPage/info">
                         <span><i class="fa-regular fa-user"></i></span>
                         <p>MY PAGE</p>
                     </a>

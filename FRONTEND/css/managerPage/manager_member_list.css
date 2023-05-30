@@ -259,9 +259,27 @@
     flex: 2;
 }
 
-.table_main {
-    display: flex;
-    flex-direction: column;
+.table_main tr {
+    width: 100%;
+    height: 6.5vh;
+    text-align: center;
+}
+
+.table_main th,
+.table_main td {
+    vertical-align: middle;
+}
+
+.table_main th {
+    font-weight: bold;
+}
+
+.table_main td {
+    font-size: 0.8rem;
+}
+
+.table_main tr:nth-child(2n) {
+    background-color: #dbdbdb;
 }
 
 .page_Nation {

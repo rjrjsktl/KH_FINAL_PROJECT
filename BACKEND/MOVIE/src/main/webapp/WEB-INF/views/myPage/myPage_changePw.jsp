@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지<비밀번호 변경>
     </title>
-    <link rel="stylesheet" href="resources/css/mypage/mypage.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
 </head>
@@ -32,7 +32,7 @@
             </div>
 
             <div>
-                <!-- 이거 나중에 <jsp:include page="/WEB-INF/views/member/sideMenu.jsp"/>이런식으로 넣어줄 생각 -->
+                <%--  이거 나중에 <jsp:include page="/WEB-INF/views/member/sideMenu.jsp"/>이런식으로 넣어줄 생각 --%>
                 <!-- myPage_sideMenu.jsp -->
                 <jsp:include page="/WEB-INF/views/myPage/myPage_sideMenu.jsp" />
                 
@@ -102,7 +102,7 @@
 
 
     <!-- myPage.js 추가 -->
-    <script src="../../js/mypage/mypage.js"></script>
+    <script src="${contextPath}/resources/js/myPage/myPage.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,280 @@
+
+main>div:nth-child(1) {
+    width: 100%;
+    HEIGHT:100%;
+    background-color: black;
+    margin: 50px 0;
+
+}
+
+main>div:nth-child(1)>div {
+
+    width: 1160px;
+    padding: 0 20px;
+    margin: 0 auto;
+    height:500px;
+    text-align: center;
+}
+
+main>div:nth-child(1)>div > span{
+    font-size: 3rem;
+    line-height: 398px;
+}
+
+
+main>div:nth-child(1)>div>ul {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+main>div:nth-child(1)>div>ul>li {
+    padding: 15px 15px;
+}
+
+
+main>div:nth-child(1)>div>ul>li>a {
+    border-bottom: 1px solid white;
+    font-size: 1rem;
+    line-height: 51px;
+}
+
+
+
+
+/* 두번째 영역 */
+
+main>div:nth-child(2) {
+    width: 1160px;
+    padding: 0 20px 50px 20px;
+    margin: 0 auto;
+    display: flex;
+}
+
+
+/*  */
+main>div:nth-child(2)>div{
+    width:100%;
+    display: flex;
+    padding:30px 0;
+    border-bottom: 1px solid white;
+}
+
+.left_stheaterwrap {
+    width:20%;
+    border-right: 5px solid white;
+    margin-right:30px;
+    padding:10px;
+    text-align: center;
+}
+
+
+.stheater_wrap {
+    width:80%
+}
+
+.stheater_wrap > ul{
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-wrap:wrap;
+    align-items: center;
+
+}
+
+.stheater_wrap >ul>li{
+   width:25%;
+   height:40px;
+   padding:10px;
+   text-align: center;
+   border-radius: 10px;
+}
+
+.stheater_wrap >ul>li:nth-child(1){
+    background-color: white;
+}
+
+.stheater_wrap >ul>li:nth-child(1)>a{
+    color: black;
+}
+
+.stheater_wrap >ul>li:nth-child(1)>a>span{
+    color:black
+}
+
+
+/* 세번째 영역 */
+
+main>div:nth-child(3) {
+
+
+    padding: 0 20px;
+    background-color: rgb(31, 31, 31);
+}
+
+
+main>div:nth-child(3)>div:nth-child(1) {
+    width: 1160px;
+    margin: 0 auto;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    border-radius: 10px;
+}
+
+main>div:nth-child(3)>div>strong {
+    padding: 10px;
+    font-size: 2.5rem;
+    font-weight: bold;
+
+}
+
+main>div:nth-child(3)>div>span{
+    padding: 10px;
+    font-size: 1.7rem;
+}
+
+
+main>div:nth-child(4){
+   
+    width:1160px;
+    margin:50px auto 0 auto;
+    height:600px;
+    padding:0 20px;
+}
+
+main>div:nth-child(4)> div{
+    width:1120px;
+    height:100%;
+    border-radius: 10px;
+    background-image: url("../../images/imax_03.png");
+    background-size:100%;
+   position: relative;
+   border-radius: 10px;
+
+}
+
+main>div:nth-child(4)> div > p{
+    position: absolute;
+    bottom:60px;
+    font-size: 2.5rem;
+    left:50px;
+    font-weight: bold;
+}
+
+
+
+main>div:nth-child(5){
+    width:100%;
+    background-color: rgb(31,31,31);
+    display: flex;
+    align-items: center;
+    margin-top:50px;
+}
+
+
+main>div:nth-child(5) > div:nth-child(1){
+    width:1160px;
+    margin:0 auto;
+    height:580px;
+    padding:20px;
+    display: flex;
+    justify-content: space-between;
+    height:100%;
+}
+
+main>div:nth-child(5)> div:nth-child(1)>div{
+    width:33%;
+    border-radius: 10px;
+
+    padding:30px;
+    display: flex;
+    flex-direction: column;
+}
+main>div:nth-child(5)>div>img{
+    height:66%;
+    border-radius: 50%;
+
+}
+
+main>div:nth-child(5)>div>div{
+    height:34%;
+    padding:10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+main>div:nth-child(5)>div>div p{
+    font-size: 2rem;
+    padding:10px;
+}
+
+main>div:nth-child(5)>div>div>span{
+    font-size: 1.2rem;   
+}
+
+
+
+
+main>div:nth-child(6){
+    width:1160px;
+    margin:0 auto;
+    height:600px;
+    padding:50px 20px 0 20px ;
+   display: flex;
+}
+
+main>div:nth-child(6)>div{
+    width:100%;
+    background-image: url("../../images/imax_04.jpg");
+    background-size: 100%;
+    position: relative;
+    border-radius: 10px;
+}
+
+main>div:nth-child(6)> div > p{
+    position: absolute;
+    bottom:60px;
+    font-size: 2.5rem;
+    left:50px;
+    font-weight: bold;
+}
+
+
+main>div:nth-child(6)>img{
+    width:1120px;
+    height:100%;
+    border-radius: 10px;
+}
+
+main>div:nth-child(7){
+    width:100%;
+    height:700px;
+    padding:0 20px 0 20px;
+    display: flex;
+    background-color: rgb(31,31,31);
+    margin-top:50px;
+}
+
+main>div:nth-child(7)>div{
+    width:1120px;
+    height:100%;
+    margin:0 auto;
+    border-radius: 10px;
+    background-image: url("../../images/imax_05.jpg");
+    position: relative;
+}
+
+main>div:nth-child(7)> div > p{
+    position: absolute;
+    bottom:60px;
+    font-size: 2.5rem;
+    left:50px;
+    font-weight: bold;
+}
