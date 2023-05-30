@@ -74,7 +74,7 @@
                         <span>|</span>
                         <li><a href="findEmail">아이디 찾기</a></li>
                         <span>|</span>
-                        <li><a href="signUp_sns">회원가입</a></li>
+                        <li><a href="signUp">회원가입</a></li>
                     </ul>
                 </div>
             </div>
