@@ -7,9 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SignUpController {
 	
 	@RequestMapping("/signUp")
-	public String signUp() {
-		return "signUp/signUp";
-	}
-	
+    public String signUp() {
+        return "signUp/signUp";
+    }
 
 }
