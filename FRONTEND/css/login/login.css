@@ -397,43 +397,25 @@ main>div>div>div>:nth-child(2)>form>div>:nth-child(1)>:nth-child(1)>:nth-child(2
 }
 
 /* 아이디 저장 부분*/
-main>div>div>div>:nth-child(2)>form>div>:nth-child(2) {
-    display: flex;
-    flex-direction: row;
 
-    margin-top: 5px;
-    
+.keep_area .bb:before {
+    margin-right: 5px;
+    content: "\f058";
+    font-family: "Font Awesome 5 Free";
     cursor: pointer;
 }
 
-/* 아이디 저장 부분 > i 태그 */
-.circle {
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    box-sizing: border-box;
-    border-radius: 10px;
-    position: relative;
-    top: 4px;
-    cursor: pointer;
-
-    background-image: url(/images/loginpage_images/check_gray.png);
-    background-size: 70%;
-    background-repeat: no-repeat;
-    background-position: center;
+input#aa:checked + label.bb:before {
+    content: "\f058";
+    font-weight: 900;
+    color:rgb(250, 227, 0);
 }
 
-#saveId:checked+.circle {
-    border: 1px solid rgb(250, 227, 0);
-    background-image: url(/images/loginpage_images/check_white.png);
+input#aa {
+    display: none;
 }
 
 
-/* 체크박스는 display:none;을 주면 데이터 처리가 안됨 */
-#saveId {
-    position: absolute;
-    left: -999em;
-}
 
 /* 로그인 버튼 */
 main>div>div>div>:nth-child(2)>form>div>:nth-child(2)>button {
