@@ -28,7 +28,17 @@ public class LoginController {
 			
 	}
 	
-
+	// 회원가입 sns 화면
+	@RequestMapping("/signUp_sns")
+	public String signUp_sns() {
+		return "signUp/signUp_sns";
+	}
+		
+	// 이메일 회원가입 창
+	@RequestMapping("/signUp")
+	public String signUp() {
+		return "signUp/signUp";
+	}
 	
 	
 }
