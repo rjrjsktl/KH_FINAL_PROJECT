@@ -38,7 +38,7 @@ $('.swiper-slide.date').each(function(index, item){
 let today = new Date();
 let playDay = (today.getMonth()+1) + "월 " + today.getDate() + "일 " + weeks[today.getDay()] + "요일";
 
-$('.swiper-slide.date').click(function(){
+$('.swiper-slide.date').on("click", function(){
   playDay = $(this).data('month') + "월 ";
   playDay += $(this).data('date') + "일 ";
   playDay += $(this).data('day') + "요일";
@@ -72,12 +72,12 @@ cinema.click(function(){
 
 // 영화 리스트 버전 선택
 
-$('#movie_option1').click(function(){
+$('#movie_option1').on("click", function(){
   $("#movielist_text").css('display', 'block');
   $("#movielist_thumb").css('display', 'none');
 });
 
-$('#movie_option2').click(function(){
+$('#movie_option2').on("click", function(){
   $("#movielist_text").css('display', 'none');
   $("#movielist_thumb").css('display', 'block');
 });
@@ -88,7 +88,7 @@ $('#movie_option2').click(function(){
 let movie = $('.movielist > li > a');
 let movieName;
 
-movie.click(function(){
+movie.on("click", function(){
   movieName = this.querySelector('.movie_name').innerText;
   $('#movie_select').html(movieName);
   $('.movie_play').css('display', 'none');
@@ -103,7 +103,7 @@ let openHour;
 let openMinute;
 let cinemaRoom;
 
-play.click(function(){
+play.on("click", function(){
   movieName = $(this).closest("[data-movie]").data('movie');
   $('#movie_select').html(movieName);
 
