@@ -270,9 +270,8 @@ main > section{
     width: 100%;
     height: 800px;
 
-    margin: 0 auto;
-    padding-top: 20px; 
-    padding-bottom: 20px;
+    margin: 20px auto;
+    border: 1px solid white;
 }
 
 /* 예매 절차 */
@@ -295,12 +294,11 @@ main > section > :nth-child(1) > ul > li {
   height: 200px;
 
   border-top: 1px solid lightgray;
-  border-left: 1px solid lightgray;
   cursor: pointer;
 }
 
-main > section > :nth-child(1) > ul > li:last-child { 
-  border-bottom: 1px solid lightgray;
+main > section > :nth-child(1) > ul > li:first-child {
+  border-top: none;
 }
 
 main > section > :nth-child(1) > ul > li:nth-child(1) {
@@ -317,7 +315,7 @@ main > section > :nth-child(1) > ul > li:nth-child(2) {
 main > section > div:nth-child(2) {
   width: 92%;
   height: 800px;
-  border: 1px solid white;
+  border-left: 1px solid white;
 }   
 
 main > section > div:nth-child(2) > div:nth-child(1) {
@@ -325,8 +323,9 @@ main > section > div:nth-child(2) > div:nth-child(1) {
   justify-content: center;
   align-items: center;
   position: relative;
+  font-size: 20px;
   width: 100%;
-  height: calc(160px/3);
+  height: calc(200px/3);
   border-bottom: 1px solid white;
 }
 
@@ -335,14 +334,15 @@ main > section > div:nth-child(2) > div:nth-child(1) {
 
 main > section > div:nth-child(2) > div:nth-child(2) {
   width: 100%;
-  height: calc(240px/3);
+  height: 95px;
   border-bottom: 1px solid white;
+  margin-bottom: calc(115px / 3);
 }
 
 main > section > div:nth-child(2) > div:nth-child(2) > ul {
   display: flex;
   justify-content: space-evenly;
-  height: 100%;
+  height: 95px;
   align-items: center;
 }
 
@@ -359,7 +359,7 @@ main > section > div:nth-child(2) > div:nth-child(2) > ul > li > div {
   width: 150px;
   height: 40px;
   line-height: 40px;
-  font-size: 14px;
+  font-size: 18px;
   border: 1px solid #ccc;
   border-radius: 6px;
   margin-left: 18px;
@@ -374,55 +374,165 @@ main > section > div:nth-child(2) > div:nth-child(2) > ul > li > div > div {
 }
 
 main > section > div:nth-child(2) > div:nth-child(2) > ul > li > div > button {
-  width: 40px;
+  width: 36px;
   height: 40px;
-  font-size: 20px;
+  font-size: 18px;
   background-color: transparent;
   border: none;
   cursor: pointer;
 }
 
+
 /* 좌석 선택 */
+
 main > section > div:nth-child(2) > div:nth-child(3) {
+  display: flex;
   width: 100%;
-  height: calc(1600px/3);
+  height: calc(400px + 200px/3);
   border-bottom: 1px solid white;
 }
 
-/* screen */
 
-main > section > div:nth-child(2) > div:nth-child(3) {
-  width: 82%;
-  height: calc(200px/3);
-  line-height: calc(170px - 400px/3);
-  font-size: 16px;
-  text-align: center;
-  background-color: #888;
-  margin: 0 auto;
+main > section > div:nth-child(2) > div:nth-child(3) > div:first-child {
+  width: 80%;
 }
 
-main > section > div:nth-child(2) > div:nth-child(4) {
+main > section > div:nth-child(2) > div:nth-child(3) > div:first-child > div:first-child {
+  width: 90%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 20px;
+  background-color: #888;
+  margin: 0 0 40px 10%;
+}
+
+main > section > div:nth-child(2) > div:nth-child(3) > div:first-child > #seat_area {
+  width: 90%;
+  height: calc(320px + 200px/3);
+  margin-left: 10%;
+  border: 1px solid red;
+  border-bottom: none;
+}
+
+#seat_area > div {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 25px;
+  line-height: 25px;
+  margin-bottom: 7px;
+} 
+
+#seat_area > div:last-child {
+  margin-bottom: 0;
+}
+
+#seat_area > div > a {
+  width: 25px;
+  height: 25px;
+  margin-right: 5.98px;
+  border: 1px solid white;
+  font-size: 11px;
+  text-align: center;
+}
+
+#seat_area > div > a:last-child {
+  margin-right: 0;
+}
+
+main > section > div:nth-child(2) > div:nth-child(3) > div:last-child {
   display: flex;
   flex-direction: column;
-  align-content: space-between;
-  width: 100%;
-  height: 400px;
-  padding: 0 9%;
-  border-bottom: 1px solid white;
+  align-items: center;
+  width: 20%;
+  /*background-color: aquamarine;*/
 }
 
-main > section > div:nth-child(2) > div:nth-child(4) > div {
+main > section > div:nth-child(2) > div:nth-child(3) > div:last-child > div {
+  color: deeppink;
+}
+
+
+
+/* 예매 결과 */
+
+main > section > div:nth-child(2) > div:last-child {
   display: flex;
   align-items: center;
   width: 100%;
-  height: 25px;
-  font-size: 12px;
-  border: 1px solid white;
-}
-
-
-main > section > div:nth-child(2) > div:nth-child(5) {
-  width: 100%;
   height: calc(400px/3);
+  background-color: royalblue;
+  color: white;
+  padding-left: 4%;
 }
 
+main > section > div:nth-child(2) > div:last-child > div {
+  width: 20%;
+  height: 100px;
+  border: 1px solid white;
+  margin-right: 2%;
+}
+
+/* 썸네일 + 영화 정보 */
+
+main > section > div:nth-child(2) > div:last-child > div:first-child {
+  display: flex;
+  width: 30%;
+}
+
+
+/* 썸네일 */
+
+main > section > div:nth-child(2) > div:last-child > div:first-child > #movie_thumb {
+  width: 61.4px;
+  height: 98px;
+  background-image: url("https://cdn.ize.co.kr/news/photo/201505/22033_24447_742.jpg");
+  background-repeat: no-repeat;
+  background-size: 61.4px 98px;
+  margin-right: 5%;
+}
+
+/* 영화 정보 */
+
+main > section > div:nth-child(2) > div:last-child > div:first-child > #movie_detail {
+  width: 80%;
+  height: 100px;
+}
+
+#movie_detail > div:first-child {
+  display: flex;
+  width: 100%;
+  height: 30px;
+  line-height: 33px;
+  margin-top: 10px;
+}
+
+#movie_detail > div:first-child > div:first-child {
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  line-height: 33px;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  margin-right: 12px;
+}
+
+/* 연령 */
+
+.age00 {
+  background-color: #229c56;
+}
+
+.age12 {
+  background-color: #E9b630;
+}
+
+.age15 {
+  background-color: #DD7430;
+}
+
+.age19 {
+  background-color: #D92B36;
+}
