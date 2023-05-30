@@ -38,8 +38,10 @@ function loginValidate(){
     return true; // form 태그 기본 이벤트 정상 수행
 }
 
-const test1111 = $('.test1111');
+const saveIdBtn = $('#saveIdBtn');
 
-test1111.on('click', ()=> {
-    test1111.toggle().add('.addTEst');
+
+saveIdBtn.on('click', ()=> {
+    saveIdBtn.toggle().add('fa-solid fa-check');
 });
+

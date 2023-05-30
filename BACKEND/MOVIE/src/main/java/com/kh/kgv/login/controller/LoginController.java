@@ -1,4 +1,4 @@
-package com.kh.kgv.login;
+package com.kh.kgv.login.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
