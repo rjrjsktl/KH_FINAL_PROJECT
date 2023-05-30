@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인 페이지</title>
     
-    <link rel="stylesheet" href="../../css/login/login.css">
+    <link rel="stylesheet" href="../../css/login/loginTest.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
         <!-- jQuery 라이브러리 추가(CDN) -->
@@ -125,18 +125,17 @@
                             <form action="member/login" method="POST" onsubmit="return loginValidate()">
                                 <div>
                                     <div>
-
                                         <div>
                                             <input type="text" placeholder="아이디" name="inputEmail" maxlength="41">
                                             <input type="password" placeholder="비밀번호" name="inputPw" maxlength="41">
-                                            <label for="saveId">
-                                                <input type="checkbox" id="saveId">
-                                                <i class="fa-thin fa-circle-check circle" ></i>
-                                                <span class="text">아이디 저장하기</span>
-                                            </label>        
+                                            <label>
+                                                <input type="checkbox">
+                                                <i class="fa-thin fa-circle-check"></i>
+                                                <span>로그인 상태 유지</span>
+                                            </label>
                                         </div>
                                     </div>
-
+                                    
                                     <div>
                                         <button>로그인</button>
                                     </div>
