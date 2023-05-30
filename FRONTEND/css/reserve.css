@@ -257,6 +257,8 @@ footer>section>div:nth-child(2) span:last-child {
 /* =============================================================== */
 /* 아래부터 추가하세요. */
 
+::-webkit-scrollbar {display: none; }
+
 main {
     width: 1160px;
     height: 2000px;
