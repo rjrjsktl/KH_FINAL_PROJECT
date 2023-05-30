@@ -170,55 +170,88 @@ $(document).on('click', () => {
 });
 
 // ===============================================================================
-// 무결성검사 기능
+// 유효성검사 기능
 
-let confirm = $('.bottom_Submit');
+let confirmBtn = $('.bottom_Submit');
 
 let movie_title = $('.movie_title');
 
 let movie_time = $('.movie_time');
 // 상영시간 숫자만 입력 정규식
-movie_time.on('blur', (e) => {
+movie_time.on('change', (e) => {
     let timeCheck = /^[0-9]{1,3}$/;
     if (!movie_time.val().match(timeCheck)) {
-        movie_time.val('')
-        alert('3자리 이하의 숫자만 입력하세요.')
+        movie_time.val('');
+        alert('3자리 이하의 숫자만 입력하세요.');
         e.preventDefault();
         return false;
     }
 });
 
 let movie_country = $('.movie_country');
+// 제작국가 한글만 입력 정규식
+movie_country.on('change', (e) => {
+    let korCheck = /([^가-힣ㄱ-ㅎㅏ-ㅣ])/;
+    if (movie_country.val().match(korCheck)) {
+        movie_country.val('');
+        alert('한글만 입력해주세요.');
+        e.preventDefault();
+        return false;
+
+    }
+});
+
 
 let movie_releseDate = $('.movie_releseDate');
 
 let movie_image = $('.movie_image');
 
-let movie_story = $('.movie_story').val();
+let movie_story = $('.movie_story');
 
 // level_Arr
 // genre_Arr
 
-confirm.on('click', (e) => {
-    e.preventDefault();
+confirmBtn.on('click', (e) => {
     if (!movie_title.val()) {
         alert('제목이 입력되지 않았습니다.');
         movie_title.focus();
+        e.preventDefault();
         return false;
     };
     if (!movie_time.val()) {
         alert('상영 시간이 입력되지 않았습니다.');
         movie_time.focus();
+        e.preventDefault();
         return false;
     };
-    if (!movie_title.val()) {
-        alert('제목이 입력되지 않았습니다.');
-        movie_title.focus();
+    if (!movie_country.val()) {
+        alert('제작국가가 입력되지 않았습니다.');
+        movie_country.focus();
+        e.preventDefault();
         return false;
     };
-    if (!movie_title.val()) {
-        alert('제목이 입력되지 않았습니다.');
-        movie_title.focus();
+    if (!movie_releseDate.val()) {
+        alert('개봉일이 입력되지 않았습니다.');
+        movie_releseDate.focus();
+        e.preventDefault();
+        return false;
+    };
+    if (level_Arr.length == 0) {
+        alert('관람 등급이 선택되지 않았습니다.');
+        level_slide.toggle();
+        e.preventDefault();
+        return false;
+    };
+    if (genre_Arr.length == 0) {
+        alert('장르가 선택되지 않았습니다.');
+        Genre_Items.toggle();
+        e.preventDefault();
+        return false;
+    };
+    if (!$('.movie_story').val()) {
+        alert('줄거리를 입력하지 않았습니다.');
+        movie_story.focus();
+        e.preventDefault();
         return false;
     };
     console.log('저장버튼이 눌림.');
