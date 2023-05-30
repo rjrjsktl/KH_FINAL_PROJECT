@@ -417,7 +417,6 @@ main>div>div>div>:nth-child(2)>form>div>:nth-child(2) {
     top: 4px;
     cursor: pointer;
 
-    background-image: url(/images/loginpage_images/check_gray.png);
     background-size: 70%;
     background-repeat: no-repeat;
     background-position: center;
@@ -425,7 +424,7 @@ main>div>div>div>:nth-child(2)>form>div>:nth-child(2) {
 
 #saveId:checked+.circle {
     border: 1px solid rgb(250, 227, 0);
-    background-image: url(/images/loginpage_images/check_white.png);
+    background-image: url(${contextPath}/resources/images/login_images/check_white.png);
 }
 
 

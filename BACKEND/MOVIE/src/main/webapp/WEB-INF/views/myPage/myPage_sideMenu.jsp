@@ -8,25 +8,25 @@
 <section class="side-main">
     MY KGV HOME
     <ul class="list-group">
-        <li> <a href="mypage_info.html">정보 수정</a> </li>
-        <!-- <li> <a href="${contextPath}/member/myPage/profile">정보 수정</a> </li> -->
+        <li> <a href="${contextPath}/myPage/info">정보 수정</a> </li>
+        <%-- <li> <a href="${contextPath}/member/myPage/profile">정보 수정</a> </li> --%>
 
-        <!-- /community/member/myPage/myboard -->
+        <%-- /community/member/myPage/myboard --%>
         <!-- 리뷰나 평점이라고 말 바꿔야함 -->
-        <li> <a href="mypage_myboard.html">내가 쓴 리뷰</a></li>
-        <!-- <li> <a href="${contextPath}/member/myPage/myboard">내 글 확인</a> </li> -->
+        <li> <a href="${contextPath}/myPage/board">내가 쓴 리뷰</a></li>
+    	<%-- <li> <a href="${contextPath}/member/myPage/myboard">내 글 확인</a> </li> --%>
 
-        <!-- /community/member/myPage/reservationCf -->
-        <li> <a href="mypage_reservationCf.html">내가 본 영화</a> </li>
-        <!-- <li> <a href="${contextPath}/member/myPage/reservationCf">예약확인</a> </li> -->
+    	<%-- /community/member/myPage/reservationCf --%>
+    	<li> <a href="${contextPath}/myPage/reservationCf">내가 본 영화</a> </li>
+    	<%-- <li> <a href="${contextPath}/member/myPage/reservationCf">예약확인</a> </li> --%>
 
-        <!-- /community/member/myPage/changePw -->
-        <li> <a href="mypage_changePw.html">비밀번호 변경</a> </li>
-        <!-- <li> <a href="${contextPath}/member/myPage/changePw">비밀번호 변경</a> </li> -->
+    	<%-- /community/member/myPage/changePw --%>
+    	<li> <a href="${contextPath}/myPage/changePw">비밀번호 변경</a> </li>
+    	<%-- <li> <a href="${contextPath}/member/myPage/changePw">비밀번호 변경</a> </li> --%>
 
-        <!-- /community/member/myPage/secession -->
-        <li> <a href="mypage_secession.html">회원 탈퇴</a> </li>
-        <!-- <li> <a href="${contextPath}/member/myPage/secession">회원 탈퇴</a> </li> -->
+    	<%-- /community/member/myPage/secession --%>
+    	<li> <a href="${contextPath}/myPage/secession">회원 탈퇴</a> </li>
+        <%-- <li> <a href="${contextPath}/member/myPage/secession">회원 탈퇴</a> </li> --%>
 
     </ul>
 </section>

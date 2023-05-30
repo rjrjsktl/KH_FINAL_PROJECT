@@ -36,6 +36,28 @@ public class MyPageController {
 		return "myPage/myPage_info";
 	}
 	
+	@GetMapping("/board")
+	public String board() {
+		return "myPage/myPage_myBoard";
+	}
+	
+	@GetMapping("/reservationCf")
+	public String reservationCf() {
+		return "myPage/myPage_reservationCf";
+	}
+	
+	@GetMapping("/changePw")
+	public String changePw() {
+		return "myPage/myPage_changePw";
+	}
+	
+	@GetMapping("/secession")
+	public String secession() {
+		return "myPage/myPage_secession";
+	}
+	
+
+	
 	
 	
 	

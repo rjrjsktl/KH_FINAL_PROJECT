@@ -550,6 +550,7 @@
 }
 
 
+/* 저장 및 취소 버튼 */
 .table_bottom {
     flex: 1;
     display: flex;
