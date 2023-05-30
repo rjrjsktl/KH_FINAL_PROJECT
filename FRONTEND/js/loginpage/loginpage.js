@@ -37,3 +37,11 @@ function loginValidate(){
 
     return true; // form 태그 기본 이벤트 정상 수행
 }
+
+const saveIdBtn = $('#saveIdBtn');
+
+
+saveIdBtn.on('click', ()=> {
+    saveIdBtn.toggle().add('fa-solid fa-check');
+});
+
