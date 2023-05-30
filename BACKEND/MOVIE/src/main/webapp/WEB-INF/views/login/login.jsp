@@ -44,11 +44,11 @@
                                         <div>
                                             <input type="text" placeholder="아이디" name="inputEmail" maxlength="41">
                                             <input type="password" placeholder="비밀번호" name="inputPw" maxlength="41">
-                                            <label for="saveId">
-                                                <input type="checkbox" id="saveId">
-                                                <i class="circle" style="background-image: url(${contextPath}/resources/images/login_images/check_gray.png);"></i>
-                                                <span class="text">아이디 저장하기</span>
-                                            </label>        
+                                            <div class="keep_area">
+                                                <input type="checkbox" id="aa">
+                                                <label for="aa" class="bb"></label>
+                                                <label for="aa" class="cc">아이디 저장</label>
+                                            </div>        
                                         </div>
                                     </div>
 
@@ -74,7 +74,7 @@
                         <span>|</span>
                         <li><a href="findEmail">아이디 찾기</a></li>
                         <span>|</span>
-                        <li><a href="signUp_sns">회원가입</a></li>
+                        <li><a href="signUp">회원가입</a></li>
                     </ul>
                 </div>
             </div>

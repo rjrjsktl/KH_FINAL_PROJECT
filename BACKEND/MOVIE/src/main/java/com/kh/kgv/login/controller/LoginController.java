@@ -1,4 +1,4 @@
-package com.kh.kgv.login;
+package com.kh.kgv.login.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,23 +26,6 @@ public class LoginController {
 		return "login/findEmail_1";
 			
 	}
-	
-	//회원가입 선택창
-	@RequestMapping("/signUp_sns")
-	public String signUp_sns() {
-		return "signup/signup_sns";
-	}
-	
-	
-	//회원가입창 화면 전환
-	@RequestMapping("/signUp")
-	public String singup() {
-		return "signup/signUp";
-	}
-	
-	
-	
-	
 	
 	
 }
