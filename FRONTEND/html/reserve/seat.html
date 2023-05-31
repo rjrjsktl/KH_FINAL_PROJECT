@@ -220,12 +220,12 @@
                             <span>선택좌석</span>
                           </div>
                           <div>
-                            <div style="background-color: #888"></div>
-                            <span>예매완료</span>
-                          </div>
-                          <div>
                             <div style="background-color:  #ccc; color: #666">X</div>
                             <span>선택불가</span>
+                          </div>
+                          <div>
+                            <div style="background-color: #888"></div>
+                            <span>예매완료</span>
                           </div>
                           
                           <div>
@@ -244,16 +244,52 @@
                         <div id="movie_detail">
                           <div>
                             <div class="age00">All</div>
-                            <div><span class="movie_name">원신: 신들의 전쟁</span></div>
+                            <div><span id="movie_name">원신: 신들의 마지막 전쟁</span></div>
                           </div>
-                          
-                          <div>2023.05.20(토) 16시 10분</div>
-                          <div>강남 1관</div>
+                          <div id="play_date">2023년 05월 20일 토요일</div>
+                          <div id="play_time">16시 10분 &#126; 18시 05분</div>
                         </div>
                       </div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
+                      <div>
+                        <div>강남 1관 일반석</div>
+                        <div id="seat_code">
+                          <div>A21, A22, A23, A24,</div> 
+                          <div>A25, A26, A27, A28</div>
+                        </div>
+                      </div>
+                      <div id="price_calc">
+                        <div>
+                          성인
+                          <div>
+                            <span id="adult_price">15000</span>원 &times; <span>2</span>
+                          </div>
+                        </div>
+                        <div>
+                          청소년
+                          <div>
+                            <span id="youth_price">12000</span>원 &times; <span>2</span>
+                          </div>
+                        </div> 
+                        <div>
+                          경로
+                          <div>
+                            <span id="senior_price">7000</span>원 &times; <span>2</span>
+                          </div>
+                        </div>
+                        <div>
+                          우대
+                          <div>
+                            <span id="special_price">5000</span>원 &times; <span>2</span>
+                          </div> 
+                        </div>
+                        <div>
+                          합계
+                          <div style="color: crimson">
+                            <span id="total_price" style="color: crimson">78000</span>원
+                          </div>
+                        </div>
+                      </div>
+                      <div><a href="#none">결제하기</a></div>
                   </div>
               </div>
 
