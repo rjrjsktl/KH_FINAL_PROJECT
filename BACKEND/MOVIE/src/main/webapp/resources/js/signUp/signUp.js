@@ -314,7 +314,7 @@ inputBirthday.addEventListener("input", function () {
 
 
         } else {
-            checkObj.inputBirthday = true;
+            checkObj.inputBirthday = false;
 
         }
     }
