@@ -1,413 +1,289 @@
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-size: 1em;
-    font-family: "GmarketSansMedium";
-    color: rgb(222, 222, 222);
-    list-style-type: none;
-}
-
-* a {
-    text-decoration: none;
-    color: rgb(222, 222, 222);
-}
-
- 
-body {
-    background-color: rgb(33, 33, 33);
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-}
-
-/* 헤더 */
-header {
-    width: 100%;
-    padding: 40px 0 0 0;
-}
-
-/* 헤더내부 위쪽 섹션 */
-header>section:nth-child(1) {
-    width: 1160px;
-    height: 100px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-
-}
-
-/* 로고에어리어 */
-header>section:nth-child(1)>div:nth-child(1) {
-    width: 35%;
-    height: 100%;
-    display: flex;
-}
-
-/* 로고에어리어 이미지div */
-header>section:nth-child(1)>div:nth-child(1)>div:first-child {
-    width: 40%;
-    display: flex;
-    align-items: center;
-}
-
-/* 로고에어리어 이미지 사이즈*/
-header>section:nth-child(1)>div:nth-child(1)>div:first-child>a>img {
-    width: 160px;
-    height: 70px;
-}
-
-/* 헤드 첫번째섹션 khtheater */
-header>section:nth-child(1)>div:nth-child(1)>div:last-child {
-    width: 60%;
-    display: flex;
-    align-items: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-top: 40px;
-}
-
-/* 헤드 첫번째 섹션 왼쪽부분 */
-header>section:nth-child(1)>div:nth-child(2) {
-    width: 45%;
-    display: flex;
-}
-
-/* 헤더 광고 에어리어*/
-header>section:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
-    width: 40%;
-    display: flex;
-    align-items: center;
-}
-
-/* 헤더 내정보, 로그인, 고객센터 Ul*/
-header>section:nth-child(1)>div:nth-child(2)>ul {
-    width: 60%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    font-size:0.rem;
-}
-
-/* 리스트 */
-header>section:nth-child(1)>div:nth-child(2)>ul>li {
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-/*리스트 내부 속성*/
-header>section:nth-child(1)>div:nth-child(2)>ul>li>* {
-    flex: 1 1 0;
-    display: flex;
-    flex-direction: column;
-}
-
-/* 리스트 내부 스타일*/
-header>section:nth-child(1)>div:nth-child(2)>ul>li>*>span {
-    font-size: 1.5rem;
-    margin: 0 auto;
-}
-
-/* 리스트 내부 Ptag*/
-header>section:nth-child(1)>div:nth-child(2)>ul>li>*>p {
-    text-align: center;
-}
-
-header>nav {
-    width: 100%;
-    height: 60px;
-    border-top: 1px solid rgb(99, 99, 99);
-    border-bottom: 1px solid rgb(99, 99, 99);
-    display: flex;
-
-}
-
-header>nav>div {
-    width: 1160px;
-    height: 60px;
-    padding: 0 20px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-}
-
-header>nav ul {
-    display: flex;
-    line-height: 58px;
-
-}
-
-header>nav ul>li {
-    padding-right: 50px;
-    font-weight: bold;
-}
-
-header>nav ul>li:nth-child(3)>a {
-    color: red;
-}
-
-header>nav>div>div {
-    width: 30%;
-    display: flex;
-}
-
-header>nav>div>div>form {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    border-left: 1px solid rgb(99, 99, 99);
-    border-right: 1px solid rgb(99, 99, 99);
-}
-
-header>nav>div>div>form>input {
-    width: 80%;
-    background-color: transparent;
-    border: none;
-
-    outline: none;
-    padding-left: 10px;
-    height: 80%;
-}
-
-header>nav>div>div>form button {
-    width: 20%;
-    background-color: transparent;
-    outline: none;
-    border: none;
-    cursor: pointer;
-
-}
-
-header>nav ul>li>a:hover {
-    color: rgb(237, 49, 36);
-}
-
-footer>section {
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-}
-
-footer>section>div:nth-child(1) {
-
-    height: 30%;
-
-    border-top: 1px solid rgb(99, 99, 99);
-    border-bottom: 1px solid rgb(99, 99, 99);
-
-}
-
-footer>section>div:nth-child(1)>ul {
-    width: 1160px;
-    margin: 0 auto;
-    display: flex;
-    line-height: 58px;
-    padding: 0 20px;
-}
-
-footer>section>div:nth-child(1)>ul>li {
-    padding-right: 20px;
-    font-weight: bold;
-}
-
-footer>section>div:nth-child(1)>ul>li>a:hover {
-    color: rgb(200, 200, 200)
-}
-
-footer>section>div:nth-child(1)>ul>span {
-    padding-right: 20px;
-}
-
-footer>section>div:nth-child(2) {
-    width: 1160px;
-    margin: 0 auto;
-    height: 70%;
-    padding: 20px 0 0 20px;
-    font-weight: 200;
-    display: flex;
-    flex-direction: column;
-}
-
-footer>section>div:nth-child(2) span {
-    margin-bottom: 3px;
-}
-
-footer>section>div:nth-child(2) span:first-child {
-    margin-bottom: 13px;
-    font-weight: 500;
-}
-
-footer>section>div:nth-child(2) span:last-child {
-    font-size: 0.7rem;
-    margin-top: 13px;
-}
-
-
-/* 첫번째 섹션 ( 이미지 스크린 )  */
+/* 1 */
 main>section:nth-child(1) {
     width: 100%;
-    background-color: black;
+    background-color: #000000;
+
 }
 
-main>section:nth-child(1)>div:nth-child(1) {
-    width: 1160px;
-    height: 500px;
-    padding: 0 20px;
-    margin: 0 auto;
+.mainImg-container{
+    width:1040px;
+    margin:0 auto;
+    padding:50px 30px;
+    position: relative;
+    height:520px;
+}
+
+.main-swiperWrap{
     display: flex;
-    flex-direction: column;
-
 }
 
-main>section:nth-child(1)>div:nth-child(1)>a {
+.main-Slider{
+    display: flex;
+    height:420px;
+}
+
+.main-Slider > img {
+    width:980px;
+}
+
+
+
+.mainImg-container .swiper-main-next,.mainImg-container .swiper-main-prev
+{
+    position: absolute;
+    width:44px;
+    height:44px;
+    color:black;
+    background-color: white;
+    border-radius: 50%;
+    line-height: 42px;
+    text-align: center;
+    font-weight: bold;
+    top:44%;
+    z-index:1;
+    opacity: 0.5;
+    cursor:pointer;
+}
+
+
+.mainImg-container .swiper-main-next{
+    right:7px;
+    z-index: 10;
+}
+
+.mainImg-container .swiper-main-prev{
+    left:7px;
+    z-index: 10;
+}
+
+
+/* 
+.slideshow-container {
+    position: relative;
     margin: 0 auto;
 }
 
-main>section:nth-child(1)>div:nth-child(1) img {
-    width: 1120px;
-    height: 500px;
-
-}
-
-
-/* 두번째 섹션의 상단부div */
-main>section:nth-child(2) {
-    width: 100%;
-}
-
-main>section:nth-child(2)>div:nth-child(1) {
-    padding: 40px 20px;
+.slideshow-container a {
     margin: 0 auto;
-    width: 1160px;
-    display: flex;
-    flex-direction: column;
+    display: flex
 }
 
-main>section:nth-child(2)>div>div:nth-child(1) {
-    height: 70px;
+.slideshow-container img {
+    min-width: 1920px;
+    width: 1920px;
+    height: 420px;
+    margin: 0 auto;
+}
+
+.mySlides {
+    display: none;
+}
+
+.fade {
+    -webkit-animation: fade 10s linear infinite;
+    animation: fade 0s linear infinite;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    width: auto;
+    margin-top: -22px;
+    color: #a3a3a3;
+    top: 22px;
+    font-size: 4rem;
+    font-weight: 100;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.prev {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    right: 96%;
+    height:420px;
+}
+
+.next {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    left: 96%;
+    height:420px;
+}
+
+.prev:hover,
+.next:hover {
+    color: rgb(68 214 44);
+} */
+
+/* //////////////////////////////////////// - 1st section */
+
+
+/* 2 카드 에어리어 */
+main>section:nth-child(2){
+    width:1040px;
+    margin:0 auto;
+    padding:50px 30px;
+    position: relative;
+}
+
+main>section:nth-child(2) > .swiper-container {
+    height: auto;
+    /* Height should be auto or set a specific height */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+main>section:nth-child(2) .swiper-title {
     display: flex;
+    height: 60px;
     justify-content: space-between;
-    align-items: center;
 }
 
-main>section:nth-child(2)>div>div:nth-child(1)>div:nth-child(1) * {
+main>section:nth-child(2) .swiper-title>div:nth-child(1) * {
     font-size: 1.5rem;
     font-weight: bold;
     margin-right: 30px;
 }
 
-main>section:nth-child(2)>div>div:nth-child(1)>div:nth-child(2) {
-    width: 150px;
-    height: 42px;
-    border-radius: 15px;
-    border: 2px solid rgb(99, 99, 99);
-    font-size: 1.2rem;
+main>section:nth-child(2) .swiper-title>div:nth-child(1)>a:hover {
+    color: #FCFCFC;
+}
+
+main>section:nth-child(2) .swiper-title>button {
+    width: 145px;
+    height: 40px;
+    background-color: #494949;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    color: #FFff;
+
+    border: none;
+}
+
+main>section:nth-child(2) .swiper-slide {
+    flex: 0 0 auto;
+    /* Important to prevent slides from stretching */
+    /* Each slide will take up 25% of the width of the container */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+}
+
+main>section:nth-child(2) .swiper-title>button:hover {
+    background-color: #FCFCFC;
+    color: #000000;
+}
+
+main>section:nth-child(2) .swiper-slide>div:nth-child(1) {
+    position: relative;
+}
+
+main>section:nth-child(2) .swiper-slide>div:nth-child(1)>em {
+    position: absolute;
+    font-size: 2rem;
+    z-index: 1;
+    padding: 10px;
+}
+
+main>section:nth-child(2) .swiper-slide>div:nth-child(1)>a>img {
+    width: 100%;
+
+}
+
+main>section:nth-child(2) .swiper-slide>div:nth-child(2) {
+    margin-top: 10px;
+    text-align: center;
+}
+
+main>section:nth-child(2) .swiper-slide>div:nth-child(2) >a>span{
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
-main>section:nth-child(2)>div>div:nth-child(2) {
-    height: 80%;
+main>section:nth-child(2) .swiper-slide>div:nth-child(2)>div {
     display: flex;
+    justify-content: space-around;
+    padding: 10px 0 5px 0;
+}
+
+main>section:nth-child(2) .swiper-slide>div:nth-child(2)>div>p {
+    font-size: 0.7rem
 
 }
 
-main> section:nth-child(2) > div > div:nth-child(2) > ol {
-    display: flex;
-}
-
-main> section:nth-child(2) > div > div:nth-child(2) > ol > li {
-    margin: 30px 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-right:45px;
-}
-
-main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(1) {
-    width: 100%;
-    height: 80%;
-}
-
-main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(1)>span {
-    position: absolute;
-    width:30px;
-    height:30px;
-    margin:20px;
-    line-height: 28px;
-    font-size: 2rem;
-    z-index: 1;
-   }
-
-   main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(1)>a>img {
-    width: 246px;
-    height: 324px;
-    border-radius: 10px;
-    position: relative;
-}
-main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(2){
-    margin-top:10px;
-    display: flex;
-    flex-direction: column;
-}
-
-/*  */
-main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(2) > a {
-    font-size: 1.5rem;
- }
-/*  */
-
-main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(2) > div {
-    display: flex;
-    align-items: center;
-    margin:10px 0 ;
+main>section:nth-child(2) .swiper-slide>div:nth-child(2)>div>p>span {
     font-size: 0.9rem;
- }
+}
 
- main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(2) > div > p:nth-child(1) {
-    width:42%;
-   margin-right:16px;
- }
-
- main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(3) {
+main>section:nth-child(2) .swiper-slide>div:nth-child(3) {
     display: flex;
- }
+    justify-content: space-around;
+}
 
- main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(3) >button {
-    height:40px;
-    background-color: transparent;
-    outline: none;
-    border:1px solid lightgray;
-    padding:0 5px;
+main>section:nth-child(2) .swiper-slide>div:nth-child(3)>button {
+    background-color: #494949;
     border-radius: 10px;
-    cursor:pointer;
- }
+    outline: none;
+    cursor: pointer;
+    color: #FFff;
+    border: none;
+}
 
- main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(3) >button:nth-child(1) {
-    width:30%;
-    margin-right:10px;
- }
+main>section:nth-child(2) > div:nth-child(3),
 
- main> section:nth-child(2) > div > div:nth-child(2) > ol > li>div:nth-child(3) >button:nth-child(2) {
-    width:70%;
+main>section:nth-child(2) > div:nth-child(4)
+{
+    position: absolute;
+    width:44px;
+    height:44px;
     color:black;
     background-color: white;
- }
+    border-radius: 50%;
+    line-height: 42px;
+    text-align: center;
+    font-weight: bold;
+    top:44%;
+    z-index:1;
+    opacity: 0.5;
+}
+
+.swiper-button-next{
+    width:10px;
+    height:10px;
+}
+
+main>section:nth-child(2) > div:nth-child(3){
+    right:0;
+    z-index: 10;
+}
+
+main>section:nth-child(2)> div:nth-child(4){
+    left:0;
+    z-index: 10;
+}
+
+/* 
+.swiper-slide>div:nth-child(3)>button:nth-child(1) {
+    width: 25%;
+    height: 40px;
+}
+
+.swiper-slide>div:nth-child(3)>button:nth-child(2) {
+    width: 145px;
+    height: 40px;
+    background-color: rgb(197, 2, 2);
+    color: #FFff;   
+}
+
+.swiper-slide>div:nth-child(3)>button:hover {
+    background-color: #FCFCFC;
+    color: #000000;
+} */
+
+
 
 
 /* 세번재 섹션 이벤트세션 ------------------------------------------------------------------ */
@@ -417,9 +293,9 @@ main>section:nth-child(3) {
 }
 
 main>section:nth-child(3)>div:nth-child(1) {
-    padding: 40px 20px;
     margin: 0 auto;
-    width: 1160px;
+    width: 1040px;
+    padding: 50px 30px;
     height: 500px;
     display: flex;
     flex-direction: column;
@@ -451,7 +327,7 @@ main>section:nth-child(3)>div>div:nth-child(1)>div:nth-child(2)>div:first-child 
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    border: 2px solid rgb(99, 99, 99);
+    border: 1px solid rgb(68, 214, 44);
     margin-right: 10px;
     line-height: 40px;
     display: flex;
@@ -464,7 +340,7 @@ main>section:nth-child(3)>div>div:nth-child(1)>div:nth-child(2)>div:last-child {
     height: 60%;
     border-radius: 15px;
 
-    border: 2px solid rgb(99, 99, 99);
+    border: 1px solid rgb(68, 214, 44);
     font-size: 1.2rem;
     display: flex;
     justify-content: center;
@@ -472,65 +348,73 @@ main>section:nth-child(3)>div>div:nth-child(1)>div:nth-child(2)>div:last-child {
     font-weight: bold;
 }
 
+main>section:nth-child(3)>div>div:nth-child(1)>div:nth-child(2)>div:last-child>a:hover {
+    color: #FCFCFC;
+}
+
 main>section:nth-child(3)>div:nth-child(1)>div:nth-child(2) {
     display: flex;
 }
 
 
-main > section:nth-child(3) > div > div:nth-child(2){
-    height:100%;
+main>section:nth-child(3)>div>div:nth-child(2) {
+    height: 100%;
     display: flex;
 }
 
 
-main > section:nth-child(3) > div > div:nth-child(2) > ol{
-    width:100%;
-    height:100%;
+main>section:nth-child(3)>div>div:nth-child(2)>ol {
+    width: 100%;
+    height: 100%;
     display: flex;
+    justify-content: space-between;
 }
 
 
-main > section:nth-child(3) > div > div:nth-child(2) > ol > li{
-    width:31%;
-    height:100%;
+main>section:nth-child(3)>div>div:nth-child(2)>ol>li {
+    width: 31%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    margin-right:41px;
+
 }
 
-main > section:nth-child(3) > div > div:nth-child(2) > ol > li > div:nth-child(1){
+main>section:nth-child(3)>div>div:nth-child(2)>ol>li>div:nth-child(1) {
     display: flex;
-    height:80%;
+    height: 80%;
     flex-direction: column;
 }
-main > section:nth-child(3) > div > div:nth-child(2) > ol > li > div:nth-child(1) > a {
+
+main>section:nth-child(3)>div>div:nth-child(2)>ol>li>div:nth-child(1)>a {
     display: flex;
+    flex: 1 1 0;
 }
 
-main > section:nth-child(3) > div > div:nth-child(2) > ol > li > div:nth-child(1) > a > img{
-    width:346px;
-    height:278px;
-    border:1px solid red;
+main>section:nth-child(3)>div>div:nth-child(2)>ol>li>div:nth-child(1)>a>img {
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgb(68 214 44);
     border-radius: 10%;
 }
 
-main > section:nth-child(3) > div > div:nth-child(2) > ol > li > div:nth-child(2){
+main>section:nth-child(3)>div>div:nth-child(2)>ol>li>div:nth-child(2) {
     display: flex;
-    height:20%;
+    height: 20%;
     flex-direction: column;
 }
 
-main > section:nth-child(3) > div > div:nth-child(2) > ol > li > div:nth-child(2) > a {
-    height:70%;
+main>section:nth-child(3)>div>div:nth-child(2)>ol>li>div:nth-child(2)>a {
+    height: 70%;
     text-align: center;
-    line-height:46px;
+    line-height: 46px;
     font-size: 1.5rem;
 }
 
-main > section:nth-child(3) > div > div:nth-child(2) > ol > li > div:nth-child(2) > div {
-    height:30%;
+main>section:nth-child(3)>div>div:nth-child(2)>ol>li>div:nth-child(2)>div {
+    height: 30%;
     text-align: center;
 }
+
 
 
 
@@ -542,20 +426,22 @@ main>section:nth-child(4) {
 }
 
 main>section:nth-child(4)>div:nth-child(1) {
-    padding: 40px 20px;
+
     margin: 0 auto;
-    width: 1160px;
-    height: 500px;
+    width: 1040px;
+    padding: 50px 30px;
+    height: 450px;
     display: flex;
     flex-direction: column;
 }
 
 main>section:nth-child(4)>div>div:nth-child(1) {
     width: 100%;
-    height: 20%;
+    height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 
@@ -568,9 +454,9 @@ main>section:nth-child(4)>div>div:nth-child(1)>div:nth-child(1) * {
 
 main>section:nth-child(4)>div>div:nth-child(1)>div:nth-child(2) {
     width: 150px;
-    height: 50%;
+    height: 42px;
     border-radius: 15px;
-    border: 2px solid rgb(99, 99, 99);
+    border: 2px solid rgb(68 214 44);
     font-size: 1.2rem;
     display: flex;
     justify-content: center;
@@ -578,6 +464,11 @@ main>section:nth-child(4)>div>div:nth-child(1)>div:nth-child(2) {
     font-weight: bold;
 }
 
+main>section:nth-child(4)>div>div:nth-child(1)>div:nth-child(2)>a:hover {
+    color: #FCFCFC;
+}
+
+/* 영화관 소개 랩퍼 DIV */
 main>section:nth-child(4)>div>div:nth-child(2) {
     width: 100%;
     display: flex;
@@ -585,134 +476,137 @@ main>section:nth-child(4)>div>div:nth-child(2) {
     justify-content: space-between;
 }
 
+/* 영화관소개 왼쪽 DIV */
 main>section:nth-child(4)>div>div:nth-child(2)>div:first-child {
     width: 60%;
+    display: flex;
+
+
+}
+
+main>section:nth-child(4)>div>div:nth-child(2)>div:first-child>a {
+    display: flex;
+    width: 85%;
     height: 100%;
 
 }
 
-main>section:nth-child(4)>div>div:nth-child(2)>div:first-child > a {
-    display: flex;
-}
-
-main>section:nth-child(4)>div>div:nth-child(2)>div:first-child > a > img {
-    width:630px;
-    height:336px;
-    border:1px solid red;
-   border-radius: 10px;
+main>section:nth-child(4)>div:nth-child(1)>div:nth-child(2)>div:first-child>a>img {
+    width: 100%;
+    border-radius: 10px;
+    height: 100%;
+    border: 1px solid rgb(68 214 44);
 }
 
 
+/* 영화관 소개 왼쪽 DIV */
 main>section:nth-child(4)>div>div:nth-child(2)>div:last-child {
     width: 40%;
-    height: 100%;
     display: flex;
     flex-direction: column;
- 
+
 }
 
 main>section:nth-child(4)>div>div:nth-child(2)>div:last-child>a {
-    width: 100%;
-    height: 20%;
     font-size: 1.5rem;
-    border-bottom: 1px solid lightgray;
+    flex: 1 1 0;
+    border-bottom: 1px solid #a3a3a3;
     display: flex;
     align-items: center;
-    padding:10px;
+    padding: 10px;
 }
 
 main>section:nth-child(4)>div>div:nth-child(2)>div:last-child>a:first-child {
-    border-top: 1px solid lightgray;
+    border-top: 1px solid #a3a3a3;
 }
 
 
 
 main>section:nth-child(4)>div>div:nth-child(2)>div:last-child>a>div {
     flex: 1 1 0;
+
     display: flex;
     justify-content: space-between;
 }
 
-main>section:nth-child(4)>div>div:nth-child(2)>div:last-child>a>div>span:first-child {
-
-    font-size: 1.5rem;
-    
+main>section:nth-child(4)>div>div:nth-child(2)>div:last-child>a>div>span {
+    font-size: 1.2rem;
 }
+
 
 main>section:nth-child(4)>div>div:nth-child(2)>div:last-child>a>div>span:last-child {
 
-    background-color: rgb(25,25,25);
+    background-color: #191919;
     border-radius: 10px;
     font-size: 1rem;
-    line-height:36.36px;
-    
+
 }
 
-main > section:nth-child(5){
-    width:100%;
-    height:350px;
+main>section:nth-child(5) {
+    width: 100%;
+    height: 350px;
     background-color: black;
 }
 
 
 /* 섹션5번째 랩퍼 */
-main > section:nth-child(5) > div{
-    width:1160px;
-    height:100%;
-    margin:0 auto;
-    padding:40px 20px;
+main>section:nth-child(5)>div {
+    width: 1040px;
+    padding: 50px 30px;
+    height: 100%;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
 }
 
 
 /* 좌측랩퍼 암코리안탑클래스힙합모범노블레스.. */
-main > section:nth-child(5) > div > div:nth-child(1){
-    width:65%;
-    border:1px solid lightgray;
+main>section:nth-child(5)>div>div:nth-child(1) {
+    width: 65%;
+    border: 1px solid #a3a3a3;
     border-radius: 10px;
-    padding:30px;
+    padding: 30px;
 }
 
 /* 공지사항 섹션랩퍼 */
-main > section:nth-child(5) > div > div:nth-child(1) > div:nth-child(1){
-    height:20%;
+main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(1) {
+    height: 20%;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid lightgray;
-    margin-top:10px;
-    padding-bottom:20px;
+    border-bottom: 1px solid #a3a3a3;
+    margin-top: 10px;
+    padding-bottom: 20px;
 }
 
-main > section:nth-child(5) > div > div:nth-child(1) > div:nth-child(1) > :nth-child(1){
-    width:15%;
-    font-size:1rem;
+main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(1)> :nth-child(1) {
+    width: 15%;
+    font-size: 1rem;
     font-weight: bold;
 
 }
 
-main > section:nth-child(5) > div > div:nth-child(1) > div:nth-child(1) > :nth-child(2){
-    width:75%;
-    font-size:1rem;
+main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(1)> :nth-child(2) {
+    width: 75%;
+    font-size: 1rem;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-   
-    
+
+
 }
 
-main > section:nth-child(5) > div > div:nth-child(1) > div:nth-child(1) > :nth-child(3){
-    width:10%;
-    border:1px solid lightgray;
+main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(1)> :nth-child(3) {
+    width: 10%;
+    border: 1px solid lightgray;
     border-radius: 20px;
     text-align: center;
-    padding:3px 10px;
-    font-size:0.8rem;
+    padding: 3px 10px;
+    font-size: 0.8rem;
 }
 
-main > section:nth-child(5) > div > div:nth-child(1) > div:nth-child(2) > :nth-child(1){
-    width:15%;
-    font-size:1rem;
+main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(2)> :nth-child(1) {
+    width: 15%;
+    font-size: 1rem;
     font-weight: bold;
 }
 
@@ -721,51 +615,53 @@ main > section:nth-child(5) > div > div:nth-child(1) > div:nth-child(2) > :nth-c
 
 
 /* 고객센터 섹션 */
-main > section:nth-child(5) > div > div:nth-child(1) > div:nth-child(2){
-    height:50%;
+main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(2) {
+    height: 50%;
     display: flex;
-    padding-top:20px;
-    
+    padding-top: 20px;
+
 }
 
-main > section:nth-child(5) > div > div:nth-child(1) > div:nth-child(2) > :nth-child(2){
-    height:60%;
+main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(2)> :nth-child(2) {
+    height: 60%;
     display: flex;
     flex-direction: column;
 }
 
-main > section:nth-child(5) > div > div:nth-child(1) > div:nth-child(2) > :nth-child(2) > p{
+main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(2)> :nth-child(2)>p {
     font-weight: bold;
 }
-main > section:nth-child(5) > div > div:nth-child(1) > div:nth-child(2) > :nth-child(2) > span{
+
+main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(2)> :nth-child(2)>span {
     font-weight: 100;
 }
 
 
-main > section:nth-child(5) > div > div:nth-child(1) > div:nth-child(3){
-    height:20%;
+main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(3) {
+    height: 20%;
     display: flex;
+    margin-top: 10px;
 }
 
-main > section:nth-child(5) > div > div:nth-child(1) > div:nth-child(3) > a{
-    margin-right:15px;
+main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(3)>a {
+    margin-right: 15px;
     border-radius: 5px;
-    height:85%;
-    color:black;
-    padding: 0 10px;
+    height: 85%;
+    color: #FCFCFC;
+    padding: 0 20px;
     cursor: pointer;
-    background-color: lightgray;
-    line-height: 40px;
+    background-color: #191919;
+    ;
+    line-height: 30px;
 }
 
 
 
 
 /* 우측랩퍼 */
-main > section:nth-child(5) > div > div:nth-child(2){
-    width:30%;
-    border:1px solid red;
+main>section:nth-child(5)>div>div:nth-child(2) {
+    width: 30%;
+    border: 1px solid rgb(68 214 44);
     border-radius: 10px;
-  
-}
 
+}
