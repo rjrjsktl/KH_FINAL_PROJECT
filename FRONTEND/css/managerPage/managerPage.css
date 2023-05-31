@@ -409,6 +409,7 @@
     margin-right: 10px;
 }
 /* 등록 버튼 */
+/* .cltbtn */
 .right_Items_Area>div:nth-child(1)>button {
     width: 10%;
     height: 90px;
@@ -429,13 +430,15 @@
     width: 100%;
     padding: 10px 10px 0 10px;
 }
-.memoList > textarea {
+/* .memoList > textarea */
+.viewMemo {
     width: 90%;
     height: 90px;
     margin-right: 10px;
     resize: none;
 }
-.memoList > button {
+/* .memoList > button */
+.dltbtn {
     width: 10%;
     height: 90px;
     display :inline-block;
