@@ -29,12 +29,12 @@ public class SignUpController {
 		}
 	
 		// 이메일 중복 검사
-//		@ResponseBody
-//		@GetMapping("/emailDupCheck")
-//		public int emailDupCheck(String memberEmail) {
-//			int result = service.emailDupCheck(memberEmail);
-//			
-//			return result;
-//		}
+		@ResponseBody
+		@GetMapping("/emailDupCheck")
+		public int emailDupCheck(String inputEmail) {
+			int result = service.emailDupCheck(inputEmail);
+			
+			return result;
+		}
 
 }

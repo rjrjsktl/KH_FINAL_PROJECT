@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.kgv.customer.model.vo.User;
+
 @Repository
 public class LoginDAO {
 	
@@ -13,5 +15,11 @@ public class LoginDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	private Logger logger = LoggerFactory.getLogger(LoginDAO.class);
+
+	public User login(User inputUser) {
+		User loginUser = sqlSession.selectOne("userMapper.login", inputUser ); 
+		
+		return loginUser;
+	}
 
 }

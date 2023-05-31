@@ -52,7 +52,7 @@ $(document).ready(function () {
             ['table', ['table', 'codeview']],
             //줄 높이 
             ['height', ['height']]],
-        height: 600, // 에디터 높이 
+        height: 540, // 에디터 높이 
         minHeight: null, // 최소 높이 
         maxHeight: null, // 최대 높이 
         lang: "ko-KR", //한글 설정 
