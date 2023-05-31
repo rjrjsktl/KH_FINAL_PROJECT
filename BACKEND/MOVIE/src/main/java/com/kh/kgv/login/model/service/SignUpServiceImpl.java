@@ -11,8 +11,8 @@ public class SignUpServiceImpl implements SignUpService {
 	
 	
 	@Override
-	public int emailDupCheck(String inputEmail) {
-		return dao.emailDupCheck(inputEmail);
+	public int emailDupCheck(String userEmail) {
+		return dao.emailDupCheck(userEmail);
 	}
 
 	

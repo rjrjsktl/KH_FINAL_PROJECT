@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kh.kgv.login.model.service.SignUpService;
 
 @Controller
-@RequestMapping("/eee")
+@RequestMapping("/signUp")
 public class SignUpController {
 	
 	@Autowired
@@ -31,10 +31,22 @@ public class SignUpController {
 		// 이메일 중복 검사
 		@ResponseBody
 		@GetMapping("/emailDupCheck")
-		public int emailDupCheck(String inputEmail) {
-			int result = service.emailDupCheck(inputEmail);
+		public int emailDupCheck(String userEmail) {
+			System.out.println(userEmail);
+			int result = service.emailDupCheck(userEmail);
 			
+			
+			System.out.println(result);
 			return result;
 		}
-
+		
+//		// 닉네임 중복 검사
+//		@ResponseBody
+//		@GetMapping("/nicknameDupCheck")
+//		public int nicknameDupCheck(String inputNickname) {
+//			
+//		}
+		
+		
+		
 }
