@@ -36,7 +36,7 @@
                                     </li>
 
                                     <li>
-                                        <a href="${contextPath}/signUp/signUp_sns">
+                                        <a href="${contextPath}/eee/signUp_sns">
                                             <span><i class="fa-solid fa-lock"></i></span>
                                             <p>추가버튼</p>
                                         </a>
