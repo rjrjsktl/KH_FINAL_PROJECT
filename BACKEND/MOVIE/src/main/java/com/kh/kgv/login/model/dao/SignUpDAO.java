@@ -10,9 +10,9 @@ public class SignUpDAO {
 	
 	
 
-	public int emailDupCheck(String inputEmail) {
+	public int emailDupCheck(String userEmail) {
 		
-		return sqlSession.selectOne("intputMapper.emailDupCheck",inputEmail);
+		return sqlSession.selectOne("userMapper.emailDupCheck",userEmail);
 	}
 
 }

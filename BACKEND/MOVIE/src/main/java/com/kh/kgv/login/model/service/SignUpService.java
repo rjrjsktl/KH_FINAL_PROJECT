@@ -6,7 +6,7 @@ public interface SignUpService {
 	 * @param inputEmail
 	 * @return
 	 */
-	int emailDupCheck(String inputEmail);
+	int emailDupCheck(String userEmail);
 
 	
 
