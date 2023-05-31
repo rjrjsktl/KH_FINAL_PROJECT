@@ -28,7 +28,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="${contextPath}/eee/signUp_sns">
+                                        <a href="${contextPath}/signUp/signUp_sns">
                                             <span><i class="fa-regular fa-user"></i></span>
                                             <span>회원가입</span>
                                         </a>

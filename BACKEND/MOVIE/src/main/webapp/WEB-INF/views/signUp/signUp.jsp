@@ -31,13 +31,13 @@
                         <form action="signUp" method="POST" name="signUp-form" onsubmit="return signUpValidate()">
 
                             <div>회원가입</div>
-                            <label for="inputEmail">
+                            <label for="userEmail">
                                 <span class="required">*</span> 아이디(이메일)
                             </label>
 
                             <div class="signUp-input-area">
-                                <input type="text" id="inputEmail" name="inputEmail" placeholder="아이디(이메일)"
-                                    maxlength="30" autocomplete="off" required>
+                                <input type="text" id="userEmail" name="userEmail" placeholder="아이디(이메일)" maxlength="30"
+                                    autocomplete="off" required>
 
 
                                 <button type="button" id="sendBtn">인증번호 받기</button>
