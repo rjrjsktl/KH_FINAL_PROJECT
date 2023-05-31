@@ -702,6 +702,7 @@ main>section> :nth-child(2)>div:last-child>div:nth-child(2)>.swiper .swiper-slid
   cursor: pointer;
 }
 
+
 main>section> :nth-child(2)>div:last-child>div:nth-child(2)>.swiper-button-next::after {
   color: #f05650;
 }
@@ -709,6 +710,7 @@ main>section> :nth-child(2)>div:last-child>div:nth-child(2)>.swiper-button-next:
 main>section> :nth-child(2)>div:last-child>div:nth-child(2)>.swiper-button-prev::after {
   color: #f05650;
 }
+
 
 .holiday {
   color: #f05650;
