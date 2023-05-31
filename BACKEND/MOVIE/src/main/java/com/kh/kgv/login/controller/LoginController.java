@@ -78,10 +78,10 @@ public class LoginController {
 		}
 		
 		//session.setAttribute("loginMember", loginMember);
+		logger.info("마지막 로그인 기능 수행됨");
 		
-		
-		return "redirect:/";
-		//return "login/login";
+		//return "redirect:/";
+		return "login/login";
 	}
 	
 	// 비밀번호찾기

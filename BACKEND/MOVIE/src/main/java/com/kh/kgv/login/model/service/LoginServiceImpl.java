@@ -25,8 +25,8 @@ public class LoginServiceImpl implements LoginService{
 	public User login(User inputUser) {
 		
 		//logger.debug( inputUser.getUserPw() + " / " +  bcrypt.encode(inputUser.getUserPw()) );
-		String encodedPassword = bcrypt.encode(inputUser.getUserPw());
-		logger.debug( inputUser.getUserPw() + " / " + encodedPassword );
+//		String encodedPassword = bcrypt.encode(inputUser.getUserPw());
+//		logger.debug( inputUser.getUserPw() + " / " + encodedPassword );
 		
 		User loginUser = dao.login(inputUser);
 		
