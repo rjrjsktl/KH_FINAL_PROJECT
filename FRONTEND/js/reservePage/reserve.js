@@ -55,7 +55,7 @@ let regionName;
 region.click(function(){
   regionName = this.text.substr(0, 2);
   $('.cinema_list').css('display', 'none');
-  $('.cinema_list[data-region="' + regionName +'"]').css('display', 'block');
+  $(`.cinema_list[data-region=${regionName}]`).css('display', 'block');
 });
 
 
@@ -92,7 +92,7 @@ movie.on("click", function(){
   movieName = this.querySelector('.movie_name').innerText;
   $('#movie_select').html(movieName);
   $('.movie_play').css('display', 'none');
-  $('.movie_play[data-movie="' + movieName + '"]').css('display', 'block');
+  $(`.movie_play[data-movie=${movieName}]`).css('display', 'block');
 });
 
 
