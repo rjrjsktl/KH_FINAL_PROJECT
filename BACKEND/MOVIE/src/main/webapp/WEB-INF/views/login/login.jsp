@@ -1,6 +1,6 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- -->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +11,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>로그인 페이지</title>
 
-<link rel="stylesheet"
-	href="${contextPath}/resources/css/login/login.css">
-<script src="https://kit.fontawesome.com/dc6e43e0ad.js"
-	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="${contextPath}/resources/css/login/login.css">
+<script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
 
 </head>
@@ -39,8 +37,7 @@
 
 						<!-- 로그인 영역 -->
 						<div>
-							<form action="member/login" method="POST"
-								onsubmit="return loginValidate()">
+							<form action="login" method="POST" onsubmit="return loginValidate();">
 								<div>
 									<div>
 										<c:choose>
