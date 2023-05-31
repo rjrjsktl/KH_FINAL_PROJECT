@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kh.kgv.login.model.service.SignUpService;
 
 @Controller
-@RequestMapping("/signUp")
+@RequestMapping("/eee")
 public class SignUpController {
 	
 	@Autowired
