@@ -1,86 +1,101 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page session="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+            <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+                <%@ page session="false" %>
 
-<header>
-    <!-- 헤더 윗쪽 섹션 -->
-    <section>
+                    <header>
 
-        <div>
-            <div>
-                <!-- 
-                    contextpath 지정 必
-                    이미지 태그 속 로고위치 제대로 작성
-                 -->
-                <!-- <a href="${contextPath}">
-        <img src="${contextPath}/resources/images/logo.jpg" id="home-logo">
-    </a> -->
-                <a href="#"><img src="../images/logo3.png" alt="로고 이미지 삽입 w160 h70 "></a>
-            </div>
-            <div>
-                <span>K H T H E A T E R</span>
-            </div>
-        </div>
+                        <section>
+                            <div class="logo-section">
+                                <div>
+                                    <a href="#"><img src="" alt="암거나박아요"></a>
+                                </div>
+                                <span>KHTHEATER</span>
+                            </div>
 
-        <div>
-            <div> <a href="#"><img src="" alt="광고 이미지삽입width:200px height:100px"></a></div>
+                            <div class="memberInfo_wrap">
+                                <ul>
 
-            <ul>
-                <li>
-                    <a href="${contextPath}/user/login">
-                        <span><i class="fa-solid fa-lock"></i></span>
-                        <p>SIGN IN</p>
-                    </a>
-                </li>
+                                    <div>
+                                        <img src="" alt="">
+                                    </div>
 
-                <li>
+                                    <li>
+                                        <a href="${contextPath}/user/login">
+                                            <span><i class="fa-solid fa-lock"></i></span>
+                                            <span>로그인</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="${contextPath}/signUp/signUp_sns">
+                                            <span><i class="fa-regular fa-user"></i></span>
+                                            <span>회원가입</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="${contextPath}/myPage/info">
+                                            <span><i class="fa-solid fa-headset"></i></span>
+                                            <span>MY KGV</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span><i class="fa-solid fa-headset"></i></span>
+                                            <span>고객센터</span>
+                                        </a>
+                                    </li>
 
+                                </ul>
+                            </div>
+                        </section>
 
-                    <a href="${contextPath}/myPage/info">
-                        <span><i class="fa-regular fa-user"></i></span>
-                        <p>MY PAGE</p>
-                    </a>
+                        <!-- nav bar-->
+                        <nav>
+                            <div>
+                                <ul>
+                                    <li class="navBar"><a href="#">영화</a>
+                                        <ul class="menuBar" style="display:none">
+                                            <li><a href="">무비 차트</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="navBar"><a href="#">상영관</a>
+                                        <ul class="menuBar" style="display:none">
+                                            <li><a href="">지역별</a></li>
+                                            <li><a href="">특별관</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="navBar"><a href="#">예매</a>
+                                        <ul class="menuBar" style="display:none">
+                                            <li><a href="">빠른 예매</a></li>
+                                        </ul>
+                                    </li>
 
+                                    <li class="navBar"><a href="#">이벤트</a>
+                                        <ul class="menuBar" style="display:none">
+                                            <li><a href="">진행중 이벤트</a></li>
+                                            <li><a href="">지난 이벤트</a></li>
+                                            <li><a href="">당첨자 발표</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="navBar"><a href="#">스토어</a></li>
+                                    <li class="navBar"><a href="#">혜택</a>
+                                        <ul class="menuBar" style="display:none">
+                                            <li><a href="">멤버쉽</a></li>
+                                            <li><a href="">제휴/할인</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <div class="dummy" style="display:none"></div>
+                                <div>
+                                    <form action="">
 
-                </li>
+                                        <input type="text" placeholder="오늘의 영화를 찾아보세용">
+                                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                                    </form>
+                                </div>
 
-                <li>
-                    <a href="#">
-                        <span><i class="fa-solid fa-headset"></i></span>
-                        <p>HELP</p>
-                    </a>
-                </li>
+                            </div>
 
-            </ul>
-        </div>
-
-    </section>
-
-    <!-- nav bar-->
-    <nav>
-
-        <div>
-            <ul>
-                <li><a href="#">영화</a></li>
-                <li><a href="#">극장</a></li>
-                <li><a href="#">예매</a></li>
-                <li><a href="#">스토어</a></li>
-                <li><a href="#">이벤트</a></li>
-                <li><a href="#">혜택</a></li>
-            </ul>
-
-            <div>
-                <form action="">
-
-                    <input type="text" placeholder="오늘의 영화를 찾아보세용">
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                </form>
-            </div>
-
-        </div>
-
-    </nav>
-
-</header>
+                        </nav>
+                    </header>

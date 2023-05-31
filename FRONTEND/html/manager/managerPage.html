@@ -30,6 +30,8 @@
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <!-- 달력 API -->
 
 
@@ -492,14 +494,16 @@
                         </div>
                         <div class="right_Items_Area">
                             <div>
-                                <textarea></textarea>
-                                <button>등록</button>
+                                <textarea type="text" id="crtMemo" class="crtMemo" autocomplete="off"></textarea>
+                                <button id="crtbtn" class="crtbtn">등록</button>
+                                
                             </div>
-                            <ul class="managerMemo">
-                                <li class="memoList">
-                                    <textarea></textarea>
+                            <ul id="managerMemo" class="managerMemo">
+                                <!-- 어차피 메모 값이 있다면 초기화 될거임(틀잡기용) -->
+                                <li id="memoList" class="memoList">
+                                    <textarea id="viewMemo" class="viewMemo"></textarea>
                                     <!-- 수정 필요? -->
-                                    <button>삭제</button>
+                                    <button type="button" id="dltbtn" class="dltbtn" name="momoNo" value="" onclick="delMemo()">삭제</button>
                                 </li>
                             </ul>
                         </div>

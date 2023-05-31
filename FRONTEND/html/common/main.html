@@ -11,6 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메인페이지</title>
     <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/outline.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
 </head>
@@ -18,72 +21,88 @@
 <body>
     <div id="wrap">
         <header>
-            <!-- 헤더 윗쪽 섹션 -->
-            <section>
 
-                <div>
+            <section>
+                <div class="logo-section">
                     <div>
-                        <!-- 
-                            contextpath 지정 必
-                            이미지 태그 속 로고위치 제대로 작성
-                         -->
-                        <!-- <a href="${contextPath}">
-				<img src="${contextPath}/resources/images/logo.jpg" id="home-logo">
-			</a> -->
-                        <a href="#"><img src="../images/logo3.png" alt="로고 이미지 삽입 w160 h70 "></a>
+                        <a href="#"><img src="" alt="암거나박아요"></a>
                     </div>
-                    <div>
-                        <span>K H T H E A T E R</span>
-                    </div>
+                    <span>KHTHEATER</span>
                 </div>
 
-                <div>
-                    <div> <a href="#"><img src="" alt="광고 이미지삽입width:200px height:100px"></a></div>
-
+                <div class="memberInfo_wrap">
                     <ul>
+
+                        <div>
+                            <img src="" alt="">
+                        </div>
+
                         <li>
                             <a href="#">
                                 <span><i class="fa-solid fa-lock"></i></span>
-                                <p>SIGN IN</p>
+                                <span>로그인</span>
                             </a>
                         </li>
-
                         <li>
-
-
                             <a href="#">
                                 <span><i class="fa-regular fa-user"></i></span>
-                                <p>MY PAGE</p>
+                                <span>회원가입</span>
                             </a>
-
-
                         </li>
-
                         <li>
                             <a href="#">
                                 <span><i class="fa-solid fa-headset"></i></span>
-                                <p>HELP</p>
+                                <span>MY KGV</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span><i class="fa-solid fa-headset"></i></span>
+                                <span>고객센터</span>
                             </a>
                         </li>
 
                     </ul>
                 </div>
-
             </section>
 
             <!-- nav bar-->
             <nav>
-
                 <div>
                     <ul>
-                        <li><a href="#">영화</a></li>
-                        <li><a href="#">극장</a></li>
-                        <li><a href="#">예매</a></li>
-                        <li><a href="#">스토어</a></li>
-                        <li><a href="#">이벤트</a></li>
-                        <li><a href="#">혜택</a></li>
-                    </ul>
+                        <li class="navBar"><a href="#">영화</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="">무비 차트</a></li>
+                            </ul>
+                        </li>
+                        <li class="navBar"><a href="#">상영관</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="">지역별</a></li>
+                                <li><a href="">특별관</a></li>
+                            </ul>
+                        </li>
+                        <li class="navBar"><a href="#">예매</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="">빠른 예매</a></li>
+                            </ul>
+                        </li>
 
+                        <li class="navBar"><a href="#">이벤트</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="">진행중 이벤트</a></li>
+                                <li><a href="">지난 이벤트</a></li>
+                                <li><a href="">당첨자 발표</a></li>
+                            </ul>
+                        </li>
+                        <li class="navBar"><a href="#">스토어</a></li>
+                        <li class="navBar"><a href="#">혜택</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="">멤버쉽</a></li>
+                                <li><a href="">제휴/할인</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="dummy" style="display:none"></div>
                     <div>
                         <form action="">
 
@@ -95,155 +114,215 @@
                 </div>
 
             </nav>
-
         </header>
 
         <main>
             <!-- 첫번째 섹션 거대배너광고 -->
             <section>
-                <div>
-                    <a href="#"><img src="../images/asdfasdf.jpg" alt="이미지삽입영역 wdith:1120px height:500px 해야합니당."></a>
-                    이부분 이미지 슬라이더 iframe
+                <!-- 
+                <div class="slideshow-container">
+
+                    <div class="mySlides fade">
+                        <a href="#"><img src="../../images/TIME_02.jpg"></a>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <a href="#"><img src="../../images/TRAN_01.jpg"></a>
+                    </div>
+
+                    <button class="prev" onclick="plusSlides(-1)">
+                        < </button>
+                            <button class="next" onclick="plusSlides(1)">></button>
+                </div> -->
+
+                <div class="mainImg-container">
+
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-Slide">
+                            <img src="../../images/test1.png" alt="">
+                        </div>
+                        <div class="main-Slider">
+                            <img src="../../images/test2.png" alt="">
+                        </div>
+                    
+                     </div>
+
+                     <div class="swiper-main-next">></div>
+                     <div class="swiper-main-prev"><</div>
+
                 </div>
+
+
+
             </section>
 
             <!-- 두번째 라인 5ea ( 영화리스트 목록 ( 카드까지 ) )-->
+
             <section>
-                <div>
+
+                <div class="swiper-title">
                     <div>
-                        <div>
-                            <a href="#">상영목록</a>
-                            <span>|</span>
-                            <a href="#">상영예정</a>
+                        <a href="#">상영목록</a>
+                    </div>
+                    <button>전체보기</button>
+                </div>
+                <div class="swiper-container">
+
+
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div>
+                                <em>1
+                                </em>
+                                <a href="#"><img src="../../images/movieList/movie_05.jpg" onmouseenter="zoomIn(event)"
+                                        onmouseleave="zoomOut(event)"></a>
+                            </div>
+                            <div>
+                                <a href=""> <span>가디언 오브 갤럭시</span></a>
+                                <div>
+                                    <p>예매율 <span>100.0</span>%</p>
+                                    <p>개봉일 <span>2023.01.01</span></p>
+                                </div>
+                            </div>
+                            <!-- <div>
+                            <button>0</button>
+                            <button>예매</button>
+                        </div> -->
                         </div>
-                        <div><a href="">전체보기 ></a></div>
+                        <div class="swiper-slide">
+                            <div>
+                                <em>2
+                                </em>
+                                <a href="#"><img src="../../images/movieList/movie_01.jpg" onmouseenter="zoomIn(event)"
+                                        onmouseleave="zoomOut(event)"></a>
+                            </div>
+                            <div>
+                                <a href=""> <span>가디언 오브 갤럭시</span></a>
+                                <div>
+                                    <p>예매율 <span>100.0</span>%</p>
+                                    <p>개봉일 <span>2023.01.01</span></p>
+                                </div>
+                            </div>
+                            <!-- <div>
+                            <button>0</button>
+                            <button>예매</button>
+                        </div> -->
+                        </div>
+                        <div class="swiper-slide">
+                            <div>
+                                <em>3
+                                </em>
+                                <a href="#"><img src="../../images/movieList/movie_02.jpg" onmouseenter="zoomIn(event)"
+                                        onmouseleave="zoomOut(event)"></a>
+                            </div>
+                            <div>
+                                <a href=""> <span>가디언 오브 갤럭시</span></a>
+                                <div>
+                                    <p>예매율 <span>100.0</span>%</p>
+                                    <p>개봉일 <span>2023.01.01</span></p>
+                                </div>
+                            </div>
+                            <!-- <div>
+                            <button>0</button>
+                            <button>예매</button>
+                        </div> -->
+                        </div>
+                        <div class="swiper-slide">
+                            <div>
+                                <em>4
+                                </em>
+                                <a href="#"><img src="../../images/movieList/movie_03.jpg" onmouseenter="zoomIn(event)"
+                                        onmouseleave="zoomOut(event)"></a>
+                            </div>
+                            <div>
+                                <a href=""> <span>가디언 오브 갤럭시</span></a>
+                                <div>
+                                    <p>예매율 <span>100.0</span>%</p>
+                                    <p>개봉일 <span>2023.01.01</span></p>
+                                </div>
+                            </div>
+                            <!-- <div>
+                            <button>0</button>
+                            <button>예매</button>
+                        </div> -->
+                        </div>
+                        <div class="swiper-slide">
+                            <div>
+                                <em>5
+                                </em>
+                                <a href="#"><img src="../../images/movieList/movie_04.jpg" onmouseenter="zoomIn(event)"
+                                        onmouseleave="zoomOut(event)"></a>
+                            </div>
+                            <div>
+                                <a href=""> <span>가디언 오브 갤럭시</span></a>
+                                <div>
+                                    <p>예매율 <span>100.0</span>%</p>
+                                    <p>개봉일 <span>2023.01.01</span></p>
+                                </div>
+                            </div>
+                            <!-- <div>
+                            <button>0</button>
+                            <button>예매</button>
+                        </div> -->
+                        </div>
+                        <div class="swiper-slide">
+                            <div>
+                                <em>6
+                                </em>
+                                <a href="#"><img src="../../images/movieList/movie_05.jpg" onmouseenter="zoomIn(event)"
+                                        onmouseleave="zoomOut(event)"></a>
+                            </div>
+                            <div>
+                                <a href=""> <span>가디언 오브 갤럭시</span></a>
+                                <div>
+                                    <p>예매율 <span>100.0</span>%</p>
+                                    <p>개봉일 <span>2023.01.01</span></p>
+                                </div>
+                            </div>
+                            <!-- <div>
+                            <button>0</button>
+                            <button>예매</button>
+                        </div> -->
+                        </div>
+                        <div class="swiper-slide">
+                            <div>
+                                <em>7
+                                </em>
+                                <a href="#"><img src="../../images/movieList/movie_01.jpg" onmouseenter="zoomIn(event)"
+                                        onmouseleave="zoomOut(event)"></a>
+                            </div>
+                            <div>
+                                <a href=""> <span>가디언 오브 갤럭시</span></a>
+                                <div>
+                                    <p>예매율 <span>100.0</span>%</p>
+                                    <p>개봉일 <span>2023.01.01</span></p>
+                                </div>
+                            </div>
+                            <!-- <div>
+                            <button>0</button>
+                            <button>예매</button>
+                        </div> -->
+                        </div>
                     </div>
-
-                    <!-- 영역 -->
-                    <div>
-                        <ol>
-                            <li>
-
-                                <div>
-                                    <span>
-                                        1<!-- 숫자 1~20까지 for문돌려서 박아야합니다. -->
-                                    </span>
-                                    <a href="#"><img src="../imaages/123123.jpg"></a>
-
-                                </div>
-
-                                <div>
-                                    <a href=""> <span>영화제목</span></a>
-                                    <div>
-                                        <p>예매율&nbsp<span>100.0</span>%</p>
-                                        <p>개봉일&nbsp<span>2023.01.01</span></p>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <!-- 1좋아요버튼 -->
-                                    <button>0</button>
-                                    <button>예매</button>
-                                </div>
-
-                            </li>
-
-                            <li>
-
-                                <div>
-                                    <span>
-                                        2<!-- 숫자 1~20까지 for문돌려서 박아야합니다. -->
-                                    </span>
-                                    <a href="#"><img src="../imaages/123123.jpg"></a>
-
-                                </div>
-
-                                <div>
-                                    <a href=""> <span>영화제목</span></a>
-                                    <div>
-                                        <p>예매율&nbsp<span>100.0</span>%</p>
-                                        <p>개봉일&nbsp<span>2023.01.01</span></p>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <!-- 1좋아요버튼 -->
-                                    <button>0</button>
-                                    <button>예매</button>
-                                </div>
-
-                            </li>
-
-                            <li>
-
-                                <div>
-                                    <span>
-                                        3<!-- 숫자 1~20까지 for문돌려서 박아야합니다. -->
-                                    </span>
-                                    <a href="#"><img src="../imaages/123123.jpg"></a>
-
-                                </div>
-
-                                <div>
-                                    <a href=""> <span>영화제목</span></a>
-                                    <div>
-                                        <p>예매율&nbsp<span>100.0</span>%</p>
-                                        <p>개봉일&nbsp<span>2023.01.01</span></p>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <!-- 1좋아요버튼 -->
-                                    <button>0</button>
-                                    <button>예매</button>
-                                </div>
-
-                            </li>
-
-                            <li>
-
-                                <div>
-                                    <span>
-                                        4<!-- 숫자 1~20까지 for문돌려서 박아야합니다. -->
-                                    </span>
-                                    <a href="#"><img src="../imagaes/123123.jpg"></a>
-
-                                </div>
-
-                                <div>
-                                    <a href=""> <span>영화제목</span></a>
-                                    <div>
-                                        <p>예매율&nbsp<span>100.0</span>%</p>
-                                        <p>개봉일&nbsp<span>2023.01.01</span></p>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <!-- 1좋아요버튼 -->
-                                    <button>0</button>
-                                    <button>예매</button>
-                                </div>
-
-                            </li>
-
-
-
-                        </ol>
-                    </div>
-
-
-
 
 
                 </div>
+                <div class="swiper-card-next">></div>
+                <div class="swiper-card-prev">
+                    < </div>
             </section>
+
+
+
+
 
             <!-- 세번재 섹션 이벤트리스트 3ea-->
             <section>
                 <div>
                     <div>
                         <div>
-                            <a>EVENT</a>
+                            <a href="#">EVENT</a>
 
                         </div>
 
@@ -266,7 +345,6 @@
                                     <div>2023.05.17 ~ 2023.05.20</div>
                                 </div>
                             </li>
-
                             <li>
                                 <div>
                                     <a href="#"><img src="" alt="img"></a>
@@ -277,8 +355,6 @@
                                     <div>2023.05.17 ~ 2023.05.20</div>
                                 </div>
                             </li>
-
-
                             <li>
                                 <div>
                                     <a href="#"><img src="" alt="img"></a>
@@ -289,7 +365,6 @@
                                     <div>2023.05.17 ~ 2023.05.20</div>
                                 </div>
                             </li>
-
 
 
                         </ol>
@@ -314,24 +389,25 @@
 
                     <div>
                         <div>
-                            <a href="#"><img src="" alt="이미지입니다 w548 h336"></a>
+                            <!-- JSTL -->
+                            <a href="#"><img src="" alt=""></a>
                         </div>
                         <div>
                             <!-- hover시 각각의 div에 border 생성하시면됩니다. -->
                             <a href="#">
-                                <div><span>A CLASS</span> <span>#뭐하는지 모르는 클래스</span> </div>
+                                <div><span>IMAX</span> <span>#세계 최대의 상영관</span> </div>
                             </a>
                             <a href="#">
-                                <div><span>B CLASS</span> <span>#여기는 무슨반인가?</span> </div>
+                                <div><span>DOLBY</span> <span>#차세대 몰입형 사운드</span> </div>
                             </a>
                             <a href="#">
-                                <div><span>C CLASS</span> <span>#아니 그전에 반이 이렇게많나?</span></div> </span>
+                                <div><span>DISH & WINE</span> <span>#최고의 가치를 경험하세요</span></div> </span>
                             </a>
                             <a href="#">
-                                <div><span>D CLASS</span> <span>#킹갇제네럴 어쩌구반</span> </div>
+                                <div><span>WITH A PUPPY</span> <span>#반려견과 함께하는 멀티플렉스</span> </div>
                             </a>
                             <a href="#">
-                                <div><span>E CLASS</span> <span>#호에엥 누나이쁨</span> </div>
+                                <div><span>KIDS</span> <span>#더이상 노키즈존은 STOP</span> </div>
                             </a>
                         </div>
                     </div>
@@ -376,10 +452,9 @@
                 </div>
 
             </section>
-
         </main>
-
     </div>
+
     <footer>
 
         <section>
@@ -424,5 +499,10 @@
 			</c:if>
             -->
 </body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script src="../../js/main/main.js"></script>
 
 </html>
