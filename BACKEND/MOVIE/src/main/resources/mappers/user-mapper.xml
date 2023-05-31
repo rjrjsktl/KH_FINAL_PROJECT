@@ -41,5 +41,13 @@
 		AND USER_ST = 'Y' 
   	</select>
 	
+	<!-- 이메일 중복 검사 -->
+  	<select id="emailDupCheck" parameterType="string" resultType="_int">
+  		SELECT COUNT(*) FROM USERS
+		WHERE USER_EMAIL = #{userEmail}
+		AND USER_ST = 'N'
+  	</select>
+  	
+  	
 	
 </mapper>
