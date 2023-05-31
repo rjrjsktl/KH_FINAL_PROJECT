@@ -367,7 +367,7 @@
 }
 
 .top_Click_area div:hover {
-    background-color: #FAE300;
+    background-color: red;
     color: black;
 }
 
@@ -385,13 +385,64 @@
     color: black;
 }
 
-
+/* managerMemo 추가_YUN */
 .right_Items_Area {
     flex: 1;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.right_Items_Area>div:nth-child(1) {
+    width: 100%;
+    height: 111px;
+    display: flex;
+    /* flex-direction: column; */
+    padding: 10px;
+    border-bottom: 1px solid black;
 }
 
+/* 등록할 내용 */
+.right_Items_Area>div:nth-child(1)>textarea {
+    width: 90%;
+    height: 90px;
+    resize: none;
+    margin-right: 10px;
+}
+/* 등록 버튼 */
+/* .cltbtn */
+.right_Items_Area>div:nth-child(1)>button {
+    width: 10%;
+    height: 90px;
+    display :inline-block;
+}
+/* 메모 불러오는 area */
+.managerMemo{
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+::-webkit-scrollbar {display: none; }
+/* li = momeList 즉 등록 메모 리스트 */
+.memoList {
+    display: flex;
+    width: 100%;
+    padding: 10px 10px 0 10px;
+}
+/* .memoList > textarea */
+.viewMemo {
+    width: 90%;
+    height: 90px;
+    margin-right: 10px;
+    resize: none;
+}
+/* .memoList > button */
+.dltbtn {
+    width: 10%;
+    height: 90px;
+    display :inline-block;
+}
 
 
 /* 그래프 */
@@ -437,3 +488,4 @@
 .highcharts-data-table tr:hover {
     background: #f1f7ff;
 }
+

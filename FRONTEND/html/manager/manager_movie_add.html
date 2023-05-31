@@ -230,82 +230,91 @@
                             <div class="table_Title">
                                 <span>영화 등록</span>
                             </div>
-                            <div class="table_main">
-                                <div id="movie_sub">
-                                    <span>영화 제목</span>
-                                    <div>
-                                        <input type="text" class="movie_sub_enter">
-                                    </div>
-                                </div>
-                                <div id="movie_sub">
-                                    <span>상영 시간</span>
-                                    <div>
-                                        <input type="text" class="movie_sub_enter">
-                                    </div>
-                                </div>
-                                <div id="movie_sub">
-                                    <span>제작 국가</span>
-                                    <div>
-                                        <input type="text" class="movie_sub_enter">
-                                    </div>
-                                </div>
-                                <div id="movie_sub">
-                                    <span>개봉일</span>
-                                    <div>
-                                        <input type="date" class="movie_releseDate">
-                                    </div>
-                                </div>
-                                <div id="level">
-                                    <span>관람 등급</span>
-                                    <div>
-                                        <div class="movie_level">
-
+                            <form>
+                                <div class="table_main">
+                                    <div id="movie_sub">
+                                        <span>영화 제목</span>
+                                        <div>
+                                            <input type="text" class="movie_sub_enter movie_title">
                                         </div>
-                                        <div class="level_Items">
-                                            <div class="movie_level_slide">
-                                                <div>test1</div>
-                                                <div>test2</div>
-                                                <div>test3</div>
-                                                <div>test4</div>
-                                                <div>test5</div>
-                                                <div>test6</div>
-                                                <div>test7</div>
-                                                <div>test8</div>
-                                                <div>test9</div>
+                                    </div>
+                                    <div id="movie_sub">
+                                        <span>상영 시간</span>
+                                        <div>
+                                            <input type="text" class="movie_sub_enter movie_time">
+                                        </div>
+                                    </div>
+                                    <div id="movie_sub">
+                                        <span>제작 국가</span>
+                                        <div>
+                                            <input type="text" class="movie_sub_enter movie_country">
+                                        </div>
+                                    </div>
+                                    <div id="movie_sub">
+                                        <span>개봉일</span>
+                                        <div>
+                                            <input type="date" class="movie_releseDate">
+                                        </div>
+                                    </div>
+                                    <div id="movie_sub">
+                                        <span>이미지</span>
+                                        <div>
+                                            <input type="file" class="movie_image">
+                                        </div>
+                                    </div>
+                                    <div id="level">
+                                        <span>관람 등급</span>
+                                        <div>
+                                            <div class="movie_level">
+
+                                            </div>
+                                            <div class="level_Items">
+                                                <div class="movie_level_slide">
+                                                    <div>test1</div>
+                                                    <div>test2</div>
+                                                    <div>test3</div>
+                                                    <div>test4</div>
+                                                    <div>test5</div>
+                                                    <div>test6</div>
+                                                    <div>test7</div>
+                                                    <div>test8</div>
+                                                    <div>test9</div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div id="Genre">
-                                    <span>장르</span>
-                                    <div>
-                                        <div class="movie_Genre">
+                                    <div id="Genre">
+                                        <span>장르</span>
+                                        <div>
+                                            <div class="movie_Genre">
 
-                                        </div>
-                                        <div class="Genre_Items">
-                                            <div class="movie_genre_slide">
-                                                <div>test1</div>
-                                                <div>test2</div>
-                                                <div>test3</div>
-                                                <div>test4</div>
-                                                <div>test5</div>
-                                                <div>test6</div>
-                                                <div>test7</div>
-                                                <div>test8</div>
-                                                <div>test9</div>
+                                            </div>
+                                            <div class="Genre_Items">
+                                                <div class="movie_genre_slide">
+                                                    <div>test1</div>
+                                                    <div>test2</div>
+                                                    <div>test3</div>
+                                                    <div>test4</div>
+                                                    <div>test5</div>
+                                                    <div>test6</div>
+                                                    <div>test7</div>
+                                                    <div>test8</div>
+                                                    <div>test9</div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div id="movie_sub">
-                                    <span>줄거리</span>
-                                    <div>
-                                        <textarea class="movie_sub_enter"></textarea>
+                                    <div id="movie_sub">
+                                        <span>줄거리</span>
+                                        <div>
+                                            <textarea class="movie_sub_enter movie_story"
+                                                placeholder="500자 내외로 작성해 주세요."></textarea>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                             <div class="table_bottom">
-                                <button class="bottom_Submit">저장</button>
+                                <button type="submit" class="bottom_Submit">저장</button>
                                 <button class="bottom_Cancel">취소</button>
                             </div>
                         </div>

@@ -233,6 +233,7 @@
     height: 5vh;
     border-bottom: 2px solid black;
     justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .table_Title span {
@@ -259,11 +260,7 @@
     width: 100%;
     border: none;
     font-size: 2rem;
-}
-
-.ck {
-    flex: 9;
-    height: 28vw;
+    height: 50px;
 }
 
 .table_bottom {
