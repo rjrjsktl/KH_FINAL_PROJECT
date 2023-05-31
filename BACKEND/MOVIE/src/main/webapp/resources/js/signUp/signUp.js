@@ -74,11 +74,40 @@ memberEmail.addEventListener("input", function () {
 
     if (regExp.test(memberEmail.value)) { // 유효한 경우
 
-        emailMessage.innerText = "";
-        emailMessage.classList.add("confirm");
-        emailMessage.classList.remove("error");
 
-        checkObj.memberEmail = true;
+        $.AJAX({
+            url: "emailDupCheck",
+
+            data: { "memberEmail": memberEmail.value },
+
+            type: "GET",
+
+            success: function (result) {
+
+
+                if (result == 1) { //중복 o
+                    emailMessage.innerText = "이미 사용 중인 이메일 입니다.";
+                    emailMessage.classList.add("error");
+                    emailMessage.classList.remove("confirm");
+
+                    checkObj.memberEmail = false;
+
+                } else { //중복 x
+                    emailMessage.innerText = "";
+                    emailMessage.classList.add("confirm");
+                    emailMessage.classList.remove("error");
+
+                    checkObj.memberEmail = true;
+
+                }
+            },
+
+            error: function () {
+
+                console.log("에러 발생");
+            }
+
+        });
 
 
 
@@ -92,6 +121,8 @@ memberEmail.addEventListener("input", function () {
     }
 
 });
+
+
 
 
 // 닉네임 유효성 검사
@@ -113,11 +144,46 @@ memberNickname.addEventListener("input", function () {
 
     if (regExp.test(memberNickname.value)) { // 유효한 경우
 
-        nicknameMessage.innerText = "";
-        nicknameMessage.classList.add("confirm");
-        nicknameMessage.classList.remove("error");
 
-        checkObj.memberNickname = true;
+
+
+
+
+
+        $.ajax({
+            url: "nicknameDupCheck",
+            data: { "memberNickname": memberNickname.value },
+            type: "GET",
+
+            success: function (result) {
+
+                if (result == 0) {
+                    nicknameMessage.innerText = "";
+                    nicknameMessage.classList.add("confirm");
+                    nicknameMessage.classList.remove("error");
+
+                    checkObj.memberNickname = true;
+
+
+                } else {
+                    nicknameMessage.innerText = "이미 사용중인 닉네임 입니다.";
+                    nicknameMessage.classList.add("error");
+                    nicknameMessage.classList.remove("confirm");
+                    checkObj.memberNickname = false; // 유효 O 기록
+
+                }
+            },
+
+            error: function () {
+                console.log("에러 발생");
+            }
+
+
+
+
+        });
+
+
 
     } else {
         nicknameMessage.innerText = "영어/숫자/한글 2~10글자 사이로 작성해주세요.";
@@ -151,11 +217,39 @@ membername.addEventListener("input", function () {
 
     if (regExp.test(membername.value)) { // 유효한 경우
 
-        nameMessage.innerText = "";
-        nameMessage.classList.add("confirm");
-        nameMessage.classList.remove("error");
 
-        checkObj.membername = true;
+
+        $.ajax({
+            url: "nameDupCheck",
+            data: { "membername": membername.value },
+            type: "GET",
+
+            success: function (result) {
+
+
+                if (result == 0) {
+                    nameMessage.innerText = "";
+                    nameMessage.classList.add("confirm");
+                    nameMessage.classList.remove("error");
+
+                    checkObj.membername = true;
+
+                } else {
+                    nameMessage.innerText = "이미 사용중인 이름입니다.";
+                    nameMessage.classList.add("error");
+                    nameMessage.classList.remove("confirm");
+
+                    checkObj.membername = true;
+
+
+                }
+
+            },
+            error: function () {
+                console.log("에러 발생");
+            }
+
+        });
 
 
     } else {
