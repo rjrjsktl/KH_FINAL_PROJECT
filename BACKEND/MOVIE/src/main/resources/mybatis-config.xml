@@ -33,6 +33,7 @@
 
 	<mappers>
 		<mapper resource="/mappers/movie-mapper.xml"/>
+		<mapper resource="/mappers/user-mapper.xml"/>
 	</mappers>
 
 </configuration>
