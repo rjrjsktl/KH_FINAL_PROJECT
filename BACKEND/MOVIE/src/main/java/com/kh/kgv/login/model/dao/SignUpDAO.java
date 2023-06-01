@@ -20,7 +20,7 @@ public class SignUpDAO {
 	 */
 	public int emailDupCheck(String userEmail) {
 		
-		return sqlSession.selectOne("userMapper.emailDupCheck",userEmail);
+		return sqlSession.selectOne("signupMapper.emailDupCheck",userEmail);
 	}
 
 
@@ -30,7 +30,7 @@ public class SignUpDAO {
 	 * @return
 	 */
 	public int nicknameDupCheck(String userNick) {
-		return sqlSession.selectOne("userMapper.nicknameDupCheck", userNick );
+		return sqlSession.selectOne("signupMapper.nicknameDupCheck", userNick );
 	}
 
 
@@ -40,14 +40,19 @@ public class SignUpDAO {
 	 * @return
 	 */
 	public int nameDupCheck(String userName) {
-		return sqlSession.selectOne("userMapper.nameDupCheck",userName);
+		return sqlSession.selectOne("signupMapper.nameDupCheck",userName);
 	}
 
 
 
+	/** 회원가입
+	 * @param inputUser
+	 * @return
+	 */
 	public int signUp(User inputUser) {
+		System.out.println(inputUser + " 3============================================================");
+		return sqlSession.insert("signupMapper.signUp",inputUser);
 		
-		return sqlSession.insert("userMapper.signUp",inputUser);
 	}
 
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="userMapper">
+<mapper namespace="signupMapper">
 
 <!-- 	
 		<resultMap type="member" id="member_rm">
@@ -31,15 +31,44 @@
 		<result property="userDelete" 		column="USER_DELETE"/>
 	</resultMap>
 	
-	<!-- 로그인 기능 실행 -->
-	<select id="login"  parameterType="user"  resultMap="user_rm"  >
- 		SELECT *
- 		FROM USERS
+	
+	
+	<!-- 이메일 중복 검사 -->
+  	<select id="emailDupCheck" parameterType="string" resultType="_int">
+  		SELECT COUNT(*) FROM USERS
 		WHERE USER_EMAIL = #{userEmail}
-		<!-- AND USER_PW = #{userPw} -->
-		AND USER_ST = 'Y' 
+		AND USER_ST = 'Y'
   	</select>
-	
-	
+  	
+  	<!-- 닉네임 중복 검사 -->
+	<select id="nicknameDupCheck" parameterType="string" resultType="_int">
+  		SELECT COUNT(*) FROM USERS
+		WHERE USER_NICKNAME = #{userNick}
+		AND USER_ST = 'Y'
+  	</select>
+  	
+  	<!-- 이름 중복 검사 -->
+  	<select id="nameDupCheck" parameterType="string" resultType="_int">
+  		SELECT COUNT(*) FROM USERS
+		WHERE USER_NAME = #{userName}
+		AND USER_ST = 'Y'
+  	</select>
+  	
+  	<!-- 회원가입 -->
+  	<insert id="signUp" parameterType="user">
+  		INSERT INTO USERS VALUES(
+  			SEQ_USER_NO.NEXTVAL,
+  			#{userEmail},
+  			#{userPw},
+  			#{userName},
+  			#{userNick},
+  			#{userTel},
+  			#{userAddr},
+  			#{userBirth},
+  			#{userGender},
+  			DEFAULT, 'Y', NULL, 
+  			DEFAULT, DEFAULT, NULL, NULL
+  		)
+  	</insert>
   	
 </mapper>

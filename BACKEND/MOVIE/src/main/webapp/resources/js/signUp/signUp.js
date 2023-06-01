@@ -3,31 +3,31 @@
 // 유효성 검사 여부를 기록할 객체 생성
 const checkObj = {
     "userEmail": false,
-    "inputPw": false,
-    "inputPwConfirm": false,
+    "userPw": false,
+    "userPwConfirm": false,
     "userNick": false,
-    "inputGender": false,
-    "inputBirthday": false,
-    "inputTel": false,
+    "userGender": false,
+    "userBirth": false,
+    "userTel": false,
     // "sendEmail"       : false   // 인증번호 발송 체크
 };
 
 
 
 // 전화번호 유효성 검사
-const inputTel = document.getElementById("inputTel");
+const userTel = document.getElementById("userTel");
 const telMessage = document.getElementById("telMessage");
 
 
-inputTel.addEventListener("input", function () {
+userTel.addEventListener("input", function () {
 
     // 입력이 되지 않은 경우
-    if (inputTel.value.length == 0) {
+    if (userTel.value.length == 0) {
 
         telMessage.innerText = "전화번호를 입력해주세요.(- 제외)";
         telMessage.classList.remove("confirm", "error");
 
-        checkObj.inputTel = false;
+        checkObj.userTel = false;
         return;
 
     }
@@ -35,19 +35,19 @@ inputTel.addEventListener("input", function () {
     // 연락처 정규식
     const regExp = /^0(1[01679]|2|[3-6][1-5]|70)\d{3,4}\d{4}$/;
 
-    if (regExp.test(inputTel.value)) { // 유효한 경우
+    if (regExp.test(userTel.value)) { // 유효한 경우
         telMessage.innerText = "";
         telMessage.classList.add("confirm");
         telMessage.classList.remove("error");
 
-        checkObj.inputTel = true;
+        checkObj.userTel = true;
 
     } else { // 유효하지 않은 경우
         telMessage.innerText = "연락처 형식이 올바르지 않습니다.";
         telMessage.classList.add("error");
         telMessage.classList.remove("confirm");
 
-        checkObj.inputTel = false;
+        checkObj.userTel = false;
     }
 });
 
@@ -241,7 +241,7 @@ userName.addEventListener("input", function () {
                     nameMessage.classList.add("error");
                     nameMessage.classList.remove("confirm");
 
-                    checkObj.userName = true;
+                    checkObj.userName = false;
 
 
                 }
@@ -266,23 +266,23 @@ userName.addEventListener("input", function () {
 
 
 /* 성별 유효성검사 */
-const inputGender = document.getElementById("inputGender");
+const userGender = document.getElementById("userGender");
 const selMessage = document.getElementById("selMessage");
-inputGender.addEventListener("change", function () {
+userGender.addEventListener("change", function () {
 
-    if (inputGender.value == "") {
+    if (userGender.value == "") {
 
 
         selMessage.innerText = "필수 선택입니다.";
         selMessage.classList.add("error");
         selMessage.classList.remove("confirm");
 
-        checkObj.inputGender = false;
+        checkObj.userGender = false;
 
     } else {
 
         selMessage.innerText = "";
-        checkObj.inputGender = true;
+        checkObj.userGender = true;
 
 
     }
@@ -293,10 +293,10 @@ inputGender.addEventListener("change", function () {
 
 /* 생년월일 유효성 검사 */
 
-let inputBirthday = document.getElementById("inputBirthday");
+const userBirth = document.getElementById("userBirth");
 const birMessage = document.getElementById("birMessage");
 
-inputBirthday.addEventListener("input", function () {
+userBirth.addEventListener("input", function () {
 
     if (this.value.length == 0) {
 
@@ -304,19 +304,19 @@ inputBirthday.addEventListener("input", function () {
         birMessage.innerText = "생년월일을 입력해주세요.";
         birMessage.classList.remove("confirm", "error");
 
-        checkObj.inputBirthday = false;
+        checkObj.userBirth = false;
         return;
 
 
     }
     if (this.value.length == 8) {
         if (checkBirthday(this.value)) {
-            checkObj.inputBirthday = true;
+            checkObj.userBirth = true;
 
 
 
         } else {
-            checkObj.inputBirthday = false;
+            checkObj.userBirth = false;
 
         }
     }
@@ -379,30 +379,30 @@ function checkBirthday(dateStr) {
 
 
 // 비밀번호 유효성 검사
-const inputPw = document.getElementById("inputPw");
-const inputPwConfirm = document.getElementById("inputPwConfirm");
+const userPw = document.getElementById("userPw");
+const userPwConfirm = document.getElementById("userPwConfirm");
 const pwMessage = document.getElementById("pwMessage");
 
-inputPw.addEventListener("input", function () {
+userPw.addEventListener("input", function () {
 
-    if (inputPw.value.length == 0) {
+    if (userPw.value.length == 0) {
         pwMessage.innerText = "영어, 숫자, 특수문자(!,@,#,-,_) 6~20글자 사이로 작성해주세요.";
         pwMessage.classList.remove("confirm", "error");
 
-        checkObj.inputPw = false;
+        checkObj.userPw = false;
         return;
     }
 
     const regExp = /^[\w!@#_-]{6,20}$/;
 
-    if (regExp.test(inputPw.value)) { // 비밀번호 유효
+    if (regExp.test(userPw.value)) { // 비밀번호 유효
 
 
-        checkObj.inputPw = true;
+        checkObj.userPw = true;
 
 
 
-        if (inputPwConfirm.value.length == 0) {
+        if (userPwConfirm.value.length == 0) {
             pwMessage.innerText = "유효한 비밀번호 형식입니다.";
             pwMessage.classList.add("confirm");
             pwMessage.classList.remove("error");
@@ -415,7 +415,7 @@ inputPw.addEventListener("input", function () {
         pwMessage.classList.add("error");
         pwMessage.classList.remove("confirm");
 
-        checkObj.inputPw = false;
+        checkObj.userPw = false;
     }
 });
 
@@ -423,7 +423,7 @@ inputPw.addEventListener("input", function () {
 // 비밀번호 확인 유효성 검사
 
 
-inputPwConfirm.addEventListener("input", checkPw);
+userPwConfirm.addEventListener("input", checkPw);
 
 
 
@@ -432,20 +432,20 @@ function checkPw() { // 비밀번호 일치 검사
 
     const regExp = /^[\w!@#_-]{6,20}$/;
 
-    if (inputPw.value == inputPwConfirm.value) {
+    if (userPw.value == userPwConfirm.value) {
 
-        if (regExp.test(inputPw.value)) {
+        if (regExp.test(userPw.value)) {
             pwMessage.innerText = "";
             pwMessage.classList.add("confirm");
             pwMessage.classList.remove("error");
 
-            checkObj.inputPwConfirm = true;
+            checkObj.userPwConfirm = true;
         } else {
             pwMessage.innerText = "영어, 숫자, 특수문자(!,@,#,-,_) 6~20글자 사이로 작성해주세요.";
             pwMessage.classList.add("error");
             pwMessage.classList.remove("confirm");
 
-            checkObj.inputPwConfirm = false;
+            checkObj.userPwConfirm = false;
         }
 
     } else {
@@ -453,7 +453,7 @@ function checkPw() { // 비밀번호 일치 검사
         pwMessage.classList.add("error");
         pwMessage.classList.remove("confirm");
 
-        checkObj.inputPwConfirm = false;
+        checkObj.userPwConfirm = false;
     }
 }
 
@@ -477,13 +477,13 @@ function signUpValidate() {
 
             switch (key) {
                 case "userEmail": str = "이메일이"; break;
-                case "inputPw": str = "비밀번호가"; break;
-                case "inputPwConfirm": str = "비밀번호 확인이"; break;
+                case "userPw": str = "비밀번호가"; break;
+                case "userPwConfirm": str = "비밀번호 확인이"; break;
                 case "userNick": str = "닉네임이"; break;
                 case "userName": str = "이름이"; break;
-                case "inputGender": str = "성별이"; break;
-                case "inputBirthday": str = "생년월일이"; break;
-                case "inputTel": str = "전화번호가"; break;
+                case "userGender": str = "성별이"; break;
+                case "userBirth": str = "생년월일이"; break;
+                case "userTel": str = "전화번호가"; break;
             }
 
             str += " 유효하지 않습니다.";
@@ -641,3 +641,29 @@ function sample4_execDaumPostcode() {
         }
     }).open();
 }
+
+
+
+
+const testbtn = document.getElementById("test-btn");
+
+testbtn.addEventListener("click", function () {
+
+    console.log("테스트");
+    console.log("이메일" + checkObj.userEmail);
+    console.log("비밀번호" + checkObj.userPw);
+    console.log("닉네임" + checkObj.userNick);
+    console.log("이름" + checkObj.userName);
+    console.log("생일" + checkObj.userBirth);
+    console.log("성별" + checkObj.userGender);
+    console.log("연락처" + checkObj.userTel);
+    console.log("이메일" + userEmail.value);
+    console.log("비밀번호" + userPw.value);
+    console.log("닉네임" + userNick.value);
+    console.log("이름" + userName.value);
+    console.log("생일" + userBirth.value);
+    console.log("성별" + userGender.value);
+    console.log("연락처" + userTel.value);
+
+
+})
