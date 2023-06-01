@@ -20,10 +20,12 @@ public class User {
 	private int userTel;
 	private String userAddr;
 	private String userBirth;
+	private String userGender;
 	private String userRegDate;
 	private String UserSt;
 	private String userImg;
 	private int userPoint;
 	private String userSns;
 	private String userChage;
+	private String userDelete;
 }
