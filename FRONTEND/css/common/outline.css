@@ -262,7 +262,7 @@ header>nav {
 .dummy {
     width: 100vw;
     height: 135px;
-    background-color: rgba(21, 21, 21, 0.7);
+    background-color: rgba(21, 21, 21);
     position: absolute;
     top: 49px;
     right: 0;
