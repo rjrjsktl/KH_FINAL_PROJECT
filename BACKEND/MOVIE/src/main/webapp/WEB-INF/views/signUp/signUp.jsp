@@ -63,16 +63,16 @@
 
 
 
-                            <label for="inputPw">
+                            <label for="userPw">
                                 <span class="required">*</span> 비밀번호
                             </label>
 
                             <div class="signUp-input-area">
-                                <input type="password" id="inputPw" name="inputPw" placeholder="비밀번호" maxlength="30">
+                                <input type="password" id="userPw" name="userPw" placeholder="비밀번호" maxlength="30">
                             </div>
 
                             <div class="signUp-input-area">
-                                <input type="password" id="inputPwConfirm" placeholder="비밀번호 확인" maxlength="30">
+                                <input type="password" id="userPwConfirm" placeholder="비밀번호 확인" maxlength="30">
                             </div>
 
                             <span class="signUp-message" id="pwMessage"></span>
@@ -97,7 +97,7 @@
                             </label>
 
                             <div class="signUp-input-area">
-                                <input type="text" id="userName" placeholder="이름" maxlength="10">
+                                <input type="text" id="userName" name="userName" placeholder="이름" maxlength="10">
 
                             </div>
 
@@ -105,25 +105,25 @@
 
 
 
-                            <label for="inputBirthday">
+                            <label for="userBirth">
                                 <span class="required">*</span> 생년월일
                             </label>
 
                             <div class="signUp-input-area">
 
-                                <input type="text" id="inputBirthday" placeholder="생년월일 8자리" maxlength="8">
+                                <input type="text" id="userBirth" placeholder="생년월일 8자리" maxlength="8">
                             </div>
 
 
 
                             <span class="error_box" id="birMessage"></span>
 
-                            <label for="inputGender">
+                            <label for="userGender">
                                 <span class="required">*</span> 성별
                             </label>
 
                             <div class="signUp-input-area">
-                                <select id="inputGender" name="inputGender" class="sel" aria-label="성별">
+                                <select id="userGender" name="userGender" class="sel" aria-label="성별">
                                     <option value="" selected="">성별</option>
                                     <option value="M">남자</option>
                                     <option value="F">여자</option>
@@ -138,12 +138,12 @@
 
 
 
-                            <label for="inputTel">
+                            <label for="userTel">
                                 <span class="required">*</span> 연락처
                             </label>
 
                             <div class="signUp-input-area">
-                                <input type="text" id="inputTel" name="inputTel" placeholder="(- 없이 숫자만 입력)"
+                                <input type="text" id="userTel" name="userTel" placeholder="(- 없이 숫자만 입력)"
                                     maxlength="11">
                             </div>
 
@@ -151,29 +151,29 @@
 
 
 
-                            <label for="inputAddress">
+                            <label for="userAddr">
                                 주소
                             </label>
 
                             <div class="signUp-input-area">
-                                <input type="text" id="sample4_postcode" name="inputAddress" placeholder="우편번호"
+                                <input type="text" id="sample4_postcode" name="userAddr" placeholder="우편번호"
                                     maxlength="6" readonly>
 
                                 <button type="button" onclick="return sample4_execDaumPostcode()">검색</button>
                             </div>
 
                             <div class="signUp-input-area">
-                                <input type="text" id="sample4_roadAddress" name="inputAddress" placeholder="도로명주소"
+                                <input type="text" id="sample4_roadAddress" name="userAddr" placeholder="도로명주소"
                                     readonly>
                             </div>
 
                             <div class="signUp-input-area">
-                                <input type="text" id="sample4_detailAddress" name="inputAddress" placeholder="상세주소"
+                                <input type="text" id="sample4_detailAddress" name="userAddr" placeholder="상세주소"
                                     readonly>
                             </div>
 
-                            <button type="button" id="signUp-btn">가입하기</button>
-
+                            <button type="submit" id="signUp-btn">가입하기</button>
+                            <button type="button" id="test-btn">테스트</button>
                         </form>
 
                     </section>

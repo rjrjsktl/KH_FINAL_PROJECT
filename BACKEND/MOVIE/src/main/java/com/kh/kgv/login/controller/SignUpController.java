@@ -79,10 +79,14 @@ public class SignUpController {
 				inputUser.setUserAddr(null);
 			}
 			
+			System.out.println(inputUser + "============================================================");
+			
 			int result = service.signUp(inputUser);
 			
+			System.out.println(result);
 			String message =null;
 			String path =null;
+			
 			
 			if(result > 0) {
 				message = "회원가입 성공!";
