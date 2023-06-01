@@ -1,8 +1,13 @@
 package com.kh.kgv.login.controller;
 
+
+import javax.servlet.ServletRequest;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,6 +50,7 @@ public class LoginController {
 	                    RedirectAttributes ra,
 	                    HttpServletResponse resp,
 	                    HttpServletRequest req,
+	                    HttpSession session,
 	                    @RequestParam(value="saveId", required=false) String saveId) {
 		
 		logger.info("1. 로그인 기능 수행 시작");
@@ -56,6 +62,8 @@ public class LoginController {
 		logger.info("6. service 에서 받아온 loginUser : " + loginUser);
 		
 		if(loginUser != null) { // 로그인 성공 시
+			
+			
 			
 			logger.info("로그인 성공!");
 			
@@ -102,8 +110,15 @@ public class LoginController {
 			return "redirect:/user/login"; 
 		}
 		
-		//session.setAttribute("loginUser", loginUser);
-		//String id = (String) session.getAttribute("loginUser");
+		session.setAttribute("loginUser", loginUser);
+		
+		User checkloginUser = (User) session.getAttribute("loginUser");
+		
+		if (checkloginUser != null) {
+		    logger.info("세션있음");
+		} else {
+			logger.info("세션없음");
+		}
 		
 		
 		logger.info("마지막 로그인 기능 수행됨");
