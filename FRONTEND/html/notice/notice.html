@@ -10,8 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>예매선택 페이지</title>
-    <link rel="stylesheet" href="../../css/outline.css">
-    <link rel="stylesheet" href="../../css/notice.css">
+    <link rel="stylesheet" href="../../css/common/outline.css">
+    <link rel="stylesheet" href="../../css/notice/notice.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
 </head>
@@ -19,98 +19,120 @@
 <body>
     <div id="wrap">
         <header>
-            <!-- 헤더 윗쪽 섹션 -->
-            <section>
 
-                <div>
+            <section>
+                <div class="logo-section">
                     <div>
-                        <!-- 
-                             contextpath 지정 必
-                             이미지 태그 속 로고위치 제대로 작성
-                          -->
-                        <!-- <a href="${contextPath}">
-                 <img src="${contextPath}/resources/images/logo.jpg" id="home-logo">
-             </a> -->
-                        <a href="#"><img src="../images/logo3.png" alt="로고 이미지 삽입 w160 h70 "></a>
+                        <a href="#"><img src="" alt="암거나박아요"></a>
                     </div>
-                    <div>
-                        <span>K H T H E A T E R</span>
-                    </div>
+                    <span>KHTHEATER</span>
                 </div>
 
-                <div>
-                    <div> <a href="#"><img src="" alt="광고 이미지삽입width:200px height:100px"></a></div>
-
+                <div class="memberInfo_wrap">
                     <ul>
+
+                        <div>
+                            <img src="" alt="">
+                        </div>
+
                         <li>
                             <a href="#">
-                                <span><i class="fa-solid fa-lock"></i></span>
-                                <p>SIGN IN</p>
+                                <span><img src="../../images/headerPng/test.png" alt=""></span>
+                                <span>로그인</span>
                             </a>
                         </li>
-
                         <li>
-
-
                             <a href="#">
-                                <span><i class="fa-regular fa-user"></i></span>
-                                <p>MY PAGE</p>
+                                <span><img src="../../images/headerPng/test2.png" alt=""></span>
+                                <span>회원가입</span>
                             </a>
-
-
                         </li>
-
                         <li>
                             <a href="#">
-                                <span><i class="fa-solid fa-headset"></i></span>
-                                <p>HELP</p>
+                                <span><img src="../../images/headerPng/test3.png" alt=""></span>
+                                <span>MY KGV</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span><img src="../../images/headerPng/test5.png" alt=""></span>
+                                <span>고객센터</span>
                             </a>
                         </li>
 
                     </ul>
                 </div>
-
             </section>
 
             <!-- nav bar-->
             <nav>
-
                 <div>
                     <ul>
-                        <li><a href="#">영화</a></li>
-                        <li><a href="#">극장</a></li>
-                        <li><a href="#">예매</a></li>
-                        <li><a href="#">스토어</a></li>
-                        <li><a href="#">이벤트</a></li>
-                        <li><a href="#">혜택</a></li>
-                    </ul>
+                        <li class="navBar"><a href="#">영화</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="">무비 차트</a></li>
+                            </ul>
+                        </li>
+                        <li class="navBar"><a href="#">상영관</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="">지역별</a></li>
+                                <li><a href="">특별관</a></li>
+                            </ul>
+                        </li>
+                        <li class="navBar"><a href="#">예매</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="">빠른 예매</a></li>
+                            </ul>
+                        </li>
 
+                        <li class="navBar"><a href="#">이벤트</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="">진행중 이벤트</a></li>
+                                <li><a href="">지난 이벤트</a></li>
+                                <li><a href="">당첨자 발표</a></li>
+                            </ul>
+                        </li>
+                        <li class="navBar"><a href="#">스토어</a></li>
+                        <li class="navBar"><a href="#">혜택</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="">멤버쉽</a></li>
+                                <li><a href="">제휴/할인</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="dummy" style="display:none"></div>
                     <div>
                         <form action="">
 
-                            <input type="text" placeholder="오늘의 영화를 찾아보세용">
-                            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <input type="text" placeholder="아 영화 재밌는거 없나">
+                            <button><img src="../../images/headerPng/test6.png" alt=""></button>
                         </form>
                     </div>
 
                 </div>
 
             </nav>
-
         </header>
 
+
+
+
+
+
+
+
+        <!-- 여기서 부터 작업하세요.000000000000000000000000000000000000 -->
         <main>
-            <!-- 여기서 부터 작업하세요. -->
+
             <section>
                 <div>
                     <aside>
-                        <div>
-
-                            <nav>
-                                <p><a>고객센터</a></p>
 
 
-                                <ul>
+
+                        <div class="aside-wrap">
+                            <div class="aside-ul-wrap">
+                                <ul class="aslide-list">
                                     <li>
                                         <a href="#">고객센터 홈</a>
                                     </li>
@@ -137,14 +159,15 @@
                                     </li>
 
                                 </ul>
-
-                                <div>
-                                    <p>KGV 고객센터</p>
-                                    <p>15:30 ~ 22:00</p>
-                                </div>
-                            </nav>
-
+                            </div>
                         </div>
+
+
+
+
+
+
+
                     </aside>
                     <div>
                         <div>
@@ -167,28 +190,6 @@
                                     <button><i class="fa-solid fa-magnifying-glass"></i></button>
                                 </form>
                             </div>
-
-
-                            <!-- <table>
-
-                                <thead>
-                                    <tr>
-                                        <th>글번호</th>
-                                        <th>제목</th>
-                                        <th>등록일</th>
-                                        <th>조회수</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
-
-                                    </tr>
-                                </tbody>
-                            </table> -->
 
 
                             <div class="notice_wrap">
@@ -245,6 +246,30 @@
                                             <td>지역</td>
                                             <td>2023.05.26</td>
                                         </tr>
+                                        <tr class="row">
+                                            <td>극장이름</td>
+                                            <th><a>내용</a></th>
+                                            <td>지역</td>
+                                            <td>2023.05.26</td>
+                                        </tr>
+                                        <tr class="row">
+                                            <td>극장이름</td>
+                                            <th><a>내용</a></th>
+                                            <td>지역</td>
+                                            <td>2023.05.26</td>
+                                        </tr>
+                                        <tr class="row">
+                                            <td>극장이름</td>
+                                            <th><a>내용</a></th>
+                                            <td>지역</td>
+                                            <td>2023.05.26</td>
+                                        </tr>
+                                        <tr class="row">
+                                            <td>극장이름</td>
+                                            <th><a>내용</a></th>
+                                            <td>지역</td>
+                                            <td>2023.05.26</td>
+                                        </tr>   
 
 
                                     </tbody>
@@ -270,24 +295,17 @@
                     </div>
                 </div>
             </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <!-- 여기까지 작업하세요. -->
         </main>
+        <!-- 여기까지 작업하세요. 0000000000000000000000000000000000000-->
+
+
+
+
+
+
+
+
+
 
     </div>
     <footer>
@@ -318,6 +336,14 @@
 
         </section>
 
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="../../js/main/main.js"></script>
+
+
+
+
     </footer>
     <!--
      <%-- session에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
@@ -333,6 +359,7 @@
                  <c:remove var="message" scope="session" />
              </c:if>
              -->
+
 </body>
 
 </html>

@@ -1,44 +1,3 @@
-const slide_Wrapper = $('.slide_Content > .slide_Wrapper');
-
-slide_Wrapper.on('click', (e) => {
-    e.preventDefault();
-
-    const slideDownItems = $(e.currentTarget).next('.slide_Down_items');
-    const isActive = slideDownItems.is(':visible');
-
-    $('.slide_Down_items').slideUp();
-    slide_Wrapper.removeClass('active');
-
-    if (!isActive) {
-        slideDownItems.slideDown();
-        $(e.currentTarget).addClass('active');
-    }
-});
-
-const top_items = $('.top_Click_area > .top_items');
-
-top_items.on('click', (e) => {
-    e.preventDefault();
-
-    const top_Click_area = $(e.currentTarget).next('.top_Click_area');
-    const isActive = top_Click_area.is('.active');
-
-
-    // top_items.addClass('active')
-    top_items.removeClass('active')
-
-    if (!isActive) {
-        // $(e.currentTarget).removeClass('active')
-        $(e.currentTarget).addClass('active')
-    }
-});
-
-
-
-
-
-
-
 /* 방문자 현황용 그래프 */
 
 var myChart = Highcharts.chart('daily_Enter', {
@@ -152,9 +111,9 @@ var myChart = Highcharts.chart('daily_Movie_Watch', {
 });
 
 // ajax 보낼때 아마 관리자 넘버 같이 넣던가 해야할듯?
-$(document).ready(function() {
-    $('#crtbtn').click(function() {
-        if($('#crtMemo').val()=="") {
+$(document).ready(function () {
+    $('#crtbtn').click(function () {
+        if ($('#crtMemo').val() == "") {
             window.swal('수정 실패!', "메모를 입력 하라옹", 'warning')
             // alert('메모를 입력하라옹');
             $('#crtMemo').focus();
@@ -166,19 +125,19 @@ $(document).ready(function() {
         $.ajax({
             url: "createMemo",
             data: {
-                    "memoDetail" : $("#crtMemo").value
-                },
+                "memoDetail": $("#crtMemo").value
+            },
             type: "POST",
             dataType: "json",
 
-            success: function(mmlist) {
+            success: function (mmlist) {
                 console.log("AJAX 성공");
                 $('#memoList').html("");
-                if(mmlist.length === 0) {
+                if (mmlist.length === 0) {
                     return;
                 }
                 // $('.memoList').html(""); 요기에 넣어야 할 수도
-                for ( let item of mmlist ) {
+                for (let item of mmlist) {
                     const managerMemo = document.querySelector("#managerMemo");
                     const memoList = `
                         <li id="${item.memoNo} class="memoList">
@@ -190,13 +149,13 @@ $(document).ready(function() {
                     managerMemo.append(memoList);
                 }
                 // hidden 번호 넘어가나 확인용
-                $('.memoList').off().on('click', function(){
+                $('.memoList').off().on('click', function () {
                     console.log('test');
                     console.log($(this).attr('id'));
                     passNote($(this).attr('id'));
                 })
             },
-            error: function(request) {
+            error: function (request) {
                 console.log("AJAX 에러 발생")
                 console.log("상태코드 : " + request.status) // 404, 500
             }
@@ -211,16 +170,16 @@ function delMemo() {
     $.ajax({
         url: "remove",
         data: {
-			"noteNo" : dltbtn.value
-			},
+            "noteNo": dltbtn.value
+        },
         type: "POST",
         dataType: "json",
 
-        success: function() {
+        success: function () {
             console.log("AJAX 성공");
-            location.href="/movie/manager/main";
+            location.href = "/movie/manager/main";
         },
-        error: function(request) {
+        error: function (request) {
             console.log("AJAX 에러 발생")
             console.log("상태코드 : " + request.status) // 404, 500
         }
