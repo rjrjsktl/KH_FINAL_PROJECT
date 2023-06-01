@@ -686,7 +686,9 @@ button:hover {
     height: 100%;
 
     /* 지정된 범위에 가면 자동 줄바꿈이 이뤄짐 개꿀 */
-    word-wrap: break-word;
+    white-space: normal;
+    word-break: break-all;
+    word-wrap: normal;
     
     /* border: 1px solid red; */
 }

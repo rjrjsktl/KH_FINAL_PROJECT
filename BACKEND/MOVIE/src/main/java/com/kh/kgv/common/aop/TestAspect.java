@@ -45,6 +45,6 @@ public class TestAspect {
 	// Pointcut을 작성해놓은 메서드
 	// -> Pointcut의 패턴이 작성되는 부분에 memberPointcut메서드 이름을 작성하면
 	// @Pointcut에 작성된 패턴이 적용된다.
-	@Pointcut("execution(* edu.kh.comm.member..*Impl.*(..))")
+	@Pointcut("execution(* com.kh.kgv.login..*Impl.*(..))")
 	public void memberPointcut() {}
 }
