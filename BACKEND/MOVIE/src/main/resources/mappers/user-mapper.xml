@@ -45,9 +45,38 @@
   	<select id="emailDupCheck" parameterType="string" resultType="_int">
   		SELECT COUNT(*) FROM USERS
 		WHERE USER_EMAIL = #{userEmail}
-		AND USER_ST = 'N'
+		AND USER_ST = 'Y'
   	</select>
   	
+  	<!-- 닉네임 중복 검사 -->
+	<select id="nicknameDupCheck" parameterType="string" resultType="_int">
+  		SELECT COUNT(*) FROM USERS
+		WHERE USER_NICKNAME = #{userNick}
+		AND USER_ST = 'Y'
+  	</select>
   	
-	
+  	<!-- 이름 중복 검사 -->
+  	<select id="nameDupCheck" parameterType="string" resultType="_int">
+  		SELECT COUNT(*) FROM USERS
+		WHERE USER_NAME = #{userName}
+		AND USER_ST = 'Y'
+  	</select>
+  	
+  	<!-- 회원가입 -->
+  	<insert id="signUp" parameterType="user">
+  		INSERT INTO USERS VALUES(
+  			SEQ_USER_NO_S.NEXTVAL,
+  			#{userEmail},
+  			#{userPw},
+  			#{userName},
+  			#{userNick},
+  			#{userTel},
+  			#{userAddr},
+  			#{userBirth},
+  			#{userGender},
+  			DEFAULT, DEFAULT, DEFAULT,
+  			DEFAULT, DEFAULT, DEFAULT, DEFAULT
+  		)
+  	</insert>
+  	
 </mapper>

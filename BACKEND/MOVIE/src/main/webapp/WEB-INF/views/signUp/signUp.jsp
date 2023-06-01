@@ -80,25 +80,24 @@
 
 
 
-                            <label for="inputNickname">
+                            <label for="userNick">
                                 <span class="required">*</span> 닉네임
                             </label>
 
                             <div class="signUp-input-area">
-                                <input type="text" id="inputNickname" name="inputNickname" placeholder="닉네임"
-                                    maxlength="10">
+                                <input type="text" id="userNick" name="userNick" placeholder="닉네임" maxlength="10">
                             </div>
 
                             <span class="signUp-message" id="nicknameMessage"></span>
 
 
 
-                            <label for="inputname">
+                            <label for="userName">
                                 <span class="required">*</span> 이름
                             </label>
 
                             <div class="signUp-input-area">
-                                <input type="text" id="inputname" placeholder="이름" maxlength="10">
+                                <input type="text" id="userName" placeholder="이름" maxlength="10">
 
                             </div>
 
@@ -212,9 +211,9 @@
              </c:if>
              -->
 
-              <!-- jQuery 라이브러리 추가(CDN) -->
+            <!-- jQuery 라이브러리 추가(CDN) -->
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
             <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
