@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.kgv.customer.model.vo.User;
@@ -31,24 +32,13 @@ public class LoginController {
 	@Autowired
 	private LoginService service;
 	
-	/** 로그인 페이지 진입
-	 * @return
-	 */
+	// 로그인 페이지 진입
 	@GetMapping("/login")
 	public String enterLogin() {
 		return "login/login";
 	}
 	
-	
-	/** 로그인 기능 실행
-	 * @param inputUser
-	 * @param model
-	 * @param ra
-	 * @param resp
-	 * @param req
-	 * @param saveId
-	 * @return
-	 */
+	// 로그인
 	@PostMapping("/login")
 	public String login(@ModelAttribute User inputUser,
 	                    Model model,
@@ -84,7 +74,7 @@ public class LoginController {
 			} else { // 체크 되지 않았을 때
 				cookie.setMaxAge(0); // 0초 -> 생성 되자마자 사라짐 == 쿠키 삭제
 				
-				logger.info("쿠기 삭제!");
+				logger.info("쿠키 삭제!");
 			}
 			
 			
@@ -112,15 +102,33 @@ public class LoginController {
 			return "redirect:/user/login"; 
 		}
 		
-		//session.setAttribute("loginMember", loginMember);
+		//session.setAttribute("loginUser", loginUser);
+		//String id = (String) session.getAttribute("loginUser");
 		
 		
 		logger.info("마지막 로그인 기능 수행됨");
 		
-//		return "redirect:/";
+		return "redirect:/";
 		
-		return "login/login_welcome";
+		//return "login/login_welcome";
 	}
+	
+	// 로그아웃
+	@GetMapping("/logout")
+	public String logout( /*HttpSession session,*/
+						SessionStatus status) {
+		// * @SessionAttributes을 이용해서 session scope에 배치된 데이터는
+		//   SessionStatus라는 별도 객체를 이용해야만 없앨 수 있다.
+		logger.info("로그아웃 수행됨");
+		
+		// session.invalidate(); // 기존 세션 무효화 방식으로는 안된다!
+		
+		status.setComplete(); // 세센이 할 일이 완료됨 -> 없앰
+		
+		return "redirect:/"; // 메인페이지 리다이렉트
+		
+	}
+	
 	
 	@RequestMapping("/findPw")
 	public String findPw() {
