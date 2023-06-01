@@ -12,6 +12,7 @@
     <title>로그인 성공 페이지</title>
     
     <link rel="stylesheet" href="${contextPath}/resources/css/login/login_welcome.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
         <!-- jQuery 라이브러리 추가(CDN) -->
