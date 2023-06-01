@@ -75,14 +75,15 @@ userEmail.addEventListener("input", function () {
     if (regExp.test(userEmail.value)) { // 유효한 경우
         console.log('유효한가?');
 
-        $.AJAX({
-            url: "emailDupCheck",
+        $.ajax({
+            
+            url : "emailDupCheck",
 
-            data: { "userEmail": userEmail.value },
+            data : { "userEmail": userEmail.value },
 
-            type: "GET",
+            type : "GET",
 
-            success: function (result) {
+            success : function(result) {
 
 
                 if (result == 1) { //중복 o
@@ -102,16 +103,17 @@ userEmail.addEventListener("input", function () {
                 }
             },
 
-            error: function () {
+            error : function () {
 
                 console.log("에러 발생");
             }
 
         });
 
-
+        console.log('유효아니한가?');
 
     } else {
+        console.log('유효아니아니한가?');
         emailMessage.innerText = "이메일 형식이 유효하지 않습니다.";
         emailMessage.classList.add("error");
         emailMessage.classList.remove("confirm");
