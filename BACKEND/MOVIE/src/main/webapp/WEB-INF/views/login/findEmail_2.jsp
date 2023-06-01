@@ -11,7 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>아이디찾기_2 페이지</title>
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login/findEmail_2.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/login/findEmail_2.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
 </head>
