@@ -17,12 +17,12 @@
 		<result property="userEmail" 		column="USER_EMAIL"/>
 		<result property="userPw" 			column="USER_PW"/>
 		<result property="userName" 		column="USER_NAME"/>
-		<result property="userNickname" 	column="USER_NICKNAME"/>
+		<result property="userNick" 		column="USER_NICKNAME"/>
 		<result property="userTel" 			column="USER_TEL"/>
-		<result property="userAddress" 		column="USER_ADDR"/>
+		<result property="userAddr" 		column="USER_ADDR"/>
 		<result property="userBirth" 		column="USER_BIRTH"/>
 		<result property="userGender" 		column="USER_GENDER"/>
-		<result property="userRegdate" 		column="USER_REGDATE"/>
+		<result property="userRegDate" 		column="USER_REGDATE"/>
 		<result property="userSt" 			column="USER_ST"/>
 		<result property="userImg"	 		column="USER_IMG"/>
 		<result property="userPoint" 		column="USER_POINT"/>

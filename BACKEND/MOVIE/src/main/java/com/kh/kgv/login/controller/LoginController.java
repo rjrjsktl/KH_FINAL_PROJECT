@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.kgv.customer.model.vo.User;
@@ -21,6 +22,8 @@ import com.kh.kgv.login.model.service.LoginService;
 
 @Controller
 @RequestMapping("/user")
+@SessionAttributes({"loginUser"}) // Model에 추가된 값의 key와 어노테이션에 작성된 값이 같으면
+// 해당 값을 session scope 이동시키는 역할
 public class LoginController {
 	
 	private Logger logger = LoggerFactory.getLogger(LoginController.class);
@@ -86,7 +89,7 @@ public class LoginController {
 			// -> RedirectAttributes 객체  (컨트롤러 매개변수에 작성하면 사용 가능)
 		}
 		
-		//session.setAttribute("loginMember", loginMember);
+		//session.setAttribute("loginUser", loginUser);
 		logger.info("마지막 로그인 기능 수행됨");
 		
 		//return "redirect:/";
