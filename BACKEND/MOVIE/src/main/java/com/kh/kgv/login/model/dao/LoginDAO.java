@@ -17,6 +17,7 @@ public class LoginDAO {
 	private Logger logger = LoggerFactory.getLogger(LoginDAO.class);
 
 	public User login(User inputUser) {
+		
 		User loginUser = sqlSession.selectOne("userMapper.login", inputUser ); 
 		
 		return loginUser;
