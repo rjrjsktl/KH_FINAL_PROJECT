@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page session="false" %>
  <!-- 최신화 종료 건들일없음 -->
+<script src="${contextPath}/resources/js/main/main.js"></script>
 
          <header>
              <section>
@@ -15,38 +16,79 @@
                  </div>
  
                  <div class="memberInfo_wrap">
-                     <ul>
+                 	<c:choose>  
+            			<%-- 로그인이 되어있지 않은 경우 --%>
+       					<%-- <c:when test="${ empty sessionScope.loginUser }"> --%>
+       					<c:when test="${ sessionScope.loginUser.userEmail eq null }">
+       					
+       					
+            		 		<ul>
+                         		<div>
+                             		<img src="" alt="">
+                         		</div>
  
-                         <div>
-                             <img src="" alt="">
-                         </div>
+ 		                        <li>
+                             		<a href="${contextPath}/user/login">
+                                 	<span><img src="${contextPath}/resources/images/headerPng/test.png" alt=""></span>
+                                 	<span>로그인</span>
+                             		</a>
+                         		</li>
+                         		<li>
+                            		<a href="${contextPath}/signUp/signUp_sns">
+                                 	<span><img src="${contextPath}/resources/images/headerPng/test2.png" alt=""></span>
+                                 	<span>회원가입</span>
+                             		</a>
+                         		</li>
+                         		<li>
+                            		<a href="${contextPath}/myPage/info">
+                                 	<span><img src="${contextPath}/resources/images/headerPng/test3.png" alt=""></span>
+                                 	<span>MY KGV</span>
+                             		</a>
+                         		</li>
+                         		<li>
+                              		<a href="#">
+                                 	<span><img src="${contextPath}/resources/images/headerPng/test5.png" alt=""></span>
+                                 	<span>고객센터</span>
+                             		</a>
+                         		</li>
  
-                         <li>
-                             <a href="${contextPath}/user/login">
-                                 <span><img src="${contextPath}/resources/images/headerPng/test.png" alt=""></span>
-                                 <span>로그인</span>
-                             </a>
-                         </li>
-                         <li>
-                            <a href="${contextPath}/signUp/signUp_sns">
-                                 <span><img src="${contextPath}/resources/images/headerPng/test2.png" alt=""></span>
-                                 <span>회원가입</span>
-                             </a>
-                         </li>
-                         <li>
-                            <a href="${contextPath}/myPage/info">
-                                 <span><img src="${contextPath}/resources/images/headerPng/test3.png" alt=""></span>
-                                 <span>MY KGV</span>
-                             </a>
-                         </li>
-                         <li>
-                              <a href="#">
-                                 <span><img src="${contextPath}/resources/images/headerPng/test5.png" alt=""></span>
-                                 <span>고객센터</span>
-                             </a>
-                         </li>
+                     		</ul>
+                         </c:when>
+            	
+            			<%-- 로그인이 되어있는 경우 --%>
+            			<c:otherwise>
+            				<ul>
+	   	                    	<div>
+                             		<img src="" alt="">
+                         		</div>
  
-                     </ul>
+                         		<li hidden>
+                             		<a href="${contextPath}/user/login">
+                                 	<span><img src="${contextPath}/resources/images/headerPng/test.png" alt=""></span>
+                                 	<span>로그인</span>
+                             		</a>
+                         		</li>
+                         		<li>
+                            		<a href="${contextPath}/user/logout">
+                                 	<span><img src="${contextPath}/resources/images/headerPng/logout1.png" alt=""></span>
+                                 	<span>로그아웃</span>
+                             		</a>
+                         		</li>
+                         		<li>
+                            		<a href="${contextPath}/myPage/info">
+                              		<span><img src="${contextPath}/resources/images/headerPng/test3.png" alt=""></span>
+                                	<span>MY KGV</span>
+                             		</a>
+                         		</li>
+                         		<li>
+                              		<a href="#">
+                                 	<span><img src="${contextPath}/resources/images/headerPng/test5.png" alt=""></span>
+                                 	<span>고객센터</span>
+                             		</a>
+                         		</li>
+                     		</ul>	
+            			</c:otherwise>
+            		</c:choose>
                  </div>
              </section>
  
