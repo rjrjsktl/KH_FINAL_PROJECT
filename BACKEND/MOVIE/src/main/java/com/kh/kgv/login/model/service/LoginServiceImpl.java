@@ -24,6 +24,8 @@ public class LoginServiceImpl implements LoginService{
 	@Override
 	public User login(User inputUser) {
 		
+		logger.info("2. 로그인 Service 진입");
+		
 		logger.debug( inputUser.getUserPw() + " / " +  bcrypt.encode(inputUser.getUserPw()) );
 		
 		logger.info( inputUser.getUserPw() + " / " +  bcrypt.encode(inputUser.getUserPw()) );
@@ -31,7 +33,7 @@ public class LoginServiceImpl implements LoginService{
 		
 		User loginUser = dao.login(inputUser);
 		
-		System.out.println(loginUser + "========================================================");
+		logger.info("5. DAO에서 넘어온 loginUser :" + loginUser);
 		
 		if(loginUser != null) { // 일치하는 이메일을 가진 회원 정보가 있을 경우
 			
@@ -47,8 +49,6 @@ public class LoginServiceImpl implements LoginService{
 				
 			}
 		}
-		
-		
 		
 		return loginUser;
 	}

@@ -40,11 +40,12 @@ public class SignUpServiceImpl implements SignUpService {
 	public int signUp(User inputUser) {
 		
 		String encPw = bcrypt.encode(inputUser.getUserPw());
-		
+		System.out.println(inputUser + " 1============================================================");
 		inputUser.setUserPw(encPw);
 		
 		int result = dao.signUp(inputUser);
 		
+		System.out.println(inputUser + " 2============================================================");
 		return result;
 	}
 

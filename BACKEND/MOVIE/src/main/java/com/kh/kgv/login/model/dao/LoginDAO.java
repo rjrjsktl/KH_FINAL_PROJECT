@@ -16,10 +16,16 @@ public class LoginDAO {
 	
 	private Logger logger = LoggerFactory.getLogger(LoginDAO.class);
 
+	
 	public User login(User inputUser) {
+		
+		logger.info("3. 로그인 DAO 진입");
 		
 		User loginUser = sqlSession.selectOne("userMapper.login", inputUser ); 
 		
+		System.out.println("디버깅");
+		
+		logger.info("4. 받아온 loginUser :" + loginUser);
 		return loginUser;
 	}
 
