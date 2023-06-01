@@ -107,26 +107,27 @@ public class LoginController {
 			// Spring에서 제공해줌
 			// -> RedirectAttributes 객체  (컨트롤러 매개변수에 작성하면 사용 가능)
 			
-			return "redirect:/user/login"; 
+//			return "redirect:/user/login"; 
 		}
-		
-		session.setAttribute("loginUser", loginUser);
-		
-		User checkloginUser = (User) session.getAttribute("loginUser");
-		
-		if (checkloginUser != null) {
-		    logger.info("세션있음");
-		} else {
-			logger.info("세션없음");
-		}
-		
-		
-		logger.info("마지막 로그인 기능 수행됨");
-		
 		return "redirect:/";
-		
-		//return "login/login_welcome";
 	}
+//		session.setAttribute("loginUser", loginUser);
+//		
+//		User checkloginUser = (User) session.getAttribute("loginUser");
+//		model.addAttribute("loginUser", loginUser);
+//		if (checkloginUser != null) {
+//		    logger.info("세션있음");
+//		} else {
+//			logger.info("세션없음");
+//		}
+//		
+//		
+//		logger.info("마지막 로그인 기능 수행됨");
+//		
+//		return "redirect:/";
+//		
+//		//return "login/login_welcome";
+//	}
 	
 	// 로그아웃
 	@GetMapping("/logout")
