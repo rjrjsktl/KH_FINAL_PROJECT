@@ -100,6 +100,11 @@ for(let i=9; i<=12; i++) {
   createSpace(i, 24);
 }
 
+createSpace(10, 7);
+createSpace(10, 8);
+createAisle(10, 17);
+createAisle(10, 18);
+
 
 
 // 좌석 번호
