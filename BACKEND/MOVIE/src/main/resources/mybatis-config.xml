@@ -2,37 +2,38 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
 
-<settings>
-<setting name="jdbcTypeForNull" value="NULL"/>
-</settings>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
 
-<typeAliases>
+	<typeAliases>
 
-<typeAlias type="com.kh.kgv.customer.model.vo.User" alias="user"/>
-<typeAlias type="com.kh.kgv.customer.model.vo.Like" alias="like"/>
-<typeAlias type="com.kh.kgv.customer.model.vo.Review" alias="review"/>
-<typeAlias type="com.kh.kgv.customer.model.vo.Book" alias="book"/>
-<typeAlias type="com.kh.kgv.customer.model.vo.Sns" alias="sns"/>
+		<typeAlias type="com.kh.kgv.customer.model.vo.User" alias="user"/>
+		<typeAlias type="com.kh.kgv.customer.model.vo.Like" alias="like"/>
+		<typeAlias type="com.kh.kgv.customer.model.vo.Review" alias="review"/>
+		<typeAlias type="com.kh.kgv.customer.model.vo.Book" alias="book"/>
+		<typeAlias type="com.kh.kgv.customer.model.vo.Sns" alias="sns"/>
 
-<typeAlias type="com.kh.kgv.items.model.vo.Movie" alias="movie"/>
-<typeAlias type="com.kh.kgv.items.model.vo.Genre" alias="genre"/>
-<typeAlias type="com.kh.kgv.items.model.vo.Screen" alias="screen"/>
-<typeAlias type="com.kh.kgv.items.model.vo.Play" alias="play"/>
-<typeAlias type="com.kh.kgv.items.model.vo.Seat" alias="seat"/>
-<typeAlias type="com.kh.kgv.items.model.vo.SeatPrice" alias="sp"/>
+		<typeAlias type="com.kh.kgv.items.model.vo.Movie" alias="movie"/>
+		<typeAlias type="com.kh.kgv.items.model.vo.Genre" alias="genre"/>
+		<typeAlias type="com.kh.kgv.items.model.vo.Screen" alias="screen"/>
+		<typeAlias type="com.kh.kgv.items.model.vo.Play" alias="play"/>
+		<typeAlias type="com.kh.kgv.items.model.vo.Seat" alias="seat"/>
+		<typeAlias type="com.kh.kgv.items.model.vo.SeatPrice" alias="sp"/>
 
-<typeAlias type="com.kh.kgv.management.model.vo.Event" alias="event"/>
-<typeAlias type="com.kh.kgv.management.model.vo.Ask" alias="ask"/>
-<typeAlias type="com.kh.kgv.management.model.vo.Freq" alias="freq"/>
-<typeAlias type="com.kh.kgv.management.model.vo.Notice" alias="notice"/>
-<typeAlias type="com.kh.kgv.management.model.vo.Discount" alias="discount"/>
-<typeAlias type="com.kh.kgv.management.model.vo.DiscountAdd" alias="da"/>
-<typeAlias type="com.kh.kgv.management.model.vo.Manager" alias="manager"/>
+		<typeAlias type="com.kh.kgv.management.model.vo.Event" alias="event"/>
+		<typeAlias type="com.kh.kgv.management.model.vo.Ask" alias="ask"/>
+		<typeAlias type="com.kh.kgv.management.model.vo.Freq" alias="freq"/>
+		<typeAlias type="com.kh.kgv.management.model.vo.Notice" alias="notice"/>
+		<typeAlias type="com.kh.kgv.management.model.vo.Discount" alias="discount"/>
+		<typeAlias type="com.kh.kgv.management.model.vo.DiscountAdd" alias="da"/>
+		<typeAlias type="com.kh.kgv.management.model.vo.Manager" alias="manager"/>
+		
+	</typeAliases>
 
-</typeAliases>
-
-<mappers>
-<mapper resource="/mappers/movie-mapper.xml"/>
-</mappers>
+	<mappers>
+		<mapper resource="/mappers/movie-mapper.xml"/>
+		<mapper resource="/mappers/user-mapper.xml"/>
+	</mappers>
 
 </configuration>

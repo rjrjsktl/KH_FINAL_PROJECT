@@ -3,13 +3,11 @@ function zoomIn(event) {
     event.target.style.zIndex = 1;
     event.target.style.transition = "all 0.5s";// 속도
 }
-  function zoomOut(event) {
+function zoomOut(event) {
     event.target.style.transform = "scale(1)";
     event.target.style.zIndex = 0;
     event.target.style.transition = "all 0.5s";
 }
-
-
 
 
 // 메뉴창 하버
@@ -57,15 +55,16 @@ $(document).ready(function() {
 $(document).ready(function() {
 var swiper = new Swiper('main section:nth-of-type(2) .swiper-container', {
     slidesPerView:4,
+
     spaceBetween: 32,
     navigation: {
         nextEl: 'main section:nth-of-type(2) .swiper-button-next',
         prevEl: 'main section:nth-of-type(2) .swiper-button-prev',
     },
-    
-   
+
     touchMoveStopPropagation: false,  
     touchReleaseOnEdges: false,  
+
     threshold: 20,  // 일정 거리를 조절하는 값
     on: {
         touchEnd: function () {
@@ -79,6 +78,10 @@ var swiper = new Swiper('main section:nth-of-type(2) .swiper-container', {
 });
 // 상영목록 슬라이더*******************************************************************
 
+      
+      
+      
+      
 
 // 이벤트 슬라이더*******************************************************************
 $(document).ready(function() {
