@@ -112,6 +112,11 @@ header>section:nth-child(1) {
 
 }
 
+.memberInfo_wrap>ul>li>a>span:nth-child(1)>img {
+    width: 28px;
+    height: 32px;
+}
+
 .memberInfo_wrap>ul>li>a * {
     display: flex;
     justify-content: center;
@@ -159,10 +164,6 @@ header>nav ul>li>a {
     color: #FCFCFC;
 }
 
-header>nav>ul>li:nth-child(3)>a {
-    color: rgb(68, 214, 44);
-}
-
 header>nav>div>div {
     width: 30%;
     display: flex;
@@ -172,37 +173,39 @@ header>nav>div>div>form {
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: right;
 }
 
 header>nav>div>div>form>input {
-    width: 80%;
     background-color: transparent;
     border: none;
     outline: none;
     padding-left: 10px;
-    height: 80%;
-    border-left: 1px solid #a3a3a3;
-    ;
+    padding-bottom: 10px;
+    height: 45px;
+    font-size: 15px;
 }
 
 header>nav>div>div>form button {
-    width: 20%;
     background-color: transparent;
     outline: none;
     border: none;
     cursor: pointer;
-    border-right: 1px solid #a3a3a3;
+    height: 36px;
+    align-items: center;
+    padding-bottom: 5px;
 }
 
-header>nav>div>div>form button>i {
-    font-size: 24px;
-    color: #FCFCFC;
+header>nav>div>div>form button>img {
+    width: 25p;
+    height: 25px;
+
 }
 
 header>nav {
     display: flex;
     flex-direction: column;
-    border-bottom: 3px solid rgb(197, 2, 2);
+    border-bottom: 3px solid rgb(255, 196, 0);
     border-top: 1px solid #a3a3a3;
     position: relative;
 }
@@ -258,12 +261,17 @@ header>nav {
 
 .dummy {
     width: 100vw;
-    height: 14vh;
-    background-color: rgba(21, 21, 21, 0.9);
+    height: 135px;
+    background-color: rgba(21, 21, 21, 0.7);
     position: absolute;
     top: 49px;
     right: 0;
     z-index: 4;
+    display: none;
+}
+
+.flx{
+    display:flex;
 }
 
 
@@ -327,3 +335,4 @@ footer>section>div:nth-child(2) span:last-child {
 
 /* =============================================================== */
 /* 아래부터 추가하세요. */
+

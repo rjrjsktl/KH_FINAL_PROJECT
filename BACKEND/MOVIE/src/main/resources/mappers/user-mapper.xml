@@ -31,23 +31,17 @@
 		<result property="userDelete" 		column="USER_DELETE"/>
 	</resultMap>
 	
+	<!-- 로그인 기능 실행 -->
 	<select id="login"  parameterType="user"  resultMap="user_rm"  >
  		SELECT USER_NO, USER_EMAIL, USER_NAME , USER_NICKNAME, USER_TEL, USER_ADDR
        		USER_BIRTH, USER_GENDER, USER_REGDATE, USER_ST, USER_IMG, USER_POINT,
-       		USER_SNS, USER_CHANGE, USER_DELETE
-		FROM USERS
+       		USER_SNS, USER_CHANGE, USER_DELETE 
+ 		FROM USERS
 		WHERE USER_EMAIL = #{userEmail}
-		<!-- AND USER_PW = #{userPw} -->
+		AND USER_PW = #{userPw}
 		AND USER_ST = 'Y' 
   	</select>
 	
-	<!-- 이메일 중복 검사 -->
-  	<select id="emailDupCheck" parameterType="string" resultType="_int">
-  		SELECT COUNT(*) FROM USERS
-		WHERE USER_EMAIL = #{userEmail}
-		AND USER_ST = 'N'
-  	</select>
-  	
-  	
 	
+  	
 </mapper>
