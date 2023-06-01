@@ -23,7 +23,7 @@ import com.kh.kgv.login.model.service.LoginService;
 
 @Controller
 @RequestMapping("/user")
-@SessionAttributes("loginUser")
+@SessionAttributes({"loginUser"})
 public class LoginController {
 	
 	private Logger logger = LoggerFactory.getLogger(LoginController.class);
@@ -57,28 +57,19 @@ public class LoginController {
 	                    HttpServletRequest req,
 	                    @RequestParam(value="saveId", required=false) String saveId) {
 		
-		logger.info("로그인 기능 수행됨");
+		logger.info("1. 로그인 기능 수행 시작");
 		
 		
 		// 아이디, 비밀번호가 일치하는 회원 정보를 조회하는 Service 호출 후 결과 반환 받기
 		User loginUser = service.login(inputUser);
 		
-		
-		/* Model : 데이터를 맵 형식(K:V) 형태로 담아 전달하는 용도의 객체
-		 * -> request, session을 대체하는 객체
-		 * 
-		 * - 기본 scope : request
-		 * - session scope로 변환하고 싶은 경우
-		 *   클래스 레벨로 @SessionAttributes를 작성되면 된다.
-		 * */
-		
-		// @SessionAttributes 미작성 -> request scope
+		logger.info("6. service 에서 받아온 loginUser : " + loginUser);
 		
 		if(loginUser != null) { // 로그인 성공 시
 			
 			logger.info("로그인 성공!");
 			
-			model.addAttribute("loginUser", loginUser); // == req.setAttribute("loginMember", loginMember);
+			model.addAttribute("loginUser", loginUser);
 			
 			// 로그인 성공 시 무조건 쿠키 생성
 			// 단, 아이디 저장 체크 여부에 따라서 쿠기의 유지 시간을 조정
@@ -118,13 +109,15 @@ public class LoginController {
 			// Spring에서 제공해줌
 			// -> RedirectAttributes 객체  (컨트롤러 매개변수에 작성하면 사용 가능)
 			
-			return "login/login"; 
+			return "redirect:/user/login"; 
 		}
 		
 		//session.setAttribute("loginMember", loginMember);
 		
 		
 		logger.info("마지막 로그인 기능 수행됨");
+		
+//		return "redirect:/";
 		
 		return "login/login_welcome";
 	}
@@ -139,13 +132,5 @@ public class LoginController {
 		return "login/findEmail_1";
 	}
 	
-	@RequestMapping("/signUp_sns")
-	public String signUp_sns() {
-		return "signUp/signUp_sns";
-	}
 	
-	@RequestMapping("/signUp")
-	public String signUp() {
-		return "signUp/signUp";
-	}
 }

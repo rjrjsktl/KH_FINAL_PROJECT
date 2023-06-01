@@ -53,13 +53,7 @@
 														 <label for="saveId" class="cc">아이디 저장</label>
 													</div>
 													
-													<%-- 쿠키에 saveId가 있는 경우--%>
-						                            <c:if test="${ !empty cookie.saveId.value}">
-
-						                                <%-- chk 변수 생성(page scope)--%>
-	                    					            <c:set var="chk" value="checked"/>
-
-						                            </c:if>
+													
 													
 												</div>
 											</c:when>
@@ -72,6 +66,13 @@
 									<div>
 										<button>로그인</button>
 									</div>
+									<%-- 쿠키에 saveId가 있는 경우--%>
+						            <c:if test="${ !empty cookie.saveId.value}">
+
+						            <%-- chk 변수 생성(page scope)--%>
+	                    			<c:set var="chk" value="checked"/>
+
+						            </c:if>
 								</div>
 							</form>
 						</div>
