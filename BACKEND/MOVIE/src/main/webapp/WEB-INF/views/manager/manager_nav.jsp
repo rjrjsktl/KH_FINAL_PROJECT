@@ -5,7 +5,7 @@
                 <%@ page session="false" %>
                     <nav>
                         <ul class="nav_Slide">
-                            <a class="title_move" href="#">
+                            <a class="title_move" href="${contextPath}/manager/main">
                                 <li class="slide_Title">
                                     <div class="slide_Left_Icon">
                                         <i class="fa-sharp fa-solid fa-house"></i>
@@ -13,7 +13,7 @@
                                     <span>관리자 메인</span>
                                 </li>
                             </a>
-                            <a class="title_move" href="#">
+                            <a class="title_move" href="${contextPath}/manager/member">
                                 <li class="slide_Title">
                                     <div class="slide_Left_Icon">
                                         <i class="fa-solid fa-user"></i>
@@ -33,8 +33,7 @@
                                 </div>
                                 <div class="slide_Down_items">
                                     <ul>
-
-                                        <a href="#">
+                                        <a href="${contextPath}/manager/ask_list">
                                             <li>
                                                 <div class="inner_align">
                                                     <div class="inner_Left_Icon">
@@ -48,7 +47,7 @@
                                 </div>
                             </li>
                             <li class="slide_Content">
-                                <div class="slide_Wrapper selected_Title active">
+                                <div class="slide_Wrapper ">
                                     <div class="slide_Left_Icon">
                                         <i class="fa-brands fa-youtube"></i>
                                     </div>
@@ -57,9 +56,9 @@
                                         <i class="fa-solid fa-caret-down"></i>
                                     </div>
                                 </div>
-                                <div class="slide_Down_items" style="display: block;">
+                                <div class="slide_Down_items" >
                                     <ul>
-                                        <a href="#">
+                                        <a href="${contextPath}/manager/movie_list">
                                             <li>
                                                 <div class="inner_align">
                                                     <div class="inner_Left_Icon">
@@ -69,7 +68,7 @@
                                                 </div>
                                             </li>
                                         </a>
-                                        <a href="#">
+                                        <a href="${contextPath}/manager/movie_add">
                                             <li class="selected_Title">
                                                 <div class="inner_align">
                                                     <div class="inner_Left_Icon">
@@ -79,7 +78,7 @@
                                                 </div>
                                             </li>
                                         </a>
-                                        <a href="#">
+                                        <a href="${contextPath}/manager/play_list">
                                             <li>
                                                 <div class="inner_align">
                                                     <div class="inner_Left_Icon">
@@ -89,7 +88,7 @@
                                                 </div>
                                             </li>
                                         </a>
-                                        <a href="#">
+                                        <a href="${contextPath}/manager/play_add">
                                             <li>
                                                 <div class="inner_align">
                                                     <div class="inner_Left_Icon">
@@ -114,7 +113,7 @@
                                 </div>
                                 <div class="slide_Down_items">
                                     <ul>
-                                        <a href="#">
+                                        <a href="${contextPath}/manager/event_list">
                                             <li>
                                                 <div class="inner_align">
                                                     <div class="inner_Left_Icon">
@@ -124,7 +123,7 @@
                                                 </div>
                                             </li>
                                         </a>
-                                        <a href="#">
+                                        <a href="${contextPath}/manager/event_add">
                                             <li>
                                                 <div class="inner_align">
                                                     <div class="inner_Left_Icon">
@@ -149,7 +148,7 @@
                                 </div>
                                 <div class="slide_Down_items">
                                     <ul>
-                                        <a href="#">
+                                        <a href="${contextPath}/manager/notice_list">
                                             <li>
                                                 <div class="inner_align">
                                                     <div class="inner_Left_Icon">
@@ -159,7 +158,7 @@
                                                 </div>
                                             </li>
                                         </a>
-                                        <a href="#">
+                                        <a href="${contextPath}/manager/notice_add">
                                             <li>
                                                 <div class="inner_align">
                                                     <div class="inner_Left_Icon">
