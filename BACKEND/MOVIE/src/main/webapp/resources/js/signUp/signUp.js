@@ -2,7 +2,7 @@
 
 // 유효성 검사 여부를 기록할 객체 생성
 const checkObj = {
-    "inputEmail": false,
+    "userEmail": false,
     "inputPw": false,
     "inputPwConfirm": false,
     "inputNickname": false,
@@ -53,17 +53,17 @@ inputTel.addEventListener("input", function () {
 
 
 // 이메일 유효성 검사
-const inputEmail = document.getElementById("inputEmail");
+const userEmail = document.getElementById("userEmail");
 const emailMessage = document.querySelector("#emailMessage");
 
-inputEmail.addEventListener("input", function () {
+userEmail.addEventListener("input", function () {
 
     // 입력이 되지 않은 경우
-    if (inputEmail.value.length == 0) {
+    if (userEmail.value.length == 0) {
         emailMessage.innerText = "메일을 받을 수 있는 이메일을 입력해주세요.";
         emailMessage.classList.remove("confirm", "error");
 
-        checkObj.inputEmail = false;
+        checkObj.userEmail = false;
 
         return;
     }
@@ -72,17 +72,18 @@ inputEmail.addEventListener("input", function () {
 
     const regExp = /^[\w\-\_]{4,}@[\w\-\_]+(\.\w+){1,3}$/;
 
-    if (regExp.test(inputEmail.value)) { // 유효한 경우
+    if (regExp.test(userEmail.value)) { // 유효한 경우
+        console.log('유효한가?');
 
+        $.ajax({
+            
+            url : "emailDupCheck",
 
-        $.AJAX({
-            url: "emailDupCheck",
+            data : { "userEmail": userEmail.value },
 
-            data: { "inputEmail": inputEmail.value },
+            type : "GET",
 
-            type: "GET",
-
-            success: function (result) {
+            success : function(result) {
 
 
                 if (result == 1) { //중복 o
@@ -90,33 +91,34 @@ inputEmail.addEventListener("input", function () {
                     emailMessage.classList.add("error");
                     emailMessage.classList.remove("confirm");
 
-                    checkObj.inputEmail = false;
+                    checkObj.userEmail = false;
 
                 } else { //중복 x
                     emailMessage.innerText = "";
                     emailMessage.classList.add("confirm");
                     emailMessage.classList.remove("error");
 
-                    checkObj.inputEmail = true;
+                    checkObj.userEmail = true;
 
                 }
             },
 
-            error: function () {
+            error : function () {
 
                 console.log("에러 발생");
             }
 
         });
 
-
+        console.log('유효아니한가?');
 
     } else {
+        console.log('유효아니아니한가?');
         emailMessage.innerText = "이메일 형식이 유효하지 않습니다.";
         emailMessage.classList.add("error");
         emailMessage.classList.remove("confirm");
 
-        checkObj.inputEmail = false;
+        checkObj.userEmail = false;
 
     }
 
@@ -474,7 +476,7 @@ function signUpValidate() {
         if (!checkObj[key]) {
 
             switch (key) {
-                case "inputEmail": str = "이메일이"; break;
+                case "userEmail": str = "이메일이"; break;
                 case "inputPw": str = "비밀번호가"; break;
                 case "inputPwConfirm": str = "비밀번호 확인이"; break;
                 case "inputNickname": str = "닉네임이"; break;
@@ -504,11 +506,11 @@ function signUpValidate() {
 
 sendBtn.addEventListener("click", function () {
 
-    if (checkObj.inputEmail) { // 유효한 이메일이 작성되어 있을 경우에만 메일 보내기
+    if (checkObj.userEmail) { // 유효한 이메일이 작성되어 있을 경우에만 메일 보내기
 
         $.ajax({
             url: "sendEmail",
-            data: { "inputEmail": inputEmail.value },
+            data: { "userEmail": userEmail.value },
             type: "GET",
             success: function (result) {
                 console.log("이메일 발송 성공");
@@ -577,7 +579,7 @@ cBtn.addEventListener("click", function () {
                 url: "checkNumber",
                 data: {
                     "cNumber": cNumber.value,
-                    "inputEmail": inputEmail.value
+                    "userEmail": userEmail.value
                 },
                 type: "GET",
                 success: function (result) {

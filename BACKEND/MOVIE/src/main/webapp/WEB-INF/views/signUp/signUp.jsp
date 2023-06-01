@@ -31,13 +31,13 @@
                         <form action="signUp" method="POST" name="signUp-form" onsubmit="return signUpValidate()">
 
                             <div>회원가입</div>
-                            <label for="inputEmail">
+                            <label for="userEmail">
                                 <span class="required">*</span> 아이디(이메일)
                             </label>
 
                             <div class="signUp-input-area">
-                                <input type="text" id="inputEmail" name="inputEmail" placeholder="아이디(이메일)"
-                                    maxlength="30" autocomplete="off" required>
+                                <input type="text" id="userEmail" name="userEmail" placeholder="아이디(이메일)" maxlength="30"
+                                    autocomplete="off" required>
 
 
                                 <button type="button" id="sendBtn">인증번호 받기</button>
@@ -212,6 +212,11 @@
              </c:if>
              -->
 
+              <!-- jQuery 라이브러리 추가(CDN) -->
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+            <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
             <script src="${contextPath}/resources/js/signUp/signUp.js"></script>
 

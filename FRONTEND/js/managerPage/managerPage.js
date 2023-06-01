@@ -153,7 +153,7 @@ var myChart = Highcharts.chart('daily_Movie_Watch', {
 
 // ajax 보낼때 아마 관리자 넘버 같이 넣던가 해야할듯?
 $(document).ready(function() {
-    $('.crtbtn').click(function() {
+    $('#crtbtn').click(function() {
         if($('#crtMemo').val()=="") {
             window.swal('수정 실패!', "메모를 입력 하라옹", 'warning')
             // alert('메모를 입력하라옹');
@@ -165,29 +165,32 @@ $(document).ready(function() {
         console.log("관리자 메모 등록 ㄱㄱ");
         $.ajax({
             url: "createMemo",
+            data: {
+                    "memoDetail" : $("#crtMemo").value
+                },
             type: "POST",
             dataType: "json",
 
             success: function(mmlist) {
                 console.log("AJAX 성공");
-                $('.memoList').html("");
+                $('#memoList').html("");
                 if(mmlist.length === 0) {
                     return;
                 }
                 // $('.memoList').html(""); 요기에 넣어야 할 수도
                 for ( let item of mmlist ) {
-                    const managerMemo = document.querySelector(".managerMemo");
+                    const managerMemo = document.querySelector("#managerMemo");
                     const memoList = `
-                        <li class="memoList">
+                        <li id="${item.memoNo} class="memoList">
                             <textarea id="viewMemo" class="viewMemo">${item.viewMemo}</textarea>
-                            <button class="dltbtn">삭제</button>
-                            <input class="memoNo" name="${item.memoNo}" type="hidden">
+                            <button type="button" id="dltbtn" class="dltbtn" value="#{item.memoNo}" onclick="delMemo()">삭제</button>
+                            
                         </li>   
-                    `;
+                    `;  //<input class="memoNo" name="${item.memoNo}" type="hidden"> 필요하면 백틱 추가
                     managerMemo.append(memoList);
                 }
                 // hidden 번호 넘어가나 확인용
-                $('.addform').off().on('click', function(){
+                $('.memoList').off().on('click', function(){
                     console.log('test');
                     console.log($(this).attr('id'));
                     passNote($(this).attr('id'));
@@ -201,26 +204,25 @@ $(document).ready(function() {
     })
 });
 
-$(document).ready(function() {
-    $('.dltbtn').click(function() {
-        window.swal('삭제', "완료 했다옹", 'success')
-        console.log("관리자 메모 삭제 ㄱㄱ");
-        $.ajax({
-            url: "remove",
-            data: {
-				"noteNo" : dltbtn.value
-				},
-            type: "POST",
-            dataType: "json",
+function delMemo() {
+    const dltbtn = document.getElementById("dltbtn");
+    window.swal('삭제', "완료 했다옹", 'success')
+    console.log("관리자 메모 삭제 ㄱㄱ");
+    $.ajax({
+        url: "remove",
+        data: {
+			"noteNo" : dltbtn.value
+			},
+        type: "POST",
+        dataType: "json",
 
-            success: function() {
-                console.log("AJAX 성공");
-                location.href="/movie/manager/main";
-            },
-            error: function(request) {
-                console.log("AJAX 에러 발생")
-                console.log("상태코드 : " + request.status) // 404, 500
-            }
-        })
+        success: function() {
+            console.log("AJAX 성공");
+            location.href="/movie/manager/main";
+        },
+        error: function(request) {
+            console.log("AJAX 에러 발생")
+            console.log("상태코드 : " + request.status) // 404, 500
+        }
     })
-});
+}

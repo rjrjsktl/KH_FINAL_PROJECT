@@ -47,14 +47,21 @@ function updateCount() {
 
 // 좌석 초기화
 
-let rowArr = Array.from({length: 12}, () => 24);
+let maxRow = 10;
+let maxColumn = 24;
+
+let rowArr = Array.from({length: maxRow}, () => maxColumn);
+let rowWidth = 25*(maxColumn) + 5.98 * (maxColumn-1);
+
+$('#screen_area').css('width', `calc(${rowWidth}px + 2px)`);
+$('#seat_area').css('width', `calc(${rowWidth}px)`);
 
 let s1 = `<a href="#none"><span>`;
 let s2 = `</span></a>`;
-for(let k=1; k<=12; k++){
-  for(let i=1; i<=24; i++){
+for(let k=1; k<=maxRow; k++){
+  for(let i=1; i<=maxColumn; i++){
     let seat = document.createElement('a');
-    seat.href = "#none"; 
+    seat.href = "#none";
     document.querySelector(`#seat_area > div:nth-child(${k})`).appendChild(seat);
   }
 }
@@ -63,35 +70,46 @@ for(let k=1; k<=12; k++){
 // 통로 만들기 
 
 function createAisle(i, k) {
-  $(`#seat_area > div:nth-child(${i}) > a:nth-of-type(${k})`).css('border', 'none');
   $(`#seat_area > div:nth-child(${i}) > a:nth-of-type(${k})`).addClass('aisle');
-  $(`#seat_area > div:nth-child(${i}) > a:nth-of-type(${k})`).empty();
   rowArr[i-1] -= 1;
 }
 
-for(let i=1; i<=12; i++) {
+for(let i=1; i<=maxRow; i++) {
   createAisle(i, 5);
   createAisle(i, 6);
   createAisle(i, 19);
   createAisle(i, 20);
 }
 
-for(let i=1; i<=8; i++) {
-  createAisle(i, 23);
-  createAisle(i, 24);
+
+function createSpace(i, k) {
+  $(`#seat_area > div:nth-child(${i}) > a:nth-of-type(${k})`).addClass('space');
 }
 
 for(let i=1; i<=4; i++) {
-  createAisle(i, 1);
-  createAisle(i, 2);
-  createAisle(i, 3);
-  createAisle(i, 4);
+  createSpace(i, 1);
+  createSpace(i, 2);
+  createSpace(i, 3);
+  createSpace(i, 4);
 }
 
-console.log(rowArr);
+for(let i=9; i<=12; i++) {
+  createSpace(i, 21);
+  createSpace(i, 22);
+  createSpace(i, 23);
+  createSpace(i, 24);
+}
+
+createSpace(10, 7);
+createSpace(10, 8);
+createAisle(10, 17);
+createAisle(10, 18);
+
 
 
 // 좌석 번호
+
+let alphabet = 'ABCDEFGHIJKLMNOPQLSTUVWXYZ';
 
 for(let k=1; k<=12; k++) {
   let i=1;
@@ -104,18 +122,26 @@ for(let k=1; k<=12; k++) {
       num = document.createElement("span");
       num.innerText = i++;
       $(seat).append(num);
+
+      $(seat).attr('data-seat', alphabet[k-1]+(i-1));
     }
     j++;
   }
-
-  console.log(k);
 }
 
+// [Server에서 받아옴] 선택완료
+
+let selectedSeatArray = ['D11', 'D12', 'F5', 'F6', 'H16', 'I16', 'G2', 'G3', 'G4', 'F17', 'F18'];
+
+selectedSeatArray.forEach(item => {
+  $(`#seat_area > div > a[data-seat=${item}]`).data('condition', 'selected');
+  $(`#seat_area > div > a[data-seat=${item}]`).addClass('selected');
+});
 
 
 // 좌석 선택
 
-$('#seat_area > div > a:not(.selected, .aisle)').on("click", function(){
+$('#seat_area > div > a:not(.selected, .aisle, .space)').on("click", function(){
   if((totalCount > choiceCount) && !($(this).hasClass("selecting"))) {
     $(this).addClass("selecting");
     choiceCount++;
@@ -124,5 +150,7 @@ $('#seat_area > div > a:not(.selected, .aisle)').on("click", function(){
     choiceCount--;
   }
 });
+
+
 
 
