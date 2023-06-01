@@ -3,12 +3,13 @@ function zoomIn(event) {
     event.target.style.zIndex = 1;
     event.target.style.transition = "all 0.5s";// 속도
 }
-  function zoomOut(event) {
+function zoomOut(event) {
     event.target.style.transform = "scale(1)";
     event.target.style.zIndex = 0;
     event.target.style.transition = "all 0.5s";
 }
 
+<<<<<<< HEAD
 var swipers = new Swiper('.mainImg-container', {
     slidesPerView:1,
     spaceBetween: 32,
@@ -24,6 +25,15 @@ var swipers = new Swiper('.mainImg-container', {
             if (this.snapIndex === this.previousIndex) {
                 swipers.slideTo(this.snapIndex);
             }
+=======
+
+// 메뉴창 하버
+$(document).ready(function() {
+    $('.navBar, .dummy').hover(
+        function() {
+            $('.navBar ul').stop().slideDown(150); 
+            $('.dummy').css('display', 'flex'); 
+>>>>>>> 0728a5e5e144ea625939e31f9622d61e77164d2d
         },
     },
 });
@@ -33,6 +43,7 @@ var swipers = new Swiper('.mainImg-container', {
 
 var swiper = new Swiper('.swiper-container', {
     slidesPerView:4,
+
     spaceBetween: 32,
     navigation: {
         nextEl: '.swiper-card-next',
@@ -42,8 +53,13 @@ var swiper = new Swiper('.swiper-container', {
         el: '.swiper-pagination',
         clickable: false,
     },
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0728a5e5e144ea625939e31f9622d61e77164d2d
     touchMoveStopPropagation: false,  
     touchReleaseOnEdges: false,  
+
     threshold: 20,  // 일정 거리를 조절하는 값
     on: {
         touchEnd: function () {
@@ -54,4 +70,8 @@ var swiper = new Swiper('.swiper-container', {
     },
 });
 
+      
+      
+      
+      
 

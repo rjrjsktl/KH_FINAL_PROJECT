@@ -23,15 +23,21 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
+    <!-- 그래프용 CDN -->
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/series-label.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- 달력 API -->
+
+
 </head>
 
-<body>
+<body class="dark light">
     <main>
         <div class="main_Wrapper">
             <div id="left_Nav_Container">
@@ -40,7 +46,7 @@
                 </div>
 
                 <ul class="nav_Slide">
-                    <a class="title_move" href="#">
+                    <a class="title_move selected_Title" href="#">
                         <li class="slide_Title">
                             <div class="slide_Left_Icon">
                                 <i class="fa-sharp fa-solid fa-house"></i>
@@ -111,6 +117,16 @@
                                                 <i class="fa-solid fa-play fa-2xs"></i>
                                             </div>
                                             <span>영화 등록</span>
+                                        </div>
+                                    </li>
+                                </a>
+                                <a href="#">
+                                    <li>
+                                        <div class="inner_align">
+                                            <div class="inner_Left_Icon">
+                                                <i class="fa-solid fa-play fa-2xs"></i>
+                                            </div>
+                                            <span>상영시간 목록</span>
                                         </div>
                                     </li>
                                 </a>
@@ -199,13 +215,14 @@
                     </li>
                 </ul>
 
-
-
             </div>
             <div class="right_items_Container">
                 <div id="header_Wrapper">
                     <div class="header_Container">
                         <div class="header_loge_Area">
+                            <span>어서오세요!&nbsp;</span>
+                            <span>${loginMember.userName}&nbsp;</span>
+                            <span>님!</span>
                         </div>
                         <button class="header_logout_Area">
                             <div>로그아웃</div>
@@ -214,19 +231,26 @@
                 </div>
                 <div id="items_Wrapper">
                     <div class="left_Item_Container">
+
+                        <!-- 일일 접속자 수 -->
                         <div class="left_Inner_Contents">
                             <div id="daily_Enter">
                                 <figure class="highcharts-figure"></figure>
                             </div>
                         </div>
+
+                        <!-- 일일 관람객 수 -->
                         <div class="left_Inner_Contents algin_Left">
                             <div id="daily_Movie_Watch">
                                 <figure class="highcharts-figure"></figure>
                             </div>
                         </div>
+
+                        <!-- 신규 회원 -->
                         <div class="left_Inner_Contents">
                             <div class="inner_Top">
                                 <span class="inner_Top_Text">신규 회원</span>
+                                <span class="new_more">더보기</span>
                             </div>
                             <div class="inner_Top_Content">
                                 <div class="noticeTable">
@@ -279,9 +303,12 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- 상영중인 영화 -->
                         <div class="left_Inner_Contents algin_Left">
                             <div class="inner_Top">
                                 <span class="inner_Top_Text">상영중인 영화</span>
+                                <span class="movie_more">더보기</span>
                             </div>
                             <div class="inner_Top_Content">
                                 <div class="noticeTable">
@@ -341,9 +368,12 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- 공지사항 -->
                         <div class="left_Inner_Contents">
                             <div class="inner_Top">
                                 <span class="inner_Top_Text">공지사항</span>
+                                <span class="notice_more">더보기</span>
                             </div>
                             <div class="inner_Top_Content">
                                 <div class="noticeTable">
@@ -396,9 +426,12 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- 1 : 1 문의 -->
                         <div class="left_Inner_Contents algin_Left">
                             <div class="inner_Top">
                                 <span class="inner_Top_Text">1 : 1 문의</span>
+                                <span class="qna_more">더보기</span>
                             </div>
                             <div class="inner_Top_Content">
                                 <div class="noticeTable">
@@ -454,12 +487,25 @@
                     </div>
                     <div class="right_Item_Container">
                         <div class="top_Click_area">
+                            <!-- TODO LIST 하면 괜찮을 듯 -->
                             <div class="top_items top_click1 active">메모</div>
-                            <div class="top_items top_click2">일정표</div>
-                            <div class="top_items top_click3">ㅁㄴㅇㄹ</div>
+                            <!-- <div class="top_items top_click2">일정표</div>
+                            <div class="top_items top_click3">ㅁㄴㅇㄹ</div> -->
                         </div>
                         <div class="right_Items_Area">
-
+                            <div>
+                                <textarea type="text" id="crtMemo" class="crtMemo" autocomplete="off"></textarea>
+                                <button id="crtbtn" class="crtbtn">등록</button>
+                                
+                            </div>
+                            <ul id="managerMemo" class="managerMemo">
+                                <!-- 어차피 메모 값이 있다면 초기화 될거임(틀잡기용) -->
+                                <li id="memoList" class="memoList">
+                                    <textarea id="viewMemo" class="viewMemo"></textarea>
+                                    <!-- 수정 필요? -->
+                                    <button type="button" id="dltbtn" class="dltbtn" name="momoNo" value="" onclick="delMemo()">삭제</button>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
