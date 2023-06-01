@@ -1,161 +1,166 @@
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-size: 1em;
-    font-family: "GmarketSansMedium";
-    color: rgb(222, 222, 222);
+    font-size: 1rem;
+    font-family: 'Noto Sans KR', sans-serif;
     list-style-type: none;
+    color: #FCFCFC;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none"
+
 }
 
 * a {
     text-decoration: none;
-    color: rgb(222, 222, 222);
+    color: #a3a3a3;
 }
-
 
 body {
-    background-color: rgb(21, 21, 21);
+    background-color: rgb(32, 32, 32);
 }
 
-main {
+header {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
 }
 
-/* 헤더 */
-header {
-    width: 100%;
-    padding: 40px 0 0 0;
+header>div:last-child {
+    height: 50px;
+    width: 1040px;
+    padding: 0 30px;
+    position: absolute;
+    left: 28%;
 }
 
-/* 헤더내부 위쪽 섹션 */
+
 header>section:nth-child(1) {
-    width: 1160px;
-    height: 100px;
+    width: 1040px;
+    height: 113px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    padding: 0 20px;
-
+    padding: 30px 30px;
 }
 
 /* 로고에어리어 */
-header>section:nth-child(1)>div:nth-child(1) {
-    width: 35%;
+.logo-section {
+    width: 28%;
     height: 100%;
     display: flex;
 }
 
 /* 로고에어리어 이미지div */
-header>section:nth-child(1)>div:nth-child(1)>div:first-child {
-    width: 40%;
+.logo-section>div:nth-child(1) {
+    width: 117px;
     display: flex;
-    align-items: center;
 }
 
 /* 로고에어리어 이미지 사이즈*/
-header>section:nth-child(1)>div:nth-child(1)>div:first-child>a>img {
-    width: 160px;
-    height: 70px;
+.logo-section>div:nth-child(1)>a {
+    flex: 1 1 0;
+    display: flex;
+}
+
+/* 이미지 사이즈 강제 안넘어가게설정하기*/
+.logo-section>div:nth-child(1)>a>img {
+    flex: 1 1 0;
 }
 
 /* 헤드 첫번째섹션 khtheater */
-header>section:nth-child(1)>div:nth-child(1)>div:last-child {
-    width: 60%;
+.logo-section>span {
     display: flex;
-    align-items: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-top: 40px;
+    align-items: flex-end;
+    letter-spacing: 5px;
+    font-weight: 300;
 }
 
-/* 헤드 첫번째 섹션 왼쪽부분 */
-header>section:nth-child(1)>div:nth-child(2) {
-    width: 45%;
+/* 광고, 멤버랩 */
+.memberInfo_wrap {
+    width: 46.5%;
     display: flex;
 }
 
-/* 헤더 광고 에어리어*/
-header>section:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
-    width: 40%;
-    display: flex;
-    align-items: center;
-}
-
-/* 헤더 내정보, 로그인, 고객센터 Ul*/
-header>section:nth-child(1)>div:nth-child(2)>ul {
-    width: 60%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-/* 리스트 */
-header>section:nth-child(1)>div:nth-child(2)>ul>li {
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-/*리스트 내부 속성*/
-header>section:nth-child(1)>div:nth-child(2)>ul>li>* {
-    flex: 1 1 0;
-    display: flex;
-    flex-direction: column;
-}
-
-/* 리스트 내부 스타일*/
-header>section:nth-child(1)>div:nth-child(2)>ul>li>*>span {
-    font-size: 1.5rem;
-    margin: 0 auto;
-}
-
-/* 리스트 내부 Ptag*/
-header>section:nth-child(1)>div:nth-child(2)>ul>li>*>p {
-    text-align: center;
-}
-
-header>nav {
+/* 광고, 멤버 UL */
+.memberInfo_wrap>ul {
     width: 100%;
-    height: 60px;
-    border-top: 1px solid rgb(99, 99, 99);
-    border-bottom: 1px solid rgb(99, 99, 99);
+    height: 57px;
     display: flex;
+    align-items: center;
 
 }
 
-header>nav>div {
-    width: 1160px;
-    height: 60px;
-    padding: 0 20px;
+/* 광고이미지 wrapper */
+.memberInfo_wrap>ul>div {
+    width: 30%;
+    height: 39px;
+    display: flex;
+}
+
+/* 이미지 사이즈 */
+.memberInfo_wrap>ul>div>img {
+    flex: 1 1 0;
+}
+
+.memberInfo_wrap>ul>li>a {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+
+}
+
+.memberInfo_wrap>ul>li>a * {
+    display: flex;
+    justify-content: center;
+
+}
+
+.memberInfo_wrap>ul>li>a *:hover {
+    color: white;
+}
+
+.memberInfo_wrap>ul>li>a>span>i {
+    font-size: 2rem;
+}
+
+.memberInfo_wrap>ul>li>a>span:nth-child(2) {
+    font-size: 13px;
+    padding: 3px 0;
+    font-weight: 400;
+    color: #a3a3a3;
+}
+
+
+
+header>nav>div:nth-child(1) {
+    width: 1040px;
+    height: 50px;
+    padding: 5px 30px 0px 30px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+
 }
 
-header>nav ul {
+header>nav>div>ul {
     display: flex;
-    line-height: 58px;
-
+    line-height: 38px;
 }
 
-header>nav ul>li {
+header>nav>div>ul>li {
     padding-right: 50px;
     font-weight: bold;
 }
 
-header>nav ul>li:nth-child(3)>a {
-    color: rgb(250, 227, 0);
+header>nav ul>li>a {
+    color: #FCFCFC;
+}
+
+header>nav>ul>li:nth-child(3)>a {
+    color: rgb(68, 214, 44);
 }
 
 header>nav>div>div {
@@ -167,18 +172,17 @@ header>nav>div>div>form {
     width: 100%;
     display: flex;
     align-items: center;
-    border-left: 1px solid rgb(99, 99, 99);
-    border-right: 1px solid rgb(99, 99, 99);
 }
 
 header>nav>div>div>form>input {
     width: 80%;
     background-color: transparent;
     border: none;
-
     outline: none;
     padding-left: 10px;
     height: 80%;
+    border-left: 1px solid #a3a3a3;
+    ;
 }
 
 header>nav>div>div>form button {
@@ -187,34 +191,106 @@ header>nav>div>div>form button {
     outline: none;
     border: none;
     cursor: pointer;
+    border-right: 1px solid #a3a3a3;
+}
+
+header>nav>div>div>form button>i {
+    font-size: 24px;
+    color: #FCFCFC;
+}
+
+header>nav {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 3px solid rgb(197, 2, 2);
+    border-top: 1px solid #a3a3a3;
+    position: relative;
+}
+
+.navBar {
+    width: 100px;
+    text-align: center;
+}
+
+.menuBar {
+    z-index: 5;
+    position: relative;
+    margin-top: 10px;
+    flex: 1 1 0;
+    width: 125px;
+    top: 7px;
+}
+
+.menuBar>li>a {
+    flex: 1 1 0;
+    line-height: 28px;
+    display: flex;
+    color: #a3a3a3;
+    font-size: 1rem;
+    flex: 1 1 0;
+    height: 40px;
+    line-height: 38px;
+    font-weight: 300;
 
 }
 
-header>nav ul>li>a:hover {
-    color: rgb(250, 227, 0);
+
+.menuBar>li>a:hover {
+    color: #FCFCFC;
 }
 
-footer>section {
-    height: 200px;
+
+
+.navBar:nth-child(2)>.menuBar {
     display: flex;
     flex-direction: column;
 }
 
+.navBar:nth-child(4)>.menuBar {
+    display: flex;
+    flex-direction: column;
+}
+
+.navBar:nth-child(6)>.menuBar {
+    display: flex;
+    flex-direction: column;
+}
+
+.dummy {
+    width: 100vw;
+    height: 14vh;
+    background-color: rgba(21, 21, 21, 0.9);
+    position: absolute;
+    top: 49px;
+    right: 0;
+    z-index: 4;
+}
+
+
+
+footer {
+    background-color: #191919;
+}
+
+footer>section {
+    margin-top: 100px;
+    width: 1040px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 30px;
+}
+
 footer>section>div:nth-child(1) {
-
-    height: 30%;
-
-    border-top: 1px solid rgb(99, 99, 99);
-    border-bottom: 1px solid rgb(99, 99, 99);
-
+    border-bottom: 1px solid #a3a3a3;
+    background-color: #191919;
 }
 
 footer>section>div:nth-child(1)>ul {
-    width: 1160px;
     margin: 0 auto;
     display: flex;
-    line-height: 58px;
-    padding: 0 20px;
+    line-height: 67px;
+
 }
 
 footer>section>div:nth-child(1)>ul>li {
@@ -223,7 +299,7 @@ footer>section>div:nth-child(1)>ul>li {
 }
 
 footer>section>div:nth-child(1)>ul>li>a:hover {
-    color: rgb(200, 200, 200)
+    color: #FCFCFC;
 }
 
 footer>section>div:nth-child(1)>ul>span {
@@ -231,28 +307,24 @@ footer>section>div:nth-child(1)>ul>span {
 }
 
 footer>section>div:nth-child(2) {
-    width: 1160px;
-    margin: 0 auto;
-    height: 70%;
-    padding: 20px 0 0 20px;
+    padding: 20px 0;
     font-weight: 200;
     display: flex;
     flex-direction: column;
-}
 
-footer>section>div:nth-child(2) span {
-    margin-bottom: 3px;
 }
 
 footer>section>div:nth-child(2) span:first-child {
     margin-bottom: 13px;
     font-weight: 500;
+
 }
 
 footer>section>div:nth-child(2) span:last-child {
     font-size: 0.7rem;
-    margin-top: 13px;
+    padding: 5px 0;
 }
+
 
 /* =============================================================== */
 /* 아래부터 추가하세요. */

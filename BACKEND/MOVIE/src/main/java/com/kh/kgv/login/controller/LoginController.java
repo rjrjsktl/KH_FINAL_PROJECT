@@ -31,14 +31,24 @@ public class LoginController {
 	@Autowired
 	private LoginService service;
 	
-	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
-	
+	/** 로그인 페이지 진입
+	 * @return
+	 */
 	@GetMapping("/login")
 	public String enterLogin() {
 		return "login/login";
 	}
 	
+	
+	/** 로그인 기능 실행
+	 * @param inputUser
+	 * @param model
+	 * @param ra
+	 * @param resp
+	 * @param req
+	 * @param saveId
+	 * @return
+	 */
 	@PostMapping("/login")
 	public String login(@ModelAttribute User inputUser,
 	                    Model model,
@@ -46,34 +56,76 @@ public class LoginController {
 	                    HttpServletResponse resp,
 	                    HttpServletRequest req,
 	                    @RequestParam(value="saveId", required=false) String saveId) {
+		
 		logger.info("로그인 기능 수행됨");
 		
+		
+		// 아이디, 비밀번호가 일치하는 회원 정보를 조회하는 Service 호출 후 결과 반환 받기
 		User loginUser = service.login(inputUser);
 		
-		if (loginUser != null) { // 로그인 성공 시
-			// 비밀번호 검증
-			if (passwordEncoder.matches(inputUser.getUserPw(), loginUser.getUserPw())) {
-				model.addAttribute("loginUser", loginUser);
+		
+		/* Model : 데이터를 맵 형식(K:V) 형태로 담아 전달하는 용도의 객체
+		 * -> request, session을 대체하는 객체
+		 * 
+		 * - 기본 scope : request
+		 * - session scope로 변환하고 싶은 경우
+		 *   클래스 레벨로 @SessionAttributes를 작성되면 된다.
+		 * */
+		
+		// @SessionAttributes 미작성 -> request scope
+		
+		if(loginUser != null) { // 로그인 성공 시
+			
+			logger.info("로그인 성공!");
+			
+			model.addAttribute("loginUser", loginUser); // == req.setAttribute("loginMember", loginMember);
+			
+			// 로그인 성공 시 무조건 쿠키 생성
+			// 단, 아이디 저장 체크 여부에 따라서 쿠기의 유지 시간을 조정
+			Cookie cookie = new Cookie("saveId", loginUser.getUserEmail());
+			
+			if(saveId != null) { // 아이디 저장이 체크 되었을 때
 				
-				// 쿠키 생성
-				Cookie cookie = new Cookie("saveId", loginUser.getUserEmail());
+				cookie.setMaxAge(60 * 60 * 24 * 365); // 초 단위로 지정 (1년)
+			
+				logger.info("쿠키 생성!");
 				
-				if (saveId != null) { // 아이디 저장이 체크 되었을 때
-					cookie.setMaxAge(60 * 60 * 24 * 365); // 1년 유지
-				} else { // 체크 되지 않았을 때
-					cookie.setMaxAge(0); // 쿠키 삭제
-				}
+			} else { // 체크 되지 않았을 때
+				cookie.setMaxAge(0); // 0초 -> 생성 되자마자 사라짐 == 쿠키 삭제
 				
-				cookie.setPath(req.getContextPath()); // 쿠키의 경로 설정
-				resp.addCookie(cookie); // 쿠키 전달
-			} else {
-				ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
+				logger.info("쿠기 삭제!");
 			}
+			
+			
+			// 쿠키가 적용될 범위(경로) 지정
+			cookie.setPath(req.getContextPath());
+			
+			// 쿠키를 응답 시 클라이언트에게 전달
+			resp.addCookie(cookie);
+			
+			
 		} else {
+			
+			logger.info("로그인 실패");
+			
+			//model.addAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
+		
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
+			// -> redirect 시 잠깐 Session scope로 이동후
+			//    redirect가 완료되면 다시 Request scope로 이동
+			
+			// redirect 시에도 request scope로 세팅된 데이터가 유지될 수 있도록 하는 방법을
+			// Spring에서 제공해줌
+			// -> RedirectAttributes 객체  (컨트롤러 매개변수에 작성하면 사용 가능)
+			
+			return "login/login"; 
 		}
 		
+		//session.setAttribute("loginMember", loginMember);
+		
+		
 		logger.info("마지막 로그인 기능 수행됨");
+		
 		return "login/login_welcome";
 	}
 	

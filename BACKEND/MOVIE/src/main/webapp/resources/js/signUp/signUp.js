@@ -5,7 +5,7 @@ const checkObj = {
     "userEmail": false,
     "inputPw": false,
     "inputPwConfirm": false,
-    "inputNickname": false,
+    "userNick": false,
     "inputGender": false,
     "inputBirthday": false,
     "inputTel": false,
@@ -73,17 +73,17 @@ userEmail.addEventListener("input", function () {
     const regExp = /^[\w\-\_]{4,}@[\w\-\_]+(\.\w+){1,3}$/;
 
     if (regExp.test(userEmail.value)) { // 유효한 경우
-        console.log('유효한가?');
+
 
         $.ajax({
-            
-            url : "emailDupCheck",
 
-            data : { "userEmail": userEmail.value },
+            url: "emailDupCheck",
 
-            type : "GET",
+            data: { "userEmail": userEmail.value },
 
-            success : function(result) {
+            type: "GET",
+
+            success: function (result) {
 
 
                 if (result == 1) { //중복 o
@@ -103,17 +103,17 @@ userEmail.addEventListener("input", function () {
                 }
             },
 
-            error : function () {
+            error: function () {
 
                 console.log("에러 발생");
             }
 
         });
 
-        console.log('유효아니한가?');
+
 
     } else {
-        console.log('유효아니아니한가?');
+
         emailMessage.innerText = "이메일 형식이 유효하지 않습니다.";
         emailMessage.classList.add("error");
         emailMessage.classList.remove("confirm");
@@ -128,23 +128,23 @@ userEmail.addEventListener("input", function () {
 
 
 // 닉네임 유효성 검사
-const inputNickname = document.getElementById("inputNickname");
+const userNick = document.getElementById("userNick");
 const nicknameMessage = document.getElementById("nicknameMessage");
 
-inputNickname.addEventListener("input", function () {
+userNick.addEventListener("input", function () {
 
     // 입력되지 않은 경우
-    if (inputNickname.value.length == 0) {
+    if (userNick.value.length == 0) {
         nicknameMessage.innerText = "영어/숫자/한글 2~10글자 사이로 작성해주세요.";
         nicknameMessage.classList.remove("confirm", "error");
 
-        checkObj.inputNickname = false;
+        checkObj.userNick = false;
         return;
     }
 
     const regExp = /^[a-zA-Z0-9가-힣]{2,10}$/;
 
-    if (regExp.test(inputNickname.value)) { // 유효한 경우
+    if (regExp.test(userNick.value)) { // 유효한 경우
 
 
 
@@ -154,7 +154,7 @@ inputNickname.addEventListener("input", function () {
 
         $.ajax({
             url: "nicknameDupCheck",
-            data: { "inputNickname": inputNickname.value },
+            data: { "userNick": userNick.value },
             type: "GET",
 
             success: function (result) {
@@ -164,14 +164,14 @@ inputNickname.addEventListener("input", function () {
                     nicknameMessage.classList.add("confirm");
                     nicknameMessage.classList.remove("error");
 
-                    checkObj.inputNickname = true;
+                    checkObj.userNick = true;
 
 
                 } else {
                     nicknameMessage.innerText = "이미 사용중인 닉네임 입니다.";
                     nicknameMessage.classList.add("error");
                     nicknameMessage.classList.remove("confirm");
-                    checkObj.inputNickname = false; // 유효 O 기록
+                    checkObj.userNick = false; // 유효 O 기록
 
                 }
             },
@@ -192,7 +192,7 @@ inputNickname.addEventListener("input", function () {
         nicknameMessage.classList.add("error");
         nicknameMessage.classList.remove("confirm");
 
-        checkObj.inputNickname = false;
+        checkObj.userNick = false;
 
     }
 
@@ -201,29 +201,29 @@ inputNickname.addEventListener("input", function () {
 
 
 // 이름 유효성 검사
-const inputname = document.getElementById("inputname");
+const userName = document.getElementById("userName");
 const nameMessage = document.getElementById("nameMessage");
 
-inputname.addEventListener("input", function () {
+userName.addEventListener("input", function () {
 
     // 입력되지 않은 경우
-    if (inputname.value.length == 0) {
+    if (userName.value.length == 0) {
         nameMessage.innerText = "한글 2~10글자 사이로 작성해주세요.";
         nameMessage.classList.remove("confirm", "error");
 
-        checkObj.inputname = false;
+        checkObj.userName = false;
         return;
     }
 
     const regExp = /^[가-힣]{2,10}$/;
 
-    if (regExp.test(inputname.value)) { // 유효한 경우
+    if (regExp.test(userName.value)) { // 유효한 경우
 
 
 
         $.ajax({
             url: "nameDupCheck",
-            data: { "inputname": inputname.value },
+            data: { "userName": userName.value },
             type: "GET",
 
             success: function (result) {
@@ -234,14 +234,14 @@ inputname.addEventListener("input", function () {
                     nameMessage.classList.add("confirm");
                     nameMessage.classList.remove("error");
 
-                    checkObj.inputname = true;
+                    checkObj.userName = true;
 
                 } else {
                     nameMessage.innerText = "이미 사용중인 이름입니다.";
                     nameMessage.classList.add("error");
                     nameMessage.classList.remove("confirm");
 
-                    checkObj.inputname = true;
+                    checkObj.userName = true;
 
 
                 }
@@ -259,7 +259,7 @@ inputname.addEventListener("input", function () {
         nameMessage.classList.add("error");
         nameMessage.classList.remove("confirm");
 
-        checkObj.inputname = false;
+        checkObj.userName = false;
     }
 
 });
@@ -479,8 +479,8 @@ function signUpValidate() {
                 case "userEmail": str = "이메일이"; break;
                 case "inputPw": str = "비밀번호가"; break;
                 case "inputPwConfirm": str = "비밀번호 확인이"; break;
-                case "inputNickname": str = "닉네임이"; break;
-                case "inputname": str = "이름이"; break;
+                case "userNick": str = "닉네임이"; break;
+                case "userName": str = "이름이"; break;
                 case "inputGender": str = "성별이"; break;
                 case "inputBirthday": str = "생년월일이"; break;
                 case "inputTel": str = "전화번호가"; break;
