@@ -34,6 +34,7 @@
 	<mappers>
 		<mapper resource="/mappers/movie-mapper.xml"/>
 		<mapper resource="/mappers/user-mapper.xml"/>
+		<mapper resource="/mappers/signup-mapper.xml"/>
 	</mappers>
 
 </configuration>
