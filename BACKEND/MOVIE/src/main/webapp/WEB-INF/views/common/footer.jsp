@@ -1,22 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-        <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-            <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-                <%@ page session="false" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page session="false" %>
 
                     <footer>
 
                         <section>
 
                             <div>
-
                                 <ul>
                                     <li><a href="#">회사소개</a></li><span>|</span>
                                     <li><a href="#">조원소개</a></li><span>|</span>
                                     <li><a href="#">이용약관</a></li><span>|</span>
                                     <li><a href="#">개인정보처리방침</a></li><span>|</span>
-                                    <li><a href="#">편성기준</a></li>
+                                    <li><a href="${contextPath}/manager/main">편성기준</a></li>
                                 </ul>
 
                             </div>
