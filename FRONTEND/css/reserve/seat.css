@@ -480,6 +480,30 @@ main > section > div:nth-child(2) > div:nth-child(3) > div:first-child > #seat_a
   border-color: #FF243E;
 }
 
+/* 장애인석 */
+
+#seat_area > div > a.impared {
+  background-color: #008000;
+  border-color: #008000;
+}
+
+#seat_area > div > a.impared.selecting {
+  background-color: #FF243E;
+  border-color: #FF243E;
+}
+
+/* 스위트석 */
+
+#seat_area > div > a.sweet {
+  background-color: hotpink;
+  border-color: hotpink;
+}
+
+#seat_area > div > a.sweet.selecting {
+  background-color: #FF243E;
+  border-color: #FF243E;
+}
+
 /* 통로 */
 #seat_area > div > a.aisle {
   cursor: auto;
