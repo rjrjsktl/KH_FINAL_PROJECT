@@ -12,8 +12,8 @@
     <title>메인페이지</title>
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/outline.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
 </head>
@@ -39,25 +39,25 @@
 
                         <li>
                             <a href="#">
-                                <span><i class="fa-solid fa-lock"></i></span>
+                                <span><img src="../../images/headerPng/test.png" alt=""></span>
                                 <span>로그인</span>
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <span><i class="fa-regular fa-user"></i></span>
+                                <span><img src="../../images/headerPng/test2.png" alt=""></span>
                                 <span>회원가입</span>
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <span><i class="fa-solid fa-headset"></i></span>
+                                <span><img src="../../images/headerPng/test3.png" alt=""></span>
                                 <span>MY KGV</span>
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <span><i class="fa-solid fa-headset"></i></span>
+                                <span><img src="../../images/headerPng/test5.png" alt=""></span>
                                 <span>고객센터</span>
                             </a>
                         </li>
@@ -106,8 +106,8 @@
                     <div>
                         <form action="">
 
-                            <input type="text" placeholder="오늘의 영화를 찾아보세용">
-                            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <input type="text" placeholder="아 영화 재밌는거 없나">
+                            <button><img src="../../images/headerPng/test6.png" alt=""></button>
                         </form>
                     </div>
 
@@ -119,46 +119,25 @@
         <main>
             <!-- 첫번째 섹션 거대배너광고 -->
             <section>
-                <!-- 
-                <div class="slideshow-container">
 
-                    <div class="mySlides fade">
-                        <a href="#"><img src="../../images/TIME_02.jpg"></a>
-                    </div>
-
-                    <div class="mySlides fade">
-                        <a href="#"><img src="../../images/TRAN_01.jpg"></a>
-                    </div>
-
-                    <button class="prev" onclick="plusSlides(-1)">
-                        < </button>
-                            <button class="next" onclick="plusSlides(1)">></button>
-                </div> -->
-
-                <div class="mainImg-container">
-
+                <div class="swiper-container">
                     <div class="swiper-wrapper">
 
-                        <div class="swiper-Slide">
-                            <img src="../../images/test1.png" alt="">
+                        <div class="swiper-slide">
+                            <a href="#"><img src="../../images/banner_img/test1.png" alt=""></a>
                         </div>
-                        <div class="main-Slider">
-                            <img src="../../images/test2.png" alt="">
+                        <div class="swiper-slide">
+                            <a href="#"><img src="../../images/banner_img/test4.png" alt=""></a>
                         </div>
-                    
-                     </div>
+                    </div>
 
-                     <div class="swiper-main-next">></div>
-                     <div class="swiper-main-prev"><</div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
 
                 </div>
-
-
-
             </section>
 
             <!-- 두번째 라인 5ea ( 영화리스트 목록 ( 카드까지 ) )-->
-
             <section>
 
                 <div class="swiper-title">
@@ -299,78 +278,102 @@
                                     <p>개봉일 <span>2023.01.01</span></p>
                                 </div>
                             </div>
-                            <!-- <div>
-                            <button>0</button>
-                            <button>예매</button>
-                        </div> -->
+                        </div>
+                        <div class="swiper-slide">
+                            <div>
+                                <em>8
+                                </em>
+                                <a href=""><img
+                                        src="../../images/movieList/movie_06.jpg" onmouseenter="zoomIn(event)"
+                                        onmouseleave="zoomOut(event)"></a>
+                            </div>
+                            <div>
+                                <a href=""> <span>가디언 오브 갤럭시</span></a>
+                                <div>
+                                    <p>예매율 <span>100.0</span>%</p>
+                                    <p>개봉일 <span>2023.01.01</span></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
 
                 </div>
-                <div class="swiper-card-next">></div>
-                <div class="swiper-card-prev">
-                    < </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev">
+
             </section>
-
-
-
-
 
             <!-- 세번재 섹션 이벤트리스트 3ea-->
             <section>
                 <div>
-                    <div>
-                        <div>
-                            <a href="#">EVENT</a>
-
-                        </div>
-
-                        <div>
-                            <div>||</div>
-                            <div><a href="#">전체보기 ></a></div>
-                        </div>
+                    <div class="event-title">
+                        <a href="">EVENT</a>
+                        <div><button>전체보기</button></div>
                     </div>
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <img src="../../images/eventList/event001.jpg" alt="" onmouseenter="zoomIn(event)"
+                                        onmouseleave="zoomOut(event)">
+                                    <strong>이벤트1</strong>
+                                    <span>2023.01.01 ~ 2023.02.02</span>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <img src="../../images/eventList/event002.jpg" alt="" onmouseenter="zoomIn(event)"
+                                        onmouseleave="zoomOut(event)">
+                                    <strong>이벤트1</strong>
+                                    <span>2023.01.01 ~ 2023.02.02</span>
+                                </a>
+                            </div>
 
-                    <div>
-
-                        <ol>
-                            <li>
-                                <div>
-                                    <a href="#"><img src="" alt="img"></a>
-                                </div>
-
-                                <div>
-                                    <a href=""> <span>입력해주세요</span></a>
-                                    <div>2023.05.17 ~ 2023.05.20</div>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <a href="#"><img src="" alt="img"></a>
-                                </div>
-
-                                <div>
-                                    <a href=""> <span>입력해주세요</span></a>
-                                    <div>2023.05.17 ~ 2023.05.20</div>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <a href="#"><img src="" alt="img"></a>
-                                </div>
-
-                                <div>
-                                    <a href=""> <span>입력해주세요</span></a>
-                                    <div>2023.05.17 ~ 2023.05.20</div>
-                                </div>
-                            </li>
-
-
-                        </ol>
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <img src="../../images/eventList/event003.jpg" alt="" onmouseenter="zoomIn(event)"
+                                        onmouseleave="zoomOut(event)">
+                                    <strong>이벤트1</strong>
+                                    <span>2023.01.01 ~ 2023.02.02</span>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <img src="../../images/eventList/event002.jpg" alt="" onmouseenter="zoomIn(event)"
+                                        onmouseleave="zoomOut(event)">
+                                    <strong>이벤트1</strong>
+                                    <span>2023.01.01 ~ 2023.02.02</span>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <img src="../../images/eventList/event001.jpg" alt="" onmouseenter="zoomIn(event)"
+                                        onmouseleave="zoomOut(event)">
+                                    <strong>이벤트1</strong>
+                                    <span>2023.01.01 ~ 2023.02.02</span>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <img src="../../images/eventList/event002.jpg" alt="" onmouseenter="zoomIn(event)"
+                                        onmouseleave="zoomOut(event)">
+                                    <strong>이벤트1</strong>
+                                    <span>2023.01.01 ~ 2023.02.02</span>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <img src="../../images/eventList/event003.jpg" alt="" onmouseenter="zoomIn(event)"
+                                        onmouseleave="zoomOut(event)">
+                                    <strong>이벤트1</strong>
+                                    <span>2023.01.01 ~ 2023.02.02</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
                     </div>
-
-
 
                 </div>
             </section>
@@ -381,33 +384,41 @@
 
                     <div>
                         <div>
-                            <a href="#">상영관안내</a>
+                            <a href="#">특별관 안내</a>
                         </div>
-                        <div><a href="">전체보기 ></a></div>
+                        <button>전체보기</button>
                     </div>
 
 
                     <div>
                         <div>
-                            <!-- JSTL -->
-                            <a href="#"><img src="" alt=""></a>
+                            <a href="#" class="stheater" >
+                                <img src="../../images/teater_special/imax_04.jpg" alt=""></a>
+                            <a href="#" class="stheater"  ><img src="../../images/teater_special/img-theater-db-view05.png" alt=""
+                                   ></a>
+                            <a href="#"class="stheater"  ><img src="../../images/teater_special/abcd.jpg" alt=""
+                                 ></a>
+                            <a href="#" class="stheater" ><img src="../../images/teater_special/style_625d608c1cb71.jpg" alt=""
+                                ></a>
+                            <a href="#"  class="stheater" ><img src="../../images/teater_special/Featured-1068x580-1-2.png" alt=""
+                              ></a>
                         </div>
-                        <div>
+                        <div class="preventDiv">
                             <!-- hover시 각각의 div에 border 생성하시면됩니다. -->
-                            <a href="#">
-                                <div><span>IMAX</span> <span>#세계 최대의 상영관</span> </div>
+                            <a href="#" class="deleteUnderline">
+                                <span>KMAX</span> <span >#세계 최대의 상영관</span>
                             </a>
-                            <a href="#">
-                                <div><span>DOLBY</span> <span>#차세대 몰입형 사운드</span> </div>
+                            <a href="#" class="deleteUnderline">
+                                <span>DOLBY</span> <span >#차세대 몰입형 사운드</span>
                             </a>
-                            <a href="#">
-                                <div><span>DISH & WINE</span> <span>#최고의 가치를 경험하세요</span></div> </span>
+                            <a href="#"  class="deleteUnderline">
+                                <span>CHEF & CINE</span> <span>#최고의 가치를 경험하세요</span> </span>
                             </a>
-                            <a href="#">
-                                <div><span>WITH A PUPPY</span> <span>#반려견과 함께하는 멀티플렉스</span> </div>
+                            <a href="#"  class="deleteUnderline">
+                                <span>PUPPY & ME</span> <span>#반려동물과 영원히 함께</span>
                             </a>
-                            <a href="#">
-                                <div><span>KIDS</span> <span>#더이상 노키즈존은 STOP</span> </div>
+                            <a href="#"  class="deleteUnderline">
+                                <span>YES KIDS</span> <span>#더이상 노키즈존은 STOP</span>
                             </a>
                         </div>
                     </div>

@@ -24,9 +24,9 @@ public class LoginServiceImpl implements LoginService{
 	@Override
 	public User login(User inputUser) {
 		
-		//logger.debug( inputUser.getUserPw() + " / " +  bcrypt.encode(inputUser.getUserPw()) );
-		String encodedPassword = bcrypt.encode(inputUser.getUserPw());
-		logger.debug( inputUser.getUserPw() + " / " + encodedPassword );
+		logger.debug( inputUser.getUserPw() + " / " +  bcrypt.encode(inputUser.getUserPw()) );
+		//String encodedPassword = bcrypt.encode(inputUser.getUserPw());
+		//logger.debug( inputUser.getUserPw() + " / " + encodedPassword );
 		
 		User loginUser = dao.login(inputUser);
 		
@@ -44,6 +44,8 @@ public class LoginServiceImpl implements LoginService{
 				
 			}
 		}
+		
+		System.out.println("디버깅");
 		
 		return loginUser;
 	}
