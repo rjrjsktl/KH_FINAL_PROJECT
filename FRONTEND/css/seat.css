@@ -682,7 +682,7 @@ main > section > div:nth-child(2) > div:last-child > #price_calc {
 }
 
 #price_calc > div {
-  display: flex;
+  display: none;
   width: 100%;
   height: 20px;
   line-height: 22px;
