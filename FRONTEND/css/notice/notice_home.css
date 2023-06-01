@@ -1,121 +1,157 @@
-/* 메인 섹션 */
-main>section>div {
-    width: 1040px;
-    height: 100%;
-    margin: 0 auto;
-    padding: 50px 30px;
+main > section{
+    width:100%
+}
+.notice-wraaper{
+    width:1040px;
+    margin:0 auto;
+    padding:50px 30px;
     display: flex;
     justify-content: space-between;
+
+}
+/* 왼쪽 */
+.notice-wraaper > div:nth-child(1){
+    width:15%;
 }
 
-/* A-SIDE */
-main>section>div>aside {
-    width: 15%;
+.aside-ul-wrap {
+    width: 100%;
+    height: 100%;
+}
+
+.aslide-list {
     display: flex;
     flex-direction: column;
 }
 
-.aside-ul-wrap { 
-    width:100%;
-    height:100%;
-}
-
-.aslide-list{
-    display: flex;
-    flex-direction: column;
-}
-
-.aslide-list > li {
-    width:100%;
-    height:50px;
+.aslide-list>li {
+    width: 100%;
+    height: 50px;
     line-height: 48px;
-    padding-left:10px;
+    padding-left: 10px;
     display: flex;
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
 
-.aslide-list > li >a{
-    width:100%;
-    height:100%;
+.aslide-list>li>a {
+    width: 100%;
+    height: 100%;
 }
-.aslide-list > li:nth-child(1) {
+
+.aslide-list>li:nth-child(1) {
     background-color: rgb(73, 73, 73);
-    border-radius: 10px;;
-
 }
 
-.aslide-list > li:nth-child(1)>a{
-    color:rgb(251,251,251);
+.aslide-list>li:nth-child(1)>a {
+    color: rgb(251, 251, 251);
 }
 
-.aslide-list > li  > a {
+.aslide-list>li>a {
     font-size: 1.1rem;
     font-weight: bold;
 }
-.aslide-list > li  > a:hover {
-    color: rgb(251,251,251);
+
+.aslide-list>li>a:hover {
+    color: rgb(251, 251, 251);
 }
 
 
-.notice-content-wrap {
-    display: flex;
-    flex-direction: column;
-    width:83%;
-    height:100%;
-    border:1px solid red;
+.notice-wraaper > div:nth-child(2){
+    width:82%;
 }
-
-.notice-content-wrap > div {
-    width:100%;
-    height:100%;
-    border:1px solid blue;
-    display: flex;
-    flex-direction: column;
-
-}
-
-h2{
+h2 {
     font-size: 1.5rem;
-    padding: 0 0 30px 10px;;
-    border:1px solid red;
+    padding: 0 0 30px 10px;
+    border-bottom: 3px solid rgb(255, 196, 0);
+    margin-bottom: 30px;
 }
 
+/* 검색 회색영역 */
 .cont-search-wrap {
-    width:100%;
-    height:100px;
-    border:1px solid yellow;
+    width: 100%;
     display: flex;
     align-items: center;
-    padding:30px;
+    padding: 30px;
+    background-color: rgb(72 72 72);
 }
-
-.cont-search-wrap > span {
-    padding-right:20px;
+/* 빠른검색 */
+.cont-search-wrap>span {
+    padding-right: 20px;
+    font-size: 1.2rem;
+    font-weight: 400;
 }
 
 .cont-search-wrap form {
-    width:60%;
+    width: 60%;
     display: flex;
-    height:100%;
-    border:1px solid lightgray;
+    height: 36px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
 }
 
-.cont-search-wrap form > input{
-    width:90%;
-    border:none;
-
+.cont-search-wrap form>input {
+    width: 90%;
+    border: none;
+    color: rgb(21, 21, 21);
+    padding-left: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
-.cont-search-wrap form > button{
-    width:10%;
-    border:none;
+.cont-search-wrap form>button {
+    width: 10%;
+    border: none;
     outline: none;
     background-color: white;
     display: flex;
     align-items: center;
+    cursor: pointer;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
-.cont-search-wrap form > button > img{
-    width:24px;
-    height:24px;
+.cont-search-wrap form>button>img {
+    width: 24px;
+    height: 24px;
+}
+
+.new-wrap{
+    width:100%;
+    display: flex;
+    padding:50px 0;
+    flex-wrap: wrap;
+}
+
+.new-wrap > div {
+    width:33%;
+    height:170px;
+    display: flex;
+    flex-direction: column;
+    background-color: #484848;
+    padding-bottom: 30px;;
+}
+
+.new-wrap > div  > div:nth-child(1){height:60%;}
+.new-wrap > div:nth-child(1) > div:nth-child(1){
+    height:55%;
+    background-color:  rgb(255, 196, 0);
+    border:none;
+}
+
+.new-wrap > div > div:nth-child(2){
+    height:20%;
+}
+.new-wrap > div > div:nth-child(2) > p{
+    font-size: 1.5rem;
+    padding-top:20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.new-wrap > div > div:nth-child(3){
+    height:10%;
+}
+
+.new-wrap > div > div:nth-child(4){
+    height:15%;
 }
