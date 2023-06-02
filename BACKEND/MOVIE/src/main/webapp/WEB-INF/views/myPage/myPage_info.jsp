@@ -13,9 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지<정보 수정>
     </title>
+    
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
 </head>
 
 <body>
@@ -52,7 +55,7 @@
                         </div>
                         <div class="mypage-info-frame">
                             <input type="text" name="updateNickname" id="memberNickname"
-                            value="${loginMember.memberNickname}" maxlength="10">
+                            value="${loginUser.userNick}" maxlength="10">
                         </div>
 
                         <div class="mypage-info-frame">
