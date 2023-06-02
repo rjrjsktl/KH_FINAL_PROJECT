@@ -52,7 +52,7 @@ public class BeforeAspect {
 			// 단, 스프링 스케줄러 동작 시 예외 발생 ( 스케줄러는 요청 객체가 존재하지 않음)
 			HttpServletRequest req = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
 			
-			User loginUser = (User)req.getSession().getAttribute("loginMember");
+			User loginUser = (User)req.getSession().getAttribute("loginUser");
 			
 			// ip : xxx.xxx.xxx.xxx (email : test01@naver.com)
 			str += "ip : " + getRemoteAddr(req);
