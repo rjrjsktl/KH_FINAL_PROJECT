@@ -39,6 +39,13 @@
 		<!-- AND USER_PW = #{userPw} -->
 		AND USER_ST = 'Y' 
   	</select>
+  	
+	<select id="selectAll" resultMap="user_rm">	
+  		SELECT *
+  		FROM USERS
+  		WHERE USER_ST = 'Y'
+  		ORDER BY USER_NO
+  	</select>
 	
 	
   	
