@@ -10,12 +10,12 @@
         <div>
            
             <!-- 밑 이거 살려서 써야함 -->
-            <c:if test="${empty loginUser.profileImage}">
+            <c:if test="${empty loginUser.userImg}">
             	<img src="${contextPath}/resources/images/headerPng/mypage.png" id="profile-image" alt="이미지삽입 w,h=182">
 			</c:if>
 
-            <c:if test="${!empty loginUser.profileImage}">
-            	<img src="${contextPath}${loginUser.profileImage}" id="profile-image">
+            <c:if test="${!empty loginUser.userImg}">
+            	<img src="${contextPath}${loginUser.userImg}" id="profile-image">
             </c:if> 
         </div>
     </div>
