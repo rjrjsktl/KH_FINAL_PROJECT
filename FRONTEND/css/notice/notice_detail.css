@@ -1,0 +1,171 @@
+/* 전체 틀 잡아주는 css */
+main>section {
+    width: 1040px;
+    margin: 0 auto;
+    padding: 50px 30px 70px 30px;
+    display: flex;
+    justify-content: space-between !important;
+    flex-wrap: wrap;
+}
+
+.aside {
+    width: 18%;
+}
+
+.container {
+    width: 80%;
+
+}
+
+/* ////////////////////////////////////////// */
+
+/* 왼쪽 */
+.notice-wraaper>div:nth-child(1) {
+    width: 15%;
+}
+
+.aside-ul-wrap {
+    width: 100%;
+    height: 100%;
+}
+
+.aslide-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.aslide-list>li {
+    width: 100%;
+    height: 50px;
+    line-height: 48px;
+    display: flex;
+    margin-bottom: 10px;
+
+}
+
+.aslide-list>li>a {
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+}
+
+.aslide-list>li:nth-child(1)>a {
+    background-color: rgb(73, 73, 73);
+}
+
+.aslide-list>li:nth-child(1)>a {
+    color: rgb(251, 251, 251);
+}
+
+.aslide-list>li>a {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.aslide-list>li>a:hover {
+    color: rgb(251, 251, 251);
+    background-color: rgb(73, 73, 73);
+}
+
+.notice-wraaper>div:nth-child(2) {
+    width: 82%;
+}
+
+/* 여기까지  왼쪽 ui관련 재활용 계속해야합니당.*/
+
+.content-wrap {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+h2 {
+    font-size: 1.8rem;
+    padding: 0 0 30px 10px;
+    border-bottom: 2px solid rgb(255, 196, 0);
+}
+
+.notice-contents {
+    display: flex;
+    flex-direction: column;
+}
+
+.notice-contents>div:nth-child(1) {
+    padding: 20px 0 10px 0;
+}
+
+.notice-contents>div:nth-child(1)>span {
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.notice-contents>div:nth-child(2) {
+    padding: 10px 0 20px 0;
+}
+
+.notice-contents>div:nth-child(3) {
+    border-top: 1px solid rgb(73, 73, 73);
+    padding: 15px 0;
+    margin-bottom: 30px;
+}
+
+.content-wrap>div:nth-child(3) {
+
+    border-top: 1px solid rgb(73, 73, 73);
+    border-bottom: 1px solid rgb(73, 73, 73);
+
+}
+
+
+.prev-page,
+.next-page {
+    height: 50px;
+    line-height: 48px;
+    display: flex;
+}
+
+.next-page {
+    border-top: 1px solid rgb(73, 73, 73);
+}
+
+.prev-page>p,
+.next-page>p {
+    width: 15%;
+    text-align: center;
+    background-color: rgb(21, 21, 21);
+}
+
+
+.prev-page>a,
+.next-page>a {
+    padding-left: 20px;
+}
+
+.prev-page>a:hover,
+.next-page>a:hover {
+    text-decoration: underline;
+    color: rgb(251, 251, 251)
+}
+
+.content-wrap>div:last-child {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.content-wrap>div:last-child>button {
+    width: 150px;
+    height: 50px;
+    font-size: 1.2rem;
+    background-color: rgb(73, 73, 73);
+    color: rgb(251, 251, 251);
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.content-wrap>div:last-child>button:hover {
+    background-color: rgb(251, 251, 251);
+    color: rgb(21, 21, 21);
+}

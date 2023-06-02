@@ -17,13 +17,15 @@ public class User {
 	private String userPw;
 	private String userName;
 	private String userNick;
-	private int userTel;
+	private String userTel;
 	private String userAddr;
 	private String userBirth;
+	private String userGender;
 	private String userRegDate;
 	private String UserSt;
 	private String userImg;
 	private int userPoint;
 	private String userSns;
 	private String userChage;
+	private String userDelete;
 }
