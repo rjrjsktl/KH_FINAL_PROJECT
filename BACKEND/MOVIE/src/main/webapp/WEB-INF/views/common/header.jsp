@@ -102,7 +102,7 @@
                 </li>
                 <li class="navBar"><a href="#">예매</a>
                     <ul class="menuBar" style="display:none">
-                        <li><a href="">빠른 예매</a></li>
+                        <li><a href="${contextPath}/reserve/choicePlay">빠른 예매</a></li>
                     </ul>
                 </li>
 
