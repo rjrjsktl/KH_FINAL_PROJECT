@@ -1,5 +1,7 @@
 console.log("loginPage.js loaded..")
 
+console.log(document.cookie)
+
 // 로그인 유효성 검사
 function loginValidate(){
     
