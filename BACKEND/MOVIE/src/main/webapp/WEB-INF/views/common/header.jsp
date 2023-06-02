@@ -56,7 +56,7 @@
                         <div>
                             <img src="" alt="">
                         </div>
-                        <li hidden>
+                        <li style= "visibility:hidden">
                             <a href="${contextPath}/user/login">
                                 <span><img src="${contextPath}/resources/images/headerPng/test.png" alt=""></span>
                                 <span>로그인</span>
@@ -102,7 +102,7 @@
                 </li>
                 <li class="navBar"><a href="#">예매</a>
                     <ul class="menuBar" style="display:none">
-                        <li><a href="">빠른 예매</a></li>
+                        <li><a href="${contextPath}/reserve/choicePlay">빠른 예매</a></li>
                     </ul>
                 </li>
 
