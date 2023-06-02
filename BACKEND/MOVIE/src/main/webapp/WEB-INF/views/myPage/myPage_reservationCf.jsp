@@ -14,8 +14,8 @@
     <title>마이페이지<정보 수정>
     </title>
     
-    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
