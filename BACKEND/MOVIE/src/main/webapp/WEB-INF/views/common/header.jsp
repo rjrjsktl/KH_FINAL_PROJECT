@@ -15,11 +15,10 @@
         </div>
 
         <div class="memberInfo_wrap">
-            <c:choose>
+            
                 <%-- 로그인이 되어있지 않은 경우 --%>
-                <c:when test="${empty sessionScope.loginUser || empty sessionScope.loginUser.userEmail}">
-                    <c:set var="loginUserEmail" value="" />
-                    <ul>
+				<c:if test="${empty sessionScope.loginUser}">
+    				<ul>
                         <div>
                             <img src="" alt="">
                         </div>
@@ -48,16 +47,16 @@
                             </a>
                         </li>
                     </ul>
-                </c:when>
-
-                <%-- 로그인이 되어있는 경우 --%>
-                <c:otherwise>
-                    <c:set var="loginUserEmail" value="${sessionScope.loginUser.userEmail}" />
-                    <ul>
+				</c:if>
+				
+				<%-- 로그인이 되어있는 경우 --%>
+				<%-- <c:if test="${!empty sessionScope.loginUser}"> --%>
+				<c:if test="${not empty sessionScope.loginUser}">
+    				<ul>
                         <div>
                             <img src="" alt="">
                         </div>
-                        <li hidden="${empty loginUserEmail}">
+                        <li hidden>
                             <a href="${contextPath}/user/login">
                                 <span><img src="${contextPath}/resources/images/headerPng/test.png" alt=""></span>
                                 <span>로그인</span>
@@ -82,8 +81,7 @@
                             </a>
                         </li>
                     </ul>
-                </c:otherwise>
-            </c:choose>
+				</c:if>
         </div>
     </section>
 
@@ -132,6 +130,9 @@
             </div>
         </div>
     </nav>
+    
+    <%-- request에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
+    
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
  

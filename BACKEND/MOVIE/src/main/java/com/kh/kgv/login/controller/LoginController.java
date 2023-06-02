@@ -1,6 +1,8 @@
 package com.kh.kgv.login.controller;
 
 
+import java.util.List;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -20,9 +22,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.google.gson.Gson;
 
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.login.model.service.LoginService;
@@ -44,6 +49,7 @@ public class LoginController {
 	}
 	
 	// 로그인
+	
 	@PostMapping("/login")
 	public String login(@ModelAttribute User inputUser,
 	                    Model model,
@@ -63,8 +69,6 @@ public class LoginController {
 		
 		if(loginUser != null) { // 로그인 성공 시
 			
-			
-			
 			logger.info("로그인 성공!");
 			
 			model.addAttribute("loginUser", loginUser);
@@ -75,14 +79,14 @@ public class LoginController {
 			
 			if(saveId != null) { // 아이디 저장이 체크 되었을 때
 				
-				cookie.setMaxAge(60 * 60 * 24 * 365); // 초 단위로 지정 (1년)
+				cookie.setMaxAge(60 * 60 * 24 * 7); // 초 단위로 지정 (일주일)
 			
-				logger.info("쿠키 생성!");
+				logger.info("cookie run !");
 				
 			} else { // 체크 되지 않았을 때
 				cookie.setMaxAge(0); // 0초 -> 생성 되자마자 사라짐 == 쿠키 삭제
 				
-				logger.info("쿠키 삭제!");
+				logger.info("cookie death !");
 			}
 			
 			
@@ -109,12 +113,13 @@ public class LoginController {
 			
 //			return "redirect:/user/login"; 
 		}
-		return "redirect:/";
+		return "redirect:/"; 
 	}
-//		session.setAttribute("loginUser", loginUser);
-//		
+	
+		//session.setAttribute("loginUser", loginUser);
+		
 //		User checkloginUser = (User) session.getAttribute("loginUser");
-//		model.addAttribute("loginUser", loginUser);
+//		
 //		if (checkloginUser != null) {
 //		    logger.info("세션있음");
 //		} else {
@@ -125,8 +130,7 @@ public class LoginController {
 //		logger.info("마지막 로그인 기능 수행됨");
 //		
 //		return "redirect:/";
-//		
-//		//return "login/login_welcome";
+////		//return "login/login_welcome";
 //	}
 	
 	// 로그아웃
@@ -139,22 +143,36 @@ public class LoginController {
 		
 		// session.invalidate(); // 기존 세션 무효화 방식으로는 안된다!
 		
-		status.setComplete(); // 세센이 할 일이 완료됨 -> 없앰
+		status.setComplete(); 
 		
-		return "redirect:/"; // 메인페이지 리다이렉트
+		return "redirect:/";
 		
 	}
 	
-	
+	// 비밀번호 찾기
 	@RequestMapping("/findPw")
 	public String findPw() {
 		return "login/findPw_1";
 	}
 	
+	// 아이디 찾기
 	@RequestMapping("/findEmail")
 	public String findEmail() {
 		return "login/findEmail_1";
 	}
+	
+	// 회원 목록 조회(ajax)
+	@ResponseBody
+	@GetMapping("/selectAll")
+	public String selectAll() {
+			
+		List<User> list = service.selectAll();
+			
+		return new Gson().toJson(list);
+	}
+	
+	
+	
 	
 	
 }
