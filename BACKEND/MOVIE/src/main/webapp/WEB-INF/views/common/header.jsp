@@ -56,7 +56,7 @@
                         <div>
                             <img src="" alt="">
                         </div>
-                        <li hidden>
+                        <li style= "visibility:hidden">
                             <a href="${contextPath}/user/login">
                                 <span><img src="${contextPath}/resources/images/headerPng/test.png" alt=""></span>
                                 <span>로그인</span>
