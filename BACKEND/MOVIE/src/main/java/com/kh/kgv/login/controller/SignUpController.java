@@ -87,7 +87,7 @@ public class SignUpController {
 			
 			int result = service.signUp(inputUser);
 			
-			System.out.println(result);
+			
 			String message =null;
 			String path =null;
 			
@@ -103,5 +103,8 @@ public class SignUpController {
 			ra.addFlashAttribute("message", message);
 			return path;
 		}
+		
+		
+		
 		
 }

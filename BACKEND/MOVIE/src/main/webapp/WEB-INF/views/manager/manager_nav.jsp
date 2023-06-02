@@ -5,7 +5,7 @@
                 <%@ page session="false" %>
                     <nav>
                         <ul class="nav_Slide">
-                            <a class="title_move" href="${contextPath}/manager/main">
+                            <a class="title_move" href="${contextPath}/manager/main" value="">
                                 <li class="slide_Title">
                                     <div class="slide_Left_Icon">
                                         <i class="fa-sharp fa-solid fa-house"></i>
@@ -69,7 +69,7 @@
                                             </li>
                                         </a>
                                         <a href="${contextPath}/manager/movie_add">
-                                            <li class="selected_Title">
+                                            <li>
                                                 <div class="inner_align">
                                                     <div class="inner_Left_Icon">
                                                         <i class="fa-solid fa-play fa-2xs"></i>
