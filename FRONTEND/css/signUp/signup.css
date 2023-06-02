@@ -1,10 +1,28 @@
 /* =============================================================== */
 /* 아래부터 추가하세요. */
 
+header{
+    display: none;
+}
+
 main>section>form {
     background-color: rgb(33, 33, 33);
-    padding: 50px;
+    padding:0 50px 50px 50px;
     margin-bottom: 30px;
+}
+
+.home-move-btn{
+    width:100%;
+    height: 140px;
+    padding:30px 0;
+    display: flex;
+}
+
+.home-move-btn > a {
+    width:40%;
+    height: 100%;
+    border: 1px solid red;
+    background-color: red;
 }
 
 
@@ -31,11 +49,8 @@ main>section>form>div:nth-child(1) {
 }
 
 /* 회원가입 폼 */
-form[name="signUp-form"] {
-    margin-top: 30px;
-}
 
-/* 회원가입 폼 내부 input 제목(label) */
+/* 회원가입 폼 내부 input 제목(label#) */
 form[name="signUp-form"]>label {
     display: block;
     margin-top: 40px;
@@ -45,9 +60,10 @@ form[name="signUp-form"]>label {
 
 /* input을 감싸고있는 div */
 .signUp-input-area {
-    width: 500px;
-    height: 40px;
-    margin-bottom: 10px;
+    width: 450px;
+    height: 50px;
+    margin-bottom: 2px;
+    margin-top:20px;
 
     /* border-bottom: 2px solid #ddd; */
 
@@ -55,10 +71,6 @@ form[name="signUp-form"]>label {
     align-items: center;
     /* 세로 중앙 */
 }
-
-
-
-
 
 /* input태그 */
 .signUp-input-area>input {
@@ -191,6 +203,7 @@ form[name="signUp-form"]>label {
 
 /* 회원가입 관련 메세지 */
 .signUp-message {
+    padding-left:10px;
     font-size: 14px;
     letter-spacing: -1px;
     /* 자간 */
