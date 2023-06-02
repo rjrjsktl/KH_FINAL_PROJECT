@@ -44,7 +44,7 @@ public class LoginController {
 	
 	// 로그인 페이지 진입
 	@GetMapping("/login")
-	public String enterLogin() {
+	public String enterLogin() { 
 		return "login/login";
 	}
 	
@@ -150,13 +150,41 @@ public class LoginController {
 	
 	// 비밀번호 찾기
 	@RequestMapping("/findPw")
-	public String findPw() {
+	public String findPw(@ModelAttribute User inputUser,
+            			Model model,
+            			RedirectAttributes ra,
+            			HttpServletResponse resp,
+            			HttpServletRequest req,
+            			HttpSession session) {
+		
+		logger.info("비밀번호를 찾아볼까나 ?");
+		
+		User loginUser = service.findPw(inputUser);
+		
+		if( loginUser != null) { // 비밀번호를 찾기위해 아이디를 썻을때 inputEmail이 DB에 있다는뜻 
+			
+		}
+		
+		
+		
+		
+		
 		return "login/findPw_1";
 	}
+	
+	
+	
+	
+	
+	
 	
 	// 아이디 찾기
 	@RequestMapping("/findEmail")
 	public String findEmail() {
+		
+		
+		
+		
 		return "login/findEmail_1";
 	}
 	
