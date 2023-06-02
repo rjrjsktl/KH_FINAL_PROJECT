@@ -1,5 +1,7 @@
 package com.kh.kgv.login.model.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +51,13 @@ public class LoginServiceImpl implements LoginService{
 		
 		return loginUser;
 	}
+
+	// 회원조회 서비스
+	@Override
+	public List<User> selectAll() {
+		return dao.selectAll();
+	}
+	
+	
 	
 }
