@@ -49,7 +49,6 @@ public class LoginController {
 	}
 	
 	// 로그인
-	
 	@PostMapping("/login")
 	public String login(@ModelAttribute User inputUser,
 	                    Model model,

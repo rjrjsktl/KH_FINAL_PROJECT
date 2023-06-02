@@ -22,7 +22,7 @@ import com.kh.kgv.mypage.model.service.MyPageService;
 
 @Controller
 @RequestMapping("/myPage")
-@SessionAttributes({"loginMember"}) // session scope에서 loginMember를 얻어옴
+@SessionAttributes({"loginUser"}) // session scope에서 loginMember를 얻어옴
 public class MyPageController {
 
 	private Logger logger = LoggerFactory.getLogger(MyPageController.class);
