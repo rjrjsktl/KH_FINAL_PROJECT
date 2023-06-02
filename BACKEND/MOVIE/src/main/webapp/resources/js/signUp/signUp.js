@@ -9,7 +9,7 @@ const checkObj = {
     "userGender": false,
     "userBirth": false,
     "userTel": false,
-    // "sendEmail"       : false   // 인증번호 발송 체크
+    "sendEmail": false   // 인증번호 발송 체크
 };
 
 
@@ -484,6 +484,7 @@ function signUpValidate() {
                 case "userGender": str = "성별이"; break;
                 case "userBirth": str = "생년월일이"; break;
                 case "userTel": str = "전화번호가"; break;
+                case "sendEmail": str = "이메일 인증번호가"; break;
             }
 
             str += " 유효하지 않습니다.";
