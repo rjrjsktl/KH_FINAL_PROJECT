@@ -1,5 +1,7 @@
 package com.kh.kgv.login.model.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +29,13 @@ public class LoginDAO {
 		
 		logger.info("4. 받아온 loginUser :" + loginUser);
 		return loginUser;
+	}
+
+
+	public List<User> selectAll() {
+		// selectList() : 여러 행을 조회 -> 리턴 타입이 List
+		//	* 조회되는 모든 행을 순차적으로 접근해서 VO에 필드 값을 담은 후 List에 자동 추가			
+		return sqlSession.selectList("userMapper.selectAll");
 	}
 
 }

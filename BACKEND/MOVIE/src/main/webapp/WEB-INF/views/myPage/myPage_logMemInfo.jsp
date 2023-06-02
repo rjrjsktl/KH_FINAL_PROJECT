@@ -8,41 +8,37 @@
 <section>
     <div class="profile-image-area">
         <div>
-            <img src="../../images/18.png" id="profile-image" alt="이미지삽입 w,h=182">
+           
             <!-- 밑 이거 살려서 써야함 -->
-            <!-- <c:if test="${empty loginMember.profileImage}">
-                            <img src="${contextPath}/resources/images/user.png" id="profile-image" alt="이미지삽입 w,h=182">
-                        </c:if>
+            <c:if test="${empty loginUser.userImg}">
+            	<img src="${contextPath}/resources/images/headerPng/mypage.png" id="profile-image" alt="이미지삽입 w,h=182">
+			</c:if>
 
-                        <c:if test="${!empty loginMember.profileImage}">
-                            <img src="${contextPath}${loginMember.profileImage}" id="profile-image">
-                        </c:if> -->
+            <c:if test="${!empty loginUser.userImg}">
+            	<img src="${contextPath}${loginUser.userImg}" id="profile-image">
+            </c:if> 
         </div>
     </div>
     <div class="profile-info-area">
 
+		<div class="mypage-main-frame">
+            <label>이메일</label>
+            <span>${loginUser.userEmail}</span>
+        </div>
+        
         <div class="mypage-main-frame">
             <label>이&nbsp;&nbsp;&nbsp;름</label>
-            <span>ㅋㅋㄹㅃㅃ</span>
-            <!-- <span>${loginMember.memberNick}</span> -->
+            <span>${loginUser.userName}</span>
         </div>
 
         <div class="mypage-main-frame">
             <label>닉네임</label>
-            <span>ㅋㅋㄹㅃㅃ</span>
-            <!-- <span>${loginMember.memberNick}</span> -->
-        </div>
-
-        <div class="mypage-main-frame">
-            <label>이메일</label>
-            <span>zzfQQ@gmail.com</span>
-            <!-- <span>${loginMember.memberEmail}</span> -->
+            <span>${loginUser.userNick}</span>
         </div>
 
         <div class="mypage-main-frame">
             <label>연락처</label>
-            <span>010-0000-0000</span>
-            <!-- <span>${loginMember.enrollDate}</span> -->
+            <span>${loginUser.userTel}</span>
         </div>
     </div>
 </section>

@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
@@ -11,9 +12,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>로그인 페이지</title>
 
-<link rel="stylesheet" href="${contextPath}/resources/css/login/login.css">
-<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
-<script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="${contextPath}/resources/css/login/login.css">
+<link rel="stylesheet"
+	href="${contextPath}/resources/css/common/outline.css">
+<script src="https://kit.fontawesome.com/dc6e43e0ad.js"
+	crossorigin="anonymous"></script>
 
 
 </head>
@@ -38,43 +42,50 @@
 
 						<!-- 로그인 영역 -->
 						<div>
-							<form action="login" method="POST" onsubmit="return loginValidate();">
-								<div>
-									<div>
-										<c:choose>
-											<%-- 로그인이 되어있지 않은 경우 --%>
-											<c:when test="${empty sessionScope.loginUser}">
+							<c:choose>
+								<%-- 로그인이 되어있지 않은 경우 --%>
+								<c:when test="${empty sessionScope.loginUser}">
+									<form action="login" method="POST"
+										onsubmit="return loginValidate();">
+										<div>
+											<div>
+												<%-- <c:choose>
+											 로그인이 되어있지 않은 경우 
+											<c:when test="${empty sessionScope.loginUser}"> --%>
 												<div>
-													<input type="text" placeholder="아이디" name="userEmail" value="${cookie.saveId.value}" maxlength="41">
-													<input type="password" placeholder="비밀번호" name="userPw" maxlength="41">
+													<input type="text" placeholder="아이디" name="userEmail"
+														value="${cookie.saveId.value}" maxlength="41"> <input
+														type="password" placeholder="비밀번호" name="userPw"
+														maxlength="41">
 													<div class="keep_area">
-														<input type="checkbox" name="saveId" ${chk} id="saveId" >
-														 <label for="saveId" class="bb"></label>
-														 <label for="saveId" class="cc">아이디 저장</label>
+														<%-- 쿠키에 saveId가 있는 경우--%>
+														<c:if test="${ !empty cookie.saveId.value}">
+															<%-- chk 변수 생성(page scope)--%>
+															<c:set var="chk" value="checked" />
+														</c:if>
+														<input type="checkbox" name="saveId" ${chk} id="saveId">
+														<label for="saveId" class="bb"></label> <label
+															for="saveId" class="cc">아이디 저장</label>
 													</div>
-													
-													
-													
 												</div>
-											</c:when>
-											<c:otherwise>
-												<!-- 다른 조건에 따른 처리 -->
-											</c:otherwise>
-										</c:choose>
-									</div>
+												<%-- </c:when> --%>
+												<%-- <c:otherwise>
+													<!-- 다른 조건에 따른 처리 -->
+												</c:otherwise> --%>
+												<%-- </c:choose> --%>
+											</div>
 
-									<div>
-										<button>로그인</button>
-									</div>
-									<%-- 쿠키에 saveId가 있는 경우--%>
-						            <c:if test="${ !empty cookie.saveId.value}">
-
-						            <%-- chk 변수 생성(page scope)--%>
-	                    			<c:set var="chk" value="checked"/>
-
-						            </c:if>
-								</div>
-							</form>
+											<div>
+												<button>로그인</button>
+											</div>
+											
+										</div>
+									</form>
+								</c:when>
+								<c:otherwise>
+										<!-- 다른 조건에 따른 처리 -->
+								</c:otherwise>
+							</c:choose>
 						</div>
 
 						<!-- SNS 로그인 -->

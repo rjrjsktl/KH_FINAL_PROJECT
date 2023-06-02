@@ -10,13 +10,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>좌석선택 페이지</title>
-    <link rel="stylesheet" href="../../css/seat.css">
+    <link rel="stylesheet" href="../../css/reserve/seat.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="../../js/reservePage/seat.js" defer></script>
-
 </head>
 
 <body>
@@ -175,36 +173,36 @@
                           <div id="screen_area">screen</div>
                           
                           <div id="seat_area">
-                          <!-- 12줄 / 23석까지 -->
+                          <!-- 12줄까지 -->
                               <div>
-                                  <div>A</div>
+                                  <div></div>
                               </div>
                               <div>
-                                  <div>B</div> 
+                                  <div></div> 
                               </div>
                               <div>
-                                  <div>C</div>
+                                  <div></div>
                               </div>
                               <div>
-                                  <div>D</div>
+                                  <div></div>
                               </div>
                               <div>
-                                  <div>E</div>
+                                  <div></div>
                               </div>
                               <div>
-                                  <div>F</div>
+                                  <div></div>
                               </div>
                               <div>
-                                  <div>G</div>
+                                  <div></div>
                               </div>
                               <div>
-                                  <div>H</div>
+                                  <div></div>
                               </div>
                               <div>
-                                  <div>I</div>
+                                  <div></div>
                               </div>
                               <div>
-                                  <div>J</div>
+                                  <div></div>
                               </div>
                               <div>
                                   <div></div>
@@ -246,12 +244,12 @@
                             <div class="age00">All</div>
                             <div><span id="movie_name">원신: 신들의 마지막 전쟁</span></div>
                           </div>
-                          <div id="play_date">2023년 05월 20일 토요일</div>
-                          <div id="play_time">16시 10분 &#126; 18시 05분</div>
+                          <div id="play_date">2023년 05월 23일 화요일</div>
+                          <div id="play_time">09시 10분 &#126; 11시 05분</div>
                         </div>
                       </div>
                       <div>
-                        <div>강남 1관 일반석</div>
+                        <div>강남 2관 일반석</div>
                         <div id="seat_code">
                           <div></div> 
                           <div></div>
@@ -261,25 +259,25 @@
                         <div>
                           성인
                           <div>
-                            <span id="adult_price">15000</span>원 &times; <span id="adult_pick"></span>
+                            <span id="adult_price"></span>원 &times; <span id="adult_pick"></span>
                           </div>
                         </div>
                         <div>
                           청소년
                           <div>
-                            <span id="youth_price">12000</span>원 &times; <span id="youth_pick"></span>
+                            <span id="youth_price"></span>원 &times; <span id="youth_pick"></span>
                           </div>
                         </div> 
                         <div>
                           경로
                           <div>
-                            <span id="senior_price">7000</span>원 &times; <span id="senior_pick"></span>
+                            <span id="senior_price"></span>원 &times; <span id="senior_pick"></span>
                           </div>
                         </div>
                         <div>
                           우대
                           <div>
-                            <span id="special_price">5000</span>원 &times; <span id="special_pick"></span>
+                            <span id="special_price"></span>원 &times; <span id="special_pick"></span>
                           </div> 
                         </div>
                         <div>
@@ -327,20 +325,48 @@
         </section>
 
     </footer>
-    <!--
-    <%-- session에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
-			<c:if test="${ !empty sessionScope.message }">
-				<script>
-					alert("${message}");
-					// EL 작성 시 scope를 지정하지 않으면
-					// page -> request -> session -> application 순서로 검색하여
-					// 일치하는 속성이 있으면 출력
-				</script>
 
-				<%-- message 1회 출력 후 session에서 제거 --%>
-				<c:remove var="message" scope="session" />
-			</c:if>
-            -->
+    <script>
+
+        // [Custom] 몇 줄? 각 줄마다 몇 좌석?
+
+        let maxRow = 12;
+        let maxColumn = 24;
+
+        // [Custom] 몇 번째 줄을 통로로 만들까?
+
+        let aisle = [5, 10, 15, 20];
+
+        // [Custom] 몇 번째 줄의 몇 번째 좌석을 통로로 만들까?
+
+        let sp1 = [[1, 2, 3, 4], [1, 2, 3, 4, 11, 12, 13, 14, 21, 22, 23, 24]];
+        let sp2 = [[5, 6, 7, 8], [6, 7, 8, 9, 16, 17, 18, 19]];
+        let sp3 = [[9, 10, 11, 12], [1, 2, 3, 4, 11, 12, 13, 14, 21, 22, 23, 24]];
+
+        let space = [sp1, sp2, sp3];
+    </script>
+
+    <script>
+        // [Server] 예매완료
+
+        let selectedSeatArray = ['E9', 'E10', 'E11', 'E12', 'F9', 'F10', 'F11', 'F12'];
+
+        // [Server] 특수석
+
+        let impairedSeatArray = ['A7', 'A8', 'A13', 'A14'];
+        let sweetSeatArray = ['L5', 'L6', 'L7', 'L8', 'L13', 'L14', 'L15', 'L16'];
+    </script>  
+
+    <script>
+        // [Server] 가격        
+        let adultPrice = 13000;
+        let youthPrice = 11000;
+        let seniorPrice = 6000;
+        let specialPrice = 4000;
+    </script>
+
+    <script src="../../js/reservePage/seat.js" defer></script>
+
 
 </body>
 

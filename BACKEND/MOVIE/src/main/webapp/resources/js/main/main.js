@@ -9,25 +9,6 @@ function zoomIn(event) {
     event.target.style.transition = "all 0.5s";
 }
 
-
-
-
-// 메뉴창 하버
-$(document).ready(function() {
-    $('.navBar, .dummy').hover(
-        function() {
-            $('.navBar ul').stop().slideDown(150); 
-            $('.dummy').css('display', 'flex'); 
-        },
-        function() {
-            $('.navBar ul').stop().slideUp(150); 
-            $('.dummy').css('display', 'none'); 
-        }
-    );
-});
-
-
-
 // 메인 이미지 무한 슬라이더************************************************************
 $(document).ready(function() {
     var swiper = new Swiper('main section:nth-of-type(1) .swiper-container', {
@@ -164,3 +145,6 @@ $(document).ready(function() {
         })(i);
     }
 });
+
+
+

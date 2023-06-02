@@ -1,8 +1,15 @@
 package com.kh.kgv.login.controller;
 
+
+import java.util.List;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,8 +22,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.google.gson.Gson;
 
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.login.model.service.LoginService;
@@ -31,30 +42,20 @@ public class LoginController {
 	@Autowired
 	private LoginService service;
 	
-	/** 로그인 페이지 진입
-	 * @return
-	 */
+	// 로그인 페이지 진입
 	@GetMapping("/login")
 	public String enterLogin() {
 		return "login/login";
 	}
 	
-	
-	/** 로그인 기능 실행
-	 * @param inputUser
-	 * @param model
-	 * @param ra
-	 * @param resp
-	 * @param req
-	 * @param saveId
-	 * @return
-	 */
+	// 로그인
 	@PostMapping("/login")
 	public String login(@ModelAttribute User inputUser,
 	                    Model model,
 	                    RedirectAttributes ra,
 	                    HttpServletResponse resp,
 	                    HttpServletRequest req,
+	                    HttpSession session,
 	                    @RequestParam(value="saveId", required=false) String saveId) {
 		
 		logger.info("1. 로그인 기능 수행 시작");
@@ -77,14 +78,14 @@ public class LoginController {
 			
 			if(saveId != null) { // 아이디 저장이 체크 되었을 때
 				
-				cookie.setMaxAge(60 * 60 * 24 * 365); // 초 단위로 지정 (1년)
+				cookie.setMaxAge(60 * 60 * 24 * 7); // 초 단위로 지정 (일주일)
 			
-				logger.info("쿠키 생성!");
+				logger.info("cookie run !");
 				
 			} else { // 체크 되지 않았을 때
 				cookie.setMaxAge(0); // 0초 -> 생성 되자마자 사라짐 == 쿠키 삭제
 				
-				logger.info("쿠기 삭제!");
+				logger.info("cookie death !");
 			}
 			
 			
@@ -109,28 +110,68 @@ public class LoginController {
 			// Spring에서 제공해줌
 			// -> RedirectAttributes 객체  (컨트롤러 매개변수에 작성하면 사용 가능)
 			
-			return "redirect:/user/login"; 
+//			return "redirect:/user/login"; 
 		}
-		
-		//session.setAttribute("loginMember", loginMember);
-		
-		
-		logger.info("마지막 로그인 기능 수행됨");
-		
-//		return "redirect:/";
-		
-		return "login/login_welcome";
+		return "redirect:/"; 
 	}
 	
+		//session.setAttribute("loginUser", loginUser);
+		
+//		User checkloginUser = (User) session.getAttribute("loginUser");
+//		
+//		if (checkloginUser != null) {
+//		    logger.info("세션있음");
+//		} else {
+//			logger.info("세션없음");
+//		}
+//		
+//		
+//		logger.info("마지막 로그인 기능 수행됨");
+//		
+//		return "redirect:/";
+////		//return "login/login_welcome";
+//	}
+	
+	// 로그아웃
+	@GetMapping("/logout")
+	public String logout( /*HttpSession session,*/
+						SessionStatus status) {
+		// * @SessionAttributes을 이용해서 session scope에 배치된 데이터는
+		//   SessionStatus라는 별도 객체를 이용해야만 없앨 수 있다.
+		logger.info("로그아웃 수행됨");
+		
+		// session.invalidate(); // 기존 세션 무효화 방식으로는 안된다!
+		
+		status.setComplete(); 
+		
+		return "redirect:/";
+		
+	}
+	
+	// 비밀번호 찾기
 	@RequestMapping("/findPw")
 	public String findPw() {
 		return "login/findPw_1";
 	}
 	
+	// 아이디 찾기
 	@RequestMapping("/findEmail")
 	public String findEmail() {
 		return "login/findEmail_1";
 	}
+	
+	// 회원 목록 조회(ajax)
+	@ResponseBody
+	@GetMapping("/selectAll")
+	public String selectAll() {
+			
+		List<User> list = service.selectAll();
+			
+		return new Gson().toJson(list);
+	}
+	
+	
+	
 	
 	
 }

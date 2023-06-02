@@ -10,80 +10,32 @@ let seatArray = [];
 let countArray = [];
 let choiceArray = [];
 
-
-// 인원 선택
-
-// [이벤트] 플러스 버튼을 클릭하면??
-
-$('.plus_btn').click(function(){
-  let count = $(this).prev();
-
-  if(totalCount < 8) {
-    count.text(Number(count.text()) + 1);
-    totalCount++;
-    resetCount();
-    updateSeatSection();
-    updateChoiceArray();
-  } else {
-    alert("최대 8명까지 선택할 수 있습니다.");
-  }
-});
+let priceArray = [Number(adultPrice), Number(youthPrice), Number(seniorPrice), Number(specialPrice)];
+let totalPrice = 0;
 
 
-// [이벤트] 마이너스 버튼을 클릭하면??
-
-$('.minus_btn').click(function(){
-  let count = $(this).next();
-
-  if(Number(count.text()) > 0) {
-    count.text(Number(count.text()) - 1);
-    totalCount--;
-    resetCount();
-    updateSeatSection();
-    updateChoiceArray();
-  }
-});
-
-
-// [함수] 선택 인원 초기화
-
-function resetCount() {
-  adultCount = $('#adult_count').text();
-  youthCount = $('#youth_count').text();
-  seniorCount = $('#senior_count').text();
-  specialCount = $('#special_count').text();
-
-  $('#seat_area > div > a').removeClass("selecting");
-  choiceCount = 0;
-  seatArray = [];
-}
-
-
-
-// 좌석 커스터마이징
-
-// [커스텀] 몇 줄? 한 줄 최대 좌석?
-let maxRow = 10;
-let maxColumn = 24;
-
+// 1. 좌석 커스터마이징
 
 // [배열] 각 줄마다 몇 개의 좌석이 있는지??
+
 let rowArr = Array.from({length: maxRow}, () => maxColumn);
 
 
-// 좌석 width는 25px, 좌석 간의 가로 공간은 5.98px
+// 좌석의 가로 크기(width)는 25px, 좌석 간의 가로 공간(margin)은 5.98px
+
 let rowWidth = 25*(maxColumn) + 5.98 * (maxColumn-1);
 
 
 // 스크린과 좌석 영역의 전체 길이 설정
+
 $('#screen_area').css('width', `calc(${rowWidth}px + 2px)`);
 $('#seat_area').css('width', `calc(${rowWidth}px)`);
 
-let s1 = `<a href="#none"><span>`;
-let s2 = `</span></a>`;
-
 
 // 모든 좌석에 하이퍼링크 부여
+
+let s1 = `<a href="#none"><span>`;
+let s2 = `</span></a>`;
 
 for(let k=1; k<=maxRow; k++){
   for(let i=1; i<=maxColumn; i++){
@@ -94,53 +46,32 @@ for(let k=1; k<=maxRow; k++){
 }
 
 
-// [함수] 통로 만들기 
+// 통로와 공간은 보이지 않으며, 선택되지 않는다.
+// 번호를 셀 때 통로는 제외되나 공간은 포함된다.
+
+// 1-F1) 통로 만들기 
 
 function createAisle(i, k) {
   $(`#seat_area > div:nth-child(${i}) > a:nth-of-type(${k})`).addClass('aisle');
   rowArr[i-1] -= 1;
 }
 
-
-// [커스텀] 몇 번째 줄을 통로로 만들까?
-
-for(let i=1; i<=maxRow; i++) {
-  createAisle(i, 5);
-  createAisle(i, 6);
-  createAisle(i, 19);
-  createAisle(i, 20);
+for(let r=1; r<=maxRow; r++) {
+  aisle.forEach(c => createAisle(r, c));
 }
 
 
-// [함수] 공간 만들기
-// 통로와 공간은 보이지 않으며, 선택되지 않는다.
-// 번호를 셀 때 통로는 제외되나 공간은 포함된다.
+// 1-F2) 공간 만들기
 
 function createSpace(i, k) {
   $(`#seat_area > div:nth-child(${i}) > a:nth-of-type(${k})`).addClass('space');
 }
 
-
-// [커스텀] 몇번째 줄을 공간으로 만들까?
-
-for(let i=1; i<=4; i++) {
-  createSpace(i, 1);
-  createSpace(i, 2);
-  createSpace(i, 3);
-  createSpace(i, 4);
+for(let i=0; i<space.length; i++) {
+  space[i][0].forEach(r => {
+    space[i][1].forEach(c => createSpace(r, c));
+  });
 }
-
-for(let i=9; i<=12; i++) {
-  createSpace(i, 21);
-  createSpace(i, 22);
-  createSpace(i, 23);
-  createSpace(i, 24);
-}
-
-createSpace(10, 7);
-createSpace(10, 8);
-createAisle(10, 17);
-createAisle(10, 18);
 
 
 
@@ -148,7 +79,11 @@ createAisle(10, 18);
 
 let alphabet = 'ABCDEFGHIJKLMNOPQLSTUVWXYZ';
 
-for(let k=1; k<=12; k++) {
+for(let k=1; k<=maxRow; k++) {
+  $(`#seat_area > div:nth-child(${k}) > div:first-child`).text(alphabet[k-1]);
+}
+
+for(let k=1; k<=maxRow; k++) {
   let i=1;
   let j=1;
   let seat; 
@@ -166,14 +101,83 @@ for(let k=1; k<=12; k++) {
 }
 
 
-// [Server에서 받아옴] 선택완료
 
-let selectedSeatArray = ['D11', 'D12', 'F5', 'F6', 'H16', 'I16', 'G2', 'G3', 'G4', 'F17', 'F18'];
 
 selectedSeatArray.forEach(item => {
-  $(`#seat_area > div > a[data-seat=${item}]`).data('condition', 'selected');
   $(`#seat_area > div > a[data-seat=${item}]`).addClass('selected');
 });
+
+impairedSeatArray.forEach(item => {
+  $(`#seat_area > div > a[data-seat=${item}]`).addClass('impared');
+});
+
+sweetSeatArray.forEach(item => {
+  $(`#seat_area > div > a[data-seat=${item}]`).addClass('sweet');
+});
+
+
+
+
+// 2. 인원 선택
+
+// 2-E1) 플러스 버튼을 클릭하면??
+
+$('.plus_btn').click(function(){
+  let count = $(this).prev();
+
+  if(totalCount < 8) {
+    // 총합이 8 미만이라면
+    // 해당 버튼 왼쪽의 숫자가 증가함
+    // 총합이 증가함
+    // 일련의 함수들이 작동함
+    count.text(Number(count.text()) + 1);
+    totalCount++;
+    updateCount();
+    updateSeatSection();
+    updateCountArray();
+    resetPriceSection();
+  } else {
+    alert("최대 8명까지 선택할 수 있습니다.");
+  }
+});
+
+
+// 2-E2) 마이너스 버튼을 클릭하면??
+
+$('.minus_btn').click(function(){
+  let count = $(this).next();
+
+  if(Number(count.text()) > 0) {
+    // 해당 버튼 오른쪽의 숫자가 0보다 크다면
+    // 그 숫자가 감소하며, 총합도 감소함
+    // 일련의 함수들이 작동함
+    count.text(Number(count.text()) - 1);
+    totalCount--;
+    updateCount();
+    updateSeatSection();
+    updateCountArray();
+    resetPriceSection();
+  }
+});
+
+
+// 2-F1) 선택 인원 초기화
+
+function updateCount() {
+  // 연령별 선택인원이 다시 변경됨
+  // 선택 중인 좌석들이 모두 없어짐
+  adultCount = $('#adult_count').text();
+  youthCount = $('#youth_count').text();
+  seniorCount = $('#senior_count').text();
+  specialCount = $('#special_count').text();
+
+  $('#seat_area > div > a').removeClass("selecting");
+  choiceCount = 0;
+  seatArray = [];
+}
+
+
+
 
 
 // 좌석 선택
@@ -187,11 +191,13 @@ $(selectableSeat).on("click", function(){
     seatArray.push($(this).data('seat'));
     seatArray.sort((a,b) => sortSeat(a, b));
     updateSeatSection();
+    updatePriceSection();
   } else if($(this).hasClass("selecting")) {
     $(this).removeClass("selecting");
     choiceCount--;
     seatArray = seatArray.filter((element) => element !== $(this).data('seat'));
     updateSeatSection();
+    updatePriceSection()
   }
 });
 
@@ -230,83 +236,61 @@ function updateSeatSection() {
 }
 
 
-// [서버에서 받아옴] 가격 정보
-
-let adultPrice = 15000;
-let youthPrice = 12000;
-let seniorPrice = 7000;
-let specialPrice = 5000;
-
-let priceArray = [Number(adultPrice), Number(youthPrice), Number(seniorPrice), Number(specialPrice)];
-let totalPrice = 0;
-
 
 // 선택 배열 초기화
 
-function updateChoiceArray() {
-  choiceArray = [];
+function updateCountArray() {
+  countArray = [];
 
   for(let i=0; i<adultCount; i++) {
-    choiceArray.push('adult');
+    countArray.push(0);
   }
 
   for(let i=0; i<youthCount; i++) {
-    choiceArray.push('youth');
+    countArray.push(1);
   }
 
   for(let i=0; i<seniorCount; i++) {
-    choiceArray.push('senior');
+    countArray.push(2);
   }
 
   for(let i=0; i<specialCount; i++) {
-    choiceArray.push('special');
+    countArray.push(3);
   }
-
-  console.log(choiceArray);
 }
+
+
 
 // 가격 계산 업데이트
 
-/*
-function updateCountArray() {
-  $("#price_calc > div").css('display', 'none');
-  countArray = [Number(adultCount), Number(youthCount), Number(seniorCount), Number(specialCount)];
-  choiceArray = [0, 0, 0, 0];
+let countSet;
+let elementCount;
+let partialCountArray;
+
+for(let i=0; i<priceArray.length; i++) {
+  $(`#price_calc > div:nth-child(${i+1}) > div > span:first-child`).text(priceArray[i]);
 }
 
-function updateChoiceArray() {
-  for(let i=0; i<4; i++) {
-    if(choiceArray[i] < countArray[i]) {
-      choiceArray[i] += 1;
-      break;
-    }
-  }
-}
-
-
-function deleteChoiceArray() {
-  for(let i=0; i<4; i++) {
-    if((choiceArray[3-i] != countArray[3-i]) && (choiceArray[3-i] > 0)) {
-      choiceArray[3-i] -= 1;
-      break;
-    }
-  }
-}
-
-
-function updatePriceCalc() {
+function updatePriceSection() {
   $("#price_calc > div").css('display', 'none');
   totalPrice = 0;
 
-  for(let i=0; i<4; i++) {
-    if(choiceArray[i] == 0) {
-      $(`#price_calc > div:nth-child(${i+1})`).css('display', 'none');
-    } else {
-      $(`#price_calc > div:nth-child(${i+1})`).css('display', 'flex');
-    }
+  partialCountArray = countArray.slice(0, choiceCount);
+  countSet = new Set(partialCountArray);
 
-    $(`#price_calc > div:nth-child(${i+1}) > div > span:last-child`).text(choiceArray[i]);
-    totalPrice += priceArray[i] * choiceArray[i];
+  for(let i=0; i<4; i++){
+    elementCount = partialCountArray.filter(element => Number(i) === element).length;
+    $(`#price_calc > div:nth-child(${i+1}) > div > span:last-child`).text(elementCount);
+  }
+
+  countSet.forEach(i => {
+    $(`#price_calc > div:nth-child(${i+1})`).css('display', 'flex');
+  });
+
+  // 합계
+
+  for(let i=0; i<choiceCount; i++) {
+    totalPrice += priceArray[countArray[i]];
   }
 
   $(`#price_calc > div:last-child > div > span:last-child`).text(totalPrice);
@@ -316,7 +300,12 @@ function updatePriceCalc() {
   } else {
     $("#price_calc > div:last-child").css('display', 'none');
   }
-  
+
 }
-*/
+
+
+function resetPriceSection() {
+  $("#price_calc > div").css('display', 'none');
+}
+
 
