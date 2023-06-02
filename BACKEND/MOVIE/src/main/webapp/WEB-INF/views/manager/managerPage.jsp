@@ -38,17 +38,17 @@
 
 </head>
 
-<body class="dark light">
+<body>
 	<main>
 		<div class="main_Wrapper">
 			<div id="left_Nav_Container">
 				<div class="nav_Title">로고영역</div>
-
 				<jsp:include page="/WEB-INF/views/manager/manager_nav.jsp" />
-
 			</div>
+			
 			<div class="right_items_Container">
 				<jsp:include page="/WEB-INF/views/manager/manager_inner_Header.jsp" />
+				
 				<div id="items_Wrapper">
 					<div class="left_Item_Container">
 
