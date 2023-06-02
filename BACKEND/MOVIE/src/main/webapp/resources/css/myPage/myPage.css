@@ -403,6 +403,8 @@ button:hover {
     margin: 5px 0 5px 0;
 
     /* 내용이 지정한 사이즈를 초과한 경우에 대한 속성 */
+    
+    white-space: pre;
     overflow : auto; /* 초과한 방향의 스크롤을 자동 생성 */
 }
 
@@ -683,9 +685,10 @@ button:hover {
 .myreview>div>div:nth-child(2)>div:nth-child(3)>p{
     width: 430px;
     height: 100%;
-    white-space: normal;
+    
 
     /* 지정된 범위에 가면 자동 줄바꿈이 이뤄짐 개꿀 */
+    white-space: normal;
     word-break: break-all;
     word-wrap: normal;
     

@@ -14,8 +14,8 @@
     <title>마이페이지<정보 수정>
     </title>
     
-    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
@@ -62,12 +62,12 @@
                             <label>연락처</label>
                         </div>
                         <div class="mypage-info-frame">
-                            <input type="text" name="updateTel" id="memberTel" value="${loginMember.memberTel}"
+                            <input type="text" name="updateTel" id="memberTel" value="${loginUser.userTel}"
                             maxlength="11">
                         </div>
 
                         <!-- 주소 -->			<!--  fn:split(문자열, '구분자')  -->
-					    <c:set var="addr"  value="${fn:split(loginMember.memberAddress, ',,')}"  />                    
+					    <c:set var="addr"  value="${fn:split(loginUser.userAddr, ',,')}"  />                    
 
                         <div class="mypage-info-frame">
                             <label>주 소</label>
