@@ -1,5 +1,7 @@
 package com.kh.kgv.login.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +20,7 @@ public class SignUpController {
 	@Autowired
 	private SignUpService service;
 	
+	private Logger logger = LoggerFactory.getLogger(SignUpController.class);
 	
 	// 회원가입 sns 화면
 		@RequestMapping("/signUp_sns")
@@ -72,6 +75,8 @@ public class SignUpController {
 							,String[] userAddr
 							,RedirectAttributes ra	) {
 			
+			logger.debug("inputUser : " + inputUser);
+			
 			inputUser.setUserAddr( String.join(",,", userAddr));
 			
 			if (inputUser.getUserAddr().equals(",,,,")) {
@@ -79,7 +84,6 @@ public class SignUpController {
 				inputUser.setUserAddr(null);
 			}
 			
-			System.out.println(inputUser + "============================================================");
 			
 			int result = service.signUp(inputUser);
 			

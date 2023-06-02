@@ -11,6 +11,7 @@
             <title>메인페이지</title>
 
             <link rel="stylesheet" href="${contextPath}/resources/css/signUp/signUp.css">
+            <!-- <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css"> -->
             <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
         </head>
@@ -111,7 +112,7 @@
 
                             <div class="signUp-input-area">
 
-                                <input type="text" id="userBirth" placeholder="생년월일 8자리" maxlength="8">
+                                <input type="text" id="userBirth" name="userBirth" placeholder="생년월일 8자리" maxlength="8">
                             </div>
 
 
@@ -126,7 +127,7 @@
                                 <select id="userGender" name="userGender" class="sel" aria-label="성별">
                                     <option value="" selected="">성별</option>
                                     <option value="M">남자</option>
-                                    <option value="F">여자</option>
+                                    <option value="W">여자</option>
                                     <option value="U">선택 안함</option>
                                 </select>
 

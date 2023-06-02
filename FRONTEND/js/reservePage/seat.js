@@ -23,7 +23,8 @@ $('.plus_btn').click(function(){
     totalCount++;
     resetCount();
     updateSeatSection();
-    updateChoiceArray();
+    updateCountArray();
+    resetPriceSection();
   } else {
     alert("최대 8명까지 선택할 수 있습니다.");
   }
@@ -40,7 +41,8 @@ $('.minus_btn').click(function(){
     totalCount--;
     resetCount();
     updateSeatSection();
-    updateChoiceArray();
+    updateCountArray();
+    resetPriceSection();
   }
 });
 
@@ -137,6 +139,9 @@ for(let i=9; i<=12; i++) {
   createSpace(i, 24);
 }
 
+createSpace(1, 10);
+createSpace(1, 15);
+
 createSpace(10, 7);
 createSpace(10, 8);
 createAisle(10, 17);
@@ -171,10 +176,22 @@ for(let k=1; k<=12; k++) {
 let selectedSeatArray = ['D11', 'D12', 'F5', 'F6', 'H16', 'I16', 'G2', 'G3', 'G4', 'F17', 'F18'];
 
 selectedSeatArray.forEach(item => {
-  $(`#seat_area > div > a[data-seat=${item}]`).data('condition', 'selected');
   $(`#seat_area > div > a[data-seat=${item}]`).addClass('selected');
 });
 
+
+// [Server에서 받아옴] 특수석
+
+let impairedSeatArray = ['A9', 'A10', 'A11', 'A12'];
+let sweetSeatArray = ['J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J14'];
+
+impairedSeatArray.forEach(item => {
+  $(`#seat_area > div > a[data-seat=${item}]`).addClass('impared');
+});
+
+sweetSeatArray.forEach(item => {
+  $(`#seat_area > div > a[data-seat=${item}]`).addClass('sweet');
+});
 
 // 좌석 선택
 
@@ -187,11 +204,13 @@ $(selectableSeat).on("click", function(){
     seatArray.push($(this).data('seat'));
     seatArray.sort((a,b) => sortSeat(a, b));
     updateSeatSection();
+    updatePriceSection();
   } else if($(this).hasClass("selecting")) {
     $(this).removeClass("selecting");
     choiceCount--;
     seatArray = seatArray.filter((element) => element !== $(this).data('seat'));
     updateSeatSection();
+    updatePriceSection()
   }
 });
 
@@ -243,70 +262,54 @@ let totalPrice = 0;
 
 // 선택 배열 초기화
 
-function updateChoiceArray() {
-  choiceArray = [];
+function updateCountArray() {
+  countArray = [];
 
   for(let i=0; i<adultCount; i++) {
-    choiceArray.push('adult');
+    countArray.push(0);
   }
 
   for(let i=0; i<youthCount; i++) {
-    choiceArray.push('youth');
+    countArray.push(1);
   }
 
   for(let i=0; i<seniorCount; i++) {
-    choiceArray.push('senior');
+    countArray.push(2);
   }
 
   for(let i=0; i<specialCount; i++) {
-    choiceArray.push('special');
+    countArray.push(3);
   }
-
-  console.log(choiceArray);
 }
+
+
 
 // 가격 계산 업데이트
 
-/*
-function updateCountArray() {
-  $("#price_calc > div").css('display', 'none');
-  countArray = [Number(adultCount), Number(youthCount), Number(seniorCount), Number(specialCount)];
-  choiceArray = [0, 0, 0, 0];
-}
+let countSet;
+let elementCount;
+let partialCountArray;
 
-function updateChoiceArray() {
-  for(let i=0; i<4; i++) {
-    if(choiceArray[i] < countArray[i]) {
-      choiceArray[i] += 1;
-      break;
-    }
-  }
-}
-
-
-function deleteChoiceArray() {
-  for(let i=0; i<4; i++) {
-    if((choiceArray[3-i] != countArray[3-i]) && (choiceArray[3-i] > 0)) {
-      choiceArray[3-i] -= 1;
-      break;
-    }
-  }
-}
-
-
-function updatePriceCalc() {
+function updatePriceSection() {
   $("#price_calc > div").css('display', 'none');
   totalPrice = 0;
 
-  for(let i=0; i<4; i++) {
-    if(choiceArray[i] == 0) {
-      $(`#price_calc > div:nth-child(${i+1})`).css('display', 'none');
-    } else {
-      $(`#price_calc > div:nth-child(${i+1})`).css('display', 'flex');
-    }
+  partialCountArray = countArray.slice(0, choiceCount);
+  countSet = new Set(partialCountArray);
 
-    $(`#price_calc > div:nth-child(${i+1}) > div > span:last-child`).text(choiceArray[i]);
-    totalPrice += priceArray[i] * choiceArray[i];
+  for(let i=0; i<4; i++){
+    elementCount = partialCountArray.filter(element => Number(i) === element).length;
+    $(`#price_calc > div:nth-child(${i+1}) > div > span:last-child`).text(elementCount);
+  }
+
+  countSet.forEach(i => {
+    $(`#price_calc > div:nth-child(${i+1})`).css('display', 'flex');
+  });
+
+  // 합계
+
+  for(let i=0; i<choiceCount; i++) {
+    totalPrice += priceArray[countArray[i]];
   }
 
   $(`#price_calc > div:last-child > div > span:last-child`).text(totalPrice);
@@ -316,7 +319,12 @@ function updatePriceCalc() {
   } else {
     $("#price_calc > div:last-child").css('display', 'none');
   }
-  
+
 }
-*/
+
+
+function resetPriceSection() {
+  $("#price_calc > div").css('display', 'none');
+}
+
 

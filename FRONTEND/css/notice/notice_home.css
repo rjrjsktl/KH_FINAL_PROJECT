@@ -1,121 +1,268 @@
-/* 메인 섹션 */
-main>section>div {
-    width: 1040px;
-    height: 100%;
-    margin: 0 auto;
-    padding: 50px 30px;
+main > section{
+    width:100%
+}
+.notice-wraaper{
+    width:1040px;
+    margin:0 auto;
+    padding:50px 30px;
     display: flex;
     justify-content: space-between;
+
+}
+/* 왼쪽 */
+.notice-wraaper > div:nth-child(1){
+    width:15%;
 }
 
-/* A-SIDE */
-main>section>div>aside {
-    width: 15%;
+.aside-ul-wrap {
+    width: 100%;
+    height: 100%;
+}
+
+.aslide-list {
     display: flex;
     flex-direction: column;
 }
 
-.aside-ul-wrap { 
-    width:100%;
-    height:100%;
-}
-
-.aslide-list{
-    display: flex;
-    flex-direction: column;
-}
-
-.aslide-list > li {
-    width:100%;
-    height:50px;
+.aslide-list>li {
+    width: 100%;
+    height: 50px;
     line-height: 48px;
-    padding-left:10px;
     display: flex;
-    margin-bottom:10px;
+    margin-bottom: 10px;
+   
 }
 
-.aslide-list > li >a{
-    width:100%;
-    height:100%;
+.aslide-list>li>a {
+    width: 100%;
+    height: 100%;
+    padding-left:10px;
 }
-.aslide-list > li:nth-child(1) {
+
+.aslide-list>li:nth-child(1)>a {
     background-color: rgb(73, 73, 73);
-    border-radius: 10px;;
-
 }
 
-.aslide-list > li:nth-child(1)>a{
-    color:rgb(251,251,251);
+.aslide-list>li:nth-child(1)>a {
+    color: rgb(251, 251, 251);
 }
 
-.aslide-list > li  > a {
+.aslide-list>li>a {
     font-size: 1.1rem;
     font-weight: bold;
 }
-.aslide-list > li  > a:hover {
-    color: rgb(251,251,251);
+
+.aslide-list>li>a:hover {
+    color: rgb(251, 251, 251);
+    background-color: rgb(73, 73, 73);
 }
 
 
-.notice-content-wrap {
-    display: flex;
-    flex-direction: column;
-    width:83%;
-    height:100%;
-    border:1px solid red;
+.notice-wraaper > div:nth-child(2){
+    width:82%;
+}
+h2 {
+    font-size: 1.8rem;
+    padding: 0 0 30px 10px;
+    border-bottom: 3px solid rgb(255, 196, 0);
+    margin-bottom: 50px;
 }
 
-.notice-content-wrap > div {
-    width:100%;
-    height:100%;
-    border:1px solid blue;
-    display: flex;
-    flex-direction: column;
-
-}
-
-h2{
-    font-size: 1.5rem;
-    padding: 0 0 30px 10px;;
-    border:1px solid red;
-}
-
+/* 검색 회색영역 */
 .cont-search-wrap {
-    width:100%;
-    height:100px;
-    border:1px solid yellow;
+    width: 100%;
     display: flex;
     align-items: center;
-    padding:30px;
+    padding: 30px;
+    background-color: rgb(72 72 72);
 }
-
-.cont-search-wrap > span {
-    padding-right:20px;
+/* 빠른검색 */
+.cont-search-wrap>span {
+    padding-right: 20px;
+    font-size: 1.2rem;
+    font-weight: 400;
 }
 
 .cont-search-wrap form {
-    width:60%;
+    width: 60%;
     display: flex;
-    height:100%;
-    border:1px solid lightgray;
+    height: 36px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
 }
 
-.cont-search-wrap form > input{
-    width:90%;
-    border:none;
-
+.cont-search-wrap form>input {
+    width: 90%;
+    border: none;
+    color: rgb(21, 21, 21);
+    padding-left: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
-.cont-search-wrap form > button{
-    width:10%;
-    border:none;
+.cont-search-wrap form>button {
+    width: 10%;
+    border: none;
     outline: none;
     background-color: white;
     display: flex;
     align-items: center;
+    cursor: pointer;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
-.cont-search-wrap form > button > img{
-    width:24px;
-    height:24px;
+.cont-search-wrap form>button>img {
+    width: 24px;
+    height: 24px;
+}
+
+.new-wrap{
+    width:100%;
+    display: flex;
+    padding:50px 0;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.new-wrap > div {
+    width:32%;
+    display: flex;
+    height:170px;
+    flex-direction: column;
+    margin-left:2px;
+    margin-bottom: 10px;;
+}
+
+.new-wrap > div > a:nth-child(1) {
+    height:60%;
+    background-color:  rgb(255, 196, 0);
+    border:none;
+    margin-left:15px;
+    border-radius: 10px;;
+    display: flex;
+    align-items: center;
+    margin-right:15px;
+}
+
+.new-wrap > div > a:nth-child(1) > img {
+    width:84px; 
+    height:84px;
+
+}
+
+.new-wrap > div:first-child > a:nth-child(1) > img {
+    padding: 5px;
+} 
+.new-wrap > div:last-child > a:nth-child(1) > img {
+    width:84px; 
+    height:74px;
+    padding:10px 5px;
+    
+}
+
+.new-wrap > div > a:nth-child(2){
+    height:40%;
+    margin-left:17px;
+}
+
+.new-wrap > div > a:nth-child(2) > p{
+    font-size: 1.4rem;
+    font-weight: 400;
+    padding:3px 0;
+}
+
+.new-wrap > div > a:nth-child(2) > span{
+    font-size: 0.9rem;
+    padding:3px 0;
+}
+
+.table-wrap {
+    width:100%;
+    height:210px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.table-wrap > div {
+    width:48%;
+}
+
+
+.notice_tbl_wrap  p,
+.question_tbl_wrap p 
+ {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    border-bottom: 1px solid  rgb(255, 196, 0);
+}
+
+.question_tbl_wrap p > span,
+.notice_tbl_wrap  p > span
+{
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.question_tbl_wrap p > a,
+.notice_tbl_wrap p > a{
+    padding-top:7px;
+}
+
+.question_tbl_wrap p > a > span,
+.notice_tbl_wrap p > a > span {
+    font-size: 0.9rem;
+}
+
+.question_tbl_wrap p > a > span:hover,
+.notice_tbl_wrap p > a > span:hover {
+    text-decoration: underline;
+}
+
+.notice_tbl, .question_tbl{
+    padding-top:15px;
+}
+
+.row{
+    padding:4px 0 0 0;
+    width:100%;
+    display: flex;
+}
+
+.row  td:nth-child(1){
+    width: 76px;
+    font-size: 0.9rem;
+    color:#a3a3a3;
+}
+.row  th:nth-child(2){
+    width:228px;
+    text-align: left;
+    padding-left:10px;
+    font-size: 0.9rem;
+  
+}
+
+.row  td:nth-child(3){
+    width:78px;
+    text-align: right;
+    font-size: 0.9rem;
+    color:#a3a3a3;
+
+}
+
+.question_tbl{
+    overflow: hidden;
+}
+
+.question_tbl td, .question_tbl th {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.notice_tbl td, .notice_tbl th {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
