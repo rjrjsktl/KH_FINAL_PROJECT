@@ -50,7 +50,7 @@ public class SignUpDAO {
 	 * @return
 	 */
 	public int signUp(User inputUser) {
-		System.out.println(inputUser + " 3============================================================");
+		
 		return sqlSession.insert("signupMapper.signUp",inputUser);
 		
 	}
