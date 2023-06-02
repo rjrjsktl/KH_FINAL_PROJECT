@@ -17,7 +17,7 @@
         <div class="memberInfo_wrap">
             
                 <%-- 로그인이 되어있지 않은 경우 --%>
-				<c:if test="${empty sessionScope.loginUser}">
+				<c:if test="${empty loginUser.userNo}">
     				<ul>
                         <div>
                             <img src="" alt="">
@@ -51,7 +51,7 @@
 				
 				<%-- 로그인이 되어있는 경우 --%>
 				<%-- <c:if test="${!empty sessionScope.loginUser}"> --%>
-				<c:if test="${not empty sessionScope.loginUser}">
+				<c:if test="${not empty loginUser.userNo}">
     				<ul>
                         <div>
                             <img src="" alt="">
@@ -137,4 +137,8 @@
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
  
 	<script src="${contextPath}/resources/js/main/header.js"></script>
+	<script>
+	const test = "${loginUser}";
+	console.log(test + "+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+	</script>
 </header>
