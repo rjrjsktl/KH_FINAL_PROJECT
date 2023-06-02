@@ -43,7 +43,7 @@
                                     autocomplete="off" required>
 
 
-                                <button type="button" id="sendBtn">인증번호 받기</button>
+                                <button type="button" id="sendBtn" >인증번호 받기</button>
                             </div>
 
                             <span class="signUp-message" id="emailMessage"></span>
