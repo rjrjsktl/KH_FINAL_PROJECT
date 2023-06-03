@@ -148,30 +148,30 @@ public class LoginController {
 		
 	}
 	
-	// 비밀번호 찾기
-	@RequestMapping("/findPw")
-	public String findPw(@ModelAttribute User inputUser,
-            			Model model,
-            			RedirectAttributes ra,
-            			HttpServletResponse resp,
-            			HttpServletRequest req,
-            			HttpSession session) {
-		
-		logger.info("비밀번호를 찾아볼까나 ?");
-		
-		User loginUser = service.findPw(inputUser);
-		
-		if( loginUser != null) { // 비밀번호를 찾기위해 아이디를 썻을때 inputEmail이 DB에 있다는뜻 
-			
-		}
-		
-		
-		
-		
-		
-		return "login/findPw_1";
-	}
-	
+//	// 비밀번호 찾기
+//	@RequestMapping("/findPw")
+//	public String findPw(@ModelAttribute User inputUser,
+//            			Model model,
+//            			RedirectAttributes ra,
+//            			HttpServletResponse resp,
+//            			HttpServletRequest req,
+//            			HttpSession session) {
+//		
+//		logger.info("비밀번호를 찾아볼까나 ?");
+//		
+//		User loginUser = service.findPw(inputUser);
+//		
+//		if( loginUser != null) { // 비밀번호를 찾기위해 아이디를 썻을때 inputEmail이 DB에 있다는뜻 
+//			
+//		}
+//		
+//		
+//		
+//		
+//		
+//		return "login/findPw_1";
+//	}
+//	
 	
 	
 	
