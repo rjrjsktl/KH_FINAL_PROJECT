@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="myPageMapper">
+
+	<!-- 파라미터 타입이 map인 경우
+	
+		1) parameterType="java.util.Map"
+		
+		2) parameterType="map" (별칭)
+	
+		3) 생략 (TypeHandler가 알아서 지정해줌)
+	
+	 -->
+	
+		
+	<!-- 현재 로그인한 회원의 암호화된 비밀번호 조회 -->
+	<select id="selectEncPw" resultType="string">
+		SELECT USER_PW FROM USERS
+		WHERE USER_NO = ${userNo}
+	</select>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="changePw">
+		UPDATE USERS SET
+		USER_PW = #{newPw}
+		WHERE USER_NO = ${userNo}
+	</update>
+	
+	<!-- 회원 탈퇴 -->
+	<update id="secession">
+		UPDATE USERS SET
+		USER_ST = 'N'
+		WHERE USER_NO = ${userNo}
+	</update>
+	
+	
+  	
+</mapper>

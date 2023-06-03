@@ -2,40 +2,40 @@
 // 내 정보 수정 유효성 검사
 function infoValidate(){
 
-    const memberNickname = document.getElementById("memberNickname");
-    const memberTel = document.getElementById("memberTel");
+    const userNickname = document.getElementById("userNickname");
+    const userTel = document.getElementById("userTel");
 
     const regExp1 = /^[a-zA-Z0-9가-힣]{2,10}$/;        // 닉네임 정규식
     const regExp2 = /^0(1[01679]|2|[3-6][1-5]|70)\d{3,4}\d{4}$/; // 전화번호 정규식
 
     // 닉네임 유효성 검사
-    if(memberNickname.value.length == 0){ // 미작성 시 : 닉네임을 입력해주세요.
+    if(userNickname.value.length == 0){ // 미작성 시 : 닉네임을 입력해주세요.
         swal('수정 실패!', "닉네임을 입력해주세요.", 'warning')
         // alert("닉네임을 입력해주세요.");
-        memberNickname.focus();
+        userNickname.focus();
         return false;
     }
 
-    if(!regExp1.test(memberNickname.value)){ // 유효하지 않은 경우
+    if(!regExp1.test(userNickname.value)){ // 유효하지 않은 경우
         swal('수정 실패!', "닉네임은 영어/숫자/한글 2~10 글자 사이로 작성해주세요.", 'warning')
         // alert("닉네임은 영어/숫자/한글 2~10 글자 사이로 작성해주세요.");
-        memberNickname.focus();
+        userNickname.focus();
         return false;
     }
 
     // 연락처 유효성 검사
-    if(memberTel.value.length == 0){ // 미작성 시
+    if(userTel.value.length == 0){ // 미작성 시
         alert("연락처를 입력해주세요.(- 제외)");
-        memberTel.focus();
+        userTel.focus();
         return false;
     }
 
-    if(!regExp2.test(memberTel.value)){ // 유효하지 않은 경우
+    if(!regExp2.test(userTel.value)){ // 유효하지 않은 경우
         // alert(" 연락처 형식이 올바르지 않습니다.");
-        // memberTel.focus();
+        // userTel.focus();
         // return false;
 
-        return printAlert(memberTel, "연락처 형식이 올바르지 않습니다.");
+        return printAlert(userTel, "연락처 형식이 올바르지 않습니다.");
     }
 
     return true; // true를 반환해서 form 제출 수행
@@ -107,13 +107,13 @@ function changePwValidate(){
 // 회원 탈퇴 유효성 검사
 function secessionValidate(){
 
-    const memberPw = document.getElementById("memberPw");
+    const userPw = document.getElementById("userPw");
     const agree = document.getElementById("agree");
 
     // 비밀번호 미작성
-    if(memberPw.value.trim().length == 0){
+    if(userPw.value.trim().length == 0){
         alert("비밀번호를 입력해주세요.");
-        memberPw.focus();
+        userPw.focus();
         return false;
     }
 

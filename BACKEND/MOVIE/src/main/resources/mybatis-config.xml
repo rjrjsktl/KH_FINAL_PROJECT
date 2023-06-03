@@ -33,11 +33,16 @@
 	</typeAliases>
 
 	<mappers>
+		<!-- 
+			 <mapper resource="mapper 파일 경로" />
+				경로를 작성하는 기준(시작지점)은 src/main/resources 폴더
+		 -->
 		<mapper resource="/mappers/movie-mapper.xml"/>
 		<mapper resource="/mappers/user-mapper.xml"/>
 		<mapper resource="/mappers/signup-mapper.xml"/>
 		<mapper resource="/mappers/EnterCheck-Mapper.xml"/>
 		<mapper resource="/mappers/manager-mapper.xml"/>
+		<mapper resource="/mappers/myPage-mapper.xml"/>
 	</mappers>
 
 </configuration>
