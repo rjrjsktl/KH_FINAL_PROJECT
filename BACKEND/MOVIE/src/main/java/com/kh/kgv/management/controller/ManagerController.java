@@ -1,12 +1,23 @@
 package com.kh.kgv.management.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.google.gson.Gson;
+import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.management.model.service.ManagerService;
 
 @Controller
 @RequestMapping("/manager")
 public class ManagerController {
+	
+	@Autowired
+	private ManagerService service;
 
 	// 관리자_메인페이지 이동
 	@GetMapping("/main")
@@ -17,8 +28,13 @@ public class ManagerController {
 	
 	// 관리자_회원 리스트 이동
 	@GetMapping("/member")
-	public String moveMember() {
+	public String moveMember(Model model) {
+		
 		System.out.println("관리자_회원 리스트 이동");
+		
+		// 회원 리스트 얻어오기
+		List<User> getUserList = service.selectAll();
+	model.addAttribute("getUserList", getUserList);
 		return "manager/manager_member_list";
 	}
 	
