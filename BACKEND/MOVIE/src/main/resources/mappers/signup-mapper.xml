@@ -31,7 +31,15 @@
 		<result property="userDelete" 		column="USER_DELETE"/>
 	</resultMap>
 	
+	<resultMap type="email" id="email_rm">
 	
+		
+		
+		<result property="email" 		column="EMAIL"/>
+		<result property="cnumber" 			column="C_NUMBER"/>
+		<result property="issueDate" 		column="ISSUE_DT"/>
+		
+	</resultMap>
 	
 	<!-- 이메일 중복 검사 -->
   	<select id="emailDupCheck" parameterType="string" resultType="_int">
@@ -70,5 +78,25 @@
   			DEFAULT, DEFAULT, NULL, DEFAULT , DEFAULT
   		)
   	</insert>
+  	
+  	<insert id="insertCertification" parameterType="email">
+		INSERT INTO CERTIFICATION VALUES(
+		#{userEmail}, #{cnum}, SYSDATE)
+	</insert>
+  	
+  	<select id="checkNumber" parameterType="string" resultType="_int">
+		SELECT 
+		   CASE WHEN (SELECT '1' FROM CERTIFICATION
+		            WHERE EMAIL = #{userEmail}
+		            AND C_NUMBER = #{cNumber})  = 1
+		   
+		      THEN NVL( (SELECT '1' FROM CERTIFICATION
+		            WHERE EMAIL = #{userEmail}
+		            AND ISSUE_DT + (INTERVAL '5' MINUTE) >= SYSDATE) , '2') 
+		
+		      ELSE '3'	
+		   END			
+		FROM DUAL
+	</select>
   	
 </mapper>

@@ -1,5 +1,7 @@
 package com.kh.kgv.login.controller;
 
+import java.util.Map;
+
 import javax.mail.internet.MimeMessage;
 
 import org.slf4j.Logger;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -113,7 +116,8 @@ public class SignUpController {
 		
 		@ResponseBody
 		@GetMapping("/sendEmail")
-		public String sendEmail(String userEmail) {
+		public int sendEmail(String userEmail ,
+				@RequestParam Map<String, Object> paramMap) {
 			
 			logger.debug("userEmail : " + userEmail);
 			
@@ -173,11 +177,35 @@ public class SignUpController {
 	         }
 	        
 	         String cnum = cNumber.toString();
-			
-			return cnum;
+	         
+	         
+	        
+ 			
+	 		
+	 			
+	 		
+	         
+	          int result = service.insertCertification(cnum,userEmail);
+	         
+	          
+			return result;
 		}
 		
 		
-		
-		
+		@ResponseBody
+		@GetMapping("/checkNumber")
+		public int checkNumber(String userEmail ,String cNumber) {
+			
+			
+			logger.debug("userEmail : " + userEmail);
+			logger.debug("cNumber : " + cNumber);
+			
+			
+			int result =  service.checkNumber(cNumber, userEmail);
+						
+			logger.debug("result : " + result);
+			
+			return result;
+			
+		}
 }
