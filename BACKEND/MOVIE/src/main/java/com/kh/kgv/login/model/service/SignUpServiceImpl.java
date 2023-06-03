@@ -1,5 +1,7 @@
 package com.kh.kgv.login.model.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -48,6 +50,24 @@ public class SignUpServiceImpl implements SignUpService {
 
 		return result;
 	}
+
+	@Override
+	public int insertCertification(String cnum, String userEmail) {
+		return dao.insertCertification(userEmail,cnum);
+	}
+
+	@Override
+	public int checkNumber(String cNumber, String userEmail) {
+		return dao.checkNumber(userEmail,cNumber);
+	}
+
+	
+
+	
+
+	
+
+	
 
 	
 
