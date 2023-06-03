@@ -66,8 +66,8 @@
   			#{userAddr},
   			#{userBirth},
   			#{userGender},
-  			DEFAULT, 'Y', NULL, 
-  			DEFAULT, DEFAULT, NULL, NULL
+  			DEFAULT, DEFAULT, NULL, 
+  			DEFAULT, DEFAULT, NULL, DEFAULT , DEFAULT
   		)
   	</insert>
   	
