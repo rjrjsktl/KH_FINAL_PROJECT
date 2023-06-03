@@ -25,7 +25,7 @@
             <section>
                 <div class="logo-section">
                     <div>
-                        <a href="#"><img src="" alt="암거나박아요"></a>
+                        <a href="../common/main.html"><img src="" alt="암거나박아요"></a>
                     </div>
                     <span>KHTHEATER</span>
                 </div>
@@ -34,7 +34,7 @@
                     <ul>
 
                         <div>
-                            <img src="" alt="">
+                            <img src="../../html/common/main.html" alt="">
                         </div>
 
                         <li class="login-btn-area">
@@ -72,7 +72,7 @@
                     <ul>
                         <li class="navBar"><a href="#">영화</a>
                             <ul class="menuBar" style="display:none">
-                                <li><a href="">무비 차트</a></li>
+                                <li><a href="../../html/introduce/movieList.html">무비 차트</a></li>
                             </ul>
                         </li>
                         <li class="navBar"><a href="#">상영관</a>
@@ -115,7 +115,7 @@
 
             </nav>
         </header>
-        <footer>
+       <footer>
 
             <section>
 
@@ -144,20 +144,7 @@
             </section>
 
         </footer>
-        <!--
-        <%-- session에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
-                <c:if test="${ !empty sessionScope.message }">
-                    <script>
-                        alert("${message}");
-                        // EL 작성 시 scope를 지정하지 않으면
-                        // page -> request -> session -> application 순서로 검색하여
-                        // 일치하는 속성이 있으면 출력
-                    </script>
-    
-                    <%-- message 1회 출력 후 session에서 제거 --%>
-                    <c:remove var="message" scope="session" />
-                </c:if>
-                -->
+       
     </div>
 
     <div id="myModal" class="modal">
@@ -165,7 +152,7 @@
             <div class="close-button">&times;</div>
             <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
         </div>
-    </div>
+    </div> 
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
