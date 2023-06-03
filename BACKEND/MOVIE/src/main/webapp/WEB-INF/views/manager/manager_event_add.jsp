@@ -36,13 +36,13 @@
 
         <div class="main_Wrapper">
             <div id="left_Nav_Container">
-				<div class="nav_Title">로고영역</div>
-               <jsp:include page="/WEB-INF/views/manager/manager_nav.jsp" />
+                <div class="nav_Title">로고영역</div>
+                <jsp:include page="/WEB-INF/views/manager/manager_nav.jsp" />
 
             </div>
 
             <div class="right_items_Container">
-				<jsp:include page="/WEB-INF/views/manager/manager_inner_Header.jsp" />
+                <jsp:include page="/WEB-INF/views/manager/manager_inner_Header.jsp" />
 
                 <div id="items_Wrapper">
                     <div class="set_Edge">
@@ -69,10 +69,9 @@
 
     </main>
 
-
-<script src="${contextPath}/resources/js/manager/manager_event_add.js"></script>
-<script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
-<script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
+    <script src="${contextPath}/resources/js/manager/manager_event_add.js"></script>
+    <script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
+    <script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
 </body>
 
 </html>

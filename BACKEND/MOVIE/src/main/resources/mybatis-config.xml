@@ -37,6 +37,7 @@
 		<mapper resource="/mappers/user-mapper.xml"/>
 		<mapper resource="/mappers/signup-mapper.xml"/>
 		<mapper resource="/mappers/EnterCheck-Mapper.xml"/>
+		<mapper resource="/mappers/manager-mapper.xml"/>
 	</mappers>
 
 </configuration>
