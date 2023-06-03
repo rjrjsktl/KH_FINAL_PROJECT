@@ -1,5 +1,7 @@
 package com.kh.kgv.mypage.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +25,7 @@ import com.kh.kgv.mypage.model.service.MyPageService;
 
 @Controller
 @RequestMapping("/myPage")
-@SessionAttributes({"loginUser"}) // session scope에서 loginMember를 얻어옴
+@SessionAttributes({"loginUser"}) // session scope에서 loginUser를 얻어옴
 public class MyPageController {
 
 	private Logger logger = LoggerFactory.getLogger(MyPageController.class);
@@ -62,7 +64,36 @@ public class MyPageController {
 	
 	
 	// 회원 비밀번호 변경
+	@PostMapping("/changePw")
+	public String changePw( @RequestParam Map<String,Object> paramMap,
+							@ModelAttribute("loginUser") User loginUser,
+							RedirectAttributes ra) {
 		
+		// 로그인된 회원의 번호를 paramMap 추가
+		paramMap.put( "userNo", loginUser.getUserNo() );
+		
+		
+		// 비밀번호 변경 서비스 호출
+		int result = service.changePw(paramMap);
+		
+		String message = null;
+		String path = null;
+		
+		if( result > 0 ) {
+			// 변경 -> info
+			message = "비밀번호가 변경되었습니다.";
+			path = "info";
+		} else {
+			// 실패 -> changePw
+			message = "현재 비밀번호가 일치하지 않습니다.";
+			path = "changePw";
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
+		
+	}
 	
 	
 	

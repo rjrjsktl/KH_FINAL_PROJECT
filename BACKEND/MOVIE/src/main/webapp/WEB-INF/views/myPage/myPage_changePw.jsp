@@ -61,7 +61,7 @@
                                 <label>새 비밀번호</label>
                             </div>
                             <div class="mypage-info-frame">
-                                <input type="password" name="newPwConfirm" maxlength="30">
+                                <input type="password" name="newPw" maxlength="30">
                             </div>
 
                             <div class="mypage-info-frame">
