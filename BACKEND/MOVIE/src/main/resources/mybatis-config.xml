@@ -28,6 +28,7 @@
 		<typeAlias type="com.kh.kgv.management.model.vo.Discount" alias="discount"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.DiscountAdd" alias="da"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.Manager" alias="manager"/>
+		<typeAlias type="com.kh.kgv.management.model.vo.DailyEnter" alias="de"/>
 		
 	</typeAliases>
 
@@ -35,6 +36,7 @@
 		<mapper resource="/mappers/movie-mapper.xml"/>
 		<mapper resource="/mappers/user-mapper.xml"/>
 		<mapper resource="/mappers/signup-mapper.xml"/>
+		<mapper resource="/mappers/EnterCheck-Mapper.xml"/>
 	</mappers>
 
 </configuration>
