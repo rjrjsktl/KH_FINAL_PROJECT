@@ -71,236 +71,31 @@
 									<th>관리자</th>
 									<th>이용제한</th>
 								</tr>
-								<tr>
-									<td>1</td>
-									<td>cropruch@naver.com</td>
-									<td>김민수</td>
-									<td>Nickname</td>
-									<td>01020823987</td>
-									<td>경기도,성남시,수정구,위례순환로 111</td>
-									<td>19940227</td>
-									<td>남</td>
-									<td>2023.05.27 03:32:32</td>
-									<td>-</td>
-									<td>N</td>
-									<td>1,000,000</td>
-									<td>Y</td>
-									<td><select name="Is_Manager">
-											<option value="N" selected>N</option>
-											<option value="Y">Y</option>
-										</select></td>
-									<td><select name="Is_Blocked">
-											<option value="N" selected>N</option>
-											<option value="Y">Y</option>
-										</select></td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>cropruch@naver.com</td>
-									<td>김민수</td>
-									<td>Nickname</td>
-									<td>01020823987</td>
-									<td>경기도,성남시,수정구,위례순환로 111</td>
-									<td>19940227</td>
-									<td>남</td>
-									<td>2023.05.27 03:32:32</td>
-									<td>2023.05.27 03:48:59</td>
-									<td>Y</td>
-									<td>0</td>
-									<td>Y</td>
-									<td><select>
-											<option selected>N</option>
-											<option>Y</option>
-										</select></td>
-									<td><select name="Is_Blocked">
-											<option value="N" selected>N</option>
-											<option value="Y">Y</option>
-										</select></td>
-								</tr>
-								<tr>
-									<td>3</td>
-									<td>cropruch@naver.com</td>
-									<td>김민수</td>
-									<td>Nickname</td>
-									<td>01020823987</td>
-									<td>경기도,성남시,수정구,위례순환로 111</td>
-									<td>19940227</td>
-									<td>남</td>
-									<td>2023.05.27 03:32:32</td>
-									<td>-</td>
-									<td>N</td>
-									<td>0</td>
-									<td>N</td>
-									<td><select>
-											<option selected>N</option>
-											<option>Y</option>
-										</select></td>
-									<td><select name="Is_Blocked">
-											<option value="N" selected>N</option>
-											<option value="Y">Y</option>
-										</select></td>
-								</tr>
-								<tr>
-									<td>4</td>
-									<td>cropruch@naver.com</td>
-									<td>김민수</td>
-									<td>Nickname</td>
-									<td>01020823987</td>
-									<td>경기도,성남시,수정구,위례순환로 111</td>
-									<td>19940227</td>
-									<td>남</td>
-									<td>2023.05.27 03:32:32</td>
-									<td>-</td>
-									<td>N</td>
-									<td>2,000</td>
-									<td>N</td>
-									<td><select>
-											<option selected>N</option>
-											<option>Y</option>
-										</select></td>
-									<td><select name="Is_Blocked">
-											<option value="N" selected>N</option>
-											<option value="Y">Y</option>
-										</select></td>
-								</tr>
-								<tr>
-									<td>5</td>
-									<td>cropruch@naver.com</td>
-									<td>김민수</td>
-									<td>Nickname</td>
-									<td>01020823987</td>
-									<td>경기도,성남시,수정구,위례순환로 111</td>
-									<td>19940227</td>
-									<td>남</td>
-									<td>2023.05.27 03:32:32</td>
-									<td>-</td>
-									<td>N</td>
-									<td>0</td>
-									<td>N</td>
-									<td><select>
-											<option selected>N</option>
-											<option>Y</option>
-										</select></td>
-									<td><select name="Is_Blocked">
-											<option value="N" selected>N</option>
-											<option value="Y">Y</option>
-										</select></td>
-								</tr>
-								<tr>
-									<td>6</td>
-									<td>cropruch@naver.com</td>
-									<td>김민수</td>
-									<td>Nickname</td>
-									<td>01020823987</td>
-									<td>경기도,성남시,수정구,위례순환로 111</td>
-									<td>19940227</td>
-									<td>남</td>
-									<td>2023.05.27 03:32:32</td>
-									<td>-</td>
-									<td>N</td>
-									<td>0</td>
-									<td>N</td>
-									<td><select>
-											<option selected>N</option>
-											<option>Y</option>
-										</select></td>
-									<td><select name="Is_Blocked">
-											<option value="N" selected>N</option>
-											<option value="Y">Y</option>
-										</select></td>
-								</tr>
-								<tr>
-									<td>7</td>
-									<td>cropruch@naver.com</td>
-									<td>김민수</td>
-									<td>Nickname</td>
-									<td>01020823987</td>
-									<td>경기도,성남시,수정구,위례순환로 111</td>
-									<td>19940227</td>
-									<td>여</td>
-									<td>2023.05.27 03:32:32</td>
-									<td>-</td>
-									<td>N</td>
-									<td>0</td>
-									<td>N</td>
-									<td><select>
-											<option selected>N</option>
-											<option>Y</option>
-										</select></td>
-									<td><select name="Is_Blocked">
-											<option value="N" selected>N</option>
-											<option value="Y">Y</option>
-										</select></td>
-								</tr>
-								<tr>
-									<td>8</td>
-									<td>cropruch@naver.com</td>
-									<td>김민수</td>
-									<td>Nickname</td>
-									<td>01020823987</td>
-									<td>경기도,성남시,수정구,위례순환로 111</td>
-									<td>19940227</td>
-									<td>남</td>
-									<td>2023.05.27 03:32:32</td>
-									<td>-</td>
-									<td>N</td>
-									<td>0</td>
-									<td>N</td>
-									<td><select>
-											<option selected>N</option>
-											<option>Y</option>
-										</select></td>
-									<td><select name="Is_Blocked">
-											<option value="N" selected>N</option>
-											<option value="Y">Y</option>
-										</select></td>
-								</tr>
-								<tr>
-									<td>9</td>
-									<td>cropruch@naver.com</td>
-									<td>김민수</td>
-									<td>Nickname</td>
-									<td>01020823987</td>
-									<td>경기도,성남시,수정구,위례순환로 111</td>
-									<td>19940227</td>
-									<td>선택안함</td>
-									<td>2023.05.27 03:32:32</td>
-									<td>-</td>
-									<td>N</td>
-									<td>0</td>
-									<td>N</td>
-									<td><select>
-											<option selected>N</option>
-											<option>Y</option>
-										</select></td>
-									<td><select name="Is_Blocked">
-											<option value="N" selected>N</option>
-											<option value="Y">Y</option>
-										</select></td>
-								</tr>
-								<tr>
-									<td>10</td>
-									<td>cropruch@naver.com</td>
-									<td>김민수</td>
-									<td>Nickname</td>
-									<td>01020823987</td>
-									<td>경기도,성남시,수정구,위례순환로 111</td>
-									<td>19940227</td>
-									<td>남</td>
-									<td>2023.05.27 03:32:32</td>
-									<td>-</td>
-									<td>N</td>
-									<td>0</td>
-									<td>N</td>
-									<td><select>
-											<option selected>N</option>
-											<option>Y</option>
-										</select></td>
-									<td><select name="Is_Blocked">
-											<option value="N" selected>N</option>
-											<option value="Y">Y</option>
-										</select></td>
-								</tr>
+								<c:forEach var="getUser" items="${getUserList}">
+									<tr>
+										<td>${getUser.userNo}</td>
+										<td>${getUser.userEmail}</td>
+										<td>${getUser.userName}</td>
+										<td>${getUser.userNick}</td>
+										<td>${getUser.userTel}</td>
+										<td>${getUser.userAddr}</td>
+										<td>${getUser.userBirth}</td>
+										<td>${getUser.userGender}</td>
+										<td>${getUser.userRegDate}</td>
+										<td>${getUser.userDelete}</td>
+										<td>${getUser.userSt}</td>
+										<td>${getUser.userPoint}</td>
+										<td>${getUser.userSns}</td>
+										<td><select name="Is_Manager">
+												<option value="N" selected>N</option>
+												<option value="Y">Y</option>
+											</select></td>
+										<td><select name="Is_Blocked">
+												<option value="N" selected>N</option>
+												<option value="Y">Y</option>
+											</select></td>
+									</tr>
+								</c:forEach>
 
 							</table>
 							<div class="page_Nation">

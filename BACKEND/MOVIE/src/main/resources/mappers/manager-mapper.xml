@@ -27,7 +27,8 @@
 	<!-- 회원 리스트  -->
 	<select id="selectAll" parameterType="user" resultMap="user_rm">
 	SELECT
-	USER_EMAIL
+	USER_NO
+	, USER_EMAIL
 	, USER_NAME
 	, USER_NICKNAME
 	, USER_TEL
@@ -42,6 +43,7 @@
 	, USER_MANAGER_ST
 	, USER_BLOCK
 	FROM USERS
+	ORDER BY USER_NO ASC
 	</select>
 
 </mapper>

@@ -28,21 +28,14 @@ public class ManagerController {
 	
 	// 관리자_회원 리스트 이동
 	@GetMapping("/member")
-	public String moveMember() {
+	public String moveMember(Model model) {
 		
 		System.out.println("관리자_회원 리스트 이동");
-	
-		return "manager/manager_member_list";
-	}
-	// 회원 리스트 얻어오기
-	@GetMapping("/getUserList")
-	public String getUserList() {
 		
+		// 회원 리스트 얻어오기
 		List<User> getUserList = service.selectAll();
-		
-		System.out.println("관리자_회원 리스트 이동");
-		
-		return  new Gson().toJson(getUserList);
+	model.addAttribute("getUserList", getUserList);
+		return "manager/manager_member_list";
 	}
 	
 	// 관리자_1:1 문의 목록 이동
