@@ -26,6 +26,7 @@ public class User {
 	private String userImg;
 	private int userPoint;
 	private String userSns;
-	private String userChage;
 	private String userDelete;
+	private String userManagerSt;
+	private String userBlock;
 }

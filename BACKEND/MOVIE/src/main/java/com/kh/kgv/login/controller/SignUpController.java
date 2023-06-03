@@ -1,8 +1,12 @@
 package com.kh.kgv.login.controller;
 
+import javax.mail.internet.MimeMessage;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +23,9 @@ public class SignUpController {
 	
 	@Autowired
 	private SignUpService service;
+	
+	@Autowired
+	private JavaMailSender mailSender;
 	
 	private Logger logger = LoggerFactory.getLogger(SignUpController.class);
 	
@@ -102,6 +109,72 @@ public class SignUpController {
 			
 			ra.addFlashAttribute("message", message);
 			return path;
+		}
+		
+		@ResponseBody
+		@GetMapping("/sendEmail")
+		public String sendEmail(String userEmail) {
+			
+			logger.debug("userEmail : " + userEmail);
+			
+			
+			 String cNumber = "";
+	         for (int i = 0; i < 6; i++) {
+
+	            int sel1 = (int) (Math.random() * 3); // 0:숫자 / 1,2:영어
+
+	            if (sel1 == 0) {
+
+	               int num = (int) (Math.random() * 10); // 0~9
+	               cNumber += num;
+
+	            } else {
+
+	               char ch = (char) (Math.random() * 26 + 65); // A~Z
+
+	               int sel2 = (int) (Math.random() * 2); // 0:소문자 / 1:대문자
+
+	               if (sel2 == 0) {
+	                  ch = (char) (ch + ('a' - 'A')); // 대문자로 변경
+	               }
+
+	               cNumber += ch;
+	            }
+
+	         }
+	         
+	         String setForm = "channelkgv1@gmail.com";
+	         String toMail = userEmail;
+	         String title = "회원가입 인증 이메일 입니다.";
+	         String content = 
+	        		 "KGV 홈페이지를 방문해주셔서 감사합니다." +
+	        	                "<br><br>" + 
+	        	                "인증 번호는 " + cNumber + "입니다." + 
+	        	                "<br>" + 
+	        	                "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
+	         
+	         logger.debug("mailSender : " + mailSender);
+				
+	         
+	         try {
+	        	 	MimeMessage message = mailSender.createMimeMessage();
+		            MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+		            helper.setFrom(setForm);
+		            helper.setTo(toMail);
+		            helper.setSubject(title);
+		            helper.setText(content,true);
+		            mailSender.send(message);
+		        		 
+	         }catch(Exception e) {
+
+	        	 e.printStackTrace();
+
+	             
+	         }
+	        
+	         String cnum = cNumber.toString();
+			
+			return cnum;
 		}
 		
 		

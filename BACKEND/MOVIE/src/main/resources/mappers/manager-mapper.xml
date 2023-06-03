@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="managerMapper">
+
+	<resultMap type="user" id="user_rm">
+	
+		<id property="userNo" column="USER_NO"/>
+		
+		<result property="userEmail" 		column="USER_EMAIL"/>
+		<result property="userPw" 			column="USER_PW"/>
+		<result property="userName" 		column="USER_NAME"/>
+		<result property="userNick" 		column="USER_NICKNAME"/>
+		<result property="userTel" 			column="USER_TEL"/>
+		<result property="userAddr" 		column="USER_ADDR"/>
+		<result property="userBirth" 		column="USER_BIRTH"/>
+		<result property="userGender" 		column="USER_GENDER"/>
+		<result property="userRegDate" 		column="USER_REGDATE"/>
+		<result property="userSt" 			column="USER_ST"/>
+		<result property="userImg"	 		column="USER_IMG"/>
+		<result property="userPoint" 		column="USER_POINT"/>
+		<result property="userSns" 			column="USER_SNS"/>
+		<result property="userDelete" 		column="USER_DELETE"/>
+		<result property="userManagerSt" 		column="USER_MANAGER_ST"/>
+		<result property="userBlock" 		column="USER_BLOCK"/>
+	</resultMap>
+	
+	<!-- 회원 리스트  -->
+	<select id="selectAll" parameterType="user" resultMap="user_rm">
+	SELECT
+	USER_NO
+	, USER_EMAIL
+	, USER_NAME
+	, USER_NICKNAME
+	, USER_TEL
+	, USER_ADDR
+	, USER_BIRTH
+	, USER_GENDER
+	, USER_REGDATE
+	, USER_DELETE
+	, USER_ST
+	, USER_POINT
+	, USER_SNS
+	, USER_MANAGER_ST
+	, USER_BLOCK
+	FROM USERS
+	ORDER BY USER_NO ASC
+	</select>
+
+</mapper>

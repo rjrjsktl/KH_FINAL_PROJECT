@@ -2,8 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  -->
 
-<!-- 최신화 종료 건들일없음 -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,17 +9,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>예매선택 페이지</title>
+    <title>1 : 1 문의 작성</title>
 
-
-    <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
 
+    <!-- jQuery 라이브러리 추가(CDN) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../css/notice/notice_ask_form.css">
     <link rel="stylesheet" href="../../css/common/outline.css">
-    <link rel="stylesheet" href="../../css/notice/question_home.css">
+    <link rel="stylesheet" href="../../css/notice/notice_detail.css">
+
 </head>
 
 <body>
@@ -125,7 +125,6 @@
         <main>
             <section>
 
-
                 <aside>
                     <div class="aside-ul-wrap">
                         <ul class="aslide-list">
@@ -161,39 +160,52 @@
                 </aside>
 
                 <div class="container">
-                    <div class="notice-wraaper">
+                    <div class="content-wrap">
 
+                        <h2>1 : 1 문의 작성</h2>
 
-                        <div>
-                            <div class="notice-content-wrap">
-                                <h2>자주 찾는 질문</h2>
-                                <div class="cont-search-wrap">
-                                    <span>빠른검색</span>
-                                    <form action="">
-                                        <input type="text" placeholder=" 질문을 입력해주세요!">
-                                        <button>
-                                            <img src="../../images/headerPng/glass.png" alt="">
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
+                        <div class="notice-contents content_inner">
+                            <table class="innerTable">
+                                <tr class="tteesstt">
+                                    <th>제목</th>
+                                    <td><input type="text" placeholder=" 제목을 입력해 주세요."></td>
+                                </tr>
+                                <tr>
+                                    <th>문의종류</th>
+                                    <td>
+                                        <select>
+                                            <option disabled selected> 문의 내용을 선택해주세요.</option>
+                                            <option value="movie">영화 문의</option>
+                                            <option value="using">이용 문의</option>
+                                            <option value="payment">결제 문의</option>
+                                            <option value="refund">환불 문의</option>
+                                            <option value="NAMOONY">나문희</option>
+                                        </select>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>첨부파일</th>
+                                    <td><input type="file" multiple class="align_File"></td>
+                                </tr>
+                            </table>
                         </div>
-                        <div class="btn-wrap">
-                            <button>전체</button>
-                            <button>영화예매</button>
-                            <button>할인혜택</button>
-                            <button>결제수단/관람권</button>
-                            <button>멤버십</button>
-                            <button>VIP</button>
-                            <button>극장</button>
-                            <button>특별관</button>
-                            <button>스토어</button>
-                            <button>홈페이지/모바일</button>
+
+                        <div id="writeForm">
+                            <div class="inner_Textarea_Title">내용</div>
+                            <textarea class="inner_Textarea"></textarea>
+                        </div>
+
+                        <div class="btn_Container">
+                            <button>작성하기</button>
+                            <button>취소하기</button>
                         </div>
 
                     </div>
-                </div>
 
+                </div>
 
             </section>
         </main>
@@ -228,24 +240,8 @@
         </section>
 
     </footer>
-    <!--
-    <%-- session에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
-            <c:if test="${ !empty sessionScope.message }">
-                <script>
-                    alert("${message}");
-                    // EL 작성 시 scope를 지정하지 않으면
-                    // page -> request -> session -> application 순서로 검색하여
-                    // 일치하는 속성이 있으면 출력
-                </script>
 
-                <%-- message 1회 출력 후 session에서 제거 --%>
-                <c:remove var="message" scope="session" />
-            </c:if>
-            -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-    <script src="../../js/notice/notice-home.js"></script>
+    <script src="../../js/noticepage/notice_ask_form.js"></script>
 </body>
 
 </html>

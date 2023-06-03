@@ -8,10 +8,12 @@
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>메인페이지</title>
-
+            <title>회원가입 페이지</title>
+	
+	
+			<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css"> 
             <link rel="stylesheet" href="${contextPath}/resources/css/signUp/signUp.css">
-            <!-- <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css"> -->
+            
             <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
         </head>
@@ -41,7 +43,7 @@
                                     autocomplete="off" required>
 
 
-                                <button type="button" id="sendBtn">인증번호 받기</button>
+                                <button type="button" id="sendBtn" >인증번호 받기</button>
                             </div>
 
                             <span class="signUp-message" id="emailMessage"></span>

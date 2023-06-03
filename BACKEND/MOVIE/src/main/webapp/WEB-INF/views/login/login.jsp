@@ -90,14 +90,14 @@
 
 						<!-- SNS 로그인 -->
 						<ul>
-							<li><a href="#"><img
-									src="${contextPath}/resources/images/login_images/KakaoTalk_btn_icon_square.png"
+							<li><a href="sns/kakao"><img
+									src="${contextPath}/resources/images/loginpage_images/KakaoTalk_btn_icon_square.png"
 									alt="카카오톡"></a></li>
-							<li><a href="#"><img
-									src="${contextPath}/resources/images/login_images/naver_btn_icon_square.png"
+							<li><a href="sns/naver"><img
+									src="${contextPath}/resources/images/loginpage_images/naver_btn_icon_square.png"
 									alt="네이버"></a></li>
-							<li><a href="#"><img
-									src="${contextPath}/resources/images/login_images/google_btn_icon_square.png"
+							<li><a href="sns/google"><img
+									src="${contextPath}/resources/images/loginpage_images/google_btn_icon_square.png"
 									alt="구글"></a></li>
 						</ul>
 

@@ -31,23 +31,21 @@
                                         <i class="fa-solid fa-caret-down"></i>
                                     </div>
                                 </div>
-                                <div class="slide_Down_items">
-                                    <ul>
-                                        <a href="${contextPath}/manager/ask_list">
-                                            <li>
-                                                <div class="inner_align">
-                                                    <div class="inner_Left_Icon">
-                                                        <i class="fa-solid fa-play fa-2xs"></i>
-                                                    </div>
-                                                    <span>1 : 1 문의 목록</span>
+                                <ul class="slide_Down_items">
+                                    <a href="${contextPath}/manager/ask_list">
+                                        <li>
+                                            <div class="inner_align">
+                                                <div class="inner_Left_Icon">
+                                                    <i class="fa-solid fa-play fa-2xs"></i>
                                                 </div>
-                                            </li>
-                                        </a>
-                                    </ul>
-                                </div>
+                                                <span>1 : 1 문의 목록</span>
+                                            </div>
+                                        </li>
+                                    </a>
+                                </ul>
                             </li>
                             <li class="slide_Content">
-                                <div class="slide_Wrapper ">
+                                <div class="slide_Wrapper">
                                     <div class="slide_Left_Icon">
                                         <i class="fa-brands fa-youtube"></i>
                                     </div>
@@ -56,50 +54,48 @@
                                         <i class="fa-solid fa-caret-down"></i>
                                     </div>
                                 </div>
-                                <div class="slide_Down_items" >
-                                    <ul>
-                                        <a href="${contextPath}/manager/movie_list">
-                                            <li>
-                                                <div class="inner_align">
-                                                    <div class="inner_Left_Icon">
-                                                        <i class="fa-solid fa-play fa-2xs"></i>
-                                                    </div>
-                                                    <span>영화 목록</span>
+                                <ul class="slide_Down_items">
+                                    <a href="${contextPath}/manager/movie_list">
+                                        <li>
+                                            <div class="inner_align">
+                                                <div class="inner_Left_Icon">
+                                                    <i class="fa-solid fa-play fa-2xs"></i>
                                                 </div>
-                                            </li>
-                                        </a>
-                                        <a href="${contextPath}/manager/movie_add">
-                                            <li>
-                                                <div class="inner_align">
-                                                    <div class="inner_Left_Icon">
-                                                        <i class="fa-solid fa-play fa-2xs"></i>
-                                                    </div>
-                                                    <span>영화 등록</span>
+                                                <span>영화 목록</span>
+                                            </div>
+                                        </li>
+                                    </a>
+                                    <a href="${contextPath}/manager/movie_add">
+                                        <li>
+                                            <div class="inner_align">
+                                                <div class="inner_Left_Icon">
+                                                    <i class="fa-solid fa-play fa-2xs"></i>
                                                 </div>
-                                            </li>
-                                        </a>
-                                        <a href="${contextPath}/manager/play_list">
-                                            <li>
-                                                <div class="inner_align">
-                                                    <div class="inner_Left_Icon">
-                                                        <i class="fa-solid fa-play fa-2xs"></i>
-                                                    </div>
-                                                    <span>상영시간 목록</span>
+                                                <span>영화 등록</span>
+                                            </div>
+                                        </li>
+                                    </a>
+                                    <a href="${contextPath}/manager/play_list">
+                                        <li>
+                                            <div class="inner_align">
+                                                <div class="inner_Left_Icon">
+                                                    <i class="fa-solid fa-play fa-2xs"></i>
                                                 </div>
-                                            </li>
-                                        </a>
-                                        <a href="${contextPath}/manager/play_add">
-                                            <li>
-                                                <div class="inner_align">
-                                                    <div class="inner_Left_Icon">
-                                                        <i class="fa-solid fa-play fa-2xs"></i>
-                                                    </div>
-                                                    <span>상영시간 등록</span>
+                                                <span>상영시간 목록</span>
+                                            </div>
+                                        </li>
+                                    </a>
+                                    <a href="${contextPath}/manager/play_add">
+                                        <li>
+                                            <div class="inner_align">
+                                                <div class="inner_Left_Icon">
+                                                    <i class="fa-solid fa-play fa-2xs"></i>
                                                 </div>
-                                            </li>
-                                        </a>
-                                    </ul>
-                                </div>
+                                                <span>상영시간 등록</span>
+                                            </div>
+                                        </li>
+                                    </a>
+                                </ul>
                             </li>
                             <li class="slide_Content">
                                 <div class="slide_Wrapper">
@@ -111,30 +107,28 @@
                                         <i class="fa-solid fa-caret-down"></i>
                                     </div>
                                 </div>
-                                <div class="slide_Down_items">
-                                    <ul>
-                                        <a href="${contextPath}/manager/event_list">
-                                            <li>
-                                                <div class="inner_align">
-                                                    <div class="inner_Left_Icon">
-                                                        <i class="fa-solid fa-play fa-2xs"></i>
-                                                    </div>
-                                                    <span>이벤트 목록</span>
+                                <ul class="slide_Down_items">
+                                    <a href="${contextPath}/manager/event_list">
+                                        <li>
+                                            <div class="inner_align">
+                                                <div class="inner_Left_Icon">
+                                                    <i class="fa-solid fa-play fa-2xs"></i>
                                                 </div>
-                                            </li>
-                                        </a>
-                                        <a href="${contextPath}/manager/event_add">
-                                            <li>
-                                                <div class="inner_align">
-                                                    <div class="inner_Left_Icon">
-                                                        <i class="fa-solid fa-play fa-2xs"></i>
-                                                    </div>
-                                                    <span>이벤트 등록</span>
+                                                <span>이벤트 목록</span>
+                                            </div>
+                                        </li>
+                                    </a>
+                                    <a href="${contextPath}/manager/event_add">
+                                        <li>
+                                            <div class="inner_align">
+                                                <div class="inner_Left_Icon">
+                                                    <i class="fa-solid fa-play fa-2xs"></i>
                                                 </div>
-                                            </li>
-                                        </a>
-                                    </ul>
-                                </div>
+                                                <span>이벤트 등록</span>
+                                            </div>
+                                        </li>
+                                    </a>
+                                </ul>
                             </li>
                             <li class="slide_Content">
                                 <div class="slide_Wrapper">
@@ -146,30 +140,30 @@
                                         <i class="fa-solid fa-caret-down"></i>
                                     </div>
                                 </div>
-                                <div class="slide_Down_items">
-                                    <ul>
-                                        <a href="${contextPath}/manager/notice_list">
-                                            <li>
-                                                <div class="inner_align">
-                                                    <div class="inner_Left_Icon">
-                                                        <i class="fa-solid fa-play fa-2xs"></i>
-                                                    </div>
-                                                    <span>공지사항 목록</span>
+                                <ul class="slide_Down_items">
+                                    <a href="${contextPath}/manager/notice_list">
+                                        <li>
+                                            <div class="inner_align">
+                                                <div class="inner_Left_Icon">
+                                                    <i class="fa-solid fa-play fa-2xs"></i>
                                                 </div>
-                                            </li>
-                                        </a>
-                                        <a href="${contextPath}/manager/notice_add">
-                                            <li>
-                                                <div class="inner_align">
-                                                    <div class="inner_Left_Icon">
-                                                        <i class="fa-solid fa-play fa-2xs"></i>
-                                                    </div>
-                                                    <span>공지사항 등록</span>
+                                                <span>공지사항 목록</span>
+                                            </div>
+                                        </li>
+                                    </a>
+                                    <a href="${contextPath}/manager/notice_add">
+                                        <li>
+                                            <div class="inner_align">
+                                                <div class="inner_Left_Icon">
+                                                    <i class="fa-solid fa-play fa-2xs"></i>
                                                 </div>
-                                            </li>
-                                        </a>
-                                    </ul>
-                                </div>
+                                                <span>공지사항 등록</span>
+                                            </div>
+                                        </li>
+                                    </a>
+                                </ul>
                             </li>
                         </ul>
                     </nav>
+
+                    <script src="${contextPath}/resources/js/manager/manager_select.js"></script>

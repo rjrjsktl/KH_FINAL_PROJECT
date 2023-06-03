@@ -46,7 +46,7 @@
                 </div>
 
                 <ul class="nav_Slide">
-                    <a class="title_move selected_Title" href="#">
+                    <a class="title_move" href="#">
                         <li class="slide_Title">
                             <div class="slide_Left_Icon">
                                 <i class="fa-sharp fa-solid fa-house"></i>
@@ -496,14 +496,15 @@
                             <div>
                                 <textarea type="text" id="crtMemo" class="crtMemo" autocomplete="off"></textarea>
                                 <button id="crtbtn" class="crtbtn">등록</button>
-                                
+
                             </div>
                             <ul id="managerMemo" class="managerMemo">
                                 <!-- 어차피 메모 값이 있다면 초기화 될거임(틀잡기용) -->
                                 <li id="memoList" class="memoList">
                                     <textarea id="viewMemo" class="viewMemo"></textarea>
                                     <!-- 수정 필요? -->
-                                    <button type="button" id="dltbtn" class="dltbtn" name="momoNo" value="" onclick="delMemo()">삭제</button>
+                                    <button type="button" id="dltbtn" class="dltbtn" name="momoNo" value=""
+                                        onclick="delMemo()">삭제</button>
                                 </li>
                             </ul>
                         </div>
