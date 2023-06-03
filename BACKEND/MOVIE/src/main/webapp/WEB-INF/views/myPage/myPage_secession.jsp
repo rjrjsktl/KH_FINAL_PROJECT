@@ -54,7 +54,7 @@
                                 <label>비밀번호 확인</label>
                             </div>
                             <div class="mypage-info-frame">
-                                <input type="password" name="memberPw" id="memberPw" maxlength="30">
+                                <input type="password" name="userPw" id="userPw" maxlength="30">
                             </div>
                             <div class="mypage-info-frame">
                                 <label>회원 탈퇴 약관</label>
