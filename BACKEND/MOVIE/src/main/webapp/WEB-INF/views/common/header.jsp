@@ -32,7 +32,7 @@
                                                             alt=""></span>
                                                     <span>회원가입</span>
                                                 </a></li>
-                                            <li><a href="${contextPath}/myPage/info"> <span><img
+                                            <li><a href="${contextPath}/myPage/myPgMain"> <span><img
                                                             src="${contextPath}/resources/images/headerPng/test3.png"
                                                             alt=""></span>
                                                     <span>MY KGV</span>
