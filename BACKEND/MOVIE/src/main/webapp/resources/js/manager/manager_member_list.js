@@ -1,44 +1,113 @@
-// function selectAll() {
+const checkBtn = $('td > .checkBtn');
+const manager = $('.Is_Manager');
+const block = $('.Is_Blocked');
 
+
+manager.on('change', (e) => {
+    let clickTarget = $(e.currentTarget).val();
+    console.log("가져온 아이디는 : " + $(e.currentTarget).data('id'));
+
+
+    if (clickTarget == 'Y') {
+        console.log("Y가 찍힘" + clickTarget);
+
+        $.ajax({
+            url: "Manager_ST",
+            data: {
+                "ST": $(e.currentTarget).val()
+                , "userId": $(e.currentTarget).data('id')
+            },
+            type: "POST",
+            success: function (result) {
+                if (result > 0) {
+                    console.log("N -> Y로 변경 완료");
+
+                } else {
+                    console.log("N -> Y로 변경 실패");
+                }
+            },
+
+            error: function () {
+                console.log("error : N -> Y로 변경 실패");
+            }
+        });
+
+
+
+
+    } else {
+        console.log("N이 찍힘" + clickTarget);
+
+        $.ajax({
+            url: "Manager_ST",
+            data: {
+                "ST": $(e.currentTarget).val()
+                , "userId": $(e.currentTarget).data('id')
+            },
+            type: "POST",
+            success: function (result) {
+                if (result > 0) {
+                    console.log("Y -> N으로 변경 완료");
+
+                } else {
+                    console.log("Y -> N으로 변경 실패");
+                }
+            },
+
+            error: function () {
+                console.log("error : Y -> N으로 변경 실패");
+            }
+        });
+
+
+
+
+
+    }
+
+    // let getManager = manager.text();
+    // let getBlock = block.text();
+
+    // console.log("getManager : " + getManager);
+    // console.log("getBlock : " + getBlock);
+
+});
+
+// if (loginMember != "" && FAV_YN == 'N' || "") { // 로그인 되어 있을 경우.
+//     console.log("로그인 했음");
 //     $.ajax({
-//         url: "manager/getUserList",
-//         dataType: "json",
-//         success: function (list) {
-//             //console.log(list);
-
-//             const memberList = document.getElementById("memberList");
-
-//             memberList.innerHTML = "";
-
-//             // 2) list를 for문을 이용해서 반복 접근
-//             for (let item of list) {
-//                 // item == 회원 1명의 정보가 담긴 JS 객체
-
-//                 // 3) tr 요소 생성
-//                 const tr0 = document.createElement("tr11");
-
-//                 // 4) td 요소 생성 + 내용 추가 * 3
-//                 const td1 = document.createElement("td22");
-//                 td1.innerText = item.memberNo; // 회원 번호
-
-//                 const td2 = document.createElement("td33");
-//                 td2.innerText = item.memberEmail; // 회원 이메일
-
-//                 const td3 = document.createElement("td44");
-//                 td3.innerText = item.memberNickname; // 회원 닉네임
-
-//                 // 5) tr요소에 td요소 3개 추가
-//                 tr.append(td1, td2, td3);
-
-//                 // 6) memberList에 tr 추가
-//                 memberList.append(tr);
-//             }
-
-
+//         url: "CAMP404/likeBtn",
+//         data: {
+//             "favYn": FAV_YN
+//             , "loginUserNo": loginUserNo
+//             , "lectureNo": lectureNo
 //         },
-//         error: function () {
-//             console.log("에러 발생");
-//         }
-//     });
+//         type: "POST",
+//         success: function (result) {
+//             if (result > 0) {
+//                 console.log("찜 목록에 등록 완료");
+//                 function ask(question, yes, no) { // 등록 후 찜 목록 이동 여부 물어보기.
+//                     if (confirm(question)) {
+//                         yes(); // 찜 목록 이동 희망
+//                         // let url = contextPath + "/main/login";
+//                         // location.href = url;
+//                     } else {
+//                         no(); // 거부 시, 메인 화면에 계속 머물기
+//                         return;
+//                     }
+//                 };
 
-// }
+//                 ask( // function ask() 용 질의 구문
+//                     "찜목록에 강의를 추가했습니다!.\n찜 목록으로 가시겠어요?",
+//                     (ask) => alert("찜목 록 창으로 이동합니다."),
+//                     (ask) => alert("취소 버튼을 누르셨습니다.")
+//                 );
+//             }
+//         },
+
+//         error: function () {
+
+//         }
+
+//     })
+// };
