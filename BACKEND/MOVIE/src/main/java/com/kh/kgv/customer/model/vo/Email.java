@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class Email {
 
 	private String email;
-	private String cnumber;
+	private String cNumber;
 	private String issueDate;
 
 	
