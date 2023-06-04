@@ -43,7 +43,7 @@
                                     autocomplete="off" required>
 
 
-                                <button type="button" id="sendBtn" >인증번호 받기</button>
+                                <button type="button" id="sendBtn"  >인증번호 받기</button>
                             </div>
 
                             <span class="signUp-message" id="emailMessage"></span>
@@ -56,9 +56,9 @@
 
                             <div class="signUp-input-area">
                                 <!-- cNumber -->
-                                <input type="text" id="cNumber" placeholder="인증번호 입력" maxlength="6" autocomplete="off">
+                                <input type="text" id="cNumber" name="cNumber" placeholder="인증번호 입력" maxlength="6" autocomplete="off">
 
-                                <button type="button" id="cBtn">인증하기</button>
+                                <button type="button" id="cBtn" >인증하기</button>
                             </div>
 
                             <!-- 5:00 타이머 -->

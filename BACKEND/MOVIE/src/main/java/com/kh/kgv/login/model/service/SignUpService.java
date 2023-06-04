@@ -41,6 +41,9 @@ public interface SignUpService {
 	int checkNumber(String cNumber, String userEmail);
 
 
+	int telDupCheck(String userTel);
+
+
 	
 
 
