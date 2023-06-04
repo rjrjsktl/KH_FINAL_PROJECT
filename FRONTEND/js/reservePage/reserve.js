@@ -92,7 +92,7 @@ movie.on("click", function(){
   movieName = this.querySelector('.movie_name').innerText;
   $('#movie_select').html(movieName);
   $('.movie_play').css('display', 'none');
-  $(`.movie_play[data-movie=${movieName}]`).css('display', 'block');
+  $(`.movie_play[data-movie="${movieName}"]`).css('display', 'block');
 });
 
 

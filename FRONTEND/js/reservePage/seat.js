@@ -28,7 +28,7 @@ let rowWidth = 25*(maxColumn) + 5.98 * (maxColumn-1);
 
 // 스크린과 좌석 영역의 전체 길이 설정
 
-$('#screen_area').css('width', `calc(${rowWidth}px + 2px)`);
+$('#screen_area').css('width', `calc(${rowWidth}px + 1px)`);
 $('#seat_area').css('width', `calc(${rowWidth}px)`);
 
 
