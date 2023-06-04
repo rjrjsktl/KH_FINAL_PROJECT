@@ -20,12 +20,18 @@
 		<result property="userPoint" 		column="USER_POINT"/>
 		<result property="userSns" 			column="USER_SNS"/>
 		<result property="userDelete" 		column="USER_DELETE"/>
-		<result property="userManagerSt" 		column="USER_MANAGER_ST"/>
+		<result property="userManagerSt" 		column="USER_MANAGERST"/>
 		<result property="userBlock" 		column="USER_BLOCK"/>
 	</resultMap>
 	
-	<!-- 회원 리스트  -->
-	<select id="selectAll" parameterType="user" resultMap="user_rm">
+	
+	<!-- 회원 수 조회 -->
+	<select id="getListCount" resultType="_int">
+	SELECT COUNT(USER_NO) FROM USERS
+	</select>
+	
+	<!-- 회원 리스트 조회-->
+	<select id="selectAll" resultMap="user_rm">
 	SELECT
 	USER_NO
 	, USER_EMAIL
@@ -40,7 +46,7 @@
 	, USER_ST
 	, USER_POINT
 	, USER_SNS
-	, USER_MANAGER_ST
+	, USER_MANAGERST
 	, USER_BLOCK
 	FROM USERS
 	ORDER BY USER_NO ASC

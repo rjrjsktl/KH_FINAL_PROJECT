@@ -13,6 +13,7 @@
 		<typeAlias type="com.kh.kgv.customer.model.vo.Review" alias="review"/>
 		<typeAlias type="com.kh.kgv.customer.model.vo.Book" alias="book"/>
 		<typeAlias type="com.kh.kgv.customer.model.vo.Sns" alias="sns"/>
+		<typeAlias type="com.kh.kgv.customer.model.vo.Email" alias="email"/>
 
 		<typeAlias type="com.kh.kgv.items.model.vo.Movie" alias="movie"/>
 		<typeAlias type="com.kh.kgv.items.model.vo.Genre" alias="genre"/>
