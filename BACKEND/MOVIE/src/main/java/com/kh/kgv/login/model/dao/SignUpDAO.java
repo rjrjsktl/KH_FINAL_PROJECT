@@ -1,5 +1,8 @@
 package com.kh.kgv.login.model.dao;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -54,5 +57,40 @@ public class SignUpDAO {
 		return sqlSession.insert("signupMapper.signUp",inputUser);
 		
 	}
+
+
+
+	
+
+	
+
+
+
+
+	public int insertCertification(String userEmail, String cnum) {
+		 Map<String, Object> params = new HashMap<>();
+		    params.put("cnum", cnum);
+		    params.put("userEmail", userEmail);
+
+		    return sqlSession.insert("signupMapper.insertCertification", params);
+				
+	}
+
+
+
+	public int checkNumber(String userEmail, String cNumber) {
+		
+		
+		
+		 Map<String, Object> params = new HashMap<>();
+		    params.put("cNumber", cNumber);
+		    params.put("userEmail", userEmail);
+
+		    
+		    return sqlSession.selectOne("signupMapper.checkNumber",params);
+		 
+		 
+	}
+	
 
 }
