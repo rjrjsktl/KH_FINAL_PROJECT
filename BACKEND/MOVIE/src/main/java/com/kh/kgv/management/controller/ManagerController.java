@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.google.gson.Gson;
@@ -50,8 +51,9 @@ public class ManagerController {
 
 	
 	// 회원 관리자 상태 업데이트
+	@ResponseBody
 	@PostMapping("/Manager_ST")
-		public String  changeMgSt(
+		public int  changeMgSt(
 			@RequestParam("MST") String mst
 			, @RequestParam("userId") String userId
 			, User user
@@ -66,11 +68,13 @@ public class ManagerController {
 		
 		if(result > 0) {
 			System.out.println("관리자 상태 변경 완료");
+			 result = 1;
 			
 		} else {
 			System.out.println("관리자 상태 변경 실패");
+			result = 0;
 		}
-			return null;
+		return result;
 	}
 	
 	
