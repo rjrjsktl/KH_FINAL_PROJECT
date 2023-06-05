@@ -139,7 +139,12 @@
                                 </div>
                             </div>
                         </nav>
-
+						 <div id="myModal" class="modal">
+       						 <div class="modal-content">
+           					 <div class="close-button">&times;</div>
+           					 <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
+        					</div>
+    					</div>
                         <%-- request에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
 
                             <script src="https://code.jquery.com/jquery-3.6.0.min.js"
