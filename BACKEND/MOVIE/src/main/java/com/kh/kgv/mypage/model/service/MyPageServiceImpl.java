@@ -70,6 +70,4 @@ public class MyPageServiceImpl implements MyPageService {
 		// 3) 비밀번호가 일치하지 않으면 0 반환
 		return 0;
 	}
-
-	
 }
