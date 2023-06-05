@@ -53,10 +53,8 @@
 											 로그인이 되어있지 않은 경우 
 											<c:when test="${empty sessionScope.loginUser}"> --%>
 												<div>
-													<input type="text" placeholder="아이디" name="userEmail"
-														value="${cookie.saveId.value}" maxlength="41"> <input
-														type="password" placeholder="비밀번호" name="userPw"
-														maxlength="41">
+													<input type="text" placeholder="아이디" name="userEmail" value="${cookie.saveId.value}" maxlength="41"> 
+													<input type="password" placeholder="비밀번호" name="userPw" maxlength="41">
 													<div class="keep_area">
 														<%-- 쿠키에 saveId가 있는 경우--%>
 														<c:if test="${ !empty cookie.saveId.value}">
