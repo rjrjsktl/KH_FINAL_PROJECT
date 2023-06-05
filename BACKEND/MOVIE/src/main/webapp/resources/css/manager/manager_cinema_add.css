@@ -291,3 +291,41 @@
     padding-top: 4px;
     padding-right: 2px;
 }
+
+
+/* 극장 이름 */
+
+.table_main > div:first-child {
+    display: flex;
+    align-items: center;
+    width: 800px;
+    height: 80px;
+    margin: 10px 0;
+    padding-left: 30px;
+}
+
+.table_main > div:first-child > span {
+	margin-right: 30px;
+}
+
+.table_main > div:first-child > input {
+	height: 40px;
+	width: 30%;
+	padding-left: 8px;
+}
+
+
+/* 극장 주소 */
+
+.table_main > div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    width: 800px;
+    height: 200px;
+    margin: 10px 0;
+    padding-left: 30px;
+}
+
+.table_main > div:nth-child(2) > span {
+	margin-right: 30px;
+}
