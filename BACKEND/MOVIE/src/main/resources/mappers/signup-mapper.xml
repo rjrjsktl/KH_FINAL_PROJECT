@@ -29,6 +29,8 @@
 		<result property="userSns" 			column="USER_SNS"/>
 		<result property="userChange" 		column="USER_CHANGE"/>
 		<result property="userDelete" 		column="USER_DELETE"/>
+		<result property="userManagerSt" 		column="USER_MANAGERST"/>
+		<result property="userBlock" 		column="USER_BLOCK"/>
 	</resultMap>
 	
 	<resultMap type="email" id="email_rm">
