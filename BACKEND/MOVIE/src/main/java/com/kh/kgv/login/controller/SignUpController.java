@@ -79,6 +79,18 @@ public class SignUpController {
 			return result;
 		}
 		
+		//전화번호 중복 검사
+		@ResponseBody
+		@GetMapping("telDupCheck")
+		public int telDupCheck(String userTel) {
+			
+			int result = service.telDupCheck(userTel);
+			
+			return result;
+			
+		}
+		
+		
 		//회원 가입
 		@PostMapping("/signUp")
 		public String signUp(User inputUser
@@ -100,14 +112,15 @@ public class SignUpController {
 			
 			String message =null;
 			String path =null;
-			
+			logger.debug("result : " + result);
 			
 			if(result > 0) {
 				message = "회원가입 성공!";
 				path = "redirect:/";
 			}else {
 				message = "회원가입 실패";
-				path = "redirect:/signUp/signUp_sns";
+				path = "redirect:/signUp";
+				
 			}
 			
 			ra.addFlashAttribute("message", message);
@@ -116,8 +129,8 @@ public class SignUpController {
 		
 		@ResponseBody
 		@GetMapping("/sendEmail")
-		public int sendEmail(String userEmail ,
-				@RequestParam Map<String, Object> paramMap) {
+		public int sendEmail(String userEmail 
+				) {
 			
 			logger.debug("userEmail : " + userEmail);
 			
@@ -198,7 +211,7 @@ public class SignUpController {
 			
 			
 			logger.debug("userEmail : " + userEmail);
-			logger.debug("cNumber : " + cNumber);
+			logger.debug("cnum : " + cNumber);
 			
 			
 			int result =  service.checkNumber(cNumber, userEmail);

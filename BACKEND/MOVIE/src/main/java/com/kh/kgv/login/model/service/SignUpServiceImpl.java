@@ -53,12 +53,27 @@ public class SignUpServiceImpl implements SignUpService {
 
 	@Override
 	public int insertCertification(String cnum, String userEmail) {
-		return dao.insertCertification(userEmail,cnum);
+		
+	 int result = dao.updateCertification( userEmail, cnum);
+		
+		
+	// 2) 일치하는 이메일이 없는 경우 -> 처음으로 인증번호 발급받음 -> 삽입(INSERT)
+			if(result == 0) {
+				result = dao.insertCertification(userEmail,cnum);			
+			}
+			
+		return result;
+		
 	}
 
 	@Override
 	public int checkNumber(String cNumber, String userEmail) {
 		return dao.checkNumber(userEmail,cNumber);
+	}
+
+	@Override
+	public int telDupCheck(String userTel) {
+		return dao.telDupCheck( userTel);
 	}
 
 	
