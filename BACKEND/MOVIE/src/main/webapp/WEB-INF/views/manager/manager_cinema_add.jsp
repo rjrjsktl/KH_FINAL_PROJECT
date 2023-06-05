@@ -9,9 +9,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>영화 등록</title>
+    <title>극장 등록</title>
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_movie_add.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_cinema_add.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
     <!-- fontawesome -->
@@ -40,10 +40,23 @@
                     <div class="set_Edge">
                         <div class="table_Wrapper">
                             <div class="table_Title">
-                                <span>영화 등록</span>
+                                <span>극장 등록</span>
                             </div>
                             <form>
                                 <div class="table_main">
+                                    <div>
+                                        <span>이름</span>
+                                        <input id="cinema_name" type="text">
+                                    </div>
+                                    <div>
+                                    	<span>주소</span>
+                                    	
+                                    </div>
+									
+
+
+
+
 
                                 </div>
                             </form>
@@ -60,7 +73,7 @@
     </main>
 
 
-    <script src="${contextPath}/resources/js/manager/manager_movie_add.js"></script>
+    <script src="${contextPath}/resources/js/manager/manager_cinema_add.js"></script>
     <script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
     <script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
 </body>

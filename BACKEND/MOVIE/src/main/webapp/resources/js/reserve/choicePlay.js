@@ -52,7 +52,7 @@ $('.swiper-slide.date').on("click", function(){
 let region = $('#region_list > li > a');
 let regionName;
 
-region.click(function(){
+region.on("click", function(){
   regionName = this.text.substr(0, 2);
   $('.cinema_list').css('display', 'none');
   $(`.cinema_list[data-region=${regionName}]`).css('display', 'block');
@@ -64,7 +64,7 @@ region.click(function(){
 let cinema = $('.cinema_list > li > a');
 let cinemaName = "강남"; // 디폴트 값은 본사
 
-cinema.click(function(){
+cinema.on("click", function(){
   cinemaName = this.text;
   $('#cinema_select').html(cinemaName);
 });
