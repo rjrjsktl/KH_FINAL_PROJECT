@@ -31,7 +31,7 @@
             <section>
                 <div class="logo-section">
                     <div>
-                        <a href="#"><img src="" alt="암거나박아요"></a>
+                        <a href="../../html/common/main.html"><img src="" alt="암거나박아요"></a>
                     </div>
                     <span>KHTHEATER</span>
                 </div>
@@ -43,14 +43,14 @@
                             <img src="" alt="">
                         </div>
 
-                        <li>
-                            <a href="#">
+                        <li class="login-btn-area">
+                            <a href="#" id="myBtn">
                                 <span><img src="../../images/headerPng/test.png" alt=""></span>
                                 <span>로그인</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="../signup/signup.html">
                                 <span><img src="../../images/headerPng/test2.png" alt=""></span>
                                 <span>회원가입</span>
                             </a>
@@ -62,7 +62,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="../notice/notice_home.html">
                                 <span><img src="../../images/headerPng/test5.png" alt=""></span>
                                 <span>고객센터</span>
                             </a>
@@ -78,13 +78,13 @@
                     <ul>
                         <li class="navBar"><a href="#">영화</a>
                             <ul class="menuBar" style="display:none">
-                                <li><a href="">무비 차트</a></li>
+                                <li><a href="../../html/introduce/movieList.html">무비 차트</a></li>
                             </ul>
                         </li>
                         <li class="navBar"><a href="#">상영관</a>
                             <ul class="menuBar" style="display:none">
-                                <li><a href="">지역별</a></li>
-                                <li><a href="">특별관</a></li>
+                                <li><a href="../../html/introduce/theater.html">지역별</a></li>
+                                <li><a href="../../html/introduce/theaterSpacial.html">특별관</a></li>
                             </ul>
                         </li>
                         <li class="navBar"><a href="#">예매</a>
@@ -108,7 +108,7 @@
                             </ul>
                         </li>
                     </ul>
-                    <div class="dummy"></div>
+                    <div class="dummy" style="display:none"></div>
                     <div>
                         <form action="">
 
@@ -130,19 +130,18 @@
                 <div class="aside-ul-wrap">
                     <ul class="aslide-list">
                         <li>
-                            <a><h1>고객센터</h1></a>
-                        </li>
+                            <a href="notice_home.html"><h1>고객센터</h1></a>                        </li>
                         <li>
-                            <a href="#">공지사항</a>
+                            <a href="notice.html">공지사항</a>
                         </li>
                         <li>
                             <a href="#">1:1 문의</a>
                         </li>
                         <li>
-                            <a href="#">자주찾는 질문</a>
+                            <a href="question_homel.html">자주찾는 질문</a>
                         </li>
                         <li>
-                            <a href="#">분실문 문의</a>
+                            <a href="find-my-item.html">분실문 문의</a>
                         </li>
                         <li>
                             <a href="#">이용약관</a>
@@ -425,9 +424,15 @@
                 <c:remove var="message" scope="session" />
             </c:if>
             -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div class="close-button">&times;</div>
+                    <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
+                </div>
+            </div>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+            <script src="../../js/common/header.js"></script>
     <script src="../../js/notice/notice-home.js"></script>
 </body>
 

@@ -38,6 +38,14 @@ public class ManagerServiceImpl implements ManagerService{
 		
 		return getUserList;
 	}
+
+
+	// 회원 관리자 상태 업데이트
+	@Override
+	public int updateST(User user) {
+		return dao.updateST(user);
+	}
+	
 	
 	
 }
