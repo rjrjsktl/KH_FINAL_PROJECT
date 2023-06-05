@@ -127,27 +127,9 @@
 		</div>
 	</nav>
 
-
-
-	<%-- request에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
-
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-		crossorigin="anonymous"></script>
-
-	<script src="${contextPath}/resources/js/main/header.js"></script>
-	<script>
-		const test = "${loginUser}";
-		console.log(test
-				+ "+++++++++++++++++++++++++++++++++++++++++++++++++++++");
-	</script>
-</header>
-
-<div id="myModal" class="modal">
-	<div class="modal-content">
-		<div class="close-button">&times;</div>
-		<iframe src="${contextPath}/user/login" frameborder="0" width="500px"
-			height="500px"></iframe>
-	</div>
-
-</div>
+                            <script src="${contextPath}/resources/js/main/header.js"></script>
+                            <script>
+                                const test = "${loginUser}";
+                                console.log(test + "++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                            </script>
+                    </header>
