@@ -5,7 +5,6 @@
                 <%@ page session="false" %>
 
                     <footer>
-
                         <section>
 
                             <div>
