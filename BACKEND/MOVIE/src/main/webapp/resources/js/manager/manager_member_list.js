@@ -21,9 +21,10 @@ manager.on('change', (e) => {
             success: function (result) {
                 if (result > 0) {
                     console.log("N -> Y로 변경 완료");
-
+                    alert("관리자 상태 변경 완료!");
                 } else {
                     console.log("N -> Y로 변경 실패");
+                    alert("관리자 상태 변경 실패!");
                 }
             },
 
@@ -48,9 +49,10 @@ manager.on('change', (e) => {
             success: function (result) {
                 if (result > 0) {
                     console.log("Y -> N으로 변경 완료");
-
+                    alert("관리자 상태 변경 완료!");
                 } else {
                     console.log("Y -> N으로 변경 실패");
+                    alert("관리자 상태 변경 완료!");
                 }
             },
 
