@@ -7,9 +7,10 @@ import com.kh.kgv.customer.model.vo.User;
 
 public interface ManagerService {
 
-	/** 회원 목록 조회
-	 * @return
-	 */
+	// 회원 목록 조회
 	Map<String, Object> selectAll(int cp);
+
+	// 회원 관리자 상태 업데이트
+	int updateST(User user);
 
 }

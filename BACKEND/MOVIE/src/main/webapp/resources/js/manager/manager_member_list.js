@@ -14,7 +14,7 @@ manager.on('change', (e) => {
         $.ajax({
             url: "Manager_ST",
             data: {
-                "ST": $(e.currentTarget).val()
+                "MST": $(e.currentTarget).val()
                 , "userId": $(e.currentTarget).data('id')
             },
             type: "POST",
@@ -41,7 +41,7 @@ manager.on('change', (e) => {
         $.ajax({
             url: "Manager_ST",
             data: {
-                "ST": $(e.currentTarget).val()
+                "MST": $(e.currentTarget).val()
                 , "userId": $(e.currentTarget).data('id')
             },
             type: "POST",
