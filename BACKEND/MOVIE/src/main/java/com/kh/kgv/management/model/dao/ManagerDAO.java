@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.vo.Pagination;
 
 @Repository
@@ -44,6 +45,17 @@ public class ManagerDAO {
 		
 		return sqlSession.update("managerMapper.updateST", user);
 	}
+
+	/** 영화 등록 DAO
+	 * @param inputMovie
+	 * @return
+	 */
+	public int MovieAdd(Movie inputMovie) {
+		System.out.println(" ============= 영화 등록 DAO실행");
+		return sqlSession.insert("managerMapper.MovieAdd", inputMovie);
+	}
+	
+	
 
 	
 
