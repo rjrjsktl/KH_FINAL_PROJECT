@@ -1,7 +1,3 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>예매선택 페이지</title>
-    <link rel="stylesheet" href="../../css/outline.css">
-    <link rel="stylesheet" href="../../css/theater.css">
+    <link rel="stylesheet" href="../../css/common/outline.css">
+    <link rel="stylesheet" href="../../css/theater/theater.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
 </head>
@@ -19,197 +15,286 @@
 <body>
     <div id="wrap">
         <header>
-            <!-- 헤더 윗쪽 섹션 -->
-            <section>
 
-                <div>
+            <section>
+                <div class="logo-section">
                     <div>
-                        <!-- 
-                             contextpath 지정 必
-                             이미지 태그 속 로고위치 제대로 작성
-                          -->
-                        <!-- <a href="${contextPath}">
-                 <img src="${contextPath}/resources/images/logo.jpg" id="home-logo">
-             </a> -->
-                        <a href="#"><img src="../images/logo3.png" alt="로고 이미지 삽입 w160 h70 "></a>
+                        <a href="../../html/common/main.html"><img src="" alt="암거나박아요"></a>
                     </div>
-                    <div>
-                        <span>K H T H E A T E R</span>
-                    </div>
+                    <span>KHTHEATER</span>
                 </div>
 
-                <div>
-                    <div> <a href="#"><img src="" alt="광고 이미지삽입width:200px height:100px"></a></div>
-
+                <div class="memberInfo_wrap">
                     <ul>
-                        <li>
-                            <a href="#">
-                                <span><i class="fa-solid fa-lock"></i></span>
-                                <p>SIGN IN</p>
+
+                        <div>
+                            <img src="" alt="">
+                        </div>
+
+                        <li class="login-btn-area">
+                            <a href="#" id="myBtn">
+                                <span><img src="../../images/headerPng/test.png" alt=""></span>
+                                <span>로그인</span>
                             </a>
                         </li>
-
                         <li>
-
-
-                            <a href="#">
-                                <span><i class="fa-regular fa-user"></i></span>
-                                <p>MY PAGE</p>
+                            <a href="../signup/signup.html">
+                                <span><img src="../../images/headerPng/test2.png" alt=""></span>
+                                <span>회원가입</span>
                             </a>
-
-
                         </li>
-
                         <li>
                             <a href="#">
-                                <span><i class="fa-solid fa-headset"></i></span>
-                                <p>HELP</p>
+                                <span><img src="../../images/headerPng/test3.png" alt=""></span>
+                                <span>MY KGV</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../notice/notice_home.html">
+                                <span><img src="../../images/headerPng/test5.png" alt=""></span>
+                                <span>고객센터</span>
                             </a>
                         </li>
 
                     </ul>
                 </div>
-
             </section>
 
             <!-- nav bar-->
             <nav>
-
                 <div>
                     <ul>
-                        <li><a href="#">영화</a></li>
-                        <li><a href="#">극장</a></li>
-                        <li><a href="#">예매</a></li>
-                        <li><a href="#">스토어</a></li>
-                        <li><a href="#">이벤트</a></li>
-                        <li><a href="#">혜택</a></li>
-                    </ul>
+                        <li class="navBar"><a href="#">영화</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="../../html/introduce/movieList.html">무비 차트</a></li>
+                            </ul>
+                        </li>
+                        <li class="navBar"><a href="#">상영관</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="../../html/introduce/theater.html">지역별</a></li>
+                                <li><a href="../../html/introduce/theaterSpacial.html">특별관</a></li>
+                            </ul>
+                        </li>
+                        <li class="navBar"><a href="#">예매</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="">빠른 예매</a></li>
+                            </ul>
+                        </li>
 
+                        <li class="navBar"><a href="#">이벤트</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="">진행중 이벤트</a></li>
+                                <li><a href="">지난 이벤트</a></li>
+                                <li><a href="">당첨자 발표</a></li>
+                            </ul>
+                        </li>
+                        <li class="navBar"><a href="#">스토어</a></li>
+                        <li class="navBar"><a href="#">혜택</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="">멤버쉽</a></li>
+                                <li><a href="">제휴/할인</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="dummy" style="display:none"></div>
                     <div>
                         <form action="">
 
-                            <input type="text" placeholder="오늘의 영화를 찾아보세용">
-                            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <input type="text" placeholder="아 영화 재밌는거 없나">
+                            <button><img src="../../images/headerPng/test6.png" alt=""></button>
                         </form>
                     </div>
 
                 </div>
 
             </nav>
-
         </header>
 
         <main>
-            <!-- 여기서 부터 작업하세요. 넹묜 -->
+
 
             <section>
-                <p>전체극장</p>
-                <div class="theaterList">
-                    <!-- 전체극장 -->
-                    <div>
+                <div class="theater-wrap">
+                    <h2>전체극장</h2>
+                    <div class="cont-wrap">
+                        <div class="list_wrap">
+                            <ul class="area-wrap">
 
 
+                                <li class="area-name">
+                                    <span class="location yellowCol">서울</span>
 
-                        <ul class="location_name">
-                            <li class="area_name">
-                                <button><a href="#">서울</a></button>
-                                <div class="theater_area">
-                                    <ul>
-                                        <li><a href="#">속초영화관</a></li>
-                                        <li><a href="#">속초영화관</a></li>
-                                        <li><a href="#">속초영화관</a></li>
-                                        <li><a href="#">속초영화관</a></li>
-                                        <li><a href="#">속초영화관</a></li>
-                                        <li><a href="#">속초영화관</a></li>
-                                        <li><a href="#">속초영화관</a></li>
-                                        <li><a href="#">속초영화관</a></li>
-                                    
-                                    </ul>
-                                </div>
-                            </li>
+                                    <div class="list-detail block">
+                                        <ul>
+                                            <li><a href="https://www.naver.com">강남대로</a></li>
+                                            <li><a href="">강남</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
 
 
+                                <li class="area-name">
+                                    <span class="location">경기</span>
+                                    <div class="list-detail none">
+                                        <ul>
+                                            <li><a href="https://www.naver.com">강남대로</a></li>
+                                            <li><a href="">강남</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
 
+                                <li class="area-name">
+                                    <span class="location">인천</span>
+                                    <div class="list-detail none">
+                                        <ul>
+                                            <li><a href="https://www.naver.com">강남대로</a></li>
+                                            <li><a href="">강남</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
 
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="area-name">
+                                    <span class="location">대전</span>
+                                    <div class="list-detail none">
+                                        <ul>
+                                            <li><a href="https://www.naver.com">강남대로</a></li>
+                                            <li><a href="">강남</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
+                                            <li><a href="">강남대로</a></li>
 
-                            <li class="area_name"><button><a href="#">서울</a></button></li>
-                            <li class="area_name"><button><a href="#">서울</a></button></li>
-                            <li class="area_name"><button><a href="#">서울</a></button></li>
-                            <li class="area_name"><button><a href="#">서울</a></button></li>
-                            <li class="area_name"><button><a href="#">서울</a></button></li>
-                            <li class="area_name"><button><a href="#">서울</a></button></li>
-                        </ul>
+                                            <li><a href="">강남대로</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="area-name">
+                                    <span class="location">부산</span>
+                                    <div class="list-detail none">
+                                        <ul>
+                                            <li><a href="https://www.naver.com">강남대로</a></li>
+                                            <li><a href="">강남</a></li>
+                                            <li><a href="">강남대로</a></li>
+
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="area-name">
+                                    <span class="location">광주</span>
+                                    <div class="list-detail none">
+                                        <ul>
+                                            <li><a href="https://www.naver.com">강남대로</a></li>
+                                            <li><a href="">강남</a></li>
+
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="area-name">
+                                    <span class="location">강원</span>
+                                    <div class="list-detail none">
+                                        <ul>
+                                            <li><a href="https://www.naver.com">강남대로</a></li>
+
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="area-name">
+                                    <span class="location">제주</span>
+                                    <div class="list-detail none">
+                                        <ul>
+                                            <li><a href="https://www.naver.com">강남대로</a></li>
+                                            <li><a href="https://www.naver.com">강남대로</a></li>
+                                            <li><a href="https://www.naver.com">강남대로</a></li>
+                                            <li><a href="https://www.naver.com">강남대로</a></li>
+
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- cont -->
+
                     </div>
-                    <div class="dummy">
-
-                        <div></div>
-                        <div></div>
-
-                    </div>
-
+                </div>
             </section>
 
             <div class="event-wrap">
-                <div><span>극장 이벤트</span> <span><a href="#">더보기</a></span> </div>
-
-                <div>
-                    <div class="event_card"></div>
-                    <div class="event_card"></div>
+                <div class="event-wrap-title">
+                    <span>극장 이벤트</span><a href="">더보기></a>
                 </div>
-
+                <div>
+                    <div><a href=""><img src="" alt=""></a></div>
+                    <div><a href=""><img src="" alt=""></a></div>
+                </div>
             </div>
 
-            <div class="notice_wrap">
-                <div><span>극장 공지사항</span> <span><a href="#">더보기</a></span> </div>
+            <div class="table-wrap">
+            <span>극장 공지사항</span>
 
-    
-                    <table>
-                        <thead>
-                            <th>극장</th>
-                            <th>제목</th>
-                            <th>지역</th>
-                            <th>등록일</th>
-                        </thead>
-
-                        <tbody>
-                            <tr class="row" >
-                                <td>극장이름</td>
-                                <th><a>내용</a></th>
-                                <td>지역</td>
-                                <td>2023.05.26</td>
-                            </tr>
-                            <tr class="row" >
-                                <td>극장이름</td>
-                                <th><a>내용내용</a></th>
-                                <td>지역</td>
-                                <td>2023.05.26</td>
-                            </tr>
-                            <tr class="row" >
-                                <td>극장이름</td>
-                                <th><a>내용</a></th>
-                                <td>지역</td>
-                                <td>2023.05.26</td>
-                            </tr>
-                            <tr class="row" >
-                                <td>극장이름</td>
-                                <th><a>내용</a></th>
-                                <td>지역</td>
-                                <td>2023.05.26</td>
-                            </tr>
-                            <tr class="row" >
-                                <td>극장이름</td>
-                                <th><a>내용</a></th>
-                                <td>지역</td>
-                                <td>2023.05.26</td>
-                            </tr>
-                   
-                        </tbody>
-
-
-                    </table>
-
-           
-
+                <table>
+                    <thead>
+                        <th>극장</th>
+                        <th>내용</th>
+                        <th>등록일</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[서울영화관]</td>
+                            <td>내용이 이렇게나 긴데 일립시스가 필요할까 없을거같은데.. 그칭?</td>
+                            <td>2023.06.05</td>
+                        </tr>
+                        <tr>
+                            <td>[부산영화관]</td>
+                            <td>내용이 이렇게나 긴데 일립시스가 필요할까 없을거같은데..</td>
+                            <td>2023.06.05</td>
+                        </tr>
+                        <tr>
+                            <td>[속초영화관]</td>
+                            <td>내용이 이렇게나 긴데 일립시스가 필요할까 없을거같은데..</td>
+                            <td>2023.06.05</td>
+                        </tr>
+                        <tr>
+                            <td>[속초영화관]</td>
+                            <td>내용이 이렇게나 긴데 일립시스가 필요할까 없을거같은데..</td>
+                            <td>2023.06.05</td>
+                        </tr>
+                        <tr>
+                            <td>[속초영화관]</td>
+                            <td>내용이 이렇게나 긴데 일립시스가 필요할까 없을거같은데..</td>
+                            <td>2023.06.05</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
             </div>
 
 
@@ -224,10 +309,11 @@
 
 
 
-            <!-- 여기까지 작업하세요. -->
         </main>
 
     </div>
+
+
     <footer>
 
         <section>
@@ -257,20 +343,17 @@
         </section>
 
     </footer>
-    <!--
-     <%-- session에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
-             <c:if test="${ !empty sessionScope.message }">
-                 <script>
-                     alert("${message}");
-                     // EL 작성 시 scope를 지정하지 않으면
-                     // page -> request -> session -> application 순서로 검색하여
-                     // 일치하는 속성이 있으면 출력
-                 </script>
- 
-                 <%-- message 1회 출력 후 session에서 제거 --%>
-                 <c:remove var="message" scope="session" />
-             </c:if>
-             -->
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="close-button">&times;</div>
+            <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../../js/common/header.js"></script>
+    <script src="../../js/theater/theater.js"></script>
 </body>
 
 </html>

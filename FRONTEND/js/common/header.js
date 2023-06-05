@@ -25,6 +25,7 @@ window.onclick = function(event) {
 }
 
 
+
 // 메뉴창 하버
 $(document).ready(function() {
   $('.navBar, .dummy').hover(
@@ -38,5 +39,6 @@ $(document).ready(function() {
       }
   );
 });
+
 
 
