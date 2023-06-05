@@ -154,6 +154,6 @@
                             <script src="${contextPath}/resources/js/main/header.js"></script>
                             <script>
                                 const test = "${loginUser}";
-                                console.log(test + "+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                                console.log(test + "++++++++++++++++++++++++++++++++++++++++++++++++++++++");
                             </script>
                     </header>
