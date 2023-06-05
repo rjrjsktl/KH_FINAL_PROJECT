@@ -2,14 +2,17 @@
 
 // 유효성 검사 여부를 기록할 객체 생성
 const checkObj = {
-    "userEmail": false,
+    "userEmail": false,   
+     "cNumber": false,
     "userPw": false,
     "userPwConfirm": false,
     "userNick": false,
-    "userGender": false,
+    "userName": false,
     "userBirth": false,
+    "userGender": false,
     "userTel": false,
-    // "sendEmail"       : false   // 인증번호 발송 체크
+    "sendEmail": false   // 인증번호 발송 체크
+
 };
 
 
@@ -36,11 +39,45 @@ userTel.addEventListener("input", function () {
     const regExp = /^0(1[01679]|2|[3-6][1-5]|70)\d{3,4}\d{4}$/;
 
     if (regExp.test(userTel.value)) { // 유효한 경우
-        telMessage.innerText = "";
-        telMessage.classList.add("confirm");
-        telMessage.classList.remove("error");
+        
+        $.ajax({
 
-        checkObj.userTel = true;
+            url: "telDupCheck",
+
+            data: { "userTel": userTel.value },
+
+            type: "GET",
+
+            success: function (result) {
+
+
+                if (result == 1) { //중복 o
+                    telMessage.innerText = "이미 사용 중인 전화번호 입니다.";
+                    telMessage.classList.add("error");
+                    telMessage.classList.remove("confirm");
+
+                    checkObj.userTel = false;
+
+                } else { //중복 x
+                    telMessage.innerText = "";
+                    telMessage.classList.add("confirm");
+                    telMessage.classList.remove("error");
+
+                    checkObj.userTel = true;
+
+                }
+            },
+
+            error: function () {
+
+                console.log("에러 발생");
+            }
+
+        });
+        
+        
+        
+       
 
     } else { // 유효하지 않은 경우
         telMessage.innerText = "연락처 형식이 올바르지 않습니다.";
@@ -64,6 +101,7 @@ userEmail.addEventListener("input", function () {
         emailMessage.classList.remove("confirm", "error");
 
         checkObj.userEmail = false;
+        
 
         return;
     }
@@ -477,13 +515,16 @@ function signUpValidate() {
 
             switch (key) {
                 case "userEmail": str = "이메일이"; break;
+                // case "sendEmail": str = "이메일 인증번호 발송이12"; break;
+                case "cNumber": str = "이메일 인증번호가 "; break;
                 case "userPw": str = "비밀번호가"; break;
                 case "userPwConfirm": str = "비밀번호 확인이"; break;
                 case "userNick": str = "닉네임이"; break;
-                case "userName": str = "이름이"; break;
-                case "userGender": str = "성별이"; break;
+                case "userName": str = "이름이"; break;             
                 case "userBirth": str = "생년월일이"; break;
+                case "userGender": str = "성별이"; break;
                 case "userTel": str = "전화번호가"; break;
+                
             }
 
             str += " 유효하지 않습니다.";
@@ -502,11 +543,27 @@ function signUpValidate() {
 
 
 
-
+const sendBtn = document.getElementById("sendBtn");
+const cMessage = document.getElementById("cMessage");
+let checkInterval; // setInterval을 저장할 변수
+let min = 4;
+let sec = 59;
 
 sendBtn.addEventListener("click", function () {
 
+   // 입력이 되지 않은 경우
+   if (userEmail.value.length == 0) {
+    emailMessage.innerText = "메일을 받을 수 있는 이메일을 입력해주세요.";
+    emailMessage.classList.remove("confirm", "error");
+
+
+}
+
+ 
+
+    
     if (checkObj.userEmail) { // 유효한 이메일이 작성되어 있을 경우에만 메일 보내기
+
 
         $.ajax({
             url: "sendEmail",
@@ -517,11 +574,15 @@ sendBtn.addEventListener("click", function () {
                 console.log(result);
 
                 // 인증 버튼이 클릭되어 정상적으로 메일이 보내졌음을 checkObj에 기록
-                checkObj.sendEmail = true;
-
+                 checkObj.sendEmail = true;
+                console.log(checkObj.sendEmail);
+               
             },
             error: function () {
                 console.log("이메일 발송 실패")
+
+
+                
             }
         });
 
@@ -558,7 +619,31 @@ sendBtn.addEventListener("click", function () {
 
 
         alert("인증번호가 발송되었습니다. 이메일을 확인해주세요.");
+        
+        
+        // return;
+       
+
+    }  else{
+
+        alert("유효한 이메일을 작성해주세요.");
+
+        
+        // return ;
     }
+    
+
+        
+    console.log(checkObj.sendEmail);
+    
+
+   
+
+
+
+
+   
+
 });
 
 
@@ -567,11 +652,43 @@ const cNumber = document.getElementById("cNumber");
 const cBtn = document.getElementById("cBtn");
 
 
+
+
+
+
+
+// cNumber.addEventListener("input", function(){
+//     // 입력이 되지 않은 경우
+
+//     if (cNumber.value.length == 0) {
+
+//         checkObj.sendEmailcheck = false;
+
+        
+    
+    
+//     }else{
+  
+        
+//     }
+
+
+
+// });
+
+
+
+
+
 cBtn.addEventListener("click", function () {
+
+    console.log(checkObj.sendEmail);
+
 
     // 1. 인증번호 받기 버튼이 클릭되어 이메일 발송되었는지 확인
     if (checkObj.sendEmail) {
 
+        console.log(checkObj.sendEmail);
         // 2. 입력된 인증번호가 6자리가 맞는지 확인
         if (cNumber.value.length == 6) { // 6자리 맞음
 
@@ -595,12 +712,17 @@ cBtn.addEventListener("click", function () {
                         cMessage.innerText = "인증되었습니다.";
                         cMessage.classList.add("confirm");
                         cMessage.classList.remove("error");
+                        checkObj.cNumber = true;
 
                     } else if (result == 2) {
                         alert("만료된 인증 번호 입니다.");
 
+                        checkObj.cNumber = false;
+
                     } else { // 3
                         alert("인증 번호가 일치하기 않습니다.");
+
+                        checkObj.cNumber = false;
                     }
 
 
@@ -611,15 +733,17 @@ cBtn.addEventListener("click", function () {
                 }
             });
 
-
+           
 
         } else { // 6자리 아님
             alert("인증번호를 정확하게 입력해주세요.");
             cNumber.focus();
+            checkObj.cNumber = false;
         }
 
     } else { // 인증번호를 안받은 경우
         alert("인증번호 받기 버튼을 먼저 클릭해주세요.");
+        
     }
 
 });
@@ -657,6 +781,11 @@ testbtn.addEventListener("click", function () {
     console.log("생일" + checkObj.userBirth);
     console.log("성별" + checkObj.userGender);
     console.log("연락처" + checkObj.userTel);
+    console.log("이메일 인증번호 버튼" + checkObj.sendEmail);
+    console.log("이메일 인증" + checkObj.cNumber);
+    console.log("이메일 인증 체크 " + checkObj.sendEmailcheck);
+    
+    
     console.log("이메일" + userEmail.value);
     console.log("비밀번호" + userPw.value);
     console.log("닉네임" + userNick.value);
@@ -664,6 +793,8 @@ testbtn.addEventListener("click", function () {
     console.log("생일" + userBirth.value);
     console.log("성별" + userGender.value);
     console.log("연락처" + userTel.value);
+    console.log("이메일 인증번호 버튼" + sendEmail.sendBtn);
+    console.log("이메일 인증" + cNumber.value);
 
 
 })

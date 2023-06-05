@@ -1,0 +1,252 @@
+/* 전체 틀 잡아주는 css */
+main>section {
+    width: 1040px;
+    margin: 0 auto;
+    padding: 50px 30px 70px 30px;
+    display: flex;
+    justify-content: space-between !important;
+    flex-wrap: wrap;
+}
+
+.aside {
+    width: 18%;
+}
+
+.container {
+    width: 80%;
+    display: flex;
+}
+
+.container>div:nth-child(1) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ////////////////////////////////////////// */
+
+/* 왼쪽 */
+.notice-wraaper>div:nth-child(1) {
+    width: 15%;
+}
+
+.aside-ul-wrap {
+    width: 100%;
+    height: 100%;
+}
+
+.aslide-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.aslide-list>li {
+    width: 100%;
+    height: 50px;
+    line-height: 48px;
+    display: flex;
+    margin-bottom: 10px;
+
+}
+
+.aslide-list>li>a {
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+}
+
+.aslide-list>li:nth-child(1)>a {
+    background-color: rgb(73, 73, 73);
+}
+
+.aslide-list>li:nth-child(1)>a {
+    color: rgb(251, 251, 251);
+}
+
+.aslide-list>li>a {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.aslide-list>li>a:hover {
+    color: rgb(251, 251, 251);
+    background-color: rgb(73, 73, 73);
+}
+
+.notice-wraaper>div:nth-child(2) {
+    width: 82%;
+}
+
+/* 여기까지  왼쪽 ui관련 재활용 계속해야합니당.*/
+
+.notice-header {
+    border-bottom: 20px;
+    border-bottom: 2px solid rgb(255, 196, 0);
+    padding: 0 0 20px 10px;
+}
+
+.notice-header>p {
+    font-size: 0.8rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.search-area {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 80px;
+    padding: 25px 0;
+}
+
+.search-area>p {
+    line-height: 28px;
+}
+
+.search-area>p>span {
+    padding: 0 5px;
+}
+
+.search-area>div {
+    width: 40%;
+    height: 100%;
+    display: flex;
+
+    padding: 0 10px;
+
+}
+
+.search-area>div>input {
+    width: 70%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+
+.search-area>div>button {
+    width: 30%;
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+
+.table-wrap {
+    width: 784px;
+    
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead * {
+    padding:10px;   border-bottom: 2px solid rgb(73, 73, 73);
+}
+
+
+thead th:nth-child(1) {
+    width: 10%;
+    height:50px;
+}
+
+thead th:nth-child(2) {
+    text-align: left;
+    width: 60%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+thead th:nth-child(3) {
+    width: 15%;
+}
+
+thead th:nth-child(4) {
+    width: 10%;
+}
+
+tbody{
+    text-align: center;
+}
+
+.row *{
+    padding:10px;
+    height:40px;
+    border-bottom: 1px solid rgba(73, 73, 73, 0.4);
+}
+
+.row th:nth-child(2) {
+    text-align: left;
+    max-width:450px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding:10px
+}
+
+.row th:nth-child(2) > a:hover{
+    text-decoration: underline;
+    color:rgb(251, 251, 251);
+}
+
+.pagination {
+
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center;    padding-top:30px;
+  }
+
+  .pagination li a {
+    color: white;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  .pagination li.active {
+    background-color: yellow;
+  }
+  
+  .pagination li a:hover:not(.active) {
+    background-color: yellow;
+    color:black;
+  }
+
+  .block {
+    display: block;
+  }
+  
+  .none {
+    display: none;
+  }
+
+.table-wrap> div:nth-child(2) {
+    margin-top:20px;
+    display: flex;
+    justify-content: right;
+    right:0;
+}
+
+.table-wrap> div:nth-child(2) > button {
+    background-color: rgb(73, 73, 73);
+    padding:10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.table-wrap> div:nth-child(2) > button:hover{
+    background-color: white;
+    color: black;
+}

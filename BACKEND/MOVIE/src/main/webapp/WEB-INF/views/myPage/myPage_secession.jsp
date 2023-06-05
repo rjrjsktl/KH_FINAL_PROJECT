@@ -14,8 +14,8 @@
     <title>마이페이지<회원 탈퇴>
     </title>
     
-    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
@@ -54,13 +54,14 @@
                                 <label>비밀번호 확인</label>
                             </div>
                             <div class="mypage-info-frame">
-                                <input type="password" name="memberPw" id="memberPw" maxlength="30">
+                                <input type="password" name="userPw" id="userPw" maxlength="30">
                             </div>
                             <div class="mypage-info-frame">
                                 <label>회원 탈퇴 약관</label>
                             </div>
 
                             <pre id="secession-terms">
+                            
         제1조
         이 약관은 샘플 약관입니다.
         

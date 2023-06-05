@@ -8,8 +8,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>메인페이지</title>
+    <title>회원가입 선택 페이지</title>
    
+       <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
        <link rel="stylesheet" href="${contextPath}/resources/css/signUp/signUp_sns.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 

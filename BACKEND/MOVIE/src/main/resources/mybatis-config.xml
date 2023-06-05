@@ -13,6 +13,7 @@
 		<typeAlias type="com.kh.kgv.customer.model.vo.Review" alias="review"/>
 		<typeAlias type="com.kh.kgv.customer.model.vo.Book" alias="book"/>
 		<typeAlias type="com.kh.kgv.customer.model.vo.Sns" alias="sns"/>
+		<typeAlias type="com.kh.kgv.customer.model.vo.Email" alias="email"/>
 
 		<typeAlias type="com.kh.kgv.items.model.vo.Movie" alias="movie"/>
 		<typeAlias type="com.kh.kgv.items.model.vo.Genre" alias="genre"/>
@@ -28,13 +29,21 @@
 		<typeAlias type="com.kh.kgv.management.model.vo.Discount" alias="discount"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.DiscountAdd" alias="da"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.Manager" alias="manager"/>
+		<typeAlias type="com.kh.kgv.management.model.vo.DailyEnter" alias="de"/>
 		
 	</typeAliases>
 
 	<mappers>
+		<!-- 
+			 <mapper resource="mapper 파일 경로" />
+				경로를 작성하는 기준(시작지점)은 src/main/resources 폴더
+		 -->
 		<mapper resource="/mappers/movie-mapper.xml"/>
 		<mapper resource="/mappers/user-mapper.xml"/>
 		<mapper resource="/mappers/signup-mapper.xml"/>
+		<mapper resource="/mappers/EnterCheck-Mapper.xml"/>
+		<mapper resource="/mappers/manager-mapper.xml"/>
+		<mapper resource="/mappers/myPage-mapper.xml"/>
 	</mappers>
 
 </configuration>
