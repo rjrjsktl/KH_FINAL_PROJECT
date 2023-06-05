@@ -1,5 +1,7 @@
 package com.kh.kgv.login.controller;
 
+import java.util.Map;
+
 import javax.mail.internet.MimeMessage;
 
 import org.slf4j.Logger;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -24,8 +27,8 @@ public class SignUpController {
 	@Autowired
 	private SignUpService service;
 	
-//	@Autowired
-//	private JavaMailSender mailSender;
+	@Autowired
+	private JavaMailSender mailSender;
 	
 	private Logger logger = LoggerFactory.getLogger(SignUpController.class);
 	
@@ -76,6 +79,18 @@ public class SignUpController {
 			return result;
 		}
 		
+		//전화번호 중복 검사
+		@ResponseBody
+		@GetMapping("telDupCheck")
+		public int telDupCheck(String userTel) {
+			
+			int result = service.telDupCheck(userTel);
+			
+			return result;
+			
+		}
+		
+		
 		//회원 가입
 		@PostMapping("/signUp")
 		public String signUp(User inputUser
@@ -97,87 +112,113 @@ public class SignUpController {
 			
 			String message =null;
 			String path =null;
-			
+			logger.debug("result : " + result);
 			
 			if(result > 0) {
 				message = "회원가입 성공!";
 				path = "redirect:/";
 			}else {
 				message = "회원가입 실패";
-				path = "redirect:/signUp/signUp_sns";
+				path = "redirect:/signUp";
+				
 			}
 			
 			ra.addFlashAttribute("message", message);
 			return path;
 		}
 		
-//		@ResponseBody
-//		@GetMapping("/sendEmail")
-//		public String sendEmail(String userEmail) {
-//			
-//			logger.debug("userEmail : " + userEmail);
-//			
-//			
-//			 String cNumber = "";
-//	         for (int i = 0; i < 6; i++) {
-//
-//	            int sel1 = (int) (Math.random() * 3); // 0:숫자 / 1,2:영어
-//
-//	            if (sel1 == 0) {
-//
-//	               int num = (int) (Math.random() * 10); // 0~9
-//	               cNumber += num;
-//
-//	            } else {
-//
-//	               char ch = (char) (Math.random() * 26 + 65); // A~Z
-//
-//	               int sel2 = (int) (Math.random() * 2); // 0:소문자 / 1:대문자
-//
-//	               if (sel2 == 0) {
-//	                  ch = (char) (ch + ('a' - 'A')); // 대문자로 변경
-//	               }
-//
-//	               cNumber += ch;
-//	            }
-//
-//	         }
-//	         
-//	         String setForm = "poer131877@gmail.com";
-//	         String toMail = userEmail;
-//	         String title = "회원가입 인증 이메일 입니다.";
-//	         String content = 
-//	        		 "KGV 홈페이지를 방문해주셔서 감사합니다." +
-//	        	                "<br><br>" + 
-//	        	                "인증 번호는 " + cNumber + "입니다." + 
-//	        	                "<br>" + 
-//	        	                "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
-//	         
-//	         logger.debug("mailSender : " + mailSender);
-//				
-//	         
-//	         try {
-//	        	 	MimeMessage message = mailSender.createMimeMessage();
-//		            MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
-//		            helper.setFrom(setForm);
-//		            helper.setTo(toMail);
-//		            helper.setSubject(title);
-//		            helper.setText(content,true);
-//		            mailSender.send(message);
-//		        		 
-//	         }catch(Exception e) {
-//
-//	        	 e.printStackTrace();
-//
-//	             
-//	         }
-//	        
-//	         String cnum = cNumber.toString();
-//			
-//			return cnum;
-//		}
+		@ResponseBody
+		@GetMapping("/sendEmail")
+		public int sendEmail(String userEmail 
+				) {
+			
+			logger.debug("userEmail : " + userEmail);
+			
+			
+			 String cNumber = "";
+	         for (int i = 0; i < 6; i++) {
+
+	            int sel1 = (int) (Math.random() * 3); // 0:숫자 / 1,2:영어
+
+	            if (sel1 == 0) {
+
+	               int num = (int) (Math.random() * 10); // 0~9
+	               cNumber += num;
+
+	            } else {
+
+	               char ch = (char) (Math.random() * 26 + 65); // A~Z
+
+	               int sel2 = (int) (Math.random() * 2); // 0:소문자 / 1:대문자
+
+	               if (sel2 == 0) {
+	                  ch = (char) (ch + ('a' - 'A')); // 대문자로 변경
+	               }
+
+	               cNumber += ch;
+	            }
+
+	         }
+	         
+	         String setForm = "channelkgv1@gmail.com";
+	         String toMail = userEmail;
+	         String title = "회원가입 인증 이메일 입니다.";
+	         String content = 
+	        		 "KGV 홈페이지를 방문해주셔서 감사합니다." +
+	        	                "<br><br>" + 
+	        	                "인증 번호는 " + cNumber + "입니다." + 
+	        	                "<br>" + 
+	        	                "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
+	         
+	         logger.debug("mailSender : " + mailSender);
+				
+	         
+	         try {
+	        	 	MimeMessage message = mailSender.createMimeMessage();
+		            MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+		            helper.setFrom(setForm);
+		            helper.setTo(toMail);
+		            helper.setSubject(title);
+		            helper.setText(content,true);
+		            mailSender.send(message);
+		        		 
+	         }catch(Exception e) {
+
+	        	 e.printStackTrace();
+
+	             
+	         }
+	        
+	         String cnum = cNumber.toString();
+	         
+	         
+	        
+ 			
+	 		
+	 			
+	 		
+	         
+	          int result = service.insertCertification(cnum,userEmail);
+	         
+	          
+			return result;
+		}
 		
 		
-		
-		
+		@ResponseBody
+		@GetMapping("/checkNumber")
+		public int checkNumber(String userEmail ,String cNumber) {
+			
+			
+			logger.debug("userEmail : " + userEmail);
+			logger.debug("cnum : " + cNumber);
+			
+			
+			int result =  service.checkNumber(cNumber, userEmail);
+						
+			logger.debug("result : " + result);
+			
+			return result;
+			
+		}
 }

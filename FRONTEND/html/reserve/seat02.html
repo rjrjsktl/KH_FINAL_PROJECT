@@ -123,194 +123,167 @@
 
         <main>
           <section>
-              <!-- 예매 절차 영역 -->
+              
+              <div>
+                  인원/좌석 선택
+              </div>
               <div>
                   <ul>
-                      <!-- 클릭 이벤트 리스너 + 두번재 div를 순서대로 출력 만약 값이 F면 작동x -->
                       <li>
-                          <p>01</p>
-                          <p>상영시간</p>
+                          <strong>성인</strong>
+                          <div>
+                              <a href="#none" class="minus_btn">-</a>
+                              <div id="adult_count">0</div>
+                              <a href="#none" class="plus_btn">+</a>
+                          </div>
                       </li>
                       <li>
-                          <p>02</p>
-                          <p>인원/좌석</p>
+                          <strong>청소년</strong>
+                          <div>
+                              <a href="#none" class="minus_btn">-</a>
+                              <div id="youth_count">0</div>
+                              <a href="#none" class="plus_btn">+</a>
+                          </div>
                       </li>
                       <li>
-                          <p>03</p>
-                          <p>결제</p>
+                          <strong>경로</strong>
+                          <div>
+                              <a href="#none" class="minus_btn">-</a>
+                              <div id="senior_count">0</div>
+                              <a href="#none" class="plus_btn">+</a>
+                          </div>
                       </li>
                       <li>
-                          <p>04</p>
-                          <p>결제완료</p>
+                          <strong>우대</strong>
+                          <div>
+                              <a href="#none" class="minus_btn">-</a>
+                              <div id="special_count">0</div>
+                              <a href="#none" class="plus_btn">+</a>
+                          </div>
                       </li>
                   </ul>
               </div>
-
-              <!-- 현재 예매 절차 -->
               <div>
                   <div>
-                      인원/좌석 선택
-                  </div>
-                  <div>
-                      <ul>
-                          <li>
-                              <strong>성인</strong>
-                              <div>
-                                  <a href="#none" class="minus_btn">-</a>
-                                  <div id="adult_count">0</div>
-                                  <a href="#none" class="plus_btn">+</a>
-                              </div>
-                          </li>
-                          <li>
-                              <strong>청소년</strong>
-                              <div>
-                                  <a href="#none" class="minus_btn">-</a>
-                                  <div id="youth_count">0</div>
-                                  <a href="#none" class="plus_btn">+</a>
-                              </div>
-                          </li>
-                          <li>
-                              <strong>경로</strong>
-                              <div>
-                                  <a href="#none" class="minus_btn">-</a>
-                                  <div id="senior_count">0</div>
-                                  <a href="#none" class="plus_btn">+</a>
-                              </div>
-                          </li>
-                          <li>
-                              <strong>우대</strong>
-                              <div>
-                                  <a href="#none" class="minus_btn">-</a>
-                                  <div id="special_count">0</div>
-                                  <a href="#none" class="plus_btn">+</a>
-                              </div>
-                          </li>
-                      </ul>
-                  </div>
-                  <div>
-                      <div>
-                          <div id="screen_area">screen</div>
-                          
-                          <div id="seat_area">
-                          <!-- 12줄까지 -->
-                              <div>
-                                  <div></div>
-                              </div>
-                              <div>
-                                  <div></div> 
-                              </div>
-                              <div>
-                                  <div></div>
-                              </div>
-                              <div>
-                                  <div></div>
-                              </div>
-                              <div>
-                                  <div></div>
-                              </div>
-                              <div>
-                                  <div></div>
-                              </div>
-                              <div>
-                                  <div></div>
-                              </div>
-                              <div>
-                                  <div></div>
-                              </div>
-                              <div>
-                                  <div></div>
-                              </div>
-                              <div>
-                                  <div></div>
-                              </div>
-                              <div>
-                                  <div></div>
-                              </div>
-                              <div>
-                                  <div></div>
-                              </div>
-                          </div>
-                      </div>
-                      <div>
+                      <div id="screen_area">screen</div>
+                      
+                      <div id="seat_area">
+                      <!-- 12줄까지 -->
                           <div>
-                            <div style="background-color: #FF243E"></div>
-                            <span>선택좌석</span>
+                              <div></div>
                           </div>
                           <div>
-                            <div style="background-color:  #ccc; color: #666">X</div>
-                            <span>선택불가</span>
+                              <div></div> 
                           </div>
                           <div>
-                            <div style="background-color: #888"></div>
-                            <span>예매완료</span>
-                          </div>
-                          
-                          <div>
-                            <div style="background-color: hotpink"></div>
-                            <span>스위트석</span>
+                              <div></div>
                           </div>
                           <div>
-                            <div style="background-color: green"></div>
-                            <span>장애인석</span>
+                              <div></div>
+                          </div>
+                          <div>
+                              <div></div>
+                          </div>
+                          <div>
+                              <div></div>
+                          </div>
+                          <div>
+                              <div></div>
+                          </div>
+                          <div>
+                              <div></div>
+                          </div>
+                          <div>
+                              <div></div>
+                          </div>
+                          <div>
+                              <div></div>
+                          </div>
+                          <div>
+                              <div></div>
+                          </div>
+                          <div>
+                              <div></div>
                           </div>
                       </div>
                   </div>
                   <div>
                       <div>
-                        <div id="movie_thumb"></div>
-                        <div id="movie_detail">
-                          <div>
-                            <div class="age00">All</div>
-                            <div><span id="movie_name">원신: 신들의 마지막 전쟁</span></div>
-                          </div>
-                          <div id="play_date">2023년 05월 23일 화요일</div>
-                          <div id="play_time">09시 10분 &#126; 11시 05분</div>
-                        </div>
+                        <div style="background-color: #FF243E"></div>
+                        <span>선택좌석</span>
                       </div>
                       <div>
-                        <div>강남 2관 일반석</div>
-                        <div id="seat_code">
-                          <div></div> 
-                          <div></div>
-                        </div>
+                        <div style="background-color:  #ccc; color: #666">X</div>
+                        <span>선택불가</span>
                       </div>
-                      <div id="price_calc">
-                        <div>
-                          성인
-                          <div>
-                            <span id="adult_price"></span>원 &times; <span id="adult_pick"></span>
-                          </div>
-                        </div>
-                        <div>
-                          청소년
-                          <div>
-                            <span id="youth_price"></span>원 &times; <span id="youth_pick"></span>
-                          </div>
-                        </div> 
-                        <div>
-                          경로
-                          <div>
-                            <span id="senior_price"></span>원 &times; <span id="senior_pick"></span>
-                          </div>
-                        </div>
-                        <div>
-                          우대
-                          <div>
-                            <span id="special_price"></span>원 &times; <span id="special_pick"></span>
-                          </div> 
-                        </div>
-                        <div>
-                          합계
-                          <div style="color: crimson">
-                            <span id="total_price" style="color: crimson"></span>원
-                          </div>
-                        </div>
+                      <div>
+                        <div style="background-color: #888"></div>
+                        <span>예매완료</span>
                       </div>
-                      <div><a href="#none">결제하기</a></div>
+                      
+                      <div>
+                        <div style="background-color: hotpink"></div>
+                        <span>스위트석</span>
+                      </div>
+                      <div>
+                        <div style="background-color: green"></div>
+                        <span>장애인석</span>
+                      </div>
                   </div>
               </div>
-
-
+              <div>
+                  <div>
+                    <div id="movie_thumb"></div>
+                    <div id="movie_detail">
+                      <div>
+                        <div class="age00">All</div>
+                        <div><span id="movie_name">원신: 신들의 마지막 전쟁</span></div>
+                      </div>
+                      <div id="play_date">2023년 05월 23일 화요일</div>
+                      <div id="play_time">09시 10분 &#126; 11시 05분</div>
+                    </div>
+                  </div>
+                  <div>
+                    <div>강남 2관 일반석</div>
+                    <div id="seat_code">
+                      <div></div> 
+                      <div></div>
+                    </div>
+                  </div>
+                  <div id="price_calc">
+                    <div>
+                      성인
+                      <div>
+                        <span id="adult_price"></span>원 &times; <span id="adult_pick"></span>
+                      </div>
+                    </div>
+                    <div>
+                      청소년
+                      <div>
+                        <span id="youth_price"></span>원 &times; <span id="youth_pick"></span>
+                      </div>
+                    </div> 
+                    <div>
+                      경로
+                      <div>
+                        <span id="senior_price"></span>원 &times; <span id="senior_pick"></span>
+                      </div>
+                    </div>
+                    <div>
+                      우대
+                      <div>
+                        <span id="special_price"></span>원 &times; <span id="special_pick"></span>
+                      </div> 
+                    </div>
+                    <div>
+                      합계
+                      <div style="color: crimson">
+                        <span id="total_price" style="color: crimson"></span>원
+                      </div>
+                    </div>
+                  </div>
+                  <div><a href="#none">결제하기</a></div>
+              </div>
           </section>
         </main>
 

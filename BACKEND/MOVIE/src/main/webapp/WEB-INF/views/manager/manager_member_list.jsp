@@ -48,7 +48,7 @@
 								<span>회원목록</span>
 								<div class="search_Box">
 									<input placeholder="검색" />
-									<button>
+									<button class="checkBtn">
 										<i class="fa-solid fa-magnifying-glass fa-2xs"></i>
 									</button>
 								</div>
@@ -65,49 +65,105 @@
 									<th>성별</th>
 									<th>가입일</th>
 									<th>탈퇴일</th>
-									<th>탈퇴 여부</th>
+									<th>상태</th>
 									<th>보유 포인트</th>
 									<th>SNS 가입</th>
 									<th>관리자</th>
 									<th>이용제한</th>
 								</tr>
-								<c:forEach var="getUser" items="${getUserList}">
+								<c:forEach var="getUser" items="${getUserList['userList']}">
 									<tr>
-										<td>${getUser.userNo}</td>
-										<td>${getUser.userEmail}</td>
-										<td>${getUser.userName}</td>
-										<td>${getUser.userNick}</td>
-										<td>${getUser.userTel}</td>
-										<td>${getUser.userAddr}</td>
-										<td>${getUser.userBirth}</td>
-										<td>${getUser.userGender}</td>
-										<td>${getUser.userRegDate}</td>
-										<td>${getUser.userDelete}</td>
-										<td>${getUser.userSt}</td>
-										<td>${getUser.userPoint}</td>
-										<td>${getUser.userSns}</td>
-										<td><select name="Is_Manager">
-												<option value="N" selected>N</option>
-												<option value="Y">Y</option>
-											</select></td>
-										<td><select name="Is_Blocked">
-												<option value="N" selected>N</option>
-												<option value="Y">Y</option>
-											</select></td>
+										<td>${getUser['userNo']}</td>
+										<td>${getUser['userEmail']}</td>
+										<td>${getUser['userName']}</td>
+										<td>${getUser['userNick']}</td>
+										<td>${getUser['userTel']}</td>
+										<c:choose>
+											<c:when test="${not empty getUser['userAddr']}">
+												<td>${getUser['userAddr']}</td>
+											</c:when>
+											<c:otherwise>
+												<td>미등록</td>
+											</c:otherwise>
+										</c:choose>
+										<c:choose>
+											<c:when test="${not empty getUser['userBirth']}">
+												<td>${getUser['userBirth']}</td>
+											</c:when>
+											<c:otherwise>
+												<td>미등록</td>
+											</c:otherwise>
+										</c:choose>
+										<td>${getUser['userGender']}</td>
+										<td>${getUser['userRegDate']}</td>
+										<c:choose>
+											<c:when test="${not empty getUser['userDelete']}">
+												<td>${getUser['userDelete']}</td>
+											</c:when>
+											<c:otherwise>
+												<td>-</td>
+											</c:otherwise>
+										</c:choose>
+										<td>${getUser['userSt']}</td>
+										<td>${getUser['userPoint']}</td>
+										<td>${getUser['userSns']}</td>
+										<c:choose>
+											<c:when test="${getUser['userManagerSt'] == 'N'}">
+												<td>
+													<select class="Is_Manager" data-id="${getUser['userEmail']}">
+														<option value="N" selected>N</option>
+														<option value="Y">Y</option>
+													</select>
+												</td>
+											</c:when>
+											<c:otherwise>
+												<td>
+													<select class="Is_Manager" data-id="${getUser['userEmail']}">
+														<option value="N">N</option>
+														<option value="Y" selected>Y</option>
+													</select>
+												</td>
+											</c:otherwise>
+										</c:choose>
+										<c:choose>
+											<c:when test="${getUser['userBlock'] == 'N'}">
+												<td>
+													<select class="Is_Blocked">
+														<option value="N" selected>N</option>
+														<option value="Y">Y</option>
+													</select>
+												</td>
+											</c:when>
+											<c:otherwise>
+												<td>
+													<select class="Is_Blocked">
+														<option value="N">N</option>
+														<option value="Y" selected>Y</option>
+													</select>
+												</td>
+											</c:otherwise>
+										</c:choose>
 									</tr>
 								</c:forEach>
-
 							</table>
 							<div class="page_Nation">
-								<div>&lt;</div>
-								<div class="selected_Cp">1</div>
-								<div>2</div>
-								<div>3</div>
-								<div>4</div>
-								<div>5</div>
-								<div>6</div>
-								<div>7</div>
-								<div>&gt;</div>
+								<c:set var="url" value="?cp=" />
+								<c:set var="pagination" value="${getUserList['pagination']}" />
+								<c:set var="currentPage" value="${pagination.currentPage}" scope="request" />
+								<div><a href="${url}1">&lt;&lt;</a></div>
+								<div><a href="${url}${pagination.prevPage}">&lt;</a></div>
+								<c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
+									<c:choose>
+										<c:when test="${i == currentPage}">
+											<div><a class="selected_Cp">${i}</a></div>
+										</c:when>
+										<c:otherwise>
+											<div><a href="${url}${i}">${i}</a></div>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<div><a href="${url}${pagination.nextPage}">&gt;</a></div>
+								<div><a href="${url}${pagination.maxPage}">&gt;&gt;</a></div>
 							</div>
 						</div>
 					</div>

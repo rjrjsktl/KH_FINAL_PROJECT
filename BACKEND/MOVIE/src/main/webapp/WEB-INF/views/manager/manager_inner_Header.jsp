@@ -7,7 +7,7 @@
                         <div class="header_Container">
                             <div class="header_loge_Area">
                                 <span>어서오세요!&nbsp;</span>
-                                <span>${loginMember.userName}&nbsp;</span>
+                                <span>${loginUser.userName}&nbsp;</span>
                                 <span>님!</span>
                             </div>
                             <button class="header_logout_Area">
