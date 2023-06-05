@@ -374,11 +374,14 @@
  
              </section>
          </main>
+         
+         
+         
      </div>
      
  	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-   
+
      <!--
      <%-- session에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
              <c:if test="${ !empty sessionScope.message }">
@@ -395,9 +398,11 @@
              -->
  </body>
  
+ 
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
  
 <script src="${contextPath}/resources/js/main/main.js"></script>
+ <script src="${contextPath}/resources/js/common/header.js"></script>
  
  </html>
