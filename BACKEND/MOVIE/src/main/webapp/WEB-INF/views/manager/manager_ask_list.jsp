@@ -29,11 +29,11 @@
 
         <div class="main_Wrapper">
             <div id="left_Nav_Container">
-            <div class="nav_Title">로고영역</div>
+                <div class="nav_Title">로고영역</div>
                 <!-- NAV 영역 -->
-             <jsp:include page="/WEB-INF/views/manager/manager_nav.jsp" />
+                <jsp:include page="/WEB-INF/views/manager/manager_nav.jsp" />
             </div>
-            
+
             <div class="right_items_Container">
                 <!-- 내부 HEADER 영역 -->
                 <jsp:include page="/WEB-INF/views/manager/manager_inner_Header.jsp" />
@@ -180,12 +180,11 @@
                 </div>
 
             </div>
-		</div>
+        </div>
     </main>
-
-<script src="${contextPath}/resources/js/manager/manager_ask.js"></script>
-<script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
-<script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
+    <script src="${contextPath}/resources/js/manager/manager_ask.js"></script>
+    <script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
+    <script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
 </body>
 
 </html>

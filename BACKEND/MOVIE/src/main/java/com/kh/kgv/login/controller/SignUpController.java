@@ -1,5 +1,7 @@
 package com.kh.kgv.login.controller;
 
+import java.util.Map;
+
 import javax.mail.internet.MimeMessage;
 
 import org.slf4j.Logger;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -76,6 +79,18 @@ public class SignUpController {
 			return result;
 		}
 		
+		//전화번호 중복 검사
+		@ResponseBody
+		@GetMapping("telDupCheck")
+		public int telDupCheck(String userTel) {
+			
+			int result = service.telDupCheck(userTel);
+			
+			return result;
+			
+		}
+		
+		
 		//회원 가입
 		@PostMapping("/signUp")
 		public String signUp(User inputUser
@@ -97,14 +112,15 @@ public class SignUpController {
 			
 			String message =null;
 			String path =null;
-			
+			logger.debug("result : " + result);
 			
 			if(result > 0) {
 				message = "회원가입 성공!";
 				path = "redirect:/";
 			}else {
 				message = "회원가입 실패";
-				path = "redirect:/signUp/signUp_sns";
+				path = "redirect:/signUp";
+				
 			}
 			
 			ra.addFlashAttribute("message", message);
@@ -113,7 +129,8 @@ public class SignUpController {
 		
 		@ResponseBody
 		@GetMapping("/sendEmail")
-		public String sendEmail(String userEmail) {
+		public int sendEmail(String userEmail 
+				) {
 			
 			logger.debug("userEmail : " + userEmail);
 			
@@ -143,7 +160,7 @@ public class SignUpController {
 
 	         }
 	         
-	         String setForm = "poer131877@gmail.com";
+	         String setForm = "channelkgv1@gmail.com";
 	         String toMail = userEmail;
 	         String title = "회원가입 인증 이메일 입니다.";
 	         String content = 
@@ -173,11 +190,35 @@ public class SignUpController {
 	         }
 	        
 	         String cnum = cNumber.toString();
-			
-			return cnum;
+	         
+	         
+	        
+ 			
+	 		
+	 			
+	 		
+	         
+	          int result = service.insertCertification(cnum,userEmail);
+	         
+	          
+			return result;
 		}
 		
 		
-		
-		
+		@ResponseBody
+		@GetMapping("/checkNumber")
+		public int checkNumber(String userEmail ,String cNumber) {
+			
+			
+			logger.debug("userEmail : " + userEmail);
+			logger.debug("cnum : " + cNumber);
+			
+			
+			int result =  service.checkNumber(cNumber, userEmail);
+						
+			logger.debug("result : " + result);
+			
+			return result;
+			
+		}
 }

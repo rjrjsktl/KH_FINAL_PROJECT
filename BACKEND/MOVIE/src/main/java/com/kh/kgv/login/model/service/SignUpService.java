@@ -1,5 +1,7 @@
 package com.kh.kgv.login.model.service;
 
+import java.util.Map;
+
 import com.kh.kgv.customer.model.vo.User;
 
 public interface SignUpService {
@@ -31,6 +33,27 @@ public interface SignUpService {
 	 * @return
 	 */
 	int signUp(User inputUser);
+
+
+	int insertCertification(String cnum, String userEmail);
+
+
+	int checkNumber(String cNumber, String userEmail);
+
+
+	int telDupCheck(String userTel);
+
+
+	
+
+
+	
+
+
+	
+	
+	
+	
 
 	
 	

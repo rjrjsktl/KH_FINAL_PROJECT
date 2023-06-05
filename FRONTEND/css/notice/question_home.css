@@ -130,7 +130,7 @@ h2 {
 }
 .btn-wrap button {
     width:20%;
-    height:35px;
+    height:50px;
     outline: none;
     border: none;
     border:1px solid rgb(73 73 73);
@@ -147,7 +147,80 @@ h2 {
     color:black;
 }
 
-.list-wrap > p > *{
-    font-size: 10px;
-
+.list-wrap > p {
+font-size: 0.8rem;
+padding:10px 0;
+border-bottom:1px solid rgb(73 73 73);
 }
+
+.list-wrap > p > span:nth-child(1){
+    margin-right:5px;
+}
+
+.list-wrap > p > span {
+    font-size: 0.8rem;
+}
+
+.cNumber > li > div{
+    width:100%;
+    height:100px;
+    border:1px solid rgb(73 73 73);
+    padding:25px 0 25px 25px;
+    cursor: pointer;
+}
+
+.cNumber > li > div>p:nth-child(2){
+    display: flex;
+ 
+}
+
+.cNumber > li > div>p:nth-child(2) > span:nth-child(1){
+    width:90%;
+}
+
+.cNumber > li > div>p:nth-child(2) > span:nth-child(2){
+    width:10%;
+    text-align: center;
+}
+
+.qList_detail{
+    width:100%;
+    padding:20px 0 20px 20px;
+    display: none;
+}
+
+.cNumber > li:nth-child(1) > ul > li:nth-child(1){
+    display: block;
+}
+
+.pagination {
+
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center;    padding-top:30px;
+  }
+
+  .pagination li a {
+    color: white;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  .pagination li.active {
+    background-color: yellow;
+  }
+  
+  .pagination li a:hover:not(.active) {
+    background-color: yellow;
+    color:black;
+  }
+
+  .block {
+    display: block;
+  }
+  
+  .none {
+    display: none;
+  }

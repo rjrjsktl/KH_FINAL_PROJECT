@@ -70,66 +70,40 @@ body {
 }
 
 main {
-    width: 1160px;
-    height: 2000px;
-    margin: 0 auto;
-    padding: 0 20px;
+  width: 1040px;
+  height: 2000px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-main > section{
-    display: flex;
-    width: 100%;
-    height: 800px;
+main > section {
+  width: 100%;
+  height: 800px;
 
-    margin: 50px auto;
-    border: 1px solid white;
+  margin: 50px auto;
+  border: 1px solid white;
 }
 
-/* 예매 절차 */
-
-main > section > :nth-child(1){
-  width: 8%;
-  height: 100%;
-}
-
-main > section > :nth-child(1) > ul {
-  display: flex;
-  flex-direction: column;
-}
-
-main > section > :nth-child(1) > ul > li {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
-
-  border-top: 1px solid lightgray;
-  cursor: pointer;
-}
-
-main > section > :nth-child(1) > ul > li:first-child {
-  border-top: none;
-}
-
-main > section > :nth-child(1) > ul > li:nth-child(1) {
-  background-color: #333;
-}
-
-main > section > :nth-child(1) > ul > li:nth-child(2) {
-  background-color: #FF243E;
+main > section * {
+  font-size: 1em;
 }
 
 
 /* 현재 절차 */
 
-main > section > div:nth-child(2) {
-  width: 92%;
+main > section:first-child {
+  width: 100%;
   height: 800px;
   border-left: 1px solid white;
 }   
 
-main > section > div:nth-child(2) > div:nth-child(1) {
+main > section:first-child * {
+  font-size: 1em;
+}
+
+/* 제목 */
+
+main > section:first-child > div:nth-child(1) {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -143,33 +117,34 @@ main > section > div:nth-child(2) > div:nth-child(1) {
 
 /* 인원 선택 */
 
-main > section > div:nth-child(2) > div:nth-child(2) {
+main > section:first-child > div:nth-child(2) {
   width: 100%;
   height: 95px;
   border-bottom: 1px solid white;
   margin-bottom: calc(115px / 3);
 }
 
-main > section > div:nth-child(2) > div:nth-child(2) > ul {
+main > section:first-child > div:nth-child(2) > ul {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+
   height: 95px;
 }
 
-main > section > div:nth-child(2) > div:nth-child(2) > ul > li {
+main > section:first-child > div:nth-child(2) > ul > li {
   display: flex;
   align-items: center;
+
   height: 40px;
 }
 
-main > section > div:nth-child(2) > div:nth-child(2) > ul > li > div {
+main > section:first-child > div:nth-child(2) > ul > li > div {
   display: flex;
   align-items: center;
+
   width: 150px;
   height: 40px;
-  line-height: 40px;
-  font-size: 18px;
   border: 1px solid #ccc;
   border-radius: 6px;
   margin-left: 18px;
@@ -177,23 +152,33 @@ main > section > div:nth-child(2) > div:nth-child(2) > ul > li > div {
 
 /* 숫자 */
 
-main > section > div:nth-child(2) > div:nth-child(2) > ul > li > div > div {
+main > section:first-child > div:nth-child(2) > ul > li > div > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 70px;
   height: 40px;
-  line-height: 44px;
-  text-align: center;
+  font-size: 18px;
   border-left: 1px solid white;
   border-right: 1px solid white;
 }
 
+
 /* 플러스, 마이너스 */
 
-main > section > div:nth-child(2) > div:nth-child(2) > ul > li > div > a {
+main > section:first-child > div:nth-child(2) > ul > li > div > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  bottom: 2px;
+
   width: 40px;
   height: 40px;
-  line-height: 44px;
   font-size: 20px;
-  text-align: center;
+  color: white;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -202,29 +187,31 @@ main > section > div:nth-child(2) > div:nth-child(2) > ul > li > div > a {
 
 /* 좌석 선택 */
 
-main > section > div:nth-child(2) > div:nth-child(3) {
+main > section:first-child > div:nth-child(3) {
   display: flex;
+
   width: 100%;
   height: calc(400px + 200px/3);
   border-bottom: 1px solid white;
 }
 
 
-main > section > div:nth-child(2) > div:nth-child(3) > div:first-child {
+main > section:first-child > div:nth-child(3) > div:first-child {
   width: 84%;
 }
 
-main > section > div:nth-child(2) > div:nth-child(3) > div:first-child > #screen_area {
+main > section:first-child > div:nth-child(3) > div:first-child > #screen_area {
   width: 100%;
   height: 30px;
-  line-height: 30px;
+  font-size: 18px;
+  line-height: 27px;
   text-align: center;
-  font-size: 16px;
   background-color: #888;
   margin: 0 0 36px 10%;
 }
 
-main > section > div:nth-child(2) > div:nth-child(3) > div:first-child > #seat_area {
+
+main > section:first-child > div:nth-child(3) > div:first-child > #seat_area {
   width: 100%;
   height: calc(320px + 200px/3);
   margin-left: 10%;
@@ -250,24 +237,33 @@ main > section > div:nth-child(2) > div:nth-child(3) > div:first-child > #seat_a
 /* 몇번째 줄인지? */
 
 #seat_area > div > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   position: absolute;
   left: -50px;
+
   width: 25px;
   height: 25px;
   text-align: center;
-  line-height: 30px;
 }
 
 /* 좌석 */
 
 #seat_area > div > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   width: 25px;
   height: 25px;
   margin-right: 5.98px;
   border: 1px solid white;
-  font-size: 11px;
-  text-align: center;
-  line-height: 27.5px;
+}
+
+#seat_area > div > a * {
+  font-size: 12px;
 }
 
 /* 예매완료된 좌석 */
@@ -339,7 +335,7 @@ main > section > div:nth-child(2) > div:nth-child(3) > div:first-child > #seat_a
 
 /* 좌석 종류 */
 
-main > section > div:nth-child(2) > div:nth-child(3) > div:last-child {
+main > section:first-child > div:nth-child(3) > div:last-child {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -347,38 +343,40 @@ main > section > div:nth-child(2) > div:nth-child(3) > div:last-child {
   max-width: 20%;
 }
 
-main > section > div:nth-child(2) > div:nth-child(3) > div:last-child > div {
+main > section:first-child > div:nth-child(3) > div:last-child > div {
   position: relative;
-  top: 80px;
+  top: 62.5px;
   display: flex;
   height: 22px;
   margin: 5px 0;
 }
 
-main > section > div:nth-child(2) > div:nth-child(3) > div:last-child > div:nth-child(3) {
+main > section:first-child > div:nth-child(3) > div:last-child > div:nth-child(3) {
   margin-bottom: 22px;
 }
 
-main > section > div:nth-child(2) > div:nth-child(3) > div:last-child > div > div {
+main > section:first-child > div:nth-child(3) > div:last-child > div > div {
   display: flex;
   justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 1.5px;
   width: 20px;
   height: 20px;
   margin-right: 10px;
-  font-size: 14px;
-  line-height: 22px;
   font-weight: bold;
 }
 
-main > section > div:nth-child(2) > div:nth-child(3) > div:last-child > div > span {
+main > section:first-child > div:nth-child(3) > div:last-child > div > span {
   height: 22px;
   line-height: 22px;
+  font-size: 14px;
 }
 
 
 /* 예매 결과 */
 
-main > section > div:nth-child(2) > div:last-child {
+main > section:first-child > div:last-child {
   display: flex;
   align-items: center;
   position: relative;
@@ -388,14 +386,14 @@ main > section > div:nth-child(2) > div:last-child {
   padding-left: 4%;
 }
 
-main > section > div:nth-child(2) > div:last-child > div {
+main > section:first-child > div:last-child > div {
   height: 100px;
   margin-right: 4%;
 }
 
 /* 썸네일 + 영화 정보 */
 
-main > section > div:nth-child(2) > div:last-child > div:first-child {
+main > section:first-child > div:last-child > div:first-child {
   border-right: 1px solid white;
   display: flex;
   width: calc(100%/3);
@@ -404,19 +402,19 @@ main > section > div:nth-child(2) > div:last-child > div:first-child {
 
 /* 썸네일 */
 
-main > section > div:nth-child(2) > div:last-child > div:first-child > #movie_thumb {
+main > section:first-child > div:last-child > div:first-child > #movie_thumb {
   width: 61.4px;
   height: 98px;
   background-image: url("https://cdn.ize.co.kr/news/photo/201505/22033_24447_742.jpg");
   background-repeat: no-repeat;
   background-size: 61.4px 98px;
-  margin-right: 8%;
+  margin-right: 6%;
 }
 
 /* 영화 정보 */
 
-main > section > div:nth-child(2) > div:last-child > div:first-child > #movie_detail {
-  width: 80%;
+main > section:first-child > div:last-child > div:first-child > #movie_detail {
+  width: 74%;
   height: 100px;
   font-size: 14px;
 }
@@ -427,7 +425,7 @@ main > section > div:nth-child(2) > div:last-child > div:first-child > #movie_de
   display: flex;
   width: 100%;
   height: 25px;
-  line-height: 27.5px;
+  line-height: 25px;
   margin: 6px 0 20px;
 }
 
@@ -435,11 +433,12 @@ main > section > div:nth-child(2) > div:last-child > div:first-child > #movie_de
 /* 연령 */
 
 #movie_detail > div:first-child > div:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 25px;
   height: 25px;
   font-size: 12px;
-  line-height: 27.5px;
-  text-align: center;
   border: 1px solid transparent;
   border-radius: 3px;
   margin-right: 10px;
@@ -486,14 +485,17 @@ main > section > div:nth-child(2) > div:last-child > div:first-child > #movie_de
 
 /* 상영관 + 좌석 */
 
-main > section > div:nth-child(2) > div:last-child > div:nth-child(2) {
+main > section:first-child > div:last-child > div:nth-child(2) {
   width: 17.5%;
   border-right: 1px solid white;
-  padding-top: 6px;
+  padding-top: 8px;
 }
 
-main > section > div:nth-child(2) > div:last-child > div:nth-child(2) > #seat_code {
-  margin-top: 20px;
+main > section:first-child > div:last-child > div:nth-child(2) > #seat_code {
+  margin-top: 21px;
+}
+
+#seat_code > div {
   font-size: 13px;
 }
 
@@ -504,7 +506,7 @@ main > section > div:nth-child(2) > div:last-child > div:nth-child(2) > #seat_co
 
 /* 가격 */
 
-main > section > div:nth-child(2) > div:last-child > #price_calc {
+main > section:first-child > div:last-child > #price_calc {
   width: 20%;
   font-size: 13px;
 }
@@ -522,9 +524,10 @@ main > section > div:nth-child(2) > div:last-child > #price_calc {
   right: 17.5%;
 }
 
+
 /* 결제 */
 
-main > section > div:nth-child(2) > div:last-child > div:last-child {
+main > section:first-child > div:last-child > div:last-child {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -535,8 +538,14 @@ main > section > div:nth-child(2) > div:last-child > div:last-child {
 
   width: 18%;
   height: 99%;
-  margin-right: 0;
-
   background-color: crimson;
   font-size: 22px;
+
+  margin-right: 0;
+  border-left: 1px solid white;
+  border-bottom: 1px solid white;
+}
+
+main > section:first-child > div:last-child > div:last-child > a {
+  color: white;
 }
