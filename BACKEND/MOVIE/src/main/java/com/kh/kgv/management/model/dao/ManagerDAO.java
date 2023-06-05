@@ -40,6 +40,11 @@ public class ManagerDAO {
 				
 	}
 
+	public int updateST(User user) {
+		
+		return sqlSession.update("managerMapper.updateST", user);
+	}
+
 	
 
 }

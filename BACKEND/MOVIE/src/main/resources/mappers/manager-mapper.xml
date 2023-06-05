@@ -51,5 +51,11 @@
 	FROM USERS
 	ORDER BY USER_NO ASC
 	</select>
+	
+	<update id="updateST" parameterType="user">
+	UPDATE USERS
+	SET USER_MANAGERST = #{userManagerSt}
+	WHERE USER_EMAIL = #{userEmail}
+	</update>
 
 </mapper>
