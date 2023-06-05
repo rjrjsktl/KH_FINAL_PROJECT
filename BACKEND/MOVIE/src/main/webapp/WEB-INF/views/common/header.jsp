@@ -23,7 +23,7 @@
 					<div>
 						<img src="" alt="">
 					</div>
-					<li><a id="loginBtn"> <span><img
+					<li><a id="myBtn"> <span><img
 								src="${contextPath}/resources/images/headerPng/test.png" alt=""></span>
 							<span>로그인</span>
 					</a></li>
