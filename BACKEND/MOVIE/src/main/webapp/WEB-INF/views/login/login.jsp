@@ -21,9 +21,9 @@
 
 <body>
 	<div id="wrap">
-
+<%-- 
 		<!-- header -->
-		<jsp:include page="/WEB-INF/views/common/header.jsp" />
+		<jsp:include page="/WEB-INF/views/common/header.jsp" /> --%>
 
 		<main>
 			<!-- 여기서 부터 작업하세요. -->
@@ -113,9 +113,9 @@
 
 	</div>
 
-	<!-- footer -->
+<%-- 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-
+ --%>
 	<!--
     <%-- session에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
 			<c:if test="${ !empty sessionScope.message }">

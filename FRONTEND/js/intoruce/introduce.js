@@ -12,3 +12,15 @@ $(document).ready(function() {
         }
     });
 });
+
+
+$(document).ready(function(){
+	
+    modal = $('#modal');
+
+    $('#loginBtn').click(function(){
+        
+		modal.css('display','flex');
+		
+	});
+})
