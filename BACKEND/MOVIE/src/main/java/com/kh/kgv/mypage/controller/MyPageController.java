@@ -1,10 +1,12 @@
 package com.kh.kgv.mypage.controller;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +36,34 @@ public class MyPageController {
 	private MyPageService service;
 	
 	// 마이페이지 첫번째 화면 - info변경가능
+	@GetMapping("/myPgMain")
+	public String info(HttpServletRequest req
+//						, HttpServletResponse resp
+						, RedirectAttributes ra
+						) throws IOException {
+		
+		logger.info("1. 마이페이지 버튼 누름");
+		
+		String message = null;
+		String path = null;
+		
+		HttpSession session = req.getSession(false);
+		if( session != null && session.getAttribute("loginUser") != null) {
+			logger.info("로그인 o 마페 ㄱㄱ");
+			path = "myPage/myPage_info";
+		} else {
+			logger.info("로그인 x 로페 ㄱㄱ");
+			message = "로그인 부터 하시라옹";
+			// 로그인되지 않은 상태, 로그인 페이지로 리다이렉트
+//	        String loginUrl = req.getContextPath() + "/user/login";
+//	        resp.sendRedirect(loginUrl);
+	        path = "/user/login"; 
+		}
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
+	}
+	
 	@GetMapping("/info")
 	public String info() {
 		return "myPage/myPage_info";
@@ -72,7 +102,6 @@ public class MyPageController {
 		// 로그인된 회원의 번호를 paramMap 추가
 		paramMap.put( "userNo", loginUser.getUserNo() );
 		
-		
 		// 비밀번호 변경 서비스 호출
 		int result = service.changePw(paramMap);
 		
@@ -88,28 +117,21 @@ public class MyPageController {
 			message = "현재 비밀번호가 일치하지 않습니다.";
 			path = "changePw";
 		}
-		
 		ra.addFlashAttribute("message", message);
 		
 		return "redirect:" + path;
-		
 	}
 	
-	
-	
-	
 	// 회원 탈퇴
-	@PostMapping("/secession") 						// session 의 회원정보 + 입력받은 파라미터(비밀번호)
+	@PostMapping("/secession") // session 의 회원정보 + 입력받은 파라미터(비밀번호)
 	public String secession( @ModelAttribute("loginUser") User loginUser,
 							SessionStatus status,
 							HttpServletRequest req,
 							HttpServletResponse resp,
 							RedirectAttributes ra ) {
 		
-		
 		// 회원 탈퇴 서비스 호출
 		int result = service.secession(loginUser);
-		
 		
 		String message = null;
 		String path = null;
@@ -129,7 +151,6 @@ public class MyPageController {
 			cookie.setPath(req.getContextPath());
 			resp.addCookie(cookie);
 			
-			
 		} else {
 			// 탈퇴 실패 -> secession
 			message = "현재 비밀번호가 일치하지 않습니다.";
@@ -142,13 +163,6 @@ public class MyPageController {
 		return "redirect:" + path;
 	}
 	
-	
 	// 리뷰나 영화예매내역 같은건 하나 더 만들생각 ㄱㄱ
-	
-	
-	
-	
-	
-	
 	
 }
