@@ -31,18 +31,30 @@ $(document).ready(function() {
         }
       }
     });
+  });
 
-});
+
+  $('.info-btn').click(function() {
+    $('.movie-detail').show();
+    $('.movie-reply').hide();
+    $(this).css('background','red');
+    $('.star-btn').css('background','none')
+  });
+
+  $('.star-btn').click(function() {
+    $('.movie-detail').hide();
+    $('.movie-reply').show();
+    $(this).css('background','red');
+    $('.info-btn').css('background','none')
+  });
+  
 
 
-$(document).ready(function(){
-	
-    modal = $('#modal');
-
-    $('#loginBtn').click(function(){
-        
-		modal.css('display','flex');
-		
-	});
-})
-
+  $(".star_rating a").hover(function() {
+    $(this).parent().children("a").removeClass("on");
+    $(this).addClass("on").prevAll("a").addClass("on");
+    // 'on' 클래스 개수 확인
+    var numberOfOnClasses = $(this).parent().children("a.on").length;
+    console.log(numberOfOnClasses);
+    return false;
+  });
