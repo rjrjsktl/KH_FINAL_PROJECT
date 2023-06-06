@@ -170,8 +170,9 @@ main>section:nth-child(2)>div:nth-child(1) > div:nth-child(2) > :nth-child(3) > 
  main>section:nth-child(2)>div:nth-child(1) > div:nth-child(2) > :nth-child(4) > div:last-child > ul > li:last-child > a{
 
     background-color: red;
-    padding:5px 25px;
+    padding:15px 30px;
     border-radius: 10px;
+    height:50px;
 }
 
 
@@ -319,8 +320,8 @@ main>section:nth-child(3) > div > div:nth-child(3) {
 }
 
 .replywrap{
-    width:1120px;
-    margin:50px auto 0px auto;;
+    width:1040px;
+    padding:0 30px;
     display: flex;
     flex-direction: column;
 }
@@ -328,7 +329,6 @@ main>section:nth-child(3) > div > div:nth-child(3) {
 .replywrap > div:nth-child(1){
     font-size: 0.8rem;
     display: flex;
-    justify-content: space-between;
     border-bottom:2px solid black;
     align-items: center;
     padding-bottom: 20px;
@@ -384,7 +384,6 @@ main>section:nth-child(3) > div > div:nth-child(3) {
     position: absolute;
     left:0px;
     top:20px;
-    background-color: red;
 }
 
 .replyList > ul > li >  div:nth-child(2){
@@ -430,39 +429,15 @@ main>section:nth-child(3) > div > div:nth-child(3) {
 .steelcut_wrap > p:nth-child(1){
     margin-top:50px;
     font-size: 0.9rem;
+    padding:30px 0;
     display: flex;
-    justify-content: space-between;
     cursor: pointer;
 }
 
-.steelcut_wrap > div:nth-child(2){
-    height:160px;
-    border:1px solid lightgray;
-    display: flex;
-    justify-content: space-between;
-    padding:20px;
+.steelcut_wrap > p:nth-child(1)>span{
+    font-size: 1.2rem;
 }
 
-.steelcut_wrap > div:nth-child(2) > div{
-    width:32%;
-    border:1px solid lightgray;
-
-}
-
-
-.steelcut_wrap > div:nth-child(3){
-    height:510px;
-    border:1px solid lightgray;
-    display: flex;
-    padding:20px;
-}
-
-.steelcut_wrap > div:nth-child(3) > div {
-    width: 80%;
-    height:100%;
-    background-color: blue;
-    margin:0 auto;
-}
 
 .actor_wrap{
     margin-top:50px;
@@ -471,29 +446,27 @@ main>section:nth-child(3) > div > div:nth-child(3) {
 .actor_wrap > div{
     width:100%;
     height:510px;
-    padding:20px 0;
+    padding:30px;
     display: flex;
- 
+
 }
 
 .actor_wrap > div > ul {
    flex:1 1 0;
     display: flex;
     flex-wrap: wrap;
-    border:1px solid red;
+    align-items: center;
 }
 
 .actor_wrap > div > ul > li  {
     width:25%;
     height:25%;
-    border: 1px solid red;
     display: flex;
 }
 
 .actor_wrap > div > ul > li > div {
    width:100%;
    height:100%;
-   border:1px solid red;
    display: flex;
 }
 
@@ -514,10 +487,100 @@ main>section:nth-child(3) > div > div:nth-child(3) {
 }
 
 
-.goheight{
+.swiper-container{
+    width:100%;
+    height:200px;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.swiper-slide{
+    display: flex;
+    overflow: hidden;
+}
+
+
+.swiper-container > div:nth-child(2)::after,
+.swiper-container > div:nth-child(3)::after {
+    font-size: 1rem;
+    color: black;
+}
+
+.swiper-container  > div:nth-child(2),
+.swiper-container  > div:nth-child(3) {
+    width: 44px;
+    height: 100%;
+    color: transparent;
+    background-color: white;
+    font-weight: bold;
+    opacity: 0.3;
+    top:20px;
+    cursor: pointer;
+    z-index: 100;
+    position: absolute;
+}
+
+.swiper-container  > div:nth-child(2){
+    right:-10px;
+}
+
+.swiper-container  > div:nth-child(3){
+    left:-10px;
+}
+
+.swiper-container  > div:nth-child(2):hover,
+.swiper-container  > div:nth-child(3):hover{
+    opacity:1;
+}
+
+.swiper-slide>a>img{
+    width:100%;
+    height:99%;
+
+}
+
+.swiper-detail{
+    width:100%;
+    height:500px;
+    border:1px solid red;
+    margin-top:30px;
+    padding:20px;
+}
+
+.swiper-detail > img{
+    width:100%;
     height:100%;
 }
 
-.fiftyfifty{
-    height:59px;
+.flexable{
+    display:flex;
 }
+
+.none{
+    display: none;
+}
+
+.star_rating {font-size:0; letter-spacing:-4px;}
+
+.star_rating a {
+
+    font-size:22px;
+
+    letter-spacing:0;
+
+    display:inline-block;
+
+    margin-left:5px;
+
+    color:#ccc;
+
+    text-decoration:none;
+
+}
+
+.star_rating a:first-child {margin-left:0;}
+
+.star_rating a.on {color:yellow;}
+
