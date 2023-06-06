@@ -45,7 +45,7 @@
                             <div class="table_main">
                                 <div id="play_cinema">
                                     <span>상영 영화관</span>
-                                    <div>
+                                    <div class="relative">
                                         <div class="play_cinema_enter">
 
                                         </div>
@@ -66,7 +66,7 @@
                                 </div>
                                 <div id="play_movie">
                                     <span>상영 영화</span>
-                                    <div>
+                                    <div class="relative">
                                         <div class="play_movie_enter">
 
                                         </div>
@@ -103,7 +103,7 @@
                                 </div>
                                 <div id="play_time">
                                     <span>상영 시간</span>
-                                    <div>
+                                    <div class="relative">
                                         <div class="play_time_enter">
 
                                         </div>
