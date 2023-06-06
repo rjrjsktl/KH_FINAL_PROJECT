@@ -10,10 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.service.ManagerService;
 
 @Controller
@@ -49,25 +52,60 @@ public class ManagerController {
 	}
 
 	
-	// 관리자 상태 변경
+	// 회원 관리자 상태 업데이트
+	@ResponseBody
 	@PostMapping("/Manager_ST")
-		public int changeMgSt(
-			@RequestParam("ST") String st
-			,@RequestParam("userId") String userId
+		public int  changeMgSt(
+			@RequestParam("MST") String mst
+			, @RequestParam("userId") String userId
+			, User user
 				) {
-		System.out.println("AJAX로 가지고 온 ST의 값은 : " + st);
+		System.out.println("AJAX로 가지고 온 ST의 값은 : " + mst);
 		System.out.println("AJAX로 가지고 온 userId의 값은 : " + userId);
 		
-		int  result  =  1 ;
+		user.setUserManagerSt(mst);
+		user.setUserEmail(userId);
 		
-		result = 0;		
+		int result = service.updateST(user);
 		
-			return result;
+		if(result > 0) {
+			System.out.println("관리자 상태 변경 완료");
+			 result = 1;
+			
+		} else {
+			System.out.println("관리자 상태 변경 실패");
+			result = 0;
+		}
+		return result;
 	}
 	
-	
-	
-	
+	// 관리자_영화 등록 
+	@PostMapping("/movie_add")
+	public String MovieAdd(Movie inputMovie
+				
+							, RedirectAttributes ra 
+							) {
+		System.out.println("영화 등록 기능 수행");
+			
+		System.out.println("inputMovie: " + inputMovie);
+			
+		int result = service.MovieAdd(inputMovie);
+			
+		String message = null;
+		String path = null;	
+			
+		if(result > 0) {
+			message = "영화 등록 성공";
+			path = "manager/manager_movie_add";
+		} else {
+			message = "영화 등록 실패";
+			path = "manager/manager_movie_add";
+		}
+			
+		ra.addFlashAttribute("message", message);
+			
+		return path;
+	}
 	
 	// 관리자_1:1 문의 목록 이동
 	@GetMapping("/ask_list")
@@ -88,6 +126,12 @@ public class ManagerController {
 	public String moveMovieAdd() {
 		System.out.println("관리자_영화 등록 이동");
 		return "manager/manager_movie_add";
+	}
+	// 관리자_극장 등록 이동
+	@GetMapping("/manager_cinema_add")
+	public String moveCinemaAdd() {
+		System.out.println("관리자_극장 등록 이동");
+		return "manager/manager_cinema_add";
 	}
 	
 	// 관리자_상영시간 목록 이동

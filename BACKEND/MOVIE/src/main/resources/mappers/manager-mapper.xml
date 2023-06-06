@@ -24,6 +24,24 @@
 		<result property="userBlock" 		column="USER_BLOCK"/>
 	</resultMap>
 	
+	<resultMap type="movie" id="movie_rm">
+		<id property="movieNo" column="MOVIE_NO"/>
+		<result property="movieRuntime" 			column="MOVIE_RUNTIME"/>
+		<result property="movieTitle" 				column="MOVIE_TITLE"/>
+		<result property="movieNation" 				column="MOVIE_NATION"/>
+		<result property="movieOpen" 				column="MOVIE_OPEN"/>
+		<result property="mgNo" 					column="MG_NO"/>
+		<result property="movieContent" 			column="MOVIE_CONTENT"/>
+		<result property="movieImg" 				column="MOVIE_IMG"/>
+		<result property="moviePlayed" 				column="MOVIE_PLAYED"/>
+		<result property="movieWatched" 			column="MOVIE_WATCHED"/>
+		<result property="movieRegdate" 			column="MOVIE_REGDATE"/>
+		<result property="movieUploader"	 		column="MOVIE_UPLOADER"/>
+		<result property="movieFixdate" 			column="MOVIE_FIXDATE"/>
+		<result property="movieChanger" 			column="MOVIE_CHANGER"/>
+		<result property="genreCode" 				column="GENRE_CODE"/>
+	</resultMap>
+	
 	
 	<!-- 회원 수 조회 -->
 	<select id="getListCount" resultType="_int">
@@ -51,5 +69,22 @@
 	FROM USERS
 	ORDER BY USER_NO ASC
 	</select>
+	
+	<update id="updateST" parameterType="user">
+	UPDATE USERS
+	SET USER_MANAGERST = #{userManagerSt}
+	WHERE USER_EMAIL = #{userEmail}
+	</update>
+	
+	<insert id="MovieAdd" parameterType="movie"> 
+		INSERT INTO MOVIE 
+    	VALUES (
+    		SEQ_MOVIE_NO.NEXTVAL,
+        	#{movieRuntime}, #{movieTitle}, #{movieNation}, #{movieOpen},
+        	#{mgNo}, #{movieContent}, #{movieImg}, null,
+        	null, #{movieRegdate}, #{movieUploader}, #{movieFixdate},
+        	#{movieChanger}, #{genreCode}
+    	)
+	</insert>
 
 </mapper>

@@ -42,7 +42,9 @@
                             <div class="table_Title">
                                 <span>영화 등록</span>
                             </div>
+                            <!-- form에 action추가해서 쏴줘야함 -->
                             <form>
+                                <!-- id 추가 함 -->
                                 <div class="table_main">
                                     <div id="movie_sub">
                                         <span>영화 제목</span>
@@ -119,6 +121,7 @@
                                     <div id="movie_sub">
                                         <span>줄거리</span>
                                         <div>
+                                            <!-- value추가해야할거임 -->
                                             <textarea class="movie_sub_enter movie_story"
                                                 placeholder="500자 내외로 작성해 주세요."></textarea>
                                         </div>

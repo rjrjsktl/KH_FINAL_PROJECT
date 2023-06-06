@@ -12,21 +12,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>로그인 페이지</title>
 
-<link rel="stylesheet"
-	href="${contextPath}/resources/css/login/login.css">
-<link rel="stylesheet"
-	href="${contextPath}/resources/css/common/outline.css">
-<script src="https://kit.fontawesome.com/dc6e43e0ad.js"
-	crossorigin="anonymous"></script>
+<link rel="stylesheet"	href="${contextPath}/resources/css/login/login.css">
+<link rel="stylesheet"	href="${contextPath}/resources/css/common/outline.css">
+<script src="https://kit.fontawesome.com/dc6e43e0ad.js"	crossorigin="anonymous"></script>
 
 
 </head>
 
 <body>
 	<div id="wrap">
-
+<%-- 
 		<!-- header -->
-		<jsp:include page="/WEB-INF/views/common/header.jsp" />
+		<jsp:include page="/WEB-INF/views/common/header.jsp" /> --%>
 
 		<main>
 			<!-- 여기서 부터 작업하세요. -->
@@ -53,10 +50,8 @@
 											 로그인이 되어있지 않은 경우 
 											<c:when test="${empty sessionScope.loginUser}"> --%>
 												<div>
-													<input type="text" placeholder="아이디" name="userEmail"
-														value="${cookie.saveId.value}" maxlength="41"> <input
-														type="password" placeholder="비밀번호" name="userPw"
-														maxlength="41">
+													<input type="text" placeholder="아이디" name="userEmail" value="${cookie.saveId.value}" maxlength="41"> 
+													<input type="password" placeholder="비밀번호" name="userPw" maxlength="41">
 													<div class="keep_area">
 														<%-- 쿠키에 saveId가 있는 경우--%>
 														<c:if test="${ !empty cookie.saveId.value}">
@@ -118,9 +113,9 @@
 
 	</div>
 
-	<!-- footer -->
+<%-- 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-
+ --%>
 	<!--
     <%-- session에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
 			<c:if test="${ !empty sessionScope.message }">

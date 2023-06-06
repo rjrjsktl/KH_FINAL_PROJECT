@@ -229,4 +229,45 @@ confirmBtn.on('click', (e) => {
     console.log("관람 등급 : " + level_Arr);
     console.log("장르 : " + genre_Arr);
 
+    // 등록된 영화 ajax
+    console.log("영화등록 AJAX");
+    $.ajax({
+        url: "movie_add",
+        data: {
+            "movieTitle": movie_title.val(),
+            "movieRuntime": movie_time.val(),
+            "movieNation": movie_country.val(),
+            "movieOpen": movie_releseDate.val(),
+            "movieImg": movie_image.val(),
+            "mgNo": JSON.stringify(level_Arr),
+        	"genreCode": JSON.stringify(genre_Arr),
+            "movieContent": $('.movie_story').val()
+        },
+        type: "POST",
+        dataType: "json",
+
+        success: function (result) {
+            console.log(result);
+            // 등록 완료 : 1
+            // 등록 실패 : 0
+            if(result == 1) {
+                console.log("영화 등록 완료");
+            } else {
+                console.log("영화 등록 실패");
+            }
+        },
+        error: function () {
+            console.log("영화 등록 ajax 실패");
+        }
+    })
 });
+
+// addMovie 버튼 js 필요 없을듯
+// const addMoviebtn = $('#addMoviebtn');
+
+// addMoviebtn.on('click', (e) => {
+
+
+
+// });
+
