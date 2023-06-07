@@ -12,6 +12,7 @@
     <title>극장 등록</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_cinema_add.css">
+    						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
     <!-- fontawesome -->

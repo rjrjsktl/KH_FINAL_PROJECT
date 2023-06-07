@@ -12,6 +12,7 @@
 	<title>회원 리스트</title>
 
 	<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_member_list.css">
+							<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
 	<link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
 	<!-- fontawesome -->
