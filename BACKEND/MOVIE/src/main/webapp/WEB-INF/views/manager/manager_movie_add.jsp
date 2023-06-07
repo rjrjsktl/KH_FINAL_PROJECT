@@ -12,6 +12,7 @@
     <title>영화 등록</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_movie_add.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
     <!-- fontawesome -->
