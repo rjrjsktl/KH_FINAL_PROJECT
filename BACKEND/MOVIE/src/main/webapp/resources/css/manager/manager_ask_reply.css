@@ -162,49 +162,6 @@
     height: 100%;
 }
 
-#header_Wrapper {
-    width: 100%;
-    height: 85px;
-    padding: 0 20px;
-    background-color: white;
-}
-
-.header_Container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-}
-
-.header_loge_Area {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 85px;
-    margin-left: 20px;
-}
-
-.header_loge_Area>span:nth-child(2) {
-    font-weight: bold;
-}
-
-.header_logout_Area {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 120px;
-    height: 40px;
-    cursor: pointer;
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 50px;
-}
-
-.header_logout_Area:hover {
-    background-color: #720000;
-}
-
 /* 내부 아이템 영역 */
 #items_Wrapper {
     display: flex;
@@ -309,6 +266,7 @@
     font-weight: bold;
     background-color: #ddd;
 }
+
 /* --------------------1:1 문의 */
 .manager_Answer {
     width: 50%;
@@ -320,13 +278,15 @@
 
     padding-right: 9px;
 }
-.manager_Answer > textarea {
+
+.manager_Answer>textarea {
     width: 100%;
     height: 93%;
     resize: none;
     margin-bottom: 2%;
 }
-.manager_Answer > button {
+
+.manager_Answer>button {
     width: 100%;
     height: 5%;
 
@@ -340,9 +300,10 @@
     /* border: 1px solid blue; */
 
     padding-left: 9px;
-    
+
 }
-.user_Question > textarea {
+
+.user_Question>textarea {
     width: 100%;
     height: 100%;
     resize: none;
