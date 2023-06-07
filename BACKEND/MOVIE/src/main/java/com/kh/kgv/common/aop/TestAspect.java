@@ -31,7 +31,7 @@ public class TestAspect {
 	// @Before("memberPointcut()")
 	@Before("CommonPointcut.implPointcut()")
 	public void start() { // 서비스 코드 수행전에 수행되는 메서드(advice)
-		logger.info("---------------Servuce Start---------------");
+		logger.info("---------------Service Start---------------");
 	}
 	
 	// @After : Pointcut에 지정된 메서드가 수행된 후 advice 수행을 명시하는 어노테이션
@@ -39,7 +39,7 @@ public class TestAspect {
 	// @After("memberPointcut()")
 	@After("CommonPointcut.implPointcut()")
 	public void end() { // 서비스 코드 수행후에 수행되는 메서드(advice)
-		logger.info("---------------Servuce End---------------");
+		logger.info("---------------Service End---------------");
 	}
 	
 	// Pointcut을 작성해놓은 메서드

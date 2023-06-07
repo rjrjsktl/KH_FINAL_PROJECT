@@ -67,7 +67,7 @@
                             </table>
                         </div>
                         <div>
-                            <button>아이디 찾기</button>
+                            <button >아이디 찾기</button>
                         </div>
                     </div>
                 </div>

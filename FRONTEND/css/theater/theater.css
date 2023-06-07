@@ -187,3 +187,8 @@ table td:nth-child(2){
 table td:nth-child(3){
     width:20%;
 }
+
+
+.navBar:nth-child(2) > a:nth-child(1){
+    color:rgb(255,196,0);
+ }
