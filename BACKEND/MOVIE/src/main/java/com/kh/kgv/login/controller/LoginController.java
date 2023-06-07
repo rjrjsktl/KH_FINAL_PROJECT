@@ -181,16 +181,26 @@ public class LoginController {
 	
 	// 비밀번호 찾기 checkUser
 	@GetMapping("/checkUser")
+	@ResponseBody
 	public int checkUser(String userName, String userBirth, String userEmail) {
+		
+		// 1. User 객체 생성
+		User user = new User();
 		
 		logger.info("비밀번호를 찾으러 떠나자!");
 		
+		// 2. User 객체 안에 값을 넣어줌.
+		user.setUserName(userName);
+		user.setUserBirth(userBirth);
+		user.setUserEmail(userEmail);
 		
-		int result = service.checkUser(userName, userBirth, userEmail);
+		// 3. 1과 0 보다는 값의 존재 여부 확인하는게 더 '낳'은거 같아서 boolean으로 넘김
+		Boolean checkPw = service.checkUser(user);
 		
-		logger.info("찾아야될 User : " + result);
-		
-		return result;
+		logger.info("찾아야될 User : " + checkPw);
+		// 9. AJAX에서 result값을 받을때 1과 0으로 구분한다. 그래서 받아온 값이 true이면 1 아니면 0을 반납한다.
+		// -> result가 아니어도 값이 넘어갑니다.
+		return checkPw ? 1 : 0;
 	}
 	
 //	// 이메일 보내기

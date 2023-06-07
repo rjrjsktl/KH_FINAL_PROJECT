@@ -24,7 +24,9 @@ public interface LoginService {
 	 * @param userEmail
 	 * @return
 	 */
-	public abstract int checkUser(String userName, String userBirth, String userEmail);
+
+	// 4. 흔한 서비스
+	public abstract Boolean checkUser(User user);
 
 	
 	
