@@ -141,6 +141,10 @@ let confirmBtn = $('.bottom_Submit');
 
 let movie_title = $('.movie_title');
 
+let movie_director = $('.movie_director');
+
+let movie_cast = $('.movie_cast');
+
 let movie_time = $('.movie_time');
 // 상영시간 숫자만 입력 정규식
 movie_time.on('change', (e) => {
@@ -178,6 +182,18 @@ let movie_story = $('.movie_story');
 
 confirmBtn.on('click', (e) => {
     if (!movie_title.val()) {
+        alert('제목이 입력되지 않았습니다.');
+        movie_title.focus();
+        e.preventDefault();
+        return false;
+    };
+    if (!movie_director.val()) {
+        alert('제목이 입력되지 않았습니다.');
+        movie_title.focus();
+        e.preventDefault();
+        return false;
+    };
+    if (!movie_cast.val()) {
         alert('제목이 입력되지 않았습니다.');
         movie_title.focus();
         e.preventDefault();
@@ -221,6 +237,8 @@ confirmBtn.on('click', (e) => {
     };
     console.log('저장버튼이 눌림.');
     console.log("영화 제목 : " + movie_title.val());
+    console.log("감독 : " + movie_director.val());
+    console.log("출연진 : " + movie_cast.val());
     console.log("상영 시간 : " + movie_time.val());
     console.log("제작 국가 : " + movie_country.val());
     console.log("개봉일 : " + movie_releseDate.val());
@@ -235,6 +253,8 @@ confirmBtn.on('click', (e) => {
         url: "movie_add",
         data: {
             "movieTitle": movie_title.val(),
+            "movieDirector": movie_director.val(),
+            "movieCast": movie_cast.val(),
             "movieRuntime": movie_time.val(),
             "movieNation": movie_country.val(),
             "movieOpen": movie_releseDate.val(),

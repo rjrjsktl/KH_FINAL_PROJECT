@@ -19,6 +19,8 @@ public class Movie {
 	private String mgNo;
 	private String movieContent;
 	private String movieImg;
+	private String director; // 감독
+	private String cast;	// 출연진
 	private int moviePlayed;
 	private int movieWatched;
 	private String movieRegdate;
