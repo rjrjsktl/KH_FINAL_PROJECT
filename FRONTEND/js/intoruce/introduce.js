@@ -93,40 +93,42 @@ $(document).ready(function() {
 
 
   function addReview() {
-    // star_rating에서 "on" 클래스를 가진 요소의 개수를 가져옴
     const starRating = document.querySelectorAll('.star_rating .on').length;
     
-    // text-area의 내용을 가져옴
     const reviewText = document.querySelector('.replywrite textarea').value;
     
-    // 새로운 li 요소 생성
     const li = document.createElement('li');
     
-    // li 요소 내용 작성
+    const filledStars = '★'.repeat(starRating);
+    const emptyStars = '☆'.repeat(5 - starRating);
+  
     li.innerHTML =
-    
-    // 첫번째 span의 img에는 회원프로필 이미지를 갖고오시고
-    // 두번째는 회원아이디를 갖고오고
-    // 세번재는 현재시간을 갖고오면됩니당.
-    
     `
       <span><img src="" alt=""></span>
       <div>
         <span></span>
         <span>2023.05.24</span>
-        <span>${'★'.repeat(starRating)}</span>
+        <span>${filledStars}${emptyStars}</span>
         <span>${starRating}</span>
       </div>
       <div>${reviewText}</div>
     `;
     
-    // replyList에 li 요소 추가
     const replyList = document.querySelector('.replyList ul');
-    replyList.appendChild(li);
+    replyList.prepend(li);
     
-    // text-area 초기화
     document.querySelector('.replywrite textarea').value = '';
   }
   
   const replyBtn = document.querySelector('.replyBtn');
   replyBtn.addEventListener('click', addReview);
+  $(document).ready(function() {
+    var itemsToShow = 5;
+    
+    $('.review').slice(0, itemsToShow).show();
+  
+    $('.morePage').on('click', function() {
+      itemsToShow++;
+      $('.review').slice(0, itemsToShow).slideDown();
+    });
+  });
