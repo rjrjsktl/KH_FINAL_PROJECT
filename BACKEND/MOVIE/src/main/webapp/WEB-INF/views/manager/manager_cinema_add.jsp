@@ -59,7 +59,7 @@
                                         <span>상영관</span>
                                         <div class="swiper mySwiper">
                                             <div class="swiper-wrapper">
-                                                <c:forEach var="i" begin="1" end="7">
+                                                <c:forEach var="i" begin="1" end="4">
                                                 <div class="swiper-slide" data-room-no='${i}' data-room-maxrow='12' data-room-maxcolumn='24' data-room-type="일반관">
                                                     <div>
                                                         <div>
