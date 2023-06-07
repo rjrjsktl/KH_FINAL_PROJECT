@@ -11,7 +11,7 @@
                                 <span>님!</span>
                             </div>
                             <button class="header_logout_Area">
-                                <div>로그아웃</div>
+                                <a class="returnMain" href="${contextPath}/">나가기</a>
                             </button>
                         </div>
                     </div>

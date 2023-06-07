@@ -12,6 +12,7 @@
     <title>1:1 문의</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_ask.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
     <!-- fontawesome -->
