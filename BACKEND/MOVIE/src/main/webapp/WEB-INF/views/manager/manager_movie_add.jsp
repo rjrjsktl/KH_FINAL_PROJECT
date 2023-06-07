@@ -12,6 +12,7 @@
     <title>영화 등록</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_movie_add.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
     <!-- fontawesome -->
@@ -50,6 +51,18 @@
                                         <span>영화 제목</span>
                                         <div>
                                             <input type="text" class="movie_sub_enter movie_title">
+                                        </div>
+                                    </div>
+                                    <div id="movie_sub">
+                                        <span>감독</span>
+                                        <div>
+                                            <input type="text" class="movie_sub_enter movie_director">
+                                        </div>
+                                    </div>
+                                    <div id="movie_sub">
+                                        <span>출연진</span>
+                                        <div>
+                                            <input type="text" class="movie_sub_enter movie_cast">
                                         </div>
                                     </div>
                                     <div id="movie_sub">

@@ -11,8 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>극장 등록</title>
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_cinema_add.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_cinema_add.css">
 
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
@@ -58,7 +59,7 @@
                                         <span>상영관</span>
                                         <div class="swiper mySwiper">
                                             <div class="swiper-wrapper">
-                                                <c:forEach var="i" begin="1" end="7">
+                                                <c:forEach var="i" begin="1" end="4">
                                                 <div class="swiper-slide" data-room-no='${i}' data-room-maxrow='12' data-room-maxcolumn='24' data-room-type="일반관">
                                                     <div>
                                                         <div>

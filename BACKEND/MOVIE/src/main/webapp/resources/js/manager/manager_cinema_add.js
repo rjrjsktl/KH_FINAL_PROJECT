@@ -46,41 +46,49 @@ $('#edit_area select').on("input", function(){
 // 가로 세로 변경시
 
 $('#edit_area input[type="number"]').on("input", function(){
-    tempRow = $('#temp_row').val();
-    tempColumn = $('#temp_column').val();
-    $('#seat_area').empty();
-	createBasicRoom(tempRow, tempColumn);
+  tempRow = $('#temp_row').val();
+  tempColumn = $('#temp_column').val();
+  $('#seat_area').empty();
+  createBasicRoom(tempRow, tempColumn);
 });
 
 
 // 기본 방 만들기
 
 function createBasicRoom(maxRow, maxColumn){
-    let s1 = `<a href="#none"><span>`;
-    let s2 = `</span></a>`;
+  let s1 = `<a href="#none"><span>`;
+  let s2 = `</span></a>`;
 
-	for(let k=1; k<=maxRow; k++){
-	  let row = document.createElement('div');
-	  document.querySelector('#seat_area').appendChild(row);
-	  for(let i=1; i<=maxColumn; i++){
-	    let seat = document.createElement('a');
-	    seat.href = "#none";
-	    document.querySelector(`#seat_area > div:nth-child(${k})`).appendChild(seat);
-	  }
-	}
+  for(let k=1; k<=maxRow; k++){
+    let row = document.createElement('div');
+    document.querySelector('#seat_area').appendChild(row);
+    for(let i=1; i<=maxColumn; i++){
+      let seat = document.createElement('a');
+      seat.href = "#none";
+      document.querySelector(`#seat_area > div:nth-child(${k})`).appendChild(seat);
+    }
+  }
 }
+
+
+// 좌석 클릭 시
+
+$('#seat_area > div > a').on("click", function(){
+  alert(2);
+});
+
 
 // 확인 버튼 
 
 $('#room_confirm').on("click", function() {
-    let room = $(`.swiper-slide[data-room-no=${tempNo}]`);
-	room.data('room-maxrow', tempRow);
-	room.data('room-maxcolumn', tempColumn);
-	room.data('room-type', tempType);
-	room.find('.room_type').html(tempType);
+  let room = $(`.swiper-slide[data-room-no=${tempNo}]`);
+  room.data('room-maxrow', tempRow);
+  room.data('room-maxcolumn', tempColumn);
+  room.data('room-type', tempType);
+  room.find('.room_type').html(tempType);
 	
-	$('#room_area').css('display', 'none');
-    $('#room_area').css('z-index', '0');
+  $('#room_area').css('display', 'none');
+  $('#room_area').css('z-index', '0');
 });
 
 

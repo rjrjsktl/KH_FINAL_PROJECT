@@ -12,6 +12,7 @@
     <title>이벤트 목록</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_event_list.css">
+    						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
     <!-- fontawesome -->
