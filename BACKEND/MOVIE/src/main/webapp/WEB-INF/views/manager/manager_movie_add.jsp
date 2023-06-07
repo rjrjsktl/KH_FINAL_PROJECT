@@ -53,6 +53,18 @@
                                         </div>
                                     </div>
                                     <div id="movie_sub">
+                                        <span>감독</span>
+                                        <div>
+                                            <input type="text" class="movie_sub_enter movie_director">
+                                        </div>
+                                    </div>
+                                    <div id="movie_sub">
+                                        <span>출연진</span>
+                                        <div>
+                                            <input type="text" class="movie_sub_enter movie_cast">
+                                        </div>
+                                    </div>
+                                    <div id="movie_sub">
                                         <span>상영 시간</span>
                                         <div>
                                             <input type="text" class="movie_sub_enter movie_time">
