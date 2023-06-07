@@ -377,3 +377,5 @@ footer>section>div:nth-child(2) span:last-child {
     cursor: pointer;
   }
 
+ a * {
+ cursor:pointer}

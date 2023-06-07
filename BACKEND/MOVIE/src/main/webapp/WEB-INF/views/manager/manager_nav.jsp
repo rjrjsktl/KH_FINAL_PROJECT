@@ -95,6 +95,16 @@
                                             </div>
                                         </li>
                                     </a>
+                                    <a href="${contextPath}/manager/manager_cinema_add">
+                                        <li>
+                                            <div class="inner_align">
+                                                <div class="inner_Left_Icon">
+                                                    <i class="fa-solid fa-play fa-2xs"></i>
+                                                </div>
+                                                <span>극장 등록</span>
+                                            </div>
+                                        </li>
+                                    </a>
                                 </ul>
                             </li>
                             <li class="slide_Content">

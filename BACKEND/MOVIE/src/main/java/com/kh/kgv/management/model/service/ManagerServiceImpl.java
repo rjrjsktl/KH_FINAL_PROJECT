@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.dao.ManagerDAO;
 import com.kh.kgv.management.model.vo.Pagination;
 
@@ -38,6 +39,25 @@ public class ManagerServiceImpl implements ManagerService{
 		
 		return getUserList;
 	}
+
+
+	// 회원 관리자 상태 업데이트
+	@Override
+	public int updateST(User user) {
+		return dao.updateST(user);
+	}
+	
+	// 영화 등록
+	@Override
+	public int MovieAdd(Movie inputMovie) {
+			
+		System.out.println("==============영화등록 serviceimpl");
+			
+		int result = dao.MovieAdd(inputMovie);
+			
+		return result;
+	}
+	
 	
 	
 }
