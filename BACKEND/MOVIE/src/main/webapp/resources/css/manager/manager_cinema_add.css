@@ -254,8 +254,6 @@
 
 
 /* 극장 이름 */
-
-<<<<<<< HEAD
 .table_main > div:first-child {
   display: flex;
   align-items: center;
@@ -273,31 +271,10 @@
   height: 40px;
   width: 180px;
   padding-left: 8px;
-=======
-.table_main>div:first-child {
-    display: flex;
-    align-items: center;
-    width: 800px;
-    height: 80px;
-    margin: 10px 0;
-    padding-left: 30px;
-}
-
-.table_main>div:first-child>span {
-    margin-right: 30px;
-}
-
-.table_main>div:first-child>input {
-    height: 40px;
-    width: 30%;
-    padding-left: 8px;
->>>>>>> 617f6100fc99902a5d00408864a526ce99486370
 }
 
 
 /* 극장 주소 */
-
-<<<<<<< HEAD
 .table_main > div:nth-child(2) {
   display: flex;
   align-items: center;
@@ -309,25 +286,11 @@
 
 .table_main > div:nth-child(2) > span {
   margin-right: 30px;
-=======
-.table_main>div:nth-child(2) {
-    display: flex;
-    align-items: center;
-    width: 800px;
-    height: 200px;
-    margin: 10px 0;
-    padding-left: 30px;
-}
-
-.table_main>div:nth-child(2)>span {
-    margin-right: 30px;
->>>>>>> 617f6100fc99902a5d00408864a526ce99486370
 }
 
 
 /* 상영관 */
 
-<<<<<<< HEAD
 .table_main > div:nth-child(3) {
   display: flex;
   align-items: center;
@@ -372,57 +335,10 @@
 .swiper-slide > div:first-child > div:last-child {
   position: absolute;
   right: 8px;
-=======
-.table_main>div:nth-child(3) {
-    display: flex;
-    align-items: center;
-    height: 180px;
-    margin: 10px 0;
-    padding-left: 14px;
-}
-
-.table_main>div:nth-child(3)>span {
-    margin-right: 30px;
-}
-
-.table_main>div:nth-child(3)>.swiper {
-    margin: 0;
-    width: 980px;
-    height: 180px;
-}
-
-.swiper-slide {
-    width: 180px;
-    height: 180px;
-    margin-right: 20px;
-    border: 1px solid black;
-}
-
-.swiper-slide>div:first-child {
-    display: flex;
-    align-items: center;
-    position: relative;
-    font-size: 14px;
-    width: 100%;
-    height: 30px;
-    border-bottom: 1px solid black;
-    padding-left: 10px;
-}
-
-.swiper-slide>div:first-child>div:first-child {
-    position: relative;
-    top: 2px;
-}
-
-.swiper-slide>div:first-child>div:last-child {
-    position: absolute;
-    right: 8px;
->>>>>>> 617f6100fc99902a5d00408864a526ce99486370
 }
 
 /* 상영관 편집*/
 
-<<<<<<< HEAD
 .table_main > #room_area {
   display: none;
   position: absolute;
@@ -451,36 +367,6 @@
   border-right: lpx solid black;
   padding-top: 30px;
   padding-left: 50px;
-=======
-.table_main>#room_area {
-    display: none;
-    position: absolute;
-    top: 20px;
-    left: 15px;
-    z-index: 0;
-    width: 1055px;
-    height: 497px;
-    background-color: #ccc;
-}
-
-#room_area>div:first-child {
-    width: 100%;
-    height: 37px;
-    text-align: center;
-    line-height: 40px;
-    border-bottom: 1px solid black;
-}
-
-#room_area>div:nth-child(2) {
-    display: flex;
-}
-
-#room_area>div:nth-child(2)>#seat_area {
-    width: 80%;
-    border-right: lpx solid black;
-    padding-top: 30px;
-    padding-left: 50px;
->>>>>>> 617f6100fc99902a5d00408864a526ce99486370
 }
 
 
@@ -514,18 +400,12 @@
     text-align: center;
 }
 
-<<<<<<< HEAD
 #seat_area > div > a {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-=======
-#seat_area>div>a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
->>>>>>> 617f6100fc99902a5d00408864a526ce99486370
+
 
     width: 25px;
     height: 25px;
@@ -533,7 +413,6 @@
     border: 1px solid white;
 }
 
-<<<<<<< HEAD
 #seat_area > div > a:hover {
   background-color: orange;
   border-color: orange;
@@ -555,20 +434,10 @@
 
 #room_area > div:nth-child(2) > div:nth-child(2) {
   padding-top: 30px;
-=======
-#seat_area>div>a * {
-    font-size: 12px;
-}
-
-#room_area>div:nth-child(2)>div:nth-child(2) {
-    padding-top: 30px;
->>>>>>> 617f6100fc99902a5d00408864a526ce99486370
-}
 
 
 /* 상영관의 가로, 세로 */
 
-<<<<<<< HEAD
 #room_area > div:nth-child(2) > div:nth-child(2) > div {
   display: flex;
   align-items: center;
@@ -586,22 +455,3 @@
   width: 100px;
   height: 30px;
 }
-=======
-#room_area>div:nth-child(2)>div:nth-child(2)>div {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    height: 30px;
-}
-
-#room_area>div:nth-child(2)>div:nth-child(2)>div>input {
-    margin-left: 5.5px;
-    width: 80px;
-}
-
-#room_area>div:nth-child(2)>div:nth-child(2)>div>select {
-    margin-left: 5.5px;
-    width: 100px;
-    height: 30px;
-}
->>>>>>> 617f6100fc99902a5d00408864a526ce99486370
