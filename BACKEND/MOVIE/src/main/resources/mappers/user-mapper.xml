@@ -50,5 +50,19 @@
   	</select>
 	
 	
+	<select id="checkUser" parameterType="user" resultMap="user_rm">
+  		SELECT USER_NAME, USER_BIRTH, USER_EMAIL
+  		FROM USERS
+  		WHERE USER_NAME = #{userName}
+  		AND USER_BIRTH = #{userBirth}
+  		AND USER_EMAIL = #{userEmail} 
+  	</select>
+	
+	
+	
+	
+	
+	
+	
   	
 </mapper>
