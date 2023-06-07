@@ -37,12 +37,13 @@ $(document).ready(function () {
             }
         }
     });
+    const jsonArray = [];
 
     function uploadImageFile(file, el) {
         var data = new FormData();
         data.append("file", file);
         $.ajax({
-            url: '/../summer_image.do',
+            url: 'event_add/uploadImageFile',
             type: "POST",
             enctype: 'multipart/form-data',
             data: data,
@@ -59,6 +60,10 @@ $(document).ready(function () {
                 console.log(e);
             }
         });
+    }
+
+    function jsonFn(jsonArray) {
+        console.log(jsonArray);
     }
 
 });

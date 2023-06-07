@@ -396,6 +396,10 @@
     flex: 9;
 }
 
+.start_date {
+    height: 50px;
+}
+
 /* 상영 종료일 */
 #play_end {
     display: flex;
@@ -416,6 +420,16 @@
 
 #play_end>div {
     flex: 9;
+}
+
+.end_date {
+    height: 50px;
+}
+
+/* input Date 선택 시 나오는 달력 아이콘 숨기기 */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
 }
 
 /* 상영 시간 */
