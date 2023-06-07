@@ -160,7 +160,7 @@ public class SignUpController {
 
 	         }
 	         
-	         String setForm = "channelkgv1@gmail.com";
+	         String setForm = "dmukservices@gmail.com";
 	         String toMail = userEmail;
 	         String title = "회원가입 인증 이메일 입니다.";
 	         String content = 
