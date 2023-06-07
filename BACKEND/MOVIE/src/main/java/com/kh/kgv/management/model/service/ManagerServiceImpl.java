@@ -54,7 +54,7 @@ public class ManagerServiceImpl implements ManagerService{
 		System.out.println("==============영화등록 serviceimpl");
 			
 		int result = dao.MovieAdd(inputMovie);
-			
+		System.out.println("serviceImpl result:" + result);
 		return result;
 	}
 	

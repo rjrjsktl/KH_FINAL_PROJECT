@@ -372,7 +372,7 @@
 
 /* 상영관 편집 > 좌석 */
 
-#seat_area>div {
+#seat_area > div {
     display: flex;
     flex-wrap: nowrap;
     position: relative;
@@ -382,12 +382,12 @@
     margin-bottom: 7px;
 }
 
-#seat_area>div:last-child {
+#seat_area > div:last-child {
     margin-bottom: 0;
 }
 
 
-#seat_area>div>div {
+#seat_area > div > div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -405,12 +405,10 @@
   justify-content: center;
   align-items: center;
   position: relative;
-
-
-    width: 25px;
-    height: 25px;
-    margin-right: 5.98px;
-    border: 1px solid white;
+  width: 25px;
+  height: 25px;
+  margin-right: 5.98px;
+  border: 1px solid white;
 }
 
 #seat_area > div > a:hover {
@@ -418,23 +416,18 @@
   border-color: orange;
 }
 
+#seat_area > div > a.clicked {
+  background-color: red;
+  border-color: red;
+}
+
 #seat_area > div > a * {
   font-size: 12px;
 }
 
-#seat_area > div > a > .tool {
-  z-index: 5;
-  position: absolute;
-  top: 0;
-  right: -10px;
-  width: 180px;
-  height: 180px;
-  background-color: black;
-}
-
 #room_area > div:nth-child(2) > div:nth-child(2) {
   padding-top: 30px;
-
+}
 
 /* 상영관의 가로, 세로 */
 
@@ -447,11 +440,25 @@
 
 #room_area > div:nth-child(2) > div:nth-child(2) > div > input {
   margin-left: 5.5px;
-  width: 80px;
+  width: 50px;
 }
 
 #room_area > div:nth-child(2) > div:nth-child(2) > div > select {
   margin-left: 5.5px;
-  width: 100px;
+  width: 150px;
   height: 30px;
 }
+
+
+/* 좌석 옵션 */
+
+#room_area > div:nth-child(2) > div:nth-child(2) > div:nth-child(4) {
+  margin-top: 50px;
+  display: none;
+}
+
+#room_area > div:nth-child(2) > div:nth-child(2) > .seat_detail {
+  display: none;
+}
+
+

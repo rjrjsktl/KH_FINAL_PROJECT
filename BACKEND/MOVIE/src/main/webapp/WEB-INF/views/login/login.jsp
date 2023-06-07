@@ -59,8 +59,8 @@
 															<c:set var="chk" value="checked" />
 														</c:if>
 														<input type="checkbox" name="saveId" ${chk} id="saveId">
-														<label for="saveId" class="bb"></label> <label
-															for="saveId" class="cc">아이디 저장</label>
+														<label for="saveId" class="bb"></label> 
+														<label for="saveId" class="cc">아이디 저장</label>
 													</div>
 												</div>
 												<%-- </c:when> --%>
