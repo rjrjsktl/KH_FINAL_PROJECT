@@ -30,6 +30,7 @@
     <script src="lang/summernote-ko-KR.js"></script>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_notice_add.css">
+    						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
 </head>
