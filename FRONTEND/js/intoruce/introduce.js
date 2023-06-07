@@ -50,7 +50,7 @@ $(document).ready(function() {
   
 
 
-  $(".star_rating a").hover(function() {
+  $(".star_rating a").click(function() {
     $(this).parent().children("a").removeClass("on");
     $(this).addClass("on").prevAll("a").addClass("on");
     // 'on' 클래스 개수 확인
@@ -58,3 +58,38 @@ $(document).ready(function() {
     console.log(numberOfOnClasses);
     return false;
   });
+
+
+  function addReview() {
+    // star_rating에서 "on" 클래스를 가진 요소의 개수를 가져옴
+    const starRating = document.querySelectorAll('.star_rating .on').length;
+    
+    // text-area의 내용을 가져옴
+    const reviewText = document.querySelector('.replywrite textarea').value;
+    
+    // 새로운 li 요소 생성
+    const li = document.createElement('li');
+    
+    // li 요소 내용 작성
+    li.innerHTML = `
+      <span><img src="" alt="이미지"></span>
+      <div>
+        <span>씨*럼</span>
+        <span>2023.05.24</span>
+        <span>${'★'.repeat(starRating)}</span>
+        <span>${starRating}</span>
+      </div>
+      <div>${reviewText}</div>
+    `;
+    
+    // replyList에 li 요소 추가
+    const replyList = document.querySelector('.replyList ul');
+    replyList.appendChild(li);
+    
+    // text-area 초기화
+    document.querySelector('.replywrite textarea').value = '';
+  }
+  
+  // 버튼 클릭 이벤트 연결
+  const replyBtn = document.querySelector('.replyBtn');
+  replyBtn.addEventListener('click', addReview);
