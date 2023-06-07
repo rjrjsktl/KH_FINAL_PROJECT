@@ -11,9 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>극장 등록</title>
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_cinema_add.css">
-    						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_cinema_add.css">
 
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
