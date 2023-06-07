@@ -71,6 +71,9 @@
                                                         </div>
                                                     
                                                     </div>
+                                                    <div>
+ 
+                                                    </div>
                                                     
                                                 </div>
                                                 
@@ -98,10 +101,26 @@
                                     	        </div>
                                 			    
                                 			    <div>
-                                			        가로 : <input id="temp_row" type="number" min="1" max="12" value="12" onkeypress="return false;">
+                                			        가로 : <input id="temp_row" class="temp_rc" type="number" min="1" max="12" value="12" onkeypress="return false;">
                                 			    </div>
                                 			    <div>
-                                			        세로 : <input id="temp_column" type="number" min="1" max="25" value="24" onkeypress="return false;">
+                                			        세로 : <input id="temp_column" class="temp_rc" type="number" min="1" max="25" value="24" onkeypress="return false;">
+                                			    </div>
+                                			    <div id="seat_option">
+                                			        옵션 :
+                                			        <select>
+                                			            <option>통로 만들기</option>
+                                			            <option>공간 만들기</option>
+                                			        </select>
+                                			    </div>
+                                			    <div class="seat_detail sd1">
+                                			        우측 : <input class="seat_right" type="number" min="0" max="3" value="0" onkeypress="return false;">
+                                			    </div>
+                                			    <div class="seat_detail sd2">
+                                			        우측 : <input class="seat_right" type="number" min="0" max="3" value="0" onkeypress="return false;">
+                                			    </div>
+                                			    <div class="seat_detail sd2">
+                                			        하측 : <input class="seat_down" type="number" min="0" max="3" value="0" onkeypress="return false;">
                                 			    </div>
                                 			    <div>
                                 		            <button type="button" id="room_confirm">확인</button>
