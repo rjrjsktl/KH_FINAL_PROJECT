@@ -78,7 +78,7 @@
                                     </div>
                                     <div id="level">
                                         <span>관람 등급</span>
-                                        <div>
+                                        <div class="relative">
                                             <div class="movie_level">
 
                                             </div>
@@ -99,7 +99,7 @@
                                     </div>
                                     <div id="Genre">
                                         <span>장르</span>
-                                        <div>
+                                        <div class="relative">
                                             <div class="movie_Genre">
 
                                             </div>
