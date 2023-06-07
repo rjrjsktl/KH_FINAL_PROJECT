@@ -54,15 +54,18 @@ public class LoginDAO {
 	 * @param userEmail
 	 * @return
 	 */
-	public int checkUser(String userName, String userBirth, String userEmail) {
+	//6. DAO
+	public Boolean checkUser(User user) {
 		
-		Map<String, Object> params = new HashMap<>();
-		
-		params.put("userName", userName);
-		params.put("userBirth", userBirth);
-		params.put("userEmail", userEmail);
-		
-		return sqlSession.selectOne("userMapper.checkUser", params);
+		// 7. boolean으로 실제로 값이 있는 없느지 확인하기
+		// Boolean = true, false, null 을 값으로 받는다.
+		// boolean = true, false 만 값으로 받는다.
+		// -> SQL쿼리문을 실행하면 값이 없을 경우, null로 반환된다. 그러면 그 null을 받아서 처리해야하기 때문에 Boolean을 쓴다.
+	    Boolean checkPw = sqlSession.selectOne("userMapper.checkUser", user);
+	    
+	    //8. 삼항 연산자를 사용해서, SQL쿼리문을 돌려서 나온 값이 NULL인지 True인지 구별.
+	    // -> 만약 NULL이 반환되면 false가 리턴되고, 값이 조회되면 true값을 반환한다.
+	    return checkPw != null ?checkPw : false;
 	}
 
 

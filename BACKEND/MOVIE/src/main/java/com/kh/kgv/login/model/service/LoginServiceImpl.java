@@ -60,16 +60,12 @@ public class LoginServiceImpl implements LoginService{
 	}
 	
 	// 비밀번호 찾기 checkUser 서비스 구현
+	// 5. 흔한 서비스임플
 	@Override
-	public int checkUser(String userName, String userBirth, String userEmail) {
-		return dao.checkUser(userName, userBirth, userEmail);
+	public Boolean checkUser(User user) {
+		System.out.println("=================================================" + user);
+		// TODO Auto-generated method stub
+		return dao.checkUser(user);
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 }
