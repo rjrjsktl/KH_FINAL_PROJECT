@@ -45,6 +45,7 @@
                             </div>
                             <!-- form에 action추가해서 쏴줘야함 -->
                             <form>
+                            	<input type="hidden" name="movieUploader" value="${loginUser.userName}">
                                 <!-- id 추가 함 -->
                                 <div class="table_main">
                                     <div id="movie_sub">
