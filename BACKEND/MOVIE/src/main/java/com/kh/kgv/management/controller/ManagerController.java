@@ -80,10 +80,10 @@ public class ManagerController {
 	}
 	
 	// 관리자_영화 등록 
+	@ResponseBody
 	@PostMapping("/movie_add")
-	public String MovieAdd(Movie inputMovie
-				
-							, RedirectAttributes ra 
+	public int MovieAdd(Movie inputMovie
+//							, RedirectAttributes ra 
 							) {
 		System.out.println("영화 등록 기능 수행");
 			
@@ -91,20 +91,19 @@ public class ManagerController {
 			
 		int result = service.MovieAdd(inputMovie);
 			
-		String message = null;
-		String path = null;	
+		System.out.println("controller result:" + result);
+		System.out.println("등록 ㄱㄱ");	
+//		if(result > 0) {
+//			message = "영화 등록 성공";
+//			path = "/manager/movie_add";
+//		} else {
+//			message = "영화 등록 실패";
+//			path = "/manager/movie_add";
+//		}
 			
-		if(result > 0) {
-			message = "영화 등록 성공";
-			path = "manager/manager_movie_add";
-		} else {
-			message = "영화 등록 실패";
-			path = "manager/manager_movie_add";
-		}
-			
-		ra.addFlashAttribute("message", message);
-			
-		return path;
+//		ra.addFlashAttribute("message", message);
+//		return "redirect:" + path;
+		return result;
 	}
 	
 	// 관리자_1:1 문의 목록 이동

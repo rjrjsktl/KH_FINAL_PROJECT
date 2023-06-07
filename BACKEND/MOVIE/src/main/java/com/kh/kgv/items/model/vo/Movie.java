@@ -19,12 +19,12 @@ public class Movie {
 	private String mgNo;
 	private String movieContent;
 	private String movieImg;
-	private String director; // 감독
-	private String cast;	// 출연진
+	private String movieDirector; // 감독
+	private String movieCast;	// 출연진
 	private int moviePlayed;
 	private int movieWatched;
 	private String movieRegdate;
-	private String movieUpload;
+	private String movieUploader;
 	private String movieFixdate;
 	private String movieChanger;
 	private String genreCode;

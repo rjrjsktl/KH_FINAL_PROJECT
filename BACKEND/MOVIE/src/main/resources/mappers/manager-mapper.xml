@@ -80,10 +80,22 @@
 		INSERT INTO MOVIE 
     	VALUES (
     		SEQ_MOVIE_NO.NEXTVAL,
-        	#{movieRuntime}, #{movieTitle}, #{movieNation}, #{movieOpen},
-        	#{mgNo}, #{movieContent}, #{movieImg}, null,
-        	null, #{movieRegdate}, #{movieUploader}, #{movieFixdate},
-        	#{movieChanger}, #{genreCode}
+        	#{movieRuntime},
+        	#{movieTitle},
+        	#{movieNation},
+        	#{movieOpen},
+        	#{mgNo},
+        	#{movieContent},
+        	#{movieImg},
+        	null,
+        	null,
+        	default,
+        	#{movieUploader},
+        	null,
+        	null,
+        	#{genreCode},
+        	#{movieDirector},
+        	#{movieCast}
     	)
 	</insert>
 

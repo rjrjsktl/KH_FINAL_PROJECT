@@ -177,6 +177,7 @@ let movie_image = $('.movie_image');
 
 let movie_story = $('.movie_story');
 
+
 // level_Arr
 // genre_Arr
 
@@ -236,6 +237,7 @@ confirmBtn.on('click', (e) => {
         return false;
     };
     console.log('저장버튼이 눌림.');
+    console.log("Uploader : " + $("input[name=movieUploader]").val());
     console.log("영화 제목 : " + movie_title.val());
     console.log("감독 : " + movie_director.val());
     console.log("출연진 : " + movie_cast.val());
@@ -261,22 +263,25 @@ confirmBtn.on('click', (e) => {
             "movieImg": movie_image.val(),
             "mgNo": JSON.stringify(level_Arr),
         	"genreCode": JSON.stringify(genre_Arr),
-            "movieContent": $('.movie_story').val()
+            "movieContent": $('.movie_story').val(),
+            "movieUploader": $("input[name=movieUploader]").val()
         },
         type: "POST",
         dataType: "json",
-
+		
         success: function (result) {
             console.log(result);
             // 등록 완료 : 1
             // 등록 실패 : 0
-            if(result == 1) {
+            if(result > 0) {
                 console.log("영화 등록 완료");
+                window.alert("영화 등록 성공")
             } else {
                 console.log("영화 등록 실패");
             }
         },
         error: function () {
+            window.alert("영화 등록 실패")
             console.log("영화 등록 ajax 실패");
         }
     })
