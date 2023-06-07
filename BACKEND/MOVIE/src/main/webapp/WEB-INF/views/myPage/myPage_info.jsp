@@ -31,7 +31,7 @@
             <!-- 여기서 부터 작업하세요. -->
             <div>
                 <!-- myPage_logMemInfo.jsp -->
-                <jsp:include page="/WEB-INF/views/myPage/myPage_logMemInfo.jsp" />
+                <jsp:include page="/WEB-INF/views/myPage/myPage_logUserInfo.jsp" />
             </div>
 
             <div>
