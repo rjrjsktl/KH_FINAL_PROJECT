@@ -12,6 +12,7 @@
     <title>상영시간 등록</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_movie_play.css">
+    						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
     <!-- fontawesome -->
