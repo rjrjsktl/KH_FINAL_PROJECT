@@ -43,11 +43,11 @@ public class ManagerController {
 		Map<String, Object>getUserList = null;
 		
 		// 회원 리스트 얻어오기
-		 getUserList = service.selectAll(cp);
-		
-	model.addAttribute("getUserList", getUserList);
+		getUserList = service.selectAll(cp);
+		 
+		model.addAttribute("getUserList", getUserList);
 	
-	System.out.println("관리자_회원 리스트 이동");
+		System.out.println("관리자_회원 리스트 이동");
 		return "manager/manager_member_list";
 	}
 
@@ -92,6 +92,8 @@ public class ManagerController {
 		int result = service.MovieAdd(inputMovie);
 			
 		System.out.println("controller result:" + result);
+		
+	
 		System.out.println("등록 ㄱㄱ");	
 //		if(result > 0) {
 //			message = "영화 등록 성공";
@@ -105,6 +107,7 @@ public class ManagerController {
 //		return "redirect:" + path;
 		return result;
 	}
+	
 	
 	// 관리자_1:1 문의 목록 이동
 	@GetMapping("/ask_list")
@@ -122,7 +125,20 @@ public class ManagerController {
 	
 	// 관리자_영화 등록 이동
 	@GetMapping("/movie_add")
-	public String moveMovieAdd() {
+	public String moveMovieAdd(Model model) {
+
+		// movie grade 값 얻어오기
+		List<String> mgradelist = service.getMgradeList();
+		System.out.println("mglist 값 :::::" + mgradelist);
+		
+		model.addAttribute("mgradelist", mgradelist);
+		
+		// movie genre 값 얻어오기
+		List<String> mgenrelist = service.getMgenreList();
+		System.out.println("mglist 값 :::::" + mgenrelist);
+		
+		model.addAttribute("mgenrelist", mgenrelist);
+		
 		System.out.println("관리자_영화 등록 이동");
 		return "manager/manager_movie_add";
 	}
