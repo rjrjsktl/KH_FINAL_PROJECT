@@ -19,7 +19,7 @@ $(document).ready(function () {
         // 즉, 아래의 isLinkActive는 true일 경우를 의미한다.
         const isLinkActive = url.indexOf(linkHref) > -1;
 
-        console.log(linkHref, isLinkActive);
+        // console.log(linkHref, isLinkActive);
 
         // 조건문을 통해서 추가할 값을 정해준다.
         if (isLinkActive) {
