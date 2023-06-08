@@ -53,6 +53,24 @@
                             </div>
                             <div class="table_main">
                                 <div class="enter_Title"><input type="text" placeholder="제목을 입력하세요."></div>
+                                <div class="calendarArea">
+                                    <div id="play_start">
+                                        <span>이벤트 시작일</span>
+                                        <div class="play_start_container">
+                                            <div>
+                                                <input class="start_date" type="date" onfocus="this.showPicker()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="play_end">
+                                        <span>이벤트 종료일</span>
+                                        <div>
+                                            <div>
+                                                <input class="end_date" type="date" onfocus="this.showPicker()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <form method="post" action="/write_Event">
                                     <textarea id="summernote" name="editordata"></textarea>
                                 </form>
