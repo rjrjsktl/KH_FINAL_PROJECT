@@ -18,9 +18,12 @@ public interface ManagerService {
 	int MovieAdd(Movie inputMovie);
 
 	// Grade 호출 서비스
-	List<String> getMgradeList();
+	List<String> mgradeList();
 
 	// Gener
-	List<String> getMgenreList();
+	List<String> mgenreList();
+
+	// movieList
+	List<Movie> movieList(Movie movie);
 
 }

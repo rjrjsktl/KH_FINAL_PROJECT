@@ -118,7 +118,17 @@ public class ManagerController {
 	
 	// 관리자_영화 목록 이동
 	@GetMapping("/movie_list")
-	public String moveMovieList() {
+	public String moveMovieList(Model model) {
+		
+		// movielist 값 얻어오기
+		Movie movie = new Movie();
+		List<Movie> movielist = service.movieList(movie);
+		System.out.println("movielist 값 :::::" + movielist);
+				
+		model.addAttribute("movielist", movielist);
+		
+		
+		
 		System.out.println("관리자_영화 목록 이동");
 		return "manager/manager_movie_list";
 	}
@@ -128,14 +138,14 @@ public class ManagerController {
 	public String moveMovieAdd(Model model) {
 
 		// movie grade 값 얻어오기
-		List<String> mgradelist = service.getMgradeList();
-		System.out.println("mglist 값 :::::" + mgradelist);
+		List<String> mgradelist = service.mgradeList();
+		System.out.println("mgradelist 값 :::::" + mgradelist);
 		
 		model.addAttribute("mgradelist", mgradelist);
 		
 		// movie genre 값 얻어오기
-		List<String> mgenrelist = service.getMgenreList();
-		System.out.println("mglist 값 :::::" + mgenrelist);
+		List<String> mgenrelist = service.mgenreList();
+		System.out.println("mgenrelist 값 :::::" + mgenrelist);
 		
 		model.addAttribute("mgenrelist", mgenrelist);
 		

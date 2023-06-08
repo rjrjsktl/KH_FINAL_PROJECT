@@ -13,20 +13,28 @@ public interface LoginService {
 	 */
 	public abstract User login(User inputUser);
 
-	/** 회원 조회 서비스
+	
+	/** 비밀번호 찾기 checkUser 서비스
+	 * @param user
 	 * @return
 	 */
-	public abstract List<User> selectAll();
-
-	/** 비밀번호 찾기 checkUser 서비스
-	 * @param userName
-	 * @param userBirth
+	public abstract Boolean checkUser(User user);
+	
+	
+	/** 인증메일 보내기 서비스
+	 * @param cnum
 	 * @param userEmail
 	 * @return
 	 */
+	public abstract int insertCertification(String cnum, String userEmail);
 
-	// 4. 흔한 서비스
-	public abstract Boolean checkUser(User user);
+
+	/** 인증완료 서비스
+	 * @param cNumber
+	 * @param userEmail
+	 * @return
+	 */
+	public abstract int checkNumber(String cNumber, String userEmail);
 
 	
 	

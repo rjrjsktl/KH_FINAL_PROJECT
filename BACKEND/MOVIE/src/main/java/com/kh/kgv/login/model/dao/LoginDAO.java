@@ -69,6 +69,25 @@ public class LoginDAO {
 	}
 
 
+	public int updateCertification(String userEmail, String cnum) {
+		Map<String, Object> params = new HashMap<>();
+	    params.put("cnum", cnum);
+	    params.put("userEmail", userEmail);
+
+	    return sqlSession.insert("userMapper.updateCertification", params);
+	}
+
+
+	public int checkNumber(String userEmail, String cNumber) {
+		 Map<String, Object> params = new HashMap<>();
+		  
+		    params.put("userEmail", userEmail);
+		    params.put("cNumber", cNumber);
+
+		 return   sqlSession.selectOne("userMapper.checkNumber",params);
+	}
+
+
 	
 	
 	

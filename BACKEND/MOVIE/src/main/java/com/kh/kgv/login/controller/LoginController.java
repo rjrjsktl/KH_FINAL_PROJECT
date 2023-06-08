@@ -155,7 +155,7 @@ public class LoginController {
 		
 	}
 	
-	// 비밀번호 찾기
+	// 비밀번호 찾기 진입
 	@RequestMapping("/findPw")
 	public String findPw(@ModelAttribute User inputUser,
             			Model model,
@@ -165,16 +165,6 @@ public class LoginController {
             			HttpSession session) {
 		
 		logger.info("비밀번호 찾기 위한 준비 !");
-		
-//		User loginUser = service.findPw(inputUser);
-		
-//		if( loginUser != null) { // 비밀번호를 찾기위해 아이디를 썻을때 inputEmail이 DB에 있다는뜻 
-			
-//		}
-		
-		
-		
-		
 		
 		return "login/findPwEmail_2";
 	}
@@ -203,97 +193,121 @@ public class LoginController {
 		return checkPw ? 1 : 0;
 	}
 	
-//	// 이메일 보내기
-//	@ResponseBody
-//	@GetMapping("/sendEmail")
-//	public int sendEmail(String userEmail 
-//			) {
-//		
-//		logger.debug("userEmail : " + userEmail);
-//		
-//		
-//		 String cNumber = "";
-//         for (int i = 0; i < 6; i++) {
-//
-//            int sel1 = (int) (Math.random() * 3); // 0:숫자 / 1,2:영어
-//
-//            if (sel1 == 0) {
-//
-//               int num = (int) (Math.random() * 10); // 0~9
-//               cNumber += num;
-//
-//            } else {
-//
-//               char ch = (char) (Math.random() * 26 + 65); // A~Z
-//
-//               int sel2 = (int) (Math.random() * 2); // 0:소문자 / 1:대문자
-//
-//               if (sel2 == 0) {
-//                  ch = (char) (ch + ('a' - 'A')); // 대문자로 변경
-//               }
-//
-//               cNumber += ch;
-//            }
-//
-//         }
-//         
-//         String setForm = "channelkgv1@gmail.com";
-//         String toMail = userEmail;
-//         String title = "아이디/비밀번호 찾기 인증 메일 입니다.";
-//         String content = 
-//        		 "KGV 홈페이지를 방문해주셔서 감사합니다." +
-//        	                "<br><br>" + 
-//        	                "아이디/비밀번호 찾기에 대한 인증 번호는 " + cNumber + "입니다." + 
-//        	                "<br>" + 
-//        	                "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
-//         
-//         logger.debug("mailSender : " + mailSender);
-//			
-//         
-//         try {
-//        	 	MimeMessage message = mailSender.createMimeMessage();
-//	            MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
-//	            helper.setFrom(setForm);
-//	            helper.setTo(toMail);
-//	            helper.setSubject(title);
-//	            helper.setText(content,true);
-//	            mailSender.send(message);
-//	        		 
-//         }catch(Exception e) {
-//
-//        	 e.printStackTrace();
-//             
-//         }
-//        
-//         String cnum = cNumber.toString();
-//         
-//         int result = service.insertCertification(cnum,userEmail);
-//          
-//         return result;
-//	}
-//	
-//	
-//	
-//	
-//	
-//	// 인증번호 인증하기
-//	@ResponseBody
-//	@GetMapping("/checkNumber")
-//	public int checkNumber(String userEmail ,String cNumber) {
-//		
-//		
-//		logger.debug("userEmail : " + userEmail);
-//		logger.debug("cnum : " + cNumber);
-//		
-//		
-//		int result =  service.checkNumber(cNumber, userEmail);
-//					
-//		logger.debug("result : " + result);
-//		
-//		return result;
-//		
-//	}
+	// 이메일 보내기
+	@ResponseBody
+	@GetMapping("/sendEmail")
+	public int sendEmail( String userEmail ) {
+		
+		logger.debug("userEmail : " + userEmail);
+		
+		
+		 String cNumber = "";
+         for (int i = 0; i < 6; i++) {
+
+            int sel1 = (int) (Math.random() * 3); // 0:숫자 / 1,2:영어
+
+            if (sel1 == 0) {
+
+               int num = (int) (Math.random() * 10); // 0~9
+               cNumber += num;
+
+            } else {
+
+               char ch = (char) (Math.random() * 26 + 65); // A~Z
+
+               int sel2 = (int) (Math.random() * 2); // 0:소문자 / 1:대문자
+
+               if (sel2 == 0) {
+                  ch = (char) (ch + ('a' - 'A')); // 대문자로 변경
+               }
+
+               cNumber += ch;
+            }
+
+         }
+         
+         String setForm = "channelkgv1@gmail.com";
+         String toMail = userEmail;
+         String title = "아이디/비밀번호 찾기 인증 메일 입니다.";
+         String content = 
+        		 "KGV 홈페이지를 방문해주셔서 감사합니다." +
+        	                "<br><br>" + 
+        	                "아이디/비밀번호 찾기에 대한 인증 번호는 " + cNumber + "입니다." + 
+        	                "<br>" + 
+        	                "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
+         
+         logger.debug("mailSender : " + mailSender);
+			
+         
+         try {
+        	 	MimeMessage message = mailSender.createMimeMessage();
+	            MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+	            helper.setFrom(setForm);
+	            helper.setTo(toMail);
+	            helper.setSubject(title);
+	            helper.setText(content,true);
+	            mailSender.send(message);
+	        		 
+         }catch(Exception e) {
+
+        	 e.printStackTrace();
+             
+         }
+        
+         String cnum = cNumber.toString();
+         
+         int result = service.insertCertification(cnum,userEmail);
+          
+         return result;
+	}
 	
+	
+	
+	
+	
+	// 인증번호 인증하기
+	@ResponseBody
+	@GetMapping("/checkNumber")
+	public int checkNumber(String userEmail,
+						   String cNumber,
+						   Model model) {
+		
+		
+		logger.debug("userEmail : " + userEmail);
+		logger.debug("cnum : " + cNumber);
+		
+		
+		int result =  service.checkNumber(cNumber, userEmail);
+		
+		model.addAttribute("userEmail", userEmail);
+		
+		
+		logger.debug("result : " + result);
+		
+		return result;
+		
+	}
+	
+	// 비밀번호 재설정 진입
+	@RequestMapping("/pwChange")
+	public String pwChange() {
+		return "login/pwChange";
+	}
+	
+	
+	@RequestMapping("/finshedchangePw")
+	public String finshedchangePw( HttpSession session,
+									User inputUser	) {
+		
+	    String userEmail = (String) session.getAttribute("userEmail");
+	    
+	    logger.info(userEmail);
+	    
+	    
+	    // userEmail을 사용하여 해당 DB에 있는 유저의 비밀번호 변경 로직을 구현하면 됩니다.
+	    
+	    return "redirect:/";
+	}
 	
 	
 	
@@ -303,20 +317,9 @@ public class LoginController {
 	public String findEmail() {
 		
 		
-		
-		
 		return "login/findPwEmail_1";
 	}
 	
-	// 회원 목록 조회(ajax)
-	@ResponseBody
-	@GetMapping("/selectAll")
-	public String selectAll() {
-			
-		List<User> list = service.selectAll();
-			
-		return new Gson().toJson(list);
-	}
 	
 	
 	
