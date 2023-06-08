@@ -287,12 +287,3 @@ confirmBtn.on('click', (e) => {
     })
 });
 
-// addMovie 버튼 js 필요 없을듯
-// const addMoviebtn = $('#addMoviebtn');
-
-// addMoviebtn.on('click', (e) => {
-
-
-
-// });
-

@@ -128,6 +128,7 @@ cBtn.addEventListener("click", function () {
                         cMessage.classList.add("confirm");
                         cMessage.classList.remove("error");
                         checkObj.cNumber = true;
+                        
 
                     } else if (result == 2) {
                         alert("만료된 인증 번호 입니다.");
@@ -162,4 +163,5 @@ cBtn.addEventListener("click", function () {
     }
 
 });
+
 

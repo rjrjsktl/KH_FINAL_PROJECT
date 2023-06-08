@@ -23,6 +23,7 @@
 		<result property="userManagerSt" 		column="USER_MANAGERST"/>
 		<result property="userBlock" 		column="USER_BLOCK"/>
 	</resultMap>
+
 	
 	<resultMap type="movie" id="movie_rm">
 		<id property="movieNo" column="MOVIE_NO"/>
@@ -30,7 +31,7 @@
 		<result property="movieTitle" 				column="MOVIE_TITLE"/>
 		<result property="movieNation" 				column="MOVIE_NATION"/>
 		<result property="movieOpen" 				column="MOVIE_OPEN"/>
-		<result property="mgNo" 					column="MG_NO"/>
+		<result property="mgNo" 					column="MG_CONTENT"/>
 		<result property="movieContent" 			column="MOVIE_CONTENT"/>
 		<result property="movieImg" 				column="MOVIE_IMG"/>
 		<result property="moviePlayed" 				column="MOVIE_PLAYED"/>
@@ -42,7 +43,18 @@
 		<result property="genreCode" 				column="GENRE_CODE"/>
 	</resultMap>
 	
+	<resultMap type="event" id="event_rm">
+		<id property="eventNo" column="EVENT_NO"/>
+		<result property="eventTitle" 			column="EVENT_TITLE"/>
+		<result property="eventContent" 				column="EVENT_CONTENT"/>
+		<result property="eventStart" 				column="EVENT_START"/>
+		<result property="eventEnd" 				column="EVENT_END"/>
+		<result property="eventStatus" 					column="EVENT_STATUS"/>
+	</resultMap>
 	
+
+
+	                        
 	<!-- 회원 수 조회 -->
 	<select id="getListCount" resultType="_int">
 	SELECT COUNT(USER_NO) FROM USERS
@@ -75,6 +87,7 @@
 	SET USER_MANAGERST = #{userManagerSt}
 	WHERE USER_EMAIL = #{userEmail}
 	</update>
+
 	
 	<insert id="MovieAdd" parameterType="movie"> 
 		INSERT INTO MOVIE 
@@ -98,5 +111,28 @@
         	#{movieCast}
     	)
 	</insert>
+	
+	<!-- Grade 호출 -->
+	<select id="getMgradeList" resultType="string">
+		SELECT MG_CONTENT FROM MOVIE_GRADE
+	</select>
+	
+	<!-- Grade 호출 -->
+	<select id="getMgenreList" resultType="string">
+		SELECT GENRE_NAME FROM GENRE
+	</select>
+	
+	<insert id="addEvent" parameterType="event">
+	INSERT INTO EVENT 
+    	VALUES (
+    		SEQ_EVENT_NO.NEXTVAL
+        	, #{eventTitle}
+        	, #{eventContent}
+        	, #{eventStart}
+        	, #{eventEnd}
+        	, DEFAULT
+        	)
+	</insert>
+
 
 </mapper>
