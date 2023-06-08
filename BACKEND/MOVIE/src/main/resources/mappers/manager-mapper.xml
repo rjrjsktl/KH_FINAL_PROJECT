@@ -23,6 +23,7 @@
 		<result property="userManagerSt" 		column="USER_MANAGERST"/>
 		<result property="userBlock" 		column="USER_BLOCK"/>
 	</resultMap>
+
 	
 	<resultMap type="movie" id="movie_rm">
 		<id property="movieNo" column="MOVIE_NO"/>
@@ -52,7 +53,7 @@
 	</resultMap>
 	
 
-	
+
 	                        
 	<!-- 회원 수 조회 -->
 	<select id="getListCount" resultType="_int">
@@ -86,6 +87,7 @@
 	SET USER_MANAGERST = #{userManagerSt}
 	WHERE USER_EMAIL = #{userEmail}
 	</update>
+
 	
 	<insert id="MovieAdd" parameterType="movie"> 
 		INSERT INTO MOVIE 
@@ -131,5 +133,6 @@
         	, DEFAULT
         	)
 	</insert>
+
 
 </mapper>

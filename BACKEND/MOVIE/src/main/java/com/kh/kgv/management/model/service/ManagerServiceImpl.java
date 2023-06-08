@@ -63,10 +63,10 @@ public class ManagerServiceImpl implements ManagerService{
 	 *
 	 */
 	@Override
-	public List<String> getMgradeList() {
+	public List<String> mgradeList() {
 		System.out.println("===== Grade 호출 service");
 		
-		return dao.getMgradeList();
+		return dao.mgradeList();
 	}
 
 
@@ -74,11 +74,23 @@ public class ManagerServiceImpl implements ManagerService{
 	 *
 	 */
 	@Override
-	public List<String> getMgenreList() {
+	public List<String> mgenreList() {
 		System.out.println("===== Genre 호출 service");
 		
-		return dao.getMgenreList();
+		return dao.mgenreList();
 	}
+
+
+	/** movielist 호출 서비스
+	 *
+	 */
+	@Override
+	public List<Movie> movieList(Movie movie) {
+		System.out.println("===== movieList 호출 service");
+		
+		return dao.movieList(movie);
+	}
+	
 	
 	
 	

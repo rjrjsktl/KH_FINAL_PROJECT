@@ -4,15 +4,21 @@ import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.vo.Pagination;
+import com.kh.kgv.mypage.controller.MyPageController;
 
 @Repository
 public class ManagerDAO {
+	
+	
+	private Logger logger = LoggerFactory.getLogger(MyPageController.class);
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
@@ -52,23 +58,29 @@ public class ManagerDAO {
 	 */
 	public int MovieAdd(Movie inputMovie) {
 		System.out.println(" ============= 영화 등록 DAO실행");
-		return sqlSession.insert("managerMapper.MovieAdd", inputMovie);
+		return sqlSession.insert("movieMapper.MovieAdd", inputMovie);
 	}
 
 	/** Grade 호출 DAO
 	 * @return
 	 */
-	public List<String> getMgradeList() {
+	public List<String> mgradeList() {
 		System.out.println(" ===== Grade 호출 dao");
-		return sqlSession.selectList("managerMapper.getMgradeList");
+		return sqlSession.selectList("movieMapper.mgradeList");
 	}
 
 	/** Genre 호출 DAO
 	 * @return
 	 */
-	public List<String> getMgenreList() {
+	public List<String> mgenreList() {
 		System.out.println(" ===== Genre 호출 dao");
-		return sqlSession.selectList("managerMapper.getMgenreList");
+		return sqlSession.selectList("movieMapper.mgenreList");
+	}
+///////////////////////// 값이 null로 오는데 확인해봐야함
+	public List<Movie> movieList(Movie movie) {
+		System.out.println(" ===== movieList 호출 dao");
+		
+		return sqlSession.selectList("movieMapper.movieList", movie);
 	}
 
 	
