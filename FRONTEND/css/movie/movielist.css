@@ -128,3 +128,8 @@ main>div:nth-child(2)>ol>li>div:nth-child(2) > div {
     color:black;
     background-color: white;
  }
+
+
+ .navBar:nth-child(1) > a:nth-child(1){
+    color:rgb(255,196,0);
+ }

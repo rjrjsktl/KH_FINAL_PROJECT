@@ -28,7 +28,7 @@
     <script src="lang/summernote-ko-KR.js"></script>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_event_add.css">
-    						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 </head>
 
@@ -53,7 +53,7 @@
                             </div>
                             <div class="table_main">
                                 <div class="enter_Title"><input type="text" placeholder="제목을 입력하세요."></div>
-                                <form method="post">
+                                <form method="post" action="/write_Event">
                                     <textarea id="summernote" name="editordata"></textarea>
                                 </form>
                             </div>

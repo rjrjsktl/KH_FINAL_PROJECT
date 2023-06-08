@@ -1,5 +1,6 @@
 package com.kh.kgv.login.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -52,12 +53,19 @@ public class LoginServiceImpl implements LoginService{
 		return loginUser;
 	}
 
-	// 회원조회 서비스
+	// 회원조회 서비스 구현
 	@Override
 	public List<User> selectAll() {
 		return dao.selectAll();
 	}
 	
-	
+	// 비밀번호 찾기 checkUser 서비스 구현
+	// 5. 흔한 서비스임플
+	@Override
+	public Boolean checkUser(User user) {
+		System.out.println("=================================================" + user);
+		// TODO Auto-generated method stub
+		return dao.checkUser(user);
+	}
 	
 }

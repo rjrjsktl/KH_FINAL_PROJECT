@@ -254,127 +254,125 @@
 
 
 /* 극장 이름 */
-
-.table_main>div:first-child {
-    display: flex;
-    align-items: center;
-    width: 800px;
-    height: 80px;
-    margin: 10px 0;
-    padding-left: 30px;
+.table_main > div:first-child {
+  display: flex;
+  align-items: center;
+  width: 800px;
+  height: 80px;
+  margin: 10px 0;
+  padding-left: 30px;
 }
 
-.table_main>div:first-child>span {
-    margin-right: 30px;
+.table_main > div:first-child > span {
+  margin-right: 30px;
 }
 
-.table_main>div:first-child>input {
-    height: 40px;
-    width: 30%;
-    padding-left: 8px;
+.table_main > div:first-child > input {
+  height: 40px;
+  width: 180px;
+  padding-left: 8px;
 }
 
 
 /* 극장 주소 */
-
-.table_main>div:nth-child(2) {
-    display: flex;
-    align-items: center;
-    width: 800px;
-    height: 200px;
-    margin: 10px 0;
-    padding-left: 30px;
+.table_main > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  width: 800px;
+  height: 200px;
+  margin: 10px 0;
+  padding-left: 30px;
 }
 
-.table_main>div:nth-child(2)>span {
-    margin-right: 30px;
+.table_main > div:nth-child(2) > span {
+  margin-right: 30px;
 }
 
 
 /* 상영관 */
 
-.table_main>div:nth-child(3) {
-    display: flex;
-    align-items: center;
-    height: 180px;
-    margin: 10px 0;
-    padding-left: 14px;
+.table_main > div:nth-child(3) {
+  display: flex;
+  align-items: center;
+  height: 180px;
+  margin: 10px 0;
+  padding-left: 14px;
 }
 
-.table_main>div:nth-child(3)>span {
-    margin-right: 30px;
+.table_main > div:nth-child(3) > span {
+  margin-right: 30px;
 }
 
-.table_main>div:nth-child(3)>.swiper {
-    margin: 0;
-    width: 980px;
-    height: 180px;
+.table_main > div:nth-child(3) > .swiper {
+  margin: 0;
+  width: 980px;
+  height: 180px;
 }
 
 .swiper-slide {
-    width: 180px;
-    height: 180px;
-    margin-right: 20px;
-    border: 1px solid black;
+  width: 180px;
+  height: 180px;
+  margin-right: 20px;
+  border: 1px solid black;
 }
 
-.swiper-slide>div:first-child {
-    display: flex;
-    align-items: center;
-    position: relative;
-    font-size: 14px;
-    width: 100%;
-    height: 30px;
-    border-bottom: 1px solid black;
-    padding-left: 10px;
+.swiper-slide > div:first-child {
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-size: 14px;
+  width: 100%;
+  height: 30px;
+  border-bottom: 1px solid black;
+  padding-left: 10px;
 }
 
-.swiper-slide>div:first-child>div:first-child {
-    position: relative;
-    top: 2px;
+.swiper-slide > div:first-child > div:first-child {
+  position: relative;
+  top: 2px;
 }
 
-.swiper-slide>div:first-child>div:last-child {
-    position: absolute;
-    right: 8px;
+.swiper-slide > div:first-child > div:last-child {
+  position: absolute;
+  right: 8px;
 }
 
 /* 상영관 편집*/
 
-.table_main>#room_area {
-    display: none;
-    position: absolute;
-    top: 20px;
-    left: 15px;
-    z-index: 0;
-    width: 1055px;
-    height: 497px;
-    background-color: #ccc;
+.table_main > #room_area {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  z-index: 0;
+  width: 1055px;
+  height: 497px;
+  background-color: #ccc;
 }
 
-#room_area>div:first-child {
-    width: 100%;
-    height: 37px;
-    text-align: center;
-    line-height: 40px;
-    border-bottom: 1px solid black;
+#room_area > div:first-child {
+  width: 100%;
+  height: 37px;
+  text-align: center;
+  line-height: 40px;
+  border-bottom: 1px solid black;	
 }
 
-#room_area>div:nth-child(2) {
-    display: flex;
+#room_area > div:nth-child(2) {
+  display: flex;
 }
 
-#room_area>div:nth-child(2)>#seat_area {
-    width: 80%;
-    border-right: lpx solid black;
-    padding-top: 30px;
-    padding-left: 50px;
+#room_area > div:nth-child(2) > #seat_area {
+  width: 80%;
+  border-right: lpx solid black;
+  padding-top: 30px;
+  padding-left: 50px;
 }
 
 
 /* 상영관 편집 > 좌석 */
 
-#seat_area>div {
+#seat_area > div {
     display: flex;
     flex-wrap: nowrap;
     position: relative;
@@ -384,12 +382,12 @@
     margin-bottom: 7px;
 }
 
-#seat_area>div:last-child {
+#seat_area > div:last-child {
     margin-bottom: 0;
 }
 
 
-#seat_area>div>div {
+#seat_area > div > div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -402,42 +400,65 @@
     text-align: center;
 }
 
-#seat_area>div>a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 25px;
-    height: 25px;
-    margin-right: 5.98px;
-    border: 1px solid white;
+#seat_area > div > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 25px;
+  height: 25px;
+  margin-right: 5.98px;
+  border: 1px solid white;
 }
 
-#seat_area>div>a * {
-    font-size: 12px;
+#seat_area > div > a:hover {
+  background-color: orange;
+  border-color: orange;
 }
 
-#room_area>div:nth-child(2)>div:nth-child(2) {
-    padding-top: 30px;
+#seat_area > div > a.clicked {
+  background-color: red;
+  border-color: red;
 }
 
+#seat_area > div > a * {
+  font-size: 12px;
+}
+
+#room_area > div:nth-child(2) > div:nth-child(2) {
+  padding-top: 30px;
+}
 
 /* 상영관의 가로, 세로 */
 
-#room_area>div:nth-child(2)>div:nth-child(2)>div {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    height: 30px;
+#room_area > div:nth-child(2) > div:nth-child(2) > div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  height: 30px;
 }
 
-#room_area>div:nth-child(2)>div:nth-child(2)>div>input {
-    margin-left: 5.5px;
-    width: 80px;
+#room_area > div:nth-child(2) > div:nth-child(2) > div > input {
+  margin-left: 5.5px;
+  width: 50px;
 }
 
-#room_area>div:nth-child(2)>div:nth-child(2)>div>select {
-    margin-left: 5.5px;
-    width: 100px;
-    height: 30px;
+#room_area > div:nth-child(2) > div:nth-child(2) > div > select {
+  margin-left: 5.5px;
+  width: 150px;
+  height: 30px;
 }
+
+
+/* 좌석 옵션 */
+
+#room_area > div:nth-child(2) > div:nth-child(2) > div:nth-child(4) {
+  margin-top: 50px;
+  display: none;
+}
+
+#room_area > div:nth-child(2) > div:nth-child(2) > .seat_detail {
+  display: none;
+}
+
+

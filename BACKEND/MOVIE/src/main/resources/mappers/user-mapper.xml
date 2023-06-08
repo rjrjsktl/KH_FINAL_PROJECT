@@ -50,5 +50,19 @@
   	</select>
 	
 	
+	<select id="checkUser" parameterType="user" resultType="boolean">
+  		SELECT *
+  		FROM USERS
+  		WHERE USER_NAME = #{userName}
+  		AND USER_BIRTH = #{userBirth}
+  		AND USER_EMAIL = #{userEmail} 
+  	</select>
+	
+	
+	
+	
+	
+	
+	
   	
 </mapper>
