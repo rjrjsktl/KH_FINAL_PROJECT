@@ -53,19 +53,27 @@ public class LoginServiceImpl implements LoginService{
 		return loginUser;
 	}
 
-	// 회원조회 서비스 구현
-	@Override
-	public List<User> selectAll() {
-		return dao.selectAll();
-	}
-	
 	// 비밀번호 찾기 checkUser 서비스 구현
-	// 5. 흔한 서비스임플
 	@Override
 	public Boolean checkUser(User user) {
 		System.out.println("=================================================" + user);
 		// TODO Auto-generated method stub
 		return dao.checkUser(user);
+	}
+	
+	// 인증메일 보내기 서비스 구현
+	@Override
+	public int insertCertification(String cnum, String userEmail) {
+		
+		int result = dao.updateCertification( userEmail, cnum);
+		
+		return result;
+	}
+	
+	// 인증완료 서비스 구현
+	@Override
+	public int checkNumber(String cNumber, String userEmail) {
+		return dao.checkNumber(userEmail,cNumber);
 	}
 	
 }
