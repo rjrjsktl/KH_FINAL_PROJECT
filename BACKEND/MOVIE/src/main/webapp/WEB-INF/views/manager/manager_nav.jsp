@@ -175,5 +175,6 @@
                             </li>
                         </ul>
                     </nav>
+                    
 
                     <script src="${contextPath}/resources/js/manager/manager_select.js"></script>

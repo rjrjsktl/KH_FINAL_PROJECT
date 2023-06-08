@@ -12,6 +12,7 @@
     <title>영화 등록</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_movie_add.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
     <!-- fontawesome -->
@@ -44,12 +45,25 @@
                             </div>
                             <!-- form에 action추가해서 쏴줘야함 -->
                             <form>
+                                <input type="hidden" name="movieUploader" value="${loginUser.userName}">
                                 <!-- id 추가 함 -->
                                 <div class="table_main">
                                     <div id="movie_sub">
                                         <span>영화 제목</span>
                                         <div>
                                             <input type="text" class="movie_sub_enter movie_title">
+                                        </div>
+                                    </div>
+                                    <div id="movie_sub">
+                                        <span>감독</span>
+                                        <div>
+                                            <input type="text" class="movie_sub_enter movie_director">
+                                        </div>
+                                    </div>
+                                    <div id="movie_sub">
+                                        <span>출연진</span>
+                                        <div>
+                                            <input type="text" class="movie_sub_enter movie_cast">
                                         </div>
                                     </div>
                                     <div id="movie_sub">
@@ -67,7 +81,7 @@
                                     <div id="movie_sub">
                                         <span>개봉일</span>
                                         <div>
-                                            <input type="date" class="movie_releseDate">
+                                            <input type="date" class="movie_releseDate" onfocus="this.showPicker()">
                                         </div>
                                     </div>
                                     <div id="movie_sub">

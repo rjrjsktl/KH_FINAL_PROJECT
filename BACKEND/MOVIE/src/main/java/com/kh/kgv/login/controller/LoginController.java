@@ -1,8 +1,10 @@
 package com.kh.kgv.login.controller;
 
 
+import java.util.HashMap;
 import java.util.List;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -14,6 +16,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,6 +45,9 @@ public class LoginController {
 	
 	@Autowired
 	private LoginService service;
+	
+	@Autowired
+	private JavaMailSender mailSender;
 	
 	// 로그인 페이지 진입
 	@GetMapping("/login")
@@ -157,7 +164,7 @@ public class LoginController {
             			HttpServletRequest req,
             			HttpSession session) {
 		
-		logger.info("비밀번호를 찾아볼까나 ?");
+		logger.info("비밀번호 찾기 위한 준비 !");
 		
 //		User loginUser = service.findPw(inputUser);
 		
@@ -172,7 +179,120 @@ public class LoginController {
 		return "login/findPwEmail_2";
 	}
 	
+	// 비밀번호 찾기 checkUser
+	@GetMapping("/checkUser")
+	@ResponseBody
+	public int checkUser(String userName, String userBirth, String userEmail) {
+		
+		// 1. User 객체 생성
+		User user = new User();
+		
+		logger.info("비밀번호를 찾으러 떠나자!");
+		
+		// 2. User 객체 안에 값을 넣어줌.
+		user.setUserName(userName);
+		user.setUserBirth(userBirth);
+		user.setUserEmail(userEmail);
+		
+		// 3. 1과 0 보다는 값의 존재 여부 확인하는게 더 '낳'은거 같아서 boolean으로 넘김
+		Boolean checkPw = service.checkUser(user);
+		
+		logger.info("찾아야될 User : " + checkPw);
+		// 9. AJAX에서 result값을 받을때 1과 0으로 구분한다. 그래서 받아온 값이 true이면 1 아니면 0을 반납한다.
+		// -> result가 아니어도 값이 넘어갑니다.
+		return checkPw ? 1 : 0;
+	}
 	
+//	// 이메일 보내기
+//	@ResponseBody
+//	@GetMapping("/sendEmail")
+//	public int sendEmail(String userEmail 
+//			) {
+//		
+//		logger.debug("userEmail : " + userEmail);
+//		
+//		
+//		 String cNumber = "";
+//         for (int i = 0; i < 6; i++) {
+//
+//            int sel1 = (int) (Math.random() * 3); // 0:숫자 / 1,2:영어
+//
+//            if (sel1 == 0) {
+//
+//               int num = (int) (Math.random() * 10); // 0~9
+//               cNumber += num;
+//
+//            } else {
+//
+//               char ch = (char) (Math.random() * 26 + 65); // A~Z
+//
+//               int sel2 = (int) (Math.random() * 2); // 0:소문자 / 1:대문자
+//
+//               if (sel2 == 0) {
+//                  ch = (char) (ch + ('a' - 'A')); // 대문자로 변경
+//               }
+//
+//               cNumber += ch;
+//            }
+//
+//         }
+//         
+//         String setForm = "channelkgv1@gmail.com";
+//         String toMail = userEmail;
+//         String title = "아이디/비밀번호 찾기 인증 메일 입니다.";
+//         String content = 
+//        		 "KGV 홈페이지를 방문해주셔서 감사합니다." +
+//        	                "<br><br>" + 
+//        	                "아이디/비밀번호 찾기에 대한 인증 번호는 " + cNumber + "입니다." + 
+//        	                "<br>" + 
+//        	                "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
+//         
+//         logger.debug("mailSender : " + mailSender);
+//			
+//         
+//         try {
+//        	 	MimeMessage message = mailSender.createMimeMessage();
+//	            MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+//	            helper.setFrom(setForm);
+//	            helper.setTo(toMail);
+//	            helper.setSubject(title);
+//	            helper.setText(content,true);
+//	            mailSender.send(message);
+//	        		 
+//         }catch(Exception e) {
+//
+//        	 e.printStackTrace();
+//             
+//         }
+//        
+//         String cnum = cNumber.toString();
+//         
+//         int result = service.insertCertification(cnum,userEmail);
+//          
+//         return result;
+//	}
+//	
+//	
+//	
+//	
+//	
+//	// 인증번호 인증하기
+//	@ResponseBody
+//	@GetMapping("/checkNumber")
+//	public int checkNumber(String userEmail ,String cNumber) {
+//		
+//		
+//		logger.debug("userEmail : " + userEmail);
+//		logger.debug("cnum : " + cNumber);
+//		
+//		
+//		int result =  service.checkNumber(cNumber, userEmail);
+//					
+//		logger.debug("result : " + result);
+//		
+//		return result;
+//		
+//	}
 	
 	
 	
