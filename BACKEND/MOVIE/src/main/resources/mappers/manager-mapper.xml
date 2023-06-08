@@ -42,6 +42,17 @@
 		<result property="genreCode" 				column="GENRE_CODE"/>
 	</resultMap>
 	
+	<resultMap type="event" id="event_rm">
+		<id property="eventNo" column="EVENT_NO"/>
+		<result property="eventTitle" 			column="EVENT_TITLE"/>
+		<result property="eventContent" 				column="EVENT_CONTENT"/>
+		<result property="eventStart" 				column="EVENT_START"/>
+		<result property="eventEnd" 				column="EVENT_END"/>
+		<result property="eventStatus" 					column="EVENT_STATUS"/>
+	</resultMap>
+	
+
+	
 	                        
 	<!-- 회원 수 조회 -->
 	<select id="getListCount" resultType="_int">
@@ -108,5 +119,17 @@
 	<select id="getMgenreList" resultType="string">
 		SELECT GENRE_NAME FROM GENRE
 	</select>
+	
+	<insert id="addEvent" parameterType="event">
+	INSERT INTO EVENT 
+    	VALUES (
+    		SEQ_EVENT_NO.NEXTVAL
+        	, #{eventTitle}
+        	, #{eventContent}
+        	, #{eventStart}
+        	, #{eventEnd}
+        	, DEFAULT
+        	)
+	</insert>
 
 </mapper>

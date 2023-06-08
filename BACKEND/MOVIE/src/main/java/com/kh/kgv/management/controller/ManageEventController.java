@@ -30,11 +30,12 @@ public class ManageEventController {
 	private ManageEventService service;
 
 	@PostMapping("write_Event")
+	@ResponseBody
 	public int addEvent(
 			@RequestParam("title") String title
 			, @RequestParam("start") String start
 			, @RequestParam("end") String end
-			, @RequestParam("context") String content) {
+			, @RequestParam("content") String content) {
 		Event event = new Event();
 		event.setEventTitle(title);
 		event.setEventStart(start);
