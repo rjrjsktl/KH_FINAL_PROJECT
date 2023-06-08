@@ -57,6 +57,29 @@ public class ManagerServiceImpl implements ManagerService{
 		System.out.println("serviceImpl result:" + result);
 		return result;
 	}
+
+
+	/** Grade 호출 서비스
+	 *
+	 */
+	@Override
+	public List<String> getMgradeList() {
+		System.out.println("===== Grade 호출 service");
+		
+		return dao.getMgradeList();
+	}
+
+
+	/** genre 호출 서비스
+	 *
+	 */
+	@Override
+	public List<String> getMgenreList() {
+		System.out.println("===== Genre 호출 service");
+		
+		return dao.getMgenreList();
+	}
+	
 	
 	
 	

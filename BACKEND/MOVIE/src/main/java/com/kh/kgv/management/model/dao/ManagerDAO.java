@@ -54,6 +54,24 @@ public class ManagerDAO {
 		System.out.println(" ============= 영화 등록 DAO실행");
 		return sqlSession.insert("managerMapper.MovieAdd", inputMovie);
 	}
+
+	/** Grade 호출 DAO
+	 * @return
+	 */
+	public List<String> getMgradeList() {
+		System.out.println(" ===== Grade 호출 dao");
+		return sqlSession.selectList("managerMapper.getMgradeList");
+	}
+
+	/** Genre 호출 DAO
+	 * @return
+	 */
+	public List<String> getMgenreList() {
+		System.out.println(" ===== Genre 호출 dao");
+		return sqlSession.selectList("managerMapper.getMgenreList");
+	}
+
+	
 	
 	
 
