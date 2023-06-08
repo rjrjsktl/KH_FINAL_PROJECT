@@ -12,6 +12,7 @@
     <title>공지사항 목록</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_notice_list.css">
+    						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
     <!-- fontawesome -->

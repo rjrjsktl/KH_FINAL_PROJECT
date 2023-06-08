@@ -11,8 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>극장 등록</title>
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_cinema_add.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_cinema_add.css">
 
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
@@ -58,7 +59,7 @@
                                         <span>상영관</span>
                                         <div class="swiper mySwiper">
                                             <div class="swiper-wrapper">
-                                                <c:forEach var="i" begin="1" end="7">
+                                                <c:forEach var="i" begin="1" end="4">
                                                 <div class="swiper-slide" data-room-no='${i}' data-room-maxrow='12' data-room-maxcolumn='24' data-room-type="일반관">
                                                     <div>
                                                         <div>
@@ -69,6 +70,9 @@
                                                             <button type="button" class="room_edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
                                                         </div>
                                                     
+                                                    </div>
+                                                    <div>
+ 
                                                     </div>
                                                     
                                                 </div>
@@ -97,10 +101,26 @@
                                     	        </div>
                                 			    
                                 			    <div>
-                                			        가로 : <input id="temp_row" type="number" min="1" max="12" value="12" onkeypress="return false;">
+                                			        가로 : <input id="temp_row" class="temp_rc" type="number" min="1" max="12" value="12" onkeypress="return false;">
                                 			    </div>
                                 			    <div>
-                                			        세로 : <input id="temp_column" type="number" min="1" max="25" value="24" onkeypress="return false;">
+                                			        세로 : <input id="temp_column" class="temp_rc" type="number" min="1" max="25" value="24" onkeypress="return false;">
+                                			    </div>
+                                			    <div id="seat_option">
+                                			        옵션 :
+                                			        <select>
+                                			            <option>통로 만들기</option>
+                                			            <option>공간 만들기</option>
+                                			        </select>
+                                			    </div>
+                                			    <div class="seat_detail sd1">
+                                			        우측 : <input class="seat_right" type="number" min="0" max="3" value="0" onkeypress="return false;">
+                                			    </div>
+                                			    <div class="seat_detail sd2">
+                                			        우측 : <input class="seat_right" type="number" min="0" max="3" value="0" onkeypress="return false;">
+                                			    </div>
+                                			    <div class="seat_detail sd2">
+                                			        하측 : <input class="seat_down" type="number" min="0" max="3" value="0" onkeypress="return false;">
                                 			    </div>
                                 			    <div>
                                 		            <button type="button" id="room_confirm">확인</button>

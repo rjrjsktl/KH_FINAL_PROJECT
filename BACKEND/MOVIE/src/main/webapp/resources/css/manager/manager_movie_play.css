@@ -162,49 +162,6 @@
     height: 100%;
 }
 
-#header_Wrapper {
-    width: 100%;
-    height: 85px;
-    padding: 0 20px;
-    background-color: white;
-}
-
-.header_Container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-}
-
-.header_loge_Area {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 85px;
-    margin-left: 20px;
-}
-
-.header_loge_Area>span:nth-child(2) {
-    font-weight: bold;
-}
-
-.header_logout_Area {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 120px;
-    height: 40px;
-    cursor: pointer;
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 50px;
-}
-
-.header_logout_Area:hover {
-    background-color: #720000;
-}
-
 /* 내부 아이템 영역 */
 #items_Wrapper {
     display: flex;
@@ -439,6 +396,10 @@
     flex: 9;
 }
 
+.start_date {
+    height: 50px;
+}
+
 /* 상영 종료일 */
 #play_end {
     display: flex;
@@ -459,6 +420,16 @@
 
 #play_end>div {
     flex: 9;
+}
+
+.end_date {
+    height: 50px;
+}
+
+/* input Date 선택 시 나오는 달력 아이콘 숨기기 */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
 }
 
 /* 상영 시간 */

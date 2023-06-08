@@ -50,8 +50,8 @@
   	</select>
 	
 	
-	<select id="checkUser" parameterType="user" resultMap="user_rm">
-  		SELECT USER_NAME, USER_BIRTH, USER_EMAIL
+	<select id="checkUser" parameterType="user" resultType="boolean">
+  		SELECT *
   		FROM USERS
   		WHERE USER_NAME = #{userName}
   		AND USER_BIRTH = #{userBirth}

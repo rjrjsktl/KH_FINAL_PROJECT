@@ -164,6 +164,8 @@ header>nav ul>li>a {
     color: #FCFCFC;
 }
 
+
+
 header>nav>div>div {
     width: 30%;
     display: flex;
@@ -378,3 +380,7 @@ footer>section>div:nth-child(2) span:last-child {
     text-decoration: none;
     cursor: pointer;
   }
+
+
+
+
