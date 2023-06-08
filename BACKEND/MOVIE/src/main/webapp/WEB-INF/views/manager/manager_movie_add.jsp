@@ -1,6 +1,8 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="false"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -98,15 +100,9 @@
                                             </div>
                                             <div class="level_Items">
                                                 <div class="movie_level_slide">
-                                                    <div>test1</div>
-                                                    <div>test2</div>
-                                                    <div>test3</div>
-                                                    <div>test4</div>
-                                                    <div>test5</div>
-                                                    <div>test6</div>
-                                                    <div>test7</div>
-                                                    <div>test8</div>
-                                                    <div>test9</div>
+                                                    <c:forEach var="mgrade" items="${mgradelist}">
+                                                        <div>${mgrade}</div>
+                                                    </c:forEach>
                                                 </div>
                                             </div>
                                         </div>
@@ -119,15 +115,9 @@
                                             </div>
                                             <div class="Genre_Items">
                                                 <div class="movie_genre_slide">
-                                                    <div>test1</div>
-                                                    <div>test2</div>
-                                                    <div>test3</div>
-                                                    <div>test4</div>
-                                                    <div>test5</div>
-                                                    <div>test6</div>
-                                                    <div>test7</div>
-                                                    <div>test8</div>
-                                                    <div>test9</div>
+                                                    <c:forEach var="mgenre" items="${mgenrelist}">
+                                                        <div>${mgenre}</div>
+                                                    </c:forEach>
                                                 </div>
                                             </div>
                                         </div>
