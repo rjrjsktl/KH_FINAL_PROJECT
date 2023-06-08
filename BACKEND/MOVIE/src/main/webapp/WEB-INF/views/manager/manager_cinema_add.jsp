@@ -90,7 +90,7 @@
                                     	    <div id="edit_area">
                                     	        <div>
                                     	            타입 : 
-                                			        <select>
+                                			        <select id="temp_type">
                                 				        <option>일반관</option>
                                 				        <option>특수관1</option>
                                 				        <option>특수관2</option>
@@ -109,24 +109,23 @@
                                 			    <div id="seat_option">
                                 			        옵션 :
                                 			        <select>
+                                			            <option selected style="display: none"></option>
                                 			            <option>통로 만들기</option>
                                 			            <option>공간 만들기</option>
                                 			        </select>
                                 			    </div>
-                                			    <div class="seat_detail sd1">
-                                			        우측 : <input class="seat_right" type="number" min="0" max="3" value="0" onkeypress="return false;">
+                                			    <div id="seat_option_confirm">
+                                			        <a href='#none'>해당 옵션을 적용하기</a>
                                 			    </div>
-                                			    <div class="seat_detail sd2">
-                                			        우측 : <input class="seat_right" type="number" min="0" max="3" value="0" onkeypress="return false;">
-                                			    </div>
-                                			    <div class="seat_detail sd2">
-                                			        하측 : <input class="seat_down" type="number" min="0" max="3" value="0" onkeypress="return false;">
-                                			    </div>
+                                			    
+                                			    
+                                			 
                                 			    <div>
                                 		            <button type="button" id="room_confirm">확인</button>
                                 		            <button type="button" id="room_reset">리셋</button>
                                 		            <button type="button" id="room_cancle">취소</button>
                                 		        </div>
+                                		        
                                 		    </div>
                                 		    
                                     	    
@@ -143,8 +142,8 @@
                         </div>
                     </div>
                 </div>
-
-            </div>
+			</div>
+        </div>
 
     </main>
 
@@ -152,6 +151,7 @@
     <script src="${contextPath}/resources/js/manager/manager_cinema_add.js"></script>
     <script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
     <script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
+    <script src="${contextPath}/resources/js/manager/apikey.js"></script>
 </body>
 
 </html>
