@@ -29,6 +29,7 @@ public class ManageEventController {
 	@Autowired
 	private ManageEventService service;
 
+	// 이벤트 등록
 	@PostMapping("write_Event")
 	@ResponseBody
 	public int addEvent(
@@ -47,6 +48,7 @@ public class ManageEventController {
 		return result;
 	}
 
+	// 이미지 업로드
 	@PostMapping("uploadImageFile")
 	@ResponseBody
 	public String uploadImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request) {
@@ -82,4 +84,6 @@ public class ManageEventController {
 		return a;
 
 	}
+	
+	// 이벤트 수정
 }

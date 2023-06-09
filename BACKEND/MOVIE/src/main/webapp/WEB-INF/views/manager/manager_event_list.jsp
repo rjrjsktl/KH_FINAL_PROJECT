@@ -12,7 +12,7 @@
     <title>이벤트 목록</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_event_list.css">
-    						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
     <!-- fontawesome -->
@@ -53,7 +53,6 @@
                                 <tr>
                                     <th>번호</th>
                                     <th>이벤트 제목</th>
-                                    <th>이벤트 내용</th>
                                     <th>이벤트 시작일</th>
                                     <th>이벤트 종료일</th>
                                     <th>이벤트 작성일</th>
@@ -61,178 +60,58 @@
                                     <th>수정</th>
                                     <th>삭제</th>
                                 </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>이벤트 제목</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>2023.05.17 13:34:21</td>
-                                    <td>
-                                        <select name="Is_On">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
-                                        </select>
-                                    </td>
-                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
-                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>이벤트 제목</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>2023.05.17 13:34:21</td>
-                                    <td>
-                                        <select name="Is_On">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
-                                        </select>
-                                    </td>
-                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
-                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>이벤트 제목</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>2023.05.17 13:34:21</td>
-                                    <td>
-                                        <select name="Is_On">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
-                                        </select>
-                                    </td>
-                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
-                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>이벤트 제목</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>2023.05.17 13:34:21</td>
-                                    <td>
-                                        <select name="Is_On">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
-                                        </select>
-                                    </td>
-                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
-                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>이벤트 제목</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>2023.05.17 13:34:21</td>
-                                    <td>
-                                        <select name="Is_On">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
-                                        </select>
-                                    </td>
-                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
-                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>이벤트 제목</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>2023.05.17 13:34:21</td>
-                                    <td>
-                                        <select name="Is_On">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
-                                        </select>
-                                    </td>
-                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
-                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>7</td>
-                                    <td>이벤트 제목</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>2023.05.17 13:34:21</td>
-                                    <td>
-                                        <select name="Is_On">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
-                                        </select>
-                                    </td>
-                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
-                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>8</td>
-                                    <td>이벤트 제목</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>2023.05.17 13:34:21</td>
-                                    <td>
-                                        <select name="Is_On">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
-                                        </select>
-                                    </td>
-                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
-                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>9</td>
-                                    <td>이벤트 제목</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>2023.05.17 13:34:21</td>
-                                    <td>
-                                        <select name="Is_On">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
-                                        </select>
-                                    </td>
-                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
-                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>10</td>
-                                    <td>이벤트 제목</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>2023.05.27 16:34:05</td>
-                                    <td>2023.05.17 13:34:21</td>
-                                    <td>
-                                        <select name="Is_On">
-                                            <option value="N" selected>N</option>
-                                            <option value="Y">Y</option>
-                                        </select>
-                                    </td>
-                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
-                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
-                                </tr>
+                                <c:forEach var="getEvent" items="${getEventList['eventList']}">
+                                    <tr>
+                                        <td>${getEvent['eventNo']}</td>
+                                        <td>${getEvent['eventTitle']}</td>
+                                        <td>${getEvent['eventStart']}</td>
+                                        <td>${getEvent['eventEnd']}</td>
+                                        <td>${getEvent['eventReg']}</td>
+                                        <c:choose>
+                                            <c:when test="${getEvent['eventStatus'] == 'Y'}">
+                                                <td>
+                                                    <select class="Is_On" data-id="${getEvent['eventNo']}">
+                                                        <option value="N">N</option>
+                                                        <option value="Y" selected>Y</option>
+                                                    </select>
+                                                </td>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <td>
+                                                    <select class="Is_On" data-id="${getEvent['eventNo']}">
+                                                        <option value="N" selected>N</option>
+                                                        <option value="Y">Y</option>
+                                                    </select>
+                                                </td>
+                                            </c:otherwise>
+                                        </c:choose>
+
+                                        <td><button class="editEvent" onclick="getEventNo(${getEvent['eventNo']})"><i
+                                                    class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
+                                        <td><button class="deleteEvent"><i
+                                                    class="fa-sharp fa-solid fa-xmark"></i></button></td>
+                                    </tr>
+                                </c:forEach>
 
                             </table>
                             <div class="page_Nation">
-                                <div>&lt;</div>
-                                <div class="selected_Cp">1</div>
-                                <div>2</div>
-                                <div>3</div>
-                                <div>4</div>
-                                <div>5</div>
-                                <div>6</div>
-                                <div>7</div>
-                                <div>&gt;</div>
+                                <c:set var="url" value="?cp=" />
+                                <c:set var="pagination" value="${getEventList['pagination']}" />
+                                <c:set var="currentPage" value="${pagination.currentPage}" scope="request" />
+                                <div><a href="${url}1">&lt;&lt;</a></div>
+                                <div><a href="${url}${pagination.prevPage}">&lt;</a></div>
+                                <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
+                                    <c:choose>
+                                        <c:when test="${i == currentPage}">
+                                            <div><a class="selected_Cp">${i}</a></div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div><a href="${url}${i}">${i}</a></div>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+                                <div><a href="${url}${pagination.nextPage}">&gt;</a></div>
+                                <div><a href="${url}${pagination.maxPage}">&gt;&gt;</a></div>
                             </div>
                         </div>
                     </div>
