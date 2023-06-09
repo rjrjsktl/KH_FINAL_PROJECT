@@ -188,12 +188,4 @@ $(document).ready(function () {
         });
     });
 
-
-
-
-
-
-
-
-
 });

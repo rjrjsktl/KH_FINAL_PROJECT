@@ -48,7 +48,7 @@
                     <div class="set_Edge">
                         <div class="table_Wrapper">
                             <div class="table_Title">
-                                <span>이벤트 등록</span>
+                                <span>이벤트 수정</span>
                             </div>
                             <div class="table_main">
                                 <div class="enter_Title"><input type="text" placeholder="제목을 입력하세요."></div>
@@ -87,7 +87,7 @@
 
     </main>
 
-    <script src="${contextPath}/resources/js/manager/manager_event_add.js"></script>
+    <script src="${contextPath}/resources/js/manager/manager_event_edit.js"></script>
     <script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
     <script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
 </body>

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.dao.ManagerDAO;
+import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Pagination;
 
 @Service
@@ -89,6 +90,25 @@ public class ManagerServiceImpl implements ManagerService{
 		System.out.println("===== movieList 호출 service");
 		
 		return dao.movieList(movie);
+	}
+
+
+	@Override
+	public Map<String, Object> eventList(int cp) {
+		// 회원 수 조회
+		int eventlistCount = dao.getEventListCount();
+		
+		// 조회한 회원을 pagination 에 담기
+		Pagination pagination = new Pagination(cp, eventlistCount);
+		
+		// 회원 리스트 조회
+		List<Event>eventList = dao.eventList(pagination);
+		
+		Map<String, Object>getEventList = new HashMap<String, Object>();
+		getEventList.put("pagination", pagination);
+		getEventList.put("eventList", eventList);
+		
+		return getEventList;
 	}
 	
 	

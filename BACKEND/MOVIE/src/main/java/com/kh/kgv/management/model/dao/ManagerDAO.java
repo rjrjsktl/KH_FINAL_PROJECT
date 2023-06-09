@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Pagination;
 import com.kh.kgv.mypage.controller.MyPageController;
 
@@ -38,8 +39,6 @@ public class ManagerDAO {
 		// RowBounds 객체 사용.
 		
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
-		System.out.println(" ============================================== offset + " + offset);
-		
 		
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
@@ -81,6 +80,20 @@ public class ManagerDAO {
 		System.out.println(" ===== movieList 호출 dao");
 		
 		return sqlSession.selectList("movieMapper.movieList", movie);
+	}
+
+	
+	public int getEventListCount() {
+		return sqlSession.selectOne("managerMapper.getEventListCount");
+	}
+
+	public List<Event> eventList(Pagination pagination) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("managerMapper.eventList", null, rowBounds);
 	}
 
 	
