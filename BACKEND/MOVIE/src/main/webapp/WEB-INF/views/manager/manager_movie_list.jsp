@@ -1,6 +1,8 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="false"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -66,23 +68,25 @@
                                     <th>수정</th>
                                     <th>삭제</th>
                                 </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>가디언 오브 갤럭시 S23 ULTRA</td>
-                                    <td>100분</td>
-                                    <td>대한민국</td>
-                                    <td>2023.05.27</td>
-                                    <td>성인</td>
-                                    <td>간략한 줄거리만 채우기, 몇 자 이상 시 ... 으로 표시하기</td>
-                                    <td>12</td>
-                                    <td>1,000,000</td>
-                                    <td>2023.05.27 14:51:52</td>
-                                    <td>관리자1</td>
-                                    <td>액숀, 서릴러, 코뮈리</td>
-                                    <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
-                                    <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
-
-                                </tr>
+                                <c:forEach var="movie" items="${movielist}">
+                                	<tr>
+                                    	<td>${movie.movieNo}</td>
+                                    	<td>${movie.movieTitle}</td>
+                                    	<td>${movie.movieRuntime}</td>
+                                    	<td>${movie.movieNation}</td>
+                                    	<td>${movie.movieOpen}</td>
+                                    	<td>${movie.mgNo}</td>
+                                    	<td>${movie.movieContent}</td>
+                                    	<td>${movie.moviePlayed}</td>
+                                    	<td>${movie.movieWatched}</td>
+                                    	<td>${movie.movieRegdate}</td>
+                                    	<td>${movie.movieUploader}</td>
+                                    	<td>${movie.genreCode}</td>
+                                    	<td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
+                                    	<td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
+                                	</tr>
+                                </c:forEach>
+                                <!-- 
                                 <tr>
                                     <td>2</td>
                                     <td>가디언 오브 갤럭시 S23 ULTRA</td>
@@ -227,7 +231,7 @@
                                     <td><button><i class="fa-sharp fa-solid fa-pen-to-square"></i></button></td>
                                     <td><button><i class="fa-sharp fa-solid fa-xmark"></i></button></td>
                                 </tr>
-
+							 -->
                             </table>
                             <div class="page_Nation">
                                 <div>&lt;</div>

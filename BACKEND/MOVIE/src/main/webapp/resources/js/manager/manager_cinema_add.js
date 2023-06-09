@@ -30,6 +30,12 @@ let tempRoom = {
   space: []
 };
 
+let clickCount = 0;
+let firstSeat = [];
+let secondSeat = [];
+
+let optionArea = [];
+
 
 let tempRowArr = [];
 
@@ -50,13 +56,17 @@ $('.swiper-slide .room_edit').on("click", function(){
   $('#temp_column').val(tempRoom.maxColumn);
   
   tempRoom.type = $(room).data('room-type');
-  $("#edit_area select").val(tempRoom.type).prop("selected", true);
+  $("#temp_type").val(tempRoom.type).prop("selected", true);
     
   $('#seat_area').empty();
   createBasicRoom(tempRoom.maxRow, tempRoom.maxColumn);
     
   $('#room_area').css('display', 'block');
   $('#room_area').css('z-index', '3');
+  $('#seat_option').css('display', 'none');
+  $('#seat_option_confirm').css('display', 'none');
+  
+  clickCount = 0;
   
 });
 
@@ -64,7 +74,7 @@ $('.swiper-slide .room_edit').on("click", function(){
 
 // [이벤트] 상영관의 타입을 변경하면
 
-$('#edit_area select').on("input", function(){
+$('#temp_type').on("input", function(){
   tempRoom.type = $(this).val();
 })
 
@@ -78,6 +88,10 @@ $('#edit_area .temp_rc').on("input", function(){
   
   $('#seat_area').empty();
   createBasicRoom(tempRoom.maxRow, tempRoom.maxColumn);
+  
+  $('#seat_option').css('display', 'none');
+  $('#seat_option select').val("").prop("selected", true);
+  $('#seat_option_confirm').css('display', 'none');
 });
 
 
@@ -113,6 +127,7 @@ function createBasicRoom(maxRow, maxColumn){
     }
   }
   
+  clickCount = 0;
   console.log(tempRoom);
 }
 
@@ -120,48 +135,199 @@ function createBasicRoom(maxRow, maxColumn){
 
 // [함수] 좌석을 클릭하면
 
-let right, down;
+function clickSeat(s) { 
+  if(clickCount == 0) {
+    $('.seat').removeClass('option');
+    clickSeatZero(s);
+    
+    
+  } else if((clickCount == 1)) {
+    let n0 = $(s).data('row');
+    let n1 = $(s).data('column');
+    $('.seat').removeClass('option');
+    clickSeatOne(s, n0, n1);
+    createOptionArea();
+  } else {
+    clickSeatTwo(s);
+  }
 
-function clickSeat(s) {
-  $('.seat').removeClass('clicked');
-  $(s).addClass('clicked');
-  $('#seat_option').css('display', 'flex');
-  $('#seat_option select').val("");
-  $('.seat_detail').css('display', 'none');
-   
-  right = tempRoom.maxColumn - $(s).data('column') + 1;
-  down = tempRoom.maxRow - $(s).data('row') + 1;
-
-  $('.seat_detail > input').val("0");
-  $('.seat_right').attr('max', right);
-  $('.seat_down').attr('max', down);
 }
 
+
+// [조건부 함수] 클릭 카운트가 0일 때 좌석을 클릭하면
+
+function clickSeatZero(s) {
+  $('#seat_option').css('display', 'flex');
+  
+  firstSeat = [$(s).data('row'), $(s).data('column')];
+  $(s).addClass('clicked');
+  clickCount++;
+}
+
+
+// [조건부 함수] 클릭 카운트가 1일 때 좌석을 클릭하면
+
+function clickSeatOne(s, n0, n1) {
+
+  if((n0 != firstSeat[0]) || (n1 != firstSeat[1])) {
+    secondSeat = [n0, n1];  
+    $(s).addClass('clicked');
+    clickCount++;
+  } else {
+    $('#seat_option').css('display', 'none');
+    $('#seat_option_confirm').css('display', 'none');
+    firstSeat = [];
+    $(s).removeClass('clicked');
+    
+    clickCount--;
+  }
+
+}
+
+
+// [조건부 함수] 클릭 카운트가 2일 때 좌석을 클릭하면
+
+function clickSeatTwo(s) {
+  let presentSeat = [$(s).data('row'), $(s).data('column')];
+  
+  if(JSON.stringify(presentSeat) === JSON.stringify(firstSeat)) {
+    firstSeat = secondSeat;
+    secondSeat = [];
+    $(s).removeClass('clicked');
+    $('.seat').removeClass('option');
+    $('#seat_option select').val("").prop("selected", true);
+    $('#seat_option_confirm').css('display', 'none');
+    clickCount--;
+  }
+  
+  if(JSON.stringify(presentSeat) === JSON.stringify(secondSeat)) {
+    secondSeat = [];
+    $(s).removeClass('clicked');
+    $('.seat').removeClass('option');
+    $('#seat_option select').val("").prop("selected", true);
+    $('#seat_option_confirm').css('display', 'none');
+    clickCount--;
+  }
+
+}
+
+
+// [조건부 함수] 옵션이 적용되는 구역 만들기
+
+let min0, min1, max0, max1;
+
+function createOptionArea() {
+  min0 = Math.min(firstSeat[0], secondSeat[0]);
+  max0 = Math.max(firstSeat[0], secondSeat[0]);
+  
+  min1 = Math.min(firstSeat[1], secondSeat[1]);
+  max1 = Math.max(firstSeat[1], secondSeat[1]);
+  
+  optionArea = [];
+  
+  for(let i = min0; i <= max0; i++) {
+    for(let j = min1; j <= max1; j++) {
+      optionArea.push([i, j]);
+    }
+  }
+
+}
 
 
 $('#seat_option select').on("input", function(){
   $('.seat_detail').css('display', 'none');
+  $('.seat').removeClass('option')
 
   if($(this).val() == '통로 만들기') {
-    createAisle();
+    createTempAisle();
   } 
   
   else if($(this).val() == '공간 만들기') {
+    createTempSpace();
+  }
+  
+  if($(this).val() != '') {
+    $('#seat_option_confirm').css('display', 'flex');
+  }
+  
+  
+});
+
+
+// 임시 통로 만들기
+
+function createTempAisle(){
+  if(clickCount == 1) {
+    for(let i = 1; i <= tempRoom.maxRow; i++) {
+      $(`#seat_area > div:nth-child(${i}) > a:not('.clicked'):nth-of-type(${firstSeat[1]})`).addClass('option');
+    }
+  } else if(clickCount == 2) {
+    for(let i = 1; i <= tempRoom.maxRow; i++) {
+      for(let j=min1; j<=max1; j++) {
+        $(`#seat_area > div:nth-child(${i}) > a:not('.clicked'):nth-of-type(${j})`).addClass('option');
+      }
+    }
+  }
+
+}
+
+
+// 임시 공간 만들기
+
+function createTempSpace() {
+  if(clickCount == 1) {
+    $('#seat_area > div > a.clicked').addClass('option');
+  } else {
+    for(let i = min0; i <= max0; i++) {
+      for(let j = min1; j <= max1; j++) {
+        $(`#seat_area > div:nth-child(${i}) > a:not('.clicked'):nth-of-type(${j})`).addClass('option');
+      }
+    }
+  }
+}
+
+
+// 설정 적용 버튼 누르기
+
+$('#seat_option_confirm').on("click", function() {
+  if($('#seat_option select').val() == '통로 만들기') {
+    createAisle();
+  }
+  
+  else if($('#seat_option select').val() == '공간 만들기') {
     createSpace();
+  }
+  
+  $('#seat_area').empty();
+  createBasicRoom(tempRoom.maxRow, tempRoom.maxColumn);
+
+  alert(tempRoom.aisle);
+  
+  for(let r = 1; r <= tempRoom.maxRow; r++) {
+    tempRoom.aisle.forEach(c => function(r, c) {
+      $(`#seat_area > div:nth-child(${r}) > a:nth-of-type(${c})`).addClass('aisle');
+      tempRowArr[r-1] -= 1;
+    })
   }
 });
 
 
-// 통로 만들기
-
-function createAisle(){
-  $('.sd1').css('display', 'flex');
+function createAisle() {
+  if(clickCount == 1) {
+    tempRoom.aisle.push(firstSeat[1]);
+  } 
   
+  else if(clickCount == 2) {
+    for(let i = min1; i <= max1; i++) {
+      tempRoom.aisle.push(i);
+    }
+  }
 }
 
 function createSpace() {
-  $('.sd2').css('display', 'flex');
+
 }
+
 
 
 
@@ -174,6 +340,7 @@ $('#room_confirm').on("click", function() {
   room.data('room-type', tempRoom.type);
   room.find('.room_type').html(tempRoom.type);
 	
+  $('#seat_option').css('display', 'none');
   $('#room_area').css('display', 'none');
   $('#room_area').css('z-index', '0');
 });
@@ -194,12 +361,14 @@ $('#room_reset').on("click", function() {
   createBasicRoom(tempRoom.maxRow, tempRoom.maxColumn);
 	
   tempRoom.type = "일반관";
-  $("#edit_area select").val(tempRoom.type).prop("selected", true);
+  $("#temp_type").val(tempRoom.type).prop("selected", true);
 	
   room.data('room-maxrow', tempRoom.maxRow);
   room.data('room-maxcolumn', tempRoom.maxColumn);
   room.data('room-type', tempRoom.type);
   room.find('.room_type').html(tempRoom.type);
+  
+  $('#seat_option').css('display', 'none');
 
 });
 
@@ -207,6 +376,8 @@ $('#room_reset').on("click", function() {
 // 취소 버튼
 
 $('#room_cancle').on("click", function() {
-	$('#room_area').css('display', 'none');
-    $('#room_area').css('z-index', '0');
+  $('#seat_option').css('display', 'none');
+
+  $('#room_area').css('display', 'none');
+  $('#room_area').css('z-index', '0');
 });

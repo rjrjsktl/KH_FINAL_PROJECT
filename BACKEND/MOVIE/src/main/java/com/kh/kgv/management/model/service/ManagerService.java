@@ -17,4 +17,16 @@ public interface ManagerService {
 	// 영화 등록 서비스
 	int MovieAdd(Movie inputMovie);
 
+	// Grade 호출 서비스
+	List<String> mgradeList();
+
+	// Gener
+	List<String> mgenreList();
+
+	// movieList
+	List<Movie> movieList(Movie movie);
+
+	// 이벤트 목록 조회
+	Map<String, Object> eventList(int cp);
+
 }
