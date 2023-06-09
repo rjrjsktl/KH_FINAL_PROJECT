@@ -26,4 +26,7 @@ public interface ManagerService {
 	// movieList
 	List<Movie> movieList(Movie movie);
 
+	// 이벤트 목록 조회
+	Map<String, Object> eventList(int cp);
+
 }

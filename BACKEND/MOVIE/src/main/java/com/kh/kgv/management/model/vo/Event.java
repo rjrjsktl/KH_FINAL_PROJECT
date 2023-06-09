@@ -19,4 +19,5 @@ public class Event {
 	private String eventStart;
 	private String eventEnd;
 	private String eventStatus;
+	private String eventReg;
 }
