@@ -1,0 +1,218 @@
+/* 요기서부터 위에껀 전부 날리면됩니다. */
+
+
+main {
+    width: 1040px;
+    height: 100%;
+    padding: 50px 30px;
+    margin: 0 auto;
+}
+
+main>div:nth-child(1) {
+    /* border-bottom: 2px solid yellow; */
+    padding-bottom: 30px;
+    height: 100%;
+}
+
+/* 스토어 span*/
+main>div:nth-child(1)>span {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* .tab-list {
+     position: static; 
+    width: 100%; 
+    background-color: rgba(255, 255, 255);
+} */
+
+main>div:nth-child(2) {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+main>div:nth-child(2)>ul {
+    display: flex;
+}
+
+.tab-list>ul>li>a {
+    color: white;
+    display: block;
+    width: 100%;
+
+    line-height: 40px;
+
+    text-align: center;
+
+    font-size: 1.0667em;
+
+}
+
+main>div:nth-child(2)>ul>li:hover {
+    border: 2px solid darkgoldenrod;
+
+
+}
+
+main>div:nth-child(2)>ul>li:last-child:hover {
+    border-right: 2px solid darkgoldenrod;
+}
+
+
+main>div:nth-child(2)>ul>li {
+    /* float: left; */
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+
+    border: 1px solid #ebebeb;
+    border-width: 1px 0px 1px 1px;
+
+}
+
+main>div:nth-child(2)>ul>li:last-child {
+    border-right: 1px solid #ebebeb;
+}
+
+
+
+/* 카드 랩퍼 */
+main>div:nth-child(3) {
+
+    margin-top: 30px;
+    /* width: 100%;
+    display: flex; */
+}
+
+/* 카드 스타일 */
+main>div:nth-child(3)>ul {
+    margin-top: 30px;
+    flex: 1;
+    display: flex;
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
+}
+
+main>div:nth-child(3)>ul>li {
+
+    border-radius: 12px;
+    width: 23%;
+    /* height: 100%;
+    display: flex;
+    flex-direction: column; */
+    margin-bottom: 40px;
+    margin-left: 16px;
+}
+
+/* main>div:nth-child(3)>ul>li:hover {
+
+    border: 2px solid darkgoldenrod;
+
+} */
+
+/* 카드 이미지 div */
+main>div:nth-child(3)>ul>li>a>div:nth-child(1) {
+    width: 100%;
+    height: 60%;
+}
+
+/* 카드 내 벨류의 순위 */
+main>div:nth-child(3)>ul>li>div:nth-child(1)>span {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    margin: 20px;
+    line-height: 28px;
+    font-size: 2rem;
+    z-index: 1;
+}
+
+/* main>div:nth-child(2)>ul>li>div:nth-child(1)>a {
+    display: flex;
+} */
+
+
+
+
+
+/* 카드 이미지 절대크기 */
+main>div:nth-child(3)>ul>li>a>div:nth-child(1)>img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    position: relative;
+}
+
+
+main>div:nth-child(3)>ul>li>div:nth-child(2) {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+main>div:nth-child(3)>ul>li>a>div:nth-child(2)>div:nth-child(1) {
+    font-size: 1.5rem;
+    margin: 20px 0px;
+    padding-left: 20px;
+}
+
+main>div:nth-child(3)>ul>li>a>div:nth-child(2)>div:nth-child(1)>p {
+    padding-top: 8px;
+    font-size: 0.8rem;
+
+}
+
+
+main>div:nth-child(3)>ul>li>a>div:nth-child(2)>div:nth-child(2) {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    margin: 20px 0;
+    font-size: 0.9rem;
+    padding-left: 20px;
+}
+
+main>div:nth-child(3)>ul>li>div:nth-child(2)>div>p:nth-child(1) {
+    width: 40%;
+    margin-right: 20px;
+}
+
+main>div:nth-child(3)>ul>li>div:nth-child(3) {
+    display: flex;
+}
+
+/* main>div:nth-child(2)>ul>li>div:nth-child(3)>button {
+    height: 40px;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid lightgray;
+    padding: 0 5px;
+    border-radius: 10px;
+
+}
+
+main>div:nth-child(2)>ul>li>div:nth-child(3)>button:nth-child(2) {
+    margin-left: 10px;
+}
+
+main>div:nth-child(2)>ul>li>div:nth-child(3)>button:nth-child(2):hover {
+    background-color: rgb(41, 41, 41);
+    color: white;
+}
+
+main>div:nth-child(2)>ul>li>div:nth-child(3)>button:nth-child(1) {
+    width: 30%;
+} */
+
+/* main>div:nth-child(2)>ul>li>div:nth-child(3)>button:nth-child(2) {
+    width: 70%;
+    color: black;
+    background-color: white;
+} */
+
+
+/* .navBar:nth-child(1)>a:nth-child(1) {
+    color: rgb(255, 196, 0);
+} */

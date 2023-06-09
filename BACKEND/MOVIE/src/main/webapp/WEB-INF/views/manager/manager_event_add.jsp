@@ -25,7 +25,6 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="lang/summernote-ko-KR.js"></script>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_event_add.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
@@ -53,7 +52,25 @@
                             </div>
                             <div class="table_main">
                                 <div class="enter_Title"><input type="text" placeholder="제목을 입력하세요."></div>
-                                <form method="post" action="/write_Event">
+                                <div class="calendarArea">
+                                    <div id="play_start">
+                                        <span>이벤트 시작일</span>
+                                        <div class="play_start_container">
+                                            <div>
+                                                <input class="start_date" type="date" onfocus="this.showPicker()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="play_end">
+                                        <span>이벤트 종료일</span>
+                                        <div>
+                                            <div>
+                                                <input class="end_date" type="date" onfocus="this.showPicker()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form method="post">
                                     <textarea id="summernote" name="editordata"></textarea>
                                 </form>
                             </div>

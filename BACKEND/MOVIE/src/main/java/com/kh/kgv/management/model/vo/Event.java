@@ -14,11 +14,10 @@ import lombok.NoArgsConstructor;
 public class Event {
 	// 이벤트 테이블
 	private int eventNo;
-	private int userNo;
-	private int bookNo;
 	private String eventTitle;
 	private String eventContent;
 	private String eventStart;
 	private String eventEnd;
 	private String eventStatus;
+	private String eventReg;
 }

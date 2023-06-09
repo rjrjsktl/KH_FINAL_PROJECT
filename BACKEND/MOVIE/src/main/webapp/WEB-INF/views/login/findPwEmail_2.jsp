@@ -68,22 +68,20 @@
                                     <tr>
                                         <th>인증번호</th>
                                         <td>
-                                            <input type="text" placeholder="인증번호" name="cNumber">
-                                            <button id="cBtn">인증완료</button>
+                                            <input type="text" placeholder="인증번호" name="cNumber" id="cNumber">
+                                            <!-- 5:00 타이머 -->
+                                            <span class="signUp-message" id="cMessage"></span>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                        	<!-- 5:00 타이머 -->
-                            				<span class="signUp-message" id="cMessage"></span>
-                                        </td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
+                        
                         <div>
-                            <button>비밀번호 찾기</button>
+                        	<button id="cBtn" onclick="location.href='pwChange'">인증완료</button>
                         </div>
+                        
                     </div>
                 </div>
             </div>
