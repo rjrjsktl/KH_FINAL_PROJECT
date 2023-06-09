@@ -84,6 +84,11 @@
 		FROM DUAL
 	</select>
 	
+	<update id="changePw">
+		UPDATE USERS SET
+		USER_PW = '${encPw}'
+		WHERE USER_EMAIL = '${userEmail}'
+	</update>
 	
 	
 	
