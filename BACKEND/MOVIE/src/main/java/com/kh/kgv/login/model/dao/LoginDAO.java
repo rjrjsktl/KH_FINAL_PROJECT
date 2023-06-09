@@ -54,7 +54,7 @@ public class LoginDAO {
 	 * @param userEmail
 	 * @return
 	 */
-	//6. DAO
+	//
 	public Boolean checkUser(User user) {
 		
 		// 7. boolean으로 실제로 값이 있는 없느지 확인하기
@@ -69,6 +69,11 @@ public class LoginDAO {
 	}
 
 
+	/** 아이디에 인증번호 올리기
+	 * @param userEmail
+	 * @param cnum
+	 * @return
+	 */
 	public int updateCertification(String userEmail, String cnum) {
 		Map<String, Object> params = new HashMap<>();
 	    params.put("cnum", cnum);
@@ -78,6 +83,11 @@ public class LoginDAO {
 	}
 
 
+	/** 인증번호 확인
+	 * @param userEmail
+	 * @param cNumber
+	 * @return
+	 */
 	public int checkNumber(String userEmail, String cNumber) {
 		 Map<String, Object> params = new HashMap<>();
 		  
@@ -86,6 +96,25 @@ public class LoginDAO {
 
 		 return   sqlSession.selectOne("userMapper.checkNumber",params);
 	}
+
+
+	/** 비밀번호 재설정
+	 * @param userEmail
+	 * @param encPw
+	 * @return
+	 */
+	public int changePw(String userEmail, String encPw) {
+		
+		Map<String, Object> params = new HashMap<>();
+		params.put("userEmail", userEmail);
+		params.put("encPw", encPw);
+		
+		return sqlSession.update("userMapper.changePw", params);
+	}
+
+
+	
+
 
 
 	
