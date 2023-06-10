@@ -71,8 +71,8 @@
                                                         </div>
                                                     
                                                     </div>
-                                                    <div>
- 
+                                                    <div style="display:none">
+                                                        <input type="text" class="status" name="status">
                                                     </div>
                                                     
                                                 </div>
@@ -111,7 +111,9 @@
                                 			        <select>
                                 			            <option selected style="display: none"></option>
                                 			            <option>통로 만들기</option>
+                                			            <option>통로 없애기</option>
                                 			            <option>공간 만들기</option>
+                                			            <option>공간 없애기</option>
                                 			        </select>
                                 			    </div>
                                 			    <div id="seat_option_confirm">

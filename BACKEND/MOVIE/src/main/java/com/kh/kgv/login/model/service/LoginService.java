@@ -2,6 +2,7 @@ package com.kh.kgv.login.model.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.kh.kgv.customer.model.vo.User;
 
@@ -35,6 +36,28 @@ public interface LoginService {
 	 * @return
 	 */
 	public abstract int checkNumber(String cNumber, String userEmail);
+
+
+	/** 비밀번호 재설정 서비스
+	 * @param userEmail
+	 * @param inputUser
+	 * @return
+	 */
+//	public abstract int changePw(String userEmail, User inputUser);
+
+
+	/** 비밀번호 재설정 서비스
+	 * @param userEmail
+	 * @param userPw
+	 * @return
+	 */
+	public abstract int changePw(String userEmail, String userPw);
+
+
+	
+
+
+	
 
 	
 	

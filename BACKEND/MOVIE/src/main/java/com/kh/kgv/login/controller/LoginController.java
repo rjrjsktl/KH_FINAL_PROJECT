@@ -3,6 +3,7 @@ package com.kh.kgv.login.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletRequest;
@@ -198,7 +199,7 @@ public class LoginController {
 	@GetMapping("/sendEmail")
 	public int sendEmail( String userEmail ) {
 		
-		logger.debug("userEmail : " + userEmail);
+		logger.debug("<<이메일 보내기>> userEmail : " + userEmail);
 		
 		
 		 String cNumber = "";
@@ -228,7 +229,7 @@ public class LoginController {
          
          String setForm = "channelkgv1@gmail.com";
          String toMail = userEmail;
-         String title = "아이디/비밀번호 찾기 인증 메일 입니다.";
+         String title = "KGV 아이디/비밀번호 찾기 인증 메일 입니다.";
          String content = 
         		 "KGV 홈페이지를 방문해주셔서 감사합니다." +
         	                "<br><br>" + 
@@ -236,7 +237,7 @@ public class LoginController {
         	                "<br>" + 
         	                "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
          
-         logger.debug("mailSender : " + mailSender);
+         logger.debug("<<이메일 보내기>> mailSender : " + mailSender);
 			
          
          try {
@@ -270,18 +271,22 @@ public class LoginController {
 	@GetMapping("/checkNumber")
 	public int checkNumber(String userEmail,
 						   String cNumber,
-						   Model model) {
+						   Model model,
+						   HttpSession session ) {
 		
 		
-		logger.debug("userEmail : " + userEmail);
-		logger.debug("cnum : " + cNumber);
+		logger.debug("<<인증번호 인증하기>> userEmail : " + userEmail);
+		logger.debug("<<인증번호 인증하기>> cnum : " + cNumber);
 		
 		
 		int result =  service.checkNumber(cNumber, userEmail);
 		
-		model.addAttribute("userEmail", userEmail);
+//		model.addAttribute("userEmail", userEmail);
+		session.setAttribute("userEmail", userEmail);
 		
+		logger.info("<<인증번호 인증하기>> 찾고있는 비밀번호의 아이디 : " + userEmail);
 		
+				
 		logger.debug("result : " + result);
 		
 		return result;
@@ -290,23 +295,48 @@ public class LoginController {
 	
 	// 비밀번호 재설정 진입
 	@RequestMapping("/pwChange")
-	public String pwChange() {
+	public String pwChange(HttpSession session) {
+		
+		String userEmail = (String) session.getAttribute("userEmail");
+		
+		logger.info(userEmail);
+		
 		return "login/pwChange";
 	}
 	
 	
 	@RequestMapping("/finshedchangePw")
-	public String finshedchangePw( HttpSession session,
-									User inputUser	) {
+	public String finshedchangePw(HttpSession session,
+								  @RequestParam("userPw") String userPw,
+			/* User inputUser, */
+								  RedirectAttributes ra) {
 		
 	    String userEmail = (String) session.getAttribute("userEmail");
 	    
-	    logger.info(userEmail);
+	    System.out.println(userPw);
+	    
+	    int result = service.changePw(userEmail,userPw);
+	    
+	    String message = null;
+	    String path = null;
+	    
+	    if(result > 0 ) {
+	    	message = "비밀번호 재설정이 완료되었습니다";
+	    	
+	    	logger.info("성공 렛쯔기릿~~~~~");
+	    	
+	    } else {
+	    	message = "비밀번호 재설정에 실패하였습니다.";
+	    	
+	    	logger.info("실패 tlqkf~~~~~");
+	    	
+	    	return "login/pwChange";
+	    	//path = "login/findPwEmail_2";
+	    	
+	    }
 	    
 	    
-	    // userEmail을 사용하여 해당 DB에 있는 유저의 비밀번호 변경 로직을 구현하면 됩니다.
-	    
-	    return "redirect:/";
+	    return "common/main";
 	}
 	
 	
