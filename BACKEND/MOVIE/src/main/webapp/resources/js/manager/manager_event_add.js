@@ -122,6 +122,7 @@ $(document).ready(function () {
             return false;
         }
     });
+
     // ===============================================================================
 
     const submitBtn = $('.bottom_Submit');

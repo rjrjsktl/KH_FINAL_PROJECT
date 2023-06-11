@@ -43,7 +43,7 @@ $(document).ready(function () {
         var data = new FormData();
         data.append("file", file);
         $.ajax({
-            url: 'event_add/uploadImageFile',
+            url: "/movie/manager/event_list/edit/" + eventNo.val() + "/edit_Event/uploadImageFile",
             type: "POST",
             enctype: 'multipart/form-data',
             data: data,
@@ -127,9 +127,12 @@ $(document).ready(function () {
     const submitBtn = $('.bottom_Submit');
     const eventTitle = $('.enter_Title > input');
     const textArea = $('#summernote');
+    const eventNo = $('#eventNo');
+
 
     submitBtn.on('click', (e) => {
         e.preventDefault();
+        console.log("번호 : " + eventNo.val());
         console.log("제목 : " + eventTitle.val());
         console.log("이벤트 시작일 : " + startDate.val());
         console.log("이벤트 종료일 : " + endDate.val());
@@ -164,9 +167,10 @@ $(document).ready(function () {
         };
 
         $.ajax({
-            url: "event_add/write_Event",
+            url: "/movie/manager/event_list/edit/" + eventNo.val() + "/edit_Event",
             data: {
-                "title": eventTitle.val()
+                "no": eventNo.val()
+                , "title": eventTitle.val()
                 , "start": startDate.val()
                 , "end": endDate.val()
                 , "content": textArea.val()
@@ -174,18 +178,18 @@ $(document).ready(function () {
             type: "POST",
             success: function (result) {
                 if (result > 0) {
-                    alert("이벤트 등록 성공");
-                    window.location.reload();
+                    let url = "/movie/manager/event_list/";
+                    alert("이벤트 수정 성공");
+                    window.location.reload(url);
                 } else {
-                    alert("이벤트 등록 실패");
+                    alert("이벤트 수정 실패");
                     window.location.reload();
                 }
             },
 
             error: function () {
-                console.log("에러 발생으로 인해 등록 실패");
+                console.log("에러 발생으로 인해 수정 실패");
             }
         });
     });
-
 });
