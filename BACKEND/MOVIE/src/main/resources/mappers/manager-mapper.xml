@@ -31,7 +31,7 @@
 		<result property="movieTitle" 				column="MOVIE_TITLE"/>
 		<result property="movieNation" 				column="MOVIE_NATION"/>
 		<result property="movieOpen" 				column="MOVIE_OPEN"/>
-		<result property="mgNo" 					column="MG_CONTENT"/>
+		<result property="mgNo" 					column="MG_CONTENT"/> 
 		<result property="movieContent" 			column="MOVIE_CONTENT"/>
 		<result property="movieImg" 				column="MOVIE_IMG"/>
 		<result property="moviePlayed" 				column="MOVIE_PLAYED"/>
@@ -149,6 +149,17 @@
 	*
 	FROM EVENT
 	ORDER BY EVENT_NO ASC
+	</select>
+	
+	<!-- 이벤트 수정조회 -->
+	<select id="getEditEventList" resultType="HashMap">
+	SELECT
+	EVENT_TITLE
+	, EVENT_CONTENT
+	, EVENT_START
+	, EVENT_END
+	FROM EVENT
+	WHERE EVENT_NO = #{eventNo}
 	</select>
 
 

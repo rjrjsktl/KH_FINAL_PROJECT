@@ -110,7 +110,16 @@ public class ManagerServiceImpl implements ManagerService{
 		
 		return getEventList;
 	}
-	
+
+	// 이벤트 수정 조회
+	@Override
+	public Map<String, Object> getEditEventList(Event event) {
+		
+		return dao.getEditEventList(event);
+	}
+
+
+
 	
 	
 	
