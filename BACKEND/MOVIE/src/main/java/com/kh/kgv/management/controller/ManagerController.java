@@ -7,17 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.google.gson.Gson;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.service.ManagerService;
+import com.kh.kgv.management.model.vo.Event;
 
 @Controller
 @RequestMapping("/manager")
@@ -229,6 +229,30 @@ public class ManagerController {
 		System.out.println("관리자_이벤트 등록 이동");
 		return "manager/manager_event_add";
 	}
+	
+	// ===================================================
+	// ===================================================
+	
+		// 이벤트 수정
+	@GetMapping("/event_list/edit/{eventNo}")
+	public String editEvent(
+	        Model model,
+	        Event event,
+	        @PathVariable("eventNo") int eventNo
+			) {
+		
+		Map<String, Object>editEvent = null;
+		
+		event.setEventNo(eventNo);
+		
+		editEvent = service.getEditEventList(event);
+		System.out.println("DAO에서 가지고 온 editEvent : " + editEvent);
+		model.addAttribute("editEvent", editEvent);
+		
+		return "manager/manager_event_edit";
+		
+	}
+	
 	
 	// ===================================================
 	// ===================================================
