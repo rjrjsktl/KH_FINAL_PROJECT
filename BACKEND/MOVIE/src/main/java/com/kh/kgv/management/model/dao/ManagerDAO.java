@@ -1,6 +1,7 @@
 package com.kh.kgv.management.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -96,10 +97,11 @@ public class ManagerDAO {
 		return sqlSession.selectList("managerMapper.eventList", null, rowBounds);
 	}
 
-	
-	
-	
-
+	// 이벤트 수정조회
+	public Map<String, Object> getEditEventList(Event event) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("managerMapper.getEditEventList", event);
+	}
 	
 
 }
