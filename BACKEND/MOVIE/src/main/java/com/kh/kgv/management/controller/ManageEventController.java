@@ -51,7 +51,7 @@ public class ManageEventController {
 		return result;
 	}
 
-	// 이미지 업로드
+	// 이벤트 등록용 이미지 업로드
 	@PostMapping("uploadImageFile")
 	@ResponseBody
 	public String uploadImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request) {

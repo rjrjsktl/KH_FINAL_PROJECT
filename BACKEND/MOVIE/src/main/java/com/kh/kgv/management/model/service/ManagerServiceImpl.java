@@ -20,7 +20,7 @@ public class ManagerServiceImpl implements ManagerService{
 	private ManagerDAO dao;
 
 
-
+// 회원 목록 조회
 	@Override
 	public Map<String, Object> selectAll(int cp) {
 		
@@ -116,6 +116,18 @@ public class ManagerServiceImpl implements ManagerService{
 	public Map<String, Object> getEditEventList(Event event) {
 		
 		return dao.getEditEventList(event);
+	}
+
+	// 이벤트 수정(업데이트)
+	@Override
+	public int editEvent(Event event) {
+		return dao.editEvent(event);
+	}
+
+	// 이벤트 상태 업데이트
+	@Override
+	public int updateEventST(Event event) {
+		return dao.updateEventST(event);
 	}
 
 

@@ -47,7 +47,7 @@
                                                     <span>이벤트 목록</span>
                                                     <div class="search_Box">
                                                         <input placeholder="검색" />
-                                                        <button>
+                                                        <button class="checkBtn">
                                                             <i class="fa-solid fa-magnifying-glass fa-2xs"></i>
                                                         </button>
                                                     </div>
@@ -92,8 +92,7 @@
                                                             </c:choose>
 
                                                             <td><a href="${contextPath}/manager/event_list/edit/${getEvent['eventNo']}"
-                                                                    class="editEvent"
-                                                                    onclick="getEventNo(${getEvent['eventNo']})"><i
+                                                                    class="editEvent"><i
                                                                         class="fa-sharp fa-solid fa-pen-to-square"></i></a>
                                                             </td>
                                                             <td><a class="deleteEvent"><i
