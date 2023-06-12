@@ -9,233 +9,309 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>밥집</title>
-    <link rel="stylesheet" href="../../css/outline.css">
-    <link rel="stylesheet" href="../../css/theaterS3.css">
+    <title>IMAX</title>
+    <link rel="stylesheet" href="../../css/common/outline.css">
+    <link rel="stylesheet" href="../../css/theater/theaterS3.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
     <div id="wrap">
-        <header>
-            <!-- 헤더 윗쪽 섹션 -->
-            <section>
 
-                <div>
-                    <div>
-                        <!-- 
-                               contextpath 지정 必
-                               이미지 태그 속 로고위치 제대로 작성
-                            -->
-                        <!-- <a href="${contextPath}">
-                   <img src="${contextPath}/resources/images/logo.jpg" id="home-logo">
-               </a> -->
-                        <a href="#"><img src="../images/logo3.png" alt="로고 이미지 삽입 w160 h70 "></a>
+
+        <div id="wrap">
+            <header>
+
+                <section>
+                    <div class="logo-section">
+                        <div>
+                            <a href="../../html/common/main.html"><img src="" alt="암거나박아요"></a>
+                        </div>
+                        <span>KHTHEATER</span>
                     </div>
+
+                    <div class="memberInfo_wrap">
+                        <ul>
+
+                            <div>
+                                <img src="" alt="">
+                            </div>
+
+                            <li class="login-btn-area">
+                                <a href="#" id="myBtn">
+                                    <span><img src="../../images/headerPng/test.png" alt=""></span>
+                                    <span>로그인</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../signup/signup.html">
+                                    <span><img src="../../images/headerPng/test2.png" alt=""></span>
+                                    <span>회원가입</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span><img src="../../images/headerPng/test3.png" alt=""></span>
+                                    <span>MY KGV</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../notice/notice_home.html">
+                                    <span><img src="../../images/headerPng/test5.png" alt=""></span>
+                                    <span>고객센터</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- nav bar-->
+                <nav>
                     <div>
-                        <span>K H T H E A T E R</span>
+                        <ul>
+                            <li class="navBar"><a href="#">영화</a>
+                                <ul class="menuBar" style="display:none">
+                                    <li><a href="../../html/introduce/movieList.html">무비 차트</a></li>
+                                </ul>
+                            </li>
+                            <li class="navBar"><a href="#">상영관</a>
+                                <ul class="menuBar" style="display:none">
+                                    <li><a href="../../html/introduce/theater.html">지역별</a></li>
+                                    <li><a href="../../html/introduce/theaterSpacial.html">특별관</a></li>
+                                </ul>
+                            </li>
+                            <li class="navBar"><a href="#">예매</a>
+                                <ul class="menuBar" style="display:none">
+                                    <li><a href="../../html/reserve/reserve.html">빠른 예매</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="navBar"><a href="#">이벤트</a>
+                                <ul class="menuBar" style="display:none">
+                                    <li><a href="">진행중 이벤트</a></li>
+                                    <li><a href="">지난 이벤트</a></li>
+                                    <li><a href="">당첨자 발표</a></li>
+                                </ul>
+                            </li>
+                            <li class="navBar"><a href="#">스토어</a></li>
+                            <li class="navBar"><a href="#">혜택</a>
+                                <ul class="menuBar" style="display:none">
+                                    <li><a href="">멤버쉽</a></li>
+                                    <li><a href="">제휴/할인</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="dummy" style="display:none"></div>
+                        <div>
+                            <form action="">
+
+                                <input type="text" placeholder="아 영화 재밌는거 없나">
+                                <button><img src="../../images/headerPng/test6.png" alt=""></button>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </nav>
+            </header>
+
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div class="close-button">&times;</div>
+                    <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
+                </div>
+            </div>
+
+            <main>
+                <div>
+                    <!-- 백그라운드이미지로 처리 -->
+                    <div>
+                        <ul>
+                            <li><a href="#">KMAX</a> </li>
+                            <li><a href="#">DOLBY</a> </li>
+                            <li><a href="#">DISH & WINE</a> </li>
+                            <li><a href="#">WITH A PUPPY</a> </li>
+                            <li><a href="#">KIDS</a> </li>
+                        </ul>
                     </div>
                 </div>
 
+                <!-- 두번째 영역 -->
                 <div>
-                    <div> <a href="#"><img src="" alt="광고 이미지삽입width:200px height:100px"></a></div>
+                    <div>
+                        <div class="left_stheaterwrap">
+                            <span>세계 두번째</span>
+                            <span>반려동물 동반 멀티플렉스</span>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+                <!-- 4 -->
+                <div>
+                    <div>
+                        <img src="../../images/teater_special/img-theater-puppy-view01.png" alt="">
+                        <p>나의 인생 영화<br>
+                            너의 견생 영화</p>
+                    </div>
+                </div>
+                <!-- 5 -->
+
+                <div>
+                    <div>
+                        <div><img src="../../images/teater_special/bg-boarding.png">
+                            <div class="explain">
+                                <p>BOARDING</p>
+                            </div>
+                        </div>
+                        <div><img src="../../images/teater_special/bg-bath.png">
+                            <div class="explain">
+                                <p>BATH</p>
+                            </div>
+                        </div>
+                        <div><img src="../../images/teater_special/bg-salon.png">
+                            <div class="explain">
+                                <p>SALON</p>
+                            </div>
+                        </div>
+                        <div><img src="../../images/teater_special/bg-restaurant.png">
+                            <div class="explain">
+                                <p>RESTAURANT</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!-- 6 -->
+                <div>
+                    <div>
+                        <img src="../../images/teater_special/img-theater-puppy-view02.png" alt="">
+                    </div>
+                    <ul class="puppy-ul">
+                        <li>Boarding</li>
+                        <li>자유롭게, 마음껏 뛰어놀 수 있는 놀이터
+                        </li>
+                        <li>펫 마스터와 함께 신나는 놀이와 행동 교정 프로그램까지!
+                            <br>쇼핑, 영화 등 혼자만의 시간이 필요할 때
+                            <br> 강아지도 안전하고 행복한 시간!
+
+                        </li>
+                    </ul>
+                </div>
+                <!-- 7 -->
+                <div>
+                    <div>
+                        <img src="../../images/teater_special/img-theater-puppy-view03.png" alt="">
+                    </div>
+                    <ul class="puppy-ul">
+                        <li>Bath</li>
+                        <li>나와 네가 모두 편안한 프리미엄 바스
+                        </li>
+                        <li>20년 경력 케어 전문가의 섬세한 손길로 
+                            <br>스파, 월풀, 하이드로바스까지
+                            <br>향기롭고 윤기가 흐르는, 프리미엄 케어의 끝판왕!
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div>
+                        <img src="../../images/teater_special/img-theater-puppy-view04.png" alt="">
+                    </div>
+                    <ul class="puppy-ul">
+                        <li>Salon</li>
+                        <li>스타일링 맛집, 케어는 멋짐
+                        </li>
+                        <li>스트레스 없이 편안하게 위생 미용부터 최신 스타일링까지
+                            <br>미용 구독 서비스로 매일매일 리즈 시절!
+                        </li>
+                    </ul>
+                </div>
+
+
+
+
+                <!-- 7-- -->
+                <div>
+                    <div>
+                        <p>With a Puppy 상영관</p>
+
+                        <div class="stheater_wrap">
+                            <ul>
+                                <li><a href="#">PUPPY <span>동대문</span></a></li>
+                                <li><a href="#">PUPPY <span>왕십리</span></a></li>
+                                <li><a href="#">PUPPY <span>하남</span></a></li>
+                                <li><a href="#">PUPPY <span>동성로</span></a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- 8 -->
+                <div>
+                    <div>
+                        <!-- TOP3만 올리세요 스와이퍼넣기싫어 귀찮아 제발.. -->
+                        <p>반려동물과 함께하는 추천영화</p>
+                        <div class="top3-wrap">
+                            <div>
+                                <a href="#"><img src="../../images/movieList/movie_01.jpg"></a>
+                                <button>예매하기</button>
+                            </div>
+                            <div>
+                                <a href="#"><img src="../../images/movieList/movie_01.jpg"></a>
+                                <button>예매하기</button>
+                            </div>
+                            <div>
+                                <a href="#"><img src="../../images/movieList/movie_01.jpg"></a>
+                                <button>예매하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </main>
+
+        </div>
+        <footer>
+
+            <section>
+
+                <div>
 
                     <ul>
-                        <li>
-                            <a href="#">
-                                <span><i class="fa-solid fa-lock"></i></span>
-                                <p>SIGN IN</p>
-                            </a>
-                        </li>
-
-                        <li>
-
-
-                            <a href="#">
-                                <span><i class="fa-regular fa-user"></i></span>
-                                <p>MY PAGE</p>
-                            </a>
-
-
-                        </li>
-
-                        <li>
-                            <a href="#">
-                                <span><i class="fa-solid fa-headset"></i></span>
-                                <p>HELP</p>
-                            </a>
-                        </li>
-
+                        <li><a href="#">회사소개</a></li><span>|</span>
+                        <li><a href="#">조원소개</a></li><span>|</span>
+                        <li><a href="#">이용약관</a></li><span>|</span>
+                        <li><a href="#">개인정보처리방침</a></li><span>|</span>
+                        <li><a href="#">편성기준</a></li>
                     </ul>
+
+                </div>
+
+                <div>
+                    <span>Channel_KGV | 사업자등록번호: 110-372-404490(신한) </span>
+                    <span>조장 : 김민수 | 조원 : 권지훈 / 김윤석 / 이도근 / 정지민 / 최영탁</span>
+                    <span>강남상영관 : 서울특별시 강남구 테헤란로14길 6 남도빌딩 2F, D Class
+                    </span>
+                    <span>
+                        Copyright © 2023-2023 Channel_KGV All Right Reserved
+                    </span>
                 </div>
 
             </section>
 
-            <!-- nav bar-->
-            <nav>
-
-                <div>
-                    <ul>
-                        <li><a href="#">영화</a></li>
-                        <li><a href="#">극장</a></li>
-                        <li><a href="#">예매</a></li>
-                        <li><a href="#">스토어</a></li>
-                        <li><a href="#">이벤트</a></li>
-                        <li><a href="#">혜택</a></li>
-                    </ul>
-
-                    <div>
-                        <form action="">
-
-                            <input type="text" placeholder="오늘의 영화를 찾아보세용">
-                            <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                        </form>
-                    </div>
-
-                </div>
-
-            </nav>
-
-        </header>
-
-        <main>
-            <div>
-                <!-- 백그라운드이미지로 처리 -->
-                <div>
-                    <ul>
-                        <li><a href="#">KMAX</a> </li>
-                        <li><a href="#">DOLBY</a> </li>
-                        <li><a href="#">DISH & WINE</a> </li>
-                        <li><a href="#">WITH A PUPPY</a> </li>
-                        <li><a href="#">KIDS</a> </li>
-                    </ul>
-                    유튜브 iframe박읍시다.
-                </div>
-            </div>
-
-            <!-- 두번째 영역 -->
-            <div>
-                <div>
-                    <div class="left_stheaterwrap">
-                        <span>DOLBY</span>
-                        <span>상영 극장 </span>
-                    </div>
-
-                    <div class="stheater_wrap">
-                        <ul>
-                            <li><a href="#">DOLBY <span>서울</span></a></li>
-                            <li><a href="#">DOLBY <span>서울</span></a></li>
-                            <li><a href="#">DOLBY <span>서울</span></a></li>
-
-
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- 세번째 영역 -->
-            <div>
-                <div>
-                    <strong>For Your Very Special Moment</strong>
-                    <span> 소중한 분들과 함께 최고의 가치를 경험하십시오.</span>
-                </div>
-            </div>
-
-            <!-- 4 -->
-            <div>
-                <span>MOVIE & CHEF x TEMPER
-                </span>
-                <p>
-                    프리미엄 매트리스&베개 브랜드 ‘템퍼’와의 콜라보레이션으로 탄생한 세계 최초 리클라이닝 침대 영화관.<br>
-                    전 좌석에 머리, 상체, 다리의 각도가 자유자재로 조절되는 리클라이닝 전동 침대를 도입하여, <br>인체에 무리가 없는 최적의 편안함을 제공합니다.
-                </p>
-                <div>
-
-                </div>
-            </div>
-
-            <!-- 5 -->
-            <div>
-                <div>
-                    <span>MOVIE & CHEF x 압구정
-                    </span>
-                    <p>
-                        프리미엄 매트리스&베개 브랜드 ‘템퍼’와의 콜라보레이션으로 탄생한 세계 최초 리클라이닝 침대 영화관.<br>
-                        전 좌석에 머리, 상체, 다리의 각도가 자유자재로 조절되는 리클라이닝 전동 침대를 도입하여, <br>인체에 무리가 없는 최적의 편안함을 제공합니다.
-                    </p>
-                    <div>
-                        <img src="../../images/specialtheater_cdc_00.jpg" alt="">
-                        <img src="../../images/specialtheater_cdc_01.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-
-            <!-- 6 -->
-            <div>
-                <div>
-                    <span>MOVIE & CHEF x 용산
-                    </span>
-                    <p>
-                        수준급 쉐프의 크리에이티브가 돋보이는 '모던 유러피안 올데이 다이닝' 레스토랑 및 미국 3대 스페셜티 커피<br>
-                        '인텔리젠시아'를 즐길 수 있는 카페를 통해 당신에게 특별한 순간을 선사합니다.</p>
-                    <div>
-                        <img src="../../images/specialtheater_cdc_10.jpg" alt="">
-                        <img src="../../images/specialtheater_cdc_11.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-
-            <!-- 7 -->
-            <div>
-                <div>
-                    <span>MOVIE & CHEF x 센텀시티
-                    </span>
-                    <p>
-                        200석 규모의 탁 트인 공간에 미니멀하고 심플하면서도 품격있는 인테리어가 돋보이는 레스토랑<br>
-                        그리고 2개의 상영관과 독립된 다이닝 룸으로 구성되어 있습니다.</p>
-                    <div>
-                        <img src="../../images/specialtheater_cdc_20.jpg" alt="">
-                        <img src="../../images/specialtheater_cdc_21.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-
-
-        </main>
-
-    </div>
-    <footer>
-
-        <section>
-
-            <div>
-
-                <ul>
-                    <li><a href="#">회사소개</a></li><span>|</span>
-                    <li><a href="#">조원소개</a></li><span>|</span>
-                    <li><a href="#">이용약관</a></li><span>|</span>
-                    <li><a href="#">개인정보처리방침</a></li><span>|</span>
-                    <li><a href="#">편성기준</a></li>
-                </ul>
-
-            </div>
-
-            <div>
-                <span>Channel_KGV | 사업자등록번호: 110-372-404490(신한) </span>
-                <span>조장 : 김민수 | 조원 : 권지훈 / 김윤석 / 이도근 / 정지민 / 최영탁</span>
-                <span>강남상영관 : 서울특별시 강남구 테헤란로14길 6 남도빌딩 2F, D Class
-                </span>
-                <span>
-                    Copyright © 2023-2023 Channel_KGV All Right Reserved
-                </span>
-            </div>
-
-        </section>
-
-    </footer>
-    <!--
+        </footer>
+        <!--
        <%-- session에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
                <c:if test="${ !empty sessionScope.message }">
                    <script>
@@ -249,6 +325,11 @@
                    <c:remove var="message" scope="session" />
                </c:if>
                -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <script src="../../js/common/header.js"></script>
+        <script src="../../js/theater/special-detail.js"></script>
 </body>
 
 </html>

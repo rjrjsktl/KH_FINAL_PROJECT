@@ -76,7 +76,7 @@ main>div:nth-child(2)>div{
 /* 3 */
 main>div:nth-child(3){
     height:600px;
-    padding:50px 30px;
+    padding:50px 30px 10px 30px;
 }
 
 main>div:nth-child(3)> div{
@@ -110,7 +110,6 @@ main>div:nth-child(3)> div > p{
 
 main>div:nth-child(4){
     width:100%;
-    background-color: rgb(0,0,0);
     display: flex;
     align-items: center;
 }
@@ -119,65 +118,65 @@ main>div:nth-child(4){
 main>div:nth-child(4) > div:nth-child(1){
     width:1040px;
     margin:0 auto;
-    height:580px;
-    padding:50px 30px;
+    padding:0 30px;
     display: flex;
     justify-content: space-between;
     height:100%;
 }
 
 main>div:nth-child(4)> div:nth-child(1)>div{
-    width:33%;
-    border-radius: 10px;
-
-    padding: 0 50px;
+    width:50%;
+    padding: 0 5px;
     display: flex;
     flex-direction: column;
 }
+
 main>div:nth-child(4)>div>img{
     height:66%;
-    border-radius: 50%;
 
 }
 
 main>div:nth-child(4)>div>div{
-    height:34%;
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 
-main>div:nth-child(4)>div>div p{
-    font-size: 2rem;
-    padding:10px;
+.explain{
+    margin-top:30px;
 }
 
-main>div:nth-child(4)>div>div>span{
-    font-size: 1.2rem;   
+.explain p {
+    font-size:1.5rem
 }
-
 
 
 
 main>div:nth-child(5){
-    width:1040px;
-    margin:0 auto;
-    height:600px;
-    padding:50px 30px 0 30px ;
-   display: flex;
+
+width:100%;
+background-color: black;
+
+}
+
+main > div:nth-child(5) .left_stheaterwrap{
+    margin-bottom : 0;
+    padding-bottom: 0;
 }
 
 main>div:nth-child(5)>div{
-    width:100%;
-    background-size: 100%;
-    position: relative;
-    border-radius: 10px;
+    width:1040px;
+    margin:0 auto;
+    margin-bottom: 30px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
 }
 
 main>div:nth-child(5)>div > img {
-    width:100%;
-    height:550px;
+    width:480px;
     border-radius: 10px;
+    padding:0 5px;
 }
 
 main>div:nth-child(5)> div > p{
@@ -190,50 +189,20 @@ main>div:nth-child(5)> div > p{
 
 
 
-main>div:nth-child(6){
-    width:1040px;
-    margin:0 auto;
-    height:600px;
-    padding:50px 30px 0 30px ;
-   display: flex;
-   margin-bottom: 50px;
-}
 
-main>div:nth-child(6)>div{
+main > div:nth-child(6) {
     width:100%;
-    background-size: 100%;
-    position: relative;
-    border-radius: 10px;
-}
-
-main>div:nth-child(6)>div > img {
-    width:100%;
-    height:550px;
-    border-radius: 10px;
-}
-
-main>div:nth-child(6)> div > p{
-    position: absolute;
-    bottom:60px;
-    font-size: 2.5rem;
-    left:50px;
-    font-weight: bold;
-}
-
-main > div:nth-child(7) {
-    width:100%;
-    background-color: black;
     height:100%;
     margin-bottom: 50px;
 }
 
-main > div:nth-child(7) > div:nth-child(1) {
+main > div:nth-child(6) > div:nth-child(1) {
     width:1040px;
     margin:0 auto;
     padding:0 30px;
 }
 
-main > div:nth-child(7) p{
+main > div:nth-child(6) p{
     font-size: 2rem;
     padding:30px 0;
 }
@@ -285,18 +254,19 @@ main > div:nth-child(7) p{
 
 
 
-main > div:nth-child(8) {
+main > div:nth-child(7) {
     width:100%;
     margin-bottom: 100px;
+    background-color: black;
 }
 
-main > div:nth-child(8) > div:nth-child(1) {
+main > div:nth-child(7) > div:nth-child(1) {
     width:1040px;
     margin:0 auto;
     padding:0 30px;
 }
 
-main > div:nth-child(8) p{
+main > div:nth-child(7) p{
     font-size: 2rem;
     padding:30px 0;
 }
