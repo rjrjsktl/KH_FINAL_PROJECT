@@ -201,21 +201,19 @@
 					</thead>
 					<tbody>
 
-
 						<c:choose>
-							<c:when test="${empty getNoticeList['noticeLists']}">
+							<c:when test="${empty getNoticeList.noticeLists}">
 								<tr>
 									<th colspan="3">게시글이 존재하지 않습니다.</th>
 								</tr>
 							</c:when>
 							<c:otherwise>
-								<c:forEach var="getNotice"
-									items="${getNoticeList['noticeLists']}" varStatus="loop">
+								<c:forEach var="getNotice" items="${getNoticeList['noticeLists']}" varStatus="loop">
 									<c:if test="${loop.index < 5}">
 										<tr>
-											<td>${getNotice['noticeNo']}</td>
-											<td>${getNotice['noticeTitle']}</td>
-											<td>${getNotice['noticeRegDate']}</td>
+											<td>${getNotice.noticeNo}</td>
+											<td>${getNotice.noticeTitle}</td>
+											<td>${getNotice.noticeRegDate}</td>
 										</tr>
 									</c:if>
 								</c:forEach>
