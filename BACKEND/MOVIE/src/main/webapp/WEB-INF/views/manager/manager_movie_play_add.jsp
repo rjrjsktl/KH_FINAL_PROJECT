@@ -12,7 +12,7 @@
     <title>상영시간 등록</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_movie_play.css">
-    						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
     <!-- fontawesome -->
@@ -65,6 +65,27 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div id="play_screen">
+                                    <span>상영 스크린</span>
+                                    <div class="relative">
+                                        <div class="play_screen_enter">
+
+                                        </div>
+                                        <div class="screen_Items">
+                                            <div class="play_screen_slide">
+                                                <div>test1</div>
+                                                <div>test2</div>
+                                                <div>test3</div>
+                                                <div>test4</div>
+                                                <div>test5</div>
+                                                <div>test6</div>
+                                                <div>test7</div>
+                                                <div>test8</div>
+                                                <div>test9</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div id="play_movie">
                                     <span>상영 영화</span>
                                     <div class="relative">
@@ -90,7 +111,7 @@
                                     <span>상영 시작일</span>
                                     <div class="play_start_container">
                                         <div>
-                                            <input class="start_date" type="date" />
+                                            <input class="start_date" type="date" onfocus="this.showPicker()" />
                                         </div>
                                     </div>
                                 </div>
@@ -98,7 +119,7 @@
                                     <span>상영 종료일</span>
                                     <div>
                                         <div>
-                                            <input class="end_date" type="date" />
+                                            <input class="end_date" type="date" onfocus="this.showPicker()" />
                                         </div>
                                     </div>
                                 </div>

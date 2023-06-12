@@ -3,41 +3,38 @@ main>div:nth-child(1) {
     width: 100%;
     HEIGHT:100%;
     background-color: black;
-    margin: 50px 0;
-
+    margin-bottom: 50px;
 }
 
 main>div:nth-child(1)>div {
-
-    width: 1160px;
-    padding: 0 20px;
+    width: 1040px;
+    padding: 0 30px;
     margin: 0 auto;
-    height:500px;
+    height:200px;
     text-align: center;
 }
 
-main>div:nth-child(1)>div > span{
-    font-size: 3rem;
-    line-height: 398px;
-}
 
 
 main>div:nth-child(1)>div>ul {
     display: flex;
+    padding:0 30px;
     justify-content: center;
     text-align: center;
     align-items: center;
 }
 
 main>div:nth-child(1)>div>ul>li {
-    padding: 15px 15px;
+    padding: 30px 50px;
 }
 
 
-main>div:nth-child(1)>div>ul>li>a {
-    border-bottom: 1px solid white;
-    font-size: 1rem;
-    line-height: 51px;
+main>div:nth-child(1) a {
+    font-size: 1.3rem;
+}
+
+main>div:nth-child(1) a:hover{
+    color:rgb(251,251,251);
 }
 
 
@@ -46,120 +43,62 @@ main>div:nth-child(1)>div>ul>li>a {
 /* 두번째 영역 */
 
 main>div:nth-child(2) {
-    width: 1160px;
-    padding: 0 20px 50px 20px;
-    margin: 0 auto;
-    display: flex;
+    width:100%;
+
 }
 
 
-/*  */
 main>div:nth-child(2)>div{
-    width:100%;
-    display: flex;
-    padding:30px 0;
-    border-bottom: 1px solid white;
+    width: 1040px;
+    padding: 0 30px;
+    margin:0 auto;
 }
 
 .left_stheaterwrap {
-    width:20%;
-    border-right: 5px solid white;
-    margin-right:30px;
-    padding:10px;
-    text-align: center;
-}
-
-
-.stheater_wrap {
-    width:80%
-}
-
-.stheater_wrap > ul{
-    width:100%;
-    height:100%;
-    display: flex;
-    flex-wrap:wrap;
-    align-items: center;
-
-}
-
-.stheater_wrap >ul>li{
-   width:25%;
-   height:40px;
-   padding:10px;
-   text-align: center;
-   border-radius: 10px;
-}
-
-.stheater_wrap >ul>li:nth-child(1){
-    background-color: white;
-}
-
-.stheater_wrap >ul>li:nth-child(1)>a{
-    color: black;
-}
-
-.stheater_wrap >ul>li:nth-child(1)>a>span{
-    color:black
-}
-
-
-/* 세번째 영역 */
-
-main>div:nth-child(3) {
-
-
-    padding: 0 20px;
-    background-color: rgb(31, 31, 31);
-}
-
-
-main>div:nth-child(3)>div:nth-child(1) {
-    width: 1160px;
-    margin: 0 auto;
-    height: 180px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-
-    border-radius: 10px;
 }
 
-main>div:nth-child(3)>div>strong {
-    padding: 10px;
-    font-size: 2.5rem;
+.left_stheaterwrap span{
+    font-size: 2rem;
     font-weight: bold;
-
 }
 
-main>div:nth-child(3)>div>span{
-    padding: 10px;
-    font-size: 1.7rem;
+.left_stheaterwrap span:nth-child(2){
+    font-size: 1.5rem;
+    font-weight: 100;
 }
 
 
-main>div:nth-child(4){
-   
-    width:1160px;
-    margin:50px auto 0 auto;
+
+/* 3 */
+main>div:nth-child(3){
     height:600px;
-    padding:0 20px;
+    padding:50px 30px;
 }
 
-main>div:nth-child(4)> div{
-    width:1120px;
+main>div:nth-child(3)> div{
+    width:1040px;
+    padding:0 30px;
     height:100%;
     border-radius: 10px;
     background-image: url("../../images/imax_03.png");
     background-size:100%;
    position: relative;
    border-radius: 10px;
+   margin:0 auto;
 
 }
 
-main>div:nth-child(4)> div > p{
+main>div:nth-child(3)> div > img {
+    width:100%;
+    height:100%;
+    border-radius: 10px;
+}
+
+main>div:nth-child(3)> div > p{
     position: absolute;
     bottom:60px;
     font-size: 2.5rem;
@@ -169,72 +108,107 @@ main>div:nth-child(4)> div > p{
 
 
 
-main>div:nth-child(5){
+main>div:nth-child(4){
     width:100%;
-    background-color: rgb(31,31,31);
+    background-color: rgb(0,0,0);
     display: flex;
     align-items: center;
-    margin-top:50px;
 }
 
 
-main>div:nth-child(5) > div:nth-child(1){
-    width:1160px;
+main>div:nth-child(4) > div:nth-child(1){
+    width:1040px;
     margin:0 auto;
     height:580px;
-    padding:20px;
+    padding:50px 30px;
     display: flex;
     justify-content: space-between;
     height:100%;
 }
 
-main>div:nth-child(5)> div:nth-child(1)>div{
+main>div:nth-child(4)> div:nth-child(1)>div{
     width:33%;
     border-radius: 10px;
 
-    padding:30px;
+    padding: 0 50px;
     display: flex;
     flex-direction: column;
 }
-main>div:nth-child(5)>div>img{
+main>div:nth-child(4)>div>img{
     height:66%;
     border-radius: 50%;
 
 }
 
-main>div:nth-child(5)>div>div{
+main>div:nth-child(4)>div>div{
     height:34%;
-    padding:10px;
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 
-main>div:nth-child(5)>div>div p{
+main>div:nth-child(4)>div>div p{
     font-size: 2rem;
     padding:10px;
 }
 
-main>div:nth-child(5)>div>div>span{
+main>div:nth-child(4)>div>div>span{
     font-size: 1.2rem;   
 }
 
 
 
 
-main>div:nth-child(6){
-    width:1160px;
+main>div:nth-child(5){
+    width:1040px;
     margin:0 auto;
     height:600px;
-    padding:50px 20px 0 20px ;
+    padding:50px 30px 0 30px ;
    display: flex;
+}
+
+main>div:nth-child(5)>div{
+    width:100%;
+    background-size: 100%;
+    position: relative;
+    border-radius: 10px;
+}
+
+main>div:nth-child(5)>div > img {
+    width:100%;
+    height:550px;
+    border-radius: 10px;
+}
+
+main>div:nth-child(5)> div > p{
+    position: absolute;
+    bottom:60px;
+    font-size: 2.5rem;
+    left:50px;
+    font-weight: bold;
+}
+
+
+
+main>div:nth-child(6){
+    width:1040px;
+    margin:0 auto;
+    height:600px;
+    padding:50px 30px 0 30px ;
+   display: flex;
+   margin-bottom: 50px;
 }
 
 main>div:nth-child(6)>div{
     width:100%;
-    background-image: url("../../images/imax_04.jpg");
     background-size: 100%;
     position: relative;
+    border-radius: 10px;
+}
+
+main>div:nth-child(6)>div > img {
+    width:100%;
+    height:550px;
     border-radius: 10px;
 }
 
@@ -246,35 +220,122 @@ main>div:nth-child(6)> div > p{
     font-weight: bold;
 }
 
-
-main>div:nth-child(6)>img{
-    width:1120px;
-    height:100%;
-    border-radius: 10px;
-}
-
-main>div:nth-child(7){
+main > div:nth-child(7) {
     width:100%;
-    height:700px;
-    padding:0 20px 0 20px;
-    display: flex;
-    background-color: rgb(31,31,31);
-    margin-top:50px;
+    background-color: black;
+    height:100%;
+    margin-bottom: 50px;
 }
 
-main>div:nth-child(7)>div{
-    width:1120px;
+main > div:nth-child(7) > div:nth-child(1) {
+    width:1040px;
+    margin:0 auto;
+    padding:0 30px;
+}
+
+main > div:nth-child(7) p{
+    font-size: 2rem;
+    padding:30px 0;
+}
+
+.stheater_wrap {
+    width:100%;
+    margin:0 auto;
+}
+
+.stheater_wrap > ul{
+    width:100%;
     height:100%;
+    display: flex;
+    flex-wrap:wrap;
+    align-items: center;
+    padding-bottom: 30px;
+
+}
+
+.stheater_wrap >ul>li{
+   width:25%;
+   height:60px;
+   padding:10px;
+   text-align: center;
+   border-radius: 10px;
+    margin-bottom: 10px;;
+    display: flex;
+}
+
+.stheater_wrap ul li a{
+    width:100%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stheater_wrap ul li:hover {
+    background-color: white;
+}
+
+.hovered {
+    color: black;
+}
+
+.hovered span {
+    color: black;
+}
+
+
+
+main > div:nth-child(8) {
+    width:100%;
+    margin-bottom: 100px;
+}
+
+main > div:nth-child(8) > div:nth-child(1) {
+    width:1040px;
+    margin:0 auto;
+    padding:0 30px;
+}
+
+main > div:nth-child(8) p{
+    font-size: 2rem;
+    padding:30px 0;
+}
+
+.top3-wrap{
+    display: flex;
+    width: 100%;
+}
+
+.top3-wrap div{
+    width:33%;
+    display: flex;
+    flex-direction: column;
+}
+
+.top3-wrap div a {
+    width:100%;
+    height:100%;    
+    display: flex;
+    margin:0 auto;
+}
+
+.top3-wrap div img{
+    width:90%;
+    height:100%;    
     margin:0 auto;
     border-radius: 10px;
-    background-image: url("../../images/imax_05.jpg");
-    position: relative;
+
 }
 
-main>div:nth-child(7)> div > p{
-    position: absolute;
-    bottom:60px;
-    font-size: 2.5rem;
-    left:50px;
-    font-weight: bold;
+.top3-wrap div button{
+    width:65%;
+    height:70px;
+    margin:20px auto;
+    border-radius: 10px;
+    cursor: pointer;
+    color:black;
+}
+
+.top3-wrap div button:hover{
+    background-color: yellow;
 }

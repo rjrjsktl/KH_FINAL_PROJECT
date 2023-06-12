@@ -23,6 +23,7 @@
 		<result property="userManagerSt" 		column="USER_MANAGERST"/>
 		<result property="userBlock" 		column="USER_BLOCK"/>
 	</resultMap>
+
 	
 	<resultMap type="movie" id="movie_rm">
 		<id property="movieNo" column="MOVIE_NO"/>
@@ -30,7 +31,7 @@
 		<result property="movieTitle" 				column="MOVIE_TITLE"/>
 		<result property="movieNation" 				column="MOVIE_NATION"/>
 		<result property="movieOpen" 				column="MOVIE_OPEN"/>
-		<result property="mgNo" 					column="MG_NO"/>
+		<result property="mgNo" 					column="MG_CONTENT"/> 
 		<result property="movieContent" 			column="MOVIE_CONTENT"/>
 		<result property="movieImg" 				column="MOVIE_IMG"/>
 		<result property="moviePlayed" 				column="MOVIE_PLAYED"/>
@@ -43,6 +44,28 @@
 	</resultMap>
 	
 	
+	<resultMap type="event" id="event_rm">
+		<id property="eventNo" column="EVENT_NO"/>
+		<result property="eventTitle" 			column="EVENT_TITLE"/>
+		<result property="eventContent" 				column="EVENT_CONTENT"/>
+		<result property="eventStart" 				column="EVENT_START"/>
+		<result property="eventEnd" 				column="EVENT_END"/>
+		<result property="eventStatus" 					column="EVENT_STATUS"/>
+		<result property="eventReg" 					column="EVENT_REG"/>
+	</resultMap>
+	
+	<resultMap type="notice" id="notice_rm">
+		<id property="noticeNo" column="NOTICE_NO"/>
+		<result property="noticeTitle" 			column="NOTICE_TITLE"/>
+		<result property="noticeContent" 				column="NOTICE_CONTENT"/>
+		<result property="noticeRegDate" 				column="NOTICE_REGDATE"/>
+		<result property="noticeUploader" 				column="NOTICE_UPLOADER"/>
+		<result property="noticeStatus" 					column="NOTICE_STATUS"/>
+	</resultMap>
+	
+
+
+	                        
 	<!-- 회원 수 조회 -->
 	<select id="getListCount" resultType="_int">
 	SELECT COUNT(USER_NO) FROM USERS
@@ -75,6 +98,7 @@
 	SET USER_MANAGERST = #{userManagerSt}
 	WHERE USER_EMAIL = #{userEmail}
 	</update>
+
 	
 	<insert id="MovieAdd" parameterType="movie"> 
 		INSERT INTO MOVIE 
@@ -98,5 +122,100 @@
         	#{movieCast}
     	)
 	</insert>
+	
+	<!-- Grade 호출 -->
+	<select id="getMgradeList" resultType="string">
+		SELECT MG_CONTENT FROM MOVIE_GRADE
+	</select>
+	
+	<!-- Grade 호출 -->
+	<select id="getMgenreList" resultType="string">
+		SELECT GENRE_NAME FROM GENRE
+	</select>
+	
+	<!-- 이벤트 등록 -->
+	<insert id="addEvent" parameterType="event">
+	INSERT INTO EVENT 
+    	VALUES (
+    		SEQ_EVENT_NO.NEXTVAL
+        	, #{eventTitle}
+        	, #{eventContent}
+        	, #{eventStart}
+        	, #{eventEnd}
+        	, DEFAULT
+        	, DEFAULT
+        	)
+	</insert>
+	
+		<!-- 이벤트 수 조회 -->
+	<select id="getEventListCount" resultType="_int">
+	SELECT COUNT(EVENT_NO) FROM EVENT
+	</select>
+	
+	<!-- 이벤트 리스트 조회 -->
+		<select id="eventList" resultMap="event_rm">
+	SELECT
+	*
+	FROM EVENT
+	ORDER BY EVENT_NO ASC
+	</select>
+	
+	<!-- 이벤트 수정조회 -->
+	<select id="getEditEventList" resultType="HashMap">
+	SELECT
+	EVENT_NO
+	, EVENT_TITLE
+	, EVENT_CONTENT
+	, EVENT_START
+	, EVENT_END
+	FROM EVENT
+	WHERE EVENT_NO = #{eventNo}
+	</select>
+	
+	<!-- 이벤트 수정(업데이트) -->
+	<update id="editEvent" parameterType="event">
+	UPDATE EVENT SET
+	EVENT_TITLE = #{eventTitle}
+	, EVENT_CONTENT = #{eventContent}
+	, EVENT_START = #{eventStart}
+	, EVENT_END = #{eventEnd}
+	WHERE EVENT_NO = #{eventNo}
+	</update>
+	
+	<!-- 이벤트 상태 업데이트 -->
+		<update id="updateEventST" parameterType="event">
+	UPDATE EVENT
+	SET EVENT_STATUS = #{eventStatus}
+	WHERE EVENT_NO = #{eventNo}
+	</update>
+	
+	<!-- 공지사항 등록 -->
+		<insert id="addNotice" parameterType="event"> 
+		INSERT INTO NOTICE 
+    	VALUES (
+    		SEQ_NOTICE_NO.NEXTVAL,
+        	#{noticeTitle}
+        	, #{noticeContent}
+        	, DEFAULT
+        	, #{noticeUploader}
+        	, DEFAULT
+    	)
+	</insert>
+	
+			<!-- 공지사항 수 조회 -->
+	<select id="getNoticeListCount" resultType="_int">
+	SELECT COUNT(NOTICE_NO) FROM NOTICE
+	</select>
+	
+	
+		<!--공지사항 리스트 조회 -->
+	<select id="noticeList" resultMap="notice_rm">
+	SELECT
+	*
+	FROM NOTICE
+	ORDER BY NOTICE_NO ASC
+	</select>
+
+
 
 </mapper>

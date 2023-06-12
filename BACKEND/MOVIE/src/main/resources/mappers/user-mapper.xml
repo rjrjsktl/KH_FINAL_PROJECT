@@ -29,9 +29,18 @@
 		<result property="userSns" 			column="USER_SNS"/>
 		<result property="userChange" 		column="USER_CHANGE"/>
 		<result property="userDelete" 		column="USER_DELETE"/>
-		<result property="userManagerSt" 		column="USER_MANAGERST"/>
+		<result property="userManagerSt" 	column="USER_MANAGERST"/>
 		<result property="userBlock" 		column="USER_BLOCK"/>
 	</resultMap>
+	
+	<resultMap type="email" id="email_rm">
+		
+		<result property="email" 			column="EMAIL"/>
+		<result property="cNumber" 			column="C_NUMBER"/>
+		<result property="issueDate" 		column="ISSUE_DT"/>
+	</resultMap>
+	
+	
 	
 	<!-- 로그인 기능 실행 -->
 	<select id="login"  parameterType="user"  resultMap="user_rm"  >
@@ -42,25 +51,44 @@
 		AND USER_ST = 'Y' 
   	</select>
   	
-	<select id="selectAll" resultMap="user_rm">	
+	<!-- 비밀번호 찾기, 가입한 회원인지 check  -->	
+	<select id="checkUser" parameterType="user" resultType="boolean">
   		SELECT *
-  		FROM USERS
-  		WHERE USER_ST = 'Y'
-  		ORDER BY USER_NO
-  	</select>
-	
-	
-	<select id="checkUser" parameterType="user" resultMap="user_rm">
-  		SELECT USER_NAME, USER_BIRTH, USER_EMAIL
   		FROM USERS
   		WHERE USER_NAME = #{userName}
   		AND USER_BIRTH = #{userBirth}
   		AND USER_EMAIL = #{userEmail} 
   	</select>
 	
+	<!-- 인증메일 보내기  -->
+	<insert id="updateCertification" parameterType="email">
+		UPDATE CERTIFICATION SET
+		C_NUMBER = #{cnum},
+		ISSUE_DT = SYSDATE
+		WHERE EMAIL = #{userEmail}
+	</insert>
 	
+	<!-- 인증완료  -->
+	<select id="checkNumber" parameterType="email" resultType="_int">
+		SELECT 
+		   CASE WHEN (SELECT '1' FROM CERTIFICATION
+		            WHERE EMAIL = #{userEmail}
+		            AND C_NUMBER = #{cNumber})  = 1
+		   
+		      THEN NVL( (SELECT '1' FROM CERTIFICATION
+		            WHERE EMAIL = #{userEmail}
+		            AND ISSUE_DT + (INTERVAL '5' MINUTE) >= SYSDATE) , '2') 
+		
+		      ELSE '3'	
+		   END			
+		FROM DUAL
+	</select>
 	
-	
+	<update id="changePw">
+		UPDATE USERS SET
+		USER_PW = '${encPw}'
+		WHERE USER_EMAIL = '${userEmail}'
+	</update>
 	
 	
 	

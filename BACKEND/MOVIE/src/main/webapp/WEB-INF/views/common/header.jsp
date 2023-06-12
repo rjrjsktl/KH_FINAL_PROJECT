@@ -9,7 +9,7 @@
                         <section>
                             <div class="logo-section">
                                 <div>
-                                    <a href="#"><img src="" alt="암거나박아요"></a>
+                                    <a href="${contextPath}"><img src="" alt="암거나박아요"></a>
                                 </div>
                                 <span>KHTHEATER</span>
                             </div>
@@ -98,13 +98,14 @@
                                 <ul>
                                     <li class="navBar"><a href="#">영화</a>
                                         <ul class="menuBar" style="display: none">
-                                            <li><a href="">무비 차트</a></li>
+                                            <li><a href="${contextPath}/movieList/movieList">무비 차트</a></li>
                                         </ul>
                                     </li>
                                     <li class="navBar"><a href="#">상영관</a>
                                         <ul class="menuBar" style="display: none">
-                                            <li><a href="">지역별</a></li>
-                                            <li><a href="">특별관</a></li>
+                                        <!-- 지역별로 이동 -->
+                                            <li><a href="${contextPath}/theater/normalTheater">지역별</a></li>
+                                            <li><a href="${contextPath}/theater/specialTheater">특별관</a></li>
                                         </ul>
                                     </li>
                                     <li class="navBar"><a href="#">예매</a>
@@ -120,7 +121,7 @@
                                             <li><a href="">당첨자 발표</a></li>
                                         </ul>
                                     </li>
-                                    <li class="navBar"><a href="#">스토어</a></li>
+                                    <li class="navBar"><a href="${contextPath}/store/storeMain">스토어</a></li>
                                     <li class="navBar"><a href="#">혜택</a>
                                         <ul class="menuBar" style="display: none">
                                             <li><a href="">멤버쉽</a></li>

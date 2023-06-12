@@ -209,7 +209,10 @@
 
 .enter_Title {
     display: flex;
-    height: 60px;
+    align-items: center;
+    /* height: 60px;
+    border-bottom: 1px solid black; */
+    padding-bottom: 10px;
 }
 
 .enter_Title input {
@@ -230,7 +233,17 @@
     color: white;
 }
 
+.table_bottom a {
+    color: white;
+    text-decoration: none;
+}
+
 .table_bottom button:hover {
+    background-color: #FAE300;
+    color: black;
+}
+
+.table_bottom a:hover {
     background-color: #FAE300;
     color: black;
 }
@@ -254,4 +267,70 @@
     margin-left: 30px;
     cursor: pointer;
     background-color: #333333;
+}
+
+.calendarArea {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid black;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+/* 이벤트 시작일 */
+#play_start {
+    display: flex;
+    align-items: center;
+    width: 350px;
+    height: 50px;
+}
+
+#play_start span {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 8px;
+    margin-right: 30px;
+}
+
+#play_start>div {
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.start_date {
+    height: 50px;
+}
+
+/* 이벤트 종료일 */
+#play_end {
+    display: flex;
+    align-items: center;
+    width: 350px;
+    height: 50px;
+}
+
+#play_end span {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 8px;
+    margin-right: 30px;
+}
+
+#play_end>div {
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.end_date {
+    height: 50px;
+}
+
+/* input Date 선택 시 나오는 달력 아이콘 숨기기 */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
 }

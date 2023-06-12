@@ -46,21 +46,26 @@
                             <div class="table_Title">
                                 <span>극장 등록</span>
                             </div>
-                            <form>
+                            <form action="manager_cinema_add/test" method="post">
                                 <div class="table_main">
                                     <div>
                                         <span>이름</span>
-                                        <input id="cinema_name" type="text">
+                                        <input id="cinema_name" name="cinemaName" type="text">
                                     </div>
                                     <div>
                                         <span>주소</span>
+                                        <div>
+                                        	<input type="text" id="sample5_address" placeholder="주소" style="width: 200px;">
+                                        	<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+                                        	<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
+                                        </div>
                                     </div>
                                     <div>
                                         <span>상영관</span>
                                         <div class="swiper mySwiper">
                                             <div class="swiper-wrapper">
                                                 <c:forEach var="i" begin="1" end="4">
-                                                <div class="swiper-slide" data-room-no='${i}' data-room-maxrow='12' data-room-maxcolumn='24' data-room-type="일반관">
+                                                <div class="swiper-slide" data-room-no='${i}'>
                                                     <div>
                                                         <div>
                                                             <span>${i}</span>관
@@ -71,8 +76,8 @@
                                                         </div>
                                                     
                                                     </div>
-                                                    <div>
- 
+                                                    <div style="display:none">
+                                                        <input type="text" class="status" name="roomStatus">
                                                     </div>
                                                     
                                                 </div>
@@ -90,7 +95,7 @@
                                     	    <div id="edit_area">
                                     	        <div>
                                     	            타입 : 
-                                			        <select>
+                                			        <select id="temp_type">
                                 				        <option>일반관</option>
                                 				        <option>특수관1</option>
                                 				        <option>특수관2</option>
@@ -109,24 +114,28 @@
                                 			    <div id="seat_option">
                                 			        옵션 :
                                 			        <select>
+                                			            <option selected style="display: none"></option>
                                 			            <option>통로 만들기</option>
+                                			            <option>통로 없애기</option>
                                 			            <option>공간 만들기</option>
+                                			            <option>공간 없애기</option>
+                                			            <option style="color: magenta;">스위트석 지정</option>
+                                			            <option style="color: green;">장애인석 지정</option>
+                                			            <option>특수석 없애기</option>
                                 			        </select>
                                 			    </div>
-                                			    <div class="seat_detail sd1">
-                                			        우측 : <input class="seat_right" type="number" min="0" max="3" value="0" onkeypress="return false;">
+                                			    <div id="seat_option_confirm">
+                                			        <a href='#none'>해당 옵션을 적용하기</a>
                                 			    </div>
-                                			    <div class="seat_detail sd2">
-                                			        우측 : <input class="seat_right" type="number" min="0" max="3" value="0" onkeypress="return false;">
-                                			    </div>
-                                			    <div class="seat_detail sd2">
-                                			        하측 : <input class="seat_down" type="number" min="0" max="3" value="0" onkeypress="return false;">
-                                			    </div>
+                                			    
+                                			    
+                                			 
                                 			    <div>
                                 		            <button type="button" id="room_confirm">확인</button>
                                 		            <button type="button" id="room_reset">리셋</button>
                                 		            <button type="button" id="room_cancle">취소</button>
                                 		        </div>
+                                		        
                                 		    </div>
                                 		    
                                     	    
@@ -134,24 +143,28 @@
                                     </div>    
                                 </div>
                                 
-                            </form>
-                              
                             <div class="table_bottom">
                                 <button type="submit" class="bottom_Submit">저장</button>
                                 <button class="bottom_Cancel">취소</button>
                             </div>
+                                
+                            </form>
+                              
+                            
                         </div>
                     </div>
                 </div>
-
-            </div>
+			</div>
+        </div>
 
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="${contextPath}/resources/js/manager/manager_cinema_add.js"></script>
     <script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
     <script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
+ 
 </body>
 
 </html>

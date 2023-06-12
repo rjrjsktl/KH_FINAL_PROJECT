@@ -17,7 +17,7 @@ $(document).ready(function () {
             ['table', ['table', 'codeview']],
             //줄 높이 
             ['height', ['height']]],
-        height: 540, // 에디터 높이 
+        height: 450, // 에디터 높이 
         minHeight: null, // 최소 높이 
         maxHeight: null, // 최대 높이 
         lang: "ko-KR", //한글 설정 
@@ -25,87 +25,176 @@ $(document).ready(function () {
         disableResizeEditor: true,
         focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
 
+        fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', '맑은 고딕', '궁서', '굴림체', '굴림', '돋움체', '바탕체'],
+        fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '20', '22', '24', '28', '30', '36', '50', '72'],
         callbacks: {
             onImageUpload: function (files, editor, welEditable) {
+
+                // 파일 업로드(다중업로드를 위해 반복문 사용)
                 for (var i = files.length - 1; i >= 0; i--) {
-                    sendFile(files[i], this);
+                    uploadImageFile(files[i], this);
                 }
             }
         }
     });
+    const jsonArray = [];
 
-    function sendFile(file, el) {
-        var form_data = new FormData();
-        form_data.append('file', file);
+    function uploadImageFile(file, el) {
+        var data = new FormData();
+        data.append("file", file);
         $.ajax({
-            data: form_data,
+            url: 'event_add/uploadImageFile',
             type: "POST",
-            url: '/imgUpload',
+            enctype: 'multipart/form-data',
+            data: data,
             cache: false,
             contentType: false,
-            enctype: 'multipart/form-data',
             processData: false,
-            success: function (img_name) {
-                //항상 업로드된 파일의 url이 있어야 한다.
-                $(el).summernote('editor.insertImage', img_name);
+            success: function (data) {
+                var json = JSON.parse(data);
+                $(el).summernote('editor.insertImage', json["url"]);
+                jsonArray.push(json["url"]);
+                jsonFn(jsonArray);
+            },
+            error: function (e) {
+                console.log(e);
             }
         });
     }
-});
 
-const tableBtn = $('.table_bottom');
-const eventTitle = $('.enter_Title > input');
-const textArea = $('#summernote');
-
-tableBtn.on('click', () => {
-    console.log(eventTitle.val());
-    console.log(textArea.val());
-
-});
-
-
-// =========================================================================
-
-$('#summernote').summernote({
-    height: 300,                 // 에디터 높이
-    minHeight: null,             // 최소 높이
-    maxHeight: null,             // 최대 높이
-    focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-    lang: "ko-KR",					// 한글 설정
-    placeholder: '최대 2048자까지 쓸 수 있습니다',	//placeholder 설정
-    callbacks: {	//여기 부분이 이미지를 첨부하는 부분
-        onImageUpload: function (files) {
-            uploadSummernoteImageFile(files[0], this);
-        },
-        onPaste: function (e) {
-            var clipboardData = e.originalEvent.clipboardData;
-            if (clipboardData && clipboardData.items && clipboardData.items.length) {
-                var item = clipboardData.items[0];
-                if (item.kind === 'file' && item.type.indexOf('image/') !== -1) {
-                    e.preventDefault();
-                }
-            }
-        }
+    function jsonFn(jsonArray) {
+        console.log(jsonArray);
     }
-});
 
 
+    // ===============================================================================
+    // 날짜 비교
 
-/**
-* 이미지 파일 업로드
-*/
-function uploadSummernoteImageFile(file, editor) {
-    data = new FormData();
-    data.append("file", file);
-    $.ajax({
-        data: data,
-        type: "POST",
-        url: "/uploadSummernoteImageFile",
-        contentType: false,
-        processData: false,
-        success: function (data) {
-            //항상 업로드된 파일의 url이 있어야 한다.
-            $(editor).summernote('insertImage', data.url);
+    let startDate = $('.start_date');
+    let endDate = $('.end_date');
+    let getCurrentDate = new Date();
+    let currentDate = getCurrentDate.getFullYear() + "-" + ('0' + (getCurrentDate.getMonth() + 1)).slice(-2) + "-" + getCurrentDate.getDate();
+    // ('0' + (getCurrentDate.getMonth() + 1)).slice(-2) 을 사용하는 이유
+    // -> 앞에 0을 추가해준 상태로 출력하면, 011월 012월 같은 혼종이 나오기 때문에, 뒤에서 두자리만 자르게끔 한다.
+
+    // 상영 종료일
+    endDate.on('change', () => {
+
+        let startValue = startDate.val(); // 시작일의 값
+        let endValue = endDate.val(); // 종료일의 값
+
+        let startArray = startValue.split('-');
+        let endArray = endValue.split('-');
+
+        // 월은 01월, 02월 같이 0부터 시작하므로 1을 뺀다.
+        let checkStartDate = new Date(startArray[0], startArray[1] - 1, startArray[2]);
+        let checkEndDate = new Date(endArray[0], endArray[1] - 1, endArray[2]);
+
+
+        if (checkStartDate.getTime() > checkEndDate.getTime()) {
+            alert('종료일은 시작일보다 빠를 수 없습니다.');
+            $('.end_date').val("");
+            return false;
+        }
+
+        if (!startDate.val()) {
+            alert('시작일을 먼저 선택해 주세요.');
+            $('.end_date').val("");
         }
     });
-}
+
+    // 상영 시작일
+    startDate.on('change', () => {
+
+        let currentValue = currentDate;
+        let startValue = startDate.val(); // 시작일의 값
+
+        let currentArray = currentValue.split('-');
+        let startArray = startValue.split('-');
+
+        // 월은 01월, 02월 같이 0부터 시작하므로 1을 뺀다.
+        let checkCurrentDate = new Date(currentArray[0], currentArray[1] - 1, currentArray[2]);
+        let checkStartDate = new Date(startArray[0], startArray[1] - 1, startArray[2]);
+
+        if (checkStartDate.getTime() < checkCurrentDate.getTime()) {
+            alert('시작일은 오늘 (' + currentDate + ') 보다 빠를 수 없습니다.');
+            $('.start_date').val("");
+            return false;
+        }
+    });
+
+    // ===============================================================================
+
+    const submitBtn = $('.bottom_Submit');
+    const eventTitle = $('.enter_Title > input');
+    const textArea = $('#summernote');
+
+    submitBtn.on('click', (e) => {
+        e.preventDefault();
+        console.log("제목 : " + eventTitle.val());
+        console.log("이벤트 시작일 : " + startDate.val());
+        console.log("이벤트 종료일 : " + endDate.val());
+        console.log("본문 내용 : " + textArea.val());
+
+        if (!eventTitle.val()) {
+            alert('제목이 입력되지 않았습니다.');
+            eventTitle.focus();
+            e.preventDefault();
+            return false;
+        };
+
+        if (!startDate.val()) {
+            alert('이벤트 시작일이 선택되지 않았습니다.');
+            startDate.focus();
+            e.preventDefault();
+            return false;
+        };
+
+        if (!endDate.val()) {
+            alert('이벤트 종료일이 선택되지 않았습니다.');
+            endDate.focus();
+            e.preventDefault();
+            return false;
+        };
+
+        if (!textArea.val()) {
+            alert('내용이 입력되지 않았습니다.');
+            textArea.focus();
+            e.preventDefault();
+            return false;
+        };
+
+        $.ajax({
+            url: "event_add/write_Event",
+            data: {
+                "title": eventTitle.val()
+                , "start": startDate.val()
+                , "end": endDate.val()
+                , "content": textArea.val()
+            },
+            type: "POST",
+            success: function (result) {
+                if (result > 0) {
+                    alert("이벤트 등록 성공");
+                    window.location.reload();
+                } else {
+                    alert("이벤트 등록 실패");
+                    window.location.reload();
+                }
+            },
+
+            error: function () {
+                console.log("에러 발생으로 인해 등록 실패");
+            }
+        });
+    });
+
+
+
+
+
+
+
+
+
+});

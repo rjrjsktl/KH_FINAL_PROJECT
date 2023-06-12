@@ -2,6 +2,7 @@ package com.kh.kgv.login.model.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,22 +54,52 @@ public class LoginServiceImpl implements LoginService{
 		return loginUser;
 	}
 
-	// 회원조회 서비스 구현
-	@Override
-	public List<User> selectAll() {
-		return dao.selectAll();
-	}
-	
 	// 비밀번호 찾기 checkUser 서비스 구현
 	@Override
-	public int checkUser(String userName, String userBirth, String userEmail) {
-		return dao.checkUser(userName, userBirth, userEmail);
+	public Boolean checkUser(User user) {
+		System.out.println("=================================================" + user);
+		// TODO Auto-generated method stub
+		return dao.checkUser(user);
 	}
 	
+	// 인증메일 보내기 서비스 구현
+	@Override
+	public int insertCertification(String cnum, String userEmail) {
+		
+		int result = dao.updateCertification( userEmail, cnum);
+		
+		return result;
+	}
 	
+	// 인증완료 서비스 구현
+	@Override
+	public int checkNumber(String cNumber, String userEmail) {
+		return dao.checkNumber(userEmail,cNumber);
+	}
 	
+	// 비밀번호 재설정
+//	@Override
+//	public int changePw(String userEmail, User inputUser) {
+//		
+//		
+//		String encPw = bcrypt.encode(inputUser.getUserPw()); 
+//		
+//		int result = dao.changePw(userEmail,encPw);
+//		
+//		return result;
+//	}
+
+	@Override
+	public int changePw(String userEmail, String userPw) {
+		
+		String encPw = bcrypt.encode(userPw); 
+		
+		int result = dao.changePw(userEmail,encPw);
+		
+		return result;
+	}
 	
-	
+
 	
 	
 	

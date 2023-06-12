@@ -55,12 +55,14 @@ const Cinema_slide = $('.cinema_Items');
 play_cinema_enter.on('click', (e) => {
     e.stopPropagation();
     Cinema_slide.toggle();
+    Screen_slide.hide();
     movie_slide.hide();
     time_slide.hide();
 });
 Cinema_slide.on('click', (e) => {
     e.stopPropagation();
     Cinema_slide.toggle();
+    Screen_slide.hide();
     movie_slide.hide();
     time_slide.hide();
 });
@@ -69,9 +71,78 @@ $(document).on('click', () => {
     Cinema_slide.hide();
 });
 
+// ===============================================================================
+// 상영 스크린 추가 기능 및 슬라이드
+let screen_Arr = [];
+const play_screen_enter = $('.play_screen_enter');
+const play_screen_slide = $('.play_screen_slide > div');
+
+play_screen_slide.on('click', (e) => {
+    e.preventDefault();
+    // alert((e.currentTarget).innerText);
+    const newDiv = document.createElement('div');
+    const addText = $(e.currentTarget).text();
+    const delBtn = '<div class="deleteBtn"><i class="fa-solid fa-xmark fa-2xs"></i></div>';
+    const clickCount = play_screen_enter.children().length;
+
+    if ($.inArray($(e.currentTarget).text(), screen_Arr) == -1) {
+        if (clickCount >= 5) {
+            alert('최대 5개 까지 선택 가능합니다.');
+            return false;
+        } else {
+            newDiv.append(addText);
+            newDiv.classList.add('added');
+            newDiv.innerHTML += delBtn;
+            play_screen_enter.append(newDiv);
+            screen_Arr.push(addText)
+            console.log("추가된 값은 : " + addText);
+        }
+    } else {
+        alert('같은 값은 추가 할 수 없습니다.');
+        return false;
+    }
+    console.log("clickCount : " + clickCount);
+    console.log(screen_Arr);
+});
+
+// 배열에서 삭제
+play_screen_enter.on('click', '.added', (e) => {
+    e.stopPropagation();
+    const clickedText = $(e.currentTarget).text();
+
+    for (let i = 0; i < screen_Arr.length; i++) {
+        if (screen_Arr[i] === clickedText) {
+            screen_Arr.splice(i, 1);
+            console.log("제거된 값은 : " + clickedText);
+            break;
+        }
+    }
+    console.log(screen_Arr);
+    $(e.currentTarget).remove();
+});
 
 
+// 상영 스크린 슬라이드 토글
+const Screen_slide = $('.screen_Items');
 
+play_screen_enter.on('click', (e) => {
+    e.stopPropagation();
+    Screen_slide.toggle();
+    Cinema_slide.hide();
+    movie_slide.hide();
+    time_slide.hide();
+});
+Screen_slide.on('click', (e) => {
+    e.stopPropagation();
+    Screen_slide.toggle();
+    Cinema_slide.hide();
+    movie_slide.hide();
+    time_slide.hide();
+});
+
+$(document).on('click', () => {
+    Screen_slide.hide();
+});
 
 // ===============================================================================
 // 상영 영화 추가 기능 및 슬라이드
@@ -130,12 +201,14 @@ play_movie_enter.on('click', (e) => {
     e.stopPropagation();
     movie_slide.toggle();
     Cinema_slide.hide();
+    Screen_slide.hide();
     time_slide.hide();
 });
 movie_slide.on('click', (e) => {
     e.stopPropagation();
     movie_slide.toggle();
     Cinema_slide.hide();
+    Screen_slide.hide();
     time_slide.hide();
 });
 
@@ -200,12 +273,14 @@ play_time_enter.on('click', (e) => {
     e.stopPropagation();
     time_slide.toggle();
     Cinema_slide.hide();
+    Screen_slide.hide();
     movie_slide.hide();
 });
 time_slide.on('click', (e) => {
     e.stopPropagation();
     time_slide.toggle();
     Cinema_slide.hide();
+    Screen_slide.hide();
     movie_slide.hide();
 });
 
@@ -270,6 +345,14 @@ startDate.on('change', () => {
         return false;
     }
 });
+
+
+// 상영 시작일 선택 시, 상영 종료일 초기화
+startDate.on('click', () => {
+    if ($('.end_date').val("")) {
+        $('.end_date').val("");
+    }
+})
 // ===============================================================================
 // 결과값 확인용
 
@@ -278,6 +361,7 @@ const submitBtn = $('.bottom_Submit');
 
 submitBtn.on('click', () => {
     console.log('상영 영화관 : ' + cinema_Arr);
+    console.log('상영 스크린 : ' + screen_Arr);
     console.log('상영 영화 : ' + movie_Arr);
     console.log('상영 시작일 : ' + startDate.val());
     console.log('상영 종료일 : ' + endDate.val());

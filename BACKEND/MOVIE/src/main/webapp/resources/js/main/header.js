@@ -1,3 +1,4 @@
+/*
 $(document).ready(function() {
   var modal = $('#myModal');
   var btn = $('#myBtn');
@@ -18,28 +19,31 @@ $(document).ready(function() {
   });
 });
 
-span.onclick = function() {
-  modal.style.display = "none";
-}
+
+//   span.click(function() {
+//     modal.css('display', 'none');
+//   });
+
 
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
 }
+*/
 
 
 // 메뉴창 하버
-$(document).ready(function() {
-    $('.navBar, .dummy').hover(
-        function() {
-            $('.navBar ul').stop().slideDown(150); 
-            $('.dummy').css('display', 'flex'); 
-        },
-        function() {
-            $('.navBar ul').stop().slideUp(150); 
-            $('.dummy').css('display', 'none'); 
-        }
-    )
+$(document).ready(function () {
+  $('.navBar, .dummy').hover(
+    function () {
+      $('.navBar ul').stop().slideDown(150);
+      $('.dummy').css('display', 'flex');
+    },
+    function () {
+      $('.navBar ul').stop().slideUp(150);
+      $('.dummy').css('display', 'none');
+    }
+  )
 });
 
