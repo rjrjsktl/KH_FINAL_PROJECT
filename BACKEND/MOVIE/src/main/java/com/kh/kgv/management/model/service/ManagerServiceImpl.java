@@ -87,7 +87,7 @@ public class ManagerServiceImpl implements ManagerService{
 	 */
 	@Override
 	public List<Movie> movieList(Movie movie) {
-		System.out.println("===== movieList 호출 service");
+		System.out.println("===== MovieListController 호출 service");
 		
 		return dao.movieList(movie);
 	}
