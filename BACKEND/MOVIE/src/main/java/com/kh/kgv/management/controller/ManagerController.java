@@ -377,7 +377,16 @@ public class ManagerController {
 	
 	// 관리자_공지사항 목록 이동
 	@GetMapping("/notice_list")
-	public String moveNoticeList() {
+	public String moveNoticeList(	Model model
+			, @RequestParam(value = "cp", required = false, defaultValue="1" ) int cp) {
+			
+			Map<String, Object>getNoticeList = null;
+			
+			// 회원 리스트 얻어오기
+			getNoticeList = service.noticeList(cp);
+			 
+			model.addAttribute("getNoticeList", getNoticeList);
+		
 		System.out.println("관리자_공지사항 목록 이동");
 		return "manager/manager_notice_list";
 	}
@@ -397,8 +406,9 @@ public class ManagerController {
 	// ===================================================
 	
 	// 관리자_공지사항 등록
+	@ResponseBody
 	@PostMapping("/notice_add/write_Notice")
-	public String addNotice(
+	public int addNotice(
 			@RequestParam("title") String title
 			, @RequestParam("content") String content
 			, @RequestParam("userName") String userName
@@ -411,7 +421,17 @@ public class ManagerController {
 		
 		System.out.println("=============================================== notice : " + notice);
 		
-		return null;
+		int result = service.addNotice(notice);
+		
+		if(result > 0) {
+			System.out.println("공지사항 등록 완료");
+			 result = 1;
+			
+		} else {
+			System.out.println("공지사항 등록 실패");
+			result = 0;
+		}
+		return result;
 	}
 	
 	// ===================================================
