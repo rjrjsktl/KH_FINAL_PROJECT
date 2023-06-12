@@ -233,7 +233,17 @@
     color: white;
 }
 
+.table_bottom a {
+    color: white;
+    text-decoration: none;
+}
+
 .table_bottom button:hover {
+    background-color: #FAE300;
+    color: black;
+}
+
+.table_bottom a:hover {
     background-color: #FAE300;
     color: black;
 }
