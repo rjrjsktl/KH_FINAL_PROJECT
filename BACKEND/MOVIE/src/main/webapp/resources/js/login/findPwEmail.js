@@ -81,9 +81,10 @@ sendBtn.addEventListener("click", function () {
                         console.log("이메일 발송 성공");
                         console.log(result);
 
-                        
-
                         alert("인증번호가 발송되었습니다.")
+                        checkObj.sendEmail=true;
+                        console.log(checkObj.sendEmail)
+
                     },
                     error: function () {
                         console.log("이메일 발송 실패")
@@ -93,7 +94,7 @@ sendBtn.addEventListener("click", function () {
                     }
                 });
 
-                cMessage.innerText = "2:00"; // 초기값 2분
+                cMessage.innerText = "3:00"; // 초기값 3분
                 min = 2;
                 sec = 59; // 분, 초 초기화
 
@@ -146,7 +147,7 @@ cBtn.addEventListener("click", function () {
     console.log(checkObj)
 
     // 1. 인증번호 받기 버튼이 클릭되어 이메일 발송되었는지 확인
-    if (checkObj == 3) {
+    if (checkObj.sendEmail) {
 
 
         // 2. 입력된 인증번호가 6자리가 맞는지 확인
@@ -211,7 +212,7 @@ const userPw = document.getElementById("userPw");
 const userPwConfirm = document.getElementById("userPwConfirm");
 const pwMessage = document.getElementById("pwMessage");
 
-userPw.addEventListener("input", function(){
+userPw.addEventListener("keydown", function(){
     if(userPw.value.lengh == 0){
         pwMessage.innerText="영어, 숫자, 특수문자(!,@,#,-,_) 6~20글자 사이로 작성해주세요."
      
@@ -252,6 +253,11 @@ function checkPw() { // 비밀번호 일치 검사
 
     if (userPw.value == userPwConfirm.value) {
 
+        console.log("비밀번호 일치 시킴!")
+        console.log(userPwConfirm.value);
+        console.log(userPw.value);
+
+
         if (regExp.test(userPw.value)) {
             pwMessage.innerText = "";
             pwMessage.classList.add("confirm");
@@ -287,5 +293,6 @@ const changePw = document.getElementById("changPw");
 changePw.addEventListener("click", function(){
     console("비밀번호 재설정중...")
 
+    
 
 });

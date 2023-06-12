@@ -2,6 +2,7 @@ package com.kh.kgv.login.model.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,5 +76,31 @@ public class LoginServiceImpl implements LoginService{
 	public int checkNumber(String cNumber, String userEmail) {
 		return dao.checkNumber(userEmail,cNumber);
 	}
+	
+	// 비밀번호 재설정
+//	@Override
+//	public int changePw(String userEmail, User inputUser) {
+//		
+//		
+//		String encPw = bcrypt.encode(inputUser.getUserPw()); 
+//		
+//		int result = dao.changePw(userEmail,encPw);
+//		
+//		return result;
+//	}
+
+	@Override
+	public int changePw(String userEmail, String userPw) {
+		
+		String encPw = bcrypt.encode(userPw); 
+		
+		int result = dao.changePw(userEmail,encPw);
+		
+		return result;
+	}
+	
+
+	
+	
 	
 }
