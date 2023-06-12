@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.vo.Event;
+import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Pagination;
 import com.kh.kgv.mypage.controller.MyPageController;
 
@@ -84,10 +85,12 @@ public class ManagerDAO {
 	}
 
 	
+	// 이벤트 목록 수 조회
 	public int getEventListCount() {
 		return sqlSession.selectOne("managerMapper.getEventListCount");
 	}
 
+	// 
 	public List<Event> eventList(Pagination pagination) {
 		
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
@@ -110,6 +113,26 @@ public class ManagerDAO {
 	//이벤트 상태 업데이트
 	public int updateEventST(Event event) {
 		return sqlSession.update("managerMapper.updateEventST", event);
+	}
+
+	// 공지사항 등록
+	public int addNotice(Notice notice) {
+		return sqlSession.insert("managerMapper.addNotice", notice);
+	}
+	
+	//공지사항 수 조회
+	public int getNoticeListCount() {
+		return sqlSession.selectOne("managerMapper.getNoticeListCount");
+	}
+
+	//공지사항  조회
+	public List<Notice> noticeList(Pagination pagination) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("managerMapper.noticeList", null, rowBounds);
 	}
 	
 
