@@ -54,6 +54,15 @@
 		<result property="eventReg" 					column="EVENT_REG"/>
 	</resultMap>
 	
+	<resultMap type="notice" id="notice_rm">
+		<id property="noticeNo" column="NOTICE_NO"/>
+		<result property="noticeTitle" 			column="NOTICE_TITLE"/>
+		<result property="noticeContent" 				column="NOTICE_CONTENT"/>
+		<result property="noticeRegDate" 				column="NOTICE_REGDATE"/>
+		<result property="noticeUploader" 				column="NOTICE_UPLOADER"/>
+		<result property="noticeStatus" 					column="NOTICE_STATUS"/>
+	</resultMap>
+	
 
 
 	                        
@@ -179,6 +188,33 @@
 	SET EVENT_STATUS = #{eventStatus}
 	WHERE EVENT_NO = #{eventNo}
 	</update>
+	
+	<!-- 공지사항 등록 -->
+		<insert id="addNotice" parameterType="event"> 
+		INSERT INTO NOTICE 
+    	VALUES (
+    		SEQ_NOTICE_NO.NEXTVAL,
+        	#{noticeTitle}
+        	, #{noticeContent}
+        	, DEFAULT
+        	, #{noticeUploader}
+        	, DEFAULT
+    	)
+	</insert>
+	
+			<!-- 공지사항 수 조회 -->
+	<select id="getNoticeListCount" resultType="_int">
+	SELECT COUNT(NOTICE_NO) FROM NOTICE
+	</select>
+	
+	
+		<!--공지사항 리스트 조회 -->
+	<select id="noticeList" resultMap="notice_rm">
+	SELECT
+	*
+	FROM NOTICE
+	ORDER BY NOTICE_NO ASC
+	</select>
 
 
 

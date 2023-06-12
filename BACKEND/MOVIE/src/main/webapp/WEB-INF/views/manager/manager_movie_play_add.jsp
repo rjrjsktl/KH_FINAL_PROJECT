@@ -65,6 +65,27 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div id="play_screen">
+                                    <span>상영 스크린</span>
+                                    <div class="relative">
+                                        <div class="play_screen_enter">
+
+                                        </div>
+                                        <div class="screen_Items">
+                                            <div class="play_screen_slide">
+                                                <div>test1</div>
+                                                <div>test2</div>
+                                                <div>test3</div>
+                                                <div>test4</div>
+                                                <div>test5</div>
+                                                <div>test6</div>
+                                                <div>test7</div>
+                                                <div>test8</div>
+                                                <div>test9</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div id="play_movie">
                                     <span>상영 영화</span>
                                     <div class="relative">

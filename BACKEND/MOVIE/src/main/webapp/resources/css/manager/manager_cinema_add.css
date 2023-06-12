@@ -311,7 +311,7 @@
 
 .swiper-slide {
   width: 180px;
-  height: 180px;
+  height: 120px;
   margin-right: 20px;
   border: 1px solid black;
 }
@@ -388,41 +388,45 @@
 
 
 #seat_area > div > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   position: absolute;
-  left: -50px;
-
+  left: -30.98px;
   width: 25px;
   height: 25px;
+  font-size: 10px;
+  line-height: 27.5px;
   text-align: center;
 }
 
 #seat_area > div > a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
   width: 25px;
   height: 25px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 27.5px;
+  color: black;
+  font-size: 10px;
   margin-right: 5.98px;
   border: 1px solid white;
 }
 
-#seat_area > div > a:hover {
-  background-color: orange;
-  border-color: orange;
-}
-
-
 #seat_area > div > a.aisle {
-  background-color: white;
-  border-color: white;
+  background-color: #ddd;
+  border-color: #ddd;
 }
 
 #seat_area > div > a.space {
+  background-color: #aaa;
+  border-color: #aaa;	
+}
+
+#seat_area > div > a.sweet {
+  background-color: magenta;
+  border-color: magenta;	
+}
+
+#seat_area > div > a.impared {
   background-color: green;
   border-color: green;	
 }
@@ -430,6 +434,11 @@
 #seat_area > div > a.option {
   background-color: pink;
   border-color: pink;
+}
+
+#seat_area > div > a:hover {
+  background-color: orange;
+  border-color: orange;
 }
 
 #seat_area > div > a.clicked {

@@ -83,7 +83,7 @@
              </c:if>
              -->
 
-
+		 <script src="${contextPath}/resources/js/common/header.js"></script>
 
         </body>
 
