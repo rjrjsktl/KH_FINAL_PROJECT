@@ -33,4 +33,10 @@ public interface ManagerService {
 	// 이벤트 수정 조회
 	Map<String, Object> getEditEventList(Event event);
 
+	// 이벤트 수정(업데이트)
+	int editEvent(Event event);
+
+	// 이벤트 상태 업데이트
+	int updateEventST(Event event);
+
 }

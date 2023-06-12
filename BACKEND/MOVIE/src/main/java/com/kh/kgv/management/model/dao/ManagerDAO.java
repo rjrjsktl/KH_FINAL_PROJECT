@@ -46,7 +46,7 @@ public class ManagerDAO {
 		return sqlSession.selectList("managerMapper.selectAll", null, rowBounds);
 				
 	}
-
+	// 회원 관리자 상태 업데이트
 	public int updateST(User user) {
 		
 		return sqlSession.update("managerMapper.updateST", user);
@@ -99,8 +99,17 @@ public class ManagerDAO {
 
 	// 이벤트 수정조회
 	public Map<String, Object> getEditEventList(Event event) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne("managerMapper.getEditEventList", event);
+	}
+	
+	// 이벤트 수정(업데이트)
+	public int editEvent(Event event) {
+		return sqlSession.update("managerMapper.editEvent", event);
+	}
+	
+	//이벤트 상태 업데이트
+	public int updateEventST(Event event) {
+		return sqlSession.update("managerMapper.updateEventST", event);
 	}
 	
 
