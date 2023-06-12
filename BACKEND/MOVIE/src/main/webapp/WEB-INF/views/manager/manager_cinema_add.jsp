@@ -50,15 +50,26 @@
                                 <div class="table_main">
                                     <div>
                                         <span>이름</span>
-                                        <input id="cinema_name" name="cinemaName" type="text">
+                                        <div>
+                                          <input id="cinemaName" name="cinemaName" type="text">
+                                          <p id="cinemaNameMessage">메시지</p>
+                                        </div>
+                                        
                                     </div>
                                     <div>
                                         <span>주소</span>
                                         <div>
-                                        	<input type="text" id="sample5_address" placeholder="주소" style="width: 200px;">
-                                        	<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
-                                        	<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
-                                        </div>
+                                            <div>
+                                                <input type="text" id="cinemaPostCode" name="cinemaAddr" placeholder="우편번호" maxlength="6" readonly>
+                                                <button type="button" onclick="return sample4_execDaumPostcode()">주소검색</button>
+                                            </div>
+                                            <div>
+                                                <input type="text" id="cinemaRoadAddress" name="cinemaAddr" placeholder="도로명주소" readonly>
+                                            </div>
+                                            <div>
+                                                <input type="text" id="cinemaDetailAddress" name="cinemaAddr" placeholder="상세주소" readonly>
+                                            </div>
+                                        </div> 
                                     </div>
                                     <div>
                                         <span>상영관</span>
