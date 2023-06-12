@@ -33,6 +33,7 @@
 		
 	</typeAliases>
 
+	
 	<mappers>
 		<!-- 
 			 <mapper resource="mapper 파일 경로" />
