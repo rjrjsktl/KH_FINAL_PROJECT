@@ -9,7 +9,7 @@
                         <section>
                             <div class="logo-section">
                                 <div>
-                                    <a href="#"><img src="" alt="암거나박아요"></a>
+                                    <a href="${contextPath}"><img src="" alt="암거나박아요"></a>
                                 </div>
                                 <span>KHTHEATER</span>
                             </div>
