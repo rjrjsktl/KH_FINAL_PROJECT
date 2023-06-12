@@ -232,7 +232,7 @@
 }
 
 .play_cinema_enter {
-    z-index: 10;
+    z-index: 5;
     position: relative;
     display: flex;
     align-items: center;
@@ -275,7 +275,7 @@
     background-color: white;
     position: absolute;
     top: 50px;
-    z-index: 2;
+    z-index: 5;
     display: flex;
     flex-direction: column;
     width: 800px;
@@ -291,6 +291,94 @@
 }
 
 .play_cinema_slide div:hover {
+    background-color: #FAE300;
+    color: black;
+}
+
+/* 상영 스크린 */
+#play_screen {
+    display: flex;
+    width: 50vw;
+    margin-bottom: 50px;
+}
+
+#play_screen span {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 8px;
+    margin-right: 30px;
+}
+
+#play_screen>div {
+    flex: 9;
+}
+
+.screen_Items {
+    display: none;
+}
+
+.play_screen_enter {
+    z-index: 4;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 800px;
+    height: 50px;
+    border-bottom: 2px solid #ddd;
+}
+
+.play_screen_enter:hover {
+    border-bottom: 2px solid black;
+}
+
+.play_screen_enter>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #333333;
+    color: white;
+    cursor: pointer;
+}
+
+.play_screen_enter div:hover {
+    background-color: #FAE300;
+    color: black;
+}
+
+
+.deleteBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 0.8rem;
+}
+
+.play_screen_slide {
+    background-color: white;
+    position: absolute;
+    top: 50px;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    height: 250px;
+    overflow-y: scroll;
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+}
+
+.play_screen_slide div {
+    padding: 10px 20px;
+}
+
+.play_screen_slide div:hover {
     background-color: #FAE300;
     color: black;
 }
@@ -354,7 +442,7 @@
     background-color: white;
     position: absolute;
     top: 50px;
-    z-index: 1;
+    z-index: 3;
     display: flex;
     flex-direction: column;
     width: 800px;
@@ -458,7 +546,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .play_time_enter {
-    z-index: 10;
+    z-index: 3;
     position: relative;
     display: flex;
     align-items: center;
@@ -497,7 +585,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     background-color: white;
     position: absolute;
     top: 50px;
-    z-index: 2;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     width: 800px;
