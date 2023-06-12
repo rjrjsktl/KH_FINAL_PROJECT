@@ -40,12 +40,13 @@
 
                 <span>새로운 비밀번호를 기입해주세요!!</span>
                 
-                <input type="text" placeholder="비밀번호" id="userPw">
-                <input type="text" placeholder="비밀번호 확인" id="userPwConfirm">
+                <input type="password" placeholder="비밀번호" name="userPw" id="userPw">
+                <input type="password" placeholder="비밀번호 확인" name="userPwConfirm" id="userPwConfirm">
                 <span id="pwMessage"></span>
                 
+                
                 <!-- <button onclick="location.href='finshedchangePw'">비밀번호 변경</button> -->
-                <button id=changPw>비밀번호 변경</button>
+                <button onclick="location.href='finshedchangePw?userPw=' + document.getElementById('userPw').value">비밀번호 변경</button>
             </div>
         </main>
     </div>
@@ -53,7 +54,8 @@
     <!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-    <script src="${contextPath}/resources/js/login/findPwEmail.js"></script>
+    <!-- <script src="${contextPath}/resources/js/login/findPwEmail.js"></script> -->
+    <script src="${contextPath}/resources/js/login/changePw.js"></script>
 
 
 </body>

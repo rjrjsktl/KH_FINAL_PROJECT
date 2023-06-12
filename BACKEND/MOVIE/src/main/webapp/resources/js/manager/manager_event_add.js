@@ -122,6 +122,7 @@ $(document).ready(function () {
             return false;
         }
     });
+
     // ===============================================================================
 
     const submitBtn = $('.bottom_Submit');
@@ -174,9 +175,11 @@ $(document).ready(function () {
             type: "POST",
             success: function (result) {
                 if (result > 0) {
-                    console.log("등록 성공");
+                    alert("이벤트 등록 성공");
+                    window.location.reload();
                 } else {
-                    console.log("등록 실패");
+                    alert("이벤트 등록 실패");
+                    window.location.reload();
                 }
             },
 

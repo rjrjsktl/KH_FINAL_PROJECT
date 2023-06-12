@@ -31,7 +31,7 @@
 		<result property="movieTitle" 				column="MOVIE_TITLE"/>
 		<result property="movieNation" 				column="MOVIE_NATION"/>
 		<result property="movieOpen" 				column="MOVIE_OPEN"/>
-		<result property="mgNo" 					column="MG_CONTENT"/>
+		<result property="mgNo" 					column="MG_CONTENT"/> 
 		<result property="movieContent" 			column="MOVIE_CONTENT"/>
 		<result property="movieImg" 				column="MOVIE_IMG"/>
 		<result property="moviePlayed" 				column="MOVIE_PLAYED"/>
@@ -43,6 +43,7 @@
 		<result property="genreCode" 				column="GENRE_CODE"/>
 	</resultMap>
 	
+	
 	<resultMap type="event" id="event_rm">
 		<id property="eventNo" column="EVENT_NO"/>
 		<result property="eventTitle" 			column="EVENT_TITLE"/>
@@ -50,6 +51,7 @@
 		<result property="eventStart" 				column="EVENT_START"/>
 		<result property="eventEnd" 				column="EVENT_END"/>
 		<result property="eventStatus" 					column="EVENT_STATUS"/>
+		<result property="eventReg" 					column="EVENT_REG"/>
 	</resultMap>
 	
 
@@ -122,6 +124,7 @@
 		SELECT GENRE_NAME FROM GENRE
 	</select>
 	
+	<!-- 이벤트 등록 -->
 	<insert id="addEvent" parameterType="event">
 	INSERT INTO EVENT 
     	VALUES (
@@ -131,8 +134,52 @@
         	, #{eventStart}
         	, #{eventEnd}
         	, DEFAULT
+        	, DEFAULT
         	)
 	</insert>
+	
+		<!-- 이벤트 수 조회 -->
+	<select id="getEventListCount" resultType="_int">
+	SELECT COUNT(EVENT_NO) FROM EVENT
+	</select>
+	
+	<!-- 이벤트 리스트 조회 -->
+		<select id="eventList" resultMap="event_rm">
+	SELECT
+	*
+	FROM EVENT
+	ORDER BY EVENT_NO ASC
+	</select>
+	
+	<!-- 이벤트 수정조회 -->
+	<select id="getEditEventList" resultType="HashMap">
+	SELECT
+	EVENT_NO
+	, EVENT_TITLE
+	, EVENT_CONTENT
+	, EVENT_START
+	, EVENT_END
+	FROM EVENT
+	WHERE EVENT_NO = #{eventNo}
+	</select>
+	
+	<!-- 이벤트 수정(업데이트) -->
+	<update id="editEvent" parameterType="event">
+	UPDATE EVENT SET
+	EVENT_TITLE = #{eventTitle}
+	, EVENT_CONTENT = #{eventContent}
+	, EVENT_START = #{eventStart}
+	, EVENT_END = #{eventEnd}
+	WHERE EVENT_NO = #{eventNo}
+	</update>
+	
+	<!-- 이벤트 상태 업데이트 -->
+		<update id="updateEventST" parameterType="event">
+	UPDATE EVENT
+	SET EVENT_STATUS = #{eventStatus}
+	WHERE EVENT_NO = #{eventNo}
+	</update>
+
 
 
 </mapper>

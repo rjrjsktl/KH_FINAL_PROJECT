@@ -1,6 +1,7 @@
 package com.kh.kgv.management.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Pagination;
 import com.kh.kgv.mypage.controller.MyPageController;
 
@@ -38,15 +40,13 @@ public class ManagerDAO {
 		// RowBounds 객체 사용.
 		
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
-		System.out.println(" ============================================== offset + " + offset);
-		
 		
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
 		return sqlSession.selectList("managerMapper.selectAll", null, rowBounds);
 				
 	}
-
+	// 회원 관리자 상태 업데이트
 	public int updateST(User user) {
 		
 		return sqlSession.update("managerMapper.updateST", user);
@@ -84,9 +84,33 @@ public class ManagerDAO {
 	}
 
 	
-	
-	
+	public int getEventListCount() {
+		return sqlSession.selectOne("managerMapper.getEventListCount");
+	}
 
+	public List<Event> eventList(Pagination pagination) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("managerMapper.eventList", null, rowBounds);
+	}
+
+	// 이벤트 수정조회
+	public Map<String, Object> getEditEventList(Event event) {
+		return sqlSession.selectOne("managerMapper.getEditEventList", event);
+	}
+	
+	// 이벤트 수정(업데이트)
+	public int editEvent(Event event) {
+		return sqlSession.update("managerMapper.editEvent", event);
+	}
+	
+	//이벤트 상태 업데이트
+	public int updateEventST(Event event) {
+		return sqlSession.update("managerMapper.updateEventST", event);
+	}
 	
 
 }
