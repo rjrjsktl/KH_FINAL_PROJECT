@@ -5,60 +5,65 @@ var swiper = new Swiper(".mySwiper", {
   spaceBetween: 20,
 });
 
-$('.swiper-slide input.status').attr('value', JSON.stringify(
-  {
-	type: '일반관',
-	maxRow : 12,
-	maxColumn: 24,
-	aisle: [],
-	space: {},
-	sweet: [],
-	impared: []
-  })
-);
 
-let tempNo; 
 
-let tempRoom = {
-  type: null,
-  maxRow : 1,
-  maxColumn: 1,
+// 상영관마다 정보를 초기화함 
+
+$('.swiper-slide input.status').attr('value', JSON.stringify({
+  type: '일반관',
+  maxRow : 12,
+  maxColumn: 24,
   aisle: [],
   space: {},
   sweet: [],
   impared: []
-};
+}));
 
-let clickCount = 0;
-let firstSeat = [];
-let secondSeat = [];
 
-let optionArea = [];
-let tempRowArr = [];
+
+
+
+function sample5_execDaumPostcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            var addr = data.address; // 최종 주소 변수
+        }
+    }).open();
+}
+
+
+
+let room;
+let tempNo; 
+let tempRoom;
+
+let clickCount = 0;   // 클릭하여 활성화된 좌석의 갯수
+let firstSeat = [];   // 첫번째로 클릭하여 활성화된 좌석 [x, y]
+let secondSeat = [];  // 두번째로 클릭하여 활성화된 좌석 [x, y]
+
+let optionArea = [];  // 통로, 공간, 특수석이 지정될 수 있는 구역
+let tempRowArr = [];  // 상영관의 x축(가로줄)마다 좌석의 수가 몇 개인지?
+
+let alphabet = 'ABCDEFGHIJKLMNOPQLSTUVWXYZ';
 
 
 
 // [이벤트] 상영관 편집 버튼을 클릭하면
 
 $('.swiper-slide .room_edit').on("click", function(){
-  let room = $(this).closest('.swiper-slide');
-  
+
+  room = $(this).closest('.swiper-slide');
   tempNo = $(room).data('room-no');
+  tempRoom = JSON.parse($(room).find('input[name="roomStatus"]').val());
+  
   $('#room_no').html(tempNo);
-    
-  tempRoom.maxRow = $(room).data('room-maxrow');
   $('#temp_row').val(tempRoom.maxRow);
-  
-  tempRoom.maxColumn = $(room).data('room-maxcolumn');
   $('#temp_column').val(tempRoom.maxColumn);
-  
-  tempRoom.type = $(room).data('room-type');
   $("#temp_type").val(tempRoom.type).prop("selected", true);
-  
-  // alert($(room).find('input[name="status"]').val());
-  tempRoom = JSON.parse($(room).find('input[name="status"]').val());
+
   createBasicRoom(tempRoom.maxRow, tempRoom.maxColumn);
   changeRoom();
+  decorateSeat();
   hideSeatSetting();
     
   $('#room_area').css('display', 'block');
@@ -82,9 +87,12 @@ $('#edit_area .temp_rc').on("input", function(){
   tempRoom.maxRow = $('#temp_row').val();
   tempRoom.maxColumn = $('#temp_column').val();
   tempRoom.aisle = [];
-  tempRoom.space = [];
+  tempRoom.space = {};
+  tempRoom.sweet = [];
+  tempRoom.impared = [];
   
   createBasicRoom(tempRoom.maxRow, tempRoom.maxColumn);
+  decorateSeat();
   hideSeatSetting();  
 });
 
@@ -104,8 +112,6 @@ function hideSeatSetting() {
 
 // [함수] 기본 방 만들기
 
-let alphabet = 'ABCDEFGHIJKLMNOPQLSTUVWXYZ';
-
 function createBasicRoom(maxRow, maxColumn){
   let row, seat;
   tempRowArr = Array.from({length: maxRow}, () => maxColumn);
@@ -116,6 +122,8 @@ function createBasicRoom(maxRow, maxColumn){
   for(let k=1; k<=maxRow; k++){
   
     row = document.createElement('div');
+    eng = document.createElement('div');
+    row.appendChild(eng);
     document.querySelector('#seat_area').appendChild(row);
     
     for(let i=1; i<=maxColumn; i++){
@@ -126,13 +134,30 @@ function createBasicRoom(maxRow, maxColumn){
       $(seat).addClass('seat');
       $(seat).attr("data-row", k);
       $(seat).attr("data-column", i);
+      $(seat).attr("data-code", null);
       
       seat.addEventListener("click", function(){
         clickSeat(this);
       });
       
       document.querySelector(`#seat_area > div:nth-child(${k})`).appendChild(seat);
+      
     }
+  }
+}
+
+
+
+// [함수] 기본 방에 통로, 공간 추가하기
+
+function changeRoom() {
+
+  for(let r=1; r<=tempRoom.maxRow; r++) {
+    tempRoom.aisle.forEach(c => plusAisle(r, c));
+  }
+  
+  for(let key in tempRoom.space) {
+    tempRoom.space[key].forEach(v => plusSpace(key, v));
   }
 }
 
@@ -150,15 +175,35 @@ function plusSpace(r, c) {
 
 
 
-function changeRoom() {
-  for(let r=1; r<=tempRoom.maxRow; r++) {
-    tempRoom.aisle.forEach(c => plusAisle(r, c));
+
+// [함수] 좌석에 번호 부여하기
+
+function decorateSeat() {
+  for(let k=1; k<=tempRoom.maxRow; k++) {
+    $(`#seat_area > div:nth-child(${k}) > div:first-child`).text(alphabet[k-1]);
+  }
+
+  for(let k=1; k<=tempRoom.maxRow; k++) {
+    let i=1;
+    let j=1;
+    let num=1;
+    while(i <= tempRowArr[k-1]){
+      seat = $(`#seat_area > div:nth-child(${k}) > a:nth-of-type(${j})`);
+      if(!seat.hasClass('aisle')){
+        num = i++;
+        if(!seat.hasClass('space')) {
+          $(seat).text(num);
+          $(seat).attr('data-code', alphabet[k-1]+(i-1));
+        }
+      }
+      j++;
+    }
   }
   
-  for(let key in tempRoom.space) {
-    tempRoom.space[key].forEach(v => plusSpace(key, v));
-  }
+  tempRoom.sweet.forEach(s => $(`[data-code=${s}]`).addClass('sweet'));
+  
 }
+
 
 
 // [함수] 좌석을 클릭하면
@@ -292,6 +337,14 @@ $('#seat_option select').on("input", function(){
     deleteTempSpace();
   }
   
+  else if(['스위트석 지정', '장애인석 지정'].indexOf($(this).val()) != '-1') {
+    createTempSpecial();
+  }
+  
+  else if($(this).val() == '특수석 해제') {
+    deleteTempSpecial();
+  }
+  
   if($(this).val() != '') {
     $('#seat_option_confirm').css('display', 'flex');
   }
@@ -350,13 +403,16 @@ function deleteTempAisle(){
 function createTempSpace() {
 
   if(clickCount == 1) {
-    $('#seat_area > div > a.clicked').addClass('option');
+    if($(".clicked").hasClass("aisle")) {
+      $('#seat_option select').val("").prop("selected", true);
+      alert("통로입니다.");
+    }
   } 
   
   else if(clickCount == 2) {
     for(let i = min0; i <= max0; i++) {
       for(let j = min1; j <= max1; j++) {
-        $(`#seat_area > div:nth-child(${i}) > a:not('.clicked'):nth-of-type(${j})`).addClass('option');
+        $(`#seat_area > div:nth-child(${i}) > a:not('.aisle, .clicked'):nth-of-type(${j})`).addClass('option');
       }
     }
   }
@@ -367,11 +423,7 @@ function createTempSpace() {
 // [조건부 함수] 임시 공간 없애기
 
 function deleteTempSpace() {
-  if(clickCount == 1) {
-    $('#seat_area > div > a.space.clicked').addClass('option');
-  } 
-  
-  else if(clickCount == 2) {
+  if(clickCount == 2) {
     for(let i = min0; i <= max0; i++) {
       for(let j = min1; j <= max1; j++) {
         $(`#seat_area > div:nth-child(${i}) > a.space:not('.clicked'):nth-of-type(${j})`).addClass('option');
@@ -379,6 +431,32 @@ function deleteTempSpace() {
     }
   }
 }
+
+
+
+// [조건부 함수] 임시 특수석 만들기
+
+function createTempSpecial() {
+  if(clickCount == 1) {
+    if($(".clicked").hasClass("aisle") || $(".clicked").hasClass("space")) {
+      $('#seat_option select').val("").prop("selected", true);
+      alert("특수석으로 지정할 수 없습니다.");
+    }
+  } 
+  
+  else if(clickCount == 2) {
+    for(let i = min0; i <= max0; i++) {
+      for(let j = min1; j <= max1; j++) {
+        $(`#seat_area > div:nth-child(${i}) > a:not('.aisle, .space, .clicked'):nth-of-type(${j})`).addClass('option');
+      }
+    }
+  }
+}
+
+function deleteTempSpecial() {
+
+}
+
 
 // [이벤트] 설정 적용 버튼 누르기
 
@@ -400,9 +478,23 @@ $('#seat_option_confirm').on("click", function() {
     deleteSpace();
   }
   
+  else if($('#seat_option select').val() == '스위트석 지정') {
+    createSweet();
+  }
+  
+  else if($('#seat_option select').val() == '장애인석 지정') {
+    
+  }
+  
+  else if($('#seat_option select').val() == '특수석 해제') {
+    
+  }
+  
   createBasicRoom(tempRoom.maxRow, tempRoom.maxColumn);
   changeRoom();
+  decorateSeat();
   hideSeatSetting();
+  console.log(tempRoom);
   
 });
 
@@ -413,19 +505,16 @@ $('#seat_option_confirm').on("click", function() {
 function createAisle() {
 
   if(clickCount == 1) {
-    if(tempRoom.aisle.indexOf(firstSeat[1]) == '-1') {
-      tempRoom.aisle.push(firstSeat[1]);
-      tempRoom.aisle.sort((a,b) => a-b);
-    }
+    tempRoom.aisle.push(firstSeat[1]);
+    tempRoom.aisle.sort((a,b) => a-b);
   } 
   
   else if(clickCount == 2) {
     for(let i = min1; i <= max1; i++) {
-      if(tempRoom.aisle.indexOf(i) == '-1') {
-        tempRoom.aisle.push(i);
-      }
+      tempRoom.aisle.push(i);
     }
     
+    tempRoom.aisle = Array.from(new Set(tempRoom.aisle));
     tempRoom.aisle.sort((a,b)=>a-b);
   }
 }
@@ -462,7 +551,11 @@ function createSpace() {
     }
     
     tempRoom.space[firstSeat[0]].push(firstSeat[1]);
+        
     tempRoom.space[firstSeat[0]] = Array.from(new Set(tempRoom.space[firstSeat[0]]));
+    if(tempRoom.space[firstSeat[0]].length == 0) {
+      delete tempRoom.space[firstSeat[0]];
+    }
   }
   
   else if(clickCount == 2) {
@@ -472,15 +565,18 @@ function createSpace() {
       }
       
       for(let j=min1; j<=max1; j++) {
-        tempRoom.space[i].push(j);
+        if(tempRoom.aisle.indexOf(j) == '-1') {
+          tempRoom.space[i].push(j);
+        }
+        
       }
       
       tempRoom.space[i] = Array.from(new Set(tempRoom.space[i]));
+      if(tempRoom.space[i].length == 0) {
+        delete tempRoom.space[i];
+      }
     }
   }
-  
-  // alert(JSON.stringify(tempRoom.space));
-  
 }
 
 
@@ -530,16 +626,54 @@ function removeSpace() {
 }
 
 
+// [조건부 함수] 스위트석 만들기
+
+function createSweet() {
+
+  if(clickCount == 1) {
+    let s = $(".clicked");
+    
+    if(!($(s).hasClass("aisle")) && !($(s).hasClass("space"))) {
+      tempRoom.sweet.push($(s).data('code'));
+    } 
+  }
+  
+  else if(clickCount == 2) {
+  
+    for(let i = min0; i <= max0; i++) {
+      for(let j = min1; j <= max1; j++) {
+        let s = $(`#seat_area > div:nth-child(${i}) > a:nth-of-type(${j})`);
+        
+        if(!($(s).hasClass("aisle")) && !($(s).hasClass("space"))) {
+          tempRoom.sweet.push($(s).data('code'));
+        }
+        
+        if($(s).hasClass("impared")) {
+          tempRoom.impared = tempRoom.impared.filter(function(data) {
+            return data != $(s).data('code');
+          });
+        }
+        
+      }  
+    }
+  }
+  
+  tempRoom.sweet = Array.from(new Set(tempRoom.sweet));
+  
+  tempRoom.sweet.forEach(s => {
+  
+  });
+  
+}
+
+
+
 // 확인 버튼 
 
 $('#room_confirm').on("click", function() {
-  let room = $(`.swiper-slide[data-room-no=${tempNo}]`);
-  room.data('room-maxrow', tempRoom.maxRow);
-  room.data('room-maxcolumn', tempRoom.maxColumn);
-  room.data('room-type', tempRoom.type);
-  room.find('.room_type').html(tempRoom.type);
+  $(room).find('.room_type').html(tempRoom.type);
+  $(room).find('input[name="roomStatus"]').attr('value', JSON.stringify(tempRoom));
   
-  $(room).find('input[name="status"]').attr('value', JSON.stringify(tempRoom));
   $('#room_area').css('display', 'none');
   $('#room_area').css('z-index', '0');
 });
@@ -548,24 +682,21 @@ $('#room_confirm').on("click", function() {
 // 리셋 버튼
 
 $('#room_reset').on("click", function() {
-  let room = $(`.swiper-slide[data-room-no=${tempNo}]`);
-    
+
   $('#temp_row').val(12);
   $('#temp_column').val(24);
+  $("#temp_type").val("일반관").prop("selected", true);
     
-  tempRoom.maxRow = $('#temp_row').val();
-  tempRoom.maxColumn = $('#temp_column').val();
-    
-  createBasicRoom(tempRoom.maxRow, tempRoom.maxColumn);
-	
+  tempRoom.maxRow = 12;
+  tempRoom.maxColumn = 24;
   tempRoom.type = "일반관";
-  $("#temp_type").val(tempRoom.type).prop("selected", true);
-	
-  room.data('room-maxrow', tempRoom.maxRow);
-  room.data('room-maxcolumn', tempRoom.maxColumn);
-  room.data('room-type', tempRoom.type);
-  room.find('.room_type').html(tempRoom.type);
-  
+  tempRoom.aisle = [];
+  tempRoom.space = {};
+  tempRoom.sweet = [];
+  tempRoom.impared = {};
+    
+  createBasicRoom(tempRoom.maxRow, tempRoom.maxColumn);  
+  decorateSeat();
   hideSeatSetting();
 
 });
@@ -574,11 +705,10 @@ $('#room_reset').on("click", function() {
 // 취소 버튼
 
 $('#room_cancle').on("click", function() {
-  $('#seat_option').css('display', 'none');
-
   $('#room_area').css('display', 'none');
   $('#room_area').css('z-index', '0');
 });
+
 
 
 // 우클릭 이벤트 해제
@@ -586,5 +716,3 @@ $('#room_cancle').on("click", function() {
 window.oncontextmenu = function(){
   return false;
 }
-
-

@@ -6,6 +6,7 @@ import java.util.Map;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.vo.Event;
+import com.kh.kgv.management.model.vo.Notice;
 
 public interface ManagerService {
 
@@ -24,7 +25,7 @@ public interface ManagerService {
 	// Gener
 	List<String> mgenreList();
 
-	// movieList
+	// MovieListController
 	List<Movie> movieList(Movie movie);
 
 	// 이벤트 목록 조회
@@ -38,5 +39,11 @@ public interface ManagerService {
 
 	// 이벤트 상태 업데이트
 	int updateEventST(Event event);
+
+	// 공지사항 등록
+	int addNotice(Notice notice);
+
+	// 공지사항 목록 조회
+	Map<String, Object> noticeList(int cp);
 
 }

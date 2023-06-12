@@ -29,6 +29,7 @@ import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.management.model.vo.Event;
+import com.kh.kgv.management.model.vo.Notice;
 
 @Controller
 @RequestMapping("/manager")
@@ -376,7 +377,16 @@ public class ManagerController {
 	
 	// 관리자_공지사항 목록 이동
 	@GetMapping("/notice_list")
-	public String moveNoticeList() {
+	public String moveNoticeList(	Model model
+			, @RequestParam(value = "cp", required = false, defaultValue="1" ) int cp) {
+			
+			Map<String, Object>getNoticeList = null;
+			
+			// 회원 리스트 얻어오기
+			getNoticeList = service.noticeList(cp);
+			 
+			model.addAttribute("getNoticeList", getNoticeList);
+		
 		System.out.println("관리자_공지사항 목록 이동");
 		return "manager/manager_notice_list";
 	}
@@ -391,4 +401,76 @@ public class ManagerController {
 		return "manager/manager_notice_add";
 	}
 	
+	
+	// ===================================================
+	// ===================================================
+	
+	// 관리자_공지사항 등록
+	@ResponseBody
+	@PostMapping("/notice_add/write_Notice")
+	public int addNotice(
+			@RequestParam("title") String title
+			, @RequestParam("content") String content
+			, @RequestParam("userName") String userName
+			) {
+		Notice notice = new Notice();
+		
+		notice.setNoticeTitle(title);
+		notice.setNoticeContent(content);
+		notice.setNoticeUploader(userName);
+		
+		System.out.println("=============================================== notice : " + notice);
+		
+		int result = service.addNotice(notice);
+		
+		if(result > 0) {
+			System.out.println("공지사항 등록 완료");
+			 result = 1;
+			
+		} else {
+			System.out.println("공지사항 등록 실패");
+			result = 0;
+		}
+		return result;
+	}
+	
+	// ===================================================
+	// ===================================================
+	
+	// 공지사항 등록용 이미지 업로드
+		@PostMapping("/notice_add/noticeUploadImageFile")
+		@ResponseBody
+		public String noticeUploadImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request) {
+			JsonObject jsonObject = new JsonObject();
+
+//			  String fileRoot = "C:\\Users\\cropr\\Desktop\\test"; // 외부경로로 저장을 희망할때.
+
+			// 내부경로로 저장
+			String webPath = "/resources/images/fileupload/";
+
+			String fileRoot = request.getServletContext().getRealPath(webPath);
+
+			String originalFileName = multipartFile.getOriginalFilename(); // 오리지날 파일명
+			String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자
+			String savedFileName = UUID.randomUUID() + extension; // 저장될 파일 명
+
+			File targetFile = new File(fileRoot + savedFileName);
+			try {
+				InputStream fileStream = multipartFile.getInputStream();
+				FileUtils.copyInputStreamToFile(fileStream, targetFile); // 파일 저장
+				jsonObject.addProperty("url", request.getContextPath() + webPath + savedFileName); // contextroot +
+																									// resources + 저장할 내부
+																									// 폴더명
+				jsonObject.addProperty("responseCode", "success");
+
+			} catch (IOException e) {
+				FileUtils.deleteQuietly(targetFile); // 저장된 파일 삭제
+				jsonObject.addProperty("responseCode", "error");
+				e.printStackTrace();
+			}
+			String a = jsonObject.toString();
+			System.out.println("================================================= 이미지 는?? : : " + a);
+			return a;
+
+		}
 }
