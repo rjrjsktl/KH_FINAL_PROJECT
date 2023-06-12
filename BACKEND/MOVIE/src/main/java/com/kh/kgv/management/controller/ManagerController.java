@@ -3,6 +3,7 @@ package com.kh.kgv.management.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.JsonObject;
+import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.service.ManagerService;
@@ -146,11 +148,17 @@ public class ManagerController {
 		// movielist 값 얻어오기
 		Movie movie = new Movie();
 		List<Movie> movielist = service.movieList(movie);
-		System.out.println("movielist 값 :::::" + movielist);
+		List<Movie> cleanedMovielist = Util.removeQuotesFromList(movielist);
+		System.out.println("movielist 값 :::::" + cleanedMovielist);
 				
-		model.addAttribute("movielist", movielist);
-		
-		
+		for (Movie movie1 : cleanedMovielist) {
+        if (movie1.getMgNo().equals("&quot;")) {
+            movie1.setMgNo(""); // 변경하고자 하는 값으로 대체
+        }
+        // 다른 속성이 있다면 해당 속성에 대해서도 동일한 방식으로 처리
+    }
+		//model.addAttribute("movielist", movielist);
+		model.addAttribute("movielist", cleanedMovielist);
 		
 		System.out.println("관리자_영화 목록 이동");
 		return "manager/manager_movie_list";
@@ -163,12 +171,12 @@ public class ManagerController {
 	@GetMapping("/movie_add")
 	public String moveMovieAdd(Model model) {
 
+		
 		// movie grade 값 얻어오기
 		List<String> mgradelist = service.mgradeList();
 		System.out.println("mgradelist 값 :::::" + mgradelist);
 		
 		model.addAttribute("mgradelist", mgradelist);
-		
 		// movie genre 값 얻어오기
 		List<String> mgenrelist = service.mgenreList();
 		System.out.println("mgenrelist 값 :::::" + mgenrelist);
@@ -180,6 +188,7 @@ public class ManagerController {
 	}
 	
 	// ===================================================
+
 	// ===================================================
 	
 	// 관리자_극장 등록 이동

@@ -17,7 +17,7 @@
 		<result property="movieUploader"	 		column="MOVIE_UPLOADER"/>
 		<result property="movieFixdate" 			column="MOVIE_FIXDATE"/>
 		<result property="movieChanger" 			column="MOVIE_CHANGER"/>
-		<result property="genreCode" 				column="GENRE_CODE"/>
+		<result property="genreCode" 				column="GENRE_NAME"/>
 	</resultMap>
 		
 	<!-- 영화 등록 -->
