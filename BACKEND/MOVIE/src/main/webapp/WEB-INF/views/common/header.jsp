@@ -121,7 +121,7 @@
                                             <li><a href="">당첨자 발표</a></li>
                                         </ul>
                                     </li>
-                                    <li class="navBar"><a href="#">스토어</a></li>
+                                    <li class="navBar"><a href="${contextPath}/store/storeMain">스토어</a></li>
                                     <li class="navBar"><a href="#">혜택</a>
                                         <ul class="menuBar" style="display: none">
                                             <li><a href="">멤버쉽</a></li>
