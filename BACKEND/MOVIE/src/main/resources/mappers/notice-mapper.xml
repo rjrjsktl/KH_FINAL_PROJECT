@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="noticeMapper">
+
+	<resultMap type="notice" id="notice_rm">
+		<id property="noticeNo" column="NOTICE_NO"/>
+		<result property="noticeTitle" 					column="NOTICE_TITLE"/>
+		<result property="noticeContent" 				column="NOTICE_CONTENT"/>
+		<result property="noticeRegDate" 				column="NOTICE_REGDATE"/>
+		<result property="noticeUploader" 				column="NOTICE_UPLOADER"/>
+		<result property="noticeStatus" 				column="NOTICE_STATUS"/>
+	</resultMap>
+
+	<select id="noticeList" resultType="notice_rm">
+		SELECT * FROM NOTICE ORDER BY NOTICE_NO ASC
+	</select>
+
+</mapper>
