@@ -41,6 +41,7 @@ $("#storeTab_5").on("click", function () {
 });
 
 function resetStore(s) {
+
     $(".store_ul").css('display', 'none');
     $(".store_h3").css('display', 'none');
     $(".storeTab").removeClass("clicked");
