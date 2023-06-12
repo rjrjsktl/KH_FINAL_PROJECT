@@ -98,13 +98,14 @@
                                 <ul>
                                     <li class="navBar"><a href="#">영화</a>
                                         <ul class="menuBar" style="display: none">
-                                            <li><a href="">무비 차트</a></li>
+                                            <li><a href="${contextPath}/movieList/movieList">무비 차트</a></li>
                                         </ul>
                                     </li>
                                     <li class="navBar"><a href="#">상영관</a>
                                         <ul class="menuBar" style="display: none">
-                                            <li><a href="">지역별</a></li>
-                                            <li><a href="">특별관</a></li>
+                                        <!-- 지역별로 이동 -->
+                                            <li><a href="${contextPath}/theater/normalTheater">지역별</a></li>
+                                            <li><a href="${contextPath}/theater/specialTheater">특별관</a></li>
                                         </ul>
                                     </li>
                                     <li class="navBar"><a href="#">예매</a>

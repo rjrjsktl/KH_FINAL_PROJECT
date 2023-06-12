@@ -1,3 +1,4 @@
+/*
 $(document).ready(function() {
   var modal = $('#myModal');
   var btn = $('#myBtn');
@@ -27,6 +28,7 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+*/
 
 
 // 메뉴창 하버
