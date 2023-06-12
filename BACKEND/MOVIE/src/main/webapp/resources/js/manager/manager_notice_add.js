@@ -70,13 +70,13 @@ $(document).ready(function () {
     const submitBtn = $('.bottom_Submit');
     const eventTitle = $('.enter_Title > input');
     const textArea = $('#summernote');
-    const userNo = $('#userNo');
+    const userName = $('#userName');
 
     submitBtn.on('click', (e) => {
         e.preventDefault();
         console.log("제목 : " + eventTitle.val());
         console.log("본문 내용 : " + textArea.val());
-        console.log("사용자 번호 : " + userNo.val());
+        console.log("사용자 이름 : " + userName.val());
 
         if (!eventTitle.val()) {
             alert('제목이 입력되지 않았습니다.');
@@ -97,7 +97,7 @@ $(document).ready(function () {
             data: {
                 "title": eventTitle.val()
                 , "content": textArea.val()
-                , "useNo": userNo.val()
+                , "userName": userName.val()
             },
             type: "POST",
             success: function (result) {

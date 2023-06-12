@@ -54,7 +54,7 @@
                             </div>
                             <div class="table_main">
                                 <div class="enter_Title"><input type="text" placeholder="제목을 입력하세요."></div>
-                                <input type="hidden" id="userNo" value=${loginUser.userNo} />
+                                <input type="hidden" id="userName" value=${loginUser.userName} />
                                 <form method="post">
                                     <textarea id="summernote" name="editordata"></textarea>
                                 </form>
