@@ -148,17 +148,13 @@ public class ManagerController {
 		// movielist 값 얻어오기
 		Movie movie = new Movie();
 		List<Movie> movielist = service.movieList(movie);
-		List<Movie> cleanedMovielist = Util.removeQuotesFromList(movielist);
-		System.out.println("movielist 값 :::::" + cleanedMovielist);
 				
-		for (Movie movie1 : cleanedMovielist) {
-        if (movie1.getMgNo().equals("&quot;")) {
-            movie1.setMgNo(""); // 변경하고자 하는 값으로 대체
-        }
+		// movielist에서 따온 값 가공하기
+	    List<Movie> cleanedMovielist = Util.removeQuotesFromList(movielist);
         // 다른 속성이 있다면 해당 속성에 대해서도 동일한 방식으로 처리
-    }
-		//model.addAttribute("movielist", movielist);
-		model.addAttribute("movielist", cleanedMovielist);
+	    System.out.println("cleanedMovielist 값 :::::" + cleanedMovielist);
+	    model.addAttribute("movielist", cleanedMovielist);
+//		model.addAttribute("movielist", movielist);
 		
 		System.out.println("관리자_영화 목록 이동");
 		return "manager/manager_movie_list";
@@ -168,6 +164,33 @@ public class ManagerController {
 	// ===================================================
 	
 	// 관리자_영화 등록 이동
+//	@GetMapping("/movie_add")
+//	public String moveMovieAdd(Model model) {
+//	    // movie grade 값 얻어오기
+//	    List<String> mgradelist = service.mgradeList();
+//	    // movie genre 값 얻어오기
+//	    List<String> mgenrelist = service.mgenreList();
+//	    
+//	    // mgNo 값을 가공하여 적절한 형태로 변환
+//	    List<String> cleanedMgradelist = new ArrayList<>();
+//	    for (String mgrade : mgradelist) {
+//	        String cleanedGrade = mgrade.replaceAll("[\"\\[\\]\\\\]", "").replace("&quot;", "");
+//	        cleanedMgradelist.add(cleanedGrade);
+//	    }
+//	    System.out.println("cleanedMgradelist 값 :::::" + cleanedMgradelist);
+//	    // genreCode 값을 가공하여 적절한 형태로 변환
+//	    List<String> cleanedMgenrelist = new ArrayList<>();
+//	    for (String mgenre : mgenrelist) {
+//	        String cleanedGenre = mgenre.replaceAll("[\"\\[\\]\\\\]", "").replace("&quot;", "");
+//	        cleanedMgenrelist.add(cleanedGenre);
+//	    }
+//	    System.out.println("cleanedMgenrelist 값 :::::" + cleanedMgenrelist);
+//	    // Model에 데이터 추가
+//	    model.addAttribute("mgradelist", cleanedMgradelist);
+//	    model.addAttribute("mgenrelist", cleanedMgenrelist);
+//	    
+//	    return "manager/manager_movie_add";
+//	}
 	@GetMapping("/movie_add")
 	public String moveMovieAdd(Model model) {
 
@@ -180,7 +203,6 @@ public class ManagerController {
 		// movie genre 값 얻어오기
 		List<String> mgenrelist = service.mgenreList();
 		System.out.println("mgenrelist 값 :::::" + mgenrelist);
-		
 		model.addAttribute("mgenrelist", mgenrelist);
 		
 		System.out.println("관리자_영화 등록 이동");
