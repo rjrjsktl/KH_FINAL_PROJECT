@@ -9,7 +9,7 @@ main {
 }
 
 main>div:nth-child(1) {
-    /* border-bottom: 2px solid yellow; */
+
     padding-bottom: 30px;
     height: 100%;
 }
@@ -20,69 +20,54 @@ main>div:nth-child(1)>span {
     font-weight: bold;
 }
 
-/* .tab-list {
-     position: static; 
-    width: 100%; 
-    background-color: rgba(255, 255, 255);
-} */
-
 main>div:nth-child(2) {
-    width: 100%;
-    margin-bottom: 50px;
-}
-
-main>div:nth-child(2)>ul {
     display: flex;
+    margin-bottom: 80px;
 }
 
-.tab-list>ul>li>a {
-    color: white;
-    display: block;
+
+
+/* 1번 div */
+main>div:nth-child(2)>div:nth-child(1) {
+    width: 55%;
+    padding-right: 50px;
+}
+
+
+main>div:nth-child(2)>div:nth-child(1)>div {
+    height: 100%;
+}
+
+
+main>div:nth-child(2)>div:nth-child(1)>div>img {
     width: 100%;
+    height: 75%;
+}
 
-    line-height: 40px;
+/* 2번 div */
+main>div:nth-child(2)>div:nth-child(2) {
 
-    text-align: center;
+    width: 45%;
+}
 
-    font-size: 1.0667em;
+
+/* 상세 정보 테이블*/
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 30px;
 
 }
 
-main>div:nth-child(2)>ul>li>a:hover {
-    color: darkgoldenrod;
-
-
+tbody>tr:nth-child(1)>th {
+    border-bottom: 1px solid #eeeeee;
+    padding: 10px 0 22px;
+    font-size: 24px;
 }
 
-/* main>div:nth-child(2)>ul>li:last-child:hover {
-    border-right: 1px solid darkgoldenrod;
-
-} */
-
-
-
-
-main>div:nth-child(2)>ul>li {
-    /* float: left; */
-    width: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 42px;
-
-    /* border-bottom: 1px solid orange; */
-    /* border: 1px solid #ebebeb; */
-    /* border-right: none; */
-
-}
-
-main>div:nth-child(2)>ul>li>a {
-    border-bottom: 1px solid orange;
-}
-
-.storeTab.clicked {
-    border: 1px solid orange;
-    border-bottom: none;
+tbody>tr:nth-child(2)>td:nth-child(1) {
+    font-weight: bold;
 }
 
 
@@ -93,118 +78,169 @@ main>div:nth-child(3)>ul>div:first-child {
 
     margin-bottom: 40px;
 
+    text-align: left;
 
 }
 
-main>div:nth-child(3)>h3 {
+td {
+    border-bottom: 1px solid #eeeeee;
+    padding: 20px 0;
+    font-size: 15px;
 
-    font-size: 1.6rem;
-    font-weight: normal;
 }
 
 
-/* 카드 랩퍼 */
-main>div:nth-child(3) {
+.price {
+    font-weight: bold;
 
-    margin-top: 30px;
-    /* width: 100%;
-    display: flex; */
+    font-size: 24px;
 }
 
-/* 카드 스타일 */
-main>div:nth-child(3)>ul {
-    margin-top: 30px;
 
+
+
+
+/* 계산버튼창*/
+main>div:nth-child(2)>div:nth-child(2)>div:nth-child(2) {
     display: flex;
-    /* justify-content: space-between; */
-    flex-wrap: wrap;
-}
-
-main>div:nth-child(3)>ul>li {
-
-    border-radius: 12px;
-    width: 23%;
-
-    margin-bottom: 40px;
-    margin-right: calc(77px/3);
-    /* margin-right: 26px; */
-}
-
-main>div:nth-child(3)>ul>li:nth-child(4n) {
-
-    margin-right: 0;
-
-}
-
-
-
-/* 카드 이미지 div */
-main>div:nth-child(3)>ul>li>a>div:nth-child(1) {
-    width: 100%;
-    height: 60%;
-}
-
-/* 카드 내 벨류의 순위 */
-main>div:nth-child(3)>ul>li>div:nth-child(1)>span {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    margin: 20px;
-    line-height: 28px;
-    font-size: 2rem;
-    z-index: 1;
-}
-
-/* main>div:nth-child(2)>ul>li>div:nth-child(1)>a {
-    display: flex;
-} */
-
-
-
-
-
-/* 카드 이미지 절대크기 */
-main>div:nth-child(3)>ul>li>a>div:nth-child(1)>img {
-    width: 225px;
-    height: 187px;
-    border-radius: 10px;
-    position: relative;
-}
-
-
-main>div:nth-child(3)>ul>li>div:nth-child(2) {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-}
-
-main>div:nth-child(3)>ul>li>a>div:nth-child(2)>div:nth-child(1) {
-    font-size: 1.5rem;
-    margin: 20px 0px;
-    padding-left: 20px;
-}
-
-main>div:nth-child(3)>ul>li>a>div:nth-child(2)>div:nth-child(1)>p {
-    padding-top: 8px;
-    font-size: 0.8rem;
-
-}
-
-
-main>div:nth-child(3)>ul>li>a>div:nth-child(2)>div:nth-child(2) {
-    display: flex;
-    /* flex-direction: column; */
     align-items: center;
-    margin: 20px 0;
-    font-size: 0.9rem;
-    padding-left: 20px;
+    width: 100%;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 40px;
 }
 
-main>div:nth-child(3)>ul>li>div:nth-child(2)>div>p:nth-child(1) {
-    width: 40%;
-    margin-right: 20px;
-}
-
-main>div:nth-child(3)>ul>li>div:nth-child(3) {
+main>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>a {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    bottom: 2px;
+    width: 60px;
+
+    font-size: 24px;
+    color: white;
+
+
+    cursor: pointer;
+}
+
+main>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+
+}
+
+
+/* 총 금액창 */
+main>div:nth-child(2)>div:nth-child(2)>div:nth-child(3) {
+    font-size: 15px;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+main>div:nth-child(2)>div:nth-child(2)>div:nth-child(3)>span {
+    margin-left: 20px;
+    font-size: 30px;
+    color: #FF243E;
+    ;
+}
+
+/* 구매하기 버튼창 */
+
+
+
+main>div:nth-child(2)>div:nth-child(2)>div:nth-child(4)>a button {
+    width: 100%;
+    height: 47px;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #FF243E;
+    font-size: 14px;
+    color: #ffffff !important;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #FF243E;
+    cursor: pointer;
+}
+
+
+
+
+
+main>div:nth-child(3) {
+    width: 100%;
+    overflow: hidden;
+    /* height: 200px; */
+    /* border: 1px solid red; */
+}
+
+
+main>div:nth-child(3)>div:nth-child(1) {
+    border-radius: 5px;
+    border: 1px solid #d8d9db;
+}
+
+
+main>div:nth-child(3)>div:nth-child(1)>button {
+
+    width: 100%;
+    height: 39px;
+
+    padding: 0 20px;
+    border: 0;
+    text-align: left;
+    color: black;
+    cursor: pointer;
+    background-color: #d8d9db;
+    font-weight: bold;
+}
+
+
+
+.content {
+    display: block;
+    margin: 0;
+    padding: 20px;
+}
+
+
+main>div:nth-child(4) {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px;
+
+}
+
+main>div:nth-child(4)>div:nth-child(1) {
+    border-radius: 5px;
+    border: 1px solid #d8d9db;
+}
+
+main>div:nth-child(4)>div:nth-child(1)>button {
+
+    width: 100%;
+    height: 39px;
+
+    padding: 0 20px;
+    border: 0;
+    text-align: left;
+    color: black;
+    cursor: pointer;
+    background-color: #d8d9db;
+    font-weight: bold;
+}
+
+.content-2 {
+    display: block;
+    margin: 0;
+    padding: 20px;
 }
