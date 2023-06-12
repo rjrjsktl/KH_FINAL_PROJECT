@@ -16,7 +16,7 @@ main>div:nth-child(1) {
 
 /* 스토어 span*/
 main>div:nth-child(1)>span {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: bold;
 }
 
@@ -48,15 +48,18 @@ main>div:nth-child(2)>ul {
 
 }
 
-main>div:nth-child(2)>ul>li:hover {
-    border: 2px solid darkgoldenrod;
+main>div:nth-child(2)>ul>li>a:hover {
+    color: darkgoldenrod;
 
 
 }
 
-main>div:nth-child(2)>ul>li:last-child:hover {
-    border-right: 2px solid darkgoldenrod;
-}
+/* main>div:nth-child(2)>ul>li:last-child:hover {
+    border-right: 1px solid darkgoldenrod;
+
+} */
+
+
 
 
 main>div:nth-child(2)>ul>li {
@@ -67,15 +70,36 @@ main>div:nth-child(2)>ul>li {
     justify-content: center;
     height: 42px;
 
-    border: 1px solid #ebebeb;
-    border-width: 1px 0px 1px 1px;
+    /* border-bottom: 1px solid orange; */
+    /* border: 1px solid #ebebeb; */
+    /* border-right: none; */
 
 }
 
-main>div:nth-child(2)>ul>li:last-child {
-    border-right: 1px solid #ebebeb;
+main>div:nth-child(2)>ul>li>a {
+    border-bottom: 1px solid orange;
 }
 
+.storeTab.clicked {
+    border: 1px solid orange;
+    border-bottom: none;
+}
+
+
+
+main>div:nth-child(3)>ul>div:first-child {
+    width: 100%;
+
+    margin-bottom: 40px;
+
+
+}
+
+main>div:nth-child(3)>h3 {
+
+    font-size: 1.6rem;
+    font-weight: normal;
+}
 
 
 /* 카드 랩퍼 */
@@ -89,7 +113,7 @@ main>div:nth-child(3) {
 /* 카드 스타일 */
 main>div:nth-child(3)>ul {
     margin-top: 30px;
-    flex: 1;
+
     display: flex;
     /* justify-content: space-between; */
     flex-wrap: wrap;
@@ -99,18 +123,19 @@ main>div:nth-child(3)>ul>li {
 
     border-radius: 12px;
     width: 23%;
-    /* height: 100%;
-    display: flex;
-    flex-direction: column; */
+
     margin-bottom: 40px;
-    margin-left: 16px;
+    margin-right: calc(77px/3);
+    /* margin-right: 26px; */
 }
 
-/* main>div:nth-child(3)>ul>li:hover {
+main>div:nth-child(3)>ul>li:nth-child(4n) {
 
-    border: 2px solid darkgoldenrod;
+    margin-right: 0;
 
-} */
+}
+
+
 
 /* 카드 이미지 div */
 main>div:nth-child(3)>ul>li>a>div:nth-child(1) {
@@ -140,8 +165,8 @@ main>div:nth-child(3)>ul>li>div:nth-child(1)>span {
 
 /* 카드 이미지 절대크기 */
 main>div:nth-child(3)>ul>li>a>div:nth-child(1)>img {
-    width: 100%;
-    height: 100%;
+    width: 225px;
+    height: 187px;
     border-radius: 10px;
     position: relative;
 }
@@ -183,37 +208,3 @@ main>div:nth-child(3)>ul>li>div:nth-child(2)>div>p:nth-child(1) {
 main>div:nth-child(3)>ul>li>div:nth-child(3) {
     display: flex;
 }
-
-/* main>div:nth-child(2)>ul>li>div:nth-child(3)>button {
-    height: 40px;
-    background-color: transparent;
-    outline: none;
-    border: 1px solid lightgray;
-    padding: 0 5px;
-    border-radius: 10px;
-
-}
-
-main>div:nth-child(2)>ul>li>div:nth-child(3)>button:nth-child(2) {
-    margin-left: 10px;
-}
-
-main>div:nth-child(2)>ul>li>div:nth-child(3)>button:nth-child(2):hover {
-    background-color: rgb(41, 41, 41);
-    color: white;
-}
-
-main>div:nth-child(2)>ul>li>div:nth-child(3)>button:nth-child(1) {
-    width: 30%;
-} */
-
-/* main>div:nth-child(2)>ul>li>div:nth-child(3)>button:nth-child(2) {
-    width: 70%;
-    color: black;
-    background-color: white;
-} */
-
-
-/* .navBar:nth-child(1)>a:nth-child(1) {
-    color: rgb(255, 196, 0);
-} */
