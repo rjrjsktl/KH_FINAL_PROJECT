@@ -7,11 +7,6 @@ var myChart = Highcharts.chart('daily_Enter', {
         align: 'left'
     },
 
-    // subtitle: {
-    //     text: 'Source: <a href="https://irecusa.org/programs/solar-jobs-census/" target="_blank">IREC</a>',
-    //     align: 'left'
-    // },
-
     yAxis: {
         title: {
             text: '일 방문자 (천명)'
@@ -20,21 +15,25 @@ var myChart = Highcharts.chart('daily_Enter', {
 
     xAxis: {
         type: "datetime",
+        categories: ['6월 1일', '6월 2일', '6월 3일', '6월 4일', '6월 5일', '6월 6일', '6월 7일', '6월 8일', '6월 9일', '6월 10일', '6월 11일'],
+        // labels: { style: { fontSize: '12px' } },
     },
 
     legend: {
         layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'middle'
+        floating: true,
+        align: 'left',
+        verticalAlign: 'middle',
+        x: 240,
+        y: -200,
     },
-
 
     series: [{
         name: '방문자 수',
         data: [21908, 5548, 8105, 11248, 8989, 11816, 18274,
             17300, 13053, 11906, 10073],
-        pointStart: Date.UTC(2023, 5, 1),
-        pointInterval: 24 * 3600 * 1000 // one day            
+        // pointStart: Date.UTC(2023, 5, 1),
+        // pointInterval: 24 * 3600 * 1000 // one day            
     }],
 
     responsive: {
@@ -50,6 +49,18 @@ var myChart = Highcharts.chart('daily_Enter', {
                 }
             }
         }]
+    },
+
+    plotOptions: {
+        series: {
+            colorByPoint: true,
+            dataLabels: {
+                enabled: true, //각각의 데이터 값을 나타낼 것인지
+                color: 'black' // 데이터 값을 나타낼 때 색
+            }
+        },
+        connectNulls: true //null인 지점에 연결할 것인지
+
     }
 
 });
@@ -75,22 +86,25 @@ var myChart = Highcharts.chart('daily_Movie_Watch', {
 
     xAxis: {
         type: "datetime",
+        categories: ['6월 1일', '6월 2일', '6월 3일', '6월 4일', '6월 5일', '6월 6일', '6월 7일', '6월 8일', '6월 9일', '6월 10일', '6월 11일'],
+        // labels: { style: { fontSize: '12px' } },
     },
 
     legend: {
         layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'middle'
+        floating: true,
+        align: 'left',
+        verticalAlign: 'middle',
+        x: 240,
+        y: -200,
     },
-
 
     series: [{
         name: '관람객 수',
-        data: [21908, 5548, 8105, 11248, 8989, 11816, 18274,
-            17300, 13053, 11906, 10073],
-        pointStart: Date.UTC(2023, 5, 1),
-        pointInterval: 24 * 3600 * 1000, // one day,
-        color: 'red'
+        data: [2908, 554, 6125, 3248, 8989, 7762, 123,
+            6854, 7865, 3358, 2435],
+        // pointStart: Date.UTC(2023, 5, 1),
+        // pointInterval: 24 * 3600 * 1000 // one day            
     }],
 
     responsive: {
@@ -106,6 +120,18 @@ var myChart = Highcharts.chart('daily_Movie_Watch', {
                 }
             }
         }]
+    },
+
+    plotOptions: {
+        series: {
+            colorByPoint: true,
+            dataLabels: {
+                enabled: true, //각각의 데이터 값을 나타낼 것인지
+                color: 'black' // 데이터 값을 나타낼 때 색
+            }
+        },
+        connectNulls: true //null인 지점에 연결할 것인지
+
     }
 
 });
