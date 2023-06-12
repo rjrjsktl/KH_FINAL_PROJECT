@@ -27,8 +27,16 @@ $("#storeTab_4").on("click", function () {
 
 
 $("#storeTab_5").on("click", function () {
-    $("#store_ticket").css('display', 'flex');
-    $("#store_drink").css('display', 'none');
-    $("#store_popcorn").css('display', 'none');
-    $("#store_snack").css('display', 'none');
+    resetStore($(this));
+    $(".store_ticket").css('display', 'flex');
+
+
 });
+
+function resetStore(s) {
+
+    $(".store_ul").css('display', 'none');
+    $(".store_h3").css('display', 'none');
+    $(".storeTab").removeClass("clicked");
+    $(s).addClass("clicked");
+}
