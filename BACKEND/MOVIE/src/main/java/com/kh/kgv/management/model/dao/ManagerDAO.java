@@ -78,7 +78,7 @@ public class ManagerDAO {
 	}
 ///////////////////////// 값이 null로 오는데 확인해봐야함
 	public List<Movie> movieList(Movie movie) {
-		System.out.println(" ===== movieList 호출 dao");
+		System.out.println(" ===== MovieListController 호출 dao");
 		
 		return sqlSession.selectList("movieMapper.movieList", movie);
 	}
