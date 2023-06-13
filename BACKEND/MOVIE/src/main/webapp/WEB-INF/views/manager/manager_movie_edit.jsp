@@ -53,43 +53,50 @@
                                     <div id="movie_sub">
                                         <span>영화 제목</span>
                                         <div>
-                                            <input type="text" class="movie_sub_enter movie_title">
+                                            <input type="text" class="movie_sub_enter movie_title"
+                                            	value="${editMovie['MOVIE_TITLE']}" >
                                         </div>
                                     </div>
                                     <div id="movie_sub">
                                         <span>감독</span>
                                         <div>
-                                            <input type="text" class="movie_sub_enter movie_director">
+                                            <input type="text" class="movie_sub_enter movie_director"
+                                            	value="${editMovie['MOVIE_DIRECTOR']}" >
                                         </div>
                                     </div>
                                     <div id="movie_sub">
                                         <span>출연진</span>
                                         <div>
-                                            <input type="text" class="movie_sub_enter movie_cast">
+                                            <input type="text" class="movie_sub_enter movie_cast"
+												value="${editMovie['MOVIE_CAST']}" >
                                         </div>
                                     </div>
                                     <div id="movie_sub">
                                         <span>상영 시간</span>
                                         <div>
-                                            <input type="text" class="movie_sub_enter movie_time">
+                                            <input type="text" class="movie_sub_enter movie_time"
+                                            	value="${editMovie['MOVIE_RUNTIME']}" >
                                         </div>
                                     </div>
                                     <div id="movie_sub">
                                         <span>제작 국가</span>
                                         <div>
-                                            <input type="text" class="movie_sub_enter movie_country">
+                                            <input type="text" class="movie_sub_enter movie_country"
+                                            	value="${editMovie['MOVIE_NATION']}" >
                                         </div>
                                     </div>
                                     <div id="movie_sub">
                                         <span>개봉일</span>
                                         <div>
-                                            <input type="date" class="movie_releseDate" onfocus="this.showPicker()">
+                                            <input type="date" class="movie_releseDate" onfocus="this.showPicker()"
+                                            	value="${editMovie['MOVIE_OPEN']}" >
                                         </div>
                                     </div>
                                     <div id="movie_sub">
                                         <span>이미지</span>
                                         <div>
-                                            <input type="file" class="movie_image">
+                                            <input type="file" class="movie_image"
+												value="${editMovie['MOVIE_IMG']}" >
                                         </div>
                                     </div>
                                     <div id="level">
@@ -101,7 +108,7 @@
                                             <div class="level_Items">
                                                 <div class="movie_level_slide">
                                                     <c:forEach var="mgrade" items="${mgradelist}">
-                                                        <div>${mgrade}</div>
+                                                        <div class="${mgrade == editMovie['MG_CONTENT'] ? 'selected' : ''}">${mgrade}</div>
                                                     </c:forEach>
                                                 </div>
                                             </div>
@@ -111,12 +118,13 @@
                                         <span>장르</span>
                                         <div class="relative">
                                             <div class="movie_Genre">
-
+												
                                             </div>
                                             <div class="Genre_Items">
+                                            	
                                                 <div class="movie_genre_slide">
                                                     <c:forEach var="mgenre" items="${mgenrelist}">
-                                                        <div>${mgenre}</div>
+                                                        <div class="${mgenre == editMovie['GENRE_NAME'] ? 'selected' : ''}">${mgenre}</div>
                                                     </c:forEach>
                                                 </div>
                                             </div>
@@ -127,7 +135,7 @@
                                         <div>
                                             <!-- value추가해야할거임 -->
                                             <textarea class="movie_sub_enter movie_story"
-                                                placeholder="500자 내외로 작성해 주세요."></textarea>
+                                                placeholder="500자 내외로 작성해 주세요.">${editMovie['MOVIE_CONTENT']}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -141,11 +149,11 @@
                 </div>
 
             </div>
-
+		</div>
     </main>
 
 
-    <script src="${contextPath}/resources/js/manager/manager_movie_add.js"></script>
+    <script src="${contextPath}/resources/js/manager/manager_movie_edit.js"></script>
     <script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
     <script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
 </body>

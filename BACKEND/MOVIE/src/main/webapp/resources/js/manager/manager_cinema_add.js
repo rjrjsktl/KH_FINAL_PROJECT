@@ -1,14 +1,41 @@
 $(document).ready(function () {
 
-  // 슬라이더
 
-  var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 5,
-    spaceBetween: 20,
-  });
+  // 상영관마다 정보를 초기화함 
 
+  $('.screen input.screenDetail').attr('value', JSON.stringify({
+    maxRow: 12,
+    maxColumn: 24,
+    aisle: [],
+    space: {},
+    sweet: [],
+    impared: []
+  }));
+  
 
+  $('.screen input.screenStyle').attr('value', "일반관");
+  $('.screen input.screenSeat').attr('value', 12*24);
 
+  let room;
+  let tempNo;
+  let tempStyle;
+  let tempSeat;
+  let tempRoom;
+  
+  let clickCount = 0;   // 클릭하여 활성화된 좌석의 갯수
+  let firstSeat = [];   // 첫번째로 클릭하여 활성화된 좌석 [x, y]
+  let secondSeat = [];  // 두번째로 클릭하여 활성화된 좌석 [x, y]
+
+  let optionArea = [];  // 통로, 공간, 특수석이 지정될 수 있는 구역
+  let tempRowArr = [];  // 상영관의 x축(가로줄)마다 좌석의 수가 몇 개인지?
+
+  let alphabet = 'ABCDEFGHIJKLMNOPQLSTUVWXYZ';
+  let deleteBtn = '<button type="button" class="room_delete"><i class="fa-solid fa-ban"></i></button>';
+  let screenCount = 4;
+  
+  let nameCheck = false;
+  let addrCheck = false;
+  
   // 영화관 이름 유효성 검사
 
   const cinemaRegex = /^[가-힣|a-z|A-Z|0-9|{1,}$]+$/;
@@ -22,60 +49,54 @@ $(document).ready(function () {
         success: function (result) {
           if (result == 1) {
             $("#cinemaNameMessage").text("중복!");
+            nameCheck = false;
           } else {
             $("#cinemaNameMessage").text("유효!");
+            nameCheck = true;
           }
         },
         error: function () {
           console.log("에러 발생");
         }
       });
-
     } else {
-      $("#cinemaNameMessage").text("메롱!")
+      $("#cinemaNameMessage").text("적절하지 않은 이름입니다!");
+      nameCheck = false;
     }
-
   });
-
-
-
-  // 상영관마다 정보를 초기화함 
-
-  $('.swiper-slide input.screenDetail').attr('value', JSON.stringify({
-    maxRow: 12,
-    maxColumn: 24,
-    aisle: [],
-    space: {},
-    sweet: [],
-    impared: []
-  }));
   
-  $('.swiper-slide input.screenStyle').attr('value', "일반관");
-  $('.swiper-slide input.screenSeat').attr('value', 12*24);
-
-  let room;
-  let tempNo;
-  let tempStyle;
-  let tempSeat;
-  let tempRoom;
   
-
-  let clickCount = 0;   // 클릭하여 활성화된 좌석의 갯수
-  let firstSeat = [];   // 첫번째로 클릭하여 활성화된 좌석 [x, y]
-  let secondSeat = [];  // 두번째로 클릭하여 활성화된 좌석 [x, y]
-
-  let optionArea = [];  // 통로, 공간, 특수석이 지정될 수 있는 구역
-  let tempRowArr = [];  // 상영관의 x축(가로줄)마다 좌석의 수가 몇 개인지?
-
-  let alphabet = 'ABCDEFGHIJKLMNOPQLSTUVWXYZ';
+   // 상영관 추가 버튼
+   
+  $("#plusScreen").on("click", function() {
+    let newScreen = $('.screen[data-room-no=0]').clone(true);
+    newScreen.attr('data-room-no', ++screenCount);
+    newScreen.find('.screenName').html(screenCount);
+    $('.room_delete').remove();
+    newScreen.find('.screen_btn').append(deleteBtn);
+    newScreen.css('display', 'block');
+    $(this).before(newScreen);
+  });
+  
+  
+  // 상영관 삭제 버튼
+  $(document).on("click", '.room_delete', function() {
+    if(screenCount > 4) {
+      $(`.screen[data-room-no=${screenCount--}]`).remove();
+    } 
+    
+    if(screenCount >= 5) {
+      $(`.screen[data-room-no=${screenCount}]`).find('.screen_btn').append(deleteBtn);
+    } 
+  });
 
 
 
   // [이벤트] 상영관 편집 버튼을 클릭하면
 
-  $('.swiper-slide .room_edit').on("click", function () {
+  $('.screen .room_edit').on("click", function () {
 
-    room = $(this).closest('.swiper-slide');
+    room = $(this).closest('.screen');
     tempNo = $(room).data('room-no');
     tempStyle = $(room).find('input[name="screenStyle"]').val();
     tempSeat = $(room).find('input[name="screenSeat"]').val();
@@ -743,6 +764,24 @@ $(document).ready(function () {
   });
 
 
+  // submit 함수
+  
+  $('.bottom_Submit').on("click", function() {
+  
+    if($('#cinemaRoadAddress').val().length > 0) {
+      addrCheck = true;
+    }
+
+    if(nameCheck == false) {
+      alert("이름이 유효하지 않습니다.");
+    } else if(addrCheck == false) {
+      alert("주소가 유효하지 않습니다.");
+    } else if(nameCheck && addrCheck) {
+      $(this).attr("type", "submit");
+      $('#cinemaAddForm').submit();
+    }
+
+  })
 
   // 우클릭 이벤트 해제
 

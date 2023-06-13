@@ -114,6 +114,14 @@ public class ManagerDAO {
 		return sqlSession.selectList("movieMapper.movieList", null, rowBounds);
 	}
 	
+	/** 영화 수정 페이지 이동
+	 * @param movie
+	 * @return
+	 */
+	public Map<String, Object> getEditMovieList(Movie movie) {
+		return sqlSession.selectOne("movieMapper.getEditMovieList", movie);
+	}
+	
 	// 이벤트 목록 수 조회
 	public int getEventListCount() {
 		return sqlSession.selectOne("managerMapper.getEventListCount");
@@ -179,6 +187,7 @@ public class ManagerDAO {
 	public int updateNoticeST(Notice notice) {
 		return sqlSession.update("managerMapper.updateNoticeST", notice);
 	}
+	
 	
 
 
