@@ -1,6 +1,81 @@
 $(document).ready(function () {
 
     // ===============================================================================
+    // 상영 지역 추가 기능 및 슬라이드
+    let area_Arr = [];
+    const play_cinema_area_enter = $('.play_cinema_area_enter');
+    const play_cinema_area_slide = $('.play_cinema_area_slide > div');
+
+    play_cinema_area_slide.on('click', (e) => {
+        e.preventDefault();
+        // alert((e.currentTarget).innerText);
+        const newDiv = document.createElement('div');
+        const addText = $(e.currentTarget).text();
+        const delBtn = '<div class="deleteBtn"><i class="fa-solid fa-xmark fa-2xs"></i></div>';
+        const clickCount = play_cinema_area_enter.children().length;
+
+        if ($.inArray($(e.currentTarget).text(), area_Arr) == -1) {
+            if (clickCount >= 1) {
+                alert('1개만 선택 가능합니다.');
+                return false;
+            } else {
+                newDiv.append(addText);
+                newDiv.classList.add('added');
+                newDiv.innerHTML += delBtn;
+                play_cinema_area_enter.append(newDiv);
+                area_Arr.push(addText)
+                console.log("추가된 값은 : " + addText);
+            }
+        } else {
+            alert('같은 값은 추가 할 수 없습니다.');
+            return false;
+        }
+        console.log("clickCount : " + clickCount);
+        console.log(area_Arr);
+    });
+
+    // 배열에서 삭제
+    play_cinema_area_enter.on('click', '.added', (e) => {
+        e.stopPropagation();
+        const clickedText = $(e.currentTarget).text();
+
+        for (let i = 0; i < area_Arr.length; i++) {
+            if (area_Arr[i] === clickedText) {
+                area_Arr.splice(i, 1);
+                console.log("제거된 값은 : " + clickedText);
+                break;
+            }
+        }
+        console.log(area_Arr);
+        $(e.currentTarget).remove();
+    });
+
+
+    // 상영 지역 슬라이드 토글
+    const Area_slide = $('.area_Items');
+
+    play_cinema_area_enter.on('click', (e) => {
+        e.stopPropagation();
+        Area_slide.toggle();
+        Cinema_slide.hide();
+        Screen_slide.hide();
+        movie_slide.hide();
+        time_slide.hide();
+    });
+    Area_slide.on('click', (e) => {
+        e.stopPropagation();
+        Area_slide.toggle();
+        Cinema_slide.hide();
+        Screen_slide.hide();
+        movie_slide.hide();
+        time_slide.hide();
+    });
+
+    $(document).on('click', () => {
+        Area_slide.hide();
+    });
+
+    // ===============================================================================
     // 상영 영화관 추가 기능 및 슬라이드
     let cinema_Arr = [];
     const play_cinema_enter = $('.play_cinema_enter');
@@ -15,8 +90,8 @@ $(document).ready(function () {
         const clickCount = play_cinema_enter.children().length;
 
         if ($.inArray($(e.currentTarget).text(), cinema_Arr) == -1) {
-            if (clickCount >= 5) {
-                alert('최대 5개 까지 선택 가능합니다.');
+            if (clickCount >= 1) {
+                alert('1개만 선택 가능합니다.');
                 return false;
             } else {
                 newDiv.append(addText);
@@ -57,6 +132,7 @@ $(document).ready(function () {
     play_cinema_enter.on('click', (e) => {
         e.stopPropagation();
         Cinema_slide.toggle();
+        Area_slide.hide();
         Screen_slide.hide();
         movie_slide.hide();
         time_slide.hide();
@@ -64,6 +140,7 @@ $(document).ready(function () {
     Cinema_slide.on('click', (e) => {
         e.stopPropagation();
         Cinema_slide.toggle();
+        Area_slide.hide();
         Screen_slide.hide();
         movie_slide.hide();
         time_slide.hide();
@@ -130,6 +207,7 @@ $(document).ready(function () {
     play_screen_enter.on('click', (e) => {
         e.stopPropagation();
         Screen_slide.toggle();
+        Area_slide.hide();
         Cinema_slide.hide();
         movie_slide.hide();
         time_slide.hide();
@@ -137,6 +215,7 @@ $(document).ready(function () {
     Screen_slide.on('click', (e) => {
         e.stopPropagation();
         Screen_slide.toggle();
+        Area_slide.hide();
         Cinema_slide.hide();
         movie_slide.hide();
         time_slide.hide();
@@ -202,6 +281,7 @@ $(document).ready(function () {
     play_movie_enter.on('click', (e) => {
         e.stopPropagation();
         movie_slide.toggle();
+        Area_slide.hide();
         Cinema_slide.hide();
         Screen_slide.hide();
         time_slide.hide();
@@ -209,6 +289,7 @@ $(document).ready(function () {
     movie_slide.on('click', (e) => {
         e.stopPropagation();
         movie_slide.toggle();
+        Area_slide.hide();
         Cinema_slide.hide();
         Screen_slide.hide();
         time_slide.hide();
@@ -274,6 +355,7 @@ $(document).ready(function () {
     play_time_enter.on('click', (e) => {
         e.stopPropagation();
         time_slide.toggle();
+        Area_slide.hide();
         Cinema_slide.hide();
         Screen_slide.hide();
         movie_slide.hide();
@@ -281,6 +363,7 @@ $(document).ready(function () {
     time_slide.on('click', (e) => {
         e.stopPropagation();
         time_slide.toggle();
+        Area_slide.hide();
         Cinema_slide.hide();
         Screen_slide.hide();
         movie_slide.hide();
@@ -362,12 +445,13 @@ $(document).ready(function () {
 
 
     submitBtn.on('click', () => {
+        console.log('상영 지역 : ' + area_Arr);
         console.log('상영 영화관 : ' + cinema_Arr);
         console.log('상영 스크린 : ' + screen_Arr);
         console.log('상영 영화 : ' + movie_Arr);
+        console.log('상영 시간 : ' + time_Arr);
         console.log('상영 시작일 : ' + startDate.val());
         console.log('상영 종료일 : ' + endDate.val());
-        console.log('상영 시간 : ' + time_Arr);
     });
 
     // const slideUpAll = $('.set_Edge');
