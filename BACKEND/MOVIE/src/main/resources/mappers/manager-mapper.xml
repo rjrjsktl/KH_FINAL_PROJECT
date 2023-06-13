@@ -113,7 +113,7 @@
 	, USER_MANAGERST
 	, USER_BLOCK
 	FROM USERS
-	ORDER BY USER_NO ASC
+	ORDER BY USER_NO DESC
 	</select>
 	
 	<!--회원 관리자 상태 업데이트  -->
@@ -188,7 +188,7 @@
 	SELECT
 	*
 	FROM EVENT
-	ORDER BY EVENT_NO ASC
+	ORDER BY EVENT_NO DESC
 	</select>
 	
 	<!-- 이벤트 수정조회 -->
