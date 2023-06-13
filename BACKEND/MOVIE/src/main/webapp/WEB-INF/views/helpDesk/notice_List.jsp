@@ -72,11 +72,11 @@
 											</c:when>
 											<c:otherwise>
 												<c:forEach var="getNotice"
-													items="${getNoticeList['noticeLists']}" varStatus="loop">
+													items="${getNoticeList.noticeLists}" varStatus="loop">
 													<c:if test="${loop.index < 10}">
 														<tr>
 															<td>${getNotice.noticeNo}</td>
-															<td><a href="#" style="color:white">${getNotice.noticeTitle}</a></td>
+															<td><a href="${contextPath}/helpDesk/notice_detail" style="color:white">${getNotice.noticeTitle}</a></td>
 															<td>${getNotice.noticeRegDate}</td>
 															<td>${getNotice.noticeView}</td>
 														</tr>

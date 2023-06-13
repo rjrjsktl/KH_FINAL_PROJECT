@@ -63,7 +63,7 @@
                                         <div>
                                             <div>
                                                 <input type="text" id="cinemaPostCode" name="cinemaAddr" placeholder="우편번호" maxlength="6" readonly>
-                                                <button type="button" onclick="return sample4_execDaumPostcode()">주소검색</button>
+                                                <button type="button" onclick="return searchDaumAddress()">주소검색</button>
                                             </div>
                                             <div>
                                                 <input type="text" id="cinemaRoadAddress" name="cinemaAddr" placeholder="도로명주소" readonly>
@@ -82,7 +82,7 @@
                                                     <div>
                                                         <div>
                                                             <span>${i}</span>관
-                                                            <span class="room_type">일반관</span>
+                                                            <span class="screenType">일반관</span>
                                                         </div>
                                                         <div>
                                                             <button type="button" class="room_edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
@@ -90,7 +90,9 @@
                                                     
                                                     </div>
                                                     <div style="display:none">
-                                                        <input type="text" class="status" name="roomStatus">
+                                                        <input type="text" class="screenStyle" name="screenStyle">
+                                                        <input type="text" class="screenSeat" name="screenSeat">
+                                                        <input type="text" class="screenDetail" name="screenDetail">
                                                     </div>
                                                     
                                                 </div>
