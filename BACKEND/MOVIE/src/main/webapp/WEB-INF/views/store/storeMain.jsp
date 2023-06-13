@@ -49,9 +49,7 @@
                 <h3 class="store_h3 store_drink">음료</h3>
                 <ul class="store_ul store_drink">
 
-                    <!-- <div>
-                        <h3>음료</h3>
-                    </div> -->
+                  
 
 
 

@@ -9,12 +9,21 @@ import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
 
 public interface ManagerService {
+	
+	// 관리자 메인 신규 회원 목록 조회
+	List<User> getAllUser();
+	
+	// 관리자 메인 공지사항 목록 조회
+	List<Notice> getAllNotice();
 
 	// 회원 목록 조회
 	Map<String, Object> selectAll(int cp);
 
 	// 회원 관리자 상태 업데이트
 	int updateST(User user);
+	
+	// 회원 이용제한 업데이트
+	int blockST(User user);
 
 	// 영화 등록 서비스
 	int MovieAdd(Movie inputMovie);
@@ -45,5 +54,18 @@ public interface ManagerService {
 
 	// 공지사항 목록 조회
 	Map<String, Object> noticeList(int cp);
+
+	// 공지사항 수정 조회
+	Map<String, Object> getEditNoticeList(Notice notice);
+
+	// 공지사항 수정(업데이트)
+	int editNotice(Notice notice);
+
+	//공지사항 상태 업데이트
+	int updateNoticeST(Notice notice);
+
+
+
+
 
 }
