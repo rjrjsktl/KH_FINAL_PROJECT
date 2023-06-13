@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
@@ -695,40 +696,78 @@ public class ManagerController {
 				// ===================================================
 				// ===================================================
 					
-						// 테스트 이미지 업로드
-						@PostMapping("/manager_testPage/uploadImageFile")
-						@ResponseBody
-						public String testImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request) {
-							JsonObject jsonObject = new JsonObject();
+						// 테스트 이미지 업로드1
+				@PostMapping("/manager_testPage/uploadImageFile")
+				@ResponseBody
+				public String testImageFile(@RequestParam("file") MultipartFile[] multipartFiles, HttpServletRequest request) {
+				    JsonArray jsonArray = new JsonArray(); // JsonArray로 변경
 
-//							  String fileRoot = "C:\\Users\\cropr\\Desktop\\test"; // 외부경로로 저장을 희망할때.
+				    String webPath = "/resources/images/testFolder/";
+				    String fileRoot = request.getServletContext().getRealPath(webPath);
 
-							// 내부경로로 저장
-							String webPath = "/resources/images/fileupload/";
+				    for (MultipartFile multipartFile : multipartFiles) {
+				        JsonObject jsonObject = new JsonObject();
 
-							String fileRoot = request.getServletContext().getRealPath(webPath);
+				        String originalFileName = multipartFile.getOriginalFilename();
+				        String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
+				        String savedFileName = UUID.randomUUID() + extension;
 
-							String originalFileName = multipartFile.getOriginalFilename(); // 오리지날 파일명
-							String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자
-							String savedFileName = UUID.randomUUID() + extension; // 저장될 파일 명
+				        File targetFile = new File(fileRoot + savedFileName);
+				        try {
+				            InputStream fileStream = multipartFile.getInputStream();
+				            FileUtils.copyInputStreamToFile(fileStream, targetFile);
+				            jsonObject.addProperty("", request.getContextPath() + webPath + savedFileName);
+//				            jsonObject.addProperty("url", request.getContextPath() + webPath + savedFileName);
+//				            jsonObject.addProperty("responseCode", "success");
 
-							File targetFile = new File(fileRoot + savedFileName);
-							try {
-								InputStream fileStream = multipartFile.getInputStream();
-								FileUtils.copyInputStreamToFile(fileStream, targetFile); // 파일 저장
-								jsonObject.addProperty("url", request.getContextPath() + webPath + savedFileName); // contextroot +
-																													// resources + 저장할 내부
-																													// 폴더명
-								jsonObject.addProperty("responseCode", "success");
+				        } catch (IOException e) {
+				            FileUtils.deleteQuietly(targetFile);
+				            jsonObject.addProperty("responseCode", "error");
+				            e.printStackTrace();
+				        }
 
-							} catch (IOException e) {
-								FileUtils.deleteQuietly(targetFile); // 저장된 파일 삭제
-								jsonObject.addProperty("responseCode", "error");
-								e.printStackTrace();
-							}
-							String a = jsonObject.toString();
-							System.out.println("================================================= 이미지 는?? : : " + a);
-							return a;
+				        jsonArray.add(jsonObject); // JsonObject를 JsonArray에 추가
+				    }
 
+				    String jsonResult = jsonArray.toString();
+				    System.out.println("이미지: " + jsonResult);
+				    return jsonResult;
+				}
+				// 테스트 이미지 업로드2
+				@PostMapping("/manager_testPage/uploadImageFile2")
+				@ResponseBody
+				public String testImageFile2(@RequestParam("file") MultipartFile[] multipartFiles, HttpServletRequest request) {
+					JsonArray jsonArray = new JsonArray(); // JsonArray로 변경
+					
+					String webPath = "/resources/images/testFolder/";
+					String fileRoot = request.getServletContext().getRealPath(webPath);
+					
+					for (MultipartFile multipartFile : multipartFiles) {
+						JsonObject jsonObject = new JsonObject();
+						
+						String originalFileName = multipartFile.getOriginalFilename();
+						String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
+						String savedFileName = UUID.randomUUID() + extension;
+						
+						File targetFile = new File(fileRoot + savedFileName);
+						try {
+							InputStream fileStream = multipartFile.getInputStream();
+							FileUtils.copyInputStreamToFile(fileStream, targetFile);
+							jsonObject.addProperty("", request.getContextPath() + webPath + savedFileName);
+//				            jsonObject.addProperty("url", request.getContextPath() + webPath + savedFileName);
+//				            jsonObject.addProperty("responseCode", "success");
+							
+						} catch (IOException e) {
+							FileUtils.deleteQuietly(targetFile);
+							jsonObject.addProperty("responseCode", "error");
+							e.printStackTrace();
 						}
+						
+						jsonArray.add(jsonObject); // JsonObject를 JsonArray에 추가
+					}
+					
+					String jsonResult = jsonArray.toString();
+					System.out.println("이미지: " + jsonResult);
+					return jsonResult;
+				}
 }

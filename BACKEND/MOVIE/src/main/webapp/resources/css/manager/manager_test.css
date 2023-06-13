@@ -280,37 +280,92 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     -webkit-appearance: none;
 }
 
-/* 이미지 */
-.movie_image {
+/* 이미지1 */
+.movie_image1 {
     position: relative;
     display: flex;
     justify-content: center;
-    width: 300px;
+    width: 200px;
     border: 2px solid #ddd;
     vertical-align: middle;
 }
 
-.movie_image:hover {
+.movie_image1:hover {
     border: 2px solid black;
 }
 
-.movie_image>div {
+/* 이미지2 */
+.movie_image2 {
+    position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-right: 20px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: #333333;
-    color: white;
-    cursor: pointer;
+    width: 200px;
+    border: 2px solid #ddd;
+    vertical-align: middle;
 }
 
-.movie_image div:hover {
-    background-color: #FAE300;
-    color: black;
+.movie_image2:hover {
+    border: 2px solid black;
 }
 
+/* 이미지3 */
+.movie_image3 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    border: 2px solid #ddd;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+
+.movie_image3:hover {
+    border: 2px solid black;
+}
+
+/* 이미지4 */
+.movie_image4 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    border: 2px solid #ddd;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+
+.movie_image4:hover {
+    border: 2px solid black;
+}
+
+/* 이미지5 */
+.movie_image5 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    border: 2px solid #ddd;
+    vertical-align: middle;
+}
+
+.movie_image5:hover {
+    border: 2px solid black;
+}
+
+/* 이미지6 */
+.movie_image6 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    border: 2px solid #ddd;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+
+.movie_image6:hover {
+    border: 2px solid black;
+}
 
 .deleteBtn {
     display: flex;
