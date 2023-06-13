@@ -4,16 +4,10 @@ let totalPrice = Number($('#totalPrice').text());
 let price = Number($('.price').text());
 
 
-$("#price").text(numberWithCommas(price));
-$("#totalPrice").text(numberWithCommas(totalPrice));
-
 
 $('.btn_plus').click(function () {
     let count = $(this).prev();
     console.log(totalPrice);
-
-
-
 
     if (totalCount < 4) {
 
@@ -22,8 +16,8 @@ $('.btn_plus').click(function () {
 
 
         totalCount++;
-        totalPrice += price;
-        $('#totalPrice').text(numberWithCommas(totalPrice));
+        totalPrice += calcuprice()
+        $('#totalPrice').text(totalPrice);
 
         console.log(totalCount);
 
@@ -37,15 +31,15 @@ $('.btn_plus').click(function () {
 
 
 
-$('.btn_minus').click(function () {
+$('.btn_mins').click(function () {
     let count = $(this).next();
 
     if (Number(count.text()) > 1) {
 
         count.text(Number(count.text()) - 1);
         totalCount--;
-        totalPrice -= price;
-        $('#totalPrice').text(numberWithCommas(totalPrice));
+        totalPrice -= calcuprice()
+        $('#totalPrice').text(totalPrice);
 
 
     }
@@ -53,17 +47,11 @@ $('.btn_minus').click(function () {
 
 
 
+function calcuprice() {
 
+    return price;
 
-function numberWithCommas(x) {
-    if (!x) return 0;
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-
-
-
-
-
 
 
 $(".btn-toggle").on("click", function () {

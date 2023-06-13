@@ -202,6 +202,12 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		
+		<dependency>
+    		<groupId>org.apache.commons</groupId>
+    		<artifactId>commons-text</artifactId>
+    		<version>1.9</version>
+		</dependency>
 
 
 		<!-- AspectJ : AOP 기능을 사용하기 위한 언어 문법 -->

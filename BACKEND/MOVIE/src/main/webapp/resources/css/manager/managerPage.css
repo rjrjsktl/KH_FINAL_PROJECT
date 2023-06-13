@@ -197,6 +197,11 @@
     padding-left: 20px;
 }
 
+.inner_Top a {
+    text-decoration: none;
+    color: black;
+}
+
 .inner_Top_Text {
     flex: 1;
 }

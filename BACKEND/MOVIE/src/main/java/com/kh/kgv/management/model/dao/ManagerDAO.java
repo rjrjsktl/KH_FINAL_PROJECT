@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.vo.Event;
+import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Pagination;
 import com.kh.kgv.mypage.controller.MyPageController;
 
@@ -24,6 +25,15 @@ public class ManagerDAO {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+	
+	// 관리자 메인 신규 회원 목록 조회
+	public List<User> getAllUser() {
+		return sqlSession.selectList("managerMapper.getAllUser");
+	}
+	// 관리자 메인 공지사항 목록 조회
+	public List<Notice> getAllNotice() {
+		return sqlSession.selectList("managerMapper.getAllNotice");
+	}
 	
 	
 	/** 회원 수 조회
@@ -50,6 +60,11 @@ public class ManagerDAO {
 	public int updateST(User user) {
 		
 		return sqlSession.update("managerMapper.updateST", user);
+	}
+	
+	// 회원 이용제한 업데이트
+	public int blockST(User user) {
+		return sqlSession.update("managerMapper.blockST", user);
 	}
 
 	/** 영화 등록 DAO
@@ -84,10 +99,12 @@ public class ManagerDAO {
 	}
 
 	
+	// 이벤트 목록 수 조회
 	public int getEventListCount() {
 		return sqlSession.selectOne("managerMapper.getEventListCount");
 	}
 
+	// 
 	public List<Event> eventList(Pagination pagination) {
 		
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
@@ -111,6 +128,42 @@ public class ManagerDAO {
 	public int updateEventST(Event event) {
 		return sqlSession.update("managerMapper.updateEventST", event);
 	}
+
+	// 공지사항 등록
+	public int addNotice(Notice notice) {
+		return sqlSession.insert("managerMapper.addNotice", notice);
+	}
 	
+	//공지사항 수 조회
+	public int getNoticeListCount() {
+		return sqlSession.selectOne("managerMapper.getNoticeListCount");
+	}
+
+	//공지사항  조회
+	public List<Notice> noticeList(Pagination pagination) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("managerMapper.noticeList", null, rowBounds);
+	}
+	
+	// 공지사항 수정 조회
+	public Map<String, Object> getEditNoticeList(Notice notice) {
+		
+		return sqlSession.selectOne("managerMapper.getEditNoticeList", notice);
+	}
+	
+	// 공지사항 수정(업데이트)
+	public int editNotice(Notice notice) {
+		return sqlSession.update("managerMapper.editNotice", notice);
+	}
+
+	//공지사항 상태 업데이트
+	public int updateNoticeST(Notice notice) {
+		return sqlSession.update("managerMapper.updateNoticeST", notice);
+	}
+
 
 }
