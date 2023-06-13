@@ -187,16 +187,34 @@ public class ManagerController {
 	// 관리자_영화 목록 이동
 	@GetMapping("/movie_list")
 	public String moveMovieList(Model model) {
-		
 		// movielist 값 얻어오기
 		Movie movie = new Movie();
 		List<Movie> movielist = service.movieList(movie);
-				
+		System.out.println("movielist 값 :::::" + movielist);
+		
 		// movielist에서 따온 값 가공하기
-	    List<Movie> cleanedMovielist = Util.removeQuotesFromList(movielist);
+//	    List<Movie> cleanedMovielist = Util.removeQuotes(movielist);
+	    List<Movie> cleanedList = new ArrayList<>();
+	    	for (Movie movie1 : movielist) {
+	    		Movie cleanedMovie = new Movie();
+	    		cleanedMovie.setMgNo(Util.removeQuotes(movie1.getMgNo()));
+	    		cleanedMovie.setGenreCode(Util.removeQuotes(movie1.getGenreCode()));
+	    		cleanedMovie.setMovieRuntime(movie1.getMovieRuntime());
+	    		cleanedMovie.setMovieTitle(movie1.getMovieTitle());
+	    		cleanedMovie.setMovieNation(movie1.getMovieNation());
+	    		cleanedMovie.setMovieOpen(movie1.getMovieOpen());
+	    		cleanedMovie.setMovieContent(movie1.getMovieContent());
+	    		cleanedMovie.setMovieImg(movie1.getMovieImg());
+	    		cleanedMovie.setMovieUploader(movie1.getMovieUploader());
+	    		cleanedMovie.setMovieDirector(movie1.getMovieDirector());
+	    		cleanedMovie.setMovieCast(movie1.getMovieCast());
+	        
+	    		cleanedList.add(cleanedMovie);
+	    	}
+	    
         // 다른 속성이 있다면 해당 속성에 대해서도 동일한 방식으로 처리
-	    System.out.println("cleanedMovielist 값 :::::" + cleanedMovielist);
-	    model.addAttribute("movielist", cleanedMovielist);
+	    System.out.println("cleanedList 값 :::::" + cleanedList);
+	    model.addAttribute("movielist", cleanedList);
 //		model.addAttribute("movielist", movielist);
 		
 		System.out.println("관리자_영화 목록 이동");
