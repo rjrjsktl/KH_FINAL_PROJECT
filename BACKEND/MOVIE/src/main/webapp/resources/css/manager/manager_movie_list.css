@@ -239,12 +239,13 @@
     background-color: #dbdbdb;
 }
 
-.table_main td button {
+.table_main td a {
     width: 25px;
     height: 25px;
+    color: black;
 }
 
-.table_main td button i {
+.table_main td a i {
     padding-top: 4px;
     padding-right: 2px;
 }
@@ -265,14 +266,26 @@
     cursor: pointer;
     margin: 0 10px;
     border-radius: 5px;
-}
-
-.page_Nation div:hover {
-    background-color: #eee;
+    background-color: #f0efef;
 }
 
 .selected_Cp {
     border-radius: 5px;
     font-weight: bold;
-    background-color: #ddd;
+    background-color: #eee;
+    border: 2px solid black;
+}
+
+.page_Nation div:hover {
+    background-color: #ccc;
+}
+
+.page_Nation a {
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    line-height: 50px;
+    width: 50px;
+    height: 50px;
+    color: black;
 }

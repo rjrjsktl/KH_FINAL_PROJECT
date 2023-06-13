@@ -12,10 +12,10 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>공지사항 목록</title>
+<title>스토어 물품 목록</title>
 
 <link rel="stylesheet"
-	href="${contextPath}/resources/css/manager/manager_notice_list.css">
+	href="${contextPath}/resources/css/manager/manager_store_list.css">
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/manager/manager_inner_Header.css">
 <link rel="stylesheet"
@@ -49,7 +49,7 @@
 					<div class="set_Edge">
 						<div class="table_Wrapper">
 							<div class="table_Title">
-								<span>공지사항 목록</span>
+								<span>스토어 물품 목록</span>
 								<div class="search_Box">
 									<input placeholder="검색" />
 									<button>
@@ -141,8 +141,7 @@
 
 	</main>
 
-	<script
-		src="${contextPath}/resources/js/manager/manager_notice_list.js"></script>
+	<script src="${contextPath}/resources/js/manager/manager_store_list.js"></script>
 	<script
 		src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
 	<script src="${contextPath}/resources/js/manager/manager_nav.js"></script>

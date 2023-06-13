@@ -26,6 +26,15 @@ public class ManagerDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	// 관리자 메인 신규 회원 목록 조회
+	public List<User> getAllUser() {
+		return sqlSession.selectList("managerMapper.getAllUser");
+	}
+	// 관리자 메인 공지사항 목록 조회
+	public List<Notice> getAllNotice() {
+		return sqlSession.selectList("managerMapper.getAllNotice");
+	}
+	
 	
 	/** 회원 수 조회
 	 * @return
@@ -51,6 +60,11 @@ public class ManagerDAO {
 	public int updateST(User user) {
 		
 		return sqlSession.update("managerMapper.updateST", user);
+	}
+	
+	// 회원 이용제한 업데이트
+	public int blockST(User user) {
+		return sqlSession.update("managerMapper.blockST", user);
 	}
 
 	/** 영화 등록 DAO
@@ -135,5 +149,21 @@ public class ManagerDAO {
 		return sqlSession.selectList("managerMapper.noticeList", null, rowBounds);
 	}
 	
+	// 공지사항 수정 조회
+	public Map<String, Object> getEditNoticeList(Notice notice) {
+		
+		return sqlSession.selectOne("managerMapper.getEditNoticeList", notice);
+	}
+	
+	// 공지사항 수정(업데이트)
+	public int editNotice(Notice notice) {
+		return sqlSession.update("managerMapper.editNotice", notice);
+	}
+
+	//공지사항 상태 업데이트
+	public int updateNoticeST(Notice notice) {
+		return sqlSession.update("managerMapper.updateNoticeST", notice);
+	}
+
 
 }
