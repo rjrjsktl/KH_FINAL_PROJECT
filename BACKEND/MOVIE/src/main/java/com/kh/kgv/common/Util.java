@@ -36,39 +36,40 @@ public class Util {
 	   
 	   // DB에 배열을 넣었을 경우 ["값"]이런형식으로 오는데 값만 불러오게하는 Util
 	   // 영화 리스트 페이지에 적용되는값 다른 것들도 이런 형식으로 사용하면될듯
-	   public static List<Movie> removeQuotesFromList(List<Movie> movielist) {
-		    List<Movie> cleanedList = new ArrayList<>();
-		    for (Movie movie : movielist) {
-		    	String cleanedMgNo = movie.getMgNo().replaceAll("[\"\\[\\]\\\\]", "").replace("&quot;", "");
-
-		        String cleanedGenre = movie.getGenreCode().replaceAll("[\"\\[\\]\\\\]", "").replace("&quot;", "");
-		        // genreCode에 쉼표(,) 추가
-		        cleanedGenre = cleanedGenre.replaceAll(",", ", ");
-		    	// 다른 속성이 있다면 해당 속성도 처리해주세요.
-		        
-		        Movie cleanedMovie = new Movie();
-		        cleanedMovie.setMgNo(cleanedMgNo);
-		        cleanedMovie.setGenreCode(cleanedGenre);
-		        // 다른 속성 추가
-		        cleanedMovie.setMovieRuntime(movie.getMovieRuntime());
-		        cleanedMovie.setMovieTitle(movie.getMovieTitle());
-		        cleanedMovie.setMovieNation(movie.getMovieNation());
-		        cleanedMovie.setMovieOpen(movie.getMovieOpen());
-		        cleanedMovie.setMovieContent(movie.getMovieContent());
-		        cleanedMovie.setMovieImg(movie.getMovieImg());
-		        cleanedMovie.setMovieUploader(movie.getMovieUploader());
-		        cleanedMovie.setMovieDirector(movie.getMovieDirector());
-		        cleanedMovie.setMovieCast(movie.getMovieCast());
-		        
-		        cleanedList.add(cleanedMovie);
-		    }
-		    return cleanedList;
-		}
+	   // 밑에 removeQyites 개행 있으니 필요하신분은 Util.removeQuotes(movie1.getMgNo()));
+	   // 이런식으로 넣어서 쓰세요 밑에 주석은 넣는 참고 자료니 참고 부탁
+	   // 아니면 ManagerController에 moveMovieList 메소드 보시면 이해 가실겁니다.
+//	   public static List<Movie> removeQuotesFromList(List<Movie> movielist) {
+//		    List<Movie> cleanedList = new ArrayList<>();
+//		    for (Movie movie : movielist) {
+//		    	String cleanedMgNo = movie.getMgNo().replaceAll("[\"\\[\\]\\\\]", "").replace("&quot;", "");
 //
-//	   public static String removeQuotes(String input) {
-//		   
-//		    return input.replaceAll("&quot;", "\"");
+//		        String cleanedGenre = movie.getGenreCode().replaceAll("[\"\\[\\]\\\\]", "").replace("&quot;", "");
+//		        // genreCode에 쉼표(,) 추가
+//		        cleanedGenre = cleanedGenre.replaceAll(",", ", ");
+//		    	// 다른 속성이 있다면 해당 속성도 처리해주세요.
+//		        
+//		        Movie cleanedMovie = new Movie();
+//		        cleanedMovie.setMgNo(cleanedMgNo);
+//		        cleanedMovie.setGenreCode(cleanedGenre);
+//		        // 다른 속성 추가
+//		        cleanedMovie.setMovieRuntime(movie.getMovieRuntime());
+//		        cleanedMovie.setMovieTitle(movie.getMovieTitle());
+//		        cleanedMovie.setMovieNation(movie.getMovieNation());
+//		        cleanedMovie.setMovieOpen(movie.getMovieOpen());
+//		        cleanedMovie.setMovieContent(movie.getMovieContent());
+//		        cleanedMovie.setMovieImg(movie.getMovieImg());
+//		        cleanedMovie.setMovieUploader(movie.getMovieUploader());
+//		        cleanedMovie.setMovieDirector(movie.getMovieDirector());
+//		        cleanedMovie.setMovieCast(movie.getMovieCast());
+//		        
+//		        cleanedList.add(cleanedMovie);
+//		    }
+//		    return cleanedList;
 //		}
+	   public static String removeQuotes(String input) {
+		    return input.replaceAll("[\"\\[\\]\\\\]", "").replaceAll("&quot;", "").replaceAll(",", ", ");
+		}
 
 	
 
