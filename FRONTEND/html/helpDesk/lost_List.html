@@ -2,6 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  -->
 
+<!-- 최신화 종료 건들일없음 -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,18 +12,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1 : 1 문의 작성</title>
+    <title>분실물 ㅠㅠ</title>
 
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
 
-    <!-- jQuery 라이브러리 추가(CDN) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="../../css/notice/notice_ask_form.css">
     <link rel="stylesheet" href="../../css/common/outline.css">
-    <link rel="stylesheet" href="../../css/notice/notice_detail.css">
+    <link rel="stylesheet" href="../../css/notice/find-my-item.css">
+    <link rel="stylesheet" href="../../css/notice/notice_Aside.css">
 
 </head>
 
@@ -157,56 +156,81 @@
                 </aside>
 
                 <div class="container">
-                    <div class="content-wrap">
+                    <div>
+                        <div class="notice-content-wrap">
+                            <div class="notice-header">
+                                <h2>분실물 문의</h2>
+                                <p>분실물이 있다면 게시물을 등록해주시면 빠른 시일 내로 답변드리겠습니다.</p>
+                            </div>
 
-                        <h2>1 : 1 문의 작성</h2>
+                            <div class="search-area">
+                                <p>분실물 게시글 총<span style="color:red">1</span><span>/</span><span>3</span>건</p>
+                            </div>
 
-                        <div class="notice-contents content_inner">
-                            <table class="innerTable">
-                                <tr class="tteesstt">
-                                    <th>제목</th>
-                                    <td><input type="text" placeholder=" 제목을 입력해 주세요."></td>
-                                </tr>
-                                <tr>
-                                    <th>문의종류</th>
-                                    <td>
-                                        <select>
-                                            <option disabled selected> 문의 내용을 선택해주세요.</option>
-                                            <option value="movie">영화 문의</option>
-                                            <option value="using">이용 문의</option>
-                                            <option value="payment">결제 문의</option>
-                                            <option value="refund">환불 문의</option>
-                                            <option value="NAMOONY">나문희</option>
-                                        </select>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>첨부파일</th>
-                                    <td><input type="file" multiple class="align_File"></td>
-                                </tr>
-                            </table>
+                            <div class="table-wrap">
+                                <table>
+
+                                    <thead>
+                                        <th>번호</th>
+                                        <th>내용</th>
+                                        <th>등록일</th>
+                                        <th>조회수</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="row">
+                                            <td>1</td>
+                                            <th><a href="">내용123</a><span>...[0]</span></th>
+                                            <td>2023.01.01</td>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr class="row">
+                                            <td>2</td>
+                                            <th><a href="">내용123</a><span>...[1]</span></th>
+                                            <td>2023.01.01</td>
+                                            <td>23</td>
+                                        </tr>
+                                        <tr class="row">
+                                            <td>3</td>
+                                            <th><a href="">내용123</a><span>...[1]</span></th>
+                                            <td>2023.01.01</td>
+                                            <td>456</td>
+                                        </tr>
+
+
+
+                                    </tbody>
+
+                                </table>
+
+                                <div>
+                                    <button>게시물 등록</button>
+                                </div>
+                                <!-- 10개씩 -->
+                                <ul class="pagination">
+                                    <li><a href="#">&lt;&lt;</a></li>
+                                    <li><a href="#">&lt;</a></li>
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#">&gt;</a></li>
+                                    <li><a href="#">&gt;&gt;</a></li>
+                                </ul>
+
+                            </div>
                         </div>
-
-                        <div id="writeForm">
-                            <div class="inner_Textarea_Title">내용</div>
-                            <textarea class="inner_Textarea"></textarea>
-                        </div>
-
-                        <div class="btn_Container">
-                            <button>작성하기</button>
-                            <button>취소하기</button>
-                        </div>
-
                     </div>
-
                 </div>
-
-            </section>
         </main>
 
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="close-button">&times;</div>
+            <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
+        </div>
     </div>
     <footer>
 
@@ -246,7 +270,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="../../js/common/header.js"></script>
-    <script src="../../js/noticepage/notice_ask_form.js"></script>
+    
+
 </body>
 
 </html>

@@ -406,17 +406,17 @@
 /* 상영관 편집 > 좌석 */
 
 #seat_area > div {
-  display: flex;
-  flex-wrap: nowrap;
-  position: relative;
-  width: 100%;
-  height: 25px;
-  line-height: 25px;
-  margin-bottom: 7px;
+    display: flex;
+    flex-wrap: nowrap;
+    position: relative;
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    margin-bottom: 7px;
 }
 
 #seat_area > div:last-child {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 

@@ -34,8 +34,8 @@ public interface ManagerService {
 	// Gener
 	List<String> mgenreList();
 
-	// MovieListController
-	List<Movie> movieList(Movie movie);
+	// 영화 목록 조회
+	Map<String, Object> movieList(int cp);
 
 	// 이벤트 목록 조회
 	Map<String, Object> eventList(int cp);
@@ -63,6 +63,8 @@ public interface ManagerService {
 
 	//공지사항 상태 업데이트
 	int updateNoticeST(Notice notice);
+
+	
 
 
 
