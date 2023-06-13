@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
   // 슬라이더
 
   var swiper = new Swiper(".mySwiper", {
@@ -38,13 +39,9 @@ $(document).ready(function () {
 
 
 
-
-
-
   // 상영관마다 정보를 초기화함 
 
-  $('.swiper-slide input.status').attr('value', JSON.stringify({
-    type: '일반관',
+  $('.swiper-slide input.screenDetail').attr('value', JSON.stringify({
     maxRow: 12,
     maxColumn: 24,
     aisle: [],
@@ -52,26 +49,16 @@ $(document).ready(function () {
     sweet: [],
     impared: []
   }));
-
-
-
-  /* 카카오 주소 API */
-  function sample4_execDaumPostcode() {
-    new daum.Postcode({
-      oncomplete: function (data) {
-        $('#cinemaPostCode').val(data.zonecode);
-        $("#cinemaRoadAddress").val(data.roadAddress);
-        $("#cinemaDetailAddress").val("");
-        $("#cinemaDetailAddress").attr("readOnly", false);
-      }
-    }).open();
-  }
-
-
+  
+  $('.swiper-slide input.screenStyle').attr('value', "일반관");
+  $('.swiper-slide input.screenSeat').attr('value', 12*24);
 
   let room;
   let tempNo;
+  let tempStyle;
+  let tempSeat;
   let tempRoom;
+  
 
   let clickCount = 0;   // 클릭하여 활성화된 좌석의 갯수
   let firstSeat = [];   // 첫번째로 클릭하여 활성화된 좌석 [x, y]
@@ -90,12 +77,14 @@ $(document).ready(function () {
 
     room = $(this).closest('.swiper-slide');
     tempNo = $(room).data('room-no');
-    tempRoom = JSON.parse($(room).find('input[name="roomStatus"]').val());
+    tempStyle = $(room).find('input[name="screenStyle"]').val();
+    tempSeat = $(room).find('input[name="screenSeat"]').val();
+    tempRoom = JSON.parse($(room).find('input[name="screenDetail"]').val());
 
     $('#room_no').html(tempNo);
     $('#temp_row').val(tempRoom.maxRow);
     $('#temp_column').val(tempRoom.maxColumn);
-    $("#temp_type").val(tempRoom.type).prop("selected", true);
+    $("#temp_type").val(tempStyle).prop("selected", true);
 
     createBasicRoom(tempRoom.maxRow, tempRoom.maxColumn);
     changeRoom();
@@ -112,7 +101,7 @@ $(document).ready(function () {
   // [이벤트] 상영관의 타입을 변경하면
 
   $('#temp_type').on("input", function () {
-    tempRoom.type = $(this).val();
+    tempStyle = $(this).val();
   })
 
 
@@ -235,7 +224,8 @@ $(document).ready(function () {
         j++;
       }
     }
-
+	
+	tempSeat = $("[data-code]").length;
     tempRoom.sweet.forEach(s => $(`[data-code=${s}]`).addClass('sweet'));
 
   }
@@ -707,11 +697,16 @@ $(document).ready(function () {
   // 확인 버튼 
 
   $('#room_confirm').on("click", function () {
-    $(room).find('.room_type').html(tempRoom.type);
-    $(room).find('input[name="roomStatus"]').attr('value', JSON.stringify(tempRoom));
+    $(room).find('.screenType').html(tempStyle);
+    $(room).find('input[name="screenStyle"]').attr('value', tempStyle);
+    $(room).find('input[name="screenSeat"]').attr('value', tempSeat);
+    $(room).find('input[name="screenDetail"]').attr('value', JSON.stringify(tempRoom));
 
     $('#room_area').css('display', 'none');
     $('#room_area').css('z-index', '0');
+    
+    console.log(tempRoom);
+    console.log(tempSeat);
   });
 
 
@@ -723,9 +718,11 @@ $(document).ready(function () {
     $('#temp_column').val(24);
     $("#temp_type").val("일반관").prop("selected", true);
 
+    tempStyle = "일반관";
+    tempSeat = 12 * 24;
+    
     tempRoom.maxRow = 12;
     tempRoom.maxColumn = 24;
-    tempRoom.type = "일반관";
     tempRoom.aisle = [];
     tempRoom.space = {};
     tempRoom.sweet = [];
@@ -753,5 +750,20 @@ $(document).ready(function () {
     return false;
   }
 
-
 });
+
+
+
+// 상단의 ready() 함수 안에 넣지 마세요.
+/* 카카오 주소 API */
+
+function searchDaumAddress() {
+  new daum.Postcode({
+    oncomplete: function (data) {
+      $('#cinemaPostCode').val(data.zonecode);
+      $("#cinemaRoadAddress").val(data.roadAddress);
+      $("#cinemaDetailAddress").val("");
+      $("#cinemaDetailAddress").attr("readOnly", false);
+    }
+  }).open();
+}

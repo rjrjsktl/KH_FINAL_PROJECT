@@ -27,18 +27,6 @@
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
 
-<!-- Summernote-->
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
-	rel="stylesheet" />
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-<link
-	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-	rel="stylesheet">
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/manager/manager_store_add.css">
 <link rel="stylesheet"
@@ -66,12 +54,89 @@
 							<div class="table_Title">
 								<span>스토어 물품 등록</span>
 							</div>
-							<div class="table_main">
-								<div class="enter_Title">
-									<input type="text" placeholder="제목을 입력하세요.">
-								</div>
-								<div>여기에 추가하세요.</div>
-							</div>
+							
+							
+							 <form>
+                                <div class="table_main">
+                                    <div id="movie_sub">
+                                        <span>상품 이름</span>
+                                        <div>
+                                            <input type="text" class="movie_sub_enter movie_title">
+                                        </div>
+                                    </div>
+
+                                    <div id="movie_sub">
+                                        <span>상품 설명</span>
+                                        <div>
+                                            <input type="text" class="movie_sub_enter movie_title">
+                                        </div>
+                                    </div>
+                                    <div id="movie_sub">
+                                        <span>상품 가격</span>
+                                        <div>
+                                            <input type="number" class="movie_sub_enter movie_title">
+                                        </div>
+                                    </div>
+
+                                    <div id="movie_sub">
+                                        <span>상품 제한개수</span>
+                                        <div>
+                                            <input type="number" class="movie_sub_enter movie_title">
+                                        </div>
+                                    </div>
+
+
+                                    <div id="movie_sub">
+                                        <span>이미지</span>
+                                        <div>
+                                            <input type="file" class="movie_image">
+                                        </div>
+                                    </div>
+
+                                    <div id="level">
+                                        <span>카테고리</span>
+                                        <div>
+                                            <div class="movie_level">
+
+                                            </div>
+                                            <div class="level_Items">
+                                                <div class="movie_level_slide">
+                                                    <div>음료</div>
+                                                    <div>팝콘</div>
+                                                    <div>티켓</div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div id="movie_sub">
+                                        <span>카테고리</span>
+                                        <div>
+                                            <select id="gender" name="gender" class="sel" aria-label="성별">
+                                                <option value="" selected="">선택</option>
+                                                <option value="M">음료</option>
+                                                <option value="F">팝콘</option>
+                                                <option value="U">티켓</option>
+                                                <option value="U">스낵</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                </div>
+
+
+                            </form>
+							
+							
+							
 							<div class="table_bottom">
 								<button class="bottom_Submit">저장</button>
 								<button class="bottom_Cancel">취소</button>

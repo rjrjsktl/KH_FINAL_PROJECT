@@ -70,29 +70,27 @@
                                                         <th>수정</th>
                                                         <th>삭제</th>
                                                     </tr>
-                                                    <c:forEach var="movie" items="${movielist}">
+                                                    <c:forEach var="movie" items="${getMovieList['cleanedList']}">
                                                         <tr>
-                                                            <td>${movie.movieNo}</td>
-                                                            <td>${movie.movieTitle}</td>
-                                                            <td>${movie.movieRuntime}</td>
-                                                            <td>${movie.movieNation}</td>
-                                                            <td>${movie.movieOpen}</td>
+                                                            <td>${movie['movieNo']}</td>
+                                                            <td>${movie['movieTitle']}</td>
+                                                            <td>${movie['movieRuntime']}</td>
+                                                            <td>${movie['movieNation']}</td>
+                                                            <td>${movie['movieOpen']}</td>
+                                                            <td>${movie['mgNo']}</td>
+                                                            <td>${movie['movieContent']}</td>
+                                                            <td>${movie['moviePlayed']}</td>
+                                                            <td>${movie['movieWatched']}</td>
+                                                            <td>${movie['movieRegdate']}</td>
+                                                            <td>${movie['movieUploader']}</td>
+                                                            <td>${movie['genreCode']}</td>
                                                             <td>
-                                                                <c:forEach var="mgrade" items="${movie.mgNo}">
-                                                                    <c:out value="${mgrade}" />
-                                                                </c:forEach>
-                                                            </td>
-                                                            <td>${movie.movieContent}</td>
-                                                            <td>${movie.moviePlayed}</td>
-                                                            <td>${movie.movieWatched}</td>
-                                                            <td>${movie.movieRegdate}</td>
-                                                            <td>${movie.movieUploader}</td>
-                                                            <td>${movie.genreCode}</td>
-                                                            <td><a href="${contextPath}/manager/movie_list/edit/${movie.movieNo}"
+                                                            	<a href="${contextPath}/manager/movie_list/edit/${movie.movieNo}"
                                                                     class="editEvent"><i
                                                                         class="fa-sharp fa-solid fa-pen-to-square"></i></a>
                                                             </td>
-                                                            <td><a class="deleteEvent"><i
+                                                            <td>
+                                                            	<a class="deleteEvent"><i
                                                                         class="fa-sharp fa-solid fa-xmark"></i></a>
                                                             </td>
                                                         </tr>
@@ -100,24 +98,36 @@
                                                 </table>
                                                 <div class="page_Nation">
                                                     <c:set var="url" value="?cp=" />
-                                                    <c:set var="pagination" value="${geMovieList['pagination']}" />
+                                                    <c:set var="pagination" value="${getMovieList['pagination']}" />
                                                     <c:set var="currentPage" value="${pagination.currentPage}"
                                                         scope="request" />
-                                                    <div><a href="${url}1">&lt;&lt;</a></div>
-                                                    <div><a href="${url}${pagination.prevPage}">&lt;</a></div>
+                                                    <div>
+                                                    	<a href="${url}1">&lt;&lt;</a>
+                                                    </div>
+                                                    <div>
+                                                    	<a href="${url}${pagination.prevPage}">&lt;</a>
+                                                    </div>
                                                     <c:forEach var="i" begin="${pagination.startPage}"
                                                         end="${pagination.endPage}" step="1">
                                                         <c:choose>
                                                             <c:when test="${i == currentPage}">
-                                                                <div><a class="selected_Cp">${i}</a></div>
+                                                                <div>
+                                                                	<a class="selected_Cp">${i}</a>
+                                                                </div>
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <div><a href="${url}${i}">${i}</a></div>
+                                                                <div>
+                                                                	<a href="${url}${i}">${i}</a>
+                                                                </div>
                                                             </c:otherwise>
                                                         </c:choose>
                                                     </c:forEach>
-                                                    <div><a href="${url}${pagination.nextPage}">&gt;</a></div>
-                                                    <div><a href="${url}${pagination.maxPage}">&gt;&gt;</a></div>
+                                                    <div>
+                                                    	<a href="${url}${pagination.nextPage}">&gt;</a>
+                                                    </div>
+                                                    <div>
+                                                    	<a href="${url}${pagination.maxPage}">&gt;&gt;</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
