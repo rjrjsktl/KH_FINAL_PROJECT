@@ -10,4 +10,5 @@ public class ManageCinemaDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
+
 }
