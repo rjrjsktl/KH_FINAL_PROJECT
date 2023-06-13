@@ -15,4 +15,15 @@ public class ManageCinemaServiceImpl implements ManageCinemaService {
 	public int cinemaDupCheck(String cinemaName) {
 		return 0;
 	}
+
+	@Override
+	public int enrollCinema(String cinemaName, String cinemaArea, String cinemaRegion, int cinemaScreen) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int enrollScreen(String cinemaName, int screenName, String screenStyle, int screenSeat, String screenDetail) {
+		return 1;
+	}
 }
