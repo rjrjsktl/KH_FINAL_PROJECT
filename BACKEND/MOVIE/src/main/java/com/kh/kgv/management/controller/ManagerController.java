@@ -212,19 +212,37 @@ public class ManagerController {
 		
 	// list에서 수정버튼 눌렀을 경우 등록페이지로 넘어가면서 
 	// movieNo에 따른 정보를 가져와서 보여줘야함
-	@GetMapping("/movie_list/edit/${movie.movieNo}")
+	@GetMapping("/movie_list/edit/{movieNo}")
 	public String editMovie( Model model
-							, Event event
+							, Movie movie
 							, @PathVariable("movieNo") int movieNo
 							) {
+		List<String> mgradelist = service.mgradeList();
+		System.out.println("mgradelist 값 :::::" + mgradelist);
 		
-		// 요기부터 작성 해야함
+		model.addAttribute("mgradelist", mgradelist);
+		// movie genre 값 얻어오기
+		List<String> mgenrelist = service.mgenreList();
+		System.out.println("mgenrelist 값 :::::" + mgenrelist);
+		
+		model.addAttribute("mgenrelist", mgenrelist);
+		
+		// 요기부터 수정페이지에 movieNo 보냄
+		movie.setMovieNo(movieNo);
+		
+		Map<String, Object>editMovie = service.getEditMovieList(movie);
+		
+		logger.info("editMovie ::::: " + editMovie);
+		
+		model.addAttribute("editMovie", editMovie);
+		
 		return "manager/manager_movie_edit";
 	}
 	
 	// ===================================================
 	// ===================================================
 	
+	// 영화 저장 페이지
 	@GetMapping("/movie_add")
 	public String moveMovieAdd(Model model) {
 
