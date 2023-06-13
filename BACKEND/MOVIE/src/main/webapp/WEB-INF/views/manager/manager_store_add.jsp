@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>공지사항 등록</title>
+<title>스토어 물품 등록</title>
 
 
 
@@ -40,7 +40,7 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <link rel="stylesheet"
-	href="${contextPath}/resources/css/manager/manager_notice_add.css">
+	href="${contextPath}/resources/css/manager/manager_store_add.css">
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/manager/manager_inner_Header.css">
 <link rel="stylesheet"
@@ -64,16 +64,13 @@
 					<div class="set_Edge">
 						<div class="table_Wrapper">
 							<div class="table_Title">
-								<span>공지사항 등록</span>
+								<span>스토어 물품 등록</span>
 							</div>
 							<div class="table_main">
 								<div class="enter_Title">
 									<input type="text" placeholder="제목을 입력하세요.">
 								</div>
-								<input type="hidden" id="userName" value=${loginUser.userName } />
-								<form method="post">
-									<textarea id="summernote" name="editordata"></textarea>
-								</form>
+								<div>여기에 추가하세요.</div>
 							</div>
 							<div class="table_bottom">
 								<button class="bottom_Submit">저장</button>
@@ -87,7 +84,7 @@
 		</div>
 
 	</main>
-	<script src="${contextPath}/resources/js/manager/manager_notice_add.js"></script>
+	<script src="${contextPath}/resources/js/manager/manager_store_add.js"></script>
 	<script
 		src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
 	<script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
