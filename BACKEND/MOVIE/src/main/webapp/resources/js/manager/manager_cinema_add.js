@@ -7,6 +7,38 @@ var swiper = new Swiper(".mySwiper", {
 
 
 
+// 영화관 이름 유효성 검사
+
+const cinemaRegex = /^[가-힣|a-z|A-Z|0-9|{1,}$]+$/;
+
+$("#cinemaName").on("input", function(){
+  if(cinemaRegex.test($(this).val())) {
+    $.ajax({
+      url: "manager_cinema_add/cinemaDupCheck",
+      data: { "cinemaName": $(this).val() },
+      type: "GET",
+      success: function(result) {
+        if (result == 1) { 
+          $("#cinemaNameMessage").text("중복!");
+        } else { 
+          $("#cinemaNameMessage").text("유효!");
+        }},
+      error: function() {
+        console.log("에러 발생");
+      }
+    });
+ 
+  } else {
+    $("#cinemaNameMessage").text("메롱!")
+  }
+  
+});
+
+
+
+
+
+
 // 상영관마다 정보를 초기화함 
 
 $('.swiper-slide input.status').attr('value', JSON.stringify({
@@ -21,14 +53,14 @@ $('.swiper-slide input.status').attr('value', JSON.stringify({
 
 
 
-
-
-function sample5_execDaumPostcode() {
-    new daum.Postcode({
-        oncomplete: function(data) {
-            var addr = data.address; // 최종 주소 변수
-        }
-    }).open();
+/* 카카오 주소 API */
+function sample4_execDaumPostcode() {
+  new daum.Postcode({ oncomplete: function(data) {
+    $('#cinemaPostCode').val(data.zonecode);
+    $("#cinemaRoadAddress").val(data.roadAddress);
+    $("#cinemaDetailAddress").val("");
+    $("#cinemaDetailAddress").attr("readOnly",false);
+  }}).open();
 }
 
 

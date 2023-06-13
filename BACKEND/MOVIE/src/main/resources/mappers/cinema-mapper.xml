@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cinemaMapper">
+
+    <resultMap type="cinema" id="cinema_rm">
+        <id property="cinemaNo" column="CINEMA_NO" />
+        <result property="cinemaName" column="CINEMA_NAME" />
+        <result property="cinemaArea" column="CINEMA_AREA" />
+        <result property="cinemaRegion" column="CINEMA_REGION" />
+        <result property="cinemaScreen" column="CINEMA_SCREEN" />
+    </resultMap>
+    
+    <resultMap type="screen" id="screen_rm">
+        <id property="screenNo" column="SCREEN_NO"/>
+        <result property="cinemaName" column="CINEMA_NAME" />
+        <result property="screenName" column="SCREEN_NAME" />
+        <result property="screenStyle" column="SCREEN_STYLE" />
+        <result property="screenSeat" column="SCREEN_SEAT" />
+        <result property="screenDetail" column="SCREEN_DETAIL" />
+    </resultMap>
+    
+    <select id=""></select>
+
 </mapper>
