@@ -1,6 +1,3 @@
-
-
-
 $(document).ready(function () {
     // ===============================================================================
     // 장르 추가 기능 및 슬라이드
@@ -290,5 +287,59 @@ $(document).ready(function () {
             }
         })
     });
+
+
+
+
+
+
+    // 이미지 등록 테스트 ========================================
+
+    movie_image.on('change'), function (files) {
+        // 파일 업로드(다중업로드를 위해 반복문 사용)
+        for (var i = files.length - 1; i >= 0; i--) {
+            uploadImageFile(files[i], this);
+        }
+    }
+    const jsonArray = [];
+
+
+
+    function uploadImageFile(file, el) {
+        var data = new FormData();
+        data.append("file", file);
+        $.ajax({
+            url: 'manager_testPage/uploadImageFile',
+            type: "POST",
+            enctype: 'multipart/form-data',
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                var json = JSON.parse(data);
+                $(el).summernote('editor.insertImage', json["url"]);
+                jsonArray.push(json["url"]);
+                jsonFn(jsonArray);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+
+    function jsonFn(jsonArray) {
+        console.log(jsonArray);
+    }
+
+
+
+
+
+
+
+
+
+
 
 });

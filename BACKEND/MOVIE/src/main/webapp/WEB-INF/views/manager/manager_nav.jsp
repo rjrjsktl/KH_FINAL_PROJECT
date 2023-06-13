@@ -237,6 +237,29 @@
 									</a>
 								</ul>
 							</li>
+							<li class="slide_Content">
+								<div class="slide_Wrapper">
+									<div class="slide_Left_Icon">
+										<i class="fa-sharp fa-solid fa-store"></i>
+									</div>
+									<span class="slide_Inner_Title">테스트용</span>
+									<div class="slide_Right_Icon">
+										<i class="fa-solid fa-caret-down"></i>
+									</div>
+								</div>
+								<ul class="slide_Down_items">
+									<a href="${contextPath}/manager/manager_testPage">
+										<li>
+											<div class="inner_align">
+												<div class="inner_Left_Icon">
+													<i class="fa-solid fa-play fa-2xs"></i>
+												</div>
+												<span>이미지등록 테스트</span>
+											</div>
+										</li>
+									</a>
+								</ul>
+							</li>
 						</ul>
 					</nav>
 

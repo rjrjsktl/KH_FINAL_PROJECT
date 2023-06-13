@@ -20,4 +20,4 @@ public class Notice {
 	private String noticeUploader;
 	private String noticeStatus;
 	private int noticeView;
-}
+	}
