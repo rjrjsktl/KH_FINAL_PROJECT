@@ -75,7 +75,10 @@
                                     	<td>${movie.movieRuntime}</td>
                                     	<td>${movie.movieNation}</td>
                                     	<td>${movie.movieOpen}</td>
-                                    	<td>${movie.mgNo}</td>
+                                    	<td><c:forEach var="mgrade" items="${movie.mgNo}">
+                								<c:out value="${mgrade}" />
+            								</c:forEach>
+            							</td>
                                     	<td>${movie.movieContent}</td>
                                     	<td>${movie.moviePlayed}</td>
                                     	<td>${movie.movieWatched}</td>

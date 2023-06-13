@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class Util {
 	// 파일명 변경 메소드
 	public static String fileRename(String originFileName) {
@@ -38,8 +39,11 @@ public class Util {
 	   public static List<Movie> removeQuotesFromList(List<Movie> movielist) {
 		    List<Movie> cleanedList = new ArrayList<>();
 		    for (Movie movie : movielist) {
-		    	String cleanedMgNo = movie.getMgNo().replaceAll("[\"\\[\\]\\\\]", "").replace("\"", "");
-		    	String cleanedGenre = movie.getGenreCode().replaceAll("[\"\\[\\]\\\\]", "").replace("\"", "");
+		    	String cleanedMgNo = movie.getMgNo().replaceAll("[\"\\[\\]\\\\]", "").replace("&quot;", "");
+
+		        String cleanedGenre = movie.getGenreCode().replaceAll("[\"\\[\\]\\\\]", "").replace("&quot;", "");
+		        // genreCode에 쉼표(,) 추가
+		        cleanedGenre = cleanedGenre.replaceAll(",", ", ");
 		    	// 다른 속성이 있다면 해당 속성도 처리해주세요.
 		        
 		        Movie cleanedMovie = new Movie();
@@ -60,7 +64,13 @@ public class Util {
 		    }
 		    return cleanedList;
 		}
+//
+//	   public static String removeQuotes(String input) {
+//		   
+//		    return input.replaceAll("&quot;", "\"");
+//		}
 
+	
 
 
 
