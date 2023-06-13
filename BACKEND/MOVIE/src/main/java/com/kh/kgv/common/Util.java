@@ -3,12 +3,18 @@ package com.kh.kgv.common;
 import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.management.model.vo.Event;
+import com.kh.kgv.management.model.vo.Notice;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -74,19 +80,51 @@ public class Util {
 	   public static String removeQuotes(String input) {
 		    return input.replaceAll("[\"\\[\\]\\\\]", "").replaceAll("&quot;", "").replaceAll(",", ", ");
 		}
-//		// 관리자_공지사항 목록 이동
-//		@GetMapping("/notice_list")
-//		public String moveNoticeList(	Model model
-//				, @RequestParam(value = "cp", required = false, defaultValue="1" ) int cp) {
-//				
-//				Map<String, Object>getNoticeList = null;
-//				
-//				// 회원 리스트 얻어오기
-//				getNoticeList = service.noticeList(cp);
-//				 
-//				model.addAttribute("getNoticeList", getNoticeList);
-//			
-//			System.out.println("관리자_공지사항 목록 이동");
-//			return "manager/manager_notice_list";
-//		}
 }
+
+//@PostMapping("/notice_list/edit/{noticeNo}/edit_Notice")
+//@ResponseBody
+//public int editNotice(
+//		@RequestParam("no") int  no
+//		, @RequestParam("title") String title
+//		, @RequestParam("userName") String userName
+//		, @RequestParam("content") String content
+//		) {
+//	Notice  notice = new Notice();
+//	notice.setNoticeNo(no);
+//	notice.setNoticeTitle(title);
+//	notice.setNoticeUploader(userName);
+//	notice.setNoticeContent(content);
+//	
+//	System.out.println("이벤트 수정에서 가지고 온 값들 =================================" + notice);
+//
+//	int result = service.editNotice(notice);
+//
+//	return result;
+//}
+//@GetMapping("/event_list/edit/{eventNo}")
+//public String editEvent(
+//        Model model,
+//        Event event,
+//        @PathVariable("eventNo") int eventNo
+//		) {
+//	
+//	Map<String, Object>editEvent = null;
+//	
+//	event.setEventNo(eventNo);
+//	
+//	editEvent = service.getEditEventList(event);
+//	System.out.println("DAO에서 가지고 온 editEvent : " + editEvent);
+//	model.addAttribute("editEvent", editEvent);
+//	
+//	return "manager/manager_event_edit";
+//	
+//}
+
+
+
+
+
+
+
+

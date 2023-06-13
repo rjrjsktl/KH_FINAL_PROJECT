@@ -161,6 +161,14 @@ public class ManagerServiceImpl implements ManagerService {
 		
 		return getMovieList;
 	}
+	
+	/**
+	 * 영화 수정 페이지 이동
+	 */
+	@Override
+	public Map<String, Object> getEditMovieList(Movie movie) {
+		return dao.getEditMovieList(movie);
+	}
 
 	@Override
 	public Map<String, Object> eventList(int cp) {
