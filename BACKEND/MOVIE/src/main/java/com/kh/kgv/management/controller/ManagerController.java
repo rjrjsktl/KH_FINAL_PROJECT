@@ -53,10 +53,6 @@ public class ManagerController {
 		List<Notice>getNotice = null;
 		getNotice = service.getAllNotice();
 		 
-
-		
-		
-		
 		model.addAttribute("getUser", getUser);
 		model.addAttribute("getNotice", getNotice);
 		
