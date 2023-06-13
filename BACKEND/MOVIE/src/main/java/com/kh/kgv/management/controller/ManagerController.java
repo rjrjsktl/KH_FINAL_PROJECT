@@ -271,7 +271,6 @@ public class ManagerController {
 	}
 	
 	// ===================================================
-
 	// ===================================================
 	
 	// 관리자_극장 등록 이동
@@ -279,6 +278,26 @@ public class ManagerController {
 	public String moveCinemaAdd() {
 		System.out.println("관리자_극장 등록 이동");
 		return "manager/manager_cinema_add";
+	}
+	
+	// ===================================================
+	// ===================================================
+	
+	// 관리자_극장 목록 이동
+	@GetMapping("/manager_cinema_list")
+	public String moveCinemaList() {
+		System.out.println("관리자_극장 목록 이동");
+		return "manager/manager_cinema_list";
+	}
+	
+	// ===================================================
+	// ===================================================
+	
+	// 관리자_극장 가격 관리 이동
+	@GetMapping("/manager_cinema_price")
+	public String moveCinemaPrice() {
+		System.out.println("관리자_극장 가격 관리 이동");
+		return "manager/manager_cinema_price";
 	}
 	
 	// ===================================================
