@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.kgv.management.model.dao.ManageCinemaDAO;
+import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.Screen;
 
 @Service
 public class ManageCinemaServiceImpl implements ManageCinemaService {
@@ -17,13 +19,14 @@ public class ManageCinemaServiceImpl implements ManageCinemaService {
 	}
 
 	@Override
-	public int enrollCinema(String cinemaName, String cinemaArea, String cinemaRegion, int cinemaScreen) {
-		// TODO Auto-generated method stub
+	public int enrollCinema(Cinema cinema) {
 		return 0;
 	}
 
 	@Override
-	public int enrollScreen(String cinemaName, int screenName, String screenStyle, int screenSeat, String screenDetail) {
-		return 1;
+	public int enrollScreen(Screen screen) {
+		return 0;
 	}
+
+
 }
