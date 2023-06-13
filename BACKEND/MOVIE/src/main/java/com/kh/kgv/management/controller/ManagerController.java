@@ -41,7 +41,26 @@ public class ManagerController {
 
 	// 관리자_메인페이지 이동
 	@GetMapping("/main")
-	public String moveMain() {
+	public String moveMain(
+			Model model
+			) {
+		
+		// 관리자 메인 신규 회원 목록 조회
+		List<User>getUser = null;
+		getUser = service.getAllUser();
+		
+		// 관리자 메인 공지사항 목록 조회
+		List<Notice>getNotice = null;
+		getNotice = service.getAllNotice();
+		 
+
+		
+		
+		
+		model.addAttribute("getUser", getUser);
+		model.addAttribute("getNotice", getNotice);
+		
+		
 		System.out.println("관리자_메인페이지 이동");
 		return "manager/managerPage";
 	}
@@ -91,6 +110,34 @@ public class ManagerController {
 			
 		} else {
 			System.out.println("관리자 상태 변경 실패");
+			result = 0;
+		}
+		return result;
+	}
+	
+	// ===================================================
+	// ===================================================
+	
+	// 회원 이용제한 업데이트
+	@ResponseBody
+	@PostMapping("/Block_ST")
+	public int  blockUser(
+			@RequestParam("BST") String bst
+			, @RequestParam("userId") String userId
+			, User user
+			) {
+		
+		user.setUserBlock(bst);
+		user.setUserEmail(userId);
+		
+		int result = service.blockST(user);
+		
+		if(result > 0) {
+			System.out.println("유저 이용제한 상태 변경 완료");
+			result = 1;
+			
+		} else {
+			System.out.println("유저 이용제한 상태 변경 실패");
 			result = 0;
 		}
 		return result;
@@ -301,45 +348,6 @@ public class ManagerController {
 	
 	// ===================================================
 	// ===================================================
-	// 이벤트 수정용 이미지 업로드
-	@PostMapping("/event_list/edit/{eventNo}/edit_Event/uploadImageFile")
-	@ResponseBody
-	public String uploadImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request) {
-		JsonObject jsonObject = new JsonObject();
-
-//		  String fileRoot = "C:\\Users\\cropr\\Desktop\\test"; // 외부경로로 저장을 희망할때.
-
-		// 내부경로로 저장
-		String webPath = "/resources/images/fileupload/";
-
-		String fileRoot = request.getServletContext().getRealPath(webPath);
-
-		String originalFileName = multipartFile.getOriginalFilename(); // 오리지날 파일명
-		String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자
-		String savedFileName = UUID.randomUUID() + extension; // 저장될 파일 명
-
-		File targetFile = new File(fileRoot + savedFileName);
-		try {
-			InputStream fileStream = multipartFile.getInputStream();
-			FileUtils.copyInputStreamToFile(fileStream, targetFile); // 파일 저장
-			jsonObject.addProperty("url", request.getContextPath() + webPath + savedFileName); // contextroot +
-																								// resources + 저장할 내부
-																								// 폴더명
-			jsonObject.addProperty("responseCode", "success");
-
-		} catch (IOException e) {
-			FileUtils.deleteQuietly(targetFile); // 저장된 파일 삭제
-			jsonObject.addProperty("responseCode", "error");
-			e.printStackTrace();
-		}
-		String a = jsonObject.toString();
-		System.out.println("================================================= 이미지 는?? : : " + a);
-		return a;
-
-	}
-	
-	// ===================================================
-	// ===================================================
 	
 	//이벤트 상태 업데이트
 	@ResponseBody
@@ -368,12 +376,48 @@ public class ManagerController {
 		return result;
 	}
 	
+		// ===================================================
+		// ===================================================
 	
-	
-	
-	
-	// ===================================================
-	// ===================================================
+		// 이벤트 수정용 이미지 업로드
+		@PostMapping("/event_list/edit/{eventNo}/edit_Event/uploadImageFile")
+		@ResponseBody
+		public String uploadImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request) {
+			JsonObject jsonObject = new JsonObject();
+
+//			  String fileRoot = "C:\\Users\\cropr\\Desktop\\test"; // 외부경로로 저장을 희망할때.
+
+			// 내부경로로 저장
+			String webPath = "/resources/images/fileupload/";
+
+			String fileRoot = request.getServletContext().getRealPath(webPath);
+
+			String originalFileName = multipartFile.getOriginalFilename(); // 오리지날 파일명
+			String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자
+			String savedFileName = UUID.randomUUID() + extension; // 저장될 파일 명
+
+			File targetFile = new File(fileRoot + savedFileName);
+			try {
+				InputStream fileStream = multipartFile.getInputStream();
+				FileUtils.copyInputStreamToFile(fileStream, targetFile); // 파일 저장
+				jsonObject.addProperty("url", request.getContextPath() + webPath + savedFileName); // contextroot +
+																									// resources + 저장할 내부
+																									// 폴더명
+				jsonObject.addProperty("responseCode", "success");
+
+			} catch (IOException e) {
+				FileUtils.deleteQuietly(targetFile); // 저장된 파일 삭제
+				jsonObject.addProperty("responseCode", "error");
+				e.printStackTrace();
+			}
+			String a = jsonObject.toString();
+			System.out.println("================================================= 이미지 는?? : : " + a);
+			return a;
+
+		}
+		
+		// ===================================================
+		// ===================================================
 	
 	// 관리자_공지사항 목록 이동
 	@GetMapping("/notice_list")
@@ -405,7 +449,7 @@ public class ManagerController {
 	// ===================================================
 	// ===================================================
 	
-	// 관리자_공지사항 등록
+	// 공지사항 등록
 	@ResponseBody
 	@PostMapping("/notice_add/write_Notice")
 	public int addNotice(
@@ -436,6 +480,82 @@ public class ManagerController {
 	
 	// ===================================================
 	// ===================================================
+	
+	// 공지사항 수정 조회
+	@GetMapping("/notice_list/edit/{noticeNo}")
+	public String editNotice(
+	        Model model,
+	        Notice notice,
+	        @PathVariable("noticeNo") int noticeNo
+			) {
+		
+		Map<String, Object>editNotice = null;
+		
+		notice.setNoticeNo(noticeNo);
+		
+		editNotice = service.getEditNoticeList(notice);
+		System.out.println("DAO에서 가지고 온 editNotice : " + editNotice);
+		model.addAttribute("editNotice", editNotice);
+		
+		return "manager/manager_notice_edit";
+		
+	}
+	
+	// ===================================================
+	// ===================================================
+	
+	// 공지사항 수정(업데이트)
+		@PostMapping("/notice_list/edit/{noticeNo}/edit_Notice")
+		@ResponseBody
+		public int editNotice(
+				@RequestParam("no") int  no
+				, @RequestParam("title") String title
+				, @RequestParam("userName") String userName
+				, @RequestParam("content") String content
+				) {
+			Notice  notice = new Notice();
+			notice.setNoticeNo(no);
+			notice.setNoticeTitle(title);
+			notice.setNoticeUploader(userName);
+			notice.setNoticeContent(content);
+			
+			System.out.println("이벤트 수정에서 가지고 온 값들 =================================" + notice);
+		
+			int result = service.editNotice(notice);
+
+			return result;
+		}
+	
+	// ===================================================
+	// ===================================================
+		
+		//공지사항 상태 업데이트
+		@ResponseBody
+		@PostMapping("/notice_ST")
+			public int  changeNoticeSt(
+				@RequestParam("NST") String nst
+				, @RequestParam("noticeNo") int noticeNo
+				, Notice  notice
+					) {
+			
+			notice.setNoticeStatus(nst);
+			notice.setNoticeNo(noticeNo);
+			
+			int result = service.updateNoticeST(notice);
+			
+			if(result > 0) {
+				System.out.println("공지사항 상태 변경 완료");
+				 result = 1;
+				
+			} else {
+				System.out.println("공지사항 상태 변경 실패");
+				result = 0;
+			}
+			return result;
+		}
+		
+			// ===================================================
+			// ===================================================
 	
 	// 공지사항 등록용 이미지 업로드
 		@PostMapping("/notice_add/noticeUploadImageFile")
@@ -473,4 +593,67 @@ public class ManagerController {
 			return a;
 
 		}
+		
+		// ===================================================
+		// ===================================================
+			
+				// 공지사항 수정용 이미지 업로드
+				@PostMapping("/notice_list/edit/{noticeNo}/edit_Notice/uploadImageFile")
+				@ResponseBody
+				public String uploadNoticeEditImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request) {
+					JsonObject jsonObject = new JsonObject();
+
+//					  String fileRoot = "C:\\Users\\cropr\\Desktop\\test"; // 외부경로로 저장을 희망할때.
+
+					// 내부경로로 저장
+					String webPath = "/resources/images/fileupload/";
+
+					String fileRoot = request.getServletContext().getRealPath(webPath);
+
+					String originalFileName = multipartFile.getOriginalFilename(); // 오리지날 파일명
+					String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자
+					String savedFileName = UUID.randomUUID() + extension; // 저장될 파일 명
+
+					File targetFile = new File(fileRoot + savedFileName);
+					try {
+						InputStream fileStream = multipartFile.getInputStream();
+						FileUtils.copyInputStreamToFile(fileStream, targetFile); // 파일 저장
+						jsonObject.addProperty("url", request.getContextPath() + webPath + savedFileName); // contextroot +
+																											// resources + 저장할 내부
+																											// 폴더명
+						jsonObject.addProperty("responseCode", "success");
+
+					} catch (IOException e) {
+						FileUtils.deleteQuietly(targetFile); // 저장된 파일 삭제
+						jsonObject.addProperty("responseCode", "error");
+						e.printStackTrace();
+					}
+					String a = jsonObject.toString();
+					System.out.println("================================================= 이미지 는?? : : " + a);
+					return a;
+
+				}
+				
+				// ===================================================
+				// ===================================================
+				
+				//관리자_스토어 물품 목록
+				@GetMapping("/store_list")
+				public String moveStoreList() {
+					System.out.println("관리자_스토어 물품 목록");
+					return "manager/manager_store_list";
+				}
+		
+				// ===================================================
+				// ===================================================
+				
+				// 관리자_스토어 물품 등록
+				@GetMapping("/store_add")
+				public String moveStoreAdd() {
+					System.out.println("관리자_스토어 물품 등록");
+					return "manager/manager_store_add";
+				}
+				
+				// ===================================================
+				// ===================================================
 }

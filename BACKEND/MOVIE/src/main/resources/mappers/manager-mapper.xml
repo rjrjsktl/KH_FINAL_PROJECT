@@ -61,10 +61,33 @@
 		<result property="noticeRegDate" 				column="NOTICE_REGDATE"/>
 		<result property="noticeUploader" 				column="NOTICE_UPLOADER"/>
 		<result property="noticeStatus" 					column="NOTICE_STATUS"/>
+		<result property="noticeView" 					column="NOTICE_VIEW"/>
 	</resultMap>
 	
 
+<!-- 관리자 메인 신규 회원 목록 조회 -->
+	<select id="getAllUser" resultMap="user_rm">
+	SELECT
+	*
+	FROM
+	(
+	SELECT * FROM USERS
+	ORDER BY USER_NO DESC
+	)
+	WHERE ROWNUM <![CDATA[ <= ]]> 6
+	</select>
 
+<!-- 관리자 메인 공지사항 목록 조회 -->
+	<select id="getAllNotice" resultMap="notice_rm">
+	SELECT
+	*
+	FROM
+	(
+	SELECT * FROM NOTICE
+	ORDER BY NOTICE_NO DESC
+	)
+	WHERE ROWNUM <![CDATA[ <= ]]> 6
+	</select>
 	                        
 	<!-- 회원 수 조회 -->
 	<select id="getListCount" resultType="_int">
@@ -93,9 +116,17 @@
 	ORDER BY USER_NO ASC
 	</select>
 	
+	<!--회원 관리자 상태 업데이트  -->
 	<update id="updateST" parameterType="user">
 	UPDATE USERS
 	SET USER_MANAGERST = #{userManagerSt}
+	WHERE USER_EMAIL = #{userEmail}
+	</update>
+	
+	<!-- 회원 이용제한 업데이트 -->
+		<update id="blockST" parameterType="user">
+	UPDATE USERS
+	SET USER_BLOCK = #{userBlock}
 	WHERE USER_EMAIL = #{userEmail}
 	</update>
 
@@ -215,7 +246,33 @@
 	FROM NOTICE
 	ORDER BY NOTICE_NO ASC
 	</select>
+	
+	
+		<!--공지사항 수정조회 -->
+	<select id="getEditNoticeList" resultType="HashMap">
+	SELECT
+	NOTICE_NO
+	, NOTICE_TITLE
+	, NOTICE_CONTENT
+	FROM NOTICE
+	WHERE NOTICE_NO = #{noticeNo}
+	</select>
+	
+		<!-- 공지사항 수정(업데이트) -->
+	<update id="editNotice" parameterType="notice">
+	UPDATE NOTICE SET
+	NOTICE_TITLE = #{noticeTitle}
+	, NOTICE_CONTENT = #{noticeContent}
+	, NOTICE_UPLOADER = #{noticeUploader}
+	WHERE NOTICE_NO = #{noticeNo}
+	</update>
 
+	<!-- 공지사항 상태 업데이트 -->
+		<update id="updateNoticeST" parameterType="notice">
+	UPDATE NOTICE
+	SET NOTICE_STATUS = #{noticeStatus}
+	WHERE NOTICE_NO = #{noticeNo}
+	</update>
 
 
 </mapper>

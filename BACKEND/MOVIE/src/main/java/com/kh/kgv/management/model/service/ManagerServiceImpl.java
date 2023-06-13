@@ -19,6 +19,20 @@ public class ManagerServiceImpl implements ManagerService {
 
 	@Autowired
 	private ManagerDAO dao;
+	
+	// 관리자 메인 신규 회원 목록 조회
+	@Override
+	public List<User> getAllUser() {
+		List<User> getUser = dao.getAllUser();
+		return getUser;
+	}
+	
+	// 관리자 메인 공지사항 목록 조회
+	@Override
+	public List<Notice> getAllNotice() {
+		List<Notice> getNotice = dao.getAllNotice();
+		return getNotice;
+	}
 
 	// 회원 목록 조회
 	@Override
@@ -45,6 +59,12 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public int updateST(User user) {
 		return dao.updateST(user);
+	}
+	
+	// 회원 이용제한 업데이트
+	@Override
+	public int blockST(User user) {
+		return dao.blockST(user);
 	}
 
 	// 영화 등록
@@ -153,5 +173,29 @@ public class ManagerServiceImpl implements ManagerService {
 
 		return getNoticeList;
 	}
+	// 공지사항 수정 조회
+	@Override
+	public Map<String, Object> getEditNoticeList(Notice notice) {
+		
+		return dao.getEditNoticeList(notice);
+	}
 
+	// 공지사항 수정(업데이트)
+	@Override
+	public int editNotice(Notice notice) {
+		return dao.editNotice(notice);
+	}
+
+	//공지사항 상태 업데이트
+	@Override
+	public int updateNoticeST(Notice notice) {
+		return dao.updateNoticeST(notice);
+	}
+
+
+
+	
+	
+	
+	
 }
