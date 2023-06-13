@@ -19,4 +19,5 @@ public class Notice {
 	private String noticeRegDate;
 	private String noticeUploader;
 	private String noticeStatus;
+	private int noticeView;
 }

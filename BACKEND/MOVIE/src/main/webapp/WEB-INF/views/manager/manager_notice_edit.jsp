@@ -11,7 +11,7 @@
                         <meta charset="UTF-8">
                         <meta http-equiv="X-UA-Compatible" content="IE=edge">
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>공지사항 등록</title>
+                        <title>공지사항 수정</title>
 
 
 
@@ -56,19 +56,25 @@
                                         <div class="set_Edge">
                                             <div class="table_Wrapper">
                                                 <div class="table_Title">
-                                                    <span>공지사항 등록</span>
+                                                    <span>공지사항 수정</span>
                                                 </div>
                                                 <div class="table_main">
-                                                    <div class="enter_Title"><input type="text"
-                                                            placeholder="제목을 입력하세요."></div>
+                                                    <div class="enter_Title">
+                                                        <input type="text" placeholder="제목을 입력하세요."
+                                                            value="${editNotice['NOTICE_TITLE']}">
+                                                    </div>
+                                                    <input type="hidden" id="noticeNo"
+                                                        value="${editNotice['NOTICE_NO']}" />
                                                     <input type="hidden" id="userName" value=${loginUser.userName} />
                                                     <form method="post">
-                                                        <textarea id="summernote" name="editordata"></textarea>
+                                                        <textarea id="summernote"
+                                                            name="editordata">${editNotice['NOTICE_CONTENT']}</textarea>
                                                     </form>
                                                 </div>
                                                 <div class="table_bottom">
-                                                    <button class="bottom_Submit">저장</button>
-                                                    <button class="bottom_Cancel">취소</button>
+                                                    <button type="button" class="bottom_Submit">저장</button>
+                                                    <a href="${contextPath}/manager/notice_list"
+                                                        class="bottom_Cancel">취소</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -78,7 +84,7 @@
                             </div>
 
                         </main>
-                        <script src="${contextPath}/resources/js/manager/manager_notice_add.js"></script>
+                        <script src="${contextPath}/resources/js/manager/manager_notice_edit.js"></script>
                         <script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
                         <script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
 

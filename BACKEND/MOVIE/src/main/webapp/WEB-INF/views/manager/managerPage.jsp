@@ -70,8 +70,8 @@
 											<!-- 신규 회원 -->
 											<div class="left_Inner_Contents">
 												<div class="inner_Top">
-													<span class="inner_Top_Text">신규 회원</span> <span
-														class="new_more">더보기</span>
+													<span class="inner_Top_Text">신규 회원</span>
+													<a href="${contextPath}/manager/member" class="new_more">더보기</a>
 												</div>
 												<div class="inner_Top_Content">
 													<div class="noticeTable">
@@ -81,45 +81,15 @@
 															<th class="boardWriter">닉네임</th>
 															<th class="boardDate">가입일</th>
 															<th class="boardWatch">SNS</th>
-															<tr>
-																<td>06</td>
-																<td>ACCOUNT01</td>
-																<td>NICKNAME01</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>Y</td>
-															<tr>
-																<td>05</td>
-																<td>ACCOUNT 02</td>
-																<td>NICKNAME02</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>N</td>
-															<tr>
-																<td>04</td>
-																<td>ACCOUNT 03</td>
-																<td>NICKNAME03</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>N</td>
-															<tr>
-																<td>03</td>
-																<td>ACCOUNT 04</td>
-																<td>NICKNAME04</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>Y</td>
-															</tr>
-															<tr>
-																<td>02</td>
-																<td>ACCOUNT 05</td>
-																<td>NICKNAME05</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>Y</td>
-															</tr>
-															<tr>
-																<td>01</td>
-																<td>ACCOUNT 06</td>
-																<td>NICKNAME06</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>N</td>
-															</tr>
+															<c:forEach var="getUser" items="${getUser}">
+																<tr>
+																	<td>${getUser.userNo}</td>
+																	<td>${getUser.userEmail}</td>
+																	<td>${getUser.userNick}</td>
+																	<td>${getUser.userRegDate}</td>
+																	<td>${getUser.userSns}</td>
+																</tr>
+															</c:forEach>
 														</table>
 													</div>
 												</div>
@@ -128,8 +98,9 @@
 											<!-- 상영중인 영화 -->
 											<div class="left_Inner_Contents algin_Left">
 												<div class="inner_Top">
-													<span class="inner_Top_Text">상영중인 영화</span> <span
-														class="movie_more">더보기</span>
+													<span class="inner_Top_Text">상영중인 영화</span>
+													<a href="${contextPath}/manager/play_list"
+														class="movie_more">더보기</a>
 												</div>
 												<div class="inner_Top_Content">
 													<div class="noticeTable">
@@ -147,6 +118,7 @@
 																<td>2023.05.26 11:20:21</td>
 																<td>2023.05.26 11:20:21</td>
 																<td>1200</td>
+															</tr>
 															<tr>
 																<td>05</td>
 																<td>영화 02</td>
@@ -154,6 +126,7 @@
 																<td>2023.05.26 11:20:21</td>
 																<td>2023.05.26 11:20:21</td>
 																<td>1582</td>
+															</tr>
 															<tr>
 																<td>04</td>
 																<td>영화 03</td>
@@ -161,6 +134,7 @@
 																<td>2023.05.26 11:20:21</td>
 																<td>2023.05.26 11:20:21</td>
 																<td>120</td>
+															</tr>
 															<tr>
 																<td>03</td>
 																<td>영화 04</td>
@@ -193,8 +167,9 @@
 											<!-- 공지사항 -->
 											<div class="left_Inner_Contents">
 												<div class="inner_Top">
-													<span class="inner_Top_Text">공지사항</span> <span
-														class="notice_more">더보기</span>
+													<span class="inner_Top_Text">공지사항</span>
+													<a href="${contextPath}/manager/notice_list"
+														class="notice_more">더보기</a>
 												</div>
 												<div class="inner_Top_Content">
 													<div class="noticeTable">
@@ -204,45 +179,15 @@
 															<th class="boardWriter">작성자</th>
 															<th class="boardDate">작성일</th>
 															<th class="boardWatch">조회수</th>
-															<tr>
-																<td>06</td>
-																<td>공지사항 01</td>
-																<td>판리자1</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>12</td>
-															<tr>
-																<td>05</td>
-																<td>공지사항 02</td>
-																<td>판리자2</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>12</td>
-															<tr>
-																<td>04</td>
-																<td>공지사항 03</td>
-																<td>판리자3</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>12</td>
-															<tr>
-																<td>03</td>
-																<td>공지사항 04</td>
-																<td>판리자4</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>12</td>
-															</tr>
-															<tr>
-																<td>02</td>
-																<td>공지사항 04</td>
-																<td>판리자5</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>12</td>
-															</tr>
-															<tr>
-																<td>01</td>
-																<td>공지사항 04</td>
-																<td>판리자6</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>12</td>
-															</tr>
+															<c:forEach var="getNotice" items="${getNotice}">
+																<tr>
+																	<td>${getNotice.noticeNo}</td>
+																	<td>${getNotice.noticeTitle}</td>
+																	<td>${getNotice.noticeUploader}</td>
+																	<td>${getNotice.noticeRegDate}</td>
+																	<td>${getNotice.noticeView}</td>
+																</tr>
+															</c:forEach>
 														</table>
 													</div>
 												</div>
@@ -251,8 +196,8 @@
 											<!-- 1 : 1 문의 -->
 											<div class="left_Inner_Contents algin_Left">
 												<div class="inner_Top">
-													<span class="inner_Top_Text">1 : 1 문의</span> <span
-														class="qna_more">더보기</span>
+													<span class="inner_Top_Text">1 : 1 문의</span>
+													<a href="${contextPath}/manager/ask_list" class="qna_more">더보기</a>
 												</div>
 												<div class="inner_Top_Content">
 													<div class="noticeTable">
@@ -268,18 +213,21 @@
 																<td>회원1</td>
 																<td>2023.05.26 11:20:21</td>
 																<td>N</td>
+															</tr>
 															<tr>
 																<td>05</td>
 																<td>문의 2</td>
 																<td>회원2</td>
 																<td>2023.05.26 11:20:21</td>
 																<td>N</td>
+															</tr>
 															<tr>
 																<td>04</td>
 																<td>문의 3</td>
 																<td>회원3</td>
 																<td>2023.05.26 11:20:21</td>
 																<td>N</td>
+															</tr>
 															<tr>
 																<td>03</td>
 																<td>나문희</td>
