@@ -1,12 +1,16 @@
 package com.kh.kgv.common;
 
 import org.apache.commons.text.StringEscapeUtils;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.kgv.items.model.vo.Movie;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @SuppressWarnings("unused")
 public class Util {
@@ -70,18 +74,19 @@ public class Util {
 	   public static String removeQuotes(String input) {
 		    return input.replaceAll("[\"\\[\\]\\\\]", "").replaceAll("&quot;", "").replaceAll(",", ", ");
 		}
-
-	
-
-
-
-
-
-
-
-
-	   
-	
-
-	
+//		// 관리자_공지사항 목록 이동
+//		@GetMapping("/notice_list")
+//		public String moveNoticeList(	Model model
+//				, @RequestParam(value = "cp", required = false, defaultValue="1" ) int cp) {
+//				
+//				Map<String, Object>getNoticeList = null;
+//				
+//				// 회원 리스트 얻어오기
+//				getNoticeList = service.noticeList(cp);
+//				 
+//				model.addAttribute("getNoticeList", getNoticeList);
+//			
+//			System.out.println("관리자_공지사항 목록 이동");
+//			return "manager/manager_notice_list";
+//		}
 }
