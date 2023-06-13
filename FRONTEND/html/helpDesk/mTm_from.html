@@ -18,9 +18,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="../../css/notice/notice_lost_form.css">
+    <link rel="stylesheet" href="../../css/notice/notice_ask_form.css">
     <link rel="stylesheet" href="../../css/common/outline.css">
-    <link rel="stylesheet" href="../../css/notice/notice_detail.css">
+    <link rel="stylesheet" href="../../css/notice/notice_Aside.css">
+
 
 </head>
 
@@ -129,10 +130,7 @@
                     <div class="aside-ul-wrap">
                         <ul class="aslide-list">
                             <li>
-                                <a href="notice_home.html">
-                                    <h1>고객센터</h1>
-                                </a>
-                            </li>
+                                <a href="notice_home.html"><h1>고객센터</h1></a>                            </li>
                             <li>
                                 <a href="notice.html">공지사항</a>
                             </li>
@@ -162,26 +160,29 @@
                 <div class="container">
                     <div class="content-wrap">
 
-                        <h2>분실물 신고</h2>
+                        <h2>1 : 1 문의 작성</h2>
 
                         <div class="notice-contents content_inner">
                             <table class="innerTable">
-                                <tr>
+                                <tr class="tteesstt">
                                     <th>제목</th>
                                     <td><input type="text" placeholder=" 제목을 입력해 주세요."></td>
                                 </tr>
                                 <tr>
-                                    <th>물품</th>
-                                    <td><input type="text" placeholder=" 잃어버린 물품에 대해 입력해 주세요."></td>
-                                </tr>
-                                <tr>
-                                    <th>위치</th>
-                                    <td><input type="text" placeholder=" 상세한 위치를 입력해 주세요."></td>
-                                </tr>
-                                <tr>
-                                    <th>날짜</th>
-                                    <td>23-06.21<input type="date" placeholder=" 잃어버린 날짜를 입력해 주세요." class="dateBtn"
-                                            onfocus="this.showPicker()"></td>
+                                    <th>문의종류</th>
+                                    <td>
+                                        <select>
+                                            <option disabled selected> 문의 내용을 선택해주세요.</option>
+                                            <option value="movie">영화 문의</option>
+                                            <option value="using">이용 문의</option>
+                                            <option value="payment">결제 문의</option>
+                                            <option value="refund">환불 문의</option>
+                                            <option value="NAMOONY">나문희</option>
+                                        </select>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <th>첨부파일</th>
@@ -191,9 +192,8 @@
                         </div>
 
                         <div id="writeForm">
-                            <div class="inner_Textarea_Title">상세 내용</div>
-                            <textarea class="inner_Textarea"
-                                placeholder="잃어버리신 물건의 이름, 크기, 색상 등을 자세하게 설명해 주세요."></textarea>
+                            <div class="inner_Textarea_Title">내용</div>
+                            <textarea class="inner_Textarea"></textarea>
                         </div>
 
                         <div class="btn_Container">

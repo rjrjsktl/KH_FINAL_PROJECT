@@ -11,6 +11,8 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,12 +32,15 @@ import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
+import com.kh.kgv.mypage.controller.MyPageController;
 
 @Controller
 @RequestMapping("/manager")
 @SessionAttributes({"loginUser"})
 public class ManagerController {
 	
+	private Logger logger = LoggerFactory.getLogger(MyPageController.class);
+
 	@Autowired
 	private ManagerService service;
 
@@ -186,36 +191,17 @@ public class ManagerController {
 	
 	// 관리자_영화 목록 이동
 	@GetMapping("/movie_list")
-	public String moveMovieList(Model model) {
-		// movielist 값 얻어오기
-		Movie movie = new Movie();
-		List<Movie> movielist = service.movieList(movie);
-		System.out.println("movielist 값 :::::" + movielist);
+	public String moveMovieList(Model model
+								, @RequestParam(value = "cp", required = false, defaultValue="1" ) int cp) 
+								{
 		
-		// movielist에서 따온 값 가공하기
-//	    List<Movie> cleanedMovielist = Util.removeQuotes(movielist);
-	    List<Movie> cleanedList = new ArrayList<>();
-	    	for (Movie movie1 : movielist) {
-	    		Movie cleanedMovie = new Movie();
-	    		cleanedMovie.setMgNo(Util.removeQuotes(movie1.getMgNo()));
-	    		cleanedMovie.setGenreCode(Util.removeQuotes(movie1.getGenreCode()));
-	    		cleanedMovie.setMovieRuntime(movie1.getMovieRuntime());
-	    		cleanedMovie.setMovieTitle(movie1.getMovieTitle());
-	    		cleanedMovie.setMovieNation(movie1.getMovieNation());
-	    		cleanedMovie.setMovieOpen(movie1.getMovieOpen());
-	    		cleanedMovie.setMovieContent(movie1.getMovieContent());
-	    		cleanedMovie.setMovieImg(movie1.getMovieImg());
-	    		cleanedMovie.setMovieUploader(movie1.getMovieUploader());
-	    		cleanedMovie.setMovieDirector(movie1.getMovieDirector());
-	    		cleanedMovie.setMovieCast(movie1.getMovieCast());
-	        
-	    		cleanedList.add(cleanedMovie);
-	    	}
-	    
-        // 다른 속성이 있다면 해당 속성에 대해서도 동일한 방식으로 처리
-	    System.out.println("cleanedList 값 :::::" + cleanedList);
-	    model.addAttribute("movielist", cleanedList);
-//		model.addAttribute("movielist", movielist);
+		// 페이지네이션 10개씩 자르기
+		Map<String, Object>getMovieList = null;
+		logger.info("1. 페이지네이션 시작 cp들어간다잇");
+		getMovieList = service.movieList(cp);
+		
+		model.addAttribute("getMovieList", getMovieList);
+		logger.info("end: 마지막에 들어오는 getMovieList값::::" + getMovieList);
 		
 		System.out.println("관리자_영화 목록 이동");
 		return "manager/manager_movie_list";
@@ -223,35 +209,22 @@ public class ManagerController {
 	
 	// ===================================================
 	// ===================================================
+		
+	// list에서 수정버튼 눌렀을 경우 등록페이지로 넘어가면서 
+	// movieNo에 따른 정보를 가져와서 보여줘야함
+	@GetMapping("/movie_list/edit/${movie.movieNo}")
+	public String editMovie( Model model
+							, Event event
+							, @PathVariable("movieNo") int movieNo
+							) {
+		
+		// 요기부터 작성 해야함
+		return "manager/manager_movie_edit";
+	}
 	
-	// 관리자_영화 등록 이동
-//	@GetMapping("/movie_add")
-//	public String moveMovieAdd(Model model) {
-//	    // movie grade 값 얻어오기
-//	    List<String> mgradelist = service.mgradeList();
-//	    // movie genre 값 얻어오기
-//	    List<String> mgenrelist = service.mgenreList();
-//	    
-//	    // mgNo 값을 가공하여 적절한 형태로 변환
-//	    List<String> cleanedMgradelist = new ArrayList<>();
-//	    for (String mgrade : mgradelist) {
-//	        String cleanedGrade = mgrade.replaceAll("[\"\\[\\]\\\\]", "").replace("&quot;", "");
-//	        cleanedMgradelist.add(cleanedGrade);
-//	    }
-//	    System.out.println("cleanedMgradelist 값 :::::" + cleanedMgradelist);
-//	    // genreCode 값을 가공하여 적절한 형태로 변환
-//	    List<String> cleanedMgenrelist = new ArrayList<>();
-//	    for (String mgenre : mgenrelist) {
-//	        String cleanedGenre = mgenre.replaceAll("[\"\\[\\]\\\\]", "").replace("&quot;", "");
-//	        cleanedMgenrelist.add(cleanedGenre);
-//	    }
-//	    System.out.println("cleanedMgenrelist 값 :::::" + cleanedMgenrelist);
-//	    // Model에 데이터 추가
-//	    model.addAttribute("mgradelist", cleanedMgradelist);
-//	    model.addAttribute("mgenrelist", cleanedMgenrelist);
-//	    
-//	    return "manager/manager_movie_add";
-//	}
+	// ===================================================
+	// ===================================================
+	
 	@GetMapping("/movie_add")
 	public String moveMovieAdd(Model model) {
 
@@ -711,4 +684,51 @@ public class ManagerController {
 				
 				// ===================================================
 				// ===================================================
+				
+				// 테스트 페이지 이동
+				@GetMapping("/manager_testPage")
+				public String moveTest() {
+					System.out.println("테스트 페이지 이동");
+					return "manager/manager_testPage";
+				}
+				
+				// ===================================================
+				// ===================================================
+					
+						// 테스트 이미지 업로드
+						@PostMapping("/manager_testPage/uploadImageFile")
+						@ResponseBody
+						public String testImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request) {
+							JsonObject jsonObject = new JsonObject();
+
+//							  String fileRoot = "C:\\Users\\cropr\\Desktop\\test"; // 외부경로로 저장을 희망할때.
+
+							// 내부경로로 저장
+							String webPath = "/resources/images/fileupload/";
+
+							String fileRoot = request.getServletContext().getRealPath(webPath);
+
+							String originalFileName = multipartFile.getOriginalFilename(); // 오리지날 파일명
+							String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자
+							String savedFileName = UUID.randomUUID() + extension; // 저장될 파일 명
+
+							File targetFile = new File(fileRoot + savedFileName);
+							try {
+								InputStream fileStream = multipartFile.getInputStream();
+								FileUtils.copyInputStreamToFile(fileStream, targetFile); // 파일 저장
+								jsonObject.addProperty("url", request.getContextPath() + webPath + savedFileName); // contextroot +
+																													// resources + 저장할 내부
+																													// 폴더명
+								jsonObject.addProperty("responseCode", "success");
+
+							} catch (IOException e) {
+								FileUtils.deleteQuietly(targetFile); // 저장된 파일 삭제
+								jsonObject.addProperty("responseCode", "error");
+								e.printStackTrace();
+							}
+							String a = jsonObject.toString();
+							System.out.println("================================================= 이미지 는?? : : " + a);
+							return a;
+
+						}
 }

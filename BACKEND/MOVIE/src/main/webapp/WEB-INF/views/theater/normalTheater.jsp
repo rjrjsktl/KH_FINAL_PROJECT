@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -210,15 +210,18 @@
 							<c:otherwise>
 								<c:forEach var="getNotice" items="${getNoticeList['noticeLists']}" varStatus="loop">
 									<c:if test="${loop.index < 5}">
-										<tr>
+										<tr class="row">
 											<td>${getNotice.noticeNo}</td>
 											<td>${getNotice.noticeTitle}</td>
 											<td>${getNotice.noticeRegDate}</td>
+											<td>${getNotice.noticeView}</td>
 										</tr>
 									</c:if>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
+						
+						
 					</tbody>
 				</table>
 

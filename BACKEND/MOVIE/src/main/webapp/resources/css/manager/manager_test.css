@@ -243,9 +243,42 @@
     border: 2px solid black;
 }
 
+/* 개봉일 */
+.movie_releseDate {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 140px;
+    height: 50px;
+    border: 2px solid #ddd;
+}
 
+.movie_releseDate:hover {
+    border: 2px solid black;
+}
 
+.movie_releseDate>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #333333;
+    color: white;
+    cursor: pointer;
+}
 
+.movie_releseDate div:hover {
+    background-color: #FAE300;
+    color: black;
+}
+
+/* input Date 선택 시 나오는 달력 아이콘 숨기기 */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
 
 /* 이미지 */
 .movie_image {
@@ -492,64 +525,4 @@
 
 .relative {
     position: relative;
-}
-
-
-
-
-/* 카테고리 */
-
-.store_category {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 800px;
-    height: 50px;
-    border-bottom: 2px solid #ddd;
-}
-
-
-.store_category:hover {
-    border-bottom: 2px solid black;
-}
-
-.store_category>div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 20px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: #333333;
-    color: white;
-    cursor: pointer;
-}
-
-.store_category div:hover {
-    background-color: #FAE300;
-    color: black;
-}
-
-.store_category_slide {
-    background-color: white;
-    position: absolute;
-    top: 50px;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    width: 800px;
-    height: 250px;
-    overflow-y: scroll;
-    border-left: 2px solid black;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-}
-
-.store_category_slide div {
-    padding: 10px 20px;
-}
-
-.store_category_slide div:hover {
-    background-color: #FAE300;
-    color: black;
 }
