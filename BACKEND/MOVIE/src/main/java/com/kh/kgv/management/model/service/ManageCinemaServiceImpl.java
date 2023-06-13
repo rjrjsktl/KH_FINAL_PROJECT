@@ -10,4 +10,9 @@ public class ManageCinemaServiceImpl implements ManageCinemaService {
 
 	@Autowired
 	private ManageCinemaDAO dao;
+
+	@Override
+	public int cinemaDupCheck(String cinemaName) {
+		return 0;
+	}
 }
