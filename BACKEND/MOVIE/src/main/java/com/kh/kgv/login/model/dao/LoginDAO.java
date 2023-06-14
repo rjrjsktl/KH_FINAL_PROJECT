@@ -113,6 +113,15 @@ public class LoginDAO {
 	}
 
 
+	/** 아이디 찾기 
+	 * @param user
+	 * @return
+	 */
+	public String findEmail(User user) {
+		return sqlSession.selectOne("userMapper.findEmail", user);
+	}
+
+
 	
 
 

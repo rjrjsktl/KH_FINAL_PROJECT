@@ -15,17 +15,17 @@ public class ManageCinemaServiceImpl implements ManageCinemaService {
 
 	@Override
 	public int cinemaDupCheck(String cinemaName) {
-		return 0;
+		return dao.cinemaDupCheck(cinemaName);
 	}
 
 	@Override
 	public int enrollCinema(Cinema cinema) {
-		return 0;
+		return dao.enrollCinema(cinema);
 	}
 
 	@Override
 	public int enrollScreen(Screen screen) {
-		return 0;
+		return dao.enrollScreen(screen);
 	}
 
 

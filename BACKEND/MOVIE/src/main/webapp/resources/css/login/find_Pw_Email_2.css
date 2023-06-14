@@ -126,7 +126,6 @@ input {
     height: 40px;
     
     background-color: rgba(1, 1, 1, 0);
-	
 }
 
 input::placeholder {

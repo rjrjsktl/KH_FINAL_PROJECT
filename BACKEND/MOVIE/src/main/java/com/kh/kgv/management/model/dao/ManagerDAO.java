@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Pagination;
@@ -195,6 +196,21 @@ public class ManagerDAO {
 	public int updateNoticeST(Notice notice) {
 		return sqlSession.update("managerMapper.updateNoticeST", notice);
 	}
+
+	
+	// 영화관 수 조회
+	public int getCinemaCount() {
+		return sqlSession.selectOne("cinemaMapper.getCinemaCount");
+	}
+	
+	
+	public List<Cinema> getCinemaList(Pagination pagination) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());		
+		
+		return sqlSession.selectList("cinemaMapper.getCinemaList", null, rowBounds);
+	}
+
 
 }
 

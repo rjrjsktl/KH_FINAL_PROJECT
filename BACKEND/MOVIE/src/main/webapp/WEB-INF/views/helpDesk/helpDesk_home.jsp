@@ -1,5 +1,6 @@
 <!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
  -->
 
 <!DOCTYPE html>
@@ -64,25 +65,25 @@
 							<div class="new-wrap">
 
 								<div>
-									<a href="#"><img src="../../images/noticePng/notice01.png"
-										alt=""></a> <a href=""><p>공지사항</p>
+									<a href="#"><img src="${contextPath}/resources/images/noticePng/notice01.png"
+										alt=""></a> <a href="${contextPath}/helpDesk/notice_List"><p>공지사항</p>
 										<span>공지사항을 확인해보세요</span></a>
 								</div>
 
 
 								<div>
-									<a href="#"><img src="../../images/noticePng/notice02.png"
+									<a href="#"><img src="${contextPath}/resources/images/noticePng/notice02.png"
 										alt=""></a> <a href=""><p>분실물 문의</p>
 										<span>질질 흘리고다니기나하고.. 으휴</span></a>
 
 								</div>
 								<div>
-									<a href="#"><img src="../../images/noticePng/notice03.png"
+									<a href="#"><img src="${contextPath}/resources/images/noticePng/notice03.png"
 										alt=""></a> <a href=""><p>단체 / 대관 문의</p>
 										<span>돈도많으시네요</span></a>
 								</div>
 								<div>
-									<a href="#"><img src="../../images/noticePng/notice04.png"
+									<a href="#"><img src="${contextPath}/resources/images/noticePng/notice04.png"
 										alt=""></a> <a href=""><p>자주 찾는 나문희</p>
 										<span>머리가 나쁜가..</span></a>
 
@@ -94,7 +95,7 @@
 								</div>
 								<div>
 									<a href="#"><img src="../../images/noticePng/notice06.png"
-										alt=""></a> <a href=""><p>1:1 나문희</p>
+										alt=""></a> <a href="${contextPath}/helpDesk/mTm_form"><p>1:1 나문희</p>
 										<span>맞짱뜨실?</span></a>
 								</div>
 							</div>
