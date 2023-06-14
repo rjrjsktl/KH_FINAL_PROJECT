@@ -19,6 +19,43 @@
         <result property="screenDetail" column="SCREEN_DETAIL" />
     </resultMap>
     
-    <select id=""></select>
+    
+    <!-- 영화관 등록 -->
+    
+    <insert id="enrollCinema" parameterType="cinema">
+        INSERT INTO CINEMA 
+        VALUES(SEQ_CINEMA_NO.NEXTVAL, #{cinemaName}, #{cinemaArea}, #{cinemaRegion}, #{cinemaScreen})
+    </insert>
+    
+    
+    <!-- 상영관 등록 -->
+    
+    <insert id="enrollScreen" parameterType="screen">
+        INSERT INTO SCREEN
+        VALUES(SEQ_SCREEN_NO.NEXTVAL, #{cinemaName}, #{screenName}, #{screenStyle}, #{screenSeat}, #{screenDetail})
+    </insert>
+    
+    
+    <!-- 영화관 중복 검사 -->
+    
+    <select id="cinemaDupCheck" parameterType="string" resultType="_int">
+        SELECT COUNT(*) FROM CINEMA
+        WHERE CINEMA_NAME = #{cinemaName}
+    </select>
+    
+    
+    <!-- 영화관 갯수 조회 -->
+    
+    <select id="getCinemaCount" resultType="_int">
+        SELECT COUNT(*) FROM CINEMA
+    </select>
+    
+    
+    <!-- 영화관 리스트 조회 -->
+    
+    <select id="getCinemaList" resultMap="cinema_rm">
+        SELECT * FROM CINEMA
+        ORDER BY CINEMA_NO DESC
+    </select>
 
 </mapper>

@@ -272,6 +272,30 @@
 	WHERE NOTICE_NO = #{noticeNo}
 	</select>
 	
+	<!-- 공지사항 전 번호 갖고오기~ ☆ -->
+		<select id="noticePrevNo" resultMap="notice_rm">
+	SELECT
+	NOTICE_NO
+	, NOTICE_TITLE
+	, NOTICE_CONTENT
+	, NOTICE_REGDATE
+	, NOTICE_UPLOADER
+	FROM NOTICE
+	WHERE NOTICE_NO = #{noticeNo}
+	</select>
+	
+		<!-- 공지사항 다음 번호 갖고오기~ ☆ -->
+		<select id="noticeNextNo" resultMap="notice_rm">
+	SELECT
+	NOTICE_NO
+	, NOTICE_TITLE
+	, NOTICE_CONTENT
+	, NOTICE_REGDATE
+	, NOTICE_UPLOADER
+	FROM NOTICE
+	WHERE NOTICE_NO = #{noticeNo}
+	</select>
+	
 		<!-- 공지사항 수정(업데이트) -->
 	<update id="editNotice" parameterType="notice">
 	UPDATE NOTICE SET
