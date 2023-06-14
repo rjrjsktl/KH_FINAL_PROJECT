@@ -753,7 +753,9 @@ public class ManagerController {
 
 				        String originalFileName = multipartFile.getOriginalFilename();
 				        String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
-				        String savedFileName = UUID.randomUUID() + extension;
+				        String savedFileName = Util.fileRename(originalFileName);
+//				        String savedFileName = Util.fileRename(originalFileName) + extension;
+//				        String savedFileName = UUID.randomUUID() + extension;
 
 				        File targetFile = new File(fileRoot + savedFileName);
 				        try {
@@ -776,41 +778,4 @@ public class ManagerController {
 				    System.out.println("이미지: " + jsonResult);
 				    return jsonResult;
 				}
-				// 테스트 이미지 업로드2
-				@PostMapping("/manager_testPage/uploadImageFile2")
-				@ResponseBody
-				public String testImageFile2(@RequestParam("file") MultipartFile[] multipartFiles, HttpServletRequest request) {
-					JsonArray jsonArray = new JsonArray(); // JsonArray로 변경
-					
-					String webPath = "/resources/images/testFolder/";
-					String fileRoot = request.getServletContext().getRealPath(webPath);
-					
-					for (MultipartFile multipartFile : multipartFiles) {
-						JsonObject jsonObject = new JsonObject();
-						
-						String originalFileName = multipartFile.getOriginalFilename();
-						String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
-						String savedFileName = UUID.randomUUID() + extension;
-						
-						File targetFile = new File(fileRoot + savedFileName);
-						try {
-							InputStream fileStream = multipartFile.getInputStream();
-							FileUtils.copyInputStreamToFile(fileStream, targetFile);
-							jsonObject.addProperty("", request.getContextPath() + webPath + savedFileName);
-//				            jsonObject.addProperty("url", request.getContextPath() + webPath + savedFileName);
-//				            jsonObject.addProperty("responseCode", "success");
-							
-						} catch (IOException e) {
-							FileUtils.deleteQuietly(targetFile);
-							jsonObject.addProperty("responseCode", "error");
-							e.printStackTrace();
-						}
-						
-						jsonArray.add(jsonObject); // JsonObject를 JsonArray에 추가
-					}
-					
-					String jsonResult = jsonArray.toString();
-					System.out.println("이미지: " + jsonResult);
-					return jsonResult;
-				}
-}
+			}
