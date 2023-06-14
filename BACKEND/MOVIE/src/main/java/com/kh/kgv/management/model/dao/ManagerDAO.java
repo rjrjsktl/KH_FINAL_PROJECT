@@ -123,6 +123,14 @@ public class ManagerDAO {
 		return sqlSession.selectOne("movieMapper.getEditMovieList", movie);
 	}
 	
+	/** 영화 수정 등록
+	 * @param updateMovie
+	 * @return
+	 */
+	public int MovieEdit(Movie updateMovie) {
+		return sqlSession.update("movieMapper.MovieEdit", updateMovie);
+	}
+	
 	// 이벤트 목록 수 조회
 	public int getEventListCount() {
 		return sqlSession.selectOne("managerMapper.getEventListCount");
@@ -188,7 +196,7 @@ public class ManagerDAO {
 	public int updateNoticeST(Notice notice) {
 		return sqlSession.update("managerMapper.updateNoticeST", notice);
 	}
-	
+
 	
 	// 영화관 수 조회
 	public int getCinemaCount() {
@@ -202,8 +210,10 @@ public class ManagerDAO {
 		
 		return sqlSession.selectList("cinemaMapper.getCinemaList", null, rowBounds);
 	}
-	
-	
 
 
 }
+
+
+
+

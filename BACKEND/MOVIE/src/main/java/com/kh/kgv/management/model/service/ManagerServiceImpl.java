@@ -170,6 +170,19 @@ public class ManagerServiceImpl implements ManagerService {
 	public Map<String, Object> getEditMovieList(Movie movie) {
 		return dao.getEditMovieList(movie);
 	}
+	
+	/** 
+	 * 영화 수정 등록
+	 */
+	@Override
+	public int MovieEdit(Movie updateMovie) {
+
+		System.out.println("==============영화등록 serviceimpl");
+
+		int result = dao.MovieEdit(updateMovie);
+		System.out.println("serviceImpl result:::::" + result);
+		return result;
+	}
 
 	@Override
 	public Map<String, Object> eventList(int cp) {
