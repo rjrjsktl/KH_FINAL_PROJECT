@@ -45,7 +45,7 @@
                             <div class="table_Title">
                                 <span>극장 등록</span>
                             </div>
-                            <form action="manager_cinema_add/test" method="post" id="cinemaAddForm">
+                            <form action="manager_cinema_add/enroll" method="post" id="cinemaAddForm">
                                 <div class="table_main">
                                     <div>
                                         <span>이름</span>

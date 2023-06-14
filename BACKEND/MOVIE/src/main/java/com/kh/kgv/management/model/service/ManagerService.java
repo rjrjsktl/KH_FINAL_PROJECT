@@ -66,6 +66,9 @@ public interface ManagerService {
 
 	//공지사항 상태 업데이트
 	int updateNoticeST(Notice notice);
+	
+	// 영화관 목록 조회 
+	Map<String, Object> getCinemaMap(int cp);
 
 
 

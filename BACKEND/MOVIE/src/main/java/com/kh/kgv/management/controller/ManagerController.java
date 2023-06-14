@@ -277,7 +277,14 @@ public class ManagerController {
 	
 	// 관리자_극장 목록 이동
 	@GetMapping("/manager_cinema_list")
-	public String moveCinemaList() {
+	public String moveCinemaList(
+			Model model,
+			@RequestParam(value = "cp", required = false, defaultValue="1" ) int cp) {
+		
+		Map<String, Object> cinemaMap = null;
+		cinemaMap = service.getCinemaMap(cp);
+		model.addAttribute("cinemaMap", cinemaMap);
+		
 		System.out.println("관리자_극장 목록 이동");
 		return "manager/manager_cinema_list";
 	}
