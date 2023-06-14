@@ -92,7 +92,7 @@
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-	<script src="${contextPath}/resources/js/login/findPwEmail.js"></script>
+	<script src="${contextPath}/resources/js/login/findPw.js"></script>
 </body>
 
 </html>

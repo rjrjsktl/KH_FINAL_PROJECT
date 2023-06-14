@@ -70,6 +70,10 @@ public interface ManagerService {
 	// 영화관 목록 조회 
 	Map<String, Object> getCinemaMap(int cp);
 
+	//공지사항 갯수 조회	
+	int getNoticeListCount();
+
+
 
 
 	
