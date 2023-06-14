@@ -20,4 +20,24 @@ public class HelpDeskImpl implements HelpDeskService {
 		
 	}
 
+	@Override
+	public Notice getPreviousNotice(int noticeNo) {
+		  int prevNoticeNo = noticeNo - 1;
+
+		    // 이전 게시물의 정보를 데이터베이스에서 조회
+		    Notice prevNotice = dao.findPrevNoticeNo(prevNoticeNo);
+
+		    return prevNotice;
+	}
+
+	@Override
+	public Notice getNextNotice(int noticeNo) {
+	    int nextNoticeNo = noticeNo + 1;
+
+	    // 다음 게시물의 정보를 데이터베이스에서 조회
+	    Notice nextNotice = dao.findNextNoticeNo(nextNoticeNo);
+
+	    return nextNotice;
+	}
+
 }

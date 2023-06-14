@@ -14,7 +14,17 @@ public class HelpDeskDAO {
 
 	public Notice selectNoticeDetail(int noticeNo) {
 		return sqlSession.selectOne("managerMapper.noticeDetail", noticeNo);
-
 	}
+
+	
+	public Notice findPrevNoticeNo(int prevNoticeNo) {
+		return sqlSession.selectOne("managerMapper.noticePrevNo", prevNoticeNo);
+	}
+
+
+	public Notice findNextNoticeNo(int nextNoticeNo) {
+		return sqlSession.selectOne("managerMapper.noticeNextNo", nextNoticeNo);
+	}
+	
 
 }

@@ -112,10 +112,10 @@ h2 {
     color: rgb(21, 21, 21);
 }
 
-.aslide-list>li:nth-child(3)>a {
+.aslide-list>li:nth-child(2)>a {
     background-color: rgb(73, 73, 73);
 }
 
-.aslide-list>li:nth-child(3)>a {
+.aslide-list>li:nth-child(2)>a {
     color: rgb(251, 251, 251);
 }

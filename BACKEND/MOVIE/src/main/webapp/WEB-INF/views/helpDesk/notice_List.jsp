@@ -44,7 +44,7 @@
 
 							<div class="search-area">
 								<p>
-									전체<span>2,222</span>건
+									전체<span class="count-span">${listCount}</span>건
 								</p>
 								<div>
 									<input type="text" placeholder="공지사항을 검색하세요">
@@ -74,7 +74,7 @@
 												<c:forEach var="getNotice"
 													items="${getNoticeList.noticeLists}" varStatus="loop">
 													<c:if test="${loop.index < 10}">
-														<tr>
+														<tr class="count-td">
 															<td>${getNotice.noticeNo}</td>
 															<td><a href="${contextPath}/helpDesk/notice_detail/${getNotice.noticeNo}" style="color:white">${getNotice.noticeTitle}</a></td>
 															<td>${getNotice.noticeRegDate}</td>
@@ -86,68 +86,6 @@
 										</c:choose>
 
 
-										<!-- 
-										<tr class="row">
-											<td>1</td>
-											<th><a href="">내용123</a></th>
-											<td>2023.01.01</td>
-											<td>1</td>
-										</tr>
-										<tr class="row">
-											<td>2</td>
-											<th><a href="">내용123</a></th>
-											<td>2023.01.01</td>
-											<td>23</td>
-										</tr>
-										<tr class="row">
-											<td>3</td>
-											<th><a href="">내용123</a></th>
-											<td>2023.01.01</td>
-											<td>456</td>
-										</tr>
-										<tr class="row">
-											<td>4</td>
-											<th><a href="">내용123</a></th>
-											<td>2023.01.01</td>
-											<td>7,890</td>
-										</tr>
-										<tr class="row">
-											<td>5</td>
-											<th><a href="">내용123</a></th>
-											<td>2023.01.01</td>
-											<td>11,789</td>
-										</tr>
-										<tr class="row">
-											<td>6</td>
-											<th><a href="">내용123</a></th>
-											<td>2023.01.01</td>
-											<td>227,389</td>
-										</tr>
-										<tr class="row">
-											<td>7</td>
-											<th><a href="">내용123</a></th>
-											<td>2023.01.01</td>
-											<td>4,478,923</td>
-										</tr>
-										<tr class="row">
-											<td>8</td>
-											<th><a href="">내용123</a></th>
-											<td>2023.01.01</td>
-											<td>74,778,489</td>
-										</tr>
-										<tr class="row">
-											<td>9</td>
-											<th><a href="">내용123</a></th>
-											<td>2023.01.01</td>
-											<td>23,456,789</td>
-										</tr>
-										<tr class="row">
-											<td>0</td>
-											<th><a href="">내용123</a></th>
-											<td>2023.01.01</td>
-											<td>23,456,789</td>
-										</tr>
-										 -->
 
 
 									</tbody>
@@ -180,6 +118,7 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 		crossorigin="anonymous"></script>
+
 
 </body>
 

@@ -237,6 +237,9 @@ $(document).ready(function () {
             e.preventDefault();
             return false;
         };
+        
+        const movieNo = $('#movieNo');
+        
         console.log('저장버튼이 눌림.');
         console.log("Uploader : " + $("input[name=movieUploader]").val());
         console.log("영화 제목 : " + movie_title.val());
@@ -253,7 +256,7 @@ $(document).ready(function () {
         // 등록된 영화 ajax
         console.log("영화등록 AJAX");
         $.ajax({
-            url: "movie_edit",
+            url: "/movie/manager/movie_list/edit/" + movieNo.val() + "/movie_edit",
             data: {
                 "movieTitle": movie_title.val(),
                 "movieDirector": movie_director.val(),

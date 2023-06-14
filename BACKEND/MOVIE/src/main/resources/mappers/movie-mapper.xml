@@ -18,6 +18,8 @@
 		<result property="movieFixdate" 			column="MOVIE_FIXDATE"/>
 		<result property="movieChanger" 			column="MOVIE_CHANGER"/>
 		<result property="genreCode" 				column="GENRE_NAME"/>
+		<result property="movieDirector"			column="MOVIE_DIRECTOR"/>
+        <result property="movieCast"				column="MOVIE_CAST"/>
 	</resultMap>
 		
 	<!-- 영화 등록 -->
@@ -28,7 +30,6 @@
         	#{movieRuntime},
         	#{movieTitle},
         	#{movieNation},
-        	#{movieOpen},
         	#{mgNo},
         	#{movieContent},
         	#{movieImg},
@@ -40,7 +41,8 @@
         	null,
         	#{genreCode},
         	#{movieDirector},
-        	#{movieCast}
+        	#{movieCast},
+        	#{movieOpen}
     	)
 	</insert>
 	
@@ -70,5 +72,27 @@
 		SELECT * FROM MOVIE
 		WHERE MOVIE_NO = #{movieNo}
 	</select>
+	
+	<!-- 영화 수정 -->
+	<update id="MovieEdit" parameterType="movie">
+		UPDATE MOVIE SET
+			MOVIE_RUNTIME = #{movieRuntime},
+        	MOVIE_TITLE = #{movieTitle},
+        	MOVIE_NATION = #{movieNation},
+        	MG_CONTENT = #{mgNo},
+        	MOVIE_CONTENT = #{movieContent},
+        	MOVIE_IMG = #{movieImg},
+        	null,
+        	null,
+        	default,
+        	MOVIE_UPLOADER = #{movieUploader},
+        	null,
+        	null,
+        	GENRE_NAME = #{genreCode},
+        	MOVIE_DIRECTOR = #{movieDirector},
+        	MOVIE_CAST = #{movieCast},
+        	MOVIE_OPEN = #{movieOpen}
+			WHERE MOVIE_NO = ${movieNo}
+	</update>
 	
 </mapper>
