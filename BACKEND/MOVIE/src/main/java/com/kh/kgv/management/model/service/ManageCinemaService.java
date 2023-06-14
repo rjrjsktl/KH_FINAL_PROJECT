@@ -1,11 +1,14 @@
 package com.kh.kgv.management.model.service;
 
+import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.Screen;
+
 public interface ManageCinemaService {
 
 	int cinemaDupCheck(String cinemaName);
 
-	int enrollCinema(String cinemaName, String cinemaArea, String cinemaRegion, int cinemaScreen);
+	int enrollCinema(Cinema cinema);
 
-	int enrollScreen(String cinemaName, int screenName, String screenStyle, int screenSeat, String screenDetail);
+	int enrollScreen(Screen screen);
 
 }
