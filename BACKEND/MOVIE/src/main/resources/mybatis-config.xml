@@ -20,7 +20,8 @@
 		<typeAlias type="com.kh.kgv.items.model.vo.Play" alias="play"/>
 		<typeAlias type="com.kh.kgv.items.model.vo.Seat" alias="seat"/>
 		<typeAlias type="com.kh.kgv.items.model.vo.SeatPrice" alias="sp"/>
-
+		<typeAlias type="com.kh.kgv.items.model.vo.Store" alias="store"/>
+		
 		<typeAlias type="com.kh.kgv.management.model.vo.Event" alias="event"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.Ask" alias="ask"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.Freq" alias="freq"/>
@@ -32,6 +33,7 @@
 		
 		<typeAlias type="com.kh.kgv.management.model.vo.Cinema" alias="cinema"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.Screen" alias="screen"/>
+		
 		
 		
 		
@@ -49,6 +51,7 @@
 		<mapper resource="/mappers/EnterCheck-Mapper.xml"/>
 		<mapper resource="/mappers/manager-mapper.xml"/>
 		<mapper resource="/mappers/myPage-mapper.xml"/>
+		<mapper resource="/mappers/store-mapper.xml"/>
 			
 		<mapper resource="/mappers/cinema-mapper.xml"/>
 	

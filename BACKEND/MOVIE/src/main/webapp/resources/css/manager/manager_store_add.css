@@ -205,13 +205,13 @@
 }
 
 
-#movie_sub {
+#store_sub {
     display: flex;
     width: 50vw;
     margin-bottom: 15px;
 }
 
-#movie_sub span {
+#store_sub span {
     flex: 1;
     display: flex;
     align-items: center;
@@ -220,17 +220,17 @@
     margin-right: 30px;
 }
 
-#movie_sub>div {
+#store_sub>div {
     flex: 9;
     display: flex;
 }
 
-#movie_sub textarea {
+#store_sub textarea {
     height: 100px;
     resize: none;
 }
 
-.movie_sub_enter {
+.store_sub_enter {
     position: relative;
     display: flex;
     align-items: center;
@@ -239,7 +239,7 @@
     border: 2px solid #ddd;
 }
 
-.movie_sub_enter:hover {
+.store_sub_enter:hover {
     border: 2px solid black;
 }
 
@@ -247,8 +247,10 @@
 
 
 
+
+
 /* 이미지 */
-.movie_image {
+.store_image {
     position: relative;
     display: flex;
     justify-content: center;
@@ -257,11 +259,11 @@
     vertical-align: middle;
 }
 
-.movie_image:hover {
+.store_image:hover {
     border: 2px solid black;
 }
 
-.movie_image>div {
+.store_image>div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -273,7 +275,7 @@
     cursor: pointer;
 }
 
-.movie_image div:hover {
+.store_image div:hover {
     background-color: #FAE300;
     color: black;
 }
@@ -287,169 +289,9 @@
     font-size: 0.8rem;
 }
 
-/* 관람등급 */
-#level {
-    display: flex;
-    width: 50vw;
-    margin-bottom: 20px;
-    height: 50px;
-}
-
-#level span {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-top: 8px;
-    margin-right: 30px;
-}
-
-#level>div {
-    flex: 9;
-}
-
-.level_Items {
-    display: none;
-}
-
-.movie_level {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 800px;
-    height: 50px;
-    border-bottom: 2px solid #ddd;
-}
-
-.movie_level:hover {
-    border-bottom: 2px solid black;
-}
-
-.movie_level>div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 20px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: #333333;
-    color: white;
-    cursor: pointer;
-}
-
-.movie_level div:hover {
-    background-color: #FAE300;
-    color: black;
-}
-
-.movie_level_slide {
-    background-color: white;
-    position: absolute;
-    top: 50px;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    width: 800px;
-    height: 250px;
-    overflow-y: scroll;
-    border-left: 2px solid black;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-}
-
-.movie_level_slide div {
-    padding: 10px 20px;
-}
-
-.movie_level_slide div:hover {
-    background-color: #FAE300;
-    color: black;
-}
 
 
-/* 장르 영화 */
-#Genre {
-    display: flex;
-    width: 50vw;
-    margin-bottom: 20px;
-    height: 50px;
-}
 
-#Genre span {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-top: 8px;
-    margin-right: 30px;
-}
-
-#Genre>div {
-    flex: 9;
-}
-
-.Genre_Items {
-    display: none;
-}
-
-.movie_Genre {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 800px;
-    height: 50px;
-    border-bottom: 2px solid #ddd;
-}
-
-.movie_Genre:hover {
-    border-bottom: 2px solid black;
-}
-
-.movie_Genre>div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 20px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: #333333;
-    color: white;
-    cursor: pointer;
-}
-
-.movie_Genre div:hover {
-    background-color: #FAE300;
-    color: black;
-}
-
-.movie_genre_slide {
-    background-color: white;
-    position: absolute;
-    top: 50px;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    width: 800px;
-    height: 250px;
-    overflow-y: scroll;
-    border-left: 2px solid black;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-}
-
-.movie_genre_slide div {
-    padding: 10px 20px;
-}
-
-.movie_genre_slide div:hover {
-    background-color: #FAE300;
-    color: black;
-}
-
-.added {
-    width: auto;
-    height: 30px;
-}
 
 /* 저장 및 취소 버튼 */
 .table_bottom {
