@@ -148,38 +148,6 @@ public class ManagerController {
 	// ===================================================
 	// ===================================================
 	
-	// 관리자_영화 등록 
-	@ResponseBody
-	@PostMapping("/movie_add")
-	public int MovieAdd(Movie inputMovie
-//							, RedirectAttributes ra 
-							) {
-		System.out.println("영화 등록 기능 수행");
-			
-		System.out.println("inputMovie: " + inputMovie);
-			
-		int result = service.MovieAdd(inputMovie);
-			
-		System.out.println("controller result:" + result);
-		
-	
-		System.out.println("등록 ㄱㄱ");	
-//		if(result > 0) {
-//			message = "영화 등록 성공";
-//			path = "/manager/movie_add";
-//		} else {
-//			message = "영화 등록 실패";
-//			path = "/manager/movie_add";
-//		}
-			
-//		ra.addFlashAttribute("message", message);
-//		return "redirect:" + path;
-		return result;
-	}
-	
-	// ===================================================
-	// ===================================================
-	
 	// 관리자_1:1 문의 목록 이동
 	@GetMapping("/ask_list")
 	public String moveAskList() {
@@ -187,6 +155,59 @@ public class ManagerController {
 		return "manager/manager_ask_list";
 	}
 	
+	// ===================================================
+	// ===================================================
+	
+	// 영화 등록 페이지
+	@GetMapping("/movie_add")
+	public String moveMovieAdd(Model model) {
+
+			
+		// movie grade 값 얻어오기
+		List<String> mgradelist = service.mgradeList();
+		System.out.println("mgradelist 값 :::::" + mgradelist);
+			
+		model.addAttribute("mgradelist", mgradelist);
+		// movie genre 값 얻어오기
+		List<String> mgenrelist = service.mgenreList();
+		System.out.println("mgenrelist 값 :::::" + mgenrelist);
+		model.addAttribute("mgenrelist", mgenrelist);
+			
+		System.out.println("관리자_영화 등록 이동");
+		return "manager/manager_movie_add";
+	}
+		
+	// ===================================================
+	// ===================================================
+	
+	// 관리자_영화 등록 
+	@ResponseBody
+	@PostMapping("/movie_add")
+	public int MovieAdd(Movie inputMovie
+//						, RedirectAttributes ra 
+						) {
+		System.out.println("영화 등록 기능 수행");
+			
+		System.out.println("inputMovie: " + inputMovie);
+			
+		int result = service.MovieAdd(inputMovie);
+				
+		System.out.println("controller result:" + result);
+		
+		System.out.println("등록 ㄱㄱ");	
+//			if(result > 0) {
+//				message = "영화 등록 성공";
+//				path = "/manager/movie_add";
+//			} else {
+//				message = "영화 등록 실패";
+//				path = "/manager/movie_add";
+//			}
+				
+//			ra.addFlashAttribute("message", message);
+//			return "redirect:" + path;
+		return result;
+	}
+		
 	// ===================================================
 	// ===================================================
 	
@@ -243,23 +264,20 @@ public class ManagerController {
 	// ===================================================
 	// ===================================================
 	
-	// 영화 저장 페이지
-	@GetMapping("/movie_add")
-	public String moveMovieAdd(Model model) {
-
+	// 영화 수정 등록
+	@ResponseBody
+	@PostMapping("/movie_list/edit/{movieNo}/movie_edit")
+	public int MovieEdit(Movie updateMovie
+							, @PathVariable("movieNo") int movieNo) {
+		logger.info("영화 수정 기능 수행");
 		
-		// movie grade 값 얻어오기
-		List<String> mgradelist = service.mgradeList();
-		System.out.println("mgradelist 값 :::::" + mgradelist);
+		logger.info("updateMovie" + updateMovie);
 		
-		model.addAttribute("mgradelist", mgradelist);
-		// movie genre 값 얻어오기
-		List<String> mgenrelist = service.mgenreList();
-		System.out.println("mgenrelist 값 :::::" + mgenrelist);
-		model.addAttribute("mgenrelist", mgenrelist);
+		int result = service.MovieEdit(updateMovie);
 		
-		System.out.println("관리자_영화 등록 이동");
-		return "manager/manager_movie_add";
+		logger.info("update result:::" + result);
+		
+		return result;
 	}
 	
 	// ===================================================
@@ -735,7 +753,9 @@ public class ManagerController {
 
 				        String originalFileName = multipartFile.getOriginalFilename();
 				        String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
-				        String savedFileName = UUID.randomUUID() + extension;
+				        String savedFileName = Util.fileRename(originalFileName);
+//				        String savedFileName = Util.fileRename(originalFileName) + extension;
+//				        String savedFileName = UUID.randomUUID() + extension;
 
 				        File targetFile = new File(fileRoot + savedFileName);
 				        try {
@@ -758,41 +778,4 @@ public class ManagerController {
 				    System.out.println("이미지: " + jsonResult);
 				    return jsonResult;
 				}
-				// 테스트 이미지 업로드2
-				@PostMapping("/manager_testPage/uploadImageFile2")
-				@ResponseBody
-				public String testImageFile2(@RequestParam("file") MultipartFile[] multipartFiles, HttpServletRequest request) {
-					JsonArray jsonArray = new JsonArray(); // JsonArray로 변경
-					
-					String webPath = "/resources/images/testFolder/";
-					String fileRoot = request.getServletContext().getRealPath(webPath);
-					
-					for (MultipartFile multipartFile : multipartFiles) {
-						JsonObject jsonObject = new JsonObject();
-						
-						String originalFileName = multipartFile.getOriginalFilename();
-						String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
-						String savedFileName = UUID.randomUUID() + extension;
-						
-						File targetFile = new File(fileRoot + savedFileName);
-						try {
-							InputStream fileStream = multipartFile.getInputStream();
-							FileUtils.copyInputStreamToFile(fileStream, targetFile);
-							jsonObject.addProperty("", request.getContextPath() + webPath + savedFileName);
-//				            jsonObject.addProperty("url", request.getContextPath() + webPath + savedFileName);
-//				            jsonObject.addProperty("responseCode", "success");
-							
-						} catch (IOException e) {
-							FileUtils.deleteQuietly(targetFile);
-							jsonObject.addProperty("responseCode", "error");
-							e.printStackTrace();
-						}
-						
-						jsonArray.add(jsonObject); // JsonObject를 JsonArray에 추가
-					}
-					
-					String jsonResult = jsonArray.toString();
-					System.out.println("이미지: " + jsonResult);
-					return jsonResult;
-				}
-}
+			}
