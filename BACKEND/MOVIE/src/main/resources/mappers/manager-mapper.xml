@@ -259,6 +259,19 @@
 	WHERE NOTICE_NO = #{noticeNo}
 	</select>
 	
+	
+			<!--공지사항 세부정보 -->
+	<select id="noticeDetail" resultMap="notice_rm">
+	SELECT
+	NOTICE_NO
+	, NOTICE_TITLE
+	, NOTICE_CONTENT
+	, NOTICE_REGDATE
+	, NOTICE_UPLOADER
+	FROM NOTICE
+	WHERE NOTICE_NO = #{noticeNo}
+	</select>
+	
 		<!-- 공지사항 수정(업데이트) -->
 	<update id="editNotice" parameterType="notice">
 	UPDATE NOTICE SET
