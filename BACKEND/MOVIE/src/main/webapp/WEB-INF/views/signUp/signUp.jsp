@@ -24,6 +24,7 @@
 
                 <!-- header -->
                 <jsp:include page="/WEB-INF/views/common/header.jsp" />
+                
                 <main>
                     <!-- 여기서 부터 작업하세요. -->
 
@@ -221,6 +222,7 @@
             <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
             <script src="${contextPath}/resources/js/signUp/signUp.js"></script>
+            <script src="${contextPath}/resources/js/common/header.js"></script>
 
         </body>
 

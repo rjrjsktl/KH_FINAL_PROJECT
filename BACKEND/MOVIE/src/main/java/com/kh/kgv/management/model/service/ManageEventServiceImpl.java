@@ -11,7 +11,8 @@ public class ManageEventServiceImpl implements ManageEventService{
 	
 	@Autowired
 	private ManageEventDAO dao;
-
+	
+	// 이벤트 추가
 	@Override
 	public int addEvent(Event event) {
 		return dao.addEvent(event);

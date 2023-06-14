@@ -16,10 +16,8 @@ public class Notice {
 	private int noticeNo;
 	private String noticeTitle;
 	private String noticeContent;
-	private String noticeFile;
 	private String noticeRegDate;
 	private String noticeUploader;
-	private String noticeFixDate;
-	private String noticeChanger;
 	private String noticeStatus;
-}
+	private int noticeView;
+	}

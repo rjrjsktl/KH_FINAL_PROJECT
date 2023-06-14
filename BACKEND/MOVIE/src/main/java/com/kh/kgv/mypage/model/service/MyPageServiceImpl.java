@@ -18,13 +18,6 @@ public class MyPageServiceImpl implements MyPageService {
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
 	
-	
-	
-	
-	
-	
-	
-	
 	// 회원 비번번호 변경
 	@Override
 	public int changePw(Map<String, Object> paramMap) {

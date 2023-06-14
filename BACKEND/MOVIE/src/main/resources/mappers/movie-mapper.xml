@@ -17,7 +17,7 @@
 		<result property="movieUploader"	 		column="MOVIE_UPLOADER"/>
 		<result property="movieFixdate" 			column="MOVIE_FIXDATE"/>
 		<result property="movieChanger" 			column="MOVIE_CHANGER"/>
-		<result property="genreCode" 				column="GENRE_CODE"/>
+		<result property="genreCode" 				column="GENRE_NAME"/>
 	</resultMap>
 		
 	<!-- 영화 등록 -->
@@ -54,10 +54,21 @@
 		SELECT GENRE_NAME FROM GENRE
 	</select>
 	
+	<!-- 영화 수 조회 -->
+	<select id="getmovielistCount" resultType="_int">
+		SELECT COUNT(MOVIE_NO) FROM MOVIE
+	</select>
+	
 	<!-- 영화 목록에 쓰일 list 호출 -->
 	<select id="movieList" resultMap="movie_rm">
 		SELECT * FROM MOVIE
+		ORDER BY MOVIE_NO DESC
 	</select>
 	
+	<!-- 영화 수정 페이지 이동 후 값 불러오기 -->
+	<select id="getEditMovieList" resultType="HashMap">
+		SELECT * FROM MOVIE
+		WHERE MOVIE_NO = #{movieNo}
+	</select>
 	
 </mapper>

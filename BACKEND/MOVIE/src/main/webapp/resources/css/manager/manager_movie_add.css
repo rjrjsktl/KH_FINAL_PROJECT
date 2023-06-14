@@ -480,7 +480,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .added {
-    width: 80px;
+    width: auto;
     height: 30px;
 }
 
