@@ -93,11 +93,28 @@
                                                             </div>
                                                         </div>
                                                         <div id="movie_sub">
-                                                            <span>이미지</span>
+                                                            <span>대표 이미지</span>
                                                             <div>
-                                                                <input type="file" class="movie_image">
+                                                                <input type="file" class="movie_image1" name="file">
                                                             </div>
                                                         </div>
+                                                        <div id="movie_sub">
+                                                            <span>추가 이미지<br>1 | 2 | 3</span>
+                                                            <div>
+                                                                <input type="file" class="movie_image2" name="file">
+                                                                <input type="file" class="movie_image3" name="file">
+                                                                <input type="file" class="movie_image4" name="file">
+                                                            </div>
+                                                        </div>
+
+                                                        <div id="movie_sub">
+                                                            <span>추가 이미지<br>4 | 5</span>
+                                                            <div>
+                                                                <input type="file" class="movie_image5" name="file">
+                                                                <input type="file" class="movie_image6" name="file">
+                                                            </div>
+                                                        </div>
+
                                                         <div id="level">
                                                             <span>관람 등급</span>
                                                             <div class="relative">
@@ -106,9 +123,7 @@
                                                                 </div>
                                                                 <div class="level_Items">
                                                                     <div class="movie_level_slide">
-                                                                        <c:forEach var="mgrade" items="${mgradelist}">
-                                                                            <div>${mgrade}</div>
-                                                                        </c:forEach>
+                                                                        <div>123</div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -121,9 +136,7 @@
                                                                 </div>
                                                                 <div class="Genre_Items">
                                                                     <div class="movie_genre_slide">
-                                                                        <c:forEach var="mgenre" items="${mgenrelist}">
-                                                                            <div>${mgenre}</div>
-                                                                        </c:forEach>
+                                                                        <div>123</div>
                                                                     </div>
                                                                 </div>
                                                             </div>

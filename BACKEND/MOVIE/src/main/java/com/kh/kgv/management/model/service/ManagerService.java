@@ -36,6 +36,9 @@ public interface ManagerService {
 
 	// 영화 목록 조회
 	Map<String, Object> movieList(int cp);
+	
+	// 영화 수정 조회
+	Map<String, Object> getEditMovieList(Movie movie);
 
 	// 이벤트 목록 조회
 	Map<String, Object> eventList(int cp);
@@ -63,6 +66,8 @@ public interface ManagerService {
 
 	//공지사항 상태 업데이트
 	int updateNoticeST(Notice notice);
+
+
 
 	
 
