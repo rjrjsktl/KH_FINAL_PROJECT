@@ -170,6 +170,20 @@ public class LoginController {
 		return "login/findPwEmail_2";
 	}
 	
+	// 아이디 찾기 진입
+	@RequestMapping("/findEmail")
+	public String findEmail(@ModelAttribute User inputUser,
+							Model model,
+	            			RedirectAttributes ra,
+	            			HttpServletResponse resp,
+	            			HttpServletRequest req,
+	            			HttpSession session) {
+			
+		logger.info("아이디 찾기 위한 준비 !");
+			
+		return "login/findPwEmail_1";
+	}
+	
 	// 비밀번호 찾기 checkUser
 	@GetMapping("/checkUser")
 	@ResponseBody
@@ -294,7 +308,7 @@ public class LoginController {
 	}
 	
 	// 비밀번호 재설정 진입
-	@RequestMapping("/pwChange")
+	@GetMapping("/pwChange")
 	public String pwChange(HttpSession session) {
 		
 		String userEmail = (String) session.getAttribute("userEmail");
@@ -304,7 +318,7 @@ public class LoginController {
 		return "login/pwChange";
 	}
 	
-	
+	// 비밀번호 재설정 하기
 	@RequestMapping("/finshedchangePw")
 	public String finshedchangePw(HttpSession session,
 								  @RequestParam("userPw") String userPw,
@@ -343,11 +357,38 @@ public class LoginController {
 	
 	
 	// 아이디 찾기
-	@RequestMapping("/findEmail")
-	public String findEmail() {
+	@PostMapping("/findId")
+	public String findEmail(String userName, String userBirth, String userTel,
+							RedirectAttributes ra) {
+		logger.info("userName :"+ userName + " // " +"userBirth :"+ userBirth + " // " + "userTel :"+ userTel  );
 		
 		
-		return "login/findPwEmail_1";
+		User user = new User();
+		
+		logger.info("아이디를 찾으러 떠나자!");
+		
+		// 2. User 객체 안에 값을 넣어줌.
+		user.setUserName(userName);
+		user.setUserBirth(userBirth);
+		user.setUserTel(userTel);
+		
+		String findEmail = service.findEmail(user);
+		
+		logger.info("받아온 findEmail : " + findEmail);
+		
+		String message = null;
+		String path = null;
+		
+		if (findEmail != null) {
+            message = "아이디찾기를 통해 찾은 아이디는 " + findEmail + " 입니다";
+            path = "redirect:/"; // 리다이렉트 경로로 수정
+        } else {
+            message = "찾을 수 있는 아이디가 존재하지 않습니다.";
+            path = "redirect:/user/findEmail"; // 리다이렉트 경로로 수정
+        }
+        ra.addFlashAttribute("message", message);
+
+        return path;
 	}
 	
 	
