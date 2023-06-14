@@ -389,12 +389,12 @@
 											<c:forEach var="getNotice"
 												items="${getNoticeList.noticeLists}" varStatus="loop">
 												<c:if test="${loop.index < 1}">
-													<span>${getNotice.noticeTitle}</span>> 
+													<span><a href="${contextPath}/helpDesk/notice_detail/${getNotice.noticeNo}">${getNotice.noticeTitle}</a></span> 
 												</c:if>
 											</c:forEach>
 										</c:otherwise>
 									</c:choose>
-							</a></span> <a href="">더보기</a>
+							</a></span> <a href="${contextPath}/helpDesk/notice_List">더보기</a>
 						</div>
 
 						<div>
@@ -421,23 +421,8 @@
 		</main>
 	</div>
 
-	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-	<!--
-     <%-- session에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
-             <c:if test="${ !empty sessionScope.message }">
-                 <script>
-                     alert("${message}");
-                     // EL 작성 시 scope를 지정하지 않으면
-                     // page -> request -> session -> application 순서로 검색하여
-                     // 일치하는 속성이 있으면 출력
-                 </script>
- 
-                 <%-- message 1회 출력 후 session에서 제거 --%>
-                 <c:remove var="message" scope="session" />
-             </c:if>
-             -->
 </body>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"

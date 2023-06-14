@@ -47,31 +47,64 @@
 
 						<div class="notice-contents">
 							<div>
-								<span>[${detail.noticeNo}]&nbsp;${detail.noticeTitle}</span>
+								<span>${detail.noticeTitle}</span>
 							</div>
 							<div>
 								<span>[${detail.noticeUploader}]<span></span> <span>|</span>
 									<span>${detail.noticeRegDate} </span></span>
 							</div>
 							<div>
-							
-							<c:out value="${detail.noticeContent}" escapeXml="false" />
-							
+
+								<c:out value="${detail.noticeContent}" escapeXml="false" />
+
 							</div>
 
 						</div>
+
+
+
+
+
+
+
 
 						<div class="move-page-wrap">
+
 							<div class="prev-page">
-								<p>이전</p>
-								<a href="#"></a>
-							</div>
-							<div class="next-page">
 								<p>다음</p>
-								<a href="#">[${detail.noticeNo-1}] ${detail.noticeTitle}</a>
+
+								<c:choose>
+									<c:when test="${empty next.noticeNo}">
+										<a style="textDecoration:none">게시글이 존재하지 않습니다.</a>
+									</c:when>
+									<c:otherwise>
+										<a href="${contextPath}/helpDesk/notice_detail/${next.noticeNo}" style="color:white">${next.noticeTitle}</a>
+									</c:otherwise>
+								</c:choose>
+							</div>
+
+							<div class="next-page">
+								<p>이전</p>
+								<c:choose>
+									<c:when test="${empty prev.noticeNo}">
+										<a style="textDecoration:none">게시글이 존재하지 않습니다.</a>
+									</c:when>
+									<c:otherwise>
+										<a href="${contextPath}/helpDesk/notice_detail/${prev.noticeNo}" style="color:white">${prev.noticeTitle}</a>
+									</c:otherwise>
+								</c:choose>
 
 							</div>
 						</div>
+
+
+
+
+
+
+
+
+
 
 						<div>
 							<button>목록으로</button>
@@ -86,15 +119,6 @@
 
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-
-
-
-
-	<script
-		src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
 
 
 

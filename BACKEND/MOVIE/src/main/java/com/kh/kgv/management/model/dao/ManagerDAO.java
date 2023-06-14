@@ -189,6 +189,13 @@ public class ManagerDAO {
 	}
 	
 	
+	// 공지사항 갯수 받아오기
+	public int listCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
 
 
 }

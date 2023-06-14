@@ -252,6 +252,13 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 	
+	// 공지사항 리스트 갯수 반환
+	@Override
+	public int getNoticeListCount() {
+		return dao.getNoticeListCount();
+	}
+
+	
 
 	
 
