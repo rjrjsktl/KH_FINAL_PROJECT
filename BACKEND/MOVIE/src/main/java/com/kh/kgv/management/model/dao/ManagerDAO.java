@@ -91,13 +91,36 @@ public class ManagerDAO {
 		System.out.println(" ===== Genre 호출 dao");
 		return sqlSession.selectList("movieMapper.mgenreList");
 	}
-///////////////////////// 값이 null로 오는데 확인해봐야함
-	public List<Movie> movieList(Movie movie) {
+	
+	/** 영화 목록 수 조회 
+	 *  이값이 돌고 movielist에 들어가야 함
+	 * @return
+	 */
+	public int getmovielistCount() {
+		return sqlSession.selectOne("movieMapper.getmovielistCount");
+	}
+	
+	/** 위에서 getmovielistCount값을 받은다음에 실행 됨
+	 * @param pagination
+	 * @return
+	 */
+	public List<Movie> movieList(Pagination pagination) {
 		System.out.println(" ===== MovieListController 호출 dao");
 		
-		return sqlSession.selectList("movieMapper.movieList", movie);
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("movieMapper.movieList", null, rowBounds);
 	}
-
+	
+	/** 영화 수정 페이지 이동
+	 * @param movie
+	 * @return
+	 */
+	public Map<String, Object> getEditMovieList(Movie movie) {
+		return sqlSession.selectOne("movieMapper.getEditMovieList", movie);
+	}
 	
 	// 이벤트 목록 수 조회
 	public int getEventListCount() {
@@ -164,6 +187,8 @@ public class ManagerDAO {
 	public int updateNoticeST(Notice notice) {
 		return sqlSession.update("managerMapper.updateNoticeST", notice);
 	}
+	
+	
 
 
 }

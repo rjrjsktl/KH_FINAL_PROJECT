@@ -11,6 +11,8 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
@@ -30,12 +33,15 @@ import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
+import com.kh.kgv.mypage.controller.MyPageController;
 
 @Controller
 @RequestMapping("/manager")
 @SessionAttributes({"loginUser"})
 public class ManagerController {
 	
+	private Logger logger = LoggerFactory.getLogger(MyPageController.class);
+
 	@Autowired
 	private ManagerService service;
 
@@ -186,18 +192,17 @@ public class ManagerController {
 	
 	// 관리자_영화 목록 이동
 	@GetMapping("/movie_list")
-	public String moveMovieList(Model model) {
+	public String moveMovieList(Model model
+								, @RequestParam(value = "cp", required = false, defaultValue="1" ) int cp) 
+								{
 		
-		// movielist 값 얻어오기
-		Movie movie = new Movie();
-		List<Movie> movielist = service.movieList(movie);
-				
-		// movielist에서 따온 값 가공하기
-	    List<Movie> cleanedMovielist = Util.removeQuotesFromList(movielist);
-        // 다른 속성이 있다면 해당 속성에 대해서도 동일한 방식으로 처리
-	    System.out.println("cleanedMovielist 값 :::::" + cleanedMovielist);
-	    model.addAttribute("movielist", cleanedMovielist);
-//		model.addAttribute("movielist", movielist);
+		// 페이지네이션 10개씩 자르기
+		Map<String, Object>getMovieList = null;
+		logger.info("1. 페이지네이션 시작 cp들어간다잇");
+		getMovieList = service.movieList(cp);
+		
+		model.addAttribute("getMovieList", getMovieList);
+		logger.info("end: 마지막에 들어오는 getMovieList값::::" + getMovieList);
 		
 		System.out.println("관리자_영화 목록 이동");
 		return "manager/manager_movie_list";
@@ -205,35 +210,40 @@ public class ManagerController {
 	
 	// ===================================================
 	// ===================================================
+		
+	// list에서 수정버튼 눌렀을 경우 등록페이지로 넘어가면서 
+	// movieNo에 따른 정보를 가져와서 보여줘야함
+	@GetMapping("/movie_list/edit/{movieNo}")
+	public String editMovie( Model model
+							, Movie movie
+							, @PathVariable("movieNo") int movieNo
+							) {
+		List<String> mgradelist = service.mgradeList();
+		System.out.println("mgradelist 값 :::::" + mgradelist);
+		
+		model.addAttribute("mgradelist", mgradelist);
+		// movie genre 값 얻어오기
+		List<String> mgenrelist = service.mgenreList();
+		System.out.println("mgenrelist 값 :::::" + mgenrelist);
+		
+		model.addAttribute("mgenrelist", mgenrelist);
+		
+		// 요기부터 수정페이지에 movieNo 보냄
+		movie.setMovieNo(movieNo);
+		
+		Map<String, Object>editMovie = service.getEditMovieList(movie);
+		
+		logger.info("editMovie ::::: " + editMovie);
+		
+		model.addAttribute("editMovie", editMovie);
+		
+		return "manager/manager_movie_edit";
+	}
 	
-	// 관리자_영화 등록 이동
-//	@GetMapping("/movie_add")
-//	public String moveMovieAdd(Model model) {
-//	    // movie grade 값 얻어오기
-//	    List<String> mgradelist = service.mgradeList();
-//	    // movie genre 값 얻어오기
-//	    List<String> mgenrelist = service.mgenreList();
-//	    
-//	    // mgNo 값을 가공하여 적절한 형태로 변환
-//	    List<String> cleanedMgradelist = new ArrayList<>();
-//	    for (String mgrade : mgradelist) {
-//	        String cleanedGrade = mgrade.replaceAll("[\"\\[\\]\\\\]", "").replace("&quot;", "");
-//	        cleanedMgradelist.add(cleanedGrade);
-//	    }
-//	    System.out.println("cleanedMgradelist 값 :::::" + cleanedMgradelist);
-//	    // genreCode 값을 가공하여 적절한 형태로 변환
-//	    List<String> cleanedMgenrelist = new ArrayList<>();
-//	    for (String mgenre : mgenrelist) {
-//	        String cleanedGenre = mgenre.replaceAll("[\"\\[\\]\\\\]", "").replace("&quot;", "");
-//	        cleanedMgenrelist.add(cleanedGenre);
-//	    }
-//	    System.out.println("cleanedMgenrelist 값 :::::" + cleanedMgenrelist);
-//	    // Model에 데이터 추가
-//	    model.addAttribute("mgradelist", cleanedMgradelist);
-//	    model.addAttribute("mgenrelist", cleanedMgenrelist);
-//	    
-//	    return "manager/manager_movie_add";
-//	}
+	// ===================================================
+	// ===================================================
+	
+	// 영화 저장 페이지
 	@GetMapping("/movie_add")
 	public String moveMovieAdd(Model model) {
 
@@ -253,7 +263,6 @@ public class ManagerController {
 	}
 	
 	// ===================================================
-
 	// ===================================================
 	
 	// 관리자_극장 등록 이동
@@ -261,6 +270,26 @@ public class ManagerController {
 	public String moveCinemaAdd() {
 		System.out.println("관리자_극장 등록 이동");
 		return "manager/manager_cinema_add";
+	}
+	
+	// ===================================================
+	// ===================================================
+	
+	// 관리자_극장 목록 이동
+	@GetMapping("/manager_cinema_list")
+	public String moveCinemaList() {
+		System.out.println("관리자_극장 목록 이동");
+		return "manager/manager_cinema_list";
+	}
+	
+	// ===================================================
+	// ===================================================
+	
+	// 관리자_극장 가격 관리 이동
+	@GetMapping("/manager_cinema_price")
+	public String moveCinemaPrice() {
+		System.out.println("관리자_극장 가격 관리 이동");
+		return "manager/manager_cinema_price";
 	}
 	
 	// ===================================================
@@ -674,4 +703,89 @@ public class ManagerController {
 				
 				// ===================================================
 				// ===================================================
+				
+				// 테스트 페이지 이동
+				@GetMapping("/manager_testPage")
+				public String moveTest() {
+					System.out.println("테스트 페이지 이동");
+					return "manager/manager_testPage";
+				}
+				
+				// ===================================================
+				// ===================================================
+					
+						// 테스트 이미지 업로드1
+				@PostMapping("/manager_testPage/uploadImageFile")
+				@ResponseBody
+				public String testImageFile(@RequestParam("file") MultipartFile[] multipartFiles, HttpServletRequest request) {
+				    JsonArray jsonArray = new JsonArray(); // JsonArray로 변경
+
+				    String webPath = "/resources/images/testFolder/";
+				    String fileRoot = request.getServletContext().getRealPath(webPath);
+
+				    for (MultipartFile multipartFile : multipartFiles) {
+				        JsonObject jsonObject = new JsonObject();
+
+				        String originalFileName = multipartFile.getOriginalFilename();
+				        String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
+				        String savedFileName = UUID.randomUUID() + extension;
+
+				        File targetFile = new File(fileRoot + savedFileName);
+				        try {
+				            InputStream fileStream = multipartFile.getInputStream();
+				            FileUtils.copyInputStreamToFile(fileStream, targetFile);
+				            jsonObject.addProperty("", request.getContextPath() + webPath + savedFileName);
+//				            jsonObject.addProperty("url", request.getContextPath() + webPath + savedFileName);
+//				            jsonObject.addProperty("responseCode", "success");
+
+				        } catch (IOException e) {
+				            FileUtils.deleteQuietly(targetFile);
+				            jsonObject.addProperty("responseCode", "error");
+				            e.printStackTrace();
+				        }
+
+				        jsonArray.add(jsonObject); // JsonObject를 JsonArray에 추가
+				    }
+
+				    String jsonResult = jsonArray.toString();
+				    System.out.println("이미지: " + jsonResult);
+				    return jsonResult;
+				}
+				// 테스트 이미지 업로드2
+				@PostMapping("/manager_testPage/uploadImageFile2")
+				@ResponseBody
+				public String testImageFile2(@RequestParam("file") MultipartFile[] multipartFiles, HttpServletRequest request) {
+					JsonArray jsonArray = new JsonArray(); // JsonArray로 변경
+					
+					String webPath = "/resources/images/testFolder/";
+					String fileRoot = request.getServletContext().getRealPath(webPath);
+					
+					for (MultipartFile multipartFile : multipartFiles) {
+						JsonObject jsonObject = new JsonObject();
+						
+						String originalFileName = multipartFile.getOriginalFilename();
+						String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
+						String savedFileName = UUID.randomUUID() + extension;
+						
+						File targetFile = new File(fileRoot + savedFileName);
+						try {
+							InputStream fileStream = multipartFile.getInputStream();
+							FileUtils.copyInputStreamToFile(fileStream, targetFile);
+							jsonObject.addProperty("", request.getContextPath() + webPath + savedFileName);
+//				            jsonObject.addProperty("url", request.getContextPath() + webPath + savedFileName);
+//				            jsonObject.addProperty("responseCode", "success");
+							
+						} catch (IOException e) {
+							FileUtils.deleteQuietly(targetFile);
+							jsonObject.addProperty("responseCode", "error");
+							e.printStackTrace();
+						}
+						
+						jsonArray.add(jsonObject); // JsonObject를 JsonArray에 추가
+					}
+					
+					String jsonResult = jsonArray.toString();
+					System.out.println("이미지: " + jsonResult);
+					return jsonResult;
+				}
 }

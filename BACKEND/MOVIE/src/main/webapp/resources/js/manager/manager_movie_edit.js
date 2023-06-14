@@ -1,6 +1,3 @@
-
-
-
 $(document).ready(function () {
     // ===============================================================================
     // 장르 추가 기능 및 슬라이드
@@ -256,7 +253,7 @@ $(document).ready(function () {
         // 등록된 영화 ajax
         console.log("영화등록 AJAX");
         $.ajax({
-            url: "movie_add",
+            url: "movie_edit",
             data: {
                 "movieTitle": movie_title.val(),
                 "movieDirector": movie_director.val(),

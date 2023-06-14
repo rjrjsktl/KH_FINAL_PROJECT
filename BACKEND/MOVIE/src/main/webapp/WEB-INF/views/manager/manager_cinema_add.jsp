@@ -21,10 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <!-- swiper -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    
+        
     <!-- jQuery 라이브러리 추가(CDN) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -48,7 +45,7 @@
                             <div class="table_Title">
                                 <span>극장 등록</span>
                             </div>
-                            <form action="manager_cinema_add/test" method="post">
+                            <form action="manager_cinema_add/test" method="post" id="cinemaAddForm">
                                 <div class="table_main">
                                     <div>
                                         <span>이름</span>
@@ -63,7 +60,7 @@
                                         <div>
                                             <div>
                                                 <input type="text" id="cinemaPostCode" name="cinemaAddr" placeholder="우편번호" maxlength="6" readonly>
-                                                <button type="button" onclick="return sample4_execDaumPostcode()">주소검색</button>
+                                                <button type="button" onclick="return searchDaumAddress()">주소검색</button>
                                             </div>
                                             <div>
                                                 <input type="text" id="cinemaRoadAddress" name="cinemaAddr" placeholder="도로명주소" readonly>
@@ -75,32 +72,50 @@
                                     </div>
                                     <div>
                                         <span>상영관</span>
-                                        <div class="swiper mySwiper">
-                                            <div class="swiper-wrapper">
-                                                <c:forEach var="i" begin="1" end="4">
-                                                <div class="swiper-slide" data-room-no='${i}'>
+                                        <div class="screen_area">
+                                        
+                                            <div class="screen" data-room-no=0 style="display: none;">
+                                                <div>
                                                     <div>
-                                                        <div>
-                                                            <span>${i}</span>관
-                                                            <span class="room_type">일반관</span>
-                                                        </div>
-                                                        <div>
-                                                            <button type="button" class="room_edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
-                                                        </div>
-                                                    
+                                                        <span class="screenName">0</span>관
+                                                        <span class="screenType">일반관</span>
                                                     </div>
-                                                    <div style="display:none">
-                                                        <input type="text" class="status" name="roomStatus">
+                                                    <div class="screen_btn">
+                                                        <button type="button" class="room_edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
                                                     </div>
-                                                    
                                                 </div>
-                                                
-                                                </c:forEach>
-                                                
+                                                <div style="display:none">
+                                                    <input type="text" class="screenStyle" name="screenStyle">
+                                                    <input type="text" class="screenSeat" name="screenSeat">
+                                                    <input type="text" class="screenDetail" name="screenDetail">
+                                                </div>  
                                             </div>
-
+                                            
+                                            <c:forEach var="i" begin="1" end="4">
+                                            <div class="screen" data-room-no='${i}'>
+                                                <div>
+                                                    <div>
+                                                        <span class="screenName">${i}</span>관
+                                                        <span class="screenType">일반관</span>
+                                                    </div>
+                                                    <div class="screen_btn">
+                                                        <button type="button" class="room_edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div style="display:none">
+                                                    <input type="text" class="screenStyle" name="screenStyle">
+                                                    <input type="text" class="screenSeat" name="screenSeat">
+                                                    <input type="text" class="screenDetail" name="screenDetail">
+                                                </div>  
+                                            </div>
+                                               
+                                            </c:forEach>
+                                            <div id="plusScreen">
+                                                <a href="#none">상영관<br>추가하기</a>
+                                            </div>
                                         </div>
                                     </div>  
+                                    
                                     <div id="room_area">
                                     	<div><span id="room_no"></span>관 편집창</div>
                                     	<div>
@@ -157,8 +172,8 @@
                                 </div>
                                 
                             <div class="table_bottom">
-                                <button type="submit" class="bottom_Submit">저장</button>
-                                <button class="bottom_Cancel">취소</button>
+                                <button type="button" class="bottom_Submit">저장</button>
+                                <button type="reset" class="bottom_Cancel">취소</button>
                             </div>
                                 
                             </form>

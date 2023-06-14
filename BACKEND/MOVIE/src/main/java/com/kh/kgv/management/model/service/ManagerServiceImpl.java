@@ -1,5 +1,6 @@
 package com.kh.kgv.management.model.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.dao.ManagerDAO;
@@ -19,6 +21,12 @@ public class ManagerServiceImpl implements ManagerService {
 
 	@Autowired
 	private ManagerDAO dao;
+	
+//	@Override
+//	public List<Movie> movieList(Movie movie) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 	
 	// 관리자 메인 신규 회원 목록 조회
 	@Override
@@ -104,11 +112,62 @@ public class ManagerServiceImpl implements ManagerService {
 	 * movielist 호출 서비스
 	 *
 	 */
+//	@Override
+//	public List<Movie> movieList(Movie movie) {
+//		System.out.println("===== movieList 호출 service");
+//
+//		return dao.movieList(movie);
+//	}
+	
+	/** movieList 호출 서비스
+	 *  coMovielist 호출 서비스 페이지네이션
+	 */
 	@Override
-	public List<Movie> movieList(Movie movie) {
-		System.out.println("===== movieList 호출 service");
+	public Map<String, Object> movieList(int cp) {
 
-		return dao.movieList(movie);
+		// 영화 수 조회
+		int movielistCount = dao.getmovielistCount();
+		
+		// 조회한 공지사항 수를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, movielistCount);
+ 
+		// 공지사항 리스트 조회
+		System.out.println("===== movieList 호출 service");
+		List<Movie> movielist = dao.movieList(pagination);
+		System.out.println("movielist 값 :::::" + movielist);
+		// movielist에서 따온 값 가공하기
+	    List<Movie> cleanedList = new ArrayList<>();
+	    	for (Movie movie : movielist) {
+	    		Movie cleanedMovie = new Movie();
+	    		cleanedMovie.setMgNo(Util.removeQuotes(movie.getMgNo()));
+	    		cleanedMovie.setGenreCode(Util.removeQuotes(movie.getGenreCode()));
+	    		cleanedMovie.setMovieNo(movie.getMovieNo());
+	    		cleanedMovie.setMovieRuntime(movie.getMovieRuntime());
+	    		cleanedMovie.setMovieTitle(movie.getMovieTitle());
+	    		cleanedMovie.setMovieNation(movie.getMovieNation());
+	    		cleanedMovie.setMovieOpen(movie.getMovieOpen());
+	    		cleanedMovie.setMovieContent(movie.getMovieContent());
+	    		cleanedMovie.setMovieImg(movie.getMovieImg());
+	    		cleanedMovie.setMovieUploader(movie.getMovieUploader());
+	    		cleanedMovie.setMovieDirector(movie.getMovieDirector());
+	    		cleanedMovie.setMovieCast(movie.getMovieCast());
+	    		cleanedMovie.setMovieRegdate(movie.getMovieRegdate());
+	        
+	    		cleanedList.add(cleanedMovie);
+	    	}
+	    	Map<String, Object> getMovieList = new HashMap<String, Object>();
+	    	getMovieList.put("pagination", pagination);
+	    	getMovieList.put("cleanedList", cleanedList);
+		
+		return getMovieList;
+	}
+	
+	/**
+	 * 영화 수정 페이지 이동
+	 */
+	@Override
+	public Map<String, Object> getEditMovieList(Movie movie) {
+		return dao.getEditMovieList(movie);
 	}
 
 	@Override
@@ -191,6 +250,11 @@ public class ManagerServiceImpl implements ManagerService {
 	public int updateNoticeST(Notice notice) {
 		return dao.updateNoticeST(notice);
 	}
+
+	
+
+	
+
 
 
 

@@ -291,7 +291,7 @@
   display: flex;
   width: 1000px;
   height: 140px;
-  margin: 40px 0 30px;
+  margin: 40px 0;
   padding-left: 30px;
 }
 
@@ -322,12 +322,13 @@
 }
 
 
-
 /* 상영관 */
 
 .table_main > div:nth-child(3) {
   display: flex;
   align-items: center;
+  height: 180px;
+  margin: 10px 0;
   padding-left: 14px;
 }
 
@@ -335,39 +336,20 @@
   margin-right: 30px;
 }
 
-.table_main > div:nth-child(3) > .screen_area {
-  display: flex;
-  flex-wrap: wrap;
+.table_main > div:nth-child(3) > .swiper {
   margin: 0;
-  width: 1000px;
+  width: 980px;
+  height: 180px;
 }
 
-.screen, #plusScreen {
+.swiper-slide {
   width: 180px;
-  height: 100px;
-  margin-right: 17.5px;
-  margin-bottom: 17.5px;
+  height: 120px;
+  margin-right: 20px;
   border: 1px solid black;
 }
 
-#plusScreen > a {
-  display: block;
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
-  text-align: center;
-  line-height: 40px;
-  font-size: 20px;
-  background-color: black;
-  color: white; 
-  padding-top: 12px;
-}
-
-#plusScreen > a:hover {
-  color: #FAE300;
-}
-
-.screen > div:first-child {
+.swiper-slide > div:first-child {
   display: flex;
   align-items: center;
   position: relative;
@@ -378,20 +360,14 @@
   padding-left: 10px;
 }
 
-.screen > div:first-child > div:first-child {
+.swiper-slide > div:first-child > div:first-child {
   position: relative;
   top: 2px;
 }
 
-.screen > div:first-child > div:last-child {
-  display: flex;
+.swiper-slide > div:first-child > div:last-child {
   position: absolute;
-  right: 6px;
-}
-
-.screen > div:first-child > div:last-child > button {
-  margin-left: 6px;
-  padding-top: 5px;
+  right: 8px;
 }
 
 /* 상영관 편집*/
@@ -399,12 +375,11 @@
 .table_main > #room_area {
   display: none;
   position: absolute;
-  top: 5px;
+  top: 20px;
   left: 15px;
   z-index: 0;
   width: 1055px;
-  height: 100%;
-  min-height: 500px;
+  height: 497px;
   background-color: #ccc;
 }
 
@@ -431,17 +406,17 @@
 /* 상영관 편집 > 좌석 */
 
 #seat_area > div {
-  display: flex;
-  flex-wrap: nowrap;
-  position: relative;
-  width: 100%;
-  height: 25px;
-  line-height: 25px;
-  margin-bottom: 7px;
+    display: flex;
+    flex-wrap: nowrap;
+    position: relative;
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    margin-bottom: 7px;
 }
 
 #seat_area > div:last-child {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 

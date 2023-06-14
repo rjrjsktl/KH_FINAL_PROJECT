@@ -54,10 +54,21 @@
 		SELECT GENRE_NAME FROM GENRE
 	</select>
 	
+	<!-- 영화 수 조회 -->
+	<select id="getmovielistCount" resultType="_int">
+		SELECT COUNT(MOVIE_NO) FROM MOVIE
+	</select>
+	
 	<!-- 영화 목록에 쓰일 list 호출 -->
 	<select id="movieList" resultMap="movie_rm">
 		SELECT * FROM MOVIE
+		ORDER BY MOVIE_NO DESC
 	</select>
 	
+	<!-- 영화 수정 페이지 이동 후 값 불러오기 -->
+	<select id="getEditMovieList" resultType="HashMap">
+		SELECT * FROM MOVIE
+		WHERE MOVIE_NO = #{movieNo}
+	</select>
 	
 </mapper>
