@@ -67,6 +67,9 @@ public interface ManagerService {
 	//공지사항 상태 업데이트
 	int updateNoticeST(Notice notice);
 
+	//공지사항 갯수 조회	
+	int getNoticeListCount();
+
 
 
 

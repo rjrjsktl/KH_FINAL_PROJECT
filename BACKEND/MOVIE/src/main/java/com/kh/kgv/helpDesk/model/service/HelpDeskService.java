@@ -6,4 +6,8 @@ public interface HelpDeskService {
 
 	Notice selectNoticeDetail(int noticeNo);
 
+	Notice getPreviousNotice(int noticeNo);
+
+	Notice getNextNotice(int noticeNo);
+
 }

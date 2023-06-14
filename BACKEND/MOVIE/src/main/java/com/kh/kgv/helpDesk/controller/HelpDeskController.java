@@ -40,9 +40,14 @@ public class HelpDeskController {
 	public String noticeList(
 			Model model
 			, @RequestParam(value = "cp", required = false, defaultValue="1" ) int cp) {
+		
+		
+		int listCount = 0;
+		listCount = service.getNoticeListCount();
+		model.addAttribute("listCount", listCount);
 
 		Map<String, Object>getNoticeList = null;
-
+	
 		getNoticeList = service.noticeList(cp);
 
 		model.addAttribute("getNoticeList", getNoticeList);
@@ -53,25 +58,46 @@ public class HelpDeskController {
 
 	@Autowired
 	private HelpDeskService services;
-	
+
 	@RequestMapping("/notice_detail/{noticeNo}")
 	public String noticedetail(
-			Model model,
-			@PathVariable("noticeNo") int noticeNo,
-			HttpSession session,
-			HttpServletRequest req,HttpServletResponse resp 
-			) {
+	        Model model,
+	        @PathVariable("noticeNo") int noticeNo,
+	        HttpSession session,
+	        HttpServletRequest req, HttpServletResponse resp
+	) {
+	    Notice detail = services.selectNoticeDetail(noticeNo);
+	    model.addAttribute("detail", detail);
 
-		Notice detail = services.selectNoticeDetail(noticeNo);
+	    Notice prevNotice = services.getPreviousNotice(noticeNo);
+	    model.addAttribute("prev", prevNotice);
 
+	    Notice nextNotice = services.getNextNotice(noticeNo);
+	    model.addAttribute("next", nextNotice);
 
-		
-
-		model.addAttribute("detail", detail);
-		return "helpDesk/notice_detail";
-
+	    return "helpDesk/notice_detail";
+	}
+	
+	@RequestMapping("/mTm_form")
+	public String mtmform(
+			  Model model
+			){
+		return "helpDesk/mTm_form";
+	}
+	
+	@RequestMapping("/question_home")
+	public String question(
+			  Model model
+			){
+		return "helpDesk/question_home";
 	}
 
+	@RequestMapping("/lost_List")
+	public String lostList(
+			  Model model
+			){
+		return "helpDesk/lost_List";
+	}
 
 }
 
