@@ -3,6 +3,7 @@ package com.kh.kgv.management.model.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.management.model.dao.ManageStoreDAO;
 
 
@@ -14,9 +15,15 @@ public class ManageStoreServiceImpl implements ManageStoreService{
 	private ManageStoreDAO dao;
 
 	@Override
-	public int titleDupCheck(String storeTitle) {
+	public int NameDupCheck(String storeName) {
 		
-		return dao.titleDupCheck(storeTitle);
+		return dao.NameDupCheck(storeName);
+	}
+
+	@Override
+	public int addStore(Store store) {
+		return dao.addStore(store);
+		
 	}
 
 }

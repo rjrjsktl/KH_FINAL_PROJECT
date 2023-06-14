@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class Store {
 	
 	private int storeNo;
+	private String storeCategory;
 	private String storeName;
 	private int storePrice;
 	private String storeImage;
