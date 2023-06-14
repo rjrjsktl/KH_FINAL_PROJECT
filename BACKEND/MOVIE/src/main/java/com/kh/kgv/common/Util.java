@@ -18,6 +18,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+
 @SuppressWarnings("unused")
 public class Util {
 	// 파일명 변경 메소드
@@ -25,13 +27,16 @@ public class Util {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		String date = sdf.format(new java.util.Date(System.currentTimeMillis()));
 
-		int ranNum = (int) (Math.random() * 100000); // 5자리 랜덤 숫자 생성
+		int ranNum = (int) (Math.random() * 1000000); // 7자리 랜덤 숫자 생성
+//		int ranNum = (int) (Math.random() * 100000); // 5자리 랜덤 숫자 생성
 
-		String str = "_" + String.format("%05d", ranNum);
+		String str = String.format("%07d", ranNum);
+//		String str = "_" + String.format("%05d", ranNum);
 
 		String ext = originFileName.substring(originFileName.lastIndexOf("."));
 
-		return date + str + ext;
+//		return date + str + ext;
+		return  str+ ext ;
 	}
 	
 	   // 개행문자 처리 
@@ -81,46 +86,6 @@ public class Util {
 		    return input.replaceAll("[\"\\[\\]\\\\]", "").replaceAll("&quot;", "").replaceAll(",", ", ");
 		}
 }
-
-//@PostMapping("/notice_list/edit/{noticeNo}/edit_Notice")
-//@ResponseBody
-//public int editNotice(
-//		@RequestParam("no") int  no
-//		, @RequestParam("title") String title
-//		, @RequestParam("userName") String userName
-//		, @RequestParam("content") String content
-//		) {
-//	Notice  notice = new Notice();
-//	notice.setNoticeNo(no);
-//	notice.setNoticeTitle(title);
-//	notice.setNoticeUploader(userName);
-//	notice.setNoticeContent(content);
-//	
-//	System.out.println("이벤트 수정에서 가지고 온 값들 =================================" + notice);
-//
-//	int result = service.editNotice(notice);
-//
-//	return result;
-//}
-//@GetMapping("/event_list/edit/{eventNo}")
-//public String editEvent(
-//        Model model,
-//        Event event,
-//        @PathVariable("eventNo") int eventNo
-//		) {
-//	
-//	Map<String, Object>editEvent = null;
-//	
-//	event.setEventNo(eventNo);
-//	
-//	editEvent = service.getEditEventList(event);
-//	System.out.println("DAO에서 가지고 온 editEvent : " + editEvent);
-//	model.addAttribute("editEvent", editEvent);
-//	
-//	return "manager/manager_event_edit";
-//	
-//}
-
 
 
 

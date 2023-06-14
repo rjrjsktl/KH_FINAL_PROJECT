@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>	<!-- Maven 2 버전 이후 POM의 경우 항상 4.0.0 -->
 	<groupId>com.kh</groupId>	<!-- 최상위 패키지 1, 2레벨 -->
 	<artifactId>movie</artifactId>	<!-- 최상위 패키지 3레벨 == context-path -->
@@ -33,7 +34,7 @@
 
 		</dependency>
 
-		<!-- 네이버 Lucy XSS Filter-->
+		<!-- 네이버 Lucy XSS Filter -->
 		<dependency>
 			<groupId>com.navercorp.lucy</groupId>
 			<artifactId>lucy-xss-servlet</artifactId>
@@ -60,7 +61,7 @@
 
 
 
-		<!-- Spring-security 모듈 추가-->
+		<!-- Spring-security 모듈 추가 -->
 		<!-- 23.04.26 - 01 Bcrypt 암호화 추가 1 -->
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
 		<dependency>
@@ -129,7 +130,7 @@
 			<!-- 위 properties의 지정한 Spring 버전을 따라감 -->
 		</dependency>
 
-		<!-- Mybatis 영속성 프레임워크  -->
+		<!-- Mybatis 영속성 프레임워크 -->
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -202,11 +203,11 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		
+
 		<dependency>
-    		<groupId>org.apache.commons</groupId>
-    		<artifactId>commons-text</artifactId>
-    		<version>1.9</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-text</artifactId>
+			<version>1.9</version>
 		</dependency>
 
 
@@ -218,7 +219,7 @@
 			<version>${org.aspectj-version}</version>
 		</dependency>
 
-		<!--23.05.12 - 01 시험  -->
+		<!--23.05.12 - 01 시험 -->
 		<!-- AspectJ Weaver : aspect의 정보를 바탕으로 aspect를 구성한 코드를 생성하는데 필요한 유틸리티 프로그램 -->
 		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
 		<dependency>
@@ -253,7 +254,7 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- 23.05.01 - 01 log4JDBC 관련 추가 설정-->
+		<!-- 23.05.01 - 01 log4JDBC 관련 추가 설정 -->
 		<!-- https://mvnrepository.com/artifact/org.lazyluke/log4jdbc-remix -->
 		<dependency>
 			<groupId>org.lazyluke</groupId>
@@ -331,6 +332,8 @@
 			<artifactId>maven-resources-plugin</artifactId>
 			<version>2.4.3</version>
 		</dependency>
+
+
 
 	</dependencies>
 

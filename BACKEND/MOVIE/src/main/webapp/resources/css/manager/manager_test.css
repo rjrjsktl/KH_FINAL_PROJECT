@@ -316,7 +316,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 200px;
     border: 2px solid #ddd;
     vertical-align: middle;
-    margin-left: 20px;
 }
 
 .movie_image3:hover {
@@ -331,7 +330,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 200px;
     border: 2px solid #ddd;
     vertical-align: middle;
-    margin-left: 20px;
 }
 
 .movie_image4:hover {
@@ -360,7 +358,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 200px;
     border: 2px solid #ddd;
     vertical-align: middle;
-    margin-left: 20px;
 }
 
 .movie_image6:hover {
@@ -580,4 +577,35 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .relative {
     position: relative;
+}
+
+
+#movie_imgContailer {
+    display: flex;
+    width: 50vw;
+    margin-bottom: 15px;
+}
+
+.imgTitle {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 8px;
+    margin-right: 30px;
+}
+
+.imgTitle_Inner {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 8px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.imgInput {
+    flex: 9;
+    display: flex;
 }
