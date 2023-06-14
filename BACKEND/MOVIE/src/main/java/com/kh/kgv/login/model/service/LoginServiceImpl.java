@@ -58,7 +58,6 @@ public class LoginServiceImpl implements LoginService{
 	@Override
 	public Boolean checkUser(User user) {
 		System.out.println("=================================================" + user);
-		// TODO Auto-generated method stub
 		return dao.checkUser(user);
 	}
 	
@@ -77,18 +76,7 @@ public class LoginServiceImpl implements LoginService{
 		return dao.checkNumber(userEmail,cNumber);
 	}
 	
-	// 비밀번호 재설정
-//	@Override
-//	public int changePw(String userEmail, User inputUser) {
-//		
-//		
-//		String encPw = bcrypt.encode(inputUser.getUserPw()); 
-//		
-//		int result = dao.changePw(userEmail,encPw);
-//		
-//		return result;
-//	}
-
+	// 비밀번호 재설정 서비스 구현
 	@Override
 	public int changePw(String userEmail, String userPw) {
 		
@@ -97,6 +85,13 @@ public class LoginServiceImpl implements LoginService{
 		int result = dao.changePw(userEmail,encPw);
 		
 		return result;
+	}
+	
+	// 아이디 찾기 서비스 구현
+	@Override
+	public String findEmail(User user) {
+		System.out.println("찾고싶은 아이디의 정보들 : " + user);
+		return dao.findEmail(user);
 	}
 	
 
