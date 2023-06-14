@@ -91,6 +91,13 @@
 	</update>
 	
 	
+	<select id="findEmail" parameterType="user" resultType="java.lang.String">
+    	SELECT USER_EMAIL
+    	FROM USERS
+    	WHERE USER_NAME = #{userName}
+    	AND USER_BIRTH = #{userBirth}
+    	AND USER_TEL = #{userTel} 
+</select>
 	
   	
 </mapper>

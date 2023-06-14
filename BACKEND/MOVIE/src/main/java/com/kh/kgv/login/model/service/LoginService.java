@@ -54,6 +54,13 @@ public interface LoginService {
 	public abstract int changePw(String userEmail, String userPw);
 
 
+	/** 아이디 찾기 서비스
+	 * @param user
+	 * @return
+	 */
+	public abstract String findEmail(User user);
+
+
 	
 
 
