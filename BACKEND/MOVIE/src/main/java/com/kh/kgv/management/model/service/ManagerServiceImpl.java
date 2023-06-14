@@ -12,6 +12,7 @@ import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.dao.ManagerDAO;
+import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Pagination;
@@ -251,6 +252,25 @@ public class ManagerServiceImpl implements ManagerService {
 		return dao.updateNoticeST(notice);
 	}
 
+	// 영화관 목록 조회
+	@Override
+	public Map<String, Object> getCinemaMap(int cp) {
+		// 영화관 수 조회
+		int cinemaCount = dao.getCinemaCount();
+
+		// 조회한 영화관 수를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, cinemaCount);
+
+		// 영화관 리스트 조회
+		List<Cinema> cinemaList = dao.getCinemaList(pagination);
+		
+		Map<String, Object> cinemaMap = new HashMap<String, Object>();
+		cinemaMap.put("pagination", pagination);
+		cinemaMap.put("cinemaList", cinemaList);
+		
+		return cinemaMap;
+	
+	}
 	
 	// 공지사항 리스트 갯수 반환
 	@Override
