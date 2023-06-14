@@ -67,6 +67,9 @@ public class HelpDeskController {
 	        HttpServletRequest req, HttpServletResponse resp
 	) {
 	    Notice detail = services.selectNoticeDetail(noticeNo);
+	    System.out.println("=========================================================================" + detail);
+	    String unescapedContent = StringEscapeUtils.unescapeHtml4(detail.getNoticeContent());
+	    detail.setNoticeContent(unescapedContent);
 	    model.addAttribute("detail", detail);
 
 	    Notice prevNotice = services.getPreviousNotice(noticeNo);
