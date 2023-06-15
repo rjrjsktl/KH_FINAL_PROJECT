@@ -8,41 +8,67 @@
 		<result property="movieTitle" 				column="MOVIE_TITLE"/>
 		<result property="movieNation" 				column="MOVIE_NATION"/>
 		<result property="movieOpen" 				column="MOVIE_OPEN"/>
-		<result property="mgNo" 					column="MG_CONTENT"/>
+		<result property="mgNo" 					column="MG_CONTENT"/> 
 		<result property="movieContent" 			column="MOVIE_CONTENT"/>
-		<result property="movieImg" 				column="MOVIE_IMG"/>
+		<result property="movieDirector" 			column="MOVIE_DIRECTOR"/>
+		<result property="movieCast" 			column="MOVIE_CAST"/>
 		<result property="moviePlayed" 				column="MOVIE_PLAYED"/>
 		<result property="movieWatched" 			column="MOVIE_WATCHED"/>
 		<result property="movieRegdate" 			column="MOVIE_REGDATE"/>
 		<result property="movieUploader"	 		column="MOVIE_UPLOADER"/>
-		<result property="movieFixdate" 			column="MOVIE_FIXDATE"/>
-		<result property="movieChanger" 			column="MOVIE_CHANGER"/>
-		<result property="genreCode" 				column="GENRE_NAME"/>
-		<result property="movieDirector"			column="MOVIE_DIRECTOR"/>
-        <result property="movieCast"				column="MOVIE_CAST"/>
+		<result property="genreCode" 				column="GENRE_CODE"/>
+		<result property="movieImg1" 				column="MOVIE_IMG1"/> 
+		<result property="movieImg2" 				column="MOVIE_IMG2"/> 
+		<result property="movieImg3" 				column="MOVIE_IMG3"/> 
+		<result property="movieImg4" 				column="MOVIE_IMG4"/> 
+		<result property="movieImg5" 				column="MOVIE_IMG5"/> 
+		<result property="movieImg6" 				column="MOVIE_IMG6"/> 
 	</resultMap>
 		
 	<!-- 영화 등록 -->
 	<insert id="MovieAdd" parameterType="movie"> 
 		INSERT INTO MOVIE 
     	VALUES (
-    		SEQ_MOVIE_NO.NEXTVAL,
-        	#{movieRuntime},
-        	#{movieTitle},
-        	#{movieNation},
-        	#{mgNo},
-        	#{movieContent},
-        	#{movieImg},
-        	null,
-        	null,
-        	default,
-        	#{movieUploader},
-        	null,
-        	null,
-        	#{genreCode},
-        	#{movieDirector},
-        	#{movieCast},
-        	#{movieOpen}
+    	<!--MOVIE_NO -->
+    		SEQ_MOVIE_NO.NEXTVAL
+    		<!-- MOVIE_RUNTIME -->
+        	, #{movieRuntime}
+        	<!-- MOVIE_TITLE -->
+        	, #{movieTitle}
+        	<!-- MOVIE_NATION -->
+        	, #{movieNation}
+        	<!-- MG_CONTENT -->
+        	, #{mgNo}
+        	<!-- MOVIE_CONTENT -->
+        	, #{movieContent}
+        	<!-- MOVIE_OPEN -->
+        	, #{movieOpen}
+        	<!-- MOVIE_DIRECTOR -->
+        	, #{movieDirector}
+        	 <!-- MOVIE_CAST -->
+        	, #{movieCast}
+        	<!-- MOVIE_PLAYED -->
+        	, default
+        	<!-- MOVIE_WATCHED -->
+        	, default
+        	<!--MOVIE_REGDATE  -->
+        	, default
+        	<!-- MOVIE_UPLOADER -->
+        	, #{movieUploader}
+        	<!-- GENRE_CODE -->
+        	, #{genreCode}
+        	<!-- MOVIE_IMG1 -->
+			, #{movieImg1}
+			<!-- MOVIE_IMG2 -->
+			, #{movieImg2}
+			<!-- MOVIE_IMG3 -->
+			, #{movieImg3}
+			<!-- MOVIE_IMG4 -->
+			, #{movieImg4}
+			<!-- MOVIE_IMG5 -->
+			, #{movieImg5}
+			<!-- MOVIE_IMG6 -->
+			, #{movieImg6}
     	)
 	</insert>
 	
@@ -81,17 +107,20 @@
         	MOVIE_NATION = #{movieNation},
         	MG_CONTENT = #{mgNo},
         	MOVIE_CONTENT = #{movieContent},
-        	MOVIE_IMG = #{movieImg},
         	MOVIE_PLAYED = null,
         	MOVIE_WATCHED = null,
         	MOVIE_REGDATE = default,
         	MOVIE_UPLOADER = #{movieUploader},
-        	MOVIE_FIXDATE = null,
-        	MOVIE_CHANGER = null,
         	GENRE_NAME = #{genreCode},
         	MOVIE_DIRECTOR = #{movieDirector},
         	MOVIE_CAST = #{movieCast},
-        	MOVIE_OPEN = #{movieOpen}
+        	MOVIE_OPEN = #{movieOpen},
+			MOVIE_IMG1 = #{movieImg1},
+			MOVIE_IMG2 = #{movieImg2},
+			MOVIE_IMG3 = #{movieImg3},
+			MOVIE_IMG4 = #{movieImg4},
+			MOVIE_IMG5 = #{movieImg5},
+			MOVIE_IMG6 = #{movieImg6},
 			WHERE MOVIE_NO = ${movieNo}
 	</update>
 	

@@ -17,6 +17,7 @@
 
 <script src="https://kit.fontawesome.com/dc6e43e0ad.js"	crossorigin="anonymous"></script>
 
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 
 </head>
 
@@ -106,6 +107,8 @@
 						<li><a href="findEmail">아이디 찾기</a></li>
 						<span>|</span>
 						<li><a href="signUp_sns">회원가입</a></li>
+						<span>|</span>
+						<li><a href="paymentBtn">결제</a></li>
 					</ul>
 				</div>
 			</div>

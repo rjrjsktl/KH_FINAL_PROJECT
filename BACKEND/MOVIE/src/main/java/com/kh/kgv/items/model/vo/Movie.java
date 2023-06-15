@@ -18,14 +18,17 @@ public class Movie {
 	private String movieOpen;
 	private String mgNo;
 	private String movieContent;
-	private String movieImg;
 	private String movieDirector; // 감독
 	private String movieCast;	// 출연진
 	private int moviePlayed;
 	private int movieWatched;
 	private String movieRegdate;
 	private String movieUploader;
-	private String movieFixdate;
-	private String movieChanger;
 	private String genreCode;
+	private String movieImg1;
+	private String movieImg2;
+	private String movieImg3;
+	private String movieImg4;
+	private String movieImg5;
+	private String movieImg6;
 }
