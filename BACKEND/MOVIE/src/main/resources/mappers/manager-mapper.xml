@@ -3,317 +3,328 @@
 <mapper namespace="managerMapper">
 
 	<resultMap type="user" id="user_rm">
-	
-		<id property="userNo" column="USER_NO"/>
-		
-		<result property="userEmail" 		column="USER_EMAIL"/>
-		<result property="userPw" 			column="USER_PW"/>
-		<result property="userName" 		column="USER_NAME"/>
-		<result property="userNick" 		column="USER_NICKNAME"/>
-		<result property="userTel" 			column="USER_TEL"/>
-		<result property="userAddr" 		column="USER_ADDR"/>
-		<result property="userBirth" 		column="USER_BIRTH"/>
-		<result property="userGender" 		column="USER_GENDER"/>
-		<result property="userRegDate" 		column="USER_REGDATE"/>
-		<result property="userSt" 			column="USER_ST"/>
-		<result property="userImg"	 		column="USER_IMG"/>
-		<result property="userPoint" 		column="USER_POINT"/>
-		<result property="userSns" 			column="USER_SNS"/>
-		<result property="userDelete" 		column="USER_DELETE"/>
-		<result property="userManagerSt" 		column="USER_MANAGERST"/>
-		<result property="userBlock" 		column="USER_BLOCK"/>
+
+		<id property="userNo" column="USER_NO" />
+
+		<result property="userEmail" column="USER_EMAIL" />
+		<result property="userPw" column="USER_PW" />
+		<result property="userName" column="USER_NAME" />
+		<result property="userNick" column="USER_NICKNAME" />
+		<result property="userTel" column="USER_TEL" />
+		<result property="userAddr" column="USER_ADDR" />
+		<result property="userBirth" column="USER_BIRTH" />
+		<result property="userGender" column="USER_GENDER" />
+		<result property="userRegDate" column="USER_REGDATE" />
+		<result property="userSt" column="USER_ST" />
+		<result property="userImg" column="USER_IMG" />
+		<result property="userPoint" column="USER_POINT" />
+		<result property="userSns" column="USER_SNS" />
+		<result property="userDelete" column="USER_DELETE" />
+		<result property="userManagerSt" column="USER_MANAGERST" />
+		<result property="userBlock" column="USER_BLOCK" />
 	</resultMap>
 
-	
+
 	<resultMap type="movie" id="movie_rm">
-		<id property="movieNo" column="MOVIE_NO"/>
-		<result property="movieRuntime" 			column="MOVIE_RUNTIME"/>
-		<result property="movieTitle" 				column="MOVIE_TITLE"/>
-		<result property="movieNation" 				column="MOVIE_NATION"/>
-		<result property="movieOpen" 				column="MOVIE_OPEN"/>
-		<result property="mgNo" 					column="MG_CONTENT"/> 
-		<result property="movieContent" 			column="MOVIE_CONTENT"/>
-		<result property="movieImg" 				column="MOVIE_IMG"/>
-		<result property="moviePlayed" 				column="MOVIE_PLAYED"/>
-		<result property="movieWatched" 			column="MOVIE_WATCHED"/>
-		<result property="movieRegdate" 			column="MOVIE_REGDATE"/>
-		<result property="movieUploader"	 		column="MOVIE_UPLOADER"/>
-		<result property="movieFixdate" 			column="MOVIE_FIXDATE"/>
-		<result property="movieChanger" 			column="MOVIE_CHANGER"/>
-		<result property="genreCode" 				column="GENRE_CODE"/>
+		<id property="movieNo" column="MOVIE_NO" />
+		<result property="movieRuntime" column="MOVIE_RUNTIME" />
+		<result property="movieTitle" column="MOVIE_TITLE" />
+		<result property="movieNation" column="MOVIE_NATION" />
+		<result property="movieOpen" column="MOVIE_OPEN" />
+		<result property="mgNo" column="MG_CONTENT" />
+		<result property="movieContent" column="MOVIE_CONTENT" />
+		<result property="movieImg" column="MOVIE_IMG" />
+		<result property="moviePlayed" column="MOVIE_PLAYED" />
+		<result property="movieWatched" column="MOVIE_WATCHED" />
+		<result property="movieRegdate" column="MOVIE_REGDATE" />
+		<result property="movieUploader" column="MOVIE_UPLOADER" />
+		<result property="movieFixdate" column="MOVIE_FIXDATE" />
+		<result property="movieChanger" column="MOVIE_CHANGER" />
+		<result property="genreCode" column="GENRE_CODE" />
 	</resultMap>
-	
-	
+
+
 	<resultMap type="event" id="event_rm">
-		<id property="eventNo" column="EVENT_NO"/>
-		<result property="eventTitle" 			column="EVENT_TITLE"/>
-		<result property="eventContent" 				column="EVENT_CONTENT"/>
-		<result property="eventStart" 				column="EVENT_START"/>
-		<result property="eventEnd" 				column="EVENT_END"/>
-		<result property="eventStatus" 					column="EVENT_STATUS"/>
-		<result property="eventReg" 					column="EVENT_REG"/>
+		<id property="eventNo" column="EVENT_NO" />
+		<result property="eventTitle" column="EVENT_TITLE" />
+		<result property="eventContent" column="EVENT_CONTENT" />
+		<result property="eventStart" column="EVENT_START" />
+		<result property="eventEnd" column="EVENT_END" />
+		<result property="eventStatus" column="EVENT_STATUS" />
+		<result property="eventReg" column="EVENT_REG" />
 	</resultMap>
-	
+
 	<resultMap type="notice" id="notice_rm">
-		<id property="noticeNo" column="NOTICE_NO"/>
-		<result property="noticeTitle" 			column="NOTICE_TITLE"/>
-		<result property="noticeContent" 				column="NOTICE_CONTENT"/>
-		<result property="noticeRegDate" 				column="NOTICE_REGDATE"/>
-		<result property="noticeUploader" 				column="NOTICE_UPLOADER"/>
-		<result property="noticeStatus" 					column="NOTICE_STATUS"/>
-		<result property="noticeView" 					column="NOTICE_VIEW"/>
+		<id property="noticeNo" column="NOTICE_NO" />
+		<result property="noticeTitle" column="NOTICE_TITLE" />
+		<result property="noticeContent" column="NOTICE_CONTENT" />
+		<result property="noticeRegDate" column="NOTICE_REGDATE" />
+		<result property="noticeUploader" column="NOTICE_UPLOADER" />
+		<result property="noticeStatus" column="NOTICE_STATUS" />
+		<result property="noticeView" column="NOTICE_VIEW" />
 	</resultMap>
-	
 
-<!-- 관리자 메인 신규 회원 목록 조회 -->
+
+	<!-- 관리자 메인 신규 회원 목록 조회 -->
 	<select id="getAllUser" resultMap="user_rm">
-	SELECT
-	*
-	FROM
-	(
-	SELECT * FROM USERS
-	ORDER BY USER_NO DESC
-	)
-	WHERE ROWNUM <![CDATA[ <= ]]> 6
+		SELECT
+		*
+		FROM
+		(
+		SELECT * FROM USERS
+		ORDER BY USER_NO DESC
+		)
+		WHERE ROWNUM <![CDATA[ <= ]]>
+		6
 	</select>
 
-<!-- 관리자 메인 공지사항 목록 조회 -->
+	<!-- 관리자 메인 공지사항 목록 조회 -->
 	<select id="getAllNotice" resultMap="notice_rm">
-	SELECT
-	*
-	FROM
-	(
-	SELECT * FROM NOTICE
-	ORDER BY NOTICE_NO DESC
-	)
-	WHERE ROWNUM <![CDATA[ <= ]]> 6
+		SELECT
+		*
+		FROM
+		(
+		SELECT * FROM NOTICE
+		ORDER BY NOTICE_NO DESC
+		)
+		WHERE ROWNUM <![CDATA[ <= ]]>
+		6
 	</select>
-	                        
+
 	<!-- 회원 수 조회 -->
 	<select id="getListCount" resultType="_int">
-	SELECT COUNT(USER_NO) FROM USERS
+		SELECT COUNT(USER_NO) FROM USERS
 	</select>
-	
-	<!-- 회원 리스트 조회-->
+
+	<!-- 회원 리스트 조회 -->
 	<select id="selectAll" resultMap="user_rm">
-	SELECT
-	USER_NO
-	, USER_EMAIL
-	, USER_NAME
-	, USER_NICKNAME
-	, USER_TEL
-	, USER_ADDR
-	, USER_BIRTH
-	, USER_GENDER
-	, USER_REGDATE
-	, USER_DELETE
-	, USER_ST
-	, USER_POINT
-	, USER_SNS
-	, USER_MANAGERST
-	, USER_BLOCK
-	FROM USERS
-	ORDER BY USER_NO DESC
+		SELECT
+		USER_NO
+		, USER_EMAIL
+		, USER_NAME
+		, USER_NICKNAME
+		, USER_TEL
+		, USER_ADDR
+		, USER_BIRTH
+		, USER_GENDER
+		, USER_REGDATE
+		, USER_DELETE
+		, USER_ST
+		, USER_POINT
+		, USER_SNS
+		, USER_MANAGERST
+		, USER_BLOCK
+		FROM USERS
+		ORDER BY USER_NO DESC
 	</select>
-	
-	<!--회원 관리자 상태 업데이트  -->
+
+	<!--회원 관리자 상태 업데이트 -->
 	<update id="updateST" parameterType="user">
-	UPDATE USERS
-	SET USER_MANAGERST = #{userManagerSt}
-	WHERE USER_EMAIL = #{userEmail}
-	</update>
-	
-	<!-- 회원 이용제한 업데이트 -->
-		<update id="blockST" parameterType="user">
-	UPDATE USERS
-	SET USER_BLOCK = #{userBlock}
-	WHERE USER_EMAIL = #{userEmail}
+		UPDATE USERS
+		SET USER_MANAGERST = #{userManagerSt}
+		WHERE USER_EMAIL = #{userEmail}
 	</update>
 
-	
-	<insert id="MovieAdd" parameterType="movie"> 
-		INSERT INTO MOVIE 
-    	VALUES (
-    		SEQ_MOVIE_NO.NEXTVAL,
-        	#{movieRuntime},
-        	#{movieTitle},
-        	#{movieNation},
-        	#{movieOpen},
-        	#{mgNo},
-        	#{movieContent},
-        	#{movieImg},
-        	null,
-        	null,
-        	default,
-        	#{movieUploader},
-        	null,
-        	null,
-        	#{genreCode},
-        	#{movieDirector},
-        	#{movieCast}
-    	)
+	<!-- 회원 이용제한 업데이트 -->
+	<update id="blockST" parameterType="user">
+		UPDATE USERS
+		SET USER_BLOCK = #{userBlock}
+		WHERE USER_EMAIL = #{userEmail}
+	</update>
+
+
+	<insert id="MovieAdd" parameterType="movie">
+		INSERT INTO MOVIE
+		VALUES (
+		SEQ_MOVIE_NO.NEXTVAL,
+		#{movieRuntime},
+		#{movieTitle},
+		#{movieNation},
+		#{movieOpen},
+		#{mgNo},
+		#{movieContent},
+		#{movieImg},
+		null,
+		null,
+		default,
+		#{movieUploader},
+		null,
+		null,
+		#{genreCode},
+		#{movieDirector},
+		#{movieCast}
+		)
 	</insert>
-	
+
 	<!-- Grade 호출 -->
 	<select id="getMgradeList" resultType="string">
-		SELECT MG_CONTENT FROM MOVIE_GRADE
+		SELECT MG_CONTENT FROM
+		MOVIE_GRADE
 	</select>
-	
+
 	<!-- Grade 호출 -->
 	<select id="getMgenreList" resultType="string">
-		SELECT GENRE_NAME FROM GENRE
+		SELECT GENRE_NAME FROM
+		GENRE
 	</select>
-	
+
 	<!-- 이벤트 등록 -->
 	<insert id="addEvent" parameterType="event">
-	INSERT INTO EVENT 
-    	VALUES (
-    		SEQ_EVENT_NO.NEXTVAL
-        	, #{eventTitle}
-        	, #{eventContent}
-        	, #{eventStart}
-        	, #{eventEnd}
-        	, DEFAULT
-        	, DEFAULT
-        	)
+		INSERT INTO EVENT
+		VALUES (
+		SEQ_EVENT_NO.NEXTVAL
+		, #{eventTitle}
+		, #{eventContent}
+		, #{eventStart}
+		, #{eventEnd}
+		, DEFAULT
+		, DEFAULT
+		)
 	</insert>
-	
-		<!-- 이벤트 수 조회 -->
+
+	<!-- 이벤트 수 조회 -->
 	<select id="getEventListCount" resultType="_int">
-	SELECT COUNT(EVENT_NO) FROM EVENT
+		SELECT COUNT(EVENT_NO) FROM EVENT
 	</select>
-	
+
 	<!-- 이벤트 리스트 조회 -->
-		<select id="eventList" resultMap="event_rm">
-	SELECT
-	*
-	FROM EVENT
-	ORDER BY EVENT_NO DESC
+	<select id="eventList" resultMap="event_rm">
+		SELECT
+		*
+		FROM EVENT
+		ORDER BY EVENT_NO DESC
 	</select>
-	
+
 	<!-- 이벤트 수정조회 -->
 	<select id="getEditEventList" resultType="HashMap">
-	SELECT
-	EVENT_NO
-	, EVENT_TITLE
-	, EVENT_CONTENT
-	, EVENT_START
-	, EVENT_END
-	FROM EVENT
-	WHERE EVENT_NO = #{eventNo}
+		SELECT
+		EVENT_NO
+		, EVENT_TITLE
+		, EVENT_CONTENT
+		, EVENT_START
+		, EVENT_END
+		FROM EVENT
+		WHERE EVENT_NO = #{eventNo}
 	</select>
-	
+
 	<!-- 이벤트 수정(업데이트) -->
 	<update id="editEvent" parameterType="event">
-	UPDATE EVENT SET
-	EVENT_TITLE = #{eventTitle}
-	, EVENT_CONTENT = #{eventContent}
-	, EVENT_START = #{eventStart}
-	, EVENT_END = #{eventEnd}
-	WHERE EVENT_NO = #{eventNo}
+		UPDATE EVENT SET
+		EVENT_TITLE = #{eventTitle}
+		, EVENT_CONTENT = #{eventContent}
+		, EVENT_START = #{eventStart}
+		, EVENT_END = #{eventEnd}
+		WHERE EVENT_NO = #{eventNo}
 	</update>
-	
+
 	<!-- 이벤트 상태 업데이트 -->
-		<update id="updateEventST" parameterType="event">
-	UPDATE EVENT
-	SET EVENT_STATUS = #{eventStatus}
-	WHERE EVENT_NO = #{eventNo}
+	<update id="updateEventST" parameterType="event">
+		UPDATE EVENT
+		SET EVENT_STATUS = #{eventStatus}
+		WHERE EVENT_NO = #{eventNo}
 	</update>
-	
+
 	<!-- 공지사항 등록 -->
-		<insert id="addNotice" parameterType="event"> 
-		INSERT INTO NOTICE 
-    	VALUES (
-    		SEQ_NOTICE_NO.NEXTVAL,
-        	#{noticeTitle}
-        	, #{noticeContent}
-        	, DEFAULT
-        	, #{noticeUploader}
-        	, DEFAULT
-        	, DEFAULT
-    	)
+	<insert id="addNotice" parameterType="event">
+		INSERT INTO NOTICE
+		VALUES (
+		SEQ_NOTICE_NO.NEXTVAL,
+		#{noticeTitle}
+		, #{noticeContent}
+		, DEFAULT
+		, #{noticeUploader}
+		, DEFAULT
+		, DEFAULT
+		)
 	</insert>
-	
-			<!-- 공지사항 수 조회 -->
+
+	<!-- 공지사항 수 조회 -->
 	<select id="getNoticeListCount" resultType="_int">
-	SELECT COUNT(NOTICE_NO) FROM NOTICE
+		SELECT COUNT(NOTICE_NO) FROM NOTICE
 	</select>
-	
-	
-		<!--공지사항 리스트 조회 -->
+
+
+	<!--공지사항 리스트 조회 -->
 	<select id="noticeList" resultMap="notice_rm">
-	SELECT
-	*
-	FROM NOTICE
-	ORDER BY NOTICE_NO DESC
+		SELECT
+		*
+		FROM NOTICE
+		ORDER BY NOTICE_NO DESC
 	</select>
-	
-	
-		<!--공지사항 수정조회 -->
+
+
+	<!--공지사항 수정조회 -->
 	<select id="getEditNoticeList" resultType="HashMap">
-	SELECT
-	NOTICE_NO
-	, NOTICE_TITLE
-	, NOTICE_CONTENT
-	FROM NOTICE
-	WHERE NOTICE_NO = #{noticeNo}
+		SELECT
+		NOTICE_NO
+		, NOTICE_TITLE
+		, NOTICE_CONTENT
+		FROM NOTICE
+		WHERE NOTICE_NO = #{noticeNo}
 	</select>
-	
-	
-			<!--공지사항 세부정보 -->
+
+
+	<!--공지사항 세부정보 -->
 	<select id="noticeDetail" resultMap="notice_rm">
-	SELECT
-	NOTICE_NO
-	, NOTICE_TITLE
-	, NOTICE_CONTENT
-	, NOTICE_REGDATE
-	, NOTICE_UPLOADER
-	FROM NOTICE
-	WHERE NOTICE_NO = #{noticeNo}
+		SELECT
+		NOTICE_NO
+		, NOTICE_TITLE
+		, NOTICE_CONTENT
+		, NOTICE_REGDATE
+		, NOTICE_UPLOADER
+		FROM NOTICE
+		WHERE NOTICE_NO = #{noticeNo}
 	</select>
-	
+
 	<!-- 공지사항 전 번호 갖고오기~ ☆ -->
-		<select id="noticePrevNo" resultMap="notice_rm">
-	SELECT
-	NOTICE_NO
-	, NOTICE_TITLE
-	, NOTICE_CONTENT
-	, NOTICE_REGDATE
-	, NOTICE_UPLOADER
-	FROM NOTICE
-	WHERE NOTICE_NO = #{noticeNo}
+	<select id="noticePrevNo" resultMap="notice_rm">
+		SELECT
+		NOTICE_NO
+		, NOTICE_TITLE
+		, NOTICE_CONTENT
+		, NOTICE_REGDATE
+		, NOTICE_UPLOADER
+		FROM NOTICE
+		WHERE NOTICE_NO = #{noticeNo}
 	</select>
-	
-		<!-- 공지사항 다음 번호 갖고오기~ ☆ -->
-		<select id="noticeNextNo" resultMap="notice_rm">
-	SELECT
-	NOTICE_NO
-	, NOTICE_TITLE
-	, NOTICE_CONTENT
-	, NOTICE_REGDATE
-	, NOTICE_UPLOADER
-	FROM NOTICE
-	WHERE NOTICE_NO = #{noticeNo}
+
+	<!-- 공지사항 다음 번호 갖고오기~ ☆ -->
+	<select id="noticeNextNo" resultMap="notice_rm">
+		SELECT
+		NOTICE_NO
+		, NOTICE_TITLE
+		, NOTICE_CONTENT
+		, NOTICE_REGDATE
+		, NOTICE_UPLOADER
+		FROM NOTICE
+		WHERE NOTICE_NO = #{noticeNo}
 	</select>
-	
-		<!-- 공지사항 수정(업데이트) -->
+
+	<!-- 공지사항 수정(업데이트) -->
 	<update id="editNotice" parameterType="notice">
-	UPDATE NOTICE SET
-	NOTICE_TITLE = #{noticeTitle}
-	, NOTICE_CONTENT = #{noticeContent}
-	, NOTICE_UPLOADER = #{noticeUploader}
-	WHERE NOTICE_NO = #{noticeNo}
+		UPDATE NOTICE SET
+		NOTICE_TITLE = #{noticeTitle}
+		, NOTICE_CONTENT = #{noticeContent}
+		, NOTICE_UPLOADER = #{noticeUploader}
+		WHERE NOTICE_NO = #{noticeNo}
 	</update>
 
 	<!-- 공지사항 상태 업데이트 -->
-		<update id="updateNoticeST" parameterType="notice">
-	UPDATE NOTICE
-	SET NOTICE_STATUS = #{noticeStatus}
-	WHERE NOTICE_NO = #{noticeNo}
+	<update id="updateNoticeST" parameterType="notice">
+		UPDATE NOTICE
+		SET NOTICE_STATUS = #{noticeStatus}
+		WHERE NOTICE_NO = #{noticeNo}
 	</update>
-	
-	
-	
+
+	<select id="userNoticeList" resultMap="notice_rm">
+		SELECT
+		NOTICE_NO
+		, NOTICE_TITLE
+		, TO_CHAR(NOTICE_REGDATE, 'YYYY.MM.DD') AS NOTICE_REGDATE
+		FROM NOTICE
+		ORDER BY NOTICE_NO DESC
+	</select>
+
 
 
 </mapper>

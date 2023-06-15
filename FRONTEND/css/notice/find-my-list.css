@@ -8,11 +8,11 @@ main>section {
     flex-wrap: wrap;
 }
 
-.aslide-list>li:nth-child(2)>a {
+.aslide-list>li:nth-child(3)>a {
     background-color: rgb(73, 73, 73);
 }
 
-.aslide-list>li:nth-child(2)>a {
+.aslide-list>li:nth-child(3)>a {
     color: rgb(251, 251, 251);
 }
 
@@ -57,8 +57,7 @@ h2 {
     width: 40%;
     height: 100%;
     display: flex;
-    border-left: 1px solid rgb(73, 73, 73);
-    border-right: 1px solid rgb(73, 73, 73);
+
     padding: 0 10px;
 
 }
@@ -104,7 +103,7 @@ thead th:nth-child(1) {
 }
 
 thead th:nth-child(2) {
-    text-align: center;
+    text-align: left;
     width: 60%;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -119,23 +118,26 @@ thead th:nth-child(4) {
     width: 10%;
 }
 
-.count-td td{
+tbody{
+    text-align: center;
+}
+
+.row *{
     padding:10px;
     height:40px;
     border-bottom: 1px solid rgba(73, 73, 73, 0.4);
-    text-align:center;
 }
 
-.count-td td:nth-child(2) {
+.row th:nth-child(2) {
     text-align: left;
     max-width:450px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    padding:10px;
+    padding:10px
 }
 
-.count-td td:nth-child(2) > a:hover{
+.row th:nth-child(2) > a:hover{
     text-decoration: underline;
     color:rgb(251, 251, 251);
 }
@@ -171,3 +173,23 @@ thead th:nth-child(4) {
   .none {
     display: none;
   }
+
+.table-wrap> div:nth-child(2) {
+    margin-top:20px;
+    display: flex;
+    justify-content: right;
+    right:0;
+}
+
+.table-wrap> div:nth-child(2) > button {
+    background-color: rgb(73, 73, 73);
+    padding:10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.table-wrap> div:nth-child(2) > button:hover{
+    background-color: white;
+    color: black;
+}
