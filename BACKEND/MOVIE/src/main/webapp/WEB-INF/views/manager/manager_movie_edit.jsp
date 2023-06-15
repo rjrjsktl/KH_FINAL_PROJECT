@@ -123,9 +123,7 @@
 															<span>관람 등급</span>
 															<div class="relative">
 																<div class="movie_level">
-																	<div class="added">
-																		${editMovie.mgNo}
-																	</div>
+
 																</div>
 																<div class="level_Items">
 																	<div class="movie_level_slide">
@@ -141,8 +139,7 @@
 															<div class="relative">
 																<div class="movie_Genre">
 																	<div class="added">
-																		${editMovie.genreName}
-																		<div class="delBtn"></div>
+
 																	</div>
 																</div>
 																<div class="Genre_Items">
