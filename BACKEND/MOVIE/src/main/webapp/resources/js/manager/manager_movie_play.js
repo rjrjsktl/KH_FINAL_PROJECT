@@ -48,6 +48,10 @@ $(document).ready(function () {
         }
         console.log(area_Arr);
         $(e.currentTarget).remove();
+        $('.play_cinema_slide').empty();
+        $(".play_screen_slide").empty();
+        $(".play_cinema_enter").empty();
+        $(".play_screen_enter").empty();
     });
 
 
@@ -74,14 +78,43 @@ $(document).ready(function () {
     $(document).on('click', () => {
         Area_slide.hide();
     });
+    
+    // 지역을 선택하면
+    let areaCinemaList;
+    
+    $(".area_item").on("click", function(){
+        $.ajax({
+            url: "play_add/areaCinemaList",
+            data: { "areaName": $(this).text() },
+            type: "GET",
+            success: function (cinemaList) {
+                areaCinemaList = cinemaList;
+	            $('.play_cinema_slide').empty();
+
+	            for(let cinema of cinemaList) {
+	                let cinemaItem = document.createElement("div");
+	                cinemaItem.addEventListener("click", function(e) {
+	                  cinemaSlideEvent(e);
+	                });
+	                cinemaItem.classList.add("cinema_item");
+	                $(cinemaItem).text(cinema.cinemaName);
+	                $('.play_cinema_slide').append(cinemaItem);
+	            }
+            },
+            error: function () {
+                console.log("에러 발생");
+            }
+        });
+    })
 
     // ===============================================================================
     // 상영 영화관 추가 기능 및 슬라이드
+    // 동적 요소로 인해 이벤트 추가 방식을 살짝 변경합니다.
     let cinema_Arr = [];
     const play_cinema_enter = $('.play_cinema_enter');
     const play_cinema_slide = $('.play_cinema_slide > div');
 
-    play_cinema_slide.on('click', (e) => {
+    function cinemaSlideEvent(e) {
         e.preventDefault();
         // alert((e.currentTarget).innerText);
         const newDiv = document.createElement('div');
@@ -98,8 +131,9 @@ $(document).ready(function () {
                 newDiv.classList.add('added');
                 newDiv.innerHTML += delBtn;
                 play_cinema_enter.append(newDiv);
-                cinema_Arr.push(addText)
+                cinema_Arr.push(addText);
                 console.log("추가된 값은 : " + addText);
+                createScreenList(addText);
             }
         } else {
             alert('같은 값은 추가 할 수 없습니다.');
@@ -107,7 +141,7 @@ $(document).ready(function () {
         }
         console.log("clickCount : " + clickCount);
         console.log(cinema_Arr);
-    });
+    }
 
     // 배열에서 삭제
     play_cinema_enter.on('click', '.added', (e) => {
@@ -123,8 +157,26 @@ $(document).ready(function () {
         }
         console.log(cinema_Arr);
         $(e.currentTarget).remove();
+        $(".play_screen_slide").empty();
+        $(".play_screen_enter").empty();
     });
-
+    
+    
+    function createScreenList(t) {
+        $(".play_screen_slide").empty();
+        let screenCount = areaCinemaList.find(c => c.cinemaName === t).cinemaScreen;
+      
+        for(let i=1; i<=screenCount; i++) {
+            let screenItem = document.createElement("div");
+            screenItem.addEventListener("click", function(e){
+              screenSlideEvent(e)
+            });
+            screenItem.classList.add("screen_item");
+            $(screenItem).text(`${i}관`);
+            $(".play_screen_slide").append(screenItem);
+        }
+    }
+    
 
     // 상영 영화관 슬라이드 토글
     const Cinema_slide = $('.cinema_Items');
@@ -155,8 +207,9 @@ $(document).ready(function () {
     let screen_Arr = [];
     const play_screen_enter = $('.play_screen_enter');
     const play_screen_slide = $('.play_screen_slide > div');
-
-    play_screen_slide.on('click', (e) => {
+	
+	
+    function screenSlideEvent(e){
         e.preventDefault();
         // alert((e.currentTarget).innerText);
         const newDiv = document.createElement('div');
@@ -165,8 +218,8 @@ $(document).ready(function () {
         const clickCount = play_screen_enter.children().length;
 
         if ($.inArray($(e.currentTarget).text(), screen_Arr) == -1) {
-            if (clickCount >= 5) {
-                alert('최대 5개 까지 선택 가능합니다.');
+            if (clickCount >= 1) {
+                alert('최대 1개 까지 선택 가능합니다.');
                 return false;
             } else {
                 newDiv.append(addText);
@@ -182,7 +235,8 @@ $(document).ready(function () {
         }
         console.log("clickCount : " + clickCount);
         console.log(screen_Arr);
-    });
+    };
+
 
     // 배열에서 삭제
     play_screen_enter.on('click', '.added', (e) => {
@@ -199,6 +253,7 @@ $(document).ready(function () {
         console.log(screen_Arr);
         $(e.currentTarget).remove();
     });
+
 
 
     // 상영 스크린 슬라이드 토글
@@ -461,5 +516,6 @@ $(document).ready(function () {
     //     movie_slide.slideUp();
     //     time_slide.slideUp();
     // });
+
 
 });
