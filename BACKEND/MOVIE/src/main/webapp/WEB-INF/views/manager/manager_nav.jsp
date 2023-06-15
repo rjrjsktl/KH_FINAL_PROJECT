@@ -24,7 +24,7 @@
 									<div class="slide_Left_Icon">
 										<i class="fa-solid fa-headset"></i>
 									</div>
-									<span class="slide_Inner_Title">1 : 1 문의</span>
+									<span class="slide_Inner_Title">문의</span>
 									<div class="slide_Right_Icon">
 										<i class="fa-solid fa-caret-down"></i>
 									</div>
@@ -37,6 +37,16 @@
 													<i class="fa-solid fa-play fa-2xs"></i>
 												</div>
 												<span>1 : 1 문의 목록</span>
+											</div>
+										</li>
+									</a>
+									<a href="${contextPath}/manager/lost_list">
+										<li>
+											<div class="inner_align">
+												<div class="inner_Left_Icon">
+													<i class="fa-solid fa-play fa-2xs"></i>
+												</div>
+												<span>분실물 목록</span>
 											</div>
 										</li>
 									</a>
