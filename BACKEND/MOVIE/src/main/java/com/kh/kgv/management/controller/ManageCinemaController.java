@@ -23,7 +23,7 @@ public class ManageCinemaController {
 	
 	// private Logger logger = LoggerFactory.getLogger(ManageCinemaController.class);
 
-	@PostMapping("/test")
+	@PostMapping("/enroll")
 	public String enrollCinema(
 			@RequestParam("cinemaName") String cinemaName,
 			@RequestParam("cinemaAddr") String[] cinemaAddr,
@@ -38,7 +38,7 @@ public class ManageCinemaController {
 		cinema.setCinemaName(cinemaName);
 		cinema.setCinemaArea(getCinemaArea(cinemaAddr[1].substring(0, 2)));
 		cinema.setCinemaRegion(String.join(",,", cinemaAddr));
-		cinema.setCinemaScreen(screenDetail.length);
+		cinema.setCinemaScreen(screenDetail.length - 1);
 		
 		int cinemaResult = service.enrollCinema(cinema);
 		int screenResult = 0;
@@ -72,8 +72,8 @@ public class ManageCinemaController {
 	@GetMapping("/cinemaDupCheck")
 	@ResponseBody
 	public int cinemaDupCheck(String cinemaName) {
-		System.out.println(cinemaName);
 		int result = service.cinemaDupCheck(cinemaName);
+		System.out.println(result);
 		return result;
 	} 
 	

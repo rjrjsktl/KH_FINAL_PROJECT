@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="storeMapper">
+	
+	<resultMap type="store" id="store_rm">
+		<id property="storeNo" column="STORE_NO"/>
+		<result property="storeCategory" 			column="STORE_CATEGORY"/>
+		<result property="storeName" 				column="STORE_NAME"/>
+		<result property="storePrice" 				column="STORE_PRICE"/>
+		<result property="storeImage" 				column="STORE_IMAGE"/>
+		<result property="storeDesc" 					column="STORE_DESC"/>
+		<result property="storeStock" 			column="STORE_STOCK"/>
+		
+	</resultMap>
+		
+	
+	
+	<!-- 상품 이름 중복 검사 -->
+  	<select id="NameDupCheck" parameterType="string" resultType="_int">
+  		SELECT COUNT(*) FROM STORE
+		WHERE STORE_NAME = #{storeName}
+		
+  	</select>
+	
+	<!-- 이벤트 등록 -->
+	<insert id="addStore" parameterType="store">
+	INSERT INTO STORE 
+    	VALUES (
+    		SEQ_STORE_NO.NEXTVAL
+        	, #{storeCategory}
+        	, #{storeName}
+        	, #{storePrice}
+        	, #{storeImage}
+        	, #{storeDesc}
+        	, #{storeStock}
+        	)
+	</insert>
+	
+</mapper>

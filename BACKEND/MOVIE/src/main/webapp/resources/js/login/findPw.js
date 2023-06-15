@@ -1,4 +1,4 @@
-console.log("findPwEmaile.js loaded..")
+console.log("findPw.js loaded..")
 
 const checkObj = {
     "userPw": false,
