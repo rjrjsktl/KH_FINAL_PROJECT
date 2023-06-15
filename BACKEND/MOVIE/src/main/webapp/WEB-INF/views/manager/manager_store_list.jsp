@@ -56,12 +56,12 @@
 												<table class="table_main">
 													<tr>
 														<th>번호</th>
-														<th>공지사항 제목</th>
-														<th>공지사항 작성일</th>
-														<th>공지사항 작성자</th>
-														<th>공지사항 상태</th>
-														<th>수정</th>
-														<th>삭제</th>
+														<th>카테고리</th>
+														<th>상품 이름</th>
+														<th>상품 가격</th>
+														<th>상품 이미지</th>
+														<th>상품 설명</th>
+														<th>상품 제한개수</th>
 													</tr>
 													<c:forEach var="getNotice" items="${getNoticeList['noticeLists']}">
 														<tr>
