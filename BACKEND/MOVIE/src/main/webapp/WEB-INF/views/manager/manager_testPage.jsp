@@ -148,21 +148,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-                                                    <div>
-                                                        <p>13번째 공지사항 테스트</p>
-                                                        <p>13번째 공지사항 테스트</p>
-                                                        <p><br></p>
-                                                        <p><img src="/movie/resources/images/fileupload/6e44869e-e88e-4378-8ef6-8abc264ca20c.jpg"
-                                                                style="width: 25%;"><br></p>
-                                                        <p><br></p>
-                                                        <p>13번째 공지사항 테스트</p>
-                                                        <p>13번째 공지사항 테스트</p>
-                                                        <p>13번째 공지사항 테스트</p>
-                                                        <p><br></p>
-                                                        <p><img src="/movie/resources/images/fileupload/e281646a-fde8-4d73-b420-5f90f06094c6.jpg"
-                                                                style="width: 25%;"><br></p>
-                                                    </div>
                                                 </form>
                                                 <div class="table_bottom">
                                                     <button type="submit" class="bottom_Submit">저장</button>
