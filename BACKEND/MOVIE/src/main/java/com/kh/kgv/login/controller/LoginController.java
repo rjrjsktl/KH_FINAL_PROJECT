@@ -339,18 +339,19 @@ public class LoginController {
 	    	
 	    	logger.info("성공 렛쯔기릿~~~~~");
 	    	
+	    	session.removeAttribute("userEmail");
+	    	
+	    	return "common/main";
+	    	
 	    } else {
 	    	message = "비밀번호 재설정에 실패하였습니다.";
 	    	
 	    	logger.info("실패 tlqkf~~~~~");
 	    	
 	    	return "login/pwChange";
-	    	//path = "login/findPwEmail_2";
 	    	
 	    }
 	    
-	    
-	    return "common/main";
 	}
 	
 	
