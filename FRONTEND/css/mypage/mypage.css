@@ -3,10 +3,10 @@
 /* mypage 공통 부분 ====================까지 */
 /* 아래부터 추가하세요. */
 main {
-    width: 1160px;
+    width: 1040;
     /* height: 750px; */
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 30px;
     /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
