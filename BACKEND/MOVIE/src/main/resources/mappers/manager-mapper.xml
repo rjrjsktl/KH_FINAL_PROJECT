@@ -283,6 +283,14 @@
 	WHERE NOTICE_NO = #{noticeNo}
 	</update>
 	
+		<select id="userNoticeList" resultMap="notice_rm">
+		SELECT
+		NOTICE_NO
+		, NOTICE_TITLE
+		, TO_CHAR(NOTICE_REGDATE, 'YYYY.MM.DD') AS NOTICE_REGDATE
+		FROM NOTICE
+		ORDER BY NOTICE_NO DESC
+	</select>
 	
 	
 	
