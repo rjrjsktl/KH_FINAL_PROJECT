@@ -32,7 +32,17 @@ public class HelpDeskController {
 
 
 	@RequestMapping("/helpDesk_home")
-	public String helpDesk() {
+	public String helpDesk(
+			Model model
+			, @RequestParam(value = "cp", required = false, defaultValue="1" ) int cp	
+			) {
+		
+		Map<String, Object>getNoticeList = null;
+		
+		getNoticeList = service.noticeList(cp);
+
+		model.addAttribute("getNoticeList", getNoticeList);
+		
 		return "helpDesk/helpDesk_home";
 	}
 
@@ -67,6 +77,9 @@ public class HelpDeskController {
 	        HttpServletRequest req, HttpServletResponse resp
 	) {
 	    Notice detail = services.selectNoticeDetail(noticeNo);
+	    System.out.println("=========================================================================" + detail);
+	    String unescapedContent = StringEscapeUtils.unescapeHtml4(detail.getNoticeContent());
+	    detail.setNoticeContent(unescapedContent);
 	    model.addAttribute("detail", detail);
 
 	    Notice prevNotice = services.getPreviousNotice(noticeNo);

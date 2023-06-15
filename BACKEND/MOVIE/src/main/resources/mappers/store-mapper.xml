@@ -16,12 +16,24 @@
 	
 	
 	<!-- 상품 이름 중복 검사 -->
-  	<select id="titleDupCheck" parameterType="string" resultType="_int">
+  	<select id="NameDupCheck" parameterType="string" resultType="_int">
   		SELECT COUNT(*) FROM STORE
 		WHERE STORE_NAME = #{storeName}
 		
   	</select>
 	
-	
+	<!-- 이벤트 등록 -->
+	<insert id="addStore" parameterType="store">
+	INSERT INTO STORE 
+    	VALUES (
+    		SEQ_STORE_NO.NEXTVAL
+        	, #{storeCategory}
+        	, #{storeName}
+        	, #{storePrice}
+        	, #{storeImage}
+        	, #{storeDesc}
+        	, #{storeStock}
+        	)
+	</insert>
 	
 </mapper>

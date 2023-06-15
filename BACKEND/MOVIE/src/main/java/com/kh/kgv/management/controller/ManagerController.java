@@ -778,4 +778,18 @@ public class ManagerController {
 				    System.out.println("이미지: " + jsonResult);
 				    return jsonResult;
 				}
+				
+				// ===================================================
+				// ===================================================
+				
+				// 관리자_분실물 목록 이동
+				@GetMapping("/lost_list")
+				public String moveLostList() {
+					System.out.println("관리자_분실물 목록 이동");
+					return "manager/manager_lost_list";
+				}
+				
+				
+				// ===================================================
+				// ===================================================
 			}
