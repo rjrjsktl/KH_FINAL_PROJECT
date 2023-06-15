@@ -1,6 +1,8 @@
 package com.kh.kgv.helpDesk.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,14 +10,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.kgv.helpDesk.model.vo.Mtm;
+import com.kh.kgv.helpDesk.model.vo.MtmPagenation;
 import com.kh.kgv.management.model.vo.Notice;
-import com.kh.kgv.management.model.vo.Pagination;
 
 @Repository
 public class HelpDeskDAO {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+	
+	//mtmlistCount
+	public int getMtmListCount() {
+		return sqlSession.selectOne("mtmMapper.getMtmCount");
+	}
+	
 
 	public Notice selectNoticeDetail(int noticeNo) {
 		return sqlSession.selectOne("managerMapper.noticeDetail", noticeNo);
@@ -32,11 +40,21 @@ public class HelpDeskDAO {
 	}
 
 
-	public List<Mtm> getMtmList(int userNo, Pagination pagination) {
+	public List<Mtm> getMtmList(MtmPagenation pagination, int userNo) {
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
-		return sqlSession.selectList("mtmMapper.userMtmList", userNo , rowBounds);
+		
+	    Map<String, Object> params = new HashMap<>();
+	    params.put("userNo", userNo);
+		
+		return sqlSession.selectList("mtmMapper.userMtmList", params , rowBounds);
 	}
+
+
+
+	
+	
+
 
 
 

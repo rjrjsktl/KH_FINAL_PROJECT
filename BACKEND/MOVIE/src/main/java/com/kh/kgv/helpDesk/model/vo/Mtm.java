@@ -18,4 +18,5 @@ public class Mtm {
 	private String mtmImage;
 	private String mtmRegdate;
 	private int mtmCount;
+	private String mtmWriter;
 }
