@@ -203,6 +203,16 @@ public class ManagerDAO {
 		return sqlSession.selectOne("cinemaMapper.getCinemaCount");
 	}
 	
+	// 유저용 공지사항 조회
+	public List<Notice> userNoticeList(Pagination pagination) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("managerMapper.userNoticeList", null, rowBounds);
+	}
+	
 	
 	public List<Cinema> getCinemaList(Pagination pagination) {
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();

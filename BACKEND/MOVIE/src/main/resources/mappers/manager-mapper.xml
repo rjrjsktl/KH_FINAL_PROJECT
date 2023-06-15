@@ -311,6 +311,9 @@
 	SET NOTICE_STATUS = #{noticeStatus}
 	WHERE NOTICE_NO = #{noticeNo}
 	</update>
+	
+	
+	
 
 
 </mapper>

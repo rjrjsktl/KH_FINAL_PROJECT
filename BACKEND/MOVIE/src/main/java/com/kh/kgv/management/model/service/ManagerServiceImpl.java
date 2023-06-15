@@ -291,6 +291,25 @@ public class ManagerServiceImpl implements ManagerService {
 		return dao.getNoticeListCount();
 	}
 
+	// 유저용 공지사항
+	@Override
+	public Map<String, Object> userNoticeList(int cp) {
+		// 공지사항 수 조회
+		int noticelistCount = dao.getNoticeListCount();
+
+		// 조회한 공지사항 수를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, noticelistCount);
+
+		// 공지사항 리스트 조회
+		List<Notice> noticeLists = dao.userNoticeList(pagination);
+
+		Map<String, Object> userNoticeList = new HashMap<String, Object>();
+		userNoticeList.put("pagination", pagination);
+		userNoticeList.put("noticeLists", noticeLists);
+
+		return userNoticeList;
+	}
+
 	
 
 	

@@ -32,7 +32,17 @@ public class HelpDeskController {
 
 
 	@RequestMapping("/helpDesk_home")
-	public String helpDesk() {
+	public String helpDesk(
+			Model model
+			, @RequestParam(value = "cp", required = false, defaultValue="1" ) int cp	
+			) {
+		
+		Map<String, Object>getNoticeList = null;
+		
+		getNoticeList = service.noticeList(cp);
+
+		model.addAttribute("getNoticeList", getNoticeList);
+		
 		return "helpDesk/helpDesk_home";
 	}
 

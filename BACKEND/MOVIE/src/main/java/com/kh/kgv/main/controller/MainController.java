@@ -32,9 +32,16 @@ public class MainController {
 	//	접속 수 확인
 	@Autowired
 	private EnterCheckService service;
+	
+	@Autowired
+	private ManagerService services;
+	
 
 	@RequestMapping("/main")
-	public String mainForward(HttpServletRequest request,  DailyEnter de) {
+	public String mainForward(HttpServletRequest request,  DailyEnter de,
+			Model model
+			, @RequestParam(value = "cp", required = false, defaultValue="1" ) int cp
+			) {
 		String pageMove = null;
 
 		// IP 찾는 로직
@@ -53,17 +60,7 @@ public class MainController {
 		} else {
 			System.out.println("접속 기록을 추가하지 못함.");
 		}
-		return pageMove;
-	}
-	
-
-	@Autowired
-	private ManagerService services;
-	
-	@GetMapping("/main")
-	public String normarTheater(	Model model
-			, @RequestParam(value = "cp", required = false, defaultValue="1" ) int cp) {
-
+		
 		Map<String, Object>getNoticeList = null;
 
 		// 회원 리스트 얻어오기
@@ -72,9 +69,12 @@ public class MainController {
 		model.addAttribute("getNoticeList", getNoticeList);
 
 		System.out.println("관리자_공지사항 목록 이동");
-		return "common/main";
+		
+		return pageMove;
 	}
+	
 
+	
 
 }
 
