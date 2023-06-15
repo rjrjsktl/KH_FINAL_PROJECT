@@ -19,7 +19,7 @@ function infoValidate(){
     if(!regExp1.test(userNick.value)){ // 유효하지 않은 경우
         swal('수정 실패!', "닉네임은 영어/숫자/한글 2~10 글자 사이로 작성해주세요.", 'warning')
         // alert("닉네임은 영어/숫자/한글 2~10 글자 사이로 작성해주세요.");
-        userNickname.focus();
+        userNick.focus();
         return false;
     }
 

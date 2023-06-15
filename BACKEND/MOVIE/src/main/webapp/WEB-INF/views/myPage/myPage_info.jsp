@@ -15,7 +15,9 @@
     </title>
     
     <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_main.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_logUserInfo.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_sideMenu.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
@@ -54,7 +56,7 @@
                             <label>닉네임</label>
                         </div>
                         <div class="mypage-info-frame">
-                            <input type="text" name="updateNickname" id="userNickname"
+                            <input type="text" name="updateNick" id="userNick"
                             value="${loginUser.userNick}" maxlength="10">
                         </div>
 
@@ -73,17 +75,17 @@
                             <label>주 소</label>
                         </div>
                         <div class="mypage-info-frame">
-                            <input type="text" name="updateAddress" id="postcode" value="${addr[0]}"  maxlength="6">
+                            <input type="text" name="updateAddr" id="postcode" value="${addr[0]}"  maxlength="6">
 
                             <button type="button" id="info-address-btn" onclick="return execDaumPostcode()">검색</button>
                         </div>
     
                         <div class="mypage-info-frame">
-                            <input type="text" name="updateAddress" id="address" value="${addr[1]}">
+                            <input type="text" name="updateAddr" id="address" value="${addr[1]}">
                         </div>
     
                         <div class="mypage-info-frame">
-                            <input type="text" name="updateAddress" id="detailAddress" value="${addr[2]}">
+                            <input type="text" name="updateAddr" id="detailAddress" value="${addr[2]}">
                         </div>
     
                         <button id="info-update-btn">수정하기</button>
