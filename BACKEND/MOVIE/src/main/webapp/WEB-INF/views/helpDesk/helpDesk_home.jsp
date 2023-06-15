@@ -158,19 +158,19 @@
 
 										<c:choose>
 
-											<c:when test="${empty getNoticeList.noticeLists}">
+											<c:when test="${empty userNoticeList.noticeLists}">
 												<tr>
 													<th colspan="3">게시글이 존재하지 않습니다.</th>
 												</tr>
 											</c:when>
 											<c:otherwise>
-												<c:forEach var="getNotice"
-													items="${getNoticeList.noticeLists}" varStatus="loop">
+												<c:forEach var="userNoticeList"
+													items="${userNoticeList.noticeLists}" varStatus="loop">
 													<c:if test="${loop.index < 5}">
 														<tr class="row">
-															<td>${getNotice.noticeNo}</td>
-															<th><a href="#">${getNotice.noticeTitle}</a></th>
-															<td>${getNotice.noticeRegDate}</td>
+															<td>${userNoticeList.noticeNo}</td>
+															<th><a href="#">${userNoticeList.noticeTitle}</a></th>
+															<td>${userNoticeList.noticeRegDate}</td>
 														</tr>
 													</c:if>
 												</c:forEach>
