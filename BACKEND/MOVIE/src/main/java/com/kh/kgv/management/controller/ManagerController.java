@@ -464,9 +464,9 @@ public class ManagerController {
 
 			String fileRoot = request.getServletContext().getRealPath(webPath);
 
-			String originalFileName = multipartFile.getOriginalFilename(); // 오리지날 파일명
-			String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자
-			String savedFileName = UUID.randomUUID() + extension; // 저장될 파일 명
+	        String originalFileName = multipartFile.getOriginalFilename();
+//	        String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
+	        String savedFileName = Util.fileRename(originalFileName);
 
 			File targetFile = new File(fileRoot + savedFileName);
 			try {
@@ -642,9 +642,9 @@ public class ManagerController {
 
 			String fileRoot = request.getServletContext().getRealPath(webPath);
 
-			String originalFileName = multipartFile.getOriginalFilename(); // 오리지날 파일명
-			String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자
-			String savedFileName = UUID.randomUUID() + extension; // 저장될 파일 명
+	        String originalFileName = multipartFile.getOriginalFilename();
+//	        String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
+	        String savedFileName = Util.fileRename(originalFileName);
 
 			File targetFile = new File(fileRoot + savedFileName);
 			try {
@@ -682,9 +682,9 @@ public class ManagerController {
 
 					String fileRoot = request.getServletContext().getRealPath(webPath);
 
-					String originalFileName = multipartFile.getOriginalFilename(); // 오리지날 파일명
-					String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자
-					String savedFileName = UUID.randomUUID() + extension; // 저장될 파일 명
+			        String originalFileName = multipartFile.getOriginalFilename();
+//			        String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
+			        String savedFileName = Util.fileRename(originalFileName);
 
 					File targetFile = new File(fileRoot + savedFileName);
 					try {
@@ -743,7 +743,7 @@ public class ManagerController {
 				@PostMapping("/manager_testPage/uploadImageFile")
 				@ResponseBody
 				public String testImageFile(@RequestParam("file") MultipartFile[] multipartFiles, HttpServletRequest request) {
-				    JsonArray jsonArray = new JsonArray(); // JsonArray로 변경
+				    JsonArray jsonArray = new JsonArray(); 
 
 				    String webPath = "/resources/images/testFolder/";
 				    String fileRoot = request.getServletContext().getRealPath(webPath);
@@ -752,18 +752,13 @@ public class ManagerController {
 				        JsonObject jsonObject = new JsonObject();
 
 				        String originalFileName = multipartFile.getOriginalFilename();
-				        String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
 				        String savedFileName = Util.fileRename(originalFileName);
-//				        String savedFileName = Util.fileRename(originalFileName) + extension;
-//				        String savedFileName = UUID.randomUUID() + extension;
 
 				        File targetFile = new File(fileRoot + savedFileName);
 				        try {
 				            InputStream fileStream = multipartFile.getInputStream();
 				            FileUtils.copyInputStreamToFile(fileStream, targetFile);
 				            jsonObject.addProperty("", request.getContextPath() + webPath + savedFileName);
-//				            jsonObject.addProperty("url", request.getContextPath() + webPath + savedFileName);
-//				            jsonObject.addProperty("responseCode", "success");
 
 				        } catch (IOException e) {
 				            FileUtils.deleteQuietly(targetFile);
@@ -771,7 +766,7 @@ public class ManagerController {
 				            e.printStackTrace();
 				        }
 
-				        jsonArray.add(jsonObject); // JsonObject를 JsonArray에 추가
+				        jsonArray.add(jsonObject);
 				    }
 
 				    String jsonResult = jsonArray.toString();

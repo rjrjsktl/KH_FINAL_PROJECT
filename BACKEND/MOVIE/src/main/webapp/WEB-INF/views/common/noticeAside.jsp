@@ -12,7 +12,7 @@
 		<ul class="aslide-list">
 			<li><a href="${contextPath}/helpDesk/helpDesk_home"><h1>고객센터</h1></a></li>
 			<li><a href="${contextPath}/helpDesk/notice_List">공지사항</a></li>
-			<li><a href="${contextPath}/helpDesk/mTm_form">1:1 문의</a></li>
+			<li><a href="${contextPath}/helpDesk/mTm_List">1:1 문의</a></li>
 			<li><a href="${contextPath}/helpDesk/question_home">자주찾는 질문</a></li>
 			<li><a href="${contextPath}/helpDesk/lost_List">분실문 문의</a></li>
 			<li><a href="#">이용약관</a></li>
