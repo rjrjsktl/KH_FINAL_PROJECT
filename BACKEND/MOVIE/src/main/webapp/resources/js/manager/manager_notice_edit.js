@@ -108,10 +108,10 @@ $(document).ready(function () {
                 if (result > 0) {
                     let url = "/movie/manager/notice_list/";
                     alert("공지사항 수정 성공");
-                    window.location.reload(url);
+                    window.location.href = url;
                 } else {
                     alert("공지사항 수정 실패");
-                    window.location.reload();
+                    window.location.href = url;
                 }
             },
 

@@ -253,4 +253,12 @@
     margin-left: 30px;
     cursor: pointer;
     background-color: #333333;
+    color: white;
+    text-decoration: none;
+}
+
+.bottom_Cancel:hover {
+    background-color: #FAE300;
+    color: black;
+    text-decoration: none;
 }
