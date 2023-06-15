@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -28,27 +27,18 @@
 	crossorigin="anonymous"></script>
 
 <!-- Summernote-->
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
-	rel="stylesheet" />
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-<link
-	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-	rel="stylesheet">
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"	rel="stylesheet" />
+<script	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<link	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"	rel="stylesheet">
+<script	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet"
-	href="${contextPath}/resources/css/manager/manager_notice_add.css">
-<link rel="stylesheet"
-	href="${contextPath}/resources/css/manager/manager_inner_Header.css">
-<link rel="stylesheet"
-	href="${contextPath}/resources/css/manager/reset.css">
+<link rel="stylesheet"	href="${contextPath}/resources/css/manager/manager_notice_add.css">
+<link rel="stylesheet"	href="${contextPath}/resources/css/manager/manager_inner_Header.css">
+<link rel="stylesheet"	href="${contextPath}/resources/css/manager/reset.css">
 
 </head>
 
-<body class="dark light">
+<body>
 	<main>
 
 		<div class="main_Wrapper">
@@ -74,9 +64,7 @@
 								<input type="hidden" id="noticeNo"
 									value="${editNotice['NOTICE_NO']}" /> <input type="hidden"
 									id="userName" value=${loginUser.userName } />
-								<form method="post">
 									<textarea id="summernote" name="editordata">${editNotice['NOTICE_CONTENT']}</textarea>
-								</form>
 							</div>
 							<div class="table_bottom">
 								<button type="button" class="bottom_Submit">저장</button>

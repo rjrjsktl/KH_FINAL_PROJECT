@@ -180,6 +180,7 @@
     display: flex;
     flex-direction: column;
     margin: 30px 30px;
+
 }
 
 .table_Title {
@@ -215,10 +216,6 @@
     flex: 2;
 }
 
-.table_main {
-    position: relative;
-}
-
 .table_main tr {
     width: 100%;
     height: 6.5vh;
@@ -242,298 +239,53 @@
     background-color: #dbdbdb;
 }
 
-.table_main td button {
+.table_main td a {
     width: 25px;
     height: 25px;
+    color: black;
 }
 
-.table_main td button i {
+.table_main td a i {
     padding-top: 4px;
     padding-right: 2px;
 }
 
-
-/* 극장 이름 */
-.table_main > div:first-child {
-  display: flex;
-  width: 800px;
-  height: 60px;
-  margin: 10px 0 40px;
-  padding-top: 10px;
-  padding-left: 30px;
-}
-
-.table_main > div:first-child > span {
-  margin-top: 10px;
-  margin-right: 30px;
-}
-
-.table_main > div:first-child > div {
-  width: 380px;
-}
-
-.table_main > div:first-child > div > input {
-  display: block;
-  width: 100%;
-  height: 35px;
-  margin-bottom: 20px;
-}
-
-.table_main > div:first-child > div > p {
-  font-size: 14px;
-  /* display: none;*/
-}
-
-
-
-/* 극장 주소 */
-.table_main > div:nth-child(2) {
-  display: flex;
-  width: 1000px;
-  height: 140px;
-  margin: 40px 0;
-  padding-left: 30px;
-}
-
-.table_main > div:nth-child(2) > span {
-  margin-right: 30px;
-  margin-top: 10px;
-}
-
-.table_main > div:nth-child(2) > div > div {
-  margin-bottom: 14px;
-  height: 35px;
-}
-
-.table_main > div:nth-child(2) > div > div > input {
-  width: 380px;
-  height: 35px;
-  margin-right: 12px;
-  padding-left: 5px;
-}
-
-.table_main > div:nth-child(2) > div > div:first-child > input:first-child {
-  width: 257px;
-}
-
-.table_main > div:nth-child(2) > div > div:first-child > button {
-  width: 105px;
-  height: 35px;
-}
-
-
-/* 상영관 */
-
-.table_main > div:nth-child(3) {
-  display: flex;
-  align-items: center;
-  height: 180px;
-  margin: 10px 0;
-  padding-left: 14px;
-}
-
-.table_main > div:nth-child(3) > span {
-  margin-right: 30px;
-}
-
-.table_main > div:nth-child(3) > .swiper {
-  margin: 0;
-  width: 980px;
-  height: 180px;
-}
-
-.swiper-slide {
-  width: 180px;
-  height: 120px;
-  margin-right: 20px;
-  border: 1px solid black;
-}
-
-.swiper-slide > div:first-child {
-  display: flex;
-  align-items: center;
-  position: relative;
-  font-size: 14px;
-  width: 100%;
-  height: 30px;
-  border-bottom: 1px solid black;
-  padding-left: 10px;
-}
-
-.swiper-slide > div:first-child > div:first-child {
-  position: relative;
-  top: 2px;
-}
-
-.swiper-slide > div:first-child > div:last-child {
-  position: absolute;
-  right: 8px;
-}
-
-/* 상영관 편집*/
-
-.table_main > #room_area {
-  display: none;
-  position: absolute;
-  top: 20px;
-  left: 15px;
-  z-index: 0;
-  width: 1055px;
-  height: 497px;
-  background-color: #ccc;
-}
-
-#room_area > div:first-child {
-  width: 100%;
-  height: 37px;
-  text-align: center;
-  line-height: 40px;
-  border-bottom: 1px solid black;	
-}
-
-#room_area > div:nth-child(2) {
-  display: flex;
-}
-
-#room_area > div:nth-child(2) > #seat_area {
-  width: 80%;
-  border-right: lpx solid black;
-  padding-top: 30px;
-  padding-left: 50px;
-}
-
-
-/* 상영관 편집 > 좌석 */
-
-#seat_area > div {
+.page_Nation {
+    flex: 1;
     display: flex;
-    flex-wrap: nowrap;
-    position: relative;
-    width: 100%;
-    height: 25px;
-    line-height: 25px;
-    margin-bottom: 7px;
+    justify-content: center;
+    align-items: center;
 }
 
-#seat_area > div:last-child {
-    margin-bottom: 0;
+.page_Nation div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    margin: 0 10px;
+    border-radius: 5px;
+    background-color: #f0efef;
 }
 
-
-#seat_area > div > div {
-
-  position: absolute;
-  left: -30.98px;
-  width: 25px;
-  height: 25px;
-  font-size: 10px;
-  line-height: 27.5px;
-  text-align: center;
+.selected_Cp {
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #eee;
+    border: 2px solid black;
 }
 
-#seat_area > div > a {
-  position: relative;
-  width: 25px;
-  height: 25px;
-  text-decoration: none;
-  text-align: center;
-  line-height: 27.5px;
-  color: black;
-  font-size: 10px;
-  margin-right: 5.98px;
-  border: 1px solid white;
+.page_Nation div:hover {
+    background-color: #ccc;
 }
 
-#seat_area > div > a.aisle {
-  background-color: #ddd;
-  border-color: #ddd;
+.page_Nation a {
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    line-height: 50px;
+    width: 50px;
+    height: 50px;
+    color: black;
 }
-
-#seat_area > div > a.space {
-  background-color: #aaa;
-  border-color: #aaa;	
-}
-
-#seat_area > div > a.sweet {
-  background-color: magenta;
-  border-color: magenta;	
-}
-
-#seat_area > div > a.impared {
-  background-color: green;
-  border-color: green;	
-}
-
-#seat_area > div > a.option {
-  background-color: pink;
-  border-color: pink;
-}
-
-#seat_area > div > a:hover {
-  background-color: orange;
-  border-color: orange;
-}
-
-#seat_area > div > a.clicked {
-  background-color: red;
-  border-color: red;
-}
-
-#seat_area > div > a * {
-  font-size: 12px;
-}
-
-#room_area > div:nth-child(2) > div:nth-child(2) {
-  padding-top: 30px;
-}
-
-/* 상영관의 가로, 세로 */
-
-#room_area > div:nth-child(2) > div:nth-child(2) > div {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  height: 30px;
-}
-
-#room_area > div:nth-child(2) > div:nth-child(2) > div > input {
-  margin-left: 5.5px;
-  width: 50px;
-}
-
-#room_area > div:nth-child(2) > div:nth-child(2) > div > select {
-  margin-left: 5.5px;
-  width: 120px;
-  height: 30px;
-}
-
-
-/* 좌석 옵션 */
-
-#room_area > div:nth-child(2) > div:nth-child(2) > #seat_option {
-  margin-top: 50px;
-  display: none;
-}
-
-#room_area > div:nth-child(2) > div:nth-child(2) > #seat_option_confirm {
-  display: flex;
-  text-align: center;
-  width: 100%;
-  height: 50px;
-  border: 1px solid black;
-  background-color: white;
-}
-
-#seat_option_confirm > a {
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
-  text-align: center;
-  line-height: 50px;
-  color: black;
-}
-
-#seat_option_confirm > a:hover {
-  color: orange;
-}
-

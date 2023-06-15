@@ -411,77 +411,77 @@ $(document).ready(function () {
     // genre_Arr
 
     confirmBtn.on('click', (e) => {
-        if (!movie_title.val()) {
-            alert('제목이 입력되지 않았습니다.');
-            movie_title.focus();
-            e.preventDefault();
-            return false;
-        };
-        if (!movie_director.val()) {
-            alert('제목이 입력되지 않았습니다.');
-            movie_title.focus();
-            e.preventDefault();
-            return false;
-        };
-        if (!movie_cast.val()) {
-            alert('제목이 입력되지 않았습니다.');
-            movie_title.focus();
-            e.preventDefault();
-            return false;
-        };
-        if (!movie_time.val()) {
-            alert('상영 시간이 입력되지 않았습니다.');
-            movie_time.focus();
-            e.preventDefault();
-            return false;
-        };
-        if (!movie_country.val()) {
-            alert('제작국가가 입력되지 않았습니다.');
-            movie_country.focus();
-            e.preventDefault();
-            return false;
-        };
-        if (!movie_releseDate.val()) {
-            alert('개봉일이 입력되지 않았습니다.');
-            movie_releseDate.focus();
-            e.preventDefault();
-            return false;
-        };
-        if (level_Arr.length == 0) {
-            alert('관람 등급이 선택되지 않았습니다.');
-            level_slide.toggle();
-            e.preventDefault();
-            return false;
-        };
-        if (genre_Arr.length == 0) {
-            alert('장르가 선택되지 않았습니다.');
-            Genre_Items.toggle();
-            e.preventDefault();
-            return false;
-        };
-        if (!$('.movie_story').val()) {
-            alert('줄거리를 입력하지 않았습니다.');
-            movie_story.focus();
-            e.preventDefault();
-            return false;
-        };
-        console.log('저장버튼이 눌림.');
-        console.log("Uploader : " + $("input[name=movieUploader]").val());
-        console.log("영화 제목 : " + movie_title.val());
-        console.log("감독 : " + movie_director.val());
-        console.log("출연진 : " + movie_cast.val());
-        console.log("상영 시간 : " + movie_time.val());
-        console.log("제작 국가 : " + movie_country.val());
-        console.log("개봉일 : " + movie_releseDate.val());
+        // if (!movie_title.val()) {
+        //     alert('제목이 입력되지 않았습니다.');
+        //     movie_title.focus();
+        //     e.preventDefault();
+        //     return false;
+        // };
+        // if (!movie_director.val()) {
+        //     alert('제목이 입력되지 않았습니다.');
+        //     movie_title.focus();
+        //     e.preventDefault();
+        //     return false;
+        // };
+        // if (!movie_cast.val()) {
+        //     alert('제목이 입력되지 않았습니다.');
+        //     movie_title.focus();
+        //     e.preventDefault();
+        //     return false;
+        // };
+        // if (!movie_time.val()) {
+        //     alert('상영 시간이 입력되지 않았습니다.');
+        //     movie_time.focus();
+        //     e.preventDefault();
+        //     return false;
+        // };
+        // if (!movie_country.val()) {
+        //     alert('제작국가가 입력되지 않았습니다.');
+        //     movie_country.focus();
+        //     e.preventDefault();
+        //     return false;
+        // };
+        // if (!movie_releseDate.val()) {
+        //     alert('개봉일이 입력되지 않았습니다.');
+        //     movie_releseDate.focus();
+        //     e.preventDefault();
+        //     return false;
+        // };
+        // if (level_Arr.length == 0) {
+        //     alert('관람 등급이 선택되지 않았습니다.');
+        //     level_slide.toggle();
+        //     e.preventDefault();
+        //     return false;
+        // };
+        // if (genre_Arr.length == 0) {
+        //     alert('장르가 선택되지 않았습니다.');
+        //     Genre_Items.toggle();
+        //     e.preventDefault();
+        //     return false;
+        // };
+        // if (!$('.movie_story').val()) {
+        //     alert('줄거리를 입력하지 않았습니다.');
+        //     movie_story.focus();
+        //     e.preventDefault();
+        //     return false;
+        // };
+        // console.log('저장버튼이 눌림.');
+        // console.log("Uploader : " + $("input[name=movieUploader]").val());
+        // console.log("영화 제목 : " + movie_title.val());
+        // console.log("감독 : " + movie_director.val());
+        // console.log("출연진 : " + movie_cast.val());
+        // console.log("상영 시간 : " + movie_time.val());
+        // console.log("제작 국가 : " + movie_country.val());
+        // console.log("개봉일 : " + movie_releseDate.val());
         console.log("이미지1 : " + imageUrl1);
         console.log("이미지2 : " + imageUrl2);
         console.log("이미지3 : " + imageUrl3);
         console.log("이미지4 : " + imageUrl4);
         console.log("이미지5 : " + imageUrl5);
         console.log("이미지6 : " + imageUrl6);
-        console.log("줄거리 : " + $('.movie_story').val());
-        console.log("관람 등급 : " + level_Arr);
-        console.log("장르 : " + genre_Arr);
+        // console.log("줄거리 : " + $('.movie_story').val());
+        // console.log("관람 등급 : " + level_Arr);
+        // console.log("장르 : " + genre_Arr);
 
         // // 등록된 영화 ajax
         // console.log("영화등록 AJAX");
