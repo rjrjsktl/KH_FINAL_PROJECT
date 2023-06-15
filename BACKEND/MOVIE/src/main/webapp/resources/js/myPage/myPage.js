@@ -2,21 +2,21 @@
 // 내 정보 수정 유효성 검사
 function infoValidate(){
 
-    const userNickname = document.getElementById("userNickname");
+    const userNick = document.getElementById("userNick");
     const userTel = document.getElementById("userTel");
 
     const regExp1 = /^[a-zA-Z0-9가-힣]{2,10}$/;        // 닉네임 정규식
     const regExp2 = /^0(1[01679]|2|[3-6][1-5]|70)\d{3,4}\d{4}$/; // 전화번호 정규식
 
     // 닉네임 유효성 검사
-    if(userNickname.value.length == 0){ // 미작성 시 : 닉네임을 입력해주세요.
+    if(userNick.value.length == 0){ // 미작성 시 : 닉네임을 입력해주세요.
         swal('수정 실패!', "닉네임을 입력해주세요.", 'warning')
         // alert("닉네임을 입력해주세요.");
-        userNickname.focus();
+        userNick.focus();
         return false;
     }
 
-    if(!regExp1.test(userNickname.value)){ // 유효하지 않은 경우
+    if(!regExp1.test(userNick.value)){ // 유효하지 않은 경우
         swal('수정 실패!', "닉네임은 영어/숫자/한글 2~10 글자 사이로 작성해주세요.", 'warning')
         // alert("닉네임은 영어/숫자/한글 2~10 글자 사이로 작성해주세요.");
         userNickname.focus();
