@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
 
@@ -75,6 +76,10 @@ public interface ManagerService {
 
 	//공지사항 갯수 조회	
 	int getNoticeListCount();
+
+	//유저 전용 공지사항 조회
+	Map<String, Object> userNoticeList(int cp);
+
 
 
 	

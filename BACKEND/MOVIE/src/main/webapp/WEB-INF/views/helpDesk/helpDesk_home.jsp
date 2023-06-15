@@ -25,7 +25,7 @@
 
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/helpDesk/helpDeskHome.css" />
-	
+
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/common/outline.css">
 
@@ -44,7 +44,7 @@
 				<jsp:include page="/WEB-INF/views/common/noticeAside.jsp" />
 
 				<div class="container">
-				
+
 					<div class="notice-wraaper">
 
 
@@ -65,38 +65,41 @@
 							<div class="new-wrap">
 
 								<div>
-									<a href="#"><img src="${contextPath}/resources/images/noticePng/notice01.png"
+									<a href="#"><img
+										src="${contextPath}/resources/images/noticePng/notice01.png"
 										alt=""></a> <a href="${contextPath}/helpDesk/notice_List"><p>공지사항</p>
 										<span>공지사항을 확인해보세요</span></a>
 								</div>
 
 
 								<div>
-									<a href="#"><img src="${contextPath}/resources/images/noticePng/notice02.png"
-										alt=""></a> <a href=""><p>분실물 문의</p>
-										<span>질질 흘리고다니기나하고.. 으휴</span></a>
+									<a href="#"><img
+										src="${contextPath}/resources/images/noticePng/notice02.png"
+										alt=""></a> <a href=""><p>분실물 문의</p> <span>질질
+											흘리고다니기나하고.. 으휴</span></a>
 
 								</div>
 								<div>
-									<a href="#"><img src="${contextPath}/resources/images/noticePng/notice03.png"
-										alt=""></a> <a href=""><p>단체 / 대관 문의</p>
-										<span>돈도많으시네요</span></a>
+									<a href="#"><img
+										src="${contextPath}/resources/images/noticePng/notice03.png"
+										alt=""></a> <a href=""><p>단체 / 대관 문의</p> <span>돈도많으시네요</span></a>
 								</div>
 								<div>
-									<a href="#"><img src="${contextPath}/resources/images/noticePng/notice04.png"
-										alt=""></a> <a href=""><p>자주 찾는 나문희</p>
-										<span>머리가 나쁜가..</span></a>
+									<a href="#"><img
+										src="${contextPath}/resources/images/noticePng/notice04.png"
+										alt=""></a> <a href=""><p>자주 찾는 나문희</p> <span>머리가
+											나쁜가..</span></a>
 
 								</div>
 								<div>
 									<a href="#"><img src="../../images/noticePng/notice05.png"
-										alt=""></a> <a href=""><p>내 상담 내역</p>
-										<span>적당히들 하시오 적당히들</span></a>
+										alt=""></a> <a href=""><p>내 상담 내역</p> <span>적당히들
+											하시오 적당히들</span></a>
 								</div>
 								<div>
 									<a href="#"><img src="../../images/noticePng/notice06.png"
-										alt=""></a> <a href="${contextPath}/helpDesk/mTm_form"><p>1:1 나문희</p>
-										<span>맞짱뜨실?</span></a>
+										alt=""></a> <a href="${contextPath}/helpDesk/mTm_form"><p>1:1
+											나문희</p> <span>맞짱뜨실?</span></a>
 								</div>
 							</div>
 
@@ -153,37 +156,26 @@
 									<table class="notice_tbl">
 
 
-										<tbody>
-											<tr class="row">
-												<td>[공지]</td>
-												<th><a href="#">내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용</a></th>
-												<td>2023.05.26</td>
-											</tr>
-											<tr class="row">
-												<td>[상암올림픽경기장]</td>
-												<th><a href="#">내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용</a></th>
-												<td>2023.05.26</td>
-											</tr>
-											<tr class="row">
-												<td>[강남엄청난상영관]</td>
-												<th><a href="#">내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용</a></th>
-												<td>2023.05.26</td>
-											</tr>
-											<tr class="row">
-												<td>[강릉시네마짱짱]</td>
-												<th><a href="#">내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용</a></th>
-												<td>2023.05.26</td>
-											</tr>
-											<tr class="row">
-												<td>[넘모지긋지긋하다]</td>
-												<th><a href="#">내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용</a></th>
-												<td>2023.05.26</td>
-											</tr>
+										<c:choose>
 
-
-
-
-										</tbody>
+											<c:when test="${empty getNoticeList.noticeLists}">
+												<tr>
+													<th colspan="3">게시글이 존재하지 않습니다.</th>
+												</tr>
+											</c:when>
+											<c:otherwise>
+												<c:forEach var="getNotice"
+													items="${getNoticeList.noticeLists}" varStatus="loop">
+													<c:if test="${loop.index < 5}">
+														<tr class="row">
+															<td>${getNotice.noticeNo}</td>
+															<th><a href="#">${getNotice.noticeTitle}</a></th>
+															<td>${getNotice.noticeRegDate}</td>
+														</tr>
+													</c:if>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
 
 
 									</table>
