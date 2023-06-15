@@ -2,15 +2,20 @@ package com.kh.kgv.mypage.model.service;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.mypage.controller.MyPageController;
 import com.kh.kgv.mypage.model.dao.MyPageDAO;
 
 @Service
 public class MyPageServiceImpl implements MyPageService {
+
+	private Logger logger = LoggerFactory.getLogger(MyPageController.class);
 
 	@Autowired
 	private MyPageDAO dao;
@@ -18,7 +23,9 @@ public class MyPageServiceImpl implements MyPageService {
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
 	
-	// 회원 비번번호 변경
+	/** 회원 비번번호 변경
+	 *
+	 */
 	@Override
 	public int changePw(Map<String, Object> paramMap) {
 		
@@ -46,8 +53,9 @@ public class MyPageServiceImpl implements MyPageService {
 		return 0;
 	}
 
-
-	// 회원 탈퇴 서비스 구현
+	/** 회원 탈퇴 서비스 구현
+	 *
+	 */
 	@Override
 	public int secession(User loginUser) {
 			
@@ -63,4 +71,15 @@ public class MyPageServiceImpl implements MyPageService {
 		// 3) 비밀번호가 일치하지 않으면 0 반환
 		return 0;
 	}
+
+	/** 회원 정보 변경 서비스
+	 *
+	 */
+	@Override
+	public int updateInfo(Map<String, Object> paramMap) {
+		logger.info("뜬다 updateInfo.service 페이지 들어왔다");
+		return dao.updateInfo(paramMap);
+	}
+	
+	
 }

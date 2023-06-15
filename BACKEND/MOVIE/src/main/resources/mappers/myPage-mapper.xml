@@ -33,6 +33,16 @@
 		WHERE USER_NO = ${userNo}
 	</update>
 	
+		
+	<!-- 회원 정보 수정 -->
+	<update id="updateInfo">
+		UPDATE USERS SET
+		USER_NICKNAME = #{updateNick},
+		USER_TEL = #{updateTel},
+		USER_ADDR = #{userAddr}
+		WHERE USER_NO = ${userNo}
+	</update>
+	
 	
   	
 </mapper>
