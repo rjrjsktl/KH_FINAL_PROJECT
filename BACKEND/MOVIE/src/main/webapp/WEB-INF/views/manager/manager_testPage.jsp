@@ -45,7 +45,7 @@
                                         <div class="set_Edge">
                                             <div class="table_Wrapper">
                                                 <div class="table_Title">
-                                                    <span>영화 등록</span>
+                                                    <span>테스트 페이지ㅣㅣㅣㅣ</span>
                                                 </div>
                                                 <!-- form에 action추가해서 쏴줘야함 -->
                                                 <form>
@@ -92,25 +92,23 @@
                                                                     onfocus="this.showPicker()">
                                                             </div>
                                                         </div>
-                                                        <div id="movie_sub">
-                                                            <span>대표 이미지</span>
-                                                            <div>
+                                                        <div id="movie_imgContailer">
+                                                            <span class="imgTitle">메인 이미지</span>
+                                                            <div class="imgInput">
                                                                 <input type="file" class="movie_image1" name="file">
-                                                            </div>
-                                                        </div>
-                                                        <div id="movie_sub">
-                                                            <span>추가 이미지<br>1 | 2 | 3</span>
-                                                            <div>
+                                                                <span class="imgTitle_Inner">추가1</span>
                                                                 <input type="file" class="movie_image2" name="file">
+                                                                <span class="imgTitle_Inner">추가2</span>
                                                                 <input type="file" class="movie_image3" name="file">
-                                                                <input type="file" class="movie_image4" name="file">
                                                             </div>
                                                         </div>
-
-                                                        <div id="movie_sub">
-                                                            <span>추가 이미지<br>4 | 5</span>
-                                                            <div>
+                                                        <div id="movie_imgContailer">
+                                                            <span class="imgTitle">추가3</span>
+                                                            <div class="imgInput">
+                                                                <input type="file" class="movie_image4" name="file">
+                                                                <span class="imgTitle_Inner">추가4</span>
                                                                 <input type="file" class="movie_image5" name="file">
+                                                                <span class="imgTitle_Inner">추가5</span>
                                                                 <input type="file" class="movie_image6" name="file">
                                                             </div>
                                                         </div>
@@ -149,6 +147,21 @@
                                                                     placeholder="500자 내외로 작성해 주세요."></textarea>
                                                             </div>
                                                         </div>
+                                                    </div>
+
+                                                    <div>
+                                                        <p>13번째 공지사항 테스트</p>
+                                                        <p>13번째 공지사항 테스트</p>
+                                                        <p><br></p>
+                                                        <p><img src="/movie/resources/images/fileupload/6e44869e-e88e-4378-8ef6-8abc264ca20c.jpg"
+                                                                style="width: 25%;"><br></p>
+                                                        <p><br></p>
+                                                        <p>13번째 공지사항 테스트</p>
+                                                        <p>13번째 공지사항 테스트</p>
+                                                        <p>13번째 공지사항 테스트</p>
+                                                        <p><br></p>
+                                                        <p><img src="/movie/resources/images/fileupload/e281646a-fde8-4d73-b420-5f90f06094c6.jpg"
+                                                                style="width: 25%;"><br></p>
                                                     </div>
                                                 </form>
                                                 <div class="table_bottom">
