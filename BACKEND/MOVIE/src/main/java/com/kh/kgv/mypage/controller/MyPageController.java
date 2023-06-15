@@ -99,44 +99,41 @@ public class MyPageController {
 	// ===========================================================================================
 	
 	// 회원 정보 수정
-	// 회원정보 수정
 	@PostMapping("/info")
 	public String updateInfo(@ModelAttribute("loginUser") User loginUser 
 							, @RequestParam Map<String, Object> paramMap // 요청시 전달된 파라미터를 구분하지 않고 모두 Map에 담아서 얻어옴
-							, String[] updateAddress
+							, String[] updateAddr
 							, RedirectAttributes ra ) {
 		
+		logger.info("뜬다 updateInfo.info 페이지 들어왔다");
+		
 		// 파라미터를 저장한 paramMap에 회원번호, 주소를 추가
-		String userAddress = String.join(",,", updateAddress); // 주소 배열 -> 문자열 변환
+		String userAddr = String.join(",,", updateAddr); // 주소 배열 -> 문자열 변환
 		
 		// 주소가 미입력 되었을 때
-		if(userAddress.equals(",,,,")) userAddress = null;
+		if(userAddr.equals(",,,,")) userAddr = null;
 		
 		paramMap.put("userNo", loginUser.getUserNo());
-		paramMap.put("userAddress", userAddress);
-		
+		paramMap.put("userAddr", userAddr);
 		
 		// 회원 정보 수정 서비스 호출
 		int result = service.updateInfo(paramMap);
 		
 		String message = null;
-		
+		logger.info("돌아온 result:::" + result);
 		if(result > 0) {
 			message = "회원 정보가 수정되었습니다.";
-			
 			// DB - Session의 회원 정보 동기화
-			loginUser.setUserNick( (String) paramMap.get("updateNickname")  );
+			loginUser.setUserNick( (String) paramMap.get("updateNick")  );
 			
 			loginUser.setUserTel( (String) paramMap.get("updateTel") );
 			
-			loginUser.setUserAddr( (String) paramMap.get("memberAddress") );
+			loginUser.setUserAddr( (String) paramMap.get("userAddr") );
 			
 		}else {
 			message = "회원 정보 수정 실패...";
 		}
-		
 		ra.addFlashAttribute("message", message);
-		
 		
 		return "redirect:info";
 	}
