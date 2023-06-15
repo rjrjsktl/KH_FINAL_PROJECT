@@ -7,11 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.management.model.service.ManageStoreService;
+import com.kh.kgv.management.model.vo.Event;
 
 
 
@@ -27,12 +29,12 @@ public class ManageStoreController {
 	
 	
 	
-	// 닉네임 중복 검사
+	// 이름 중복 검사
 	@ResponseBody
-	@GetMapping("/titleDupCheck")
-	public int titleDupCheck(String storeTitle) {
-		System.out.println(storeTitle);
-		int result = service.titleDupCheck(storeTitle);
+	@GetMapping("/NameDupCheck")
+	public int NameDupCheck(String storeName) {
+		System.out.println(storeName);
+		int result = service.NameDupCheck(storeName);
 				
 		System.out.println(result);
 		return result;
@@ -40,13 +42,39 @@ public class ManageStoreController {
 	}
 	
 	
-	
+	@ResponseBody
 	@PostMapping("/addStore")
-	public String addStore(Store inputStore) {
+	public int addStore(@RequestParam("storeCategory") String storeCategory,
+			@RequestParam("storeName") String storeName,
+			@RequestParam("storeDesc") String storeDesc,
+			@RequestParam("storePrice") int storePrice,
+			@RequestParam("storeStock") int storeStock,
+			@RequestParam("storeImage") String storeImage) {
 		
-		logger.debug("inputStore : " + inputStore);
+		logger.debug("storeCategory : " + storeCategory);
+		logger.debug("storeCategory : " + storeName);
+		logger.debug("storeCategory : " + storeDesc);
+		logger.debug("storeCategory : " + storePrice);
+		logger.debug("storeCategory : " + storeStock);
+		logger.debug("storeCategory : " + storeImage);
 		
-		return null;
+		Store store  = new Store();
+		store.setStoreCategory(storeCategory);
+		store.setStoreName(storeName);
+		store.setStoreDesc(storeDesc);
+		store.setStorePrice(storePrice);
+		store.setStoreStock(storeStock);
+		store.setStoreImage(storeImage);
+		
+		int result = service.addStore(store);
+		
+		
+		
+		
+		return  result;
+		
+		
+		
 		
 	}
 	

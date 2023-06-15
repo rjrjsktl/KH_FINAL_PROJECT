@@ -52,19 +52,19 @@
                                                 </div>
 
 
-                                                <form action="addStore" method="POST" onsubmit="return storeValidate()">
+                                                <form method="POST" id="store_Submit">
                                                     <div class="table_main">
 
                                                         <div id="store_sub">
                                                             <span>카테고리</span>
                                                             <div>
-                                                                <select id="store_category" name="store_category"
-                                                                    class="store_category" aria-label="성별">
+                                                                <select id="storeCategory" name="storeCategory"
+                                                                    class="storeCategory" aria-label="성별">
                                                                     <option value="" selected="">선택</option>
-                                                                    <option value="drink">음료</option>
-                                                                    <option value="F">팝콘</option>
-                                                                    <option value="U">티켓</option>
-                                                                    <option value="U">스낵</option>
+                                                                    <option value="음료">음료</option>
+                                                                    <option value="팝콘">팝콘</option>
+                                                                    <option value="티켓">티켓</option>
+                                                                    <option value="스낵">스낵</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -72,30 +72,34 @@
 
                                                         <div id="store_sub">
                                                             <span>상품 이름</span>
-                                                            <div>
-                                                                <input type="text" class="store_sub_enter store_title">
+                                                            <div id="store_Name">
+                                                                <input type="text" class="store_sub_enter storeName"
+                                                                    id="storeName">
+                                                                <p id="storeNameMessage">메시지</p>
                                                             </div>
+
                                                         </div>
 
                                                         <div id="store_sub">
                                                             <span>상품 설명</span>
                                                             <div>
-                                                                <input type="text" class="store_sub_enter store_desc">
+                                                                <input type="text" class="store_sub_enter storeDesc"
+                                                                    id="storeDesc">
                                                             </div>
                                                         </div>
                                                         <div id="store_sub">
                                                             <span>상품 가격</span>
                                                             <div>
-                                                                <input type="number"
-                                                                    class="store_sub_enter store_price">
+                                                                <input type="number" class="store_sub_enter storePrice"
+                                                                    id="storePrice">
                                                             </div>
                                                         </div>
 
                                                         <div id="store_sub">
                                                             <span>상품 제한개수</span>
                                                             <div>
-                                                                <input type="number"
-                                                                    class="store_sub_enter store_stock">
+                                                                <input type="number" class="store_sub_enter storeStock"
+                                                                    id="storeStock">
                                                             </div>
                                                         </div>
 
@@ -103,7 +107,7 @@
                                                         <div id="store_sub">
                                                             <span>이미지</span>
                                                             <div>
-                                                                <input type="file" class="store_image">
+                                                                <input type="file" class="storeImage" id="storeImage">
                                                             </div>
                                                         </div>
 
