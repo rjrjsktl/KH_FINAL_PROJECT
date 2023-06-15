@@ -11,6 +11,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.text.StringEscapeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -252,7 +253,14 @@ public class ManagerController {
 		// 요기부터 수정페이지에 movieNo 보냄
 		movie.setMovieNo(movieNo);
 		
-		Map<String, Object>editMovie = service.getEditMovieList(movie);
+		Movie editMovie = service.getEditMovieList(movie);
+		String unescapedContent = StringEscapeUtils.unescapeHtml4(editMovie.getMgNo());
+		unescapedContent = unescapedContent.replaceAll("\\[|\\]", "").replaceAll("\"", "");
+		editMovie.setMgNo(unescapedContent);
+		
+		String genreChange = StringEscapeUtils.unescapeHtml4(editMovie.getGenreName());
+		genreChange = genreChange.replaceAll("\\[|\\]", "").replaceAll("\"", "");
+		editMovie.setGenreName(genreChange);
 		
 		logger.info("editMovie ::::: " + editMovie);
 		
@@ -739,10 +747,10 @@ public class ManagerController {
 				// ===================================================
 				// ===================================================
 					
-						// 테스트 이미지 업로드1
-				@PostMapping("/manager_testPage/uploadImageFile")
+						//영화 등록 이미지 업로드
+				@PostMapping("/movie_add/uploadImageFile")
 				@ResponseBody
-				public String testImageFile(@RequestParam("file") MultipartFile[] multipartFiles, HttpServletRequest request) {
+				public String movieUploadImageFile(@RequestParam("file") MultipartFile[] multipartFiles, HttpServletRequest request) {
 				    JsonArray jsonArray = new JsonArray(); 
 
 				    String webPath = "/resources/images/testFolder/";
@@ -772,6 +780,45 @@ public class ManagerController {
 				    String jsonResult = jsonArray.toString();
 				    System.out.println("이미지: " + jsonResult);
 				    return jsonResult;
+				}
+				
+				// ===================================================
+				// ===================================================
+
+				
+				//영화 수정 이미지 업로드
+				@PostMapping("/movie_list/edit/{movieNo}/movie_edit/uploadImageFile")
+				@ResponseBody
+				public String movieUpdateImageFile(@RequestParam("file") MultipartFile[] multipartFiles, HttpServletRequest request) {
+					JsonArray jsonArray = new JsonArray(); 
+					
+					String webPath = "/resources/images/testFolder/";
+					String fileRoot = request.getServletContext().getRealPath(webPath);
+					
+					for (MultipartFile multipartFile : multipartFiles) {
+						JsonObject jsonObject = new JsonObject();
+						
+						String originalFileName = multipartFile.getOriginalFilename();
+						String savedFileName = Util.fileRename(originalFileName);
+						
+						File targetFile = new File(fileRoot + savedFileName);
+						try {
+							InputStream fileStream = multipartFile.getInputStream();
+							FileUtils.copyInputStreamToFile(fileStream, targetFile);
+							jsonObject.addProperty("", request.getContextPath() + webPath + savedFileName);
+							
+						} catch (IOException e) {
+							FileUtils.deleteQuietly(targetFile);
+							jsonObject.addProperty("responseCode", "error");
+							e.printStackTrace();
+						}
+						
+						jsonArray.add(jsonObject);
+					}
+					
+					String jsonResult = jsonArray.toString();
+					System.out.println("이미지: " + jsonResult);
+					return jsonResult;
 				}
 				
 				// ===================================================

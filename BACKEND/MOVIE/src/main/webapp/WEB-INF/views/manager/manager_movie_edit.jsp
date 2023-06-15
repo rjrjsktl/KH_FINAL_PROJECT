@@ -45,7 +45,7 @@
 										<div class="set_Edge">
 											<div class="table_Wrapper">
 												<div class="table_Title">
-													<span>영화 등록</span>
+													<span>영화 수정</span>
 												</div>
 												<!-- form에 action추가해서 쏴줘야함 -->
 												<form>
@@ -55,11 +55,11 @@
 													<div class="table_main">
 														<div id="movie_sub">
 															<input type="hidden" id="movieNo"
-																value="${editMovie['MOVIE_NO']}">
+																value="${editMovie.movieNo}">
 															<span>영화 제목</span>
 															<div>
 																<input type="text" class="movie_sub_enter movie_title"
-																	value="${editMovie['MOVIE_TITLE']}">
+																	value="${editMovie.movieTitle}">
 															</div>
 														</div>
 														<div id="movie_sub">
@@ -67,28 +67,28 @@
 															<div>
 																<input type="text"
 																	class="movie_sub_enter movie_director"
-																	value="${editMovie['MOVIE_DIRECTOR']}">
+																	value="${editMovie.movieDirector}">
 															</div>
 														</div>
 														<div id="movie_sub">
 															<span>출연진</span>
 															<div>
 																<input type="text" class="movie_sub_enter movie_cast"
-																	value="${editMovie['MOVIE_CAST']}">
+																	value="${editMovie.movieCast}">
 															</div>
 														</div>
 														<div id="movie_sub">
 															<span>상영 시간</span>
 															<div>
 																<input type="text" class="movie_sub_enter movie_time"
-																	value="${editMovie['MOVIE_RUNTIME']}">
+																	value="${editMovie.movieRuntime}">
 															</div>
 														</div>
 														<div id="movie_sub">
 															<span>제작 국가</span>
 															<div>
 																<input type="text" class="movie_sub_enter movie_country"
-																	value="${editMovie['MOVIE_NATION']}">
+																	value="${editMovie.movieNation}">
 															</div>
 														</div>
 														<div id="movie_sub">
@@ -96,40 +96,36 @@
 															<div>
 																<input type="date" class="movie_releseDate"
 																	onfocus="this.showPicker()"
-																	value="${editMovie['MOVIE_OPEN']}">
+																	value="${editMovie.movieOpen}">
 															</div>
 														</div>
 														<div id="movie_imgContailer">
 															<span class="imgTitle">메인 이미지</span>
 															<div class="imgInput">
-																<input type="file" class="movie_image1" name="file"
-																	value="${editMovie['MOVIE_IMG1']}">
+																<input type="file" class="movie_image1" name="file">
 																<span class="imgTitle_Inner">추가1</span>
-																<input type="file" class="movie_image2" name="file"
-																	value="${editMovie['MOVIE_IMG2']}">
+																<input type="file" class="movie_image2" name="file">
 																<span class="imgTitle_Inner">추가2</span>
-																<input type="file" class="movie_image3" name="file"
-																	value="${editMovie['MOVIE_IMG3']}">
+																<input type="file" class="movie_image3" name="file">
 															</div>
 														</div>
 														<div id="movie_imgContailer">
 															<span class="imgTitle">추가3</span>
 															<div class="imgInput">
-																<input type="file" class="movie_image4" name="file"
-																	value="${editMovie['MOVIE_IMG4']}">
+																<input type="file" class="movie_image4" name="file">
 																<span class="imgTitle_Inner">추가4</span>
-																<input type="file" class="movie_image5" name="file"
-																	value="${editMovie['MOVIE_IMG5']}">
+																<input type="file" class="movie_image5" name="file">
 																<span class="imgTitle_Inner">추가5</span>
-																<input type="file" class="movie_image6" name="file"
-																	value="${editMovie['MOVIE_IMG6']}">
+																<input type="file" class="movie_image6" name="file">
 															</div>
 														</div>
 														<div id="level">
 															<span>관람 등급</span>
 															<div class="relative">
 																<div class="movie_level">
-
+																	<div class="added">
+																		${editMovie.mgNo}
+																	</div>
 																</div>
 																<div class="level_Items">
 																	<div class="movie_level_slide">
@@ -144,7 +140,10 @@
 															<span>장르</span>
 															<div class="relative">
 																<div class="movie_Genre">
-
+																	<div class="added">
+																		${editMovie.genreName}
+																		<div class="delBtn"></div>
+																	</div>
 																</div>
 																<div class="Genre_Items">
 																	<div class="movie_genre_slide">
@@ -160,7 +159,7 @@
 															<div>
 																<!-- value추가해야할거임 -->
 																<textarea class="movie_sub_enter movie_story"
-																	placeholder="500자 내외로 작성해 주세요.">${editMovie['MOVIE_CONTENT']}</textarea>
+																	placeholder="500자 내외로 작성해 주세요.">${editMovie.movieContent}</textarea>
 															</div>
 														</div>
 													</div>

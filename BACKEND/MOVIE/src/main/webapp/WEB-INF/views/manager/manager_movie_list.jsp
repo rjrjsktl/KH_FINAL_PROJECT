@@ -83,7 +83,7 @@
                                                             <td>${movie['movieWatched']}</td>
                                                             <td>${movie['movieRegdate']}</td>
                                                             <td>${movie['movieUploader']}</td>
-                                                            <td>${movie['genreCode']}</td>
+                                                            <td>${movie['genreName']}</td>
                                                             <td>
                                                                 <a href="${contextPath}/manager/movie_list/edit/${movie.movieNo}"
                                                                     class="editEvent"><i
