@@ -79,7 +79,6 @@ public class ManagerServiceImpl implements ManagerService {
 
 	// 영화 등록
 	@Override
-	@Transactional(rollbackFor = {Exception.class}) // 모든 종류의 예외 발생 시 롤백
 	public int MovieAdd(Movie inputMovie) {
 
 		System.out.println("==============영화등록 serviceimpl");
@@ -143,7 +142,7 @@ public class ManagerServiceImpl implements ManagerService {
 	    	for (Movie movie : movielist) {
 	    		Movie cleanedMovie = new Movie();
 	    		cleanedMovie.setMgNo(Util.removeQuotes(movie.getMgNo()));
-	    		cleanedMovie.setGenreCode(Util.removeQuotes(movie.getGenreCode()));
+	    		cleanedMovie.setGenreName(Util.removeQuotes(movie.getGenreName()));
 	    		cleanedMovie.setMovieNo(movie.getMovieNo());
 	    		cleanedMovie.setMovieRuntime(movie.getMovieRuntime());
 	    		cleanedMovie.setMovieTitle(movie.getMovieTitle());
@@ -174,7 +173,7 @@ public class ManagerServiceImpl implements ManagerService {
 	 * 영화 수정 페이지 이동
 	 */
 	@Override
-	public Map<String, Object> getEditMovieList(Movie movie) {
+	public Movie getEditMovieList(Movie movie) {
 		return dao.getEditMovieList(movie);
 	}
 	
@@ -182,7 +181,6 @@ public class ManagerServiceImpl implements ManagerService {
 	 * 영화 수정 등록
 	 */
 	@Override
-	@Transactional(rollbackFor = {Exception.class}) // 모든 종류의 예외 발생 시 롤백
 	public int MovieEdit(Movie updateMovie) {
 
 		System.out.println("==============영화등록 serviceimpl");
@@ -219,7 +217,6 @@ public class ManagerServiceImpl implements ManagerService {
 
 	// 이벤트 수정(업데이트)
 	@Override
-	@Transactional(rollbackFor = {Exception.class}) // 모든 종류의 예외 발생 시 롤백
 	public int editEvent(Event event) {
 		return dao.editEvent(event);
 	}
@@ -232,7 +229,6 @@ public class ManagerServiceImpl implements ManagerService {
 
 	// 공지사항 등록
 	@Override
-	@Transactional(rollbackFor = {Exception.class}) // 모든 종류의 예외 발생 시 롤백
 	public int addNotice(Notice notice) {
 		return dao.addNotice(notice);
 	}
@@ -265,7 +261,6 @@ public class ManagerServiceImpl implements ManagerService {
 
 	// 공지사항 수정(업데이트)
 	@Override
-	@Transactional(rollbackFor = {Exception.class}) // 모든 종류의 예외 발생 시 롤백
 	public int editNotice(Notice notice) {
 		return dao.editNotice(notice);
 	}

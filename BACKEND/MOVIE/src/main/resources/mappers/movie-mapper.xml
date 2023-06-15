@@ -16,7 +16,7 @@
 		<result property="movieWatched" 			column="MOVIE_WATCHED"/>
 		<result property="movieRegdate" 			column="MOVIE_REGDATE"/>
 		<result property="movieUploader"	 		column="MOVIE_UPLOADER"/>
-		<result property="genreCode" 				column="GENRE_CODE"/>
+		<result property="genreName" 				column="GENRE_NAME"/>
 		<result property="movieImg1" 				column="MOVIE_IMG1"/> 
 		<result property="movieImg2" 				column="MOVIE_IMG2"/> 
 		<result property="movieImg3" 				column="MOVIE_IMG3"/> 
@@ -39,26 +39,26 @@
         	, #{movieNation}
         	<!-- MG_CONTENT -->
         	, #{mgNo}
-        	<!-- MOVIE_CONTENT -->
+			<!-- MOVIE_CONTENT -->
         	, #{movieContent}
-        	<!-- MOVIE_OPEN -->
-        	, #{movieOpen}
-        	<!-- MOVIE_DIRECTOR -->
-        	, #{movieDirector}
-        	 <!-- MOVIE_CAST -->
-        	, #{movieCast}
+			<!-- MOVIE_IMG1 -->
+			, #{movieImg1}
         	<!-- MOVIE_PLAYED -->
         	, default
         	<!-- MOVIE_WATCHED -->
         	, default
-        	<!--MOVIE_REGDATE  -->
-        	, default
+          	<!--MOVIE_REGDATE  -->
+        	, default      	
         	<!-- MOVIE_UPLOADER -->
-        	, #{movieUploader}
-        	<!-- GENRE_CODE -->
-        	, #{genreCode}
-        	<!-- MOVIE_IMG1 -->
-			, #{movieImg1}
+        	, #{movieUploader}        	
+         	<!-- GENRE_CODE -->
+        	, #{genreName}
+        	<!-- MOVIE_DIRECTOR -->
+        	, #{movieDirector}
+        	 <!-- MOVIE_CAST -->
+        	, #{movieCast}
+        	<!-- MOVIE_OPEN -->
+        	, #{movieOpen}
 			<!-- MOVIE_IMG2 -->
 			, #{movieImg2}
 			<!-- MOVIE_IMG3 -->
@@ -94,7 +94,7 @@
 	</select>
 	
 	<!-- 영화 수정 페이지 이동 후 값 불러오기 -->
-	<select id="getEditMovieList" resultType="HashMap">
+	<select id="getEditMovieList" resultMap="movie_rm">
 		SELECT * FROM MOVIE
 		WHERE MOVIE_NO = #{movieNo}
 	</select>
@@ -102,25 +102,23 @@
 	<!-- 영화 수정 -->
 	<update id="MovieEdit" parameterType="movie">
 		UPDATE MOVIE SET
-			MOVIE_RUNTIME = #{movieRuntime},
-        	MOVIE_TITLE = #{movieTitle},
-        	MOVIE_NATION = #{movieNation},
-        	MG_CONTENT = #{mgNo},
-        	MOVIE_CONTENT = #{movieContent},
-        	MOVIE_PLAYED = null,
-        	MOVIE_WATCHED = null,
-        	MOVIE_REGDATE = default,
-        	MOVIE_UPLOADER = #{movieUploader},
-        	GENRE_NAME = #{genreCode},
-        	MOVIE_DIRECTOR = #{movieDirector},
-        	MOVIE_CAST = #{movieCast},
-        	MOVIE_OPEN = #{movieOpen},
-			MOVIE_IMG1 = #{movieImg1},
-			MOVIE_IMG2 = #{movieImg2},
-			MOVIE_IMG3 = #{movieImg3},
-			MOVIE_IMG4 = #{movieImg4},
-			MOVIE_IMG5 = #{movieImg5},
-			MOVIE_IMG6 = #{movieImg6},
+			MOVIE_RUNTIME = #{movieRuntime}
+        	, MOVIE_TITLE = #{movieTitle}
+        	, MOVIE_NATION = #{movieNation}
+        	, MG_CONTENT = #{mgNo}
+        	, MOVIE_CONTENT = #{movieContent}
+        	, MOVIE_IMG1 = #{movieImg1}
+        	, MOVIE_REGDATE = default
+        	, MOVIE_UPLOADER = #{movieUploader}
+        	, GENRE_NAME = #{genreName}
+        	, MOVIE_DIRECTOR = #{movieDirector}
+        	, MOVIE_CAST = #{movieCast}
+        	, MOVIE_OPEN = #{movieOpen}
+			, MOVIE_IMG2 = #{movieImg2}
+			, MOVIE_IMG3 = #{movieImg3}
+			, MOVIE_IMG4 = #{movieImg4}
+			, MOVIE_IMG5 = #{movieImg5}
+			, MOVIE_IMG6 = #{movieImg6}
 			WHERE MOVIE_NO = ${movieNo}
 	</update>
 	

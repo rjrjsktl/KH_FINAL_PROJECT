@@ -24,7 +24,7 @@ public class Movie {
 	private int movieWatched;
 	private String movieRegdate;
 	private String movieUploader;
-	private String genreCode;
+	private String genreName;
 	private String movieImg1;
 	private String movieImg2;
 	private String movieImg3;

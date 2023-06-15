@@ -39,7 +39,7 @@
 		<result property="movieWatched" 			column="MOVIE_WATCHED"/>
 		<result property="movieRegdate" 			column="MOVIE_REGDATE"/>
 		<result property="movieUploader"	 		column="MOVIE_UPLOADER"/>
-		<result property="genreCode" 				column="GENRE_CODE"/>
+		<result property="genreName" 				column="GENRE_NAME"/>
 		<result property="movieImg1" 				column="MOVIE_IMG1"/> 
 		<result property="movieImg2" 				column="MOVIE_IMG2"/> 
 		<result property="movieImg3" 				column="MOVIE_IMG3"/> 
@@ -291,6 +291,7 @@
 		FROM NOTICE
 		ORDER BY NOTICE_NO DESC
 	</select>
+	
 	
 	
 

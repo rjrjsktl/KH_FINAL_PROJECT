@@ -39,7 +39,7 @@ public interface ManagerService {
 	Map<String, Object> movieList(int cp);
 	
 	// 영화 수정 조회
-	Map<String, Object> getEditMovieList(Movie movie);
+	Movie getEditMovieList(Movie movie);
 	
 	// 영화 수정 등록
 	int MovieEdit(Movie updateMovie);

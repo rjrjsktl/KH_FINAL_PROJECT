@@ -116,10 +116,10 @@ public class ManagerDAO {
 	}
 	
 	/** 영화 수정 페이지 이동
-	 * @param movie
+	 * @param movieNo
 	 * @return
 	 */
-	public Map<String, Object> getEditMovieList(Movie movie) {
+	public Movie getEditMovieList(Movie movie) {
 		return sqlSession.selectOne("movieMapper.getEditMovieList", movie);
 	}
 	
