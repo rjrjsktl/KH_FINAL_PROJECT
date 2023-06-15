@@ -237,9 +237,9 @@ $(document).ready(function () {
             e.preventDefault();
             return false;
         };
-        
+
         const movieNo = $('#movieNo');
-        
+
         console.log('저장버튼이 눌림.');
         console.log("Uploader : " + $("input[name=movieUploader]").val());
         console.log("영화 제목 : " + movie_title.val());
@@ -278,15 +278,17 @@ $(document).ready(function () {
                 // 등록 완료 : 1
                 // 등록 실패 : 0
                 if (result > 0) {
-                    console.log("영화 등록 완료");
-                    window.alert("영화 등록 성공")
+                    console.log("영화 수정 완료");
+                    window.alert("영화 수정 성공")
+                    let url = "/movie/manager/movie_list";
+                    window.location.href = url;
                 } else {
-                    console.log("영화 등록 실패");
+                    console.log("영화 수정 실패");
                 }
             },
             error: function () {
-                window.alert("영화 등록 실패")
-                console.log("영화 등록 ajax 실패");
+                window.alert("영화 수정 실패")
+                console.log("영화 수정 ajax 실패");
             }
         })
     });

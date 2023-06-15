@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
@@ -78,6 +79,7 @@ public class ManagerServiceImpl implements ManagerService {
 
 	// 영화 등록
 	@Override
+	@Transactional(rollbackFor = {Exception.class}) // 모든 종류의 예외 발생 시 롤백
 	public int MovieAdd(Movie inputMovie) {
 
 		System.out.println("==============영화등록 serviceimpl");
@@ -148,7 +150,12 @@ public class ManagerServiceImpl implements ManagerService {
 	    		cleanedMovie.setMovieNation(movie.getMovieNation());
 	    		cleanedMovie.setMovieOpen(movie.getMovieOpen());
 	    		cleanedMovie.setMovieContent(movie.getMovieContent());
-	    		cleanedMovie.setMovieImg(movie.getMovieImg());
+	    		cleanedMovie.setMovieImg1(movie.getMovieImg1());
+	    		cleanedMovie.setMovieImg2(movie.getMovieImg2());
+	    		cleanedMovie.setMovieImg3(movie.getMovieImg3());
+	    		cleanedMovie.setMovieImg4(movie.getMovieImg4());
+	    		cleanedMovie.setMovieImg5(movie.getMovieImg5());
+	    		cleanedMovie.setMovieImg6(movie.getMovieImg6());
 	    		cleanedMovie.setMovieUploader(movie.getMovieUploader());
 	    		cleanedMovie.setMovieDirector(movie.getMovieDirector());
 	    		cleanedMovie.setMovieCast(movie.getMovieCast());
@@ -175,6 +182,7 @@ public class ManagerServiceImpl implements ManagerService {
 	 * 영화 수정 등록
 	 */
 	@Override
+	@Transactional(rollbackFor = {Exception.class}) // 모든 종류의 예외 발생 시 롤백
 	public int MovieEdit(Movie updateMovie) {
 
 		System.out.println("==============영화등록 serviceimpl");
@@ -211,6 +219,7 @@ public class ManagerServiceImpl implements ManagerService {
 
 	// 이벤트 수정(업데이트)
 	@Override
+	@Transactional(rollbackFor = {Exception.class}) // 모든 종류의 예외 발생 시 롤백
 	public int editEvent(Event event) {
 		return dao.editEvent(event);
 	}
@@ -223,6 +232,7 @@ public class ManagerServiceImpl implements ManagerService {
 
 	// 공지사항 등록
 	@Override
+	@Transactional(rollbackFor = {Exception.class}) // 모든 종류의 예외 발생 시 롤백
 	public int addNotice(Notice notice) {
 		return dao.addNotice(notice);
 	}
@@ -255,6 +265,7 @@ public class ManagerServiceImpl implements ManagerService {
 
 	// 공지사항 수정(업데이트)
 	@Override
+	@Transactional(rollbackFor = {Exception.class}) // 모든 종류의 예외 발생 시 롤백
 	public int editNotice(Notice notice) {
 		return dao.editNotice(notice);
 	}

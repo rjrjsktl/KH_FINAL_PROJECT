@@ -35,7 +35,8 @@ public class MyPageController {
 	@Autowired
 	private MyPageService service;
 	
-	// 마이페이지 첫번째 화면 - info변경가능
+	// 마이페이지 첫번째 화면
+	// 로그인o -> 로그인page, 로그인x -> 마이page
 	@GetMapping("/myPgMain")
 	public String info(HttpServletRequest req
 //						, HttpServletResponse resp
@@ -64,6 +65,10 @@ public class MyPageController {
 		return "redirect:" + path;
 	}
 	
+	// ===========================================================================================
+	// ===========================================================================================
+	// 사이드바 페이지 이동 영역
+	
 	@GetMapping("/info")
 	public String info() {
 		return "myPage/myPage_info";
@@ -89,15 +94,58 @@ public class MyPageController {
 		return "myPage/myPage_secession";
 	}
 	
+	// 사이드바 페이지 이동 영역
+	// ===========================================================================================
+	// ===========================================================================================
+	
 	// 회원 정보 수정
+	@PostMapping("/info")
+	public String updateInfo(@ModelAttribute("loginUser") User loginUser 
+							, @RequestParam Map<String, Object> paramMap // 요청시 전달된 파라미터를 구분하지 않고 모두 Map에 담아서 얻어옴
+							, String[] updateAddr
+							, RedirectAttributes ra ) {
+		
+		logger.info("뜬다 updateInfo.info 페이지 들어왔다");
+		
+		// 파라미터를 저장한 paramMap에 회원번호, 주소를 추가
+		String userAddr = String.join(",,", updateAddr); // 주소 배열 -> 문자열 변환
+		
+		// 주소가 미입력 되었을 때
+		if(userAddr.equals(",,,,")) userAddr = null;
+		
+		paramMap.put("userNo", loginUser.getUserNo());
+		paramMap.put("userAddr", userAddr);
+		
+		// 회원 정보 수정 서비스 호출
+		int result = service.updateInfo(paramMap);
+		
+		String message = null;
+		logger.info("돌아온 result:::" + result);
+		if(result > 0) {
+			message = "회원 정보가 수정되었습니다.";
+			// DB - Session의 회원 정보 동기화
+			loginUser.setUserNick( (String) paramMap.get("updateNick")  );
+			
+			loginUser.setUserTel( (String) paramMap.get("updateTel") );
+			
+			loginUser.setUserAddr( (String) paramMap.get("userAddr") );
+			
+		}else {
+			message = "회원 정보 수정 실패...";
+		}
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:info";
+	}
 	
-	
+	// ===========================================================================================
+	// ===========================================================================================
 	
 	// 회원 비밀번호 변경
 	@PostMapping("/changePw")
-	public String changePw( @RequestParam Map<String,Object> paramMap,
-							@ModelAttribute("loginUser") User loginUser,
-							RedirectAttributes ra) {
+	public String changePw( @RequestParam Map<String,Object> paramMap
+							, @ModelAttribute("loginUser") User loginUser
+							, RedirectAttributes ra) {
 		
 		// 로그인된 회원의 번호를 paramMap 추가
 		paramMap.put( "userNo", loginUser.getUserNo() );
@@ -122,13 +170,16 @@ public class MyPageController {
 		return "redirect:" + path;
 	}
 	
+	// ===========================================================================================
+	// ===========================================================================================
+	
 	// 회원 탈퇴
 	@PostMapping("/secession") // session 의 회원정보 + 입력받은 파라미터(비밀번호)
-	public String secession( @ModelAttribute("loginUser") User loginUser,
-							SessionStatus status,
-							HttpServletRequest req,
-							HttpServletResponse resp,
-							RedirectAttributes ra ) {
+	public String secession( @ModelAttribute("loginUser") User loginUser
+							, SessionStatus status
+							, HttpServletRequest req
+							, HttpServletResponse resp
+							, RedirectAttributes ra ) {
 		
 		// 회원 탈퇴 서비스 호출
 		int result = service.secession(loginUser);
