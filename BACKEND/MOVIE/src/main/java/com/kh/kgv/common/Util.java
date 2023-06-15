@@ -27,16 +27,13 @@ public class Util {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		String date = sdf.format(new java.util.Date(System.currentTimeMillis()));
 
-		int ranNum = (int) (Math.random() * 1000000); // 7자리 랜덤 숫자 생성
-//		int ranNum = (int) (Math.random() * 100000); // 5자리 랜덤 숫자 생성
+		int ranNum = (int) (Math.random() * 100000); // 5자리 랜덤 숫자 생성
 
-		String str = String.format("%07d", ranNum);
-//		String str = "_" + String.format("%05d", ranNum);
+		String str = "_" + String.format("%05d", ranNum);
 
 		String ext = originFileName.substring(originFileName.lastIndexOf("."));
 
-//		return date + str + ext;
-		return  str+ ext ;
+		return date + str + ext;
 	}
 	
 	   // 개행문자 처리 
