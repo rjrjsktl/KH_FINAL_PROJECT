@@ -125,11 +125,11 @@
                                     	            타입 : 
                                 			        <select id="temp_type">
                                 				        <option>일반관</option>
-                                				        <option>특수관1</option>
-                                				        <option>특수관2</option>
-                                				        <option>특수관3</option>
-                                				        <option>멍멍이</option>
-                                				        <option>키즈존</option>
+                                				        <option>KMAX</option>
+                                				        <option>DOLBY</option>
+                                				        <option>DISH & WINE</option>
+                                				        <option>WITH A PUPPY</option>
+                                				        <option>KIDS</option>
                                 			        </select>
                                     	        </div>
                                 			    
