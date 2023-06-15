@@ -54,7 +54,7 @@
                             <label>닉네임</label>
                         </div>
                         <div class="mypage-info-frame">
-                            <input type="text" name="updateNickname" id="memberNickname"
+                            <input type="text" name="updateNickname" id="userNickname"
                             value="${loginUser.userNick}" maxlength="10">
                         </div>
 
@@ -62,7 +62,7 @@
                             <label>연락처</label>
                         </div>
                         <div class="mypage-info-frame">
-                            <input type="text" name="updateTel" id="memberTel" value="${loginUser.userTel}"
+                            <input type="text" name="updateTel" id="userTel" value="${loginUser.userTel}"
                             maxlength="11">
                         </div>
 
