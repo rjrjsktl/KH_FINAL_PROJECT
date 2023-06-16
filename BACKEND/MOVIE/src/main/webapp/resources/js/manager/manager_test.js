@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
     // 이미지 등록 테스트1 ========================================
-    let movie_image = $('.movie_image');
     let movie_image1 = $('.movie_image1');
 
     movie_image1.on('change', function (e) {
@@ -496,7 +495,7 @@ $(document).ready(function () {
         //         "movieOpen": movie_releseDate.val(),
         //         "movieImg": movie_image.val(),
         //         "mgNo": JSON.stringify(level_Arr),
-        //         "genreCode": JSON.stringify(genre_Arr),
+        //         "genreName": JSON.stringify(genre_Arr),
         //         "movieContent": $('.movie_story').val(),
         //         "movieUploader": $("input[name=movieUploader]").val()
         //     },
