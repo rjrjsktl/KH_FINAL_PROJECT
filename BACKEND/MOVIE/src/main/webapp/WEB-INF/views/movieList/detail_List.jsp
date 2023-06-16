@@ -30,24 +30,26 @@
 
 								<div>
 									<ol>
-										<c:forEach var="getMovie" items="${getMovieList.movieList}">
+										<c:forEach var="movie" items="${getMovieList['cleanedList']}"
+											varStatus="status">
 											<li>
 												<div>
-													<span> 1<!-- 숫자 1~20까지 for문돌려서 박아야합니다. -->
+													<span>${status.count}<!-- 숫자 1~20까지 for문돌려서 박아야합니다. -->
 													</span> <a
-														href="${contextPath}/movieList/introduce/getMovie.{영화번호}"><img
-															src="{영화 메인이미지}"></a>
+														href="${contextPath}/movieList/detail_List/introduce/${movie['movieNo']}"><img
+															src="${movie['movieImg1']}"></a>
 												</div>
 
 												<div>
-													<a href="${contextPath}/movieList/introduce/getMovie.{영화번호}">
-														<span>getMovie.{영화제목}</span></a>
+													<a
+														href="${contextPath}/movieList/detail_List/introduce/${movie['movieNo']}">
+														<span>${movie['movieTitle']}</span></a>
 													<div>
 														<p>
 															예매율&nbsp<span>100.0</span>%
 														</p>
 														<p>
-															개봉일&nbsp<span>getMovie.{영화개봉일}</span>
+															개봉일&nbsp<span>${movie['movieOpen']}</span>
 														</p>
 													</div>
 												</div>
