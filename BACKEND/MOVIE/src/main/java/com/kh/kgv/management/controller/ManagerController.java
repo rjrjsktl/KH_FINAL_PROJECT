@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -370,7 +371,12 @@ public class ManagerController {
 	
 	// 관리자_상영시간 등록 이동
 	@GetMapping("/play_add")
-	public String movePlayAdd() {
+	public String movePlayAdd(Model model) {
+		
+		Map<String, Object> playMap = null;
+		playMap = service.getPlayMap();
+		model.addAttribute("playMap", playMap);
+		
 		System.out.println("관리자_상영시간 등록 이동");
 		return "manager/manager_movie_play_add";
 	}

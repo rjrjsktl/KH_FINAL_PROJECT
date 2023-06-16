@@ -21,6 +21,7 @@
 		<typeAlias type="com.kh.kgv.items.model.vo.Seat" alias="seat"/>
 		<typeAlias type="com.kh.kgv.items.model.vo.SeatPrice" alias="sp"/>
 		<typeAlias type="com.kh.kgv.items.model.vo.Store" alias="store"/>
+		<typeAlias type="com.kh.kgv.items.model.vo.TimeTable" alias="tt"/>
 		
 		<typeAlias type="com.kh.kgv.management.model.vo.Event" alias="event"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.Ask" alias="ask"/>
@@ -53,7 +54,7 @@
 		<mapper resource="/mappers/manager-mapper.xml"/>
 		<mapper resource="/mappers/myPage-mapper.xml"/>
 		<mapper resource="/mappers/store-mapper.xml"/>
-			
+		<mapper resource="/mappers/play-mapper.xml"/>
 		<mapper resource="/mappers/cinema-mapper.xml"/>
 		<mapper resource="/mappers/mtm-mapper.xml"/>
 	
