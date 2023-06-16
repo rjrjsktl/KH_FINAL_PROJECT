@@ -51,7 +51,7 @@ public class LoginController {
 	private JavaMailSender mailSender;
 	
 	// 로그인 페이지 진입
-	@GetMapping("/login")
+	@GetMapping("/login1")
 	public String enterLogin() { 
 		return "login/login";
 	}
@@ -120,6 +120,7 @@ public class LoginController {
 			
 //			return "redirect:/user/login"; 
 		}
+		
 		return "redirect:/"; 
 	}
 	
