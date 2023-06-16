@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.kgv.helpDesk.model.dao.HelpDeskDAO;
 import com.kh.kgv.helpDesk.model.vo.Mtm;
+import com.kh.kgv.helpDesk.model.vo.MtmPagenation;
 import com.kh.kgv.management.model.dao.ManagerDAO;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Pagination;
@@ -54,15 +55,15 @@ public class HelpDeskImpl implements HelpDeskService {
 	public Map<String, Object> getMtmList(int cp, int userNo) {
 		
 
-		int noticelistCount = daos.getNoticeListCount();
+		int mtmlistCount = dao.getMtmListCount();
 
-		Pagination pagination = new Pagination(cp, noticelistCount);
+		MtmPagenation pagination = new MtmPagenation(cp, mtmlistCount);
 
-		List<Mtm> mtmList = dao.getMtmList(userNo, pagination);
+		List<Mtm> mtmLists = dao.getMtmList(pagination, userNo);
 
 		Map<String, Object> getMtmList = new HashMap<String, Object>();
 		getMtmList.put("pagination", pagination);
-		getMtmList.put("mtmList", mtmList);
+		getMtmList.put("mtmLists", mtmLists);
 
 		return getMtmList;
 		
