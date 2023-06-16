@@ -97,9 +97,6 @@ public class HelpDeskController {
 	}
 
 
-
-
-
 	@RequestMapping("/mTm_List")
 	public String mtmform(
 			Model model,
@@ -111,14 +108,19 @@ public class HelpDeskController {
 		
 		User loginUser = (User)session.getAttribute("loginUser");
 
+		
+		int userNo = 1000000000;
+
+		if(loginUser != null) {
+			userNo = loginUser.getUserNo();
+		}
+
 		Map<String, Object>mtmList = null;
 		
-		int userNo = loginUser.getUserNo();
-
 		mtmList = services.getMtmList(cp,userNo);
-
+		
 		model.addAttribute("mtmList", mtmList);
-
+	
 		return "helpDesk/mTm_List";
 	}
 
