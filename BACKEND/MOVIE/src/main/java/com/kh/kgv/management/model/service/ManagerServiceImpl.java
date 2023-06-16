@@ -7,11 +7,11 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.items.model.vo.TimeTable;
 import com.kh.kgv.management.model.dao.ManagerDAO;
 import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.Event;
@@ -291,6 +291,12 @@ public class ManagerServiceImpl implements ManagerService {
 	
 	}
 	
+	//	 영화 상영 상태 업데이트
+	@Override
+	public int updateMovieST(Movie movie) {
+		return dao.updateMovieST(movie);
+	}
+	
 	// 공지사항 리스트 갯수 반환
 	@Override
 	public int getNoticeListCount() {
@@ -315,6 +321,19 @@ public class ManagerServiceImpl implements ManagerService {
 
 		return userNoticeList;
 	}
+
+	
+	// 상영 중인 영화, 상영 시간표 
+	public Map<String, Object> getPlayMap() {
+		List<Movie> playingMovieList = dao.getPlayingMovieList();
+		List<TimeTable> timeTableList = dao.getTimeTableList();
+		
+		Map<String, Object> playMap = new HashMap<String, Object>();
+		playMap.put("playingMovieList", playingMovieList);
+		playMap.put("timeTableList", timeTableList);
+		return playMap;
+	}
+
 
 	
 

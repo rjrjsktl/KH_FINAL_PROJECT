@@ -90,45 +90,34 @@
 										</div>
 									</div>
 									
+									<div id="play_movie">
+										<span>상영 영화</span>
+										<div class="relative">
+											<div class="play_movie_enter"></div>
+											<div class="movie_Items">
+												<div class="play_movie_slide">
+												    <c:forEach var="playingMovie" items="${playMap['playingMovieList']}">
+												    <div>${playingMovie['movieTitle']}</div>
+												    </c:forEach>
+												</div>
+											</div>
+										</div>
+									</div>
 									
-													<div id="play_movie">
-														<span>상영 영화</span>
-														<div class="relative">
-															<div class="play_movie_enter"></div>
-															<div class="movie_Items">
-																<div class="play_movie_slide">
-																	<div>test1</div>
-																	<div>test2</div>
-																	<div>test3</div>
-																	<div>test4</div>
-																	<div>test5</div>
-																	<div>test6</div>
-																	<div>test7</div>
-																	<div>test8</div>
-																	<div>test9</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div id="play_time">
-														<span>상영 시간</span>
-														<div class="relative">
-															<div class="play_time_enter"></div>
-															<div class="time_Items">
-																<div class="play_time_slide">
-																	<div>test1</div>
-																	<div>test2</div>
-																	<div>test3</div>
-																	<div>test4</div>
-																	<div>test5</div>
-																	<div>test6</div>
-																	<div>test7</div>
-																	<div>test8</div>
-																	<div>test9</div>
-																</div>
-															</div>
-														</div>
-													</div>
+									<div id="play_time">
+										<span>상영 시간</span>
+										<div class="relative">
+											<div class="play_time_enter"></div>
+											<div class="time_Items">
+												<div class="play_time_slide">
+												    <c:forEach var="timeTable" items="${playMap['timeTableList']}">
+												    <div>${timeTable['ttTime']}</div>
+												    </c:forEach>			
+												</div>
+											</div>
+										</div>
+									</div>
+									
 													<div id="play_start">
 														<span>상영 시작일</span>
 														<div class="play_start_container">

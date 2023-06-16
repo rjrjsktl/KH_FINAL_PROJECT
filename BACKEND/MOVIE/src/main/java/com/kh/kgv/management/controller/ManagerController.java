@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -232,6 +233,36 @@ public class ManagerController {
 	
 	// ===================================================
 	// ===================================================
+	
+	// 영화 상영 상태 업데이트
+		@ResponseBody
+		@PostMapping("/Movie_ST")
+			public int  changeMovieSt(
+				@RequestParam("MST") String mst
+				, @RequestParam("movieNo") int  movieNo
+				, Movie movie
+					) {
+			System.out.println("AJAX로 가지고 온 ST의 값은 : " + mst);
+			System.out.println("AJAX로 가지고 온 Movie의 값은 : " + movieNo);
+			
+			movie.setMovieSt(mst);
+			movie.setMovieNo(movieNo);
+			
+			int result = service.updateMovieST(movie);
+			
+			if(result > 0) {
+				System.out.println("영화 상영 상태 변경 완료");
+				 result = 1;
+				
+			} else {
+				System.out.println("영화 상영 상태 변경 실패");
+				result = 0;
+			}
+			return result;
+		}
+		
+		// ===================================================
+		// ===================================================
 		
 	// list에서 수정버튼 눌렀을 경우 등록페이지로 넘어가면서 
 	// movieNo에 따른 정보를 가져와서 보여줘야함
@@ -340,7 +371,12 @@ public class ManagerController {
 	
 	// 관리자_상영시간 등록 이동
 	@GetMapping("/play_add")
-	public String movePlayAdd() {
+	public String movePlayAdd(Model model) {
+		
+		Map<String, Object> playMap = null;
+		playMap = service.getPlayMap();
+		model.addAttribute("playMap", playMap);
+		
 		System.out.println("관리자_상영시간 등록 이동");
 		return "manager/manager_movie_play_add";
 	}
