@@ -1,8 +1,11 @@
 $(document).ready(function () {
 
+    let area_Arr = [];
+    let cinema_Arr = [];
+    let screen_Arr = [];
+
     // ===============================================================================
     // 상영 지역 추가 기능 및 슬라이드
-    let area_Arr = [];
     const play_cinema_area_enter = $('.play_cinema_area_enter');
     const play_cinema_area_slide = $('.play_cinema_area_slide > div');
 
@@ -52,6 +55,8 @@ $(document).ready(function () {
         $(".play_screen_slide").empty();
         $(".play_cinema_enter").empty();
         $(".play_screen_enter").empty();
+        cinema_Arr = [];
+        screen_Arr = [];
     });
 
 
@@ -110,7 +115,6 @@ $(document).ready(function () {
     // ===============================================================================
     // 상영 영화관 추가 기능 및 슬라이드
     // 동적 요소로 인해 이벤트 추가 방식을 살짝 변경합니다.
-    let cinema_Arr = [];
     const play_cinema_enter = $('.play_cinema_enter');
     const play_cinema_slide = $('.play_cinema_slide > div');
 
@@ -159,6 +163,7 @@ $(document).ready(function () {
         $(e.currentTarget).remove();
         $(".play_screen_slide").empty();
         $(".play_screen_enter").empty();
+        screeen_arr = [];
     });
     
     
@@ -204,7 +209,6 @@ $(document).ready(function () {
 
     // ===============================================================================
     // 상영 스크린 추가 기능 및 슬라이드
-    let screen_Arr = [];
     const play_screen_enter = $('.play_screen_enter');
     const play_screen_slide = $('.play_screen_slide > div');
 	
@@ -267,6 +271,7 @@ $(document).ready(function () {
         movie_slide.hide();
         time_slide.hide();
     });
+    
     Screen_slide.on('click', (e) => {
         e.stopPropagation();
         Screen_slide.toggle();

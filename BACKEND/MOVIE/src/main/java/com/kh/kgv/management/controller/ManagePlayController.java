@@ -20,25 +20,12 @@ public class ManagePlayController {
 	@Autowired
 	private ManagePlayService service;
 	
-	/*
-	@GetMapping("/cinemaDupCheck")
-	@ResponseBody
-	public int cinemaDupCheck(String cinemaName) {
-		int result = service.cinemaDupCheck(cinemaName);
-		System.out.println(result);
-		return result;
-	} 
-	*/
-	
 	@GetMapping("/areaCinemaList")
 	@ResponseBody
 	public List<Cinema> getAreaCinemaList(String areaName) {
 		
 		System.out.println(areaName);
 		List<Cinema> cinemaList = service.getAreaCinemaList(areaName);
-		for(Cinema cinema : cinemaList) {
-			System.out.println(cinema.getCinemaName());
-		}
 		return cinemaList;
 	}
 
