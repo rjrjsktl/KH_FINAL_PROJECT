@@ -14,31 +14,6 @@ h2 {
     margin-bottom: 0;
 }
 
-/* form속 div class주던가 해서 정렬해야함 생각 좀 해보기 왜냐하면 페이지마다 보여지는 형식이 다름
-그러니 어떻게 넣을건지 생각 좀 더 해보자!! */
-form[name="myPage-form"]{
-    /* width: 100%;
-    height: 100%; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* border-top: 3px solid rgb(200, 200, 200); */
-    /* border-top: 2px solid #FAE300; */
-}
-/* 공통 끝 */
-/* ====================================================================================== */
-/* 정보 수정, 비밀번호 변경, 회원 탈퇴 등에 사용된 info변경할때 사용하는 frame */
-.mypage-info-frame {
-    width: 500px;
-    height: 40px;
-    margin-top: 5px;
-
-    /* border: 1px solid red; */
-    display: flex;
-    align-items: center;
-}
-
 * {
     box-sizing: border-box;
     font-size: 1rem;
@@ -47,100 +22,124 @@ form[name="myPage-form"]{
     list-style-type: none;
 }
 
-/* 테이블 테두리 설정 */
-.innerTable {
-    border-collapse: collapse;
+/* form속 div class주던가 해서 정렬해야함 생각 좀 해보기 왜냐하면 페이지마다 보여지는 형식이 다름
+그러니 어떻게 넣을건지 생각 좀 더 해보자!! */
+.myPage-form {
+    display: flex;
+    flex-direction: column;
 }
-
-/* 테이블 th 크기 및 텍스트 우측 정렬 */
-.innerTable th {
-    text-align: right;
-    padding-right: 30px;
-}
-
-/* 테이블 tr 테두리 지정 */
-.innerTable tr {
+/* 공통 끝 */
+/* ====================================================================================== */
+/* 정보 수정, 비밀번호 변경, 회원 탈퇴 등에 사용된 info변경할때 사용하는 frame */
+.myPage-info-frame {
     border-bottom: 0.1px solid rgb(73, 73, 73);
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 
-/* 테이블 tr 호버 시 배경색 */
-.innerTable tr:hover {
+.myPage-info-frame:hover {
     background-color: rgb(73, 73, 73);
 }
 
-/* 제목, 문의종류, 첨부파일 크기 지정  */
-.content_inner input,
+.myPage-info-frame label {
+    width: 25%;
+    text-align: right;
+    padding-right: 30px;
+    font-weight: bold;
+}
+
+/* .myPage-info-frame input {
+    width: 70%;
+} */
+
+.myPage-info-frame input,
 select {
-    width: 100%;
+    width: 50%;
     height: 60px;
     background-color: transparent;
     border: none;
+    padding-left: 10px;
 }
 
-/* input 태그 placeholder 색상지정 */
-.content_inner input::placeholder {
+.myPage-info-frame input::placeholder {
     color: rgb(73, 73, 73);
 }
 
-/* 문의 종류 클릭 시 나오는 창의 글씨 색상 */
-.content_inner option {
-    color: black
-}
-
-/* 문의 종류에서 첫번째 '문의내용을 선택해주세요'의 색상 */
-.content_inner option:nth-child(1) {
-    background-color: #ddd;
-}
-
-/* 첨부파일 가운데 정렬이 되지 않아 강제로 옮김 */
-.align_File {
-    padding-top: 15px;
-}
-
-/* 문의 내용 입력 컨테이너 */
-#writeForm {
+.myPage-info-addr-frame {
+    border-bottom: 0.1px solid rgb(73, 73, 73);
     display: flex;
-    justify-content: flex-end;
-    padding: 20px 10px;
-}
-
-/* 문의 내용 제목 영역 */
-.inner_Textarea_Title {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
+    text-align: center;
     align-items: center;
+    justify-content: center;
+}
+
+.myPage-info-addr-frame label {
+    width: 25%;
+    text-align: right;
     padding-right: 30px;
+    font-weight: bold;
 }
 
-/* Textarea, 입력 영역 */
-.inner_Textarea {
-    width: 77%;
-    height: 30vh;
-    color: black;
-    resize: none;
-    background-color: #eee;
-    padding: 15px 20px;
+.myPage-info-addr-frame div {
+    width: 50%;
 }
 
-/* 버튼 영역 간격 지정 */
-.btn_Container>button:nth-child(1) {
-    margin-right: 30px;
+.myPage-info-addr-frame > div > input,
+select {
+    width: 292px;
+    height: 60px;
+    background-color: transparent;
+    border: none;
+    padding-left: 10px;
 }
 
-/* 첨부파일 버튼 디자인 적용 */
-input[type=file]::file-selector-button {
+.myPage-info-addr-frame > input,
+select {
+    width: 392px;
+    height: 60px;
+    background-color: transparent;
+    border: none;
+    margin-left: 195px;
+    padding-left: 10px;
+}
+
+.myPage-info-addr-frame button {
     width: 100px;
     height: 30px;
-    background: rgb(126, 126, 126);
-    color: white;
-    border: 1px solid rgb(77, 77, 77);
-    border-radius: 5px;
+    background-color: #494949;
+    columns: #FFff;
+    border-radius: 8px;
     cursor: pointer;
+    outline: none;
+    border: none;
 }
 
-/* input Date 선택 시 나오는 달력 아이콘 숨기기 */
-input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
+.myPage-info-addr-frame button:hover {
+    background-color: #FCFCFC;
+    color: #191919;
+}
+
+.update-btn-area {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-update-btn {
+    width: 500px;
+    height: 40px;
+    background-color: #494949;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    color: #FFff;
+    border: none;
+    margin-top: 30px;
+}
+
+.info-update-btn:hover {
+    background-color: #FCFCFC;
+    color: #191919;
 }

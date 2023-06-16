@@ -130,7 +130,7 @@
                         <div class="aside-ul-wrap">
                             <ul class="aslide-list">
                                 <li>
-                                    <a href="myPage_home.html">
+                                    <a href="notice_home.html">
                                         <h1>MY PAGE</h1>
                                     </a>
                                 </li>
@@ -158,88 +158,50 @@
                     </aside>
 
                     <div class="container">
-                        <div class="notice-wraaper">
-                            <div>
-                                <!-- 요기에 이제 필요 폼들 추가해야함 -->
-                                <div class="notice-content-wrap">
-                                    <h2>개인정보 수정</h2>
-
-                                </div>
-                                <form action="info" method="POST" name="myPage-form" onsubmit="return infoValidate()">
-                                    <div class="notice-contents content_inner">
-                                        <table class="innerTable">
-                                            <tr>
-                                                <th>닉네임</th>
-                                                <td><input type="text" name="updateNick" id="userNick"
-                                                        value="${loginUser.userNick}" maxlength="10"
-                                                        placeholder=" 영어/숫자/한글 2~10글자 사이로 입력하세요.">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>연락처</th>
-                                                <td><input type="text" name="updateTel" id="userTel"
-                                                        value="${loginUser.userTel}" maxlength="11"
-                                                        placeholder=" (- 제외) 전화번호를 입력하세요.">
-                                                </td>
-                                            </tr>
-                                            <!-- 주소 --> <!--  fn:split(문자열, '구분자')  -->
-                                            <c:set var="addr" value="${fn:split(loginUser.userAddr, ',,')}" />
-                                            <tr>
-                                                <th>주소</th>
-                                                <td><input type="text" name="updateAddr" id="postcode"
-                                                        value="${addr[0]}" maxlength="6">
-                                                    <button type="button" id="info-address-btn"
-                                                        onclick="return execDaumPostcode()">검색</button>
-                                                </td>
-                                            </tr>
-                                            <th></th>
-                                            <td><input type="text" name="updateAddr" id="address" value="${addr[1]}">
-                                            </td>
-                                        </table>
-                                    </div>
-                                    <form action="info" method="POST" name="myPage-form" onsubmit="return infoValidate()">
-
-                                        <div class="mypage-info-frame">
-                                            <label>닉네임</label>
-                                        </div>
-                                        <div class="mypage-info-frame">
-                                            <input type="text" name="updateNick" id="userNick"
-                                            value="${loginUser.userNick}" maxlength="10">
-                                        </div>
-                
-                                        <div class="mypage-info-frame">
-                                            <label>연락처</label>
-                                        </div>
-                                        <div class="mypage-info-frame">
-                                            <input type="text" name="updateTel" id="userTel" value="${loginUser.userTel}"
-                                            maxlength="11">
-                                        </div>
-                
-                                        <!-- 주소 -->			<!--  fn:split(문자열, '구분자')  -->
-                                        <c:set var="addr"  value="${fn:split(loginUser.userAddr, ',,')}"  />                    
-                
-                                        <div class="mypage-info-frame">
-                                            <label>주 소</label>
-                                        </div>
-                                        <div class="mypage-info-frame">
-                                            <input type="text" name="updateAddr" id="postcode" value="${addr[0]}"  maxlength="6">
-                
-                                            <button type="button" id="info-address-btn" onclick="return execDaumPostcode()">검색</button>
-                                        </div>
-                    
-                                        <div class="mypage-info-frame">
-                                            <input type="text" name="updateAddr" id="address" value="${addr[1]}">
-                                        </div>
-                    
-                                        <div class="mypage-info-frame">
-                                            <input type="text" name="updateAddr" id="detailAddress" value="${addr[2]}">
-                                        </div>
-                    
-                                        <button id="info-update-btn">수정하기</button>
-                    
-                                     </form>
-                                </form>
+                        <div>
+                            <!-- 요기에 이제 필요 폼들 추가해야함 -->
+                            <div class="notice-content-wrap">
+                                <h2>개인정보 수정</h2>
+                                
                             </div>
+                            <form action="info" method="POST" name="myPage-form" class="myPage-form" onsubmit="return infoValidate()">
+                                <div class="myPage-info-frame">
+                                    <label>닉네임</label>
+                                    <input type="text" name="updateNick" id="userNick"
+                                        value="${loginUser.userNick}" maxlength="10"
+                                        placeholder="영어/숫자/한글 2~10글자 사이로 입력하세요.">
+                                </div>
+                                <div class="myPage-info-frame">
+                                    <label>연락처</label>
+                                    <input type="text" name="updateTel" id="userTel"
+                                        value="${loginUser.userTel}" maxlength="11"
+                                        placeholder="(- 제외) 전화번호를 입력하세요.">
+                                </div>
+
+                                <!-- 주소 --> <!--  fn:split(문자열, '구분자')  -->
+                                <c:set var="addr" value="${fn:split(loginUser.userAddr, ',,')}" />
+
+                                <div class="myPage-info-addr-frame">
+                                    <label>주  소</label>
+                                    <div>
+                                        <input type="text" name="updateAddr" id="postcode" value="${addr[0]}"
+                                            maxlength="6">
+                                        <button type="button" id="info-address-btn"
+                                            onclick="return execDaumPostcode()">검색</button>
+                                    </div>
+                                </div>
+
+                                <div class="myPage-info-addr-frame">
+                                    <input type="text" name="updateAddr" id="address" value="${addr[1]}">
+                                </div>
+
+                                <div class="myPage-info-addr-frame">
+                                    <input type="text" name="updateAddr" id="detailAddress" value="${addr[2]}">
+                                </div>
+                                <div class="update-btn-area">
+                                    <button id="info-update-btn" class="info-update-btn">수정하기</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
