@@ -80,6 +80,9 @@ public interface ManagerService {
 	//유저 전용 공지사항 조회
 	Map<String, Object> userNoticeList(int cp);
 
+	//	 영화 상영 상태 업데이트
+	int updateMovieST(Movie movie);
+
 
 
 	

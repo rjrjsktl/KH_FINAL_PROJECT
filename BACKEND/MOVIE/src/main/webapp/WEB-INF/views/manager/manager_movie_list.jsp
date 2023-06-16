@@ -62,11 +62,11 @@
                                                         <th>영화 개봉일</th>
                                                         <th>관람 등급</th>
                                                         <th>영화 줄거리</th>
+                                                        <th>영화 등록일</th>
+                                                        <th>장르</th>
                                                         <th>누적 상영회차</th>
                                                         <th>누적 관객 수</th>
-                                                        <th>영화 등록일</th>
-                                                        <th>영화 등록자</th>
-                                                        <th>장르</th>
+                                                        <th>상영 상태</th>
                                                         <th>수정</th>
                                                         <th>삭제</th>
                                                     </tr>
@@ -79,11 +79,26 @@
                                                             <td>${movie['movieOpen']}</td>
                                                             <td>${movie['mgNo']}</td>
                                                             <td class="textReduce">${movie['movieContent']}</td>
+                                                            <td>${movie['movieRegdate']}</td>
+                                                            <td>${movie['genreName']}</td>
                                                             <td>${movie['moviePlayed']}</td>
                                                             <td>${movie['movieWatched']}</td>
-                                                            <td>${movie['movieRegdate']}</td>
-                                                            <td>${movie['movieUploader']}</td>
-                                                            <td>${movie['genreName']}</td>
+                                                            <c:choose>
+                                                                <c:when test="${movie['movieSt'] == 'N'}">
+                                                                    <td><select class="Is_Play"
+                                                                            data-id="${movie['movieNo']}">
+                                                                            <option value="N" selected>N</option>
+                                                                            <option value="Y">Y</option>
+                                                                        </select></td>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <td><select class="Is_Play"
+                                                                            data-id="${movie['movieNo']}">
+                                                                            <option value="N">N</option>
+                                                                            <option value="Y" selected>Y</option>
+                                                                        </select></td>
+                                                                </c:otherwise>
+                                                            </c:choose>
                                                             <td>
                                                                 <a href="${contextPath}/manager/movie_list/edit/${movie.movieNo}"
                                                                     class="editEvent"><i
