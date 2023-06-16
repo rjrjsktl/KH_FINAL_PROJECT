@@ -220,6 +220,11 @@ public class ManagerDAO {
 		
 		return sqlSession.selectList("cinemaMapper.getCinemaList", null, rowBounds);
 	}
+	
+	//	 영화 상영 상태 업데이트
+	public int updateMovieST(Movie movie) {
+		return sqlSession.update("managerMapper.updateMovieST", movie);
+	}
 
 
 }

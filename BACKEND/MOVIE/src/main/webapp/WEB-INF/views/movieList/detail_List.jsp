@@ -30,7 +30,7 @@
 
 								<div>
 									<ol>
-										<c:forEach var="getMovie" items="${getMovie.movieLists}">
+										<c:forEach var="getMovie" items="${getMovieList.movieList}">
 											<li>
 												<div>
 													<span> 1<!-- 숫자 1~20까지 for문돌려서 박아야합니다. -->
