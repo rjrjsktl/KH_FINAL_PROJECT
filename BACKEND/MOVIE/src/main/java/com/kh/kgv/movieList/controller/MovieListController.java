@@ -1,7 +1,9 @@
 package com.kh.kgv.movieList.controller;
 
+import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.movieList.model.service.MovieService;
 
 @Controller
@@ -20,6 +24,9 @@ public class MovieListController {
 	
 	@Autowired
 	private MovieService service;
+	
+	@Autowired
+	private ManagerService services;
 	
 //	메인페이지 -> 영화 -> 무비차트 이동 시 영화 목록 조회
 	@RequestMapping("/detail_List")
@@ -37,16 +44,48 @@ public class MovieListController {
 	}
 	
 	// 영화 세부내용
+	// 기존 영화 수정 재사용.
 	@RequestMapping("/detail_List/introduce/{movieNo}")
 	public String getMovieDetail(
 			Model model
+			, Movie movie
 			, @PathVariable("movieNo") int movieNo
 			) {
 		
-		System.out.println("영화 상세페이지로 이동함");
-		System.out.println("movieNo ============================" + movieNo);
 		
-		return null;
+		
+		List<String> mgradelist = services.mgradeList();
+		System.out.println("mgradelist 값 :::::" + mgradelist);
+		
+		model.addAttribute("mgradelist", mgradelist);
+		// movie genre 값 얻어오기
+		List<String> mgenrelist = services.mgenreList();
+		System.out.println("mgenrelist 값 :::::" + mgenrelist);
+		
+		model.addAttribute("mgenrelist", mgenrelist);
+		
+		// 요기부터 수정페이지에 movieNo 보냄
+		movie.setMovieNo(movieNo);
+		
+		Movie getMovieDetail = services.getEditMovieList(movie);
+		String unescapedContent = StringEscapeUtils.unescapeHtml4(getMovieDetail.getMgNo());
+		//  ["공포","컬트","재난","범죄","호러"] 에서 [ ] 와 " " 제거하기
+		unescapedContent = unescapedContent.replaceAll("\\[|\\]", "").replaceAll("\"", "");
+		// 공포,컬트,재난,범죄,호러(공백없음) 를 공포, 컬트, 재난, 범죄, 호러 (공백추가) 로 변경하기
+		getMovieDetail.setMgNo(unescapedContent);
+		
+		String genreChange = StringEscapeUtils.unescapeHtml4(getMovieDetail.getGenreName());
+		genreChange = genreChange.replaceAll("\\[|\\]", "").replaceAll("\"", "");
+		genreChange = genreChange.replaceAll(",", ", ");
+		getMovieDetail.setGenreName(genreChange);
+		
+		String contents = StringEscapeUtils.unescapeHtml4(getMovieDetail.getMovieContent());
+		getMovieDetail.setMovieContent(contents);
+		
+		model.addAttribute("MovieDetail", getMovieDetail);
+		
+		
+		return "movieList/introduce";
 		
 		
 	}

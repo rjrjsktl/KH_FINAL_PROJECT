@@ -1,25 +1,23 @@
-$(document).ready(function() {
+$(document).ready(function () {
   var foldWrap = $('.fold_wrap');
   var moreBtn = $('.more_btn');
   var isFolded = true; // 초기 상태는 접혀있음으로 설정
-  
-  moreBtn.click(function() {
+
+  moreBtn.click(function () {
     if (isFolded) {
-      foldWrap.animate({height: '100%'}, 200);
+      foldWrap.animate({ height: '30vh' }, 200);
       foldWrap.css('overflow', 'visible');
       moreBtn.html('접기');
       isFolded = false; // 상태를 펼쳐진 상태로 업데이트
     } else {
-      foldWrap.animate({height: '60px'}, 200);
+      foldWrap.animate({ height: '60px' }, 200);
       foldWrap.css('overflow', 'hidden');
-      isFolded = true; // 상태를 접혀진 상태로 업데이트
       moreBtn.html('더보기');
+      isFolded = true; // 상태를 접혀진 상태로 업데이트
     }
-    
-  });
-});
 
-$(document).ready(function() {
+  });
+
   var swiper0 = new Swiper('.swiper-container.zeroOne', {
     slidesPerView: 1,
     spaceBetween: 30,
@@ -29,10 +27,8 @@ $(document).ready(function() {
     },
     loop: true
   });
-});
 
 
-$(document).ready(function() {
   var swiper1 = new Swiper('.swiper-container.first', {
     slidesPerView: 3,
     spaceBetween: 30,
@@ -50,39 +46,38 @@ $(document).ready(function() {
       prevEl: '.second .swiper-button-prev',
     },
   });
-  $('.swiper-container.first .swiper-slide').each(function(index) {
-    $(this).click(function() {
+  $('.swiper-container.first .swiper-slide').each(function (index) {
+    $(this).click(function () {
       swiper2.slideTo(index);
     });
   });
-});
 
 
 
-  $('.info-btn').click(function() {
+  $('.info-btn').click(function () {
     $('.movie-detail').show();
     $('.movie-reply').hide();
-    $('.star-btn').css('background','none');
-    $('.star-btn').css('color','white');
-    $(this).css('background','#d3d3d3');
-    $(this).css('color','black');
+    $('.star-btn').css('background', 'none');
+    $('.star-btn').css('color', 'white');
+    $(this).css('background', '#d3d3d3');
+    $(this).css('color', 'black');
 
   });
 
-  $('.star-btn').click(function() {
+  $('.star-btn').click(function () {
     $('.movie-detail').hide();
     $('.movie-reply').show();
-    $('.info-btn').css('background','none')
-    $('.info-btn').css('border','1px solid #d3d3d3');
-    $('.info-btn').css('color','white');
-    $(this).css('background','#d3d3d3');
-    $(this).css('color','black');
-    
+    $('.info-btn').css('background', 'none')
+    $('.info-btn').css('border', '1px solid #d3d3d3');
+    $('.info-btn').css('color', 'white');
+    $(this).css('background', '#d3d3d3');
+    $(this).css('color', 'black');
+
   });
-  
 
 
-  $(".star_rating a").click(function() {
+
+  $(".star_rating a").click(function () {
     $(this).parent().children("a").removeClass("on");
     $(this).addClass("on").prevAll("a").addClass("on");
     // 'on' 클래스 개수 확인
@@ -94,16 +89,16 @@ $(document).ready(function() {
 
   function addReview() {
     const starRating = document.querySelectorAll('.star_rating .on').length;
-    
+
     const reviewText = document.querySelector('.replywrite textarea').value;
-    
+
     const li = document.createElement('li');
-    
+
     const filledStars = '★'.repeat(starRating);
     const emptyStars = '☆'.repeat(5 - starRating);
-  
+
     li.innerHTML =
-    `
+      `
       <span><img src="" alt=""></span>
       <div>
         <span></span>
@@ -113,22 +108,23 @@ $(document).ready(function() {
       </div>
       <div>${reviewText}</div>
     `;
-    
+
     const replyList = document.querySelector('.replyList ul');
     replyList.prepend(li);
-    
+
     document.querySelector('.replywrite textarea').value = '';
   }
-  
+
   const replyBtn = document.querySelector('.replyBtn');
   replyBtn.addEventListener('click', addReview);
-  $(document).ready(function() {
-    var itemsToShow = 5;
-    
-    $('.review').slice(0, itemsToShow).show();
-  
-    $('.morePage').on('click', function() {
-      itemsToShow++;
-      $('.review').slice(0, itemsToShow).slideDown();
-    });
+  var itemsToShow = 5;
+
+  $('.review').slice(0, itemsToShow).show();
+
+  $('.morePage').on('click', function () {
+    itemsToShow++;
+    $('.review').slice(0, itemsToShow).slideDown();
   });
+
+
+});
