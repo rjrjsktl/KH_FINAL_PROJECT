@@ -23,6 +23,7 @@
 		<result property="movieImg4" 				column="MOVIE_IMG4"/> 
 		<result property="movieImg5" 				column="MOVIE_IMG5"/> 
 		<result property="movieImg6" 				column="MOVIE_IMG6"/> 
+		<result property="movieSt" 				column="MOVIE_ST"/> 
 	</resultMap>
 		
 	<!-- 영화 등록 -->
@@ -69,6 +70,8 @@
 			, #{movieImg5}
 			<!-- MOVIE_IMG6 -->
 			, #{movieImg6}
+			<!-- MOVIE_ST -->		
+			, default
     	)
 	</insert>
 	
@@ -119,6 +122,7 @@
 			, MOVIE_IMG4 = #{movieImg4}
 			, MOVIE_IMG5 = #{movieImg5}
 			, MOVIE_IMG6 = #{movieImg6}
+			, MOVIE_ST = default
 			WHERE MOVIE_NO = ${movieNo}
 	</update>
 	
