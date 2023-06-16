@@ -46,6 +46,7 @@
 		<result property="movieImg4" 				column="MOVIE_IMG4"/> 
 		<result property="movieImg5" 				column="MOVIE_IMG5"/> 
 		<result property="movieImg6" 				column="MOVIE_IMG6"/> 
+		<result property="movieSt" 				column="MOVIE_ST"/> 
 	</resultMap>
 	
 	
