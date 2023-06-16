@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이페이지홈</title>
+    <title>마이페이지</title>
 
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../../css/common/outline.css">
     <link rel="stylesheet" href="../../css/mypage/myPage_aSide.css">
     <link rel="stylesheet" href="../../css/mypage/myPage_home.css">
+    <link rel="stylesheet" href="../../css/mypage/myPage_randomMovie.css">
 
 
 </head>
@@ -125,165 +126,172 @@
 
         <main>
             <section>
+                <div class="asideAconatiner">
+                    <aside>
+                        <div class="aside-ul-wrap">
+                            <ul class="aslide-list">
+                                <li>
+                                    <a href="notice_home.html">
+                                        <h1>MY PAGE</h1>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="notice.html">내가 쓴 리뷰</a>
+                                </li>
+                                <li>
+                                    <a href="#">내가 본 영화</a>
+                                </li>
+                                <li>
+                                    <a href="question_homel.html">내 문의 내역</a>
+                                </li>
+                                <li>
+                                    <a href="find-my-item.html">내 분실물 내역</a>
+                                </li>
+                                <li>
+                                    <a href="#">개인정보 수정</a>
+                                </li>
+                                <li>
+                                    <a href="#">비밀번호 변경</a>
+                                </li>
 
-            
-            <aside>
-                <div class="aside-ul-wrap">
-                    <ul class="aslide-list">
-                        <li>
-                            <a href="notice_home.html"><h1>MY PAGE</h1></a>                        </li>
-                        <li>
-                            <a href="notice.html">내가 쓴 리뷰</a>
-                        </li>
-                        <li>
-                            <a href="#">내가 본 영화</a>
-                        </li>
-                        <li>
-                            <a href="question_homel.html">내 문의 내역</a>
-                        </li>
-                        <li>
-                            <a href="find-my-item.html">내 분실물 내역</a>
-                        </li>
-                        <li>
-                            <a href="#">개인정보 수정</a>
-                        </li>
-                        <li>
-                            <a href="#">비밀번호 수정</a>
-                        </li>
-                      
-                    </ul>
-                </div>
-            </aside>
-
-            <div class="container">
-                <div class="notice-wraaper">
-
-                   
-                    <div>
-                        <div class="notice-content-wrap">
-                            <h2>My Page</h2>
-                            <div class="cont-search-wrap">
-                             
-                                <sapn>nickname</sapn><span>님 환영합니다.</span>
-                             
-                            </div>
+                            </ul>
                         </div>
+                    </aside>
 
-                        <div class="new-wrap">
+                    <div class="container">
+                        <div class="notice-wraaper">
+                            <div>
+                                <div class="notice-content-wrap">
+                                    <h2>My Page</h2>
+                                    <div class="cont-search-wrap">
 
-                            <div>
-                                <a href="#"><img src="../../images/noticePng/notice01.png" alt=""></a>
-                                <a href=""><p>내가 쓴 리뷰</p><span>내 리뷰를 확인하세요!</span></a>
-                            </div>
+                                        <sapn>${loginUser.userNick}</sapn><span>님 환영합니다.</span>
 
+                                    </div>
+                                </div>
 
-                            <div>
-                                <a href="#"><img src="" alt="내가 본 영화 이미지 찾기"></a>
-                                <a href=""><p>내가 본 영화</p><span>내 영화를 확인하세요!</span></a>
+                                <div class="new-wrap">
 
-                            </div>
-                            <div>
-                                <a href="#"><img src="../../images/noticePng/notice05.png" alt=""></a>
-                                <a href=""><p>내 문의 내역</p><span>내 문의를 확인하세요!</span></a>
-                            </div>
-                            <div>
-                                <a href="#"><img src="../../images/noticePng/notice02.png" alt=""></a>
-                          
-                                    <a href=""><p>내 분실물 내역</p><span>내 물건을 확인하세요!</span></a>
-                          
-                            </div>
-                            <div>
-                                <a href="#"><img src="../../images/noticePng/notice04.png" alt=""></a>
-                                <a href=""><p>개인정보 수정</p><span>내 정보를 수정하세요!</span></a>
-                            </div>
-                            <div>
-                                <a href="#"><img src="" alt="비밀번호 수정 이미지 찾기"></a>
-                                <a href=""><p>비밀번호 수정</p><span>내 비밀번호를 수정하세요!</span></a>
-                            </div>
-                        </div>
-                                         
-                
-                    </div>
-
-                    <div class="event-wrap">
-                        <div>
-                            <div class="event-title">
-                                <a href="">오늘 이 영화를 추천드립니다!<br>(영화 랜덤 뿌리기 기능 찾아보기 9개정도)</a>
-                                <div><button>전체보기</button></div>
-                            </div>
-                            
-                            <div class="swiper-container">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <a href="#">
-                                            <img src="../../images/eventList/event001.jpg" alt="" onmouseenter="zoomIn(event)"
-                                                onmouseleave="zoomOut(event)">
-                                            <strong>이벤트1</strong>
-                                            <span>2023.01.01 ~ 2023.02.02</span>
+                                    <div>
+                                        <a href="#"><img src="../../images/noticePng/notice01.png" alt=""></a>
+                                        <a href="">
+                                            <p>내가 쓴 리뷰</p><span>내 리뷰를 확인하세요!</span>
                                         </a>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <a href="#">
-                                            <img src="../../images/eventList/event002.jpg" alt="" onmouseenter="zoomIn(event)"
-                                                onmouseleave="zoomOut(event)">
-                                            <strong>이벤트1</strong>
-                                            <span>2023.01.01 ~ 2023.02.02</span>
+
+
+                                    <div>
+                                        <a href="#"><img src="" alt="내가 본 영화 이미지 찾기"></a>
+                                        <a href="">
+                                            <p>내가 본 영화</p><span>내 영화를 확인하세요!</span>
+                                        </a>
+
+                                    </div>
+                                    <div>
+                                        <a href="#"><img src="../../images/noticePng/notice05.png" alt=""></a>
+                                        <a href="">
+                                            <p>내 문의 내역</p><span>내 문의를 확인하세요!</span>
                                         </a>
                                     </div>
-        
-                                    <div class="swiper-slide">
-                                        <a href="#">
-                                            <img src="../../images/eventList/event003.jpg" alt="" onmouseenter="zoomIn(event)"
-                                                onmouseleave="zoomOut(event)">
-                                            <strong>이벤트1</strong>
-                                            <span>2023.01.01 ~ 2023.02.02</span>
+                                    <div>
+                                        <a href="#"><img src="../../images/noticePng/notice02.png" alt=""></a>
+
+                                        <a href="">
+                                            <p>내 분실물 문의 내역</p><span>내 물건을 확인하세요!</span>
+                                        </a>
+
+                                    </div>
+                                    <div>
+                                        <a href="#"><img src="../../images/noticePng/notice04.png" alt=""></a>
+                                        <a href="">
+                                            <p>개인정보 수정</p><span>내 정보를 수정하세요!</span>
                                         </a>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <a href="#">
-                                            <img src="../../images/eventList/event002.jpg" alt="" onmouseenter="zoomIn(event)"
-                                                onmouseleave="zoomOut(event)">
-                                            <strong>이벤트1</strong>
-                                            <span>2023.01.01 ~ 2023.02.02</span>
-                                        </a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href="#">
-                                            <img src="../../images/eventList/event001.jpg" alt="" onmouseenter="zoomIn(event)"
-                                                onmouseleave="zoomOut(event)">
-                                            <strong>이벤트1</strong>
-                                            <span>2023.01.01 ~ 2023.02.02</span>
-                                        </a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href="#">
-                                            <img src="../../images/eventList/event002.jpg" alt="" onmouseenter="zoomIn(event)"
-                                                onmouseleave="zoomOut(event)">
-                                            <strong>이벤트1</strong>
-                                            <span>2023.01.01 ~ 2023.02.02</span>
-                                        </a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href="#">
-                                            <img src="../../images/eventList/event003.jpg" alt="" onmouseenter="zoomIn(event)"
-                                                onmouseleave="zoomOut(event)">
-                                            <strong>이벤트1</strong>
-                                            <span>2023.01.01 ~ 2023.02.02</span>
+                                    <div>
+                                        <a href="#"><img src="" alt="비밀번호 수정 이미지 찾기"></a>
+                                        <a href="">
+                                            <p>비밀번호 수정</p><span>내 비밀번호를 수정하세요!</span>
                                         </a>
                                     </div>
                                 </div>
-                                    <div class="swiper-button-next swipe-nbtn"></div>
-                                     <div class="swiper-button-prev swipe-pbtn"></div> 
                             </div>
-
-                </div>
-               
-                        
+                        </div>
                     </div>
                 </div>
-            </div>
+                <!-- ----------------------------------------------------------------------------------------- -->
+                <div class="event-wrap">
+                    <div>
+                        <div class="event-title">
+                            <a href="">오늘 이 영화를 추천드립니다!<br>(영화 랜덤 뿌리기 기능 찾아보기 9개정도)</a>
+                            <div><button>전체보기</button></div>
+                        </div>
 
-        </section>
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="../../images/eventList/event001.jpg" alt=""
+                                            onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
+                                        <strong>이벤트1</strong>
+                                        <span>2023.01.01 ~ 2023.02.02</span>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="../../images/eventList/event002.jpg" alt=""
+                                            onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
+                                        <strong>이벤트1</strong>
+                                        <span>2023.01.01 ~ 2023.02.02</span>
+                                    </a>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="../../images/eventList/event003.jpg" alt=""
+                                            onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
+                                        <strong>이벤트1</strong>
+                                        <span>2023.01.01 ~ 2023.02.02</span>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="../../images/eventList/event002.jpg" alt=""
+                                            onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
+                                        <strong>이벤트1</strong>
+                                        <span>2023.01.01 ~ 2023.02.02</span>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="../../images/eventList/event001.jpg" alt=""
+                                            onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
+                                        <strong>이벤트1</strong>
+                                        <span>2023.01.01 ~ 2023.02.02</span>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="../../images/eventList/event002.jpg" alt=""
+                                            onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
+                                        <strong>이벤트1</strong>
+                                        <span>2023.01.01 ~ 2023.02.02</span>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="../../images/eventList/event003.jpg" alt=""
+                                            onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
+                                        <strong>이벤트1</strong>
+                                        <span>2023.01.01 ~ 2023.02.02</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-button-next swipe-nbtn"></div>
+                            <div class="swiper-button-prev swipe-pbtn"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
     </div>
@@ -330,15 +338,15 @@
                 <c:remove var="message" scope="session" />
             </c:if>
             -->
-            <div id="myModal" class="modal">
-                <div class="modal-content">
-                    <div class="close-button">&times;</div>
-                    <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
-                </div>
-            </div>
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-            <script src="../../js/common/header.js"></script>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="close-button">&times;</div>
+            <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../../js/common/header.js"></script>
     <script src="../../js/notice/notice-home.js"></script>
 </body>
 
