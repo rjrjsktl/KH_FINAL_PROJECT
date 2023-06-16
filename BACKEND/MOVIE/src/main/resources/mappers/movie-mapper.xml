@@ -126,4 +126,11 @@
 			WHERE MOVIE_NO = ${movieNo}
 	</update>
 	
+		<!-- 메인페이지 -> 영화 -> 무비차트 이동 시 영화 목록 조회 -->
+	<select id="getMovieList" resultMap="movie_rm">
+		SELECT * FROM MOVIE
+		ORDER BY MOVIE_OPEN ASC
+	</select>
+	
+	
 </mapper>
