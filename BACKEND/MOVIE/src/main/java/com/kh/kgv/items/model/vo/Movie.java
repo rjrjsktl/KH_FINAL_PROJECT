@@ -31,4 +31,5 @@ public class Movie {
 	private String movieImg4;
 	private String movieImg5;
 	private String movieImg6;
+	private String movieSt;
 }
