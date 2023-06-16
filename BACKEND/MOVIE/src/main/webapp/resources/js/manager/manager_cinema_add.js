@@ -368,7 +368,6 @@ $(document).ready(function () {
     $('.seat').removeClass('option')
 
     if ($(this).val() == '통로 만들기') {
-      removeSpace();
       createTempAisle();
     }
 
@@ -510,6 +509,7 @@ $(document).ready(function () {
   $('#seat_option_confirm').on("click", function () {
 
     if ($('#seat_option select').val() == '통로 만들기') {
+      removeSpace();
       createAisle();
     }
 
@@ -541,7 +541,6 @@ $(document).ready(function () {
     changeRoom();
     decorateSeat();
     hideSeatSetting();
-    console.log(tempRoom);
 
   });
 
