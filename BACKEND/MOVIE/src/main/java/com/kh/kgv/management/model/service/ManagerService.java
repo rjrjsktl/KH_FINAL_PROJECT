@@ -83,6 +83,9 @@ public interface ManagerService {
 	//	 영화 상영 상태 업데이트
 	int updateMovieST(Movie movie);
 
+	// 상영 중인 영화, 상영 시간표 조회
+	Map<String, Object> getPlayMap();
+
 
 
 	

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="playMapper">
+
+    <resultMap type="movie" id="movie_rm">
+		<id property="movieNo" column="MOVIE_NO"/>
+		<result property="movieRuntime" 		column="MOVIE_RUNTIME"/>
+		<result property="movieTitle" 			column="MOVIE_TITLE"/>
+		<result property="movieNation" 			column="MOVIE_NATION"/>
+		<result property="movieOpen" 			column="MOVIE_OPEN"/>
+		<result property="mgNo" 				column="MG_CONTENT"/> 
+		<result property="movieContent" 		column="MOVIE_CONTENT"/>
+		<result property="movieDirector" 		column="MOVIE_DIRECTOR"/>
+		<result property="movieCast" 			column="MOVIE_CAST"/>
+		<result property="moviePlayed" 			column="MOVIE_PLAYED"/>
+		<result property="movieWatched" 		column="MOVIE_WATCHED"/>
+		<result property="movieRegdate" 		column="MOVIE_REGDATE"/>
+		<result property="movieUploader"	 	column="MOVIE_UPLOADER"/>
+		<result property="genreName" 			column="GENRE_NAME"/>
+		<result property="movieImg1" 			column="MOVIE_IMG1"/> 
+		<result property="movieImg2" 			column="MOVIE_IMG2"/> 
+		<result property="movieImg3" 			column="MOVIE_IMG3"/> 
+		<result property="movieImg4" 			column="MOVIE_IMG4"/> 
+		<result property="movieImg5"			column="MOVIE_IMG5"/> 
+		<result property="movieImg6" 			column="MOVIE_IMG6"/> 
+		<result property="movieSt" 				column="MOVIE_ST"/> 
+	</resultMap>
+	
+	<resultMap type="tt" id="tt_rm">
+		<id property="ttNo" column="TT_NO" />
+		<result property="ttTime" column="TT_TIME" />
+	</resultMap>
+	
+	<!-- 상영 중인 영화 리스트 -->
+	
+	<select id="getPlayingMovieList" resultMap="movie_rm">
+		SELECT * FROM MOVIE
+		WHERE MOVIE_ST = 'Y'
+		ORDER BY MOVIE_TITLE ASC
+	</select>
+	
+	<!-- 상영 시간표 -->
+	
+	<select id="getTimeTableList" resultMap="tt_rm">
+		SELECT * FROM TIME_TABLE
+	</select>
+	
+</mapper>
