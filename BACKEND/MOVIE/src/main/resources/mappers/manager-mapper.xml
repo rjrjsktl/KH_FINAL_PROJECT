@@ -294,6 +294,13 @@
 	</select>
 	
 	
+		<!--  영화 상영 상태 업데이트  -->
+	<update id="updateMovieST" parameterType="movie">
+	UPDATE MOVIE
+	SET MOVIE_ST = #{movieSt}
+	WHERE MOVIE_NO = #{movieNo}
+	</update>
+	
 	
 
 
