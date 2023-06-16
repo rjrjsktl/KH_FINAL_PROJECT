@@ -116,10 +116,10 @@ public class ManagerDAO {
 	}
 	
 	/** 영화 수정 페이지 이동
-	 * @param movie
+	 * @param movieNo
 	 * @return
 	 */
-	public Map<String, Object> getEditMovieList(Movie movie) {
+	public Movie getEditMovieList(Movie movie) {
 		return sqlSession.selectOne("movieMapper.getEditMovieList", movie);
 	}
 	
@@ -201,6 +201,16 @@ public class ManagerDAO {
 	// 영화관 수 조회
 	public int getCinemaCount() {
 		return sqlSession.selectOne("cinemaMapper.getCinemaCount");
+	}
+	
+	// 유저용 공지사항 조회
+	public List<Notice> userNoticeList(Pagination pagination) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("managerMapper.userNoticeList", null, rowBounds);
 	}
 	
 	

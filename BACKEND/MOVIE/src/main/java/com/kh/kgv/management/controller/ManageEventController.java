@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.kh.kgv.common.Util;
 import com.kh.kgv.management.model.service.ManageEventService;
 import com.kh.kgv.management.model.vo.Event;
 
@@ -64,9 +66,9 @@ public class ManageEventController {
 
 		String fileRoot = request.getServletContext().getRealPath(webPath);
 
-		String originalFileName = multipartFile.getOriginalFilename(); // 오리지날 파일명
-		String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자
-		String savedFileName = UUID.randomUUID() + extension; // 저장될 파일 명
+        String originalFileName = multipartFile.getOriginalFilename();
+//        String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
+        String savedFileName = Util.fileRename(originalFileName);
 
 		File targetFile = new File(fileRoot + savedFileName);
 		try {

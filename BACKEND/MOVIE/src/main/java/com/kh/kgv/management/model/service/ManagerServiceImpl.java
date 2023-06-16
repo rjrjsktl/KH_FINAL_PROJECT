@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
@@ -141,14 +142,19 @@ public class ManagerServiceImpl implements ManagerService {
 	    	for (Movie movie : movielist) {
 	    		Movie cleanedMovie = new Movie();
 	    		cleanedMovie.setMgNo(Util.removeQuotes(movie.getMgNo()));
-	    		cleanedMovie.setGenreCode(Util.removeQuotes(movie.getGenreCode()));
+	    		cleanedMovie.setGenreName(Util.removeQuotes(movie.getGenreName()));
 	    		cleanedMovie.setMovieNo(movie.getMovieNo());
 	    		cleanedMovie.setMovieRuntime(movie.getMovieRuntime());
 	    		cleanedMovie.setMovieTitle(movie.getMovieTitle());
 	    		cleanedMovie.setMovieNation(movie.getMovieNation());
 	    		cleanedMovie.setMovieOpen(movie.getMovieOpen());
 	    		cleanedMovie.setMovieContent(movie.getMovieContent());
-	    		cleanedMovie.setMovieImg(movie.getMovieImg());
+	    		cleanedMovie.setMovieImg1(movie.getMovieImg1());
+	    		cleanedMovie.setMovieImg2(movie.getMovieImg2());
+	    		cleanedMovie.setMovieImg3(movie.getMovieImg3());
+	    		cleanedMovie.setMovieImg4(movie.getMovieImg4());
+	    		cleanedMovie.setMovieImg5(movie.getMovieImg5());
+	    		cleanedMovie.setMovieImg6(movie.getMovieImg6());
 	    		cleanedMovie.setMovieUploader(movie.getMovieUploader());
 	    		cleanedMovie.setMovieDirector(movie.getMovieDirector());
 	    		cleanedMovie.setMovieCast(movie.getMovieCast());
@@ -167,7 +173,7 @@ public class ManagerServiceImpl implements ManagerService {
 	 * 영화 수정 페이지 이동
 	 */
 	@Override
-	public Map<String, Object> getEditMovieList(Movie movie) {
+	public Movie getEditMovieList(Movie movie) {
 		return dao.getEditMovieList(movie);
 	}
 	
@@ -289,6 +295,25 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public int getNoticeListCount() {
 		return dao.getNoticeListCount();
+	}
+
+	// 유저용 공지사항
+	@Override
+	public Map<String, Object> userNoticeList(int cp) {
+		// 공지사항 수 조회
+		int noticelistCount = dao.getNoticeListCount();
+
+		// 조회한 공지사항 수를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, noticelistCount);
+
+		// 공지사항 리스트 조회
+		List<Notice> noticeLists = dao.userNoticeList(pagination);
+
+		Map<String, Object> userNoticeList = new HashMap<String, Object>();
+		userNoticeList.put("pagination", pagination);
+		userNoticeList.put("noticeLists", noticeLists);
+
+		return userNoticeList;
 	}
 
 	

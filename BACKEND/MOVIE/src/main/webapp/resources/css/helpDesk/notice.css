@@ -104,7 +104,7 @@ thead th:nth-child(1) {
 }
 
 thead th:nth-child(2) {
-    text-align: left;
+    text-align: center;
     width: 60%;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -119,26 +119,23 @@ thead th:nth-child(4) {
     width: 10%;
 }
 
-tbody{
-    text-align: center;
-}
-
-.row *{
+.count-td td{
     padding:10px;
     height:40px;
     border-bottom: 1px solid rgba(73, 73, 73, 0.4);
+    text-align:center;
 }
 
-.row th:nth-child(2) {
+.count-td td:nth-child(2) {
     text-align: left;
     max-width:450px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    padding:10px
+    padding:10px;
 }
 
-.row th:nth-child(2) > a:hover{
+.count-td td:nth-child(2) > a:hover{
     text-decoration: underline;
     color:rgb(251, 251, 251);
 }
