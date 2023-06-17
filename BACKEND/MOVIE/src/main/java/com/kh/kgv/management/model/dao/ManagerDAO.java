@@ -244,6 +244,7 @@ public class ManagerDAO {
 		return sqlSession.selectList("playMapper.getTimeTableList");
 	}
 	
+
 	// 스토어 수 조회
 	public int getStoreCount() {
 		return sqlSession.selectOne("storeMapper.getStoreCount");
@@ -257,7 +258,15 @@ public class ManagerDAO {
 		return sqlSession.selectList("storeMapper.getStoreList", null, rowBounds);
 	}
 	
+
+	// 메인 -> 이벤트 이동 시 이벤트 
+	public List<Event> selectEventList() {
+		return sqlSession.selectList("managerMapper.selectEventList");
+	}
 	
+	public Event getEventList(Event event) {
+		return sqlSession.selectOne("managerMapper.getEventList", event);
+	}
 
 
 }

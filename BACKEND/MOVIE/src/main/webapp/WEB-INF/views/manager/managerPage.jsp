@@ -247,30 +247,7 @@
 												</div>
 											</div>
 										</div>
-										<div class="right_Item_Container">
-											<div class="top_Click_area">
-												<!-- TODO LIST 하면 괜찮을 듯 -->
-												<div class="top_items top_click1 active">메모</div>
-												<!-- <div class="top_items top_click2">일정표</div>
-                            <div class="top_items top_click3">ㅁㄴㅇㄹ</div> -->
-											</div>
-											<div class="right_Items_Area">
-												<div>
-													<textarea type="text" id="crtMemo" class="crtMemo"
-														autocomplete="off"></textarea>
-													<button id="crtbtn" class="crtbtn">등록</button>
 
-												</div>
-												<ul id="managerMemo" class="managerMemo">
-													<!-- 어차피 메모 값이 있다면 초기화 될거임(틀잡기용) -->
-													<li id="memoList" class="memoList"><textarea id="viewMemo"
-															class="viewMemo"></textarea> <!-- 수정 필요? -->
-														<button type="button" id="dltbtn" class="dltbtn" name="momoNo"
-															value="" onclick="delMemo()">삭제</button>
-													</li>
-												</ul>
-											</div>
-										</div>
 									</div>
 								</div>
 							</div>

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -343,7 +344,7 @@ public class ManagerServiceImpl implements ManagerService {
 		return playMap;
 	}
 	
-	
+
 	// 스토어 
 	@Override
 	public Map<String, Object> getStoreMap(int cp) {
@@ -362,7 +363,24 @@ public class ManagerServiceImpl implements ManagerService {
 				
 				return storeMap;
 				
+
+	// 메인 -> 이벤트 이동 시 이벤트 
+	@Override
+	public Map<String, Object> selectEventList() {
+		
+		List<Event>EventList = dao.selectEventList();
+		
+		Map<String, Object>getEvnetList = new HashMap<String, Object>();
+		getEvnetList.put("getEvnetList", EventList);
+		
+		
+		return getEvnetList;
 	}
+
+	// 메인 -> 이벤트 상세 내용
+	@Override
+	public Event getEventList(Event event) {
+		return dao.getEventList(event);
 
 
 
