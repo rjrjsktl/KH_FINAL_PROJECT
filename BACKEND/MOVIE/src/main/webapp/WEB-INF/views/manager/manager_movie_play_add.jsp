@@ -43,8 +43,7 @@
 					    
 						    <div class="table_Title">
 							    <span>상영시간 등록</span>
-							</div>
-												
+							</div>			
 							<div class="table_main">
 							
 								<div id="play_cinema_area">
@@ -118,42 +117,45 @@
 										</div>
 									</div>
 									
-													<div id="play_start">
-														<span>상영 시작일</span>
-														<div class="play_start_container">
-															<div>
-																<input class="start_date" type="date"
-																	onfocus="this.showPicker()" />
-															</div>
-														</div>
-													</div>
-													<div id="play_end">
-														<span>상영 종료일</span>
-														<div>
-															<div>
-																<input class="end_date" type="date"
-																	onfocus="this.showPicker()" />
-															</div>
-														</div>
-													</div>
-
-												</div>
-												<div class="table_bottom">
-													<button class="bottom_Submit">저장</button>
-													<button class="bottom_Cancel">취소</button>
-												</div>
+									<div id="play_start">
+										<span>상영 시작일</span>
+										<div class="play_start_container">
+											<div>
+												<input class="start_date" type="date" onfocus="this.showPicker()" />
 											</div>
 										</div>
 									</div>
+									
+									<div id="play_end">
+										<span>상영 종료일</span>
+										<div>
+											<div>
+												<input class="end_date" type="date" onfocus="this.showPicker()" />
+											</div>
+										</div>
+									</div>
+
 								</div>
-
+								
+								<form action="play_add/enroll" method="post" id="playAddForm"> 
+								</form>	
+											
+								<div class="table_bottom">
+									<button class="bottom_Submit">저장</button>
+									<button class="bottom_Cancel">취소</button>
+								</div>
 							</div>
+						</div>
+					</div>
+				</div>
 
-						</main>
+			</div>
 
-						<script src="${contextPath}/resources/js/manager/manager_movie_play.js"></script>
-						<script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
-						<script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
-					</body>
+		</main>
 
-					</html>
+		<script src="${contextPath}/resources/js/manager/manager_movie_play.js"></script>
+		<script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
+		<script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
+	</body>
+
+</html>

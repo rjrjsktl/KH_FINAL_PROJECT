@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.items.model.vo.TimeTable;
 import com.kh.kgv.management.model.dao.ManagerDAO;
 import com.kh.kgv.management.model.vo.Cinema;
@@ -343,6 +344,26 @@ public class ManagerServiceImpl implements ManagerService {
 		return playMap;
 	}
 	
+
+	// 스토어 
+	@Override
+	public Map<String, Object> getStoreMap(int cp) {
+		// 영화관 수 조회
+				int storeCount = dao.getStoreCount();
+
+				// 조회한 영화관 수를 pagination 에 담기
+				Pagination pagination = new Pagination(cp, storeCount);
+
+				// 영화관 리스트 조회
+				List<Store> storeList = dao.getStoreList(pagination);
+				
+				Map<String, Object> storeMap = new HashMap<String, Object>();
+				storeMap.put("pagination", pagination);
+				storeMap.put("storeList", storeList);
+				
+				return storeMap;
+				
+
 	// 메인 -> 이벤트 이동 시 이벤트 
 	@Override
 	public Map<String, Object> selectEventList() {
@@ -360,7 +381,6 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public Event getEventList(Event event) {
 		return dao.getEventList(event);
-	}
 
 
 

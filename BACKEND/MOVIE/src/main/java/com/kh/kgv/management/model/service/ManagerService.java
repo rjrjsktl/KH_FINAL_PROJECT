@@ -89,6 +89,9 @@ public interface ManagerService {
 
 	// 상영 중인 영화, 상영 시간표 조회
 	Map<String, Object> getPlayMap();
+	
+	// 스토어 목록 조회
+	Map<String, Object> getStoreMap(int cp);
 
 	// 메인 -> 이벤트 이동 시 이벤트 
 	Map<String, Object> selectEventList();

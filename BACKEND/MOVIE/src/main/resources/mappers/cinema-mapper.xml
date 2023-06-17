@@ -67,4 +67,11 @@
     	ORDER BY CINEMA_NAME ASC
     </select>
 
+
+    <!-- 상영관 번호 조회 -->
+    
+    <select id="getScreenNo" parameterType="screen" resultType="_int">
+        SELECT SCREEN_NO FROM SCREEN
+        WHERE CINEMA_NAME = #{cinemaName} AND SCREEN_NAME = #{screenName}
+    </select>
 </mapper>
