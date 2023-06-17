@@ -1,5 +1,12 @@
 package com.kh.kgv.management.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.kh.kgv.common.Util;
 import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.management.model.service.ManageStoreService;
 import com.kh.kgv.management.model.vo.Event;
@@ -79,5 +90,39 @@ public class ManageStoreController {
 	}
 	
 	
+	
+	@PostMapping("/uploadImageFile")
+	@ResponseBody
+	public String storeUploadImageFile(@RequestParam("file") MultipartFile[] multipartFiles, HttpServletRequest request) {
+	    JsonArray jsonArray = new JsonArray(); 
+
+	    String webPath = "/resources/images/store_img/";
+	    String fileRoot = request.getServletContext().getRealPath(webPath);
+
+	    for (MultipartFile multipartFile : multipartFiles) {
+	        JsonObject jsonObject = new JsonObject();
+
+	        String originalFileName = multipartFile.getOriginalFilename();
+	        String savedFileName = Util.fileRename(originalFileName);
+
+	        File targetFile = new File(fileRoot + savedFileName);
+	        try {
+	            InputStream fileStream = multipartFile.getInputStream();
+	            FileUtils.copyInputStreamToFile(fileStream, targetFile);
+	            jsonObject.addProperty("", request.getContextPath() + webPath + savedFileName);
+
+	        } catch (IOException e) {
+	            FileUtils.deleteQuietly(targetFile);
+	            jsonObject.addProperty("responseCode", "error");
+	            e.printStackTrace();
+	        }
+
+	        jsonArray.add(jsonObject);
+	    }
+
+	    String jsonResult = jsonArray.toString();
+	    System.out.println("이미지: " + jsonResult);
+	    return jsonResult;
+	}
 
 }

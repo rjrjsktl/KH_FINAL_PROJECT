@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.items.model.vo.TimeTable;
 import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.DailyEnter;
@@ -243,7 +244,20 @@ public class ManagerDAO {
 		return sqlSession.selectList("playMapper.getTimeTableList");
 	}
 	
-
+	// 스토어 수 조회
+	public int getStoreCount() {
+		return sqlSession.selectOne("storeMapper.getStoreCount");
+	}
+	
+	// 스토어 목록 조회
+	public List<Store> getStoreList(Pagination pagination) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());		
+		
+		return sqlSession.selectList("storeMapper.getStoreList", null, rowBounds);
+	}
+	
+	
 
 
 }

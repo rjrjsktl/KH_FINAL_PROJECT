@@ -784,7 +784,14 @@ public class ManagerController {
 				
 				//관리자_스토어 물품 목록
 				@GetMapping("/store_list")
-				public String moveStoreList() {
+				public String moveStoreList(Model model,
+						@RequestParam(value = "cp", required = false, defaultValue="1" ) int cp) {
+					
+					Map<String, Object> storeMap = null;
+					storeMap = service.getStoreMap(cp);
+					model.addAttribute("storeMap", storeMap);
+					
+					
 					System.out.println("관리자_스토어 물품 목록");
 					return "manager/manager_store_list";
 				}
