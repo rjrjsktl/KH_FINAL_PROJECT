@@ -1,8 +1,15 @@
 package com.kh.kgv.movieList.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.time.Year;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +19,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kh.kgv.common.Util;
+import com.kh.kgv.common.Util.SessionUtil;
+import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.movieList.model.service.MovieService;
@@ -49,8 +60,12 @@ public class MovieListController {
 	public String getMovieDetail(
 			Model model
 			, Movie movie
+			, HttpSession session
+			, RedirectAttributes ra
+			, HttpServletResponse response
 			, @PathVariable("movieNo") int movieNo
-			) {
+			) throws Exception {
+		
 		
 		
 		
@@ -82,6 +97,44 @@ public class MovieListController {
 		String contents = StringEscapeUtils.unescapeHtml4(getMovieDetail.getMovieContent());
 		getMovieDetail.setMovieContent(contents);
 		
+		// 세션에서 유저 데이터 받아오기
+		User  loginUser = (User) SessionUtil.getSession().getAttribute("loginUser");
+		
+		
+		// 관람 등급 가져오기
+		String getMg = getMovieDetail.getMgNo();
+		
+	
+		if(loginUser == null  && getMg.contains("청소년")) {
+			
+		Util.alertAndMovePage(response, "로그인 후 이용 가능합니다.", "/movie/movieList/detail_List");
+				
+			return null;
+			
+		}	else if (loginUser != null  && getMg.contains("청소년")) {
+			
+			// 사용자 출생연도 가져오기 (앞 4자리만 가지고 옴)
+			int  userDate = Integer.parseInt(StringUtils.left(loginUser.getUserBirth(), 4));
+			
+			// 연도만 가져오기
+			int year = Year.now().getValue();
+			
+			System.out.println("userDate =============================================" + userDate);
+			System.out.println("year =============================================" + year);
+			//  현재 연도- 사용자 출생연도
+			int ageCheck =  year - userDate;
+			System.out.println("ageCheck =============================================" + ageCheck);
+			
+			// 성인 확인 절차
+			if(ageCheck < 18) {
+				
+				Util.alertAndMovePage(response, "성인만 이용 가능 합니다.", "/movie/movieList/detail_List");
+				
+				return null;
+			} 		
+			
+		}
+	
 		model.addAttribute("MovieDetail", getMovieDetail);
 		
 		

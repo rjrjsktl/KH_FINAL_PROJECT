@@ -14,9 +14,11 @@ import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.TimeTable;
 import com.kh.kgv.management.model.dao.ManagerDAO;
 import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Pagination;
+import com.kh.kgv.management.model.vo.WeeklyEnter;
 
 @Service
 public class ManagerServiceImpl implements ManagerService {
@@ -42,6 +44,12 @@ public class ManagerServiceImpl implements ManagerService {
 	public List<Notice> getAllNotice() {
 		List<Notice> getNotice = dao.getAllNotice();
 		return getNotice;
+	}
+	
+	// 관리자 메인 일일 접속자 수 조회
+	@Override
+	public List<DailyEnter> getWeeklyEnter(WeeklyEnter we) {
+		return dao.getWeeklyEnter(we);
 	}
 
 	// 회원 목록 조회
@@ -333,6 +341,7 @@ public class ManagerServiceImpl implements ManagerService {
 		playMap.put("timeTableList", timeTableList);
 		return playMap;
 	}
+
 
 
 	

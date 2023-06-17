@@ -14,9 +14,11 @@ import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.TimeTable;
 import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Pagination;
+import com.kh.kgv.management.model.vo.WeeklyEnter;
 import com.kh.kgv.mypage.controller.MyPageController;
 
 @Repository
@@ -37,7 +39,11 @@ public class ManagerDAO {
 		return sqlSession.selectList("managerMapper.getAllNotice");
 	}
 	
-	
+	// 관리자 메인 일일 접속자 수 조회
+	public List<DailyEnter> getWeeklyEnter(WeeklyEnter we) {
+		return sqlSession.selectList("managerMapper.getDailyEnter", we);
+	}
+		
 	/** 회원 수 조회
 	 * @return
 	 */
@@ -236,6 +242,8 @@ public class ManagerDAO {
 	public List<TimeTable> getTimeTableList() {
 		return sqlSession.selectList("playMapper.getTimeTableList");
 	}
+	
+
 
 
 }

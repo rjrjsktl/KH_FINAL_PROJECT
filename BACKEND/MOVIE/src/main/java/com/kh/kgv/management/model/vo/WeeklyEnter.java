@@ -11,11 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class DailyEnter {
-	//  일일 접속자 수 테이블
-	private int deNo;
-	private String deDate;
-	private String deIp;
-	private int deCount;
-	private String deDateStr;
+public class WeeklyEnter {
+	//  주간 접속자 수 테이블
+	private String today;
+	private String lastWeek;
 }

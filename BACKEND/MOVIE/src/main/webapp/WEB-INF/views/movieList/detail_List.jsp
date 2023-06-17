@@ -43,8 +43,9 @@
 											varStatus="status">
 											<li>
 												<div>
-													<input type="hidden" id="userAge" value="${loginUser.userBirth}" />
-													<input type="hidden" id="movieGrade" value="${movie.mgNo}" />
+													<input type="hidden" class="userAge"
+														value="${loginUser.userBirth}" />
+													<input type="hidden" class="movieGrade" value="${movie.mgNo}" />
 													<span class="wordOuter">${status.count}
 														<c:choose>
 															<c:when test="${fn:contains(movie['mgNo'], '전체')}">

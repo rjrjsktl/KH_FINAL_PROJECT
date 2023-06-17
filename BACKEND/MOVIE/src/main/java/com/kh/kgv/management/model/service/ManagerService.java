@@ -8,6 +8,7 @@ import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
+import com.kh.kgv.management.model.vo.WeeklyEnter;
 
 public interface ManagerService {
 	
@@ -19,6 +20,9 @@ public interface ManagerService {
 
 	// 회원 목록 조회
 	Map<String, Object> selectAll(int cp);
+	
+	// 관리자 메인 일일 접속자 수 조회
+	List<DailyEnter> getWeeklyEnter(WeeklyEnter we);
 
 	// 회원 관리자 상태 업데이트
 	int updateST(User user);
@@ -85,6 +89,8 @@ public interface ManagerService {
 
 	// 상영 중인 영화, 상영 시간표 조회
 	Map<String, Object> getPlayMap();
+
+
 
 
 
