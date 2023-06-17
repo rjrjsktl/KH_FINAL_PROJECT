@@ -395,7 +395,9 @@
 
                                     </div>
                                     </section>
-
+                                    <div id="btnContainer">
+                                        <input id="returnBtn" type="button" onclick="goBack()" value="목록으로">
+                                    </div>
                             </main>
 
                         </div>

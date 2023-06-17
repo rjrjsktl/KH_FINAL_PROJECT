@@ -90,7 +90,15 @@ public interface ManagerService {
 	// 상영 중인 영화, 상영 시간표 조회
 	Map<String, Object> getPlayMap();
 
+	// 메인 -> 이벤트 이동 시 이벤트 
+	Map<String, Object> selectEventList();
 
+	// 메인 -> 이벤트 상세 내용
+	Event getEventList(Event event);
+
+
+	
+	
 
 
 

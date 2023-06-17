@@ -243,6 +243,15 @@ public class ManagerDAO {
 		return sqlSession.selectList("playMapper.getTimeTableList");
 	}
 	
+	// 메인 -> 이벤트 이동 시 이벤트 
+	public List<Event> selectEventList() {
+		return sqlSession.selectList("managerMapper.selectEventList");
+	}
+	
+	public Event getEventList(Event event) {
+		return sqlSession.selectOne("managerMapper.getEventList", event);
+	}
+	
 
 
 

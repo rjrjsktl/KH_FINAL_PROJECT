@@ -58,6 +58,7 @@
 		<result property="eventEnd" 				column="EVENT_END"/>
 		<result property="eventStatus" 					column="EVENT_STATUS"/>
 		<result property="eventReg" 					column="EVENT_REG"/>
+		<result property="eventImg" 					column="EVENT_IMG"/>
 	</resultMap>
 	
 	<resultMap type="notice" id="notice_rm">
@@ -168,6 +169,7 @@
         	, #{eventEnd}
         	, DEFAULT
         	, DEFAULT
+        	,#{eventImg}
         	)
 	</insert>
 	
@@ -186,13 +188,7 @@
 	
 	<!-- 이벤트 수정조회 -->
 	<select id="getEditEventList" resultType="HashMap">
-	SELECT
-	EVENT_NO
-	, EVENT_TITLE
-	, EVENT_CONTENT
-	, EVENT_START
-	, EVENT_END
-	FROM EVENT
+	SELECT *	 FROM EVENT
 	WHERE EVENT_NO = #{eventNo}
 	</select>
 	
@@ -322,7 +318,19 @@
 	WHERE MOVIE_NO = #{movieNo}
 	</update>
 	
+	<!-- 메인 -> 이벤트 이동 시 이벤트   -->
+			<select id="selectEventList" resultMap="event_rm">
+		SELECT *	FROM EVENT
+		ORDER BY EVENT_NO DESC
+	</select>
 	
+				<!--공지사항 세부정보 -->
+	<select id="getEventList" resultMap="event_rm">
+	SELECT
+	*
+	FROM EVENT
+	WHERE EVENT_NO = #{eventNo}
+	</select>
 
 
 </mapper>
