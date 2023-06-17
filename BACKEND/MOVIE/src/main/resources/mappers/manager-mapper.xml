@@ -70,6 +70,17 @@
 		<result property="noticeView" 					column="NOTICE_VIEW"/>
 	</resultMap>
 	
+	<resultMap type="de" id="daily_rm">
+		<id property="deDateStr" 			column="DE_DATESTR"/>
+		<result property="deCount" 			column="DE_COUNT"/>
+	</resultMap>
+	
+	<resultMap type="we" id="weekly_rm">
+		<result property="today" 			column="WE_TODAY"/>
+		<result property="lastWeek" 			column="WE_LASTWEEK"/>
+	</resultMap>
+	
+	
 
 <!-- 관리자 메인 신규 회원 목록 조회 -->
 	<select id="getAllUser" resultMap="user_rm">
@@ -94,6 +105,16 @@
 	)
 	WHERE ROWNUM <![CDATA[ <= ]]> 6
 	</select>
+	
+	<!-- 관리자 메인 일일 접속자 수 조회 -->
+	<select id="getDailyEnter" resultMap="daily_rm" parameterType="we">
+  SELECT TO_CHAR(DE_DATE, 'YYYY-MM-DD') AS "DE_DATESTR", COUNT(DE_NO) AS "DE_COUNT"
+  FROM DAILY_ENTER
+  WHERE DE_DATE <![CDATA[ >= ]]> TO_DATE(#{lastWeek}, 'YYYY-MM-DD') AND DE_DATE <![CDATA[ < ]]>TO_DATE(#{today}, 'YYYY-MM-DD')
+  GROUP BY TO_CHAR(DE_DATE, 'YYYY-MM-DD')
+  ORDER BY TO_CHAR(DE_DATE, 'YYYY-MM-DD')
+</select>
+	
 	                        
 	<!-- 회원 수 조회 -->
 	<select id="getListCount" resultType="_int">

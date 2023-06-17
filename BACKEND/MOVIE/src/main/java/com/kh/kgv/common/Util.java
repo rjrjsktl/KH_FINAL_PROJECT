@@ -7,16 +7,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @SuppressWarnings("unused")
 public class Util {
@@ -82,4 +89,47 @@ public class Util {
 	public static String removeQuotes(String input) {
 		return input.replaceAll("[\"\\[\\]\\\\]", "").replaceAll("&quot;", "").replaceAll(",", ", ");
 	}
+	
+	// 문자열 잘라서 쓰는 유틸
+	// https://bigstupid.tistory.com/41
+	public static class SessionUtil {
+	    public static HttpSession getSession() {
+	        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+	        return attr.getRequest().getSession();
+	    }
+	}
+	
+	// 경고창 관련 유틸
+	 private static void init(HttpServletResponse response) {
+	        response.setContentType("text/html; charset=euc-kr");
+	        response.setCharacterEncoding("euc-kr");
+	    }
+	 
+	 // 경고
+	    public static void alert(HttpServletResponse response, String alertText) throws IOException {
+	        init(response);
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>alert('" + alertText + "');</script> ");
+	        out.flush();
+	    }
+	 
+	    // 경고 및 다음페이지 이동
+	    public static void alertAndMovePage(HttpServletResponse response, String alertText, String nextPage)
+	            throws IOException {
+	        init(response);
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>alert('" + alertText + "'); location.href='" + nextPage + "';</script> ");
+	        out.flush();
+	    }
+	 
+	    // 경고 및 이전 페이지로 이동
+	    public static void alertAndBackPage(HttpServletResponse response, String alertText) throws IOException {
+	        init(response);
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>alert('" + alertText + "'); history.go(-1);</script>");
+	        out.flush();
+	    }
+	
 }
+
+
