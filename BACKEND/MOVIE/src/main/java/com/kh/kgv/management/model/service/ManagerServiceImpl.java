@@ -11,11 +11,14 @@ import org.springframework.stereotype.Service;
 import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.items.model.vo.TimeTable;
 import com.kh.kgv.management.model.dao.ManagerDAO;
 import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Pagination;
+import com.kh.kgv.management.model.vo.WeeklyEnter;
 
 @Service
 public class ManagerServiceImpl implements ManagerService {
@@ -41,6 +44,12 @@ public class ManagerServiceImpl implements ManagerService {
 	public List<Notice> getAllNotice() {
 		List<Notice> getNotice = dao.getAllNotice();
 		return getNotice;
+	}
+	
+	// 관리자 메인 일일 접속자 수 조회
+	@Override
+	public List<DailyEnter> getWeeklyEnter(WeeklyEnter we) {
+		return dao.getWeeklyEnter(we);
 	}
 
 	// 회원 목록 조회
@@ -141,14 +150,19 @@ public class ManagerServiceImpl implements ManagerService {
 	    	for (Movie movie : movielist) {
 	    		Movie cleanedMovie = new Movie();
 	    		cleanedMovie.setMgNo(Util.removeQuotes(movie.getMgNo()));
-	    		cleanedMovie.setGenreCode(Util.removeQuotes(movie.getGenreCode()));
+	    		cleanedMovie.setGenreName(Util.removeQuotes(movie.getGenreName()));
 	    		cleanedMovie.setMovieNo(movie.getMovieNo());
 	    		cleanedMovie.setMovieRuntime(movie.getMovieRuntime());
 	    		cleanedMovie.setMovieTitle(movie.getMovieTitle());
 	    		cleanedMovie.setMovieNation(movie.getMovieNation());
 	    		cleanedMovie.setMovieOpen(movie.getMovieOpen());
 	    		cleanedMovie.setMovieContent(movie.getMovieContent());
-	    		cleanedMovie.setMovieImg(movie.getMovieImg());
+	    		cleanedMovie.setMovieImg1(movie.getMovieImg1());
+	    		cleanedMovie.setMovieImg2(movie.getMovieImg2());
+	    		cleanedMovie.setMovieImg3(movie.getMovieImg3());
+	    		cleanedMovie.setMovieImg4(movie.getMovieImg4());
+	    		cleanedMovie.setMovieImg5(movie.getMovieImg5());
+	    		cleanedMovie.setMovieImg6(movie.getMovieImg6());
 	    		cleanedMovie.setMovieUploader(movie.getMovieUploader());
 	    		cleanedMovie.setMovieDirector(movie.getMovieDirector());
 	    		cleanedMovie.setMovieCast(movie.getMovieCast());
@@ -167,7 +181,7 @@ public class ManagerServiceImpl implements ManagerService {
 	 * 영화 수정 페이지 이동
 	 */
 	@Override
-	public Map<String, Object> getEditMovieList(Movie movie) {
+	public Movie getEditMovieList(Movie movie) {
 		return dao.getEditMovieList(movie);
 	}
 	
@@ -285,11 +299,50 @@ public class ManagerServiceImpl implements ManagerService {
 	
 	}
 	
+	//	 영화 상영 상태 업데이트
+	@Override
+	public int updateMovieST(Movie movie) {
+		return dao.updateMovieST(movie);
+	}
+	
 	// 공지사항 리스트 갯수 반환
 	@Override
 	public int getNoticeListCount() {
 		return dao.getNoticeListCount();
 	}
+
+	// 유저용 공지사항
+	@Override
+	public Map<String, Object> userNoticeList(int cp) {
+		// 공지사항 수 조회
+		int noticelistCount = dao.getNoticeListCount();
+
+		// 조회한 공지사항 수를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, noticelistCount);
+
+		// 공지사항 리스트 조회
+		List<Notice> noticeLists = dao.userNoticeList(pagination);
+
+		Map<String, Object> userNoticeList = new HashMap<String, Object>();
+		userNoticeList.put("pagination", pagination);
+		userNoticeList.put("noticeLists", noticeLists);
+
+		return userNoticeList;
+	}
+
+	
+	// 상영 중인 영화, 상영 시간표 
+	public Map<String, Object> getPlayMap() {
+		List<Movie> playingMovieList = dao.getPlayingMovieList();
+		List<TimeTable> timeTableList = dao.getTimeTableList();
+		
+		Map<String, Object> playMap = new HashMap<String, Object>();
+		playMap.put("playingMovieList", playingMovieList);
+		playMap.put("timeTableList", timeTableList);
+		return playMap;
+	}
+
+
 
 	
 

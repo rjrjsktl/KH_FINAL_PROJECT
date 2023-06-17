@@ -55,7 +55,16 @@
     
     <select id="getCinemaList" resultMap="cinema_rm">
         SELECT * FROM CINEMA
-        ORDER BY CINEMA_NO DESC
+        ORDER BY CINEMA_NO ASC
+    </select>
+    
+    
+    <!-- 지역별 영화관 리스트 조회 -->
+    
+    <select id="getAreaCinemaList" parameterType="string" resultMap="cinema_rm">
+    	SELECT * FROM CINEMA
+    	WHERE CINEMA_AREA = #{areaName}
+    	ORDER BY CINEMA_NAME ASC
     </select>
 
 </mapper>

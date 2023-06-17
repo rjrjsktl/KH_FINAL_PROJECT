@@ -32,7 +32,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.google.gson.Gson;
 
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.login.model.service.LoginService;
@@ -64,6 +63,7 @@ public class LoginController {
 	                    HttpServletResponse resp,
 	                    HttpServletRequest req,
 	                    HttpSession session,
+	                    SessionStatus status,
 	                    @RequestParam(value="saveId", required=false) String saveId) {
 		
 		logger.info("1. 로그인 기능 수행 시작");
@@ -75,6 +75,16 @@ public class LoginController {
 		logger.info("6. service 에서 받아온 loginUser : " + loginUser);
 		
 		if(loginUser != null) { // 로그인 성공 시
+			
+			String blockUser = loginUser.getUserBlock();
+			
+			if(blockUser.equals("Y")) {
+				System.out.println("차단 당한 유저");
+				ra.addFlashAttribute("message", "차단 당함 ㅅㄱ");
+				status.setComplete(); 
+				
+				return "redirect:/"; 
+			} 
 			
 			logger.info("로그인 성공!");
 			
@@ -339,18 +349,19 @@ public class LoginController {
 	    	
 	    	logger.info("성공 렛쯔기릿~~~~~");
 	    	
+	    	session.removeAttribute("userEmail");
+	    	
+	    	return "common/main";
+	    	
 	    } else {
 	    	message = "비밀번호 재설정에 실패하였습니다.";
 	    	
 	    	logger.info("실패 tlqkf~~~~~");
 	    	
 	    	return "login/pwChange";
-	    	//path = "login/findPwEmail_2";
 	    	
 	    }
 	    
-	    
-	    return "common/main";
 	}
 	
 	

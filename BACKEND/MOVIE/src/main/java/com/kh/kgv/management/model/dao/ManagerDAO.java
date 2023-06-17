@@ -12,10 +12,13 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.items.model.vo.TimeTable;
 import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Pagination;
+import com.kh.kgv.management.model.vo.WeeklyEnter;
 import com.kh.kgv.mypage.controller.MyPageController;
 
 @Repository
@@ -36,7 +39,11 @@ public class ManagerDAO {
 		return sqlSession.selectList("managerMapper.getAllNotice");
 	}
 	
-	
+	// 관리자 메인 일일 접속자 수 조회
+	public List<DailyEnter> getWeeklyEnter(WeeklyEnter we) {
+		return sqlSession.selectList("managerMapper.getDailyEnter", we);
+	}
+		
 	/** 회원 수 조회
 	 * @return
 	 */
@@ -116,10 +123,10 @@ public class ManagerDAO {
 	}
 	
 	/** 영화 수정 페이지 이동
-	 * @param movie
+	 * @param movieNo
 	 * @return
 	 */
-	public Map<String, Object> getEditMovieList(Movie movie) {
+	public Movie getEditMovieList(Movie movie) {
 		return sqlSession.selectOne("movieMapper.getEditMovieList", movie);
 	}
 	
@@ -203,13 +210,40 @@ public class ManagerDAO {
 		return sqlSession.selectOne("cinemaMapper.getCinemaCount");
 	}
 	
+	// 유저용 공지사항 조회
+	public List<Notice> userNoticeList(Pagination pagination) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("managerMapper.userNoticeList", null, rowBounds);
+	}
 	
+	// 극장 목록 조회
 	public List<Cinema> getCinemaList(Pagination pagination) {
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());		
 		
 		return sqlSession.selectList("cinemaMapper.getCinemaList", null, rowBounds);
 	}
+	
+	//	 영화 상영 상태 업데이트
+	public int updateMovieST(Movie movie) {
+		return sqlSession.update("managerMapper.updateMovieST", movie);
+	}
+	
+	// 상영 중인 영화 리스트 조회
+	public List<Movie> getPlayingMovieList() {
+		return sqlSession.selectList("playMapper.getPlayingMovieList");
+	}
+	
+	// 상영 시간표 조회
+	public List<TimeTable> getTimeTableList() {
+		return sqlSession.selectList("playMapper.getTimeTableList");
+	}
+	
+
 
 
 }

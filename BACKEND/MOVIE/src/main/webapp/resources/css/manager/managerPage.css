@@ -243,6 +243,11 @@
     padding: 0 70px;
 }
 
+.inner_Top_Content a {
+    text-decoration: none;
+    color: black;
+}
+
 #daily_Enter {
     flex: 1;
 }

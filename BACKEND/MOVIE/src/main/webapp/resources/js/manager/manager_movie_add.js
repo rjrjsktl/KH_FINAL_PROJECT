@@ -1,4 +1,231 @@
 $(document).ready(function () {
+
+    // 이미지 등록 테스트1 ========================================
+    let movie_image1 = $('.movie_image1');
+
+    movie_image1.on('change', function (e) {
+        console.log(e.target.files); // 파일 목록 출력
+
+        // 파일 업로드(다중업로드를 위해 반복문 사용)
+        for (var i = 0; i < e.target.files.length; i++) {
+            uploadImageFile1(e.target.files[i]); // 파일 전달
+        }
+    });
+
+    let imageUrl1;
+
+    function uploadImageFile1(file) {
+        var data = new FormData();
+        data.append("file", file);
+        $.ajax({
+            url: 'movie_add/uploadImageFile',
+            type: "POST",
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data1) {
+                console.log("성공 후 반환 메시지11", data1);
+                let jsonArray = JSON.parse(data1); // JSON 문자열을 파싱하여 배열로 변환
+                let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
+                imageUrl1 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
+                console.log("이미지 URL:", imageUrl1);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+
+
+
+    // 이미지 등록 테스트2 ========================================
+    let movie_image2 = $('.movie_image2');
+
+    movie_image2.on('change', function (e) {
+        console.log(e.target.files); // 파일 목록 출력
+
+        // 파일 업로드(다중업로드를 위해 반복문 사용)
+        for (var i = 0; i < e.target.files.length; i++) {
+            uploadImageFile2(e.target.files[i]); // 파일 전달
+        }
+    });
+
+    let imageUrl2;
+
+    function uploadImageFile2(file) {
+        var data = new FormData();
+        data.append("file", file);
+        $.ajax({
+            url: 'movie_add/uploadImageFile',
+            type: "POST",
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data2) {
+                console.log("성공 후 반환 메시지22", data2);
+                let jsonArray = JSON.parse(data2); // JSON 문자열을 파싱하여 배열로 변환
+                let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
+                imageUrl2 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
+                console.log("이미지 URL:", imageUrl2);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+    // 이미지 등록 테스트3 ========================================
+    let movie_image3 = $('.movie_image3');
+
+    movie_image3.on('change', function (e) {
+        console.log(e.target.files); // 파일 목록 출력
+
+        // 파일 업로드(다중업로드를 위해 반복문 사용)
+        for (var i = 0; i < e.target.files.length; i++) {
+            uploadImageFile3(e.target.files[i]); // 파일 전달
+        }
+    });
+
+    let imageUrl3;
+
+    function uploadImageFile3(file) {
+        var data = new FormData();
+        data.append("file", file);
+        $.ajax({
+            url: 'movie_add/uploadImageFile',
+            type: "POST",
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data3) {
+                console.log("성공 후 반환 메시지33", data3);
+                let jsonArray = JSON.parse(data3); // JSON 문자열을 파싱하여 배열로 변환
+                let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
+                imageUrl3 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
+                console.log("이미지 URL:", imageUrl3);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+    // 이미지 등록 테스트4 ========================================
+    let movie_image4 = $('.movie_image4');
+
+    movie_image4.on('change', function (e) {
+        console.log(e.target.files); // 파일 목록 출력
+
+        // 파일 업로드(다중업로드를 위해 반복문 사용)
+        for (var i = 0; i < e.target.files.length; i++) {
+            uploadImageFile4(e.target.files[i]); // 파일 전달
+        }
+    });
+
+    let imageUrl4;
+
+    function uploadImageFile4(file) {
+        var data = new FormData();
+        data.append("file", file);
+        $.ajax({
+            url: 'movie_add/uploadImageFile',
+            type: "POST",
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data4) {
+                console.log("성공 후 반환 메시지44", data4);
+                let jsonArray = JSON.parse(data4); // JSON 문자열을 파싱하여 배열로 변환
+                let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
+                imageUrl4 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
+                console.log("이미지 URL:", imageUrl4);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+    // 이미지 등록 테스트5 ========================================
+    let movie_image5 = $('.movie_image5');
+
+    movie_image5.on('change', function (e) {
+        console.log(e.target.files); // 파일 목록 출력
+
+        // 파일 업로드(다중업로드를 위해 반복문 사용)
+        for (var i = 0; i < e.target.files.length; i++) {
+            uploadImageFile5(e.target.files[i]); // 파일 전달
+        }
+    });
+
+    let imageUrl5;
+
+    function uploadImageFile5(file) {
+        var data = new FormData();
+        data.append("file", file);
+        $.ajax({
+            url: 'movie_add/uploadImageFile',
+            type: "POST",
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data5) {
+                console.log("성공 후 반환 메시지55", data5);
+                let jsonArray = JSON.parse(data5); // JSON 문자열을 파싱하여 배열로 변환
+                let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
+                imageUrl5 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
+                console.log("이미지 URL:", imageUrl5);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+    // 이미지 등록 테스트6 ========================================
+    let movie_image6 = $('.movie_image6');
+
+    movie_image6.on('change', function (e) {
+        console.log(e.target.files); // 파일 목록 출력
+
+        // 파일 업로드(다중업로드를 위해 반복문 사용)
+        for (var i = 0; i < e.target.files.length; i++) {
+            uploadImageFile6(e.target.files[i]); // 파일 전달
+        }
+    });
+
+    let imageUrl6;
+
+    function uploadImageFile6(file) {
+        var data = new FormData();
+        data.append("file", file);
+        $.ajax({
+            url: 'movie_add/uploadImageFile',
+            type: "POST",
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data6) {
+                console.log("성공 후 반환 메시지66", data6);
+                let jsonArray = JSON.parse(data6); // JSON 문자열을 파싱하여 배열로 변환
+                let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
+                imageUrl6 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
+                console.log("이미지 URL:", imageUrl6);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+
+
+
+
+
+
+
     // ===============================================================================
     // 장르 추가 기능 및 슬라이드
     let genre_Arr = [];
@@ -174,7 +401,6 @@ $(document).ready(function () {
 
     let movie_releseDate = $('.movie_releseDate');
 
-    let movie_image = $('.movie_image');
 
     let movie_story = $('.movie_story');
 
@@ -190,14 +416,14 @@ $(document).ready(function () {
             return false;
         };
         if (!movie_director.val()) {
-            alert('제목이 입력되지 않았습니다.');
-            movie_title.focus();
+            alert('감독이 입력되지 않았습니다.');
+            movie_director.focus();
             e.preventDefault();
             return false;
         };
         if (!movie_cast.val()) {
-            alert('제목이 입력되지 않았습니다.');
-            movie_title.focus();
+            alert('출연진이 입력되지 않았습니다.');
+            movie_cast.focus();
             e.preventDefault();
             return false;
         };
@@ -237,6 +463,42 @@ $(document).ready(function () {
             e.preventDefault();
             return false;
         };
+        if (!$('.movie_image1').val()) {
+            alert('메인 이미지를 등록하지 않았습니다.');
+            imageUrl1.focus();
+            e.preventDefault();
+            return false;
+        };
+        if (imageUrl2 == "") {
+            alert('추가 이미지1 을 등록하지 않았습니다.');
+            imageUrl2.focus();
+            e.preventDefault();
+            return false;
+        };
+        if (imageUrl3 == "") {
+            alert('추가 이미지2 를 등록하지 않았습니다.');
+            imageUrl2.focus();
+            e.preventDefault();
+            return false;
+        };
+        if (imageUrl4 == "") {
+            alert('추가 이미지3 을 등록하지 않았습니다.');
+            imageUrl2.focus();
+            e.preventDefault();
+            return false;
+        };
+        if (imageUrl5 == "") {
+            alert('추가 이미지4 를 등록하지 않았습니다.');
+            imageUrl2.focus();
+            e.preventDefault();
+            return false;
+        };
+        if (imageUrl6 == "") {
+            alert('추가 이미지5 를 등록하지 않았습니다.');
+            imageUrl2.focus();
+            e.preventDefault();
+            return false;
+        };
         console.log('저장버튼이 눌림.');
         console.log("Uploader : " + $("input[name=movieUploader]").val());
         console.log("영화 제목 : " + movie_title.val());
@@ -245,7 +507,12 @@ $(document).ready(function () {
         console.log("상영 시간 : " + movie_time.val());
         console.log("제작 국가 : " + movie_country.val());
         console.log("개봉일 : " + movie_releseDate.val());
-        console.log("이미지 : " + movie_image.val());
+        console.log("메인 이미지 : " + imageUrl1);
+        console.log("추가 이미지1 : " + imageUrl2);
+        console.log("추가 이미지2 : " + imageUrl3);
+        console.log("추가 이미지3 : " + imageUrl4);
+        console.log("추가 이미지4 : " + imageUrl5);
+        console.log("추가 이미지5 : " + imageUrl6);
         console.log("줄거리 : " + $('.movie_story').val());
         console.log("관람 등급 : " + level_Arr);
         console.log("장르 : " + genre_Arr);
@@ -261,9 +528,14 @@ $(document).ready(function () {
                 "movieRuntime": movie_time.val(),
                 "movieNation": movie_country.val(),
                 "movieOpen": movie_releseDate.val(),
-                "movieImg": movie_image.val(),
+                "movieImg1": imageUrl1,
+                "movieImg2": imageUrl2,
+                "movieImg3": imageUrl3,
+                "movieImg4": imageUrl4,
+                "movieImg5": imageUrl5,
+                "movieImg6": imageUrl6,
                 "mgNo": JSON.stringify(level_Arr),
-                "genreCode": JSON.stringify(genre_Arr),
+                "genreName": JSON.stringify(genre_Arr),
                 "movieContent": $('.movie_story').val(),
                 "movieUploader": $("input[name=movieUploader]").val()
             },
@@ -277,6 +549,8 @@ $(document).ready(function () {
                 if (result > 0) {
                     console.log("영화 등록 완료");
                     window.alert("영화 등록 성공")
+                    let url = "/movie/manager/movie_list";
+                    window.location.href = url;
                 } else {
                     console.log("영화 등록 실패");
                 }

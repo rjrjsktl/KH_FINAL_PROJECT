@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mtmMapper">
+
+	<resultMap type="mtm" id="mtm_rm">
+		<id property="mtmNo" column="MTM_NO" />
+		<result property="mtmNo" column="MTM_NO" />
+		<result property="mtmTitle" column="MTM_TITLE" />
+		<result property="mtmContent" column="MTM_CONTENT" />
+		<result property="mtmSt" column="MTM_ST" />
+		<result property="mtmType" column="MTM_TYPE" />
+		<result property="userNo" column="USER_NO" />
+		<result property="mtmImage" column="MTM_IMAGE" />
+		<result property="mtmRegdate" column="MTM_REGDATE" />
+		<result property="mtmCount" column="MTM_COUNT" />
+		<result property="mtmWriter" column="MTM_WRITER" />
+
+	</resultMap>
+
+	<select id="getMtmCount" resultType="_int">
+		SELECT COUNT(MTM_NO) FROM MTM_TBL
+	</select>
+
+	<select id="userMtmList" resultMap="mtm_rm">
+		SELECT
+		MTM_NO
+		, MTM_TITLE
+		,
+		TO_CHAR(MTM_REGDATE, 'YYYY.MM.DD') AS MTM_REGDATE
+		, MTM_COUNT
+		FROM
+		MTM_TBL
+		<!-- WHERE USER_NO = ${userNo} -->
+		ORDER BY MTM_NO DESC
+	</select>
+
+
+</mapper>
