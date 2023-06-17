@@ -362,7 +362,7 @@ public class ManagerServiceImpl implements ManagerService {
 				storeMap.put("storeList", storeList);
 				
 				return storeMap;
-				
+	}
 
 	// 메인 -> 이벤트 이동 시 이벤트 
 	@Override
@@ -383,7 +383,7 @@ public class ManagerServiceImpl implements ManagerService {
 		return dao.getEventList(event);
 
 
-
+	}
 	
 
 	
