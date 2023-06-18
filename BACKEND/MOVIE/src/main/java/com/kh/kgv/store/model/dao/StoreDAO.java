@@ -18,4 +18,10 @@ public class StoreDAO {
 		return sqlSession.selectList("storeMapper.getStoreList");
 	}
 
+	public Store getStoreDetail(Store store) {
+		return sqlSession.selectOne("storeMapper.getStoreDetail", store);
+	}
+
+	
+
 }

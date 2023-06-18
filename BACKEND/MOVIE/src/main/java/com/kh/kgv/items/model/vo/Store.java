@@ -16,6 +16,7 @@ public class Store {
 	private String storeImage;
 	private String storeDesc;
 	private int storeStock;
+	private String storeImageBig;
 	
 	
 
