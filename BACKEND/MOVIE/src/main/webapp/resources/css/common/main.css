@@ -596,6 +596,8 @@ main>section:nth-child(5)>div>div:nth-child(2) {
 }
 
 /* 관람등급 */
+/* 관람등급 */
+
 .age-img-area {
     position: absolute;
     z-index: 5;
@@ -603,10 +605,12 @@ main>section:nth-child(5)>div>div:nth-child(2) {
     right: 15px;
     width: 35px;
     opacity: 0.9;
+
 }
 
 .ageIndexLeve {
     z-index: 4;
+
 }
 
 .moveBtn {
@@ -620,9 +624,11 @@ main>section:nth-child(5)>div>div:nth-child(2) {
     border: none;
     text-align: center;
     line-height: 40px;
+
 }
 
 .moveBtn:hover {
     background-color: #FCFCFC;
     color: #191919;
+
 }
