@@ -257,10 +257,15 @@ main section>div:nth-child(3)::after {
 .fold_wrap {
     height: 60px;
     overflow: hidden;
+
+}
+
+.fold_content {
     font-size: 0.9rem;
     padding: 0 20px;
     white-space: pre-line;
 }
+
 
 /* 더보기 버튼 */
 .more_btn {

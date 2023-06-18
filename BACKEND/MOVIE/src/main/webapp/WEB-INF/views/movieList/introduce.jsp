@@ -144,7 +144,9 @@
                                         <div class="movie-detail">
                                             <p>${MovieDetail.movieTitle}</p>
                                             <div class="fold_wrap">
-                                                <c:out value="${MovieDetail.movieContent}" escapeXml="false" />
+                                                <p class="fold_content">
+                                                    <c:out value="${MovieDetail.movieContent}" escapeXml="false" />
+                                                </p>
                                             </div>
                                             <div>
                                                 <p class="more_btn">더보기</p>

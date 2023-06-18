@@ -111,6 +111,15 @@
                                                             </div>
                                                         </div>
 
+                                                        <div id="store_sub">
+                                                            <span>빅이미지</span>
+                                                            <div>
+                                                                <input type="file" class="storeImageBig"
+                                                                    id="storeImageBig">
+                                                            </div>
+                                                        </div>
+
+
 
 
 

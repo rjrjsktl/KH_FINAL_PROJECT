@@ -44,11 +44,13 @@
 														alt=""></a>
 											</div>
 											<div class="swiper-slide">
-												<a href="#"><img src="${contextPath}/resources/images/mainSlide/3.jpg"
+												<a href="${contextPath}/movieList/detail_List/introduce/20"><img
+														src="${contextPath}/resources/images/mainSlide/3.jpg"
 														alt=""></a>
 											</div>
 											<div class="swiper-slide">
-												<a href="#"><img src="${contextPath}/resources/images/mainSlide/4.jpg"
+												<a href="${contextPath}/movieList/detail_List/introduce/21"><img
+														src="${contextPath}/resources/images/mainSlide/4.jpg"
 														alt=""></a>
 											</div>
 											<div class="swiper-slide">

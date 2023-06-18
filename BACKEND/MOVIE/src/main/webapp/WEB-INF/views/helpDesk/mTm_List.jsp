@@ -73,7 +73,7 @@
 													<c:if test="${loop.index < 10}">
 														<tr class="row">
 															<td>${userMtmList.mtmNo}</td>
-															<td><a href="#">${userMtmList.mtmTitle}</a></td>
+															<td><a href="${contextPath}/helpDesk/mtm_detail/${userMtmList.mtmNo}">${userMtmList.mtmTitle}</a></td>
 															<td>${userMtmList.mtmRegdate}</td>
 															<td>${userMtmList.mtmCount}</td>
 														</tr>

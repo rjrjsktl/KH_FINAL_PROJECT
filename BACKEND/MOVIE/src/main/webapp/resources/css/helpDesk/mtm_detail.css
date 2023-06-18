@@ -1,0 +1,266 @@
+/* 전체 틀 잡아주는 css */
+main>section {
+    width: 1040px;
+    margin: 0 auto;
+    padding: 50px 30px 70px 30px;
+    display: flex;
+    justify-content: space-between !important;
+    flex-wrap: wrap;
+}
+
+
+.notice-wraaper>div:nth-child(2) {
+    width: 82%;
+}
+
+/* 여기까지  왼쪽 ui관련 재활용 계속해야합니당.*/
+
+.content-wrap {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+h2 {
+    font-size: 1.8rem;
+    padding: 0 0 30px 10px;
+    border-bottom: 2px solid rgb(255, 196, 0);
+}
+
+.notice-contents {
+    display: flex;
+    flex-direction: column;
+}
+
+.notice-contents>div:nth-child(1) {
+    padding: 20px 0 10px 0;
+}
+
+.notice-contents>div:nth-child(1)>span {
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.notice-contents>div:nth-child(2) {
+    padding: 10px 0 20px 0;
+}
+
+.notice-contents>div:nth-child(3) {
+    border-top: 1px solid rgb(73, 73, 73);
+    padding: 15px 0;
+    margin-bottom: 30px;
+}
+
+.content-wrap>div:nth-child(3) {
+
+    border-top: 1px solid rgb(73, 73, 73);
+
+}
+
+
+.content-wrap>div:last-child>button {
+    width: 150px;
+    height: 50px;
+    font-size: 1.2rem;
+    background-color: rgb(73, 73, 73);
+    color: rgb(251, 251, 251);
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.content-wrap>div:last-child>button:hover {
+    background-color: rgb(251, 251, 251);
+    color: rgb(21, 21, 21);
+}
+
+.aslide-list>li:nth-child(3)>a {
+    background-color: rgb(73, 73, 73);
+}
+
+.aslide-list>li:nth-child(3)>a {
+    color: rgb(251, 251, 251);
+}
+
+
+
+
+.movie-reply{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+
+.replywritewrap {
+    padding: 30px 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.replywritewrap>span {
+    font-size: 1.5rem;
+    padding-bottom: 30px;
+
+}
+
+.replywritewrap> :nth-child(2) {
+    width: 100%;
+}
+
+
+.replywritewrap>div:nth-child(3) {
+    width: 100%;
+    height: 40%;
+}
+
+.replywritewrap> :nth-child(3) {
+    width: 100%;
+    display: flex;
+}
+
+
+.replywrite {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.replywrite>textarea {
+    width: 90%;
+    height: 60%;
+    padding: 10px;
+    border: none;
+    resize: none;
+    outline: none;
+    color: black;
+}
+
+.replywrite>button {
+    width: 15%;
+    height: 83px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: rgb(121,121,121);
+}
+
+.replywrap {
+    display: flex;
+    padding:20px 30px;
+  
+}
+
+.replywrap>div:nth-child(1) {
+    font-size: 2rem;
+    flex:1;
+    display: flex;
+    border-bottom: 2px solid black;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+.replywrap>div:nth-child(1) >p{
+    font-size: 1.5rem;
+}
+
+.replywrap>div:nth-child(1)>div:nth-child(2) {
+    display: flex;
+    line-height: 18px;
+    align-items: center;
+
+}
+
+.replywrap>div:nth-child(1)>div:nth-child(2)>ul {
+    display: flex;
+    align-items: center;
+
+}
+
+.replywrap>div>div>ul>li {
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.replywrap>div>div>ul>li>label>span{
+    padding-left:5px;
+}
+
+.replywrap>div>div>ul>li>button>img {
+    width: 16px;
+    height: 16px;
+    border: 1px solid white;
+    margin-right: 5px;
+}
+
+.replyList {
+    width:100%;
+    
+}
+
+.replyList>ul>li {
+    display: flex;
+    min-height: 100px;
+    padding: 20px 0 20px 40px;
+    position: relative;
+    flex-wrap: wrap;
+    border-bottom: 1px solid lightgray;
+}
+
+.replyList>ul>li>span:nth-child(1) {
+    width: 50px;
+    position: absolute;
+    left: 0px;
+    top: 20px;
+}
+
+.replyList>ul>li>div:nth-child(2) {
+    width: 100%;
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+
+}
+
+.replyList>ul>li>div:nth-child(2){
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.replyList>ul>li>div:nth-child(2)>span:nth-child(1) {
+    width: 90%;
+}
+
+.replyList>ul>li>div:nth-child(2)>span:nth-child(2) {
+    width: 10%;
+}
+
+.replyList>ul>li>div:nth-child(2)>span:nth-child(3) {
+    width: 10%;
+    height:19px;
+    line-height: 17px;
+}
+
+.replyList>ul>li>div:nth-child(2)>span:nth-child(4) {
+    width: 10%;
+
+}
+
+.replyList>ul>li>div:nth-child(3) {
+    width: 100%;
+    padding: 10px 5px 10px 5px;
+    font-size: 0.8rem;
+}
+
+
