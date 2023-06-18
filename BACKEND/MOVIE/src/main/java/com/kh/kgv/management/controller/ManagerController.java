@@ -902,8 +902,43 @@ public class ManagerController {
 					System.out.println("관리자_분실물 목록 이동");
 					return "manager/manager_lost_list";
 				}
-				
+		
 				
 				// ===================================================
 				// ===================================================
+				
+				// 관리자_공지사항 목록 이동
+				@GetMapping("/banner_list")
+				public String moveBannerList() {
+					
+					System.out.println("관리자_배너등록 등록 이동");
+					
+					return "manager/manager_banner_list";
+				}
+				// ===================================================
+				// ===================================================
+				
+				// 관리자_공지사항 등록 이동
+				@GetMapping("/banner_add")
+				public String moveBannerAdd() {
+					
+					System.out.println("관리자_배너등록 등록 이동");
+					
+					return "manager/manager_banner_add";
+				}
+				// ===================================================
+				// ===================================================
+				
+
+				
+				// 관리자_공지사항 수정 이동
+				@GetMapping("/banner_edit")
+				public String moveBannerEdit() {
+					
+					System.out.println("관리자_배너등록 등록 이동");
+					
+					return "manager/manager_banner_edit";
+				}
+				
+				
 			}
