@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.helpDesk.model.service.HelpDeskService;
+import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.management.model.vo.Notice;
 import org.apache.commons.text.StringEscapeUtils;
@@ -124,6 +125,23 @@ public class HelpDeskController {
 		return "helpDesk/mTm_List";
 	}
 
+	
+	@RequestMapping("/mtm_detail/{mtmNo}")
+	public String mtmdetail(
+			Model model,
+			@PathVariable("mtmNo") int mtmNo,
+			HttpSession session,
+			HttpServletRequest req, HttpServletResponse resp
+			){
+		Mtm mTmdetail = services.selectmTmDetail(mtmNo);
+		System.out.println("=========================================================================" + mTmdetail);
+		String unescapedContent = StringEscapeUtils.unescapeHtml4(mTmdetail.getMtmContent());
+		mTmdetail.setMtmContent(unescapedContent);
+		model.addAttribute("mTmdetail", mTmdetail);
+
+		return "helpDesk/mtm_detail";
+		
+	}
 
 
 

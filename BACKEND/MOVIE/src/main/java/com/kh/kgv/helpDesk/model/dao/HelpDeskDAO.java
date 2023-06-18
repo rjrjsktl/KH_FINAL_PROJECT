@@ -51,6 +51,11 @@ public class HelpDeskDAO {
 	}
 
 
+	public Mtm selectmTmDetail(int mtmNo) {
+		return sqlSession.selectOne("mtmMapper.mtmDetail", mtmNo);
+	}
+
+
 
 	
 	
