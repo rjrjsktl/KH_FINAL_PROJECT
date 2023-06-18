@@ -3,7 +3,7 @@
 /* side and conatiner box */
 .asideAconatiner{
     width: 100%;
-    min-height: 550px;
+    min-height: 450px;
     display: flex;
     justify-content: space-between !important;
     list-style-type: none;
@@ -18,7 +18,7 @@
 
 .container {
     width: 80%;
-    margin-bottom: 70px;
+    margin-bottom: 30px;
 }
 
 .aside-ul-wrap {
@@ -130,11 +130,5 @@ h2 {
     height: 24px;
 }
 
-.new-wrap {
-    width: 100%;
-    display: flex;
-    padding: 50px 0;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
+
 

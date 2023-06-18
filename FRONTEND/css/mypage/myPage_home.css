@@ -8,6 +8,14 @@ main>section {
     flex-wrap: wrap;
 }
 
+.new-wrap {
+    width: 100%;
+    display: flex;
+    padding-top: 50px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 .new-wrap>div {
     width: 32%;
     display: flex;
