@@ -22,8 +22,7 @@ public class HelpDeskImpl implements HelpDeskService {
 	@Autowired
 	private HelpDeskDAO dao;
 	
-	@Autowired
-	private ManagerDAO daos;
+
 	
 	@Override
 	public Notice selectNoticeDetail(int noticeNo) {
@@ -67,6 +66,11 @@ public class HelpDeskImpl implements HelpDeskService {
 
 		return getMtmList;
 		
+	}
+
+	@Override
+	public Mtm selectmTmDetail(int mtmNo) {
+		return dao.selectmTmDetail(mtmNo);
 	}
 
 }
