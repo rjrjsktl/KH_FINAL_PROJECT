@@ -37,9 +37,7 @@
 		<typeAlias type="com.kh.kgv.management.model.vo.Cinema" alias="cinema"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.Screen" alias="screen"/>
 		<typeAlias type="com.kh.kgv.helpDesk.model.vo.Mtm" alias="mtm"/>
-		
-		
-		
+		<typeAlias type="com.kh.kgv.helpDesk.model.vo.LostPackage" alias="losts"/>
 		
 	</typeAliases>
 
@@ -59,6 +57,7 @@
 		<mapper resource="/mappers/play-mapper.xml"/>
 		<mapper resource="/mappers/cinema-mapper.xml"/>
 		<mapper resource="/mappers/mtm-mapper.xml"/>
+		<mapper resource="/mappers/lost-mapper.xml"/>
 	
 
 		

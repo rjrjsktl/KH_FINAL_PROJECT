@@ -41,12 +41,20 @@
 	    <result property="playUploader"         column="PLAY_UPLOADER"/>
 	</resultMap>
 	
-	<!-- 상영 중인 영화 리스트 -->
+	<!-- 상영 중인 영화 리스트 (이름 순) -->
 	
 	<select id="getPlayingMovieList" resultMap="movie_rm">
 		SELECT * FROM MOVIE
 		WHERE MOVIE_ST = 'Y'
 		ORDER BY MOVIE_TITLE ASC
+	</select>
+	
+	<!-- 상영 중인 영화 리스트 (예매율 순) -->
+	
+	<select id="getPlayingThumbList" resultMap="movie_rm">
+		SELECT * FROM MOVIE
+		WHERE MOVIE_ST = 'Y'
+		ORDER BY MOVIE_TITLE DESC
 	</select>
 	
 	<!-- 상영 시간표 -->
