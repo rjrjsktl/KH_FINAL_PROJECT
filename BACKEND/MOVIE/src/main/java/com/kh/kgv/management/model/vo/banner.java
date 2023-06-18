@@ -8,10 +8,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class banner {
-    private int screenNo;
-    private String cinemaName;
-    private int screenName;
-    private String screenStyle;
-    private int screenSeat;
-    private String screenDetail;
+    private int bannerNo;
+    private String bannerTitle;
+    private String bannerRegDate;
+    private String bannerImg;
+    private String banner;
 }
