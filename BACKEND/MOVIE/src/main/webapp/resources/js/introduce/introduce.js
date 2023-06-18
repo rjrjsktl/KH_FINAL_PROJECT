@@ -1,11 +1,12 @@
 $(document).ready(function () {
   var foldWrap = $('.fold_wrap');
+  let foldContent = $('.fold_content'); // 이걸로 영화 설명이 들어가는 칸 높이를 가져올 수 있음.
   var moreBtn = $('.more_btn');
   var isFolded = true; // 초기 상태는 접혀있음으로 설정
 
   moreBtn.click(function () {
     if (isFolded) {
-      foldWrap.animate({ height: '30vh' }, 200);
+      foldWrap.animate({ height: foldContent.height() }, 200);
       foldWrap.css('overflow', 'visible');
       moreBtn.html('접기');
       isFolded = false; // 상태를 펼쳐진 상태로 업데이트
