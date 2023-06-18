@@ -264,8 +264,14 @@ public class ManagerDAO {
 		return sqlSession.selectList("managerMapper.selectEventList");
 	}
 	
+	// 메인 -> 이벤트 상세 내용
 	public Event getEventList(Event event) {
 		return sqlSession.selectOne("managerMapper.getEventList", event);
+	}
+	
+	// 메인 이벤트 목록 가지고 오기 - 7개
+	public List<Event> mainEventList() {
+		return sqlSession.selectList("managerMapper.mainEventList");
 	}
 
 
