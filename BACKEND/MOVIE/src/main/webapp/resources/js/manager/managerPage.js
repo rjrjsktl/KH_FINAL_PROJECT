@@ -59,8 +59,10 @@ $(document).ready(function () {
                         }
                     },
                     legend: { // 범례 사용 안 함
-                        display: false,
+                        display: true,
                     },
+                    responsive: true, // 반응형으로 크기를 잡아줌.
+                    maintainAspectRatio: false
                 }
             });
         }
@@ -92,7 +94,12 @@ $(document).ready(function () {
                 y: {
                     beginAtZero: true
                 }
-            }
+            },
+            legend: { // 범례 사용 안 함
+                display: true,
+            },
+            responsive: true,
+            maintainAspectRatio: false
         }
     });
 

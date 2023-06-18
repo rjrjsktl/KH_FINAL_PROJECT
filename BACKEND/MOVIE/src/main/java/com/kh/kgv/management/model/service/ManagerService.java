@@ -93,7 +93,18 @@ public interface ManagerService {
 	// 스토어 목록 조회
 	Map<String, Object> getStoreMap(int cp);
 
+	// 메인 -> 이벤트 이동 시 이벤트 
+	Map<String, Object> selectEventList();
 
+	// 메인 -> 이벤트 상세 내용
+	Event getEventList(Event event);
+
+	// 메인 이벤트 목록 가지고 오기 - 7개
+	Map<String, Object> mainEventList();
+
+
+	
+	
 
 
 

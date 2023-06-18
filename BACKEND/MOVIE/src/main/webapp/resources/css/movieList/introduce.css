@@ -257,10 +257,15 @@ main section>div:nth-child(3)::after {
 .fold_wrap {
     height: 60px;
     overflow: hidden;
+
+}
+
+.fold_content {
     font-size: 0.9rem;
     padding: 0 20px;
     white-space: pre-line;
 }
+
 
 /* 더보기 버튼 */
 .more_btn {
@@ -720,4 +725,32 @@ main>section:nth-child(3)>div>div:nth-child(3) {
 .actor_wrap>div>ul>li>div:nth-child(2)>span:nth-child(2) {
     font-size: 0.7rem;
     color: lightgray;
+}
+
+#btnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 150px 0 0 0;
+}
+
+/* 뒤로가기 버튼 */
+#returnBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    border: 1px solid white;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 80px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#returnBtn:hover {
+    background-color: rgb(251, 251, 251);
+    color: rgb(21, 21, 21);
 }
