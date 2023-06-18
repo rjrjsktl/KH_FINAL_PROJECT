@@ -101,7 +101,7 @@
 									<li class="navBar"><a href="${contextPath}/movieList/detail_List">영화</a>
 										<ul class="menuBar" style="display: none">
 											<li><a href="${contextPath}/movieList/detail_List">상영중인 영화</a></li>
-											<li><a href="${contextPath}/movieList/detail_List">무비 차트</a></li>
+											<li><a href="${contextPath}/movieList/all_List">전체 영화 목록</a></li>
 										</ul>
 									</li>
 									<li class="navBar"><a href="${contextPath}/theater/normalTheater">상영관</a>
