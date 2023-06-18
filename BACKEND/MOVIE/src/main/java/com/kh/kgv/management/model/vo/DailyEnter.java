@@ -16,4 +16,6 @@ public class DailyEnter {
 	private int deNo;
 	private String deDate;
 	private String deIp;
+	private int deCount;
+	private String deDateStr;
 }

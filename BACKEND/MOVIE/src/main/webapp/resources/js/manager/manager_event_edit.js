@@ -180,7 +180,7 @@ $(document).ready(function () {
                 if (result > 0) {
                     let url = "/movie/manager/event_list/";
                     alert("이벤트 수정 성공");
-                    window.location.reload(url);
+                    window.location.href = url;
                 } else {
                     alert("이벤트 수정 실패");
                     window.location.reload();

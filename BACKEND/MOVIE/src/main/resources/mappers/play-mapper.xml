@@ -31,6 +31,16 @@
 		<result property="ttTime" column="TT_TIME" />
 	</resultMap>
 	
+	<resultMap type="play" id="play_rm">
+	    <id property="playNo"                   column="PLAY_NO" />
+	    <result property="movieNo"              column="MOVIE_NO" />
+	    <result property="screenNo"             column="SCREEN_NO" />
+	    <result property="playStart"            column="PLAY_START"/>
+	    <result property="playEnd"              column="PLAY_END"/>
+	    <result property="playRegDate"          column="PLAY_REGDATE"/>
+	    <result property="playUploader"         column="PLAY_UPLOADER"/>
+	</resultMap>
+	
 	<!-- 상영 중인 영화 리스트 -->
 	
 	<select id="getPlayingMovieList" resultMap="movie_rm">
@@ -44,5 +54,22 @@
 	<select id="getTimeTableList" resultMap="tt_rm">
 		SELECT * FROM TIME_TABLE
 	</select>
+	
+	<!-- 상영 유효성 검사 -->
+	
+	<select id="playTimeCheck" resultMap="play_rm">
+		SELECT * FROM PLAY
+		<![CDATA[WHERE PLAY_START <= TO_DATE(#{playEnd}, 'YYYY-MM-DD HH24:MI:SS') 
+		         AND PLAY_END >= TO_DATE(#{playStart}, 'YYYY-MM-DD HH24:MI:SS')
+		         AND SCREEN_NO = #{screenNo}]]>
+	</select>
+	
+	<!-- 상영 등록 -->
+	
+	<insert id="enrollPlay" parameterType="play">
+		INSERT INTO PLAY(PLAY_NO, MOVIE_NO, SCREEN_NO, PLAY_START, PLAY_END, PLAY_REGDATE)
+		VALUES(SEQ_PLAY_NO.NEXTVAL, #{movieNo}, #{screenNo}, 
+		       TO_DATE(#{playStart}, 'YYYY-MM-DD HH24:MI:SS'), TO_DATE(#{playEnd}, 'YYYY-MM-DD HH24:MI:SS'), SYSDATE)
+	</insert>
 	
 </mapper>

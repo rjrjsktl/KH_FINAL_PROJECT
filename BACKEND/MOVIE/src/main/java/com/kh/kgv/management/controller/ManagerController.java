@@ -33,8 +33,10 @@ import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.service.ManagerService;
+import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
+import com.kh.kgv.management.model.vo.WeeklyEnter;
 import com.kh.kgv.mypage.controller.MyPageController;
 
 @Controller
@@ -60,7 +62,7 @@ public class ManagerController {
 		// 관리자 메인 공지사항 목록 조회
 		List<Notice>getNotice = null;
 		getNotice = service.getAllNotice();
-		 
+		
 		model.addAttribute("getUser", getUser);
 		model.addAttribute("getNotice", getNotice);
 		
@@ -89,6 +91,33 @@ public class ManagerController {
 		return "manager/manager_member_list";
 	}
 	
+	// ===================================================
+	// ===================================================
+	
+	// 관리자 메인 일일 접속자 수 조회
+	@ResponseBody
+	@PostMapping("/getDailyEnter")
+	public List<DailyEnter> getDailyEnter(
+			@RequestParam("today") String today
+			, @RequestParam("lastWeek") String lastWeek
+			, WeeklyEnter we
+			) {
+		
+		System.out.println(today + " today  ========================");
+		System.out.println(lastWeek + " today  ========================");
+		
+		we.setToday(today);
+		we.setLastWeek(lastWeek);
+		
+				List<DailyEnter>dailyEnter = null;
+				dailyEnter = service.getWeeklyEnter(we);
+				
+				System.out.println(dailyEnter + " ==============================================================================");
+				
+		return dailyEnter;
+	}
+	
+		
 	// ===================================================
 	// ===================================================
 	
@@ -755,7 +784,14 @@ public class ManagerController {
 				
 				//관리자_스토어 물품 목록
 				@GetMapping("/store_list")
-				public String moveStoreList() {
+				public String moveStoreList(Model model,
+						@RequestParam(value = "cp", required = false, defaultValue="1" ) int cp) {
+					
+					Map<String, Object> storeMap = null;
+					storeMap = service.getStoreMap(cp);
+					model.addAttribute("storeMap", storeMap);
+					
+					
 					System.out.println("관리자_스토어 물품 목록");
 					return "manager/manager_store_list";
 				}
