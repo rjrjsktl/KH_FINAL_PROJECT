@@ -72,8 +72,11 @@
                                                     </tr>
                                                     <c:forEach var="movie" items="${getMovieList['cleanedList']}">
                                                         <tr>
-                                                            <td>${movie['movieNo']}</td>
-                                                            <td>${movie['movieTitle']}</td>
+                                                            <td> ${movie['movieNo']} </td>
+                                                            <td>
+                                                                <a
+                                                                    href="${contextPath}/movieList/detail_List/introduce/${movie['movieNo']}">${movie['movieTitle']}</a>
+                                                            </td>
                                                             <td>${movie['movieRuntime']}</td>
                                                             <td>${movie['movieNation']}</td>
                                                             <td>${movie['movieOpen']}</td>
