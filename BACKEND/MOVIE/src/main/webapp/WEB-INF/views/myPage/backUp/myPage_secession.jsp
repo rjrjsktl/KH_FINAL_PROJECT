@@ -33,13 +33,13 @@
             <!-- 여기서 부터 작업하세요. -->
             <div>
                 <!-- myPage_logMemInfo.jsp -->
-                <jsp:include page="/WEB-INF/views/myPage/myPage_logUserInfo.jsp" />
+                <jsp:include page="/WEB-INF/views/myPage/backUp/myPage_logUserInfo.jsp" />
             </div>
 
             <div>
                 <%--  이거 나중에 <jsp:include page="/WEB-INF/views/member/sideMenu.jsp"/>이런식으로 넣어줄 생각 --%>
                 <!-- myPage_sideMenu.jsp -->
-                <jsp:include page="/WEB-INF/views/myPage/myPage_sideMenu.jsp" />
+                <jsp:include page="/WEB-INF/views/myPage/backUp/myPage_sideMenu.jsp" />
                 
                 <section class="mypage-main">
                     MY KGV HOME <회원 탈퇴>

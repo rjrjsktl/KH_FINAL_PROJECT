@@ -334,3 +334,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
     -webkit-appearance: none;
 }
+
+.movie_image1 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    border: 2px solid #ddd;
+    vertical-align: middle;
+}
+
+.movie_image1:hover {
+    border: 2px solid black;
+}

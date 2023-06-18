@@ -32,7 +32,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.google.gson.Gson;
 
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.login.model.service.LoginService;

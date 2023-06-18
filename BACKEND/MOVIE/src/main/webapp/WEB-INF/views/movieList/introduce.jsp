@@ -11,7 +11,7 @@
                         <meta charset="UTF-8">
                         <meta http-equiv="X-UA-Compatible" content="IE=edge">
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>상품상세</title>
+                        <title>${MovieDetail.movieTitle}</title>
                         <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
                         <link rel="stylesheet" href="${contextPath}/resources/css/movieList/introduce.css">
                         <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
@@ -32,19 +32,19 @@
                                     <div class="swiper-container zeroOne">
                                         <div class="swiper-wrapper">
                                             <div class="swiper-slide">
-                                                <img src="${detail.추가이미지 1}" alt="">
+                                                <img src="${MovieDetail.movieImg2}" alt="">
                                             </div>
                                             <div class="swiper-slide">
-                                                <img src="${detail.추가이미지 2}" alt="">
+                                                <img src="${MovieDetail.movieImg3}" alt="">
                                             </div>
                                             <div class="swiper-slide">
-                                                <img src="${detail.추가이미지 3}" alt="">
+                                                <img src="${MovieDetail.movieImg4}" alt="">
                                             </div>
                                             <div class="swiper-slide">
-                                                <img src="${detail.추가이미지 4}" alt="">
+                                                <img src="${MovieDetail.movieImg5}" alt="">
                                             </div>
                                             <div class="swiper-slide">
-                                                <img src="${detail.추가이미지 5}" alt="">
+                                                <img src="${MovieDetail.movieImg6}" alt="">
                                             </div>
                                         </div>
 
@@ -58,35 +58,57 @@
                                     <div>
                                         <div>
                                             <!-- 이미지 205px 292px -->
-                                            <a href=""><img src="${detail.추가이미지 1}" alt="" class="movie-poster-img"></a>
+                                            <a href=""><img src="${MovieDetail.movieImg1}" alt=""
+                                                    class="movie-poster-img"></a>
                                         </div>
 
                                         <div class="detail-info-wrap">
-                                            <p><img src="${detail.메인이미지}"
-                                                    class="age-img-area"><span>${detail.영화제목}</span></p>
+
+
+                                            <p>
+                                                <c:choose>
+                                                    <c:when test="${fn:contains(MovieDetail.mgNo, '전체')}">
+                                                        <img src="${contextPath}/resources/images/age/aage.png"
+                                                            class="age-img-area">
+                                                    </c:when>
+                                                    <c:when test="${fn:contains(MovieDetail.mgNo, '12')}">
+                                                        <img src="${contextPath}/resources/images/age/12age.png"
+                                                            class="age-img-area">
+                                                    </c:when>
+                                                    <c:when test="${fn:contains(MovieDetail.mgNo, '15')}">
+                                                        <img src="${contextPath}/resources/images/age/15age.png"
+                                                            class="age-img-area">
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <img src="${contextPath}/resources/images/age/18age.png"
+                                                            class="age-img-area">
+                                                    </c:otherwise>
+                                                </c:choose>
+                                                <span>${MovieDetail.movieTitle}</span>
+                                            </p>
                                             <ul>
                                                 <li>관람객평점 <span>4.5</span>점</li>
                                                 <li>예매율 <span>50</span>%</li>
-                                                <li>누적관객수 <span>3</span>명</li>
+                                                <li>누적관객수 <span>${MovieDetail.movieWatched}</span>명</li>
                                             </ul>
 
                                             <ul class="movie-makers-wrap">
-                                                <li>장르<span>${detail.영화장르}</span> <span>|</span> <span>${detail.영화등록일}
-                                                    </span><span>|</span><span>${detail.영화상영시간}</span>분
+                                                <li>장르<span>${MovieDetail.genreName}</span> <span>|</span>
+                                                    <span>${MovieDetail.movieOpen}
+                                                    </span><span>|</span><span>${MovieDetail.movieRuntime}</span>분
                                                 </li>
-                                                <li>감독<span>${detail.감독이름}</span></li>
-                                                <li class="actorList">주연<ul>
-                                                        <li><a href="">${detail.배우}</a></li>
-                                                        <li><a href="">지훈지훈,</a></li>
-                                                        <li><a href="">지훈지훈,</a></li>
-                                                        <li><a href="">지훈지훈,</a></li>
-                                                        <li><a href="">지훈지훈,</a></li>
-                                                        <li><a href="">지훈지훈,</a></li>
-                                                        <li><a href="">지훈지훈,</a></li>
-                                                        <li><a href="">지훈지훈</a></li>
+                                                <li>감독<span>${MovieDetail.movieDirector}</span></li>
+                                                <li class="actorList">주연
+                                                    <ul>
+                                                        <c:forTokens var="name" items="${MovieDetail.movieCast}"
+                                                            delims=",">
+                                                            <li>
+                                                                <a href="">
+                                                                    <c:out value="${name}" />
+                                                                </a>
+                                                            </li>
+                                                        </c:forTokens>
                                                     </ul>
-
-
                                                 </li>
                                             </ul>
 
@@ -97,7 +119,8 @@
                                                 <div>
                                                     <ul>
                                                         <li>
-                                                            <p><i class="fa-regular fa-share-from-square"></i></p>
+                                                            <p><i class="fa-regular fa-share-from-square"></i>
+                                                            </p>
                                                         </li>
                                                         <li>
                                                             <p><i class="fa-regular fa-thumbs-up"></i></p>
@@ -119,9 +142,9 @@
                                         </div>
                                         <!-- 영화정보 -->
                                         <div class="movie-detail">
-                                            <p>${detail.영화제목}</p>
+                                            <p>${MovieDetail.movieTitle}</p>
                                             <div class="fold_wrap">
-                                                ${detail.줄거리}
+                                                <c:out value="${MovieDetail.movieContent}" escapeXml="false" />
                                             </div>
                                             <div>
                                                 <p class="more_btn">더보기</p>
@@ -138,19 +161,19 @@
                                                     <div class="swiper-wrapper">
 
                                                         <div class="swiper-slide">
-                                                            <img src="${detail.추가이미지 1}" alt="">
+                                                            <img src="${MovieDetail.movieImg2}" alt="">
                                                         </div>
                                                         <div class="swiper-slide">
-                                                            <img src="${detail.추가이미지 2}" alt="">
+                                                            <img src="${MovieDetail.movieImg3}" alt="">
                                                         </div>
                                                         <div class="swiper-slide">
-                                                            <img src="${detail.추가이미지 3}" alt="">
+                                                            <img src="${MovieDetail.movieImg4}" alt="">
                                                         </div>
                                                         <div class="swiper-slide">
-                                                            <img src="${detail.추가이미지 4}" alt="">
+                                                            <img src="${MovieDetail.movieImg5}" alt="">
                                                         </div>
                                                         <div class="swiper-slide">
-                                                            <img src="${detail.추가이미지 5}" alt="">
+                                                            <img src="${MovieDetail.movieImg6}" alt="">
                                                         </div>
                                                     </div>
 
@@ -163,19 +186,19 @@
                                                     <div class="swiper-wrapper">
 
                                                         <div class="swiper-slide">
-                                                            <img src="${detail.추가이미지 1}" alt="">
+                                                            <img src="${MovieDetail.movieImg2}" alt="">
                                                         </div>
                                                         <div class="swiper-slide">
-                                                            <img src="${detail.추가이미지 2}" alt="">
+                                                            <img src="${MovieDetail.movieImg3}" alt="">
                                                         </div>
                                                         <div class="swiper-slide">
-                                                            <img src="${detail.추가이미지 3}" alt="">
+                                                            <img src="${MovieDetail.movieImg4}" alt="">
                                                         </div>
                                                         <div class="swiper-slide">
-                                                            <img src="${detail.추가이미지 4}" alt="">
+                                                            <img src="${MovieDetail.movieImg5}" alt="">
                                                         </div>
                                                         <div class="swiper-slide">
-                                                            <img src="${detail.추가이미지 5}" alt="">
+                                                            <img src="${MovieDetail.movieImg6}" alt="">
                                                         </div>
                                                     </div>
 
@@ -191,75 +214,38 @@
                                                 <p>출연자</p>
                                                 <div>
                                                     <ul>
-                                                        <li>
-                                                            <div>
-                                                                <img src="../../images/detail_movie_img/criminalCity-actor/72346_107_1.jpg"
-                                                                    alt="">
-                                                            </div>
-                                                            <div><span>이상용</span><span>감독</span></div>
-                                                        </li>
-                                                        <li>
-                                                            <div>
-                                                                <img src="../../images/detail_movie_img/criminalCity-actor/73136_107_3.jpg"
-                                                                    alt="">
-                                                            </div>
-                                                            <div><span>마동석</span>
-                                                                <span>마석도</span>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div>
-                                                                <img src="../../images/detail_movie_img/criminalCity-actor/94130_107_2.jpg"
-                                                                    alt="">
-                                                            </div>
-                                                            <div><span>전석호</span><span>김양호</span></div>
-                                                        </li>
-                                                        <li>
-                                                            <div>
-                                                                <img src="../../images/detail_movie_img/criminalCity-actor/70819_107_4.jpg"
-                                                                    alt="">
-                                                            </div>
-                                                            <div><span>아오키 무네타카</span><span>리키</span></div>
-                                                        </li>
-                                                        <li>
-                                                            <div>
-                                                                <img src="../../images/detail_movie_img/criminalCity-actor/75521_107_5.jpg"
-                                                                    alt="">
-                                                            </div>
-                                                            <div><span>고규필</span><span>초롱이</span></div>
-                                                        </li>
-                                                        <li>
-                                                            <div>
-                                                                <img src="../../images/detail_movie_img/criminalCity-actor/102522_107_6.jpg"
-                                                                    alt="">
-                                                            </div>
-                                                            <div><span>이지훈</span><span>양종수</span></div>
-                                                        </li>
-                                                        <li>
-                                                            <div>
-                                                                <img src="../../images/detail_movie_img/criminalCity-actor/28736_107_4.jpg"
-                                                                    alt="">
-                                                            </div>
-                                                            <div><span>이준혁</span><span>주성철</span></div>
-                                                        </li>
-                                                        <li>
-                                                            <div>
-                                                                <img src="../../images/detail_movie_img/criminalCity-actor/683_107_2.jpg"
-                                                                    alt="">
-                                                            </div>
-                                                            <div><span>이범수</span><span>장태수</span></div>
-                                                        </li>
-                                                        <li>
-                                                            <div>
-                                                                <img src="../../images/detail_movie_img/criminalCity-actor/84891_107_5.jpg"
-                                                                    alt="">
-                                                            </div>
-                                                            <div><span>김민재</span><span>김민재</span></div>
-                                                        </li>
+                                                        <c:forTokens var="directorName"
+                                                            items="${MovieDetail.movieDirector}" delims=","
+                                                            varStatus="status">
+                                                            <li>
+                                                                <div>
+                                                                    <img src="${contextPath}/resources/images/profile/bono.jpg"
+                                                                        alt="">
+                                                                </div>
+                                                                <div>
+                                                                    <span>
+                                                                        <c:out value="${directorName}" />
+                                                                    </span>
+                                                                    <span>감독</span>
+                                                                </div>
+                                                            </li>
+                                                        </c:forTokens>
 
-
-
-
+                                                        <c:forTokens var="actorName" items="${MovieDetail.movieCast}"
+                                                            delims="," varStatus="status">
+                                                            <li>
+                                                                <div>
+                                                                    <img src="${contextPath}/resources/images/profile/bono.jpg"
+                                                                        alt="">
+                                                                </div>
+                                                                <div>
+                                                                    <span>
+                                                                        <c:out value="${actorName}" />
+                                                                    </span>
+                                                                    <span>배우 ${status.count}</span>
+                                                                </div>
+                                                            </li>
+                                                        </c:forTokens>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -409,7 +395,9 @@
 
                                     </div>
                                     </section>
-
+                                    <div id="btnContainer">
+                                        <input id="returnBtn" type="button" onclick="goBack()" value="목록으로">
+                                    </div>
                             </main>
 
                         </div>
@@ -418,12 +406,6 @@
 
                         </div>
 
-                        <div id="myModal" class="modal">
-                            <div class="modal-content">
-                                <div class="close-button">&times;</div>
-                                <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
-                            </div>
-                        </div>
                         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
                             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
                             crossorigin="anonymous"></script>

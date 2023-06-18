@@ -1,21 +1,26 @@
 /* aSide 고정 사이드 바 jsp의 css */
-.aside {
-    width: 18%;
-}
 
-.container {
-    width: 80%;
-    margin-bottom: 70px;
-}
-
+/* side and conatiner box */
 .asideAconatiner{
     width: 100%;
+    min-height: 550px;
     display: flex;
     justify-content: space-between !important;
     list-style-type: none;
     color: #FCFCFC;
     white-space: nowrap;
 }
+
+/* .aside {
+    width: 18%;
+    height: 700px;
+} */
+
+.container {
+    width: 80%;
+    margin-bottom: 70px;
+}
+
 .aside-ul-wrap {
     width: 100%;
 
@@ -62,10 +67,10 @@
 }
 
 /* 공통 부분 // 페이지 이름 및 닉네임 */
-
+/* 
 .notice-wraaper>div:nth-child(2) {
     width: 82%;
-}
+} */
 
 h2 {
     font-size: 1.8rem;
