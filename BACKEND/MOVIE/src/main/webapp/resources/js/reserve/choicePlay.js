@@ -1,3 +1,21 @@
+let areaIndex = 0;
+let prevAreaIndex = -1;
+let cinemaIndex = -1;
+
+let areaCinemaList = [];
+
+$.ajax({
+    url: "cinemaList",
+    data: {"areaIndex": areaIndex},
+    type: "GET",
+    success: function(cinemaList) {
+      areaCinemaList = cinemaList;
+    },
+    error: function () {
+        console.log("에러 발생");
+    }
+});
+
 // 날짜 슬라이더
 
 var swiper = new Swiper(".mySwiper", {
@@ -49,24 +67,61 @@ $('.swiper-slide.date').on("click", function(){
 
 // 지역 선택
 
-let region = $('#region_list > li > a');
-let regionName;
+let area = $('#area_list > li');
+let areaName;
 
-region.on("click", function(){
-  regionName = this.text.substr(0, 2);
-  $('.cinema_list').css('display', 'none');
-  $(`.cinema_list[data-region=${regionName}]`).css('display', 'block');
+area.on("click", function(){
+  $(area).children().removeClass('clicked');
+  $(this).children().addClass('clicked');
+  areaIndex = $(this).index();
+  $.ajax({
+    url: "cinemaList",
+    data: {"areaIndex": areaIndex},
+    type: "GET",
+    success: function(cinemaList) {
+      areaCinemaList = cinemaList;
+      $("#cinema_list").empty();
+      for(let cinema of cinemaList) {
+        let cinemaLi = document.createElement("li");
+        let cinemaItem = document.createElement("a");
+        $(cinemaItem).html(cinema.cinemaName);
+        $(cinemaItem).attr("href", "#none");
+        $(cinemaItem).on("click", function(e) {
+          clickCinema(e);
+        });
+        $(cinemaLi).append(cinemaItem);
+    	$("#cinema_list").append(cinemaLi);
+      }
+      
+      if(prevAreaIndex == areaIndex) {
+    	$('#cinema_list').children().eq(cinemaIndex).children().click();
+  	  }
+    },
+    error: function () {
+      console.log("에러 발생");
+    }
+  });
+  
+  
 });
 
 
 // 극장 선택 
+// 사용자가 극장을 선택하여 인덱스로 접근하는데, 관리자가 극장을 추가하면...
+// 분명 이름 순으로 몇 번째 극장을 선택했는데, 그새 테이블이 변경되면...??
+// 이러한 문제는 스프링 격리성을 고안하면 됩니다. MVCC
+// 당장 우리 프로젝트에서 적용하기 어려우므로, 추후 학습하는 게 좋을 것 같습니다.
 
-let cinema = $('.cinema_list > li > a');
-let cinemaName = "강남"; // 디폴트 값은 본사
+function clickCinema(e) {
+  cinemaIndex = $(e.target).parent().index();
+  prevAreaIndex = areaIndex;
+  $("#cinema_select").html(areaCinemaList[cinemaIndex].cinemaName);
+  $('#cinema_list > li > a').removeClass("clicked");
+  $(e.target).addClass("clicked");
+}
 
-cinema.on("click", function(){
-  cinemaName = this.text;
-  $('#cinema_select').html(cinemaName);
+$("#cinema_list > li > a").on("click", function(e){
+  clickCinema(e);
 });
 
 
