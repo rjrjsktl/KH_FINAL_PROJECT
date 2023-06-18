@@ -5,18 +5,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.items.model.vo.Store;
+import com.kh.kgv.items.model.vo.TimeTable;
 import com.kh.kgv.management.model.dao.ManagerDAO;
 import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Pagination;
+import com.kh.kgv.management.model.vo.WeeklyEnter;
 
 @Service
 public class ManagerServiceImpl implements ManagerService {
@@ -42,6 +46,12 @@ public class ManagerServiceImpl implements ManagerService {
 	public List<Notice> getAllNotice() {
 		List<Notice> getNotice = dao.getAllNotice();
 		return getNotice;
+	}
+	
+	// 관리자 메인 일일 접속자 수 조회
+	@Override
+	public List<DailyEnter> getWeeklyEnter(WeeklyEnter we) {
+		return dao.getWeeklyEnter(we);
 	}
 
 	// 회원 목록 조회
@@ -79,7 +89,6 @@ public class ManagerServiceImpl implements ManagerService {
 
 	// 영화 등록
 	@Override
-	@Transactional(rollbackFor = {Exception.class}) // 모든 종류의 예외 발생 시 롤백
 	public int MovieAdd(Movie inputMovie) {
 
 		System.out.println("==============영화등록 serviceimpl");
@@ -143,7 +152,7 @@ public class ManagerServiceImpl implements ManagerService {
 	    	for (Movie movie : movielist) {
 	    		Movie cleanedMovie = new Movie();
 	    		cleanedMovie.setMgNo(Util.removeQuotes(movie.getMgNo()));
-	    		cleanedMovie.setGenreCode(Util.removeQuotes(movie.getGenreCode()));
+	    		cleanedMovie.setGenreName(Util.removeQuotes(movie.getGenreName()));
 	    		cleanedMovie.setMovieNo(movie.getMovieNo());
 	    		cleanedMovie.setMovieRuntime(movie.getMovieRuntime());
 	    		cleanedMovie.setMovieTitle(movie.getMovieTitle());
@@ -174,7 +183,7 @@ public class ManagerServiceImpl implements ManagerService {
 	 * 영화 수정 페이지 이동
 	 */
 	@Override
-	public Map<String, Object> getEditMovieList(Movie movie) {
+	public Movie getEditMovieList(Movie movie) {
 		return dao.getEditMovieList(movie);
 	}
 	
@@ -182,7 +191,6 @@ public class ManagerServiceImpl implements ManagerService {
 	 * 영화 수정 등록
 	 */
 	@Override
-	@Transactional(rollbackFor = {Exception.class}) // 모든 종류의 예외 발생 시 롤백
 	public int MovieEdit(Movie updateMovie) {
 
 		System.out.println("==============영화등록 serviceimpl");
@@ -219,7 +227,6 @@ public class ManagerServiceImpl implements ManagerService {
 
 	// 이벤트 수정(업데이트)
 	@Override
-	@Transactional(rollbackFor = {Exception.class}) // 모든 종류의 예외 발생 시 롤백
 	public int editEvent(Event event) {
 		return dao.editEvent(event);
 	}
@@ -232,7 +239,6 @@ public class ManagerServiceImpl implements ManagerService {
 
 	// 공지사항 등록
 	@Override
-	@Transactional(rollbackFor = {Exception.class}) // 모든 종류의 예외 발생 시 롤백
 	public int addNotice(Notice notice) {
 		return dao.addNotice(notice);
 	}
@@ -265,7 +271,6 @@ public class ManagerServiceImpl implements ManagerService {
 
 	// 공지사항 수정(업데이트)
 	@Override
-	@Transactional(rollbackFor = {Exception.class}) // 모든 종류의 예외 발생 시 롤백
 	public int editNotice(Notice notice) {
 		return dao.editNotice(notice);
 	}
@@ -296,6 +301,12 @@ public class ManagerServiceImpl implements ManagerService {
 	
 	}
 	
+	//	 영화 상영 상태 업데이트
+	@Override
+	public int updateMovieST(Movie movie) {
+		return dao.updateMovieST(movie);
+	}
+	
 	// 공지사항 리스트 갯수 반환
 	@Override
 	public int getNoticeListCount() {
@@ -321,6 +332,58 @@ public class ManagerServiceImpl implements ManagerService {
 		return userNoticeList;
 	}
 
+	
+	// 상영 중인 영화, 상영 시간표 
+	public Map<String, Object> getPlayMap() {
+		List<Movie> playingMovieList = dao.getPlayingMovieList();
+		List<TimeTable> timeTableList = dao.getTimeTableList();
+		
+		Map<String, Object> playMap = new HashMap<String, Object>();
+		playMap.put("playingMovieList", playingMovieList);
+		playMap.put("timeTableList", timeTableList);
+		return playMap;
+	}
+	
+
+	// 스토어 
+	@Override
+	public Map<String, Object> getStoreMap(int cp) {
+		// 영화관 수 조회
+				int storeCount = dao.getStoreCount();
+
+				// 조회한 영화관 수를 pagination 에 담기
+				Pagination pagination = new Pagination(cp, storeCount);
+
+				// 영화관 리스트 조회
+				List<Store> storeList = dao.getStoreList(pagination);
+				
+				Map<String, Object> storeMap = new HashMap<String, Object>();
+				storeMap.put("pagination", pagination);
+				storeMap.put("storeList", storeList);
+				
+				return storeMap;
+	}
+
+	// 메인 -> 이벤트 이동 시 이벤트 
+	@Override
+	public Map<String, Object> selectEventList() {
+		
+		List<Event>EventList = dao.selectEventList();
+		
+		Map<String, Object>getEvnetList = new HashMap<String, Object>();
+		getEvnetList.put("getEvnetList", EventList);
+		
+		
+		return getEvnetList;
+	}
+
+	// 메인 -> 이벤트 상세 내용
+	@Override
+	public Event getEventList(Event event) {
+		return dao.getEventList(event);
+
+
+	}
 	
 
 	

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -11,6 +12,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.text.StringEscapeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +33,10 @@ import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.service.ManagerService;
+import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
+import com.kh.kgv.management.model.vo.WeeklyEnter;
 import com.kh.kgv.mypage.controller.MyPageController;
 
 @Controller
@@ -58,7 +62,7 @@ public class ManagerController {
 		// 관리자 메인 공지사항 목록 조회
 		List<Notice>getNotice = null;
 		getNotice = service.getAllNotice();
-		 
+		
 		model.addAttribute("getUser", getUser);
 		model.addAttribute("getNotice", getNotice);
 		
@@ -87,6 +91,33 @@ public class ManagerController {
 		return "manager/manager_member_list";
 	}
 	
+	// ===================================================
+	// ===================================================
+	
+	// 관리자 메인 일일 접속자 수 조회
+	@ResponseBody
+	@PostMapping("/getDailyEnter")
+	public List<DailyEnter> getDailyEnter(
+			@RequestParam("today") String today
+			, @RequestParam("lastWeek") String lastWeek
+			, WeeklyEnter we
+			) {
+		
+		System.out.println(today + " today  ========================");
+		System.out.println(lastWeek + " today  ========================");
+		
+		we.setToday(today);
+		we.setLastWeek(lastWeek);
+		
+				List<DailyEnter>dailyEnter = null;
+				dailyEnter = service.getWeeklyEnter(we);
+				
+				System.out.println(dailyEnter + " ==============================================================================");
+				
+		return dailyEnter;
+	}
+	
+		
 	// ===================================================
 	// ===================================================
 	
@@ -231,6 +262,36 @@ public class ManagerController {
 	
 	// ===================================================
 	// ===================================================
+	
+	// 영화 상영 상태 업데이트
+		@ResponseBody
+		@PostMapping("/Movie_ST")
+			public int  changeMovieSt(
+				@RequestParam("MST") String mst
+				, @RequestParam("movieNo") int  movieNo
+				, Movie movie
+					) {
+			System.out.println("AJAX로 가지고 온 ST의 값은 : " + mst);
+			System.out.println("AJAX로 가지고 온 Movie의 값은 : " + movieNo);
+			
+			movie.setMovieSt(mst);
+			movie.setMovieNo(movieNo);
+			
+			int result = service.updateMovieST(movie);
+			
+			if(result > 0) {
+				System.out.println("영화 상영 상태 변경 완료");
+				 result = 1;
+				
+			} else {
+				System.out.println("영화 상영 상태 변경 실패");
+				result = 0;
+			}
+			return result;
+		}
+		
+		// ===================================================
+		// ===================================================
 		
 	// list에서 수정버튼 눌렀을 경우 등록페이지로 넘어가면서 
 	// movieNo에 따른 정보를 가져와서 보여줘야함
@@ -252,7 +313,14 @@ public class ManagerController {
 		// 요기부터 수정페이지에 movieNo 보냄
 		movie.setMovieNo(movieNo);
 		
-		Map<String, Object>editMovie = service.getEditMovieList(movie);
+		Movie editMovie = service.getEditMovieList(movie);
+		String unescapedContent = StringEscapeUtils.unescapeHtml4(editMovie.getMgNo());
+		unescapedContent = unescapedContent.replaceAll("\\[|\\]", "").replaceAll("\"", "");
+		editMovie.setMgNo(unescapedContent);
+		
+		String genreChange = StringEscapeUtils.unescapeHtml4(editMovie.getGenreName());
+		genreChange = genreChange.replaceAll("\\[|\\]", "").replaceAll("\"", "");
+		editMovie.setGenreName(genreChange);
 		
 		logger.info("editMovie ::::: " + editMovie);
 		
@@ -332,7 +400,12 @@ public class ManagerController {
 	
 	// 관리자_상영시간 등록 이동
 	@GetMapping("/play_add")
-	public String movePlayAdd() {
+	public String movePlayAdd(Model model) {
+		
+		Map<String, Object> playMap = null;
+		playMap = service.getPlayMap();
+		model.addAttribute("playMap", playMap);
+		
 		System.out.println("관리자_상영시간 등록 이동");
 		return "manager/manager_movie_play_add";
 	}
@@ -711,7 +784,14 @@ public class ManagerController {
 				
 				//관리자_스토어 물품 목록
 				@GetMapping("/store_list")
-				public String moveStoreList() {
+				public String moveStoreList(Model model,
+						@RequestParam(value = "cp", required = false, defaultValue="1" ) int cp) {
+					
+					Map<String, Object> storeMap = null;
+					storeMap = service.getStoreMap(cp);
+					model.addAttribute("storeMap", storeMap);
+					
+					
 					System.out.println("관리자_스토어 물품 목록");
 					return "manager/manager_store_list";
 				}
@@ -739,10 +819,10 @@ public class ManagerController {
 				// ===================================================
 				// ===================================================
 					
-						// 테스트 이미지 업로드1
-				@PostMapping("/manager_testPage/uploadImageFile")
+						//영화 등록 이미지 업로드
+				@PostMapping("/movie_add/uploadImageFile")
 				@ResponseBody
-				public String testImageFile(@RequestParam("file") MultipartFile[] multipartFiles, HttpServletRequest request) {
+				public String movieUploadImageFile(@RequestParam("file") MultipartFile[] multipartFiles, HttpServletRequest request) {
 				    JsonArray jsonArray = new JsonArray(); 
 
 				    String webPath = "/resources/images/testFolder/";
@@ -772,6 +852,45 @@ public class ManagerController {
 				    String jsonResult = jsonArray.toString();
 				    System.out.println("이미지: " + jsonResult);
 				    return jsonResult;
+				}
+				
+				// ===================================================
+				// ===================================================
+
+				
+				//영화 수정 이미지 업로드
+				@PostMapping("/movie_list/edit/{movieNo}/movie_edit/uploadImageFile")
+				@ResponseBody
+				public String movieUpdateImageFile(@RequestParam("file") MultipartFile[] multipartFiles, HttpServletRequest request) {
+					JsonArray jsonArray = new JsonArray(); 
+					
+					String webPath = "/resources/images/testFolder/";
+					String fileRoot = request.getServletContext().getRealPath(webPath);
+					
+					for (MultipartFile multipartFile : multipartFiles) {
+						JsonObject jsonObject = new JsonObject();
+						
+						String originalFileName = multipartFile.getOriginalFilename();
+						String savedFileName = Util.fileRename(originalFileName);
+						
+						File targetFile = new File(fileRoot + savedFileName);
+						try {
+							InputStream fileStream = multipartFile.getInputStream();
+							FileUtils.copyInputStreamToFile(fileStream, targetFile);
+							jsonObject.addProperty("", request.getContextPath() + webPath + savedFileName);
+							
+						} catch (IOException e) {
+							FileUtils.deleteQuietly(targetFile);
+							jsonObject.addProperty("responseCode", "error");
+							e.printStackTrace();
+						}
+						
+						jsonArray.add(jsonObject);
+					}
+					
+					String jsonResult = jsonArray.toString();
+					System.out.println("이미지: " + jsonResult);
+					return jsonResult;
 				}
 				
 				// ===================================================

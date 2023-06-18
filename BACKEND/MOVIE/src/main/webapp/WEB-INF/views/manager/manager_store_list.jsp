@@ -62,35 +62,26 @@
 														<th>상품 이미지</th>
 														<th>상품 설명</th>
 														<th>상품 제한개수</th>
+														<th>수정</th>
+														<th>삭제</th>
 													</tr>
-													<c:forEach var="getNotice" items="${getNoticeList['noticeLists']}">
+													<c:forEach var="store" items="${storeMap['storeList']}">
 														<tr>
-															<td>${getNotice['noticeNo']}</td>
-															<td>${getNotice['noticeTitle']}</td>
-															<td>${getNotice['noticeRegDate']}</td>
-															<td>${getNotice['noticeUploader']}</td>
-															<c:choose>
-																<c:when test="${getNotice['noticeStatus'] == 'Y'}">
-																	<td><select class="Is_On"
-																			data-id="${getNotice['noticeNo']}">
-																			<option value="N">N</option>
-																			<option value="Y" selected>Y</option>
-																		</select></td>
-																</c:when>
-																<c:otherwise>
-																	<td><select class="Is_On"
-																			data-id="${getNotice['noticeNo']}">
-																			<option value="N" selected>N</option>
-																			<option value="Y">Y</option>
-																		</select></td>
-																</c:otherwise>
-															</c:choose>
-															<td><a href="${contextPath}/manager/notice_list/edit/${getNotice['noticeNo']}"
+															<td>${store['storeNo']}</td>
+															<td>${store['storeCategory']}</td>
+															<td>${store['storeName']}</td>
+															<td>${store['storePrice']}</td>
+															<td>${store['storeImage']}</td>
+															<td>${store['storeDesc']}</td>
+															<td>${store['storeStock']}</td>
+
+															<td><a href="${contextPath}/manager/event_list/edit/${getEvent['eventNo']}"
 																	class="editEvent"><i
 																		class="fa-sharp fa-solid fa-pen-to-square"></i></a>
 															</td>
 															<td><a class="deleteEvent"><i
 																		class="fa-sharp fa-solid fa-xmark"></i></a></td>
+
 														</tr>
 													</c:forEach>
 												</table>

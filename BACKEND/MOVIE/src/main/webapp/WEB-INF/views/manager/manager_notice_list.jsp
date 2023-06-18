@@ -66,7 +66,8 @@
 													<c:forEach var="getNotice" items="${getNoticeList['noticeLists']}">
 														<tr>
 															<td>${getNotice['noticeNo']}</td>
-															<td><a
+															<td>
+																<a
 																	href="${contextPath}/helpDesk/notice_detail/${getNotice['noticeNo']}">${getNotice['noticeTitle']}</a>
 															</td>
 															<td>${getNotice['noticeRegDate']}</td>

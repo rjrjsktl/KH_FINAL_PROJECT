@@ -36,4 +36,20 @@
         	)
 	</insert>
 	
+	
+ 
+    <!-- 스토어 수 조회 -->
+    <select id="getStoreCount" resultType="_int">
+        SELECT COUNT(*) FROM STORE
+    </select>
+    
+     <!-- 영화관 리스트 조회 -->
+    
+    <select id="getStoreList" resultMap="store_rm">
+        SELECT * FROM STORE
+        ORDER BY STORE_NO ASC
+    </select>
+    
+   
+	
 </mapper>

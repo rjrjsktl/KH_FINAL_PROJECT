@@ -18,7 +18,7 @@ $(document).ready(function () {
         var data = new FormData();
         data.append("file", file);
         $.ajax({
-            url: 'manager_testPage/uploadImageFile',
+            url: 'movie_add/uploadImageFile',
             type: "POST",
             data: data,
             cache: false,
@@ -57,7 +57,7 @@ $(document).ready(function () {
         var data = new FormData();
         data.append("file", file);
         $.ajax({
-            url: 'manager_testPage/uploadImageFile',
+            url: 'movie_add/uploadImageFile',
             type: "POST",
             data: data,
             cache: false,
@@ -93,7 +93,7 @@ $(document).ready(function () {
         var data = new FormData();
         data.append("file", file);
         $.ajax({
-            url: 'manager_testPage/uploadImageFile',
+            url: 'movie_add/uploadImageFile',
             type: "POST",
             data: data,
             cache: false,
@@ -129,7 +129,7 @@ $(document).ready(function () {
         var data = new FormData();
         data.append("file", file);
         $.ajax({
-            url: 'manager_testPage/uploadImageFile',
+            url: 'movie_add/uploadImageFile',
             type: "POST",
             data: data,
             cache: false,
@@ -165,7 +165,7 @@ $(document).ready(function () {
         var data = new FormData();
         data.append("file", file);
         $.ajax({
-            url: 'manager_testPage/uploadImageFile',
+            url: 'movie_add/uploadImageFile',
             type: "POST",
             data: data,
             cache: false,
@@ -201,7 +201,7 @@ $(document).ready(function () {
         var data = new FormData();
         data.append("file", file);
         $.ajax({
-            url: 'manager_testPage/uploadImageFile',
+            url: 'movie_add/uploadImageFile',
             type: "POST",
             data: data,
             cache: false,
@@ -463,37 +463,37 @@ $(document).ready(function () {
             e.preventDefault();
             return false;
         };
-        if (imageUrl1 = "") {
+        if (!$('.movie_image1').val()) {
             alert('메인 이미지를 등록하지 않았습니다.');
             imageUrl1.focus();
             e.preventDefault();
             return false;
         };
-        if (imageUrl2 = "") {
+        if (imageUrl2 == "") {
             alert('추가 이미지1 을 등록하지 않았습니다.');
             imageUrl2.focus();
             e.preventDefault();
             return false;
         };
-        if (imageUrl3 = "") {
+        if (imageUrl3 == "") {
             alert('추가 이미지2 를 등록하지 않았습니다.');
             imageUrl2.focus();
             e.preventDefault();
             return false;
         };
-        if (imageUrl4 = "") {
+        if (imageUrl4 == "") {
             alert('추가 이미지3 을 등록하지 않았습니다.');
             imageUrl2.focus();
             e.preventDefault();
             return false;
         };
-        if (imageUrl5 = "") {
+        if (imageUrl5 == "") {
             alert('추가 이미지4 를 등록하지 않았습니다.');
             imageUrl2.focus();
             e.preventDefault();
             return false;
         };
-        if (imageUrl6 = "") {
+        if (imageUrl6 == "") {
             alert('추가 이미지5 를 등록하지 않았습니다.');
             imageUrl2.focus();
             e.preventDefault();
@@ -535,7 +535,7 @@ $(document).ready(function () {
                 "movieImg5": imageUrl5,
                 "movieImg6": imageUrl6,
                 "mgNo": JSON.stringify(level_Arr),
-                "genreCode": JSON.stringify(genre_Arr),
+                "genreName": JSON.stringify(genre_Arr),
                 "movieContent": $('.movie_story').val(),
                 "movieUploader": $("input[name=movieUploader]").val()
             },

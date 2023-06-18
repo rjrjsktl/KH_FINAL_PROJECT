@@ -20,4 +20,5 @@ public class Event {
 	private String eventEnd;
 	private String eventStatus;
 	private String eventReg;
+	private String eventImg;
 }

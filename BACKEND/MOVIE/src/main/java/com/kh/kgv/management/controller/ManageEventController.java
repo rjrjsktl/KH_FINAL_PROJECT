@@ -41,12 +41,14 @@ public class ManageEventController {
 			@RequestParam("title") String title
 			, @RequestParam("start") String start
 			, @RequestParam("end") String end
-			, @RequestParam("content") String content) {
+			, @RequestParam("content") String content
+			, @RequestParam("movieImg1") String movieImg) {
 		Event event = new Event();
 		event.setEventTitle(title);
 		event.setEventStart(start);
 		event.setEventEnd(end);
 		event.setEventContent(content);
+		event.setEventImg(movieImg);
 		
 		int result = service.addEvent(event);
 		
@@ -87,6 +89,42 @@ public class ManageEventController {
 		String a = jsonObject.toString();
 		System.out.println("================================================= 이미지 는?? : : " + a);
 		return a;
+		
+			}
+				//이벤트 보조 이미지 업로드
+		@PostMapping("uploadImage")
+		@ResponseBody
+		public String movieUploadImageFile(@RequestParam("file") MultipartFile[] multipartFiles, HttpServletRequest request) {
+		    JsonArray jsonArray = new JsonArray(); 
 
-	}
+		    String webPath = "/resources/images/eventList/";
+		    String fileRoot = request.getServletContext().getRealPath(webPath);
+
+		    for (MultipartFile multipartFile : multipartFiles) {
+		        JsonObject jsonObject = new JsonObject();
+
+		        String originalFileName = multipartFile.getOriginalFilename();
+		        String savedFileName = Util.fileRename(originalFileName);
+
+		        File targetFile = new File(fileRoot + savedFileName);
+		        try {
+		            InputStream fileStream = multipartFile.getInputStream();
+		            FileUtils.copyInputStreamToFile(fileStream, targetFile);
+		            jsonObject.addProperty("", request.getContextPath() + webPath + savedFileName);
+
+		        } catch (IOException e) {
+		            FileUtils.deleteQuietly(targetFile);
+		            jsonObject.addProperty("responseCode", "error");
+		            e.printStackTrace();
+		        }
+
+		        jsonArray.add(jsonObject);
+		    }
+
+		    String jsonResult = jsonArray.toString();
+		    System.out.println("이미지: " + jsonResult);
+		    return jsonResult;
+		}
+
+
 }

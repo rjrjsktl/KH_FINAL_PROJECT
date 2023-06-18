@@ -10,20 +10,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>전체영화</title>
-    
+
     <link rel="stylesheet" href="${contextPath}/resources/css/store/storeMain.css">
-    
-    <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css"> 
+
+    <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
     <div id="wrap">
-        
-          <!-- header -->
-                <jsp:include page="/WEB-INF/views/common/header.jsp" />
-        
+
+        <!-- header -->
+        <jsp:include page="/WEB-INF/views/common/header.jsp" />
+
         <main>
             <div><span>스토어</span></div>
 
@@ -49,199 +49,55 @@
                 <h3 class="store_h3 store_drink">음료</h3>
                 <ul class="store_ul store_drink">
 
-                  
 
 
 
-                    <li class="">
-                        <a href="javascript:fn_storeDetail('1765');" title="KGV">
 
-                            <div class="img">
-                                <img src="${contextPath}/resources/images/store_img/cola.jpg">
-                            </div>
+                    <c:forEach var="store" items="${storeMap['storeList']}">
+                        <c:choose>
+                            <c:when test="${store.storeCategory eq '음료'}">
+                                <li class="">
+                                    <a href="" title="${store.storeName}">
+                                        <div class="img">
+                                            <c:choose>
+                                                <c:when test="${store.storeName eq '콜라'}">
+                                                    <img src="${store['storeImage']}">
+                                                </c:when>
 
-                            <div class="info">
-                                <div class="tit">
+                                                <c:when test="${store.storeName eq '사이다'}">
+                                                    <img src="${store['storeImage']}">
+                                                </c:when>
 
-                                    <h4>콜라 M</h4>
-                                    <p>콜라M</p>
+                                                <c:when test="${store.storeName eq '콜라 M'}">
+                                                    <img src="${store['storeImage']}">
+                                                </c:when>
 
-                                </div>
+                                            </c:choose>
+                                        </div>
+                                        <div class="info">
+                                            <div class="tit">
+                                                <h4>${store.storeName}</h4>
+                                                <p>${store.storeDesc}</p>
+                                            </div>
+                                            <div class="price">
+                                                <p class="sale">
+                                                    <em>${store.storePrice}</em>
+                                                    <span>원</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </c:when>
+                            <c:otherwise>
+                                <!-- 다른 카테고리에 대한 처리를 필요에 따라 추가하세요 -->
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
 
-                                <div class="price">
-
-                                    <p class="sale">
-                                        <em>5000</em>
-                                        <span>원</span>
-                                    </p>
-
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="">
-                        <a href="javascript:fn_storeDetail('1765');" title="KGV">
 
 
-                            <div class="img">
-                                <img src="${contextPath}/resources/images/store_img/cola.jpg">
-                            </div>
 
-                            <div class="info">
-                                <div class="tit">
-
-                                    <h4>콜라 M</h4>
-                                    <p>콜라M</p>
-
-                                </div>
-
-                                <div class="price">
-
-                                    <p class="sale">
-                                        <em>5000</em>
-                                        <span>원</span>
-                                    </p>
-
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="">
-                        <a href="javascript:fn_storeDetail('1765');" title="KGV">
-
-                            <div class="img">
-                                <img src="${contextPath}/resources/images/store_img/cola.jpg">
-                            </div>
-
-                            <div class="info">
-                                <div class="tit">
-
-                                    <h4>콜라 M</h4>
-                                    <p>콜라M</p>
-
-                                </div>
-
-                                <div class="price">
-
-                                    <p class="sale">
-                                        <em>5000</em>
-                                        <span>원</span>
-                                    </p>
-
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="">
-                        <a href="javascript:fn_storeDetail('1765');" title="KGV">
-
-                            <div class="img">
-                                <img src="${contextPath}/resources/images/store_img/cola.jpg">
-                            </div>
-
-                            <div class="info">
-                                <div class="tit">
-
-                                    <h4>콜라 M</h4>
-                                    <p>콜라M</p>
-
-                                </div>
-
-                                <div class="price">
-
-                                    <p class="sale">
-                                        <em>5000</em>
-                                        <span>원</span>
-                                    </p>
-
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="">
-                        <a href="javascript:fn_storeDetail('1765');" title="KGV">
-
-                            <div class="img">
-                                <img src="${contextPath}/resources/images/store_img/cola.jpg">
-                            </div>
-
-                            <div class="info">
-                                <div class="tit">
-
-                                    <h4>콜라 M</h4>
-                                    <p>콜라M</p>
-
-                                </div>
-
-                                <div class="price">
-
-                                    <p class="sale">
-                                        <em>5000</em>
-                                        <span>원</span>
-                                    </p>
-
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="">
-                        <a href="javascript:fn_storeDetail('1765');" title="KGV">
-
-                            <div class="img">
-                                <img src="${contextPath}/resources/images/store_img/cola.jpg">
-                            </div>
-
-                            <div class="info">
-                                <div class="tit">
-
-                                    <h4>콜라 M</h4>
-                                    <p>콜라M</p>
-
-                                </div>
-
-                                <div class="price">
-
-                                    <p class="sale">
-                                        <em>5000</em>
-                                        <span>원</span>
-                                    </p>
-
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="">
-                        <a href="javascript:fn_storeDetail('1765');" title="KGV">
-
-                            <div class="img">
-                                <img src="${contextPath}/resources/images/store_img/cola.jpg">
-                            </div>
-
-                            <div class="info">
-                                <div class="tit">
-
-                                    <h4>콜라 M</h4>
-                                    <p>콜라M</p>
-
-                                </div>
-
-                                <div class="price">
-
-                                    <p class="sale">
-                                        <em>5000</em>
-                                        <span>원</span>
-                                    </p>
-
-                                </div>
-                            </div>
-                        </a>
-                    </li>
 
                     <li class="">
                         <a href="javascript:fn_storeDetail('1765');" title="KGV">
@@ -274,6 +130,48 @@
 
                 <h3 class="store_h3 store_popcorn">팝콘</h3>
                 <ul class="store_ul store_popcorn">
+
+
+
+
+                    <c:forEach var="store" items="${storeMap['storeList']}">
+                        <c:choose>
+                            <c:when test="${store.storeCategory eq '팝콘'}">
+                                <li class="">
+                                    <a href="" title="${store.storeName}">
+                                        <div class="img">
+                                            <c:choose>
+                                                <c:when test="${store.storeName eq '오리지널팝콘 L'}">
+                                                    <img src="${store['storeImage']}">
+                                                </c:when>
+
+
+
+                                            </c:choose>
+                                        </div>
+                                        <div class="info">
+                                            <div class="tit">
+                                                <h4>${store.storeName}</h4>
+                                                <p>${store.storeDesc}</p>
+                                            </div>
+                                            <div class="price">
+                                                <p class="sale">
+                                                    <em>${store.storePrice}</em>
+                                                    <span>원</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </c:when>
+                            <c:otherwise>
+                                <!-- 다른 카테고리에 대한 처리를 필요에 따라 추가하세요 -->
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+
+
+
 
 
 
@@ -312,6 +210,43 @@
 
 
 
+                    <c:forEach var="store" items="${storeMap['storeList']}">
+                        <c:choose>
+                            <c:when test="${store.storeCategory eq '스낵'}">
+                                <li class="">
+                                    <a href="" title="${store.storeName}">
+                                        <div class="img">
+                                            <c:choose>
+                                                <c:when test="${store.storeName eq '칠리치즈핫도그'}">
+                                                    <img src="${store['storeImage']}">
+                                                </c:when>
+
+
+
+                                            </c:choose>
+                                        </div>
+                                        <div class="info">
+                                            <div class="tit">
+                                                <h4>${store.storeName}</h4>
+                                                <p>${store.storeDesc}</p>
+                                            </div>
+                                            <div class="price">
+                                                <p class="sale">
+                                                    <em>${store.storePrice}</em>
+                                                    <span>원</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </c:when>
+                            <c:otherwise>
+                                <!-- 다른 카테고리에 대한 처리를 필요에 따라 추가하세요 -->
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+
+
 
                     <li class="">
                         <a href="javascript:fn_storeDetail('1765');" title="KGV">
@@ -348,6 +283,45 @@
 
 
 
+                    <c:forEach var="store" items="${storeMap['storeList']}">
+                        <c:choose>
+                            <c:when test="${store.storeCategory eq '티켓'}">
+                                <li class="">
+                                    <a href="" title="${store.storeName}">
+                                        <div class="img">
+                                            <c:choose>
+                                                <c:when test="${store.storeName eq 'KGV 일반관람권 2D'}">
+                                                    <img src="${store['storeImage']}">
+                                                </c:when>
+
+
+
+                                            </c:choose>
+                                        </div>
+                                        <div class="info">
+                                            <div class="tit">
+                                                <h4>${store.storeName}</h4>
+                                                <p>${store.storeDesc}</p>
+                                            </div>
+                                            <div class="price">
+                                                <p class="sale">
+                                                    <em>${store.storePrice}</em>
+                                                    <span>원</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </c:when>
+                            <c:otherwise>
+                                <!-- 다른 카테고리에 대한 처리를 필요에 따라 추가하세요 -->
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+
+
+
+
 
                     <li class="">
                         <a href="javascript:fn_storeDetail('1765');" title="KGV">
@@ -376,86 +350,11 @@
                         </a>
                     </li>
 
-                    <li class="">
-                        <a href="javascript:fn_storeDetail('1765');" title="KGV">
 
-                            <div class="img">
-                                <img src="${contextPath}/resources/images/store_img/ticket.jpg">
-                            </div>
 
-                            <div class="info">
-                                <div class="tit">
 
-                                    <h4>KGV 일반관람권(2D)</h4>
-                                    <p>일반관람권</p>
 
-                                </div>
 
-                                <div class="price">
-
-                                    <p class="sale">
-                                        <em>14000</em>
-                                        <span>원</span>
-                                    </p>
-
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="">
-                        <a href="javascript:fn_storeDetail('1765');" title="KGV">
-
-                            <div class="img">
-                                <img src="${contextPath}/resources/images/store_img/ticket.jpg">
-                            </div>
-
-                            <div class="info">
-                                <div class="tit">
-
-                                    <h4>KGV 일반관람권(2D)</h4>
-                                    <p>일반관람권</p>
-
-                                </div>
-
-                                <div class="price">
-
-                                    <p class="sale">
-                                        <em>14000</em>
-                                        <span>원</span>
-                                    </p>
-
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="">
-                        <a href="javascript:fn_storeDetail('1765');" title="KGV">
-
-                            <div class="img">
-                                <img src="${contextPath}/resources/images/store_img/ticket.jpg">
-                            </div>
-
-                            <div class="info">
-                                <div class="tit">
-
-                                    <h4>KGV 일반관람권(2D)</h4>
-                                    <p>일반관람권</p>
-
-                                </div>
-
-                                <div class="price">
-
-                                    <p class="sale">
-                                        <em>14000</em>
-                                        <span>원</span>
-                                    </p>
-
-                                </div>
-                            </div>
-                        </a>
-                    </li>
 
 
 
@@ -468,10 +367,10 @@
 
         </main>
     </div>
-    
+
     <!-- footer -->
-            <jsp:include page="/WEB-INF/views/common/footer.jsp" />
-    
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
     <!-- 모달 -->
     <div id="myModal" class="modal">
         <div class="modal-content">
@@ -481,7 +380,7 @@
     </div>
 
 
-   
+
     <div id="myModal" class="modal">
         <div class="modal-content">
             <div class="close-button">&times;</div>
@@ -490,11 +389,11 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  
-    
-     <script src="${contextPath}/resources/js/store/storeMain.js"></script>
-            <script src="${contextPath}/resources/js/common/header.js"></script>
-    
+
+
+    <script src="${contextPath}/resources/js/store/storeMain.js"></script>
+    <script src="${contextPath}/resources/js/common/header.js"></script>
+
 </body>
 
 </html>
