@@ -42,6 +42,43 @@ $(document).ready(function () {
 
 
 
+    let storeImageBig = $('#storeImageBig')
+
+    storeImageBig.on('change', function (e) {
+        console.log(e.target.files); // 파일 목록 출력
+
+        // 파일 업로드(다중업로드를 위해 반복문 사용)
+        for (var i = 0; i < e.target.files.length; i++) {
+            uploadImageFile2(e.target.files[i]); // 파일 전달
+        }
+    });
+
+
+    let imageUrl2;
+
+    function uploadImageFile2(file) {
+        var data = new FormData();
+        data.append("file", file);
+        $.ajax({
+            url: 'store_add/uploadImageFile',
+            type: "POST",
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data2) {
+                console.log("성공 후 반환 메시지22", data2);
+                let jsonArray = JSON.parse(data2); // JSON 문자열을 파싱하여 배열로 변환
+                let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
+                imageUrl2 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
+                console.log("이미지 URL:", imageUrl2);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+
 
 
 
@@ -136,7 +173,14 @@ $(document).ready(function () {
             storeImage.focus();
             e.preventDefault();
             storeImage = false;
+        }
+        else if (!$("#storeImageBig").val()) {
+            alert('빅 이미지가 입력되지 않았습니다.');
+            storeImageBig.focus();
+            e.preventDefault();
+            storeImageBig = false;
         };
+
 
         $.ajax({
             url: "store_add/addStore",
@@ -147,6 +191,7 @@ $(document).ready(function () {
                 , "storePrice": $("#storePrice").val()
                 , "storeStock": $("#storeStock").val()
                 , "storeImage": imageUrl1
+                , "storeImageBig": imageUrl2
 
             },
             type: "POST",
@@ -175,6 +220,7 @@ $(document).ready(function () {
         console.log("개수제한 : " + $("#storeStock").val());
         console.log("상품 이미지 : " + $("#storeImage").val());
         console.log("상품 이미지 : " + imageUrl1);
+        console.log("상품 빅 이미지 : " + imageUrl2);
 
 
     });
