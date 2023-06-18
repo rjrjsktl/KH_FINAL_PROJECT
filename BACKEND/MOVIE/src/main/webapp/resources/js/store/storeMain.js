@@ -46,3 +46,5 @@ function resetStore(s) {
     $(".storeTab").removeClass("clicked");
     $(s).addClass("clicked");
 }
+
+

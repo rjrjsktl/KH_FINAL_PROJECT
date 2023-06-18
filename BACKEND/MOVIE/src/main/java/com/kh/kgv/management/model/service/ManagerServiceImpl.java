@@ -169,6 +169,7 @@ public class ManagerServiceImpl implements ManagerService {
 	    		cleanedMovie.setMovieDirector(movie.getMovieDirector());
 	    		cleanedMovie.setMovieCast(movie.getMovieCast());
 	    		cleanedMovie.setMovieRegdate(movie.getMovieRegdate());
+	    		cleanedMovie.setMovieSt(movie.getMovieSt());
 	        
 	    		cleanedList.add(cleanedMovie);
 	    	}
@@ -383,6 +384,17 @@ public class ManagerServiceImpl implements ManagerService {
 		return dao.getEventList(event);
 
 
+	}
+	// 메인 이벤트 목록 가지고 오기 - 7개
+	@Override
+	public Map<String, Object> mainEventList() {
+		List<Event>EventList = dao.mainEventList();
+		
+		Map<String, Object>getEvnetList = new HashMap<String, Object>();
+		getEvnetList.put("getEvnetList", EventList);
+		
+		
+		return getEvnetList;
 	}
 	
 

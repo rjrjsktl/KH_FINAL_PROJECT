@@ -331,6 +331,18 @@
 	FROM EVENT
 	WHERE EVENT_NO = #{eventNo}
 	</select>
+	
+		<!-- 메인 -> 이벤트 이동 시 이벤트   -->
+			<select id="mainEventList" resultMap="event_rm">
+		SELECT * FROM 
+		(
+		SELECT *
+		FROM EVENT
+		WHERE EVENT_STATUS = 'Y'
+		ORDER BY EVENT_NO DESC
+		)
+		WHERE ROWNUM <![CDATA[ <= ]]> 7
+	</select>
 
 
 </mapper>

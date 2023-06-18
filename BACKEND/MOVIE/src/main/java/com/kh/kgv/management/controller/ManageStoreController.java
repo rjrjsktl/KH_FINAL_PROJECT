@@ -60,7 +60,8 @@ public class ManageStoreController {
 			@RequestParam("storeDesc") String storeDesc,
 			@RequestParam("storePrice") int storePrice,
 			@RequestParam("storeStock") int storeStock,
-			@RequestParam("storeImage") String storeImage) {
+			@RequestParam("storeImage") String storeImage,
+			@RequestParam("storeImageBig") String storeImageBig) {
 		
 		logger.debug("storeCategory : " + storeCategory);
 		logger.debug("storeCategory : " + storeName);
@@ -68,6 +69,7 @@ public class ManageStoreController {
 		logger.debug("storeCategory : " + storePrice);
 		logger.debug("storeCategory : " + storeStock);
 		logger.debug("storeCategory : " + storeImage);
+		logger.debug("storeCategory : " + storeImageBig);
 		
 		Store store  = new Store();
 		store.setStoreCategory(storeCategory);
@@ -76,6 +78,7 @@ public class ManageStoreController {
 		store.setStorePrice(storePrice);
 		store.setStoreStock(storeStock);
 		store.setStoreImage(storeImage);
+		store.setStoreImageBig(storeImageBig);
 		
 		int result = service.addStore(store);
 		

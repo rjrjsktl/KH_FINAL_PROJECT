@@ -39,7 +39,7 @@ public class MovieListController {
 	@Autowired
 	private ManagerService services;
 	
-//	메인페이지 -> 영화 -> 무비차트 이동 시 영화 목록 조회
+//	메인페이지 -> 영화 -> 상영중인영화 이동 시 영화 목록 조회
 	@RequestMapping("/detail_List")
 	public String moveList(Model model) {
 		
@@ -52,6 +52,21 @@ public class MovieListController {
 		
 		return "movieList/detail_List";
 	
+	}
+//	메인페이지 -> 영화 -> 전체 영화목록 이동 시 영화 목록 조회
+// 위에꺼 재활용
+	@RequestMapping("/all_List")
+	public String allMoveList(Model model) {
+		
+		Map<String, Object>getMovieList = null;
+		System.out.println("DB에서 가지고온 getMovieList : =============================================" + getMovieList);
+		getMovieList = service.movieList();
+		
+		model.addAttribute("getMovieList", getMovieList);
+		
+		
+		return "movieList/all_List";
+		
 	}
 	
 	// 영화 세부내용
@@ -107,7 +122,7 @@ public class MovieListController {
 	
 		if(loginUser == null  && getMg.contains("청소년")) {
 			
-		Util.alertAndMovePage(response, "로그인 후 이용 가능합니다.", "/movie/movieList/detail_List");
+		Util.alertAndBackPage(response, "로그인 후 이용 가능합니다.");
 				
 			return null;
 			
@@ -128,7 +143,7 @@ public class MovieListController {
 			// 성인 확인 절차
 			if(ageCheck < 18) {
 				
-				Util.alertAndMovePage(response, "성인만 이용 가능 합니다.", "/movie/movieList/detail_List");
+				Util.alertAndBackPage(response, "성인만 이용 가능 합니다.");
 				
 				return null;
 			} 		
