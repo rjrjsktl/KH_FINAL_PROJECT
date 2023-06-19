@@ -9,20 +9,21 @@ $(document).ready(function(){
         var details = $("#contentTextarea").val();
 
         $.ajax({
-            url: "your_server_endpoint.php",  // Replace with your server-side script
-            type: "POST",
             url: '/movie/helpDesk/lost_form',
+            type: "POST",
             data:{
-              "titleInput": title,
-                "inquirySelect": inquiry,
-                "contentTextarea": content,
-                "userNo": userNo
+               "titleInput": title,
+               "lostItem": item,
+               "lostArea":area,
+               "lostDate":date,
+               "lostFile":file,
+               "contentTextarea":details
             },
             success: function(response){
-                alert("Form submitted successfully!");
+                alert("성공~");
             },
             error: function(jqXHR, textStatus, errorMessage){
-                alert("Error: " + errorMessage);
+                alert("ㅗ");
             }
         });
     });

@@ -154,14 +154,7 @@ public class HelpDeskController {
 	}
 
 
-	//	if ( userNo > 0) {
-	//		model.addAttribute("message","message");
-	//		path = "helpDesk/mTm_form";
-	//	} else {
-	//		model.addAttribute("message","로그인을 해주세용");
-	//		path ="redirect:/user/login";
-	//	}
-	//	
+	
 	@GetMapping("/mTm_form")
 	public String mtmWrite(
 			Model model,
@@ -175,13 +168,23 @@ public class HelpDeskController {
 		if(loginUser != null) {
 			userNo = loginUser.getUserNo();
 		}
+		
+		String path = null;
+		
+		if ( userNo > 0) {
+				path = "helpDesk/mTm_form";
+			} else {
+				model.addAttribute("message","로그인을 해주세용");
+				path ="redirect:/user/login";
+			}
+			
+		
 		System.out.println("userNo"+userNo+"-----------------------------------------------------------------------");
 
-		String path = null;
 
 		model.addAttribute("userNo", userNo);
 
-		return "helpDesk/mTm_form"; 
+		return path; 
 	}
 
 	@ResponseBody
@@ -264,9 +267,65 @@ public class HelpDeskController {
 
 	}
 
+	//	
+	@GetMapping("/lost_form")
+	public String lostwrite(
+			Model model,
+			HttpSession session
+			) {
+
+		User loginUser = (User)session.getAttribute("loginUser");
+
+		int userNo = 0;
+
+		if(loginUser != null) {
+			userNo = loginUser.getUserNo();
+		}
 
 
+		model.addAttribute("userNo", userNo);
 
+		return "helpDesk/lost_form"; 
+	}
+
+	
+	@ResponseBody
+	@PostMapping("/lost_form")
+	public int addLost(
+			@RequestParam("titleInput") String title, 
+			@RequestParam("lostItem") String item, 
+			@RequestParam("lostArea") String area, 
+			@RequestParam("lostDate") String date, 
+			@RequestParam("contentTextarea") String details,
+			HttpSession session) {
+
+		User loginUser = (User)session.getAttribute("loginUser");
+
+
+		int userNo = 0;
+
+		if(loginUser != null) {
+			userNo = loginUser.getUserNo();
+		}
+
+		LostPackage lost = new LostPackage();
+		
+		lost.setLostTitle(title);
+		lost.setUserNo(userNo);
+		lost.setLostItem(item);
+		lost.setLostLocation(area);
+		lost.setLostContent(details);
+		lost.setLostDate(date);
+
+		int result = services.addLost(lost);
+		
+		System.out.println("int result = "+result);
+		return result;
+	}
+
+	
+
+	
 
 
 
