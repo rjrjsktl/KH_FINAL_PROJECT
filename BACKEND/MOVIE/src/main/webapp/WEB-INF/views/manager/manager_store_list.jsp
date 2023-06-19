@@ -70,7 +70,11 @@
 														<tr>
 															<td>${store['storeNo']}</td>
 															<td>${store['storeCategory']}</td>
-															<td>${store['storeName']}</td>
+															<td>
+																<a
+																	href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}">${store['storeName']}</a>
+
+															</td>
 															<td>${store['storeDesc']}</td>
 															<td>${store['storeStock']}</td>
 															<td>${store['storePrice']}</td>

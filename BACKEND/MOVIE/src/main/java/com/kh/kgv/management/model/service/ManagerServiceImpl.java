@@ -428,9 +428,8 @@ public class ManagerServiceImpl implements ManagerService {
 	public int updateBannerST(banner banner) {
 		return dao.updateBannerST(banner);
 	}
-	
 
-	
+
 
 
 

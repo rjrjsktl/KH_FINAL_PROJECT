@@ -1,3 +1,5 @@
+// info, changePw, secession에 관한 js
+
 // 내 정보 수정 페이지 ----------------------------------------------
 // 내 정보 수정 유효성 검사
 function infoValidate(){
@@ -203,6 +205,17 @@ function initLayerPosition(){
     element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
     element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
 }
+
+// myPage-info-frame을 누르면 그 속에 있는 input으로 이동하기 기능
+$(document).ready(function() {
+    $(".myPage-info-frame").click(function(){
+        $(this).find("input").focus();
+    });
+});
+
+
+
+
 
 
 // 내가 본 영화, 쓴 리뷰 더보기 버튼 구현 

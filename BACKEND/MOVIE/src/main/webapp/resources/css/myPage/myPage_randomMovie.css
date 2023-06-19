@@ -1,6 +1,9 @@
 /* 랜덤한 영화 뿌려주는 jsp의 css */
 .event-wrap {
-    margin-top: 30px;
+    width: 100%;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
 }
 
 .event-wrap>div:nth-child(1) {
