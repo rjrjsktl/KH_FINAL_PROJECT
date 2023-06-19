@@ -18,6 +18,4 @@ public class Play {
 	private String playEnd;
 	private String playRegDate;
 	private String playUploader;
-	private String playFixDate;
-	private String playChanger;
 }

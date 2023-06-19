@@ -99,16 +99,20 @@ main > section:first-child > div:first-child > div:nth-child(3) > div > ul > li 
   width: 100%;
   height: 100%;
   background-color: transparent;
+  color: #FCFCFC;
   padding: 18px;
 }
 
-main > section:first-child > div:first-child > div:nth-child(3) > div > ul > li > a > p {
-  font-size: 16px;
-}
-
-main > section:first-child > div:first-child > div:nth-child(3) > div > ul > li > a > p:hover {
+main > section:first-child > div:first-child > div:nth-child(3) > div > ul > li > a:not(.clicked):hover {
   color: #E9b630;
 }
+
+
+main > section:first-child > div:first-child > div:nth-child(3) > div > ul > li > a.clicked {
+  color: #E9b630;
+  font-weight: 700;
+}
+
 
 
 /* 극장 */
@@ -274,36 +278,23 @@ main > section:first-child > div:nth-child(2) > div:nth-child(3) > #movielist_th
   height: 91.4px;
   border: 1px solid white;
   margin-right: 16px;
-  background-repeat: no-repeat;
-  background-size: 60px 91.4px;
+  position: relative;
+  
 }
 
-#movielist_thumb > li:first-child > a > div:first-child {
-  background-image: url("https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2022/12/29/20b1362a-a7de-4c90-986c-197048824f71.jpg");
+#movielist_thumb > li > a > div:first-child > img {
+  width: 100%;
+  height: 100%;
+  postion: absolute;
+  top: 0;
+  left: 0;
 }
 
-#movielist_thumb > li:nth-child(2) > a > div:first-child {
-  background-image: url("https://www.newsinside.kr/news/photo/202302/1159293_830815_4942.jpeg");
-}
-
-#movielist_thumb > li:nth-child(3) > a >div:first-child {
-  background-image: url("https://file.sportsseoul.com/news/legacy/2020/12/28/news/2020122801001440400099351.jpg")
-}
-
-#movielist_thumb > li:nth-child(4) > a > div:first-child {
-  background-image: url("https://cphoto.asiae.co.kr/listimglink/1/201103011658067972238A_3.jpg");
-}
-
-#movielist_thumb > li:nth-child(5) > a > div:first-child {
-  background-image: url("https://cdn.ize.co.kr/news/photo/201505/22033_24447_742.jpg");
-}
-
-#movielist_thumb > li:nth-child(6) > a > div:first-child {
-  background-image: url("http://db.kookje.co.kr/news2000/photo/2019/0927/20190927.99099012743i1.jpg");
-}
-
-#movielist_thumb > li:nth-child(7) > a > div:first-child {
-  background-image: url("https://file2.nocutnews.co.kr/newsroom/image/2023/04/13/202304131313185527_0.jpg");
+#movielist_thumb > li > a > div:first-child > span {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+	
 }
 
 
@@ -330,7 +321,7 @@ main > section:first-child > div:nth-child(2) > div:nth-child(3) > #movielist_th
   display: flex;
   align-items: center;
   justify-content: center;
-
+  font-size: 14px;
   width: 22px;
   height: 22px;
   border: 1px solid transparent;

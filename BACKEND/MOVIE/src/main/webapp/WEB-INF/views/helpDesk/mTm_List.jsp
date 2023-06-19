@@ -73,7 +73,7 @@
 													<c:if test="${loop.index < 10}">
 														<tr class="row">
 															<td>${userMtmList.mtmNo}</td>
-															<td><a href="#">${userMtmList.mtmTitle}</a></td>
+															<td><a href="${contextPath}/helpDesk/mtm_detail/${userMtmList.mtmNo}">${userMtmList.mtmTitle}</a></td>
 															<td>${userMtmList.mtmRegdate}</td>
 															<td>${userMtmList.mtmCount}</td>
 														</tr>
@@ -90,18 +90,38 @@
 									<button>게시물 등록</button>
 								</div>
 								<!-- 10개씩 -->
-								<ul class="pagination">
-									<li><a href="#">&lt;&lt;</a></li>
-									<li><a href="#">&lt;</a></li>
-									<li><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">&gt;</a></li>
-									<li><a href="#">&gt;&gt;</a></li>
-								</ul>
-
+									<div class="page_Nation">
+								<c:set var="url" value="?cp=" />
+								<c:set var="pagination" value="${mtmList['pagination']}" />
+								<c:set var="currentPage" value="${pagination.currentPage}"
+									scope="request" />
+								<div>
+									<a href="${url}1">&lt;&lt;</a>
+								</div>
+								<div>
+									<a href="${url}${pagination.prevPage}">&lt;</a>
+								</div>
+								<c:forEach var="i" begin="${pagination.startPage}"
+									end="${pagination.endPage}" step="1">
+									<c:choose>
+										<c:when test="${i == currentPage}">
+											<div>
+												<a class="selected_Cp">${i}</a>
+											</div>
+										</c:when>
+										<c:otherwise>
+											<div>
+												<a href="${url}${i}">${i}</a>
+											</div>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<div>
+									<a href="${url}${pagination.nextPage}">&gt;</a>
+								</div>
+								<div>
+									<a href="${url}${pagination.maxPage}">&gt;&gt;</a>
+								</div>
 							</div>
 						</div>
 					</div>

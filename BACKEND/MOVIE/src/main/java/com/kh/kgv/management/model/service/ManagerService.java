@@ -8,6 +8,8 @@ import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
+import com.kh.kgv.management.model.vo.WeeklyEnter;
+import com.kh.kgv.management.model.vo.banner;
 
 public interface ManagerService {
 	
@@ -19,6 +21,9 @@ public interface ManagerService {
 
 	// 회원 목록 조회
 	Map<String, Object> selectAll(int cp);
+	
+	// 관리자 메인 일일 접속자 수 조회
+	List<DailyEnter> getWeeklyEnter(WeeklyEnter we);
 
 	// 회원 관리자 상태 업데이트
 	int updateST(User user);
@@ -79,6 +84,37 @@ public interface ManagerService {
 
 	//유저 전용 공지사항 조회
 	Map<String, Object> userNoticeList(int cp);
+
+	//	 영화 상영 상태 업데이트
+	int updateMovieST(Movie movie);
+
+	// 상영 중인 영화, 상영 시간표 조회
+	Map<String, Object> getPlayMap();
+	
+	// 스토어 목록 조회
+	Map<String, Object> getStoreMap(int cp);
+
+	// 메인 -> 이벤트 이동 시 이벤트 
+	Map<String, Object> selectEventList();
+
+	// 메인 -> 이벤트 상세 내용
+	Event getEventList(Event event);
+
+	// 메인 이벤트 목록 가지고 오기 - 7개
+	Map<String, Object> mainEventList();
+	
+	// 관리자_배너 등록
+	int addBanner(banner banner);
+
+	// 관리자_배너 목록 이동시 목록 조회
+	Map<String, Object> getBannerList(int cp);
+
+	// 관리자_배너 상태 업데이트
+	int updateBannerST(banner banner);
+
+
+	
+	
 
 
 
