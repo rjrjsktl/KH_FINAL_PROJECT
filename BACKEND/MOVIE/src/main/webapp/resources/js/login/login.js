@@ -41,7 +41,7 @@ function loginValidate(){
     }
     
 	// $.ajax({
-    //     url: "user/login",
+    //     url: "login/login",
     //     type: "POST",
     //     data: {
     //         "userEmail" : userEmail.value,
