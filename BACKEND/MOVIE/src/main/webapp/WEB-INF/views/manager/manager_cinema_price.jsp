@@ -16,6 +16,7 @@
                         <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
                         <link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
                         <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_cinema_price.css">
+                        <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_nav.css">
 
                         <!-- fontawesome -->
                         <link rel="stylesheet"
