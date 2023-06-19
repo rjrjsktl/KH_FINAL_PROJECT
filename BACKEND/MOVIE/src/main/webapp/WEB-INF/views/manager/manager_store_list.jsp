@@ -91,7 +91,7 @@
 												</table>
 												<div class="page_Nation">
 													<c:set var="url" value="?cp=" />
-													<c:set var="pagination" value="${getNoticeList['pagination']}" />
+													<c:set var="pagination" value="${storeMap['pagination']}" />
 													<c:set var="currentPage" value="${pagination.currentPage}"
 														scope="request" />
 													<div>

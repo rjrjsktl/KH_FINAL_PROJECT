@@ -63,7 +63,14 @@
                                         <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
                                             title="${store.storeName}">
                                             <div class="img">
+
+
+
+
                                                 <img src="${store['storeImage']}">
+
+
+
                                             </div>
                                             <div class="info">
                                                 <div class="tit">
@@ -110,7 +117,7 @@
                                         <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
                                             title="${store.storeName}">
                                             <div class="img">
-                                                <img src="${store['storeImage']}">
+                                                <img src="${store.storeImage}">
                                             </div>
                                             <div class="info">
                                                 <div class="tit">
@@ -203,7 +210,12 @@
                                         <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
                                             title="${store.storeName}">
                                             <div class="img">
-                                                <img src="${store['storeImage']}">
+                                                <c:choose>
+                                                    <img src="${store['storeImage']}">
+
+
+
+                                                </c:choose>
                                             </div>
                                             <div class="info">
                                                 <div class="tit">
