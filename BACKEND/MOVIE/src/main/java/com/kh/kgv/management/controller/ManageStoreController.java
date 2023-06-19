@@ -127,5 +127,11 @@ public class ManageStoreController {
 	    System.out.println("이미지: " + jsonResult);
 	    return jsonResult;
 	}
+	
+	
+	
+	
+	
+	
 
 }
