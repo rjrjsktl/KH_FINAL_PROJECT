@@ -60,7 +60,7 @@
                         src="${contextPath}/resources/images/headerPng/logout1.png"
                         alt=""></span> <span>로그아웃</span>
                </a></li>
-               <li><a href="${contextPath}/myPage/info"> <span><img
+               <li><a href="${contextPath}/myPage/myPgMain"> <span><img
                         src="${contextPath}/resources/images/headerPng/test3.png" alt=""></span>
                      <span>MY KGV</span>
                </a></li>
