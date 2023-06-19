@@ -89,6 +89,11 @@ public class HelpDeskDAO {
 	}
 
 
+	public int addLost(LostPackage lost) {
+		return sqlSession.insert("lostMapper.addLost", lost);
+	}
+
+
 
 
 

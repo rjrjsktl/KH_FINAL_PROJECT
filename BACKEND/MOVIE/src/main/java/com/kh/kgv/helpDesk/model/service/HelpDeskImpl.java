@@ -105,4 +105,9 @@ public class HelpDeskImpl implements HelpDeskService {
 
 	}
 
+	@Override
+	public int addLost(LostPackage lost) {
+		return dao.addLost(lost);
+	}
+
 }
