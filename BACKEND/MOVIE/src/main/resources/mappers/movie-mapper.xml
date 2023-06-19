@@ -133,7 +133,7 @@
 		ORDER BY MOVIE_OPEN ASC
 	</select>
 	
-		<!-- 메인 상영중인 영화 목록 가지고 오기 - 7개 -->
+		<!-- 메인 상영중인 영화 목록 가지고 오기 - 6개 -->
 	<select id="mainMovieList" resultMap="movie_rm">
 		SELECT * FROM 
 		(
@@ -142,8 +142,22 @@
 		WHERE MOVIE_ST = 'Y'
 		ORDER BY MOVIE_OPEN DESC
 		)
-		WHERE ROWNUM <![CDATA[ <= ]]> 7
+		WHERE ROWNUM <![CDATA[ <= ]]> 6
 		</select>
+		
+	<select id="getNowPlayCount" resultType="_int">
+        SELECT COUNT(*) FROM MOVIE
+        WHERE MOVIE_ST = 'Y'
+    </select>
+    
+
+    <select id="getPlayList" resultMap="movie_rm">
+        SELECT * FROM MOVIE
+        WHERE MOVIE_ST = 'Y'
+        ORDER BY MOVIE_NO DESC
+    </select>
+    
+    
 	
 	
 </mapper>
