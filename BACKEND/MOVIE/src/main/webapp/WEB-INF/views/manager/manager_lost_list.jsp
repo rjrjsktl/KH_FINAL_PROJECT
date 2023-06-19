@@ -29,7 +29,7 @@
 							crossorigin="anonymous"></script>
 					</head>
 
-					<body class="dark light">
+					<body>
 						<main>
 
 							<div class="main_Wrapper">

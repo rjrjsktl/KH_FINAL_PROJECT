@@ -1,8 +1,11 @@
 let areaIndex = 0;
 let prevAreaIndex = -1;
 let cinemaIndex = -1;
+let dateIndex = 0;
 
 let areaCinemaList = [];
+let originPlay = $("#origin_play").clone(true);
+let clonePlay;
 
 $.ajax({
     url: "cinemaList",
@@ -57,6 +60,7 @@ let today = new Date();
 let playDay = (today.getMonth()+1) + "월 " + today.getDate() + "일 " + weeks[today.getDay()] + "요일";
 
 $('.swiper-slide.date').on("click", function(){
+  dateIndex = $(this).index();
   playDay = $(this).data('month') + "월 ";
   playDay += $(this).data('date') + "일 ";
   playDay += $(this).data('day') + "요일";
@@ -112,12 +116,54 @@ area.on("click", function(){
 // 이러한 문제는 스프링 격리성을 고안하면 됩니다. MVCC
 // 당장 우리 프로젝트에서 적용하기 어려우므로, 추후 학습하는 게 좋을 것 같습니다.
 
+let movieNumList= [];
+
 function clickCinema(e) {
   cinemaIndex = $(e.target).parent().index();
   prevAreaIndex = areaIndex;
   $("#cinema_select").html(areaCinemaList[cinemaIndex].cinemaName);
   $('#cinema_list > li > a').removeClass("clicked");
   $(e.target).addClass("clicked");
+  
+  $.ajax({
+    url: "playList",
+    data: {areaIndex, cinemaIndex, dateIndex},
+    type: "GET",
+    success: function(playMap) {
+      movieNumList = [];
+      $("#total_play").empty();
+      playMap.playList.forEach(play => movieNumList.push(play['movieNo']));
+      movieNumList = movieNumList.filter((element, index) => {
+        return movieNumList.indexOf(element) === index;
+      });
+      console.log(playMap.playList);
+      for(let num of movieNumList) {
+        let moviePlay = $('<li class="movie_play"></li>');
+        let questMovie = playMap.thumbList.filter((movie) => {
+            return movie.movieNo == num;
+        });
+        moviePlay.append(`<div>${questMovie[0]['movieTitle']}</div>`);
+        let playBundle = $('<div><ul class="playlist"></ul></div>');
+        let questPlay = playMap.playList.filter((play) => {
+            return play.movieNo == num;
+        });
+        questPlay.forEach(function(play) {
+          let clonePlay = originPlay.clone(true);
+          clonePlay.removeAttr('id');
+          clonePlay.find('.open_hour').html(play.playStart.substring(11,13));
+          clonePlay.find('.open_minute').html(play.playStart.substring(14,16));
+          playBundle.find('.playlist').append(clonePlay);
+        });
+        moviePlay.append(playBundle);
+        $("#total_play").append(moviePlay);
+        
+      } 
+      
+    },
+    error: function () {
+      console.log("에러 발생");
+    }
+  });
 }
 
 $("#cinema_list > li > a").on("click", function(e){
@@ -148,6 +194,7 @@ movie.on("click", function(){
   $('#movie_select').html(movieName);
   $('.movie_play').css('display', 'none');
   $(`.movie_play[data-movie="${movieName}"]`).css('display', 'block');
+  
 });
 
 

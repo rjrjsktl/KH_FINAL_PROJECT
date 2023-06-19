@@ -87,7 +87,7 @@
 								</table>
 
 								<div>
-									<button>게시물 등록</button>
+									<button> <a href="${contextPath}/helpDesk/mTm_form/${mtmNo}">게시물 등록</a></button>
 								</div>
 								<!-- 10개씩 -->
 									<div class="page_Nation">
