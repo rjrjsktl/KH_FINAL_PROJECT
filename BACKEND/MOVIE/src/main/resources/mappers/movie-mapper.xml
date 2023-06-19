@@ -10,6 +10,8 @@
 		<result property="playEnd" column="PLAY_END" />
 		<result property="playRegDate" column="PLAY_REGDATE" />
 		<result property="playUploader" column="PLAY_UPLOADER" />
+		<result property="playBookCount"        column="PLAY_BOOKCOUNT"/>
+       <result property="playBookSeat"         column="PLAY_BOOKSEAT"/>
 	</resultMap>
 
 	<resultMap type="cinema" id="cinema_rm">
