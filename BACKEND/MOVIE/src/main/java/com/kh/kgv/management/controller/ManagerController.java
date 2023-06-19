@@ -38,6 +38,7 @@ import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.WeeklyEnter;
 import com.kh.kgv.management.model.vo.banner;
+import com.kh.kgv.movieList.model.service.MovieService;
 import com.kh.kgv.mypage.controller.MyPageController;
 
 @Controller
@@ -49,6 +50,9 @@ public class ManagerController {
 
 	@Autowired
 	private ManagerService service;
+	
+	@Autowired
+	private MovieService movieService;
 
 	// 관리자_메인페이지 이동
 	@GetMapping("/main")
@@ -61,9 +65,13 @@ public class ManagerController {
 		// 관리자 메인 공지사항 목록 조회
 		List<Notice> getNotice = null;
 		getNotice = service.getAllNotice();
-
+		
+		// 관리자 메인 상영중인 영화
+		Map<String, Object> getMovieList = null;
+		getMovieList = movieService.mainMovieList();
 		model.addAttribute("getUser", getUser);
 		model.addAttribute("getNotice", getNotice);
+		model.addAttribute("getMovieList", getMovieList);
 
 		System.out.println("관리자_메인페이지 이동");
 		return "manager/managerPage";
@@ -362,7 +370,18 @@ public class ManagerController {
 
 	// 관리자_상영시간 목록 이동
 	@GetMapping("/play_list")
-	public String movePlayList() {
+	public String movePlayList(
+			Model model
+			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+				Map<String, Object> getMovieList = null;
+				getMovieList = movieService.managerMovieList(cp);
+				
+				model.addAttribute("getMovieList", getMovieList);
+		
+		
+		
+		
+		
 		System.out.println("관리자_상영시간 목록 이동");
 		return "manager/manager_movie_play_list";
 	}
