@@ -14,9 +14,9 @@
 		<result property="lostWriter" column="LOST_WRITER" />
 		<result property="lostView" column="LOST_VIEW" />
 	</resultMap>
-	
-	
-	
+
+
+
 
 	<select id="getLostCount" resultType="_int">
 		SELECT COUNT(LOST_NO) FROM
@@ -33,15 +33,31 @@
 	</select>
 
 	<select id="lostdetail" resultMap="lost_rm">
-    SELECT
-    LOST_NO
-    , LOST_TITLE
-    , LOST_CONTENT
-    , LOST_DATE
-    , LOST_WRITER
-    FROM LOST_PACKAGE
-    WHERE LOST_NO = #{lostNo}
-</select>
+		SELECT
+		LOST_NO
+		, LOST_TITLE
+		, LOST_CONTENT
+		, LOST_DATE
+		, LOST_WRITER
+		FROM LOST_PACKAGE
+		WHERE LOST_NO = #{lostNo}
+	</select>
+	
+		<insert id="addLost" parameterType="losts" >
+		INSERT INTO LOST_PACKAGE
+		VALUES (
+		SEQ_LP_NO.NEXTVAL
+		, #{userNo}
+		, #{lostTitle}
+		, #{lostItem}
+		, #{lostLocation}
+		, #{lostDate}
+		, DEFAULT
+		, #{lostContent}
+		, DEFAULT
+		, DEFAULT
+		)
+	</insert>
 
 
 </mapper>
