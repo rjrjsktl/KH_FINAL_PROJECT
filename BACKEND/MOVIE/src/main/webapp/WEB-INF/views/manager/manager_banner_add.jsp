@@ -52,6 +52,9 @@
 													<div class="enter_Title">
 														<input type="text" placeholder="제목을 입력하세요.">
 													</div>
+													<div class="enter_url">
+														<input type="text" placeholder="URL을 입력하세요.">
+													</div>
 													<div class="addArea">
 														<div id="bannerImg">
 															<span>메인배너 이미지</span>
@@ -65,7 +68,7 @@
 													</div>
 													<div id="showImg">
 														<span>등록 할 이미지는 아래와 같습니다.</span>
-														<img id="imgSize" src="#" />
+														<img id="imgSize" src="" />
 													</div>
 												</div>
 												<div class="table_bottom">

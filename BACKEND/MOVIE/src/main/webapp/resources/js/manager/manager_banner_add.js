@@ -16,35 +16,36 @@ $(document).ready(function () {
     function uploadImageFile1(file) {
         var data = new FormData();
         data.append("file", file);
-        // $.ajax({
-        //     url: 'event_add/uploadImage',
-        //     type: "POST",
-        //     data: data,
-        //     cache: false,
-        //     contentType: false,
-        //     processData: false,
-        //     success: function (data1) {
-        //         console.log("성공 후 반환 메시지11", data1);
-        //         let jsonArray = JSON.parse(data1); // JSON 문자열을 파싱하여 배열로 변환
-        //         let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
-        //         imageUrl1 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
-        //         console.log("이미지 URL:", imageUrl1);
-        //     },
-        //     error: function (e) {
-        //         console.log(e);
-        //     }
-        // });
+        $.ajax({
+            url: 'banner_add/bannerUploadImage',
+            type: "POST",
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data1) {
+                console.log("성공 후 반환 메시지11", data1);
+                let jsonArray = JSON.parse(data1); // JSON 문자열을 파싱하여 배열로 변환
+                let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
+                imageUrl1 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
+                console.log("이미지 URL:", imageUrl1);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
     }
 
     // ===============================================================================
 
     const submitBtn = $('.bottom_Submit');
     const eventTitle = $('.enter_Title > input');
-    const textArea = $('#summernote');
+    const enterUrl = $('.enter_url > input');
 
     submitBtn.on('click', (e) => {
         e.preventDefault();
         console.log("제목 : " + eventTitle.val());
+        console.log("URL : " + enterUrl.val());
         console.log("이미지 : " + imageUrl1);
 
         if (!eventTitle.val()) {
@@ -62,19 +63,17 @@ $(document).ready(function () {
         };
 
         $.ajax({
-            url: "event_add/write_Event",
+            url: "banner_add/insert",
             data: {
                 "title": eventTitle.val()
-                , "start": startDate.val()
-                , "end": endDate.val()
-                , "content": textArea.val()
+                , "url": enterUrl.val()
                 , "movieImg1": imageUrl1
             },
             type: "POST",
             success: function (result) {
                 if (result > 0) {
                     alert("이벤트 등록 성공");
-                    let url = "/movie/manager/event_list";
+                    let url = "/movie/manager/banner_list";
                     window.location.href = url;
                 } else {
                     alert("이벤트 등록 실패");

@@ -12,5 +12,6 @@ public class banner {
     private String bannerTitle;
     private String bannerRegDate;
     private String bannerImg;
-    private String banner;
+    private String bannerSt;
+    private String bannerUrl;
 }

@@ -32,31 +32,19 @@
 
 									<div class="swiper-container">
 										<div class="swiper-wrapper">
+											<c:forEach var="getBanner" items="${getBannerList['BannerList']}">
+												<c:choose>
+													<c:when test="${getBanner['bannerSt'] ne 'N'}">
+														<div class="swiper-slide">
+															<a href="${getBanner['bannerUrl']}"><img
+																	src="${getBanner['bannerImg']}" alt=""></a>
+														</div>
+													</c:when>
+													<c:otherwise>
 
-											<div class="swiper-slide">
-												<a href="${contextPath}/movieList/detail_List/introduce/17"><img
-														src="${contextPath}/resources/images/mainSlide/1.png"
-														alt=""></a>
-											</div>
-											<div class="swiper-slide">
-												<a href="${contextPath}/movieList/detail_List/introduce/18"><img
-														src="${contextPath}/resources/images/mainSlide/2.png"
-														alt=""></a>
-											</div>
-											<div class="swiper-slide">
-												<a href="${contextPath}/movieList/detail_List/introduce/20"><img
-														src="${contextPath}/resources/images/mainSlide/3.jpg"
-														alt=""></a>
-											</div>
-											<div class="swiper-slide">
-												<a href="${contextPath}/movieList/detail_List/introduce/21"><img
-														src="${contextPath}/resources/images/mainSlide/4.jpg"
-														alt=""></a>
-											</div>
-											<div class="swiper-slide">
-												<a href="#"><img src="${contextPath}/resources/images/mainSlide/5.jpg"
-														alt=""></a>
-											</div>
+													</c:otherwise>
+												</c:choose>
+											</c:forEach>
 										</div>
 
 										<div class="swiper-button-next"></div>
@@ -78,7 +66,6 @@
 										<div class="swiper-wrapper">
 											<c:forEach var="movie" items="${getMovieList['cleanedList']}"
 												varStatus="status">
-
 												<div class="swiper-slide">
 													<div id="positionSet">
 														<em>${status.count}</em>
@@ -118,9 +105,6 @@
 														</div>
 													</div>
 												</div>
-
-
-
 											</c:forEach>
 										</div>
 									</div>
