@@ -57,59 +57,48 @@
 														<th>번호</th>
 														<th>배너 제목</th>
 														<th>배너 등록일</th>
-														<th>이벤트 상태</th>
+														<th>배너 상태</th>
 														<th>수정</th>
 														<th>삭제</th>
 													</tr>
-													<c:forEach var="getEvent" items="${getEventList['eventList']}">
+													<c:forEach var="getBanner" items="${getBannerList['BannerList']}">
 														<tr>
-															<td>${getEvent['eventNo']}</td>
-
-															<td>
-																<c:choose>
-																	<c:when test="${getEvent['eventStatus'] == 'Y'}">
-																		<a
-																			href="${contextPath}/eventList/detail_List/introduce/${getEvent['eventNo']}">${getEvent['eventTitle']}</a>
-																	</c:when>
-																	<c:otherwise>
-																		<a
-																			href="${contextPath}/eventList/end_List/introduce//${getEvent['eventNo']}">${getEvent['eventTitle']}</a>
-																	</c:otherwise>
-																</c:choose>
-															</td>
-															<td>${getEvent['eventStart']}</td>
-															<td>${getEvent['eventEnd']}</td>
-															<td>${getEvent['eventReg']}</td>
+															<td>${getBanner['bannerNo']}</td>
+															<td>${getBanner['bannerTitle']}</td>
+															<td>${getBanner['bannerRegDate']}</td>
 															<c:choose>
-																<c:when test="${getEvent['eventStatus'] == 'Y'}">
-																	<td><select class="Is_On"
-																			data-id="${getEvent['eventNo']}">
+																<c:when test="${getBanner['bannerSt'] == 'Y'}">
+																	<td><select class="Is_Show"
+																			data-id="${getBanner['bannerNo']}">
 																			<option value="N">N</option>
 																			<option value="Y" selected>Y</option>
 																		</select></td>
 																</c:when>
 																<c:otherwise>
-																	<td><select class="Is_On"
-																			data-id="${getEvent['eventNo']}">
+																	<td><select class="Is_Show"
+																			data-id="${getBanner['bannerNo']}">
 																			<option value="N" selected>N</option>
 																			<option value="Y">Y</option>
 																		</select></td>
 																</c:otherwise>
 															</c:choose>
 
-															<td><a href="${contextPath}/manager/event_list/edit/${getEvent['eventNo']}"
-																	class="editEvent"><i
+															<td>
+																<a href="${contextPath}/manager/banner_list/edit/${getBanner['bannerNo']}"
+																	class="editEvent"> <i
 																		class="fa-sharp fa-solid fa-pen-to-square"></i></a>
 															</td>
-															<td><a class="deleteEvent"><i
-																		class="fa-sharp fa-solid fa-xmark"></i></a></td>
+															<td>
+																<a class="deleteEvent"><i
+																		class="fa-sharp fa-solid fa-xmark"></i></a>
+															</td>
 														</tr>
 													</c:forEach>
 
 												</table>
 												<div class="page_Nation">
 													<c:set var="url" value="?cp=" />
-													<c:set var="pagination" value="${getEventList['pagination']}" />
+													<c:set var="pagination" value="${getBannerList['pagination']}" />
 													<c:set var="currentPage" value="${pagination.currentPage}"
 														scope="request" />
 													<div>
