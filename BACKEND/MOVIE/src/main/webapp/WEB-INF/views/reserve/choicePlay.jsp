@@ -89,7 +89,7 @@
                                <div class="age15">15</div>
                              </c:when>
                              <c:otherwise>
-                               <div class="age19">19</div>
+                               <div class="age18">18</div>
                              </c:otherwise>
                            </c:choose> 
                            <div><span class="movie_name">${movie['movieTitle']}</span></div>
@@ -118,7 +118,7 @@
                                   <div class="age15">15</div>
                                 </c:when>
                                 <c:otherwise>
-                                  <div class="age19">19</div>
+                                  <div class="age18">18</div>
                                 </c:otherwise>
                               </c:choose> 
                               <div><span class="movie_name">${movie['movieTitle']}</span></div>
