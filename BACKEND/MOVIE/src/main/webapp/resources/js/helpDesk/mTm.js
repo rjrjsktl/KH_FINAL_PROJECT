@@ -15,10 +15,10 @@ $(document).ready(function() {
                 "userNo": userNo
             },
             success: function(response) {
-                // Handle the success response
+                alert("성공~");
             },
             error: function(xhr, status, error) {
-                // Handle the error response
+                alert("ㅗ");
             }
         });
     });

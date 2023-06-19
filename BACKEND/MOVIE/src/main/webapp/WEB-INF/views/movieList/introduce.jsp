@@ -18,6 +18,9 @@
 
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
                         <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                            crossorigin="anonymous"></script>
 
                     </head>
 
@@ -408,10 +411,7 @@
 
                         </div>
 
-                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-                            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-                            crossorigin="anonymous"></script>
-
+                 
                         <script src="${contextPath}/resources/js/main/header.js"></script>
                         <script src="${contextPath}/resources/js/introduce/introduce.js"></script>
                         </div>
