@@ -57,7 +57,7 @@
 									<form action="">
 										<input type="text" placeholder=" 질문을 입력해주세요!">
 										<button>
-											<img src="../../images/headerPng/glass.png" alt="">
+											<img src="${contextPath}/resources/images/headerPng/glass.png" alt="">
 										</button>
 									</form>
 								</div>
@@ -66,40 +66,40 @@
 							<div class="new-wrap">
 
 								<div>
-									<a href="#"><img
-										src="${contextPath}/resources/images/noticePng/notice01.png"
-										alt=""></a> <a href="${contextPath}/helpDesk/notice_List"><p>공지사항</p>
+									<a href="${contextPath}/helpDesk/notice_List"><img
+										src="${contextPath}/resources/images/helpDesk/notice01.png"
+										alt=""> <a href="${contextPath}/helpDesk/notice_List"><p>공지사항</p>
 										<span>공지사항을 확인해보세요</span></a>
 								</div>
 
 
 								<div>
-									<a href="#"><img
-										src="${contextPath}/resources/images/noticePng/notice02.png"
-										alt=""></a> <a href=""><p>분실물 문의</p> <span>질질
+									<a href="${contextPath}/helpDesk/lost_List"><img
+										src="${contextPath}/resources/images/helpDesk/notice02.png"
+										alt=""></a> <a href="${contextPath}/helpDesk/lost_List"><p>분실물 문의</p> <span>질질
 											흘리고다니기나하고.. 으휴</span></a>
 
 								</div>
 								<div>
 									<a href="#"><img
-										src="${contextPath}/resources/images/noticePng/notice03.png"
+										src="${contextPath}/resources/images/helpDesk/notice03.png"
 										alt=""></a> <a href=""><p>단체 / 대관 문의</p> <span>돈도많으시네요</span></a>
 								</div>
 								<div>
 									<a href="#"><img
-										src="${contextPath}/resources/images/noticePng/notice04.png"
+										src="${contextPath}/resources/images/helpDesk/notice04.png"
 										alt=""></a> <a href=""><p>자주 찾는 나문희</p> <span>머리가
 											나쁜가..</span></a>
 
 								</div>
 								<div>
-									<a href="#"><img src="../../images/noticePng/notice05.png"
+									<a href="#"><img src="${contextPath}/resources/images/helpDesk/notice05.png"
 										alt=""></a> <a href=""><p>내 상담 내역</p> <span>적당히들
 											하시오 적당히들</span></a>
 								</div>
 								<div>
-									<a href="#"><img src="../../images/noticePng/notice06.png"
-										alt=""></a> <a href="${contextPath}/helpDesk/mTm_form"><p>1:1
+									<a href="${contextPath}/helpDesk/mTm_List"><img src="${contextPath}/resources/images/helpDesk/notice06.png"
+										alt=""></a>	<a href="${contextPath}/helpDesk/mTm_List"><p>1:1
 											나문희</p> <span>맞짱뜨실?</span></a>
 								</div>
 							</div>
@@ -193,65 +193,37 @@
 						<div class="event-wrap">
 							<div>
 								<div class="event-title">
-									<a href="">EVENT</a>
+								<p style="font-size:1.5rem">EVENT</p>
 									<div>
-										<button>전체보기</button>
+										<button><a href="${contextPath}/eventList/detail_List">전체보기</a></button>
 									</div>
 								</div>
 
 								<div class="swiper-container">
-									<div class="swiper-wrapper">
+										<div class="swiper-wrapper">
+							<c:forEach var="event" items="${getEvnetList['getEvnetList']}"
+								varStatus="status">
+								<c:choose>
+									<c:when test="${event['eventStatus'] ne 'N'}">
+										<input type="hidden" class="eventNo"
+											value="${event['eventNo']}" />
 										<div class="swiper-slide">
-											<a href="#"> <img
-												src="../../images/eventList/event001.jpg" alt=""
+											<a
+												href="${contextPath}/eventList/detail_List/introduce/${event['eventNo']}">
+												<img src="${event['eventImg']}" alt=""
 												onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
-												<strong>이벤트1</strong> <span>2023.01.01 ~ 2023.02.02</span>
+												<strong>${event['eventTitle']}</strong> <span>${event['eventStart']}&nbsp;~&nbsp;
+													${event['eventEnd']}</span>
 											</a>
 										</div>
-										<div class="swiper-slide">
-											<a href="#"> <img
-												src="../../images/eventList/event002.jpg" alt=""
-												onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
-												<strong>이벤트1</strong> <span>2023.01.01 ~ 2023.02.02</span>
-											</a>
-										</div>
+									</c:when>
+									<c:otherwise>
 
-										<div class="swiper-slide">
-											<a href="#"> <img
-												src="../../images/eventList/event003.jpg" alt=""
-												onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
-												<strong>이벤트1</strong> <span>2023.01.01 ~ 2023.02.02</span>
-											</a>
-										</div>
-										<div class="swiper-slide">
-											<a href="#"> <img
-												src="../../images/eventList/event002.jpg" alt=""
-												onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
-												<strong>이벤트1</strong> <span>2023.01.01 ~ 2023.02.02</span>
-											</a>
-										</div>
-										<div class="swiper-slide">
-											<a href="#"> <img
-												src="../../images/eventList/event001.jpg" alt=""
-												onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
-												<strong>이벤트1</strong> <span>2023.01.01 ~ 2023.02.02</span>
-											</a>
-										</div>
-										<div class="swiper-slide">
-											<a href="#"> <img
-												src="../../images/eventList/event002.jpg" alt=""
-												onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
-												<strong>이벤트1</strong> <span>2023.01.01 ~ 2023.02.02</span>
-											</a>
-										</div>
-										<div class="swiper-slide">
-											<a href="#"> <img
-												src="../../images/eventList/event003.jpg" alt=""
-												onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
-												<strong>이벤트1</strong> <span>2023.01.01 ~ 2023.02.02</span>
-											</a>
-										</div>
-									</div>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+
+						</div>
 									<div class="swiper-button-next swipe-nbtn"></div>
 									<div class="swiper-button-prev swipe-pbtn"></div>
 								</div>
