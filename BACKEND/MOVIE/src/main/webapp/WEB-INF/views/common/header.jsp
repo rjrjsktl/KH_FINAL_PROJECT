@@ -22,27 +22,35 @@
 											<div>
 												<img src="" alt="">
 											</div>
-											<li><a href="${contextPath}/user/login"> <span><img
-															src="${contextPath}/resources/images/headerPng/test.png"
+											<li>
+												<a href="${contextPath}/user/login">
+													<!-- <a href="#"	id="loginButton"> -->
+													<span><img src="${contextPath}/resources/images/headerPng/test.png"
 															alt=""></span>
 													<span>로그인</span>
-												</a></li>
-											<li><a href="${contextPath}/signUp/signUp_sns"> <span><img
-															src="${contextPath}/resources/images/headerPng/test2.png"
+												</a>
+											</li>
+											<li>
+												<a href="${contextPath}/signUp/signUp_sns">
+													<span><img src="${contextPath}/resources/images/headerPng/test2.png"
 															alt=""></span>
 													<span>회원가입</span>
-												</a></li>
-											<li><a href="${contextPath}/myPage/myPgMain"> <span><img
-															src="${contextPath}/resources/images/headerPng/test3.png"
+												</a>
+											</li>
+											<li>
+												<a href="${contextPath}/myPage/myPgMain">
+													<span><img src="${contextPath}/resources/images/headerPng/test3.png"
 															alt=""></span>
 													<span>MY KGV</span>
-												</a></li>
-
-											<li><a href="${contextPath}/helpDesk/helpDesk_home"> <span><img
-															src="${contextPath}/resources/images/headerPng/test5.png"
+												</a>
+											</li>
+											<li>
+												<a href="${contextPath}/helpDesk/helpDesk_home">
+													<span><img src="${contextPath}/resources/images/headerPng/test5.png"
 															alt=""></span>
 													<span>고객센터</span>
-												</a></li>
+												</a>
+											</li>
 
 										</ul>
 									</c:if>
@@ -62,7 +70,8 @@
 														</a></li>
 													<li><a href="${contextPath}/user/logout"> <span><img
 																	src="${contextPath}/resources/images/headerPng/logout1.png"
-																	alt=""></span> <span>로그아웃</span>
+																	alt=""></span>
+															<span>로그아웃</span>
 														</a></li>
 													<li><a href="${contextPath}/myPage/info"> <span><img
 																	src="${contextPath}/resources/images/headerPng/test3.png"
@@ -100,7 +109,8 @@
 								<ul>
 									<li class="navBar"><a href="${contextPath}/movieList/detail_List">영화</a>
 										<ul class="menuBar" style="display: none">
-											<li><a href="${contextPath}/movieList/detail_List">상영중인 영화</a></li>
+											<li><a href="${contextPath}/movieList/detail_List">상영중인
+													영화</a></li>
 											<li><a href="${contextPath}/movieList/all_List">전체 영화 목록</a></li>
 										</ul>
 									</li>
@@ -119,7 +129,8 @@
 
 									<li class="navBar"><a href="${contextPath}/eventList/detail_List">이벤트</a>
 										<ul class="menuBar" style="display: none">
-											<li><a href="${contextPath}/eventList/detail_List">진행중 이벤트</a></li>
+											<li><a href="${contextPath}/eventList/detail_List">진행중
+													이벤트</a></li>
 											<li><a href="${contextPath}/eventList/end_List">지난 이벤트</a></li>
 											<li><a href="">당첨자 발표</a></li>
 										</ul>
@@ -145,22 +156,13 @@
 								</div>
 							</div>
 						</nav>
-						<div id="myModal" class="modal">
-							<div class="modal-content">
-								<div class="close-button">&times;</div>
-								<iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
-							</div>
-						</div>
-						<%-- request에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
 
-							<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-								integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-								crossorigin="anonymous"></script>
 
-							<script src="${contextPath}/resources/js/main/header.js"></script>
-							<script>
-								const test = "${loginUser}";
-								console.log(test + "+++++++++++++++++++++++++++++++++++++++++++++++++++++");
-							</script>
+
+						<script src="${contextPath}/resources/js/main/header.js"></script>
+						<script>
+							const test = "${loginUser}";
+							console.log(test
+								+ "+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+						</script>
 					</header>
->>>>>>> 4e465b56f80f68e30590d1e3c5ad097d17f3ebc9

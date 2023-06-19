@@ -70,7 +70,11 @@
 														<tr>
 															<td>${store['storeNo']}</td>
 															<td>${store['storeCategory']}</td>
-															<td>${store['storeName']}</td>
+															<td>
+																<a
+																	href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}">${store['storeName']}</a>
+
+															</td>
 															<td>${store['storeDesc']}</td>
 															<td>${store['storeStock']}</td>
 															<td>${store['storePrice']}</td>
@@ -91,7 +95,7 @@
 												</table>
 												<div class="page_Nation">
 													<c:set var="url" value="?cp=" />
-													<c:set var="pagination" value="${getNoticeList['pagination']}" />
+													<c:set var="pagination" value="${storeMap['pagination']}" />
 													<c:set var="currentPage" value="${pagination.currentPage}"
 														scope="request" />
 													<div>

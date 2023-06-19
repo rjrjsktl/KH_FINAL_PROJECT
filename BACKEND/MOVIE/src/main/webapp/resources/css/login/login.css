@@ -1,16 +1,11 @@
-
-
-
 /* =============================================================== */
 /* 아래부터 추가하세요. */
 
 main {
-    /* width: 1160px;
-    height: 3000px;
-    border: 1px solid red;
-    margin: 0 auto;
-    padding: 0 20px; */
-
+    width: 1160px;
+    height: 100%;
+    margin: auto;
+    padding: 3% 20px;
     width: 100%;
     margin: 0 auto;
 }
@@ -24,14 +19,14 @@ main>div {
 
 
 main>div>div {
-    width:  400px;
+    width: 400px;
     height: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: baseline;
     border-radius: 10px;
-    background-color: rgb(33,33,33);
+    background-color: rgb(33, 33, 33);
 }
 
 /* 프레임 */
@@ -55,11 +50,11 @@ main>div>div>div>:nth-child(1) {
     justify-content: center;
 }
 
-main>div>div>div>:nth-child(1) > p{
-    font-size:1.8rem;
+main>div>div>div>:nth-child(1)>p {
+    font-size: 1.8rem;
     font-weight: bold;
-    color:rgb(250, 227, 0);
-    padding:25px;
+    color: rgb(250, 227, 0);
+    padding: 25px;
 }
 
 /* 로고 */
@@ -121,9 +116,9 @@ main>div>div>div>:nth-child(2)>form>div>:nth-child(1)>:nth-child(1)>:nth-child(1
     background-position: 5px center;
     background-size: 20px;
     padding-left: 10px;
-    margin:10px 0;
+    margin: 10px 0;
     outline: none;
-    border:none;
+    border: none;
 }
 
 /* id&pw input */
@@ -137,9 +132,9 @@ main>div>div>div>:nth-child(2)>form>div>:nth-child(1)>:nth-child(1)>:nth-child(2
     background-position: 5px center;
     background-size: 20px;
     padding-left: 10px;
-    margin:10px 0;
+    margin: 10px 0;
     outline: none;
-    border:none;
+    border: none;
 
 }
 
@@ -152,10 +147,10 @@ main>div>div>div>:nth-child(2)>form>div>:nth-child(1)>:nth-child(1)>:nth-child(2
     cursor: pointer;
 }
 
-input#saveId:checked + label.bb:before {
+input#saveId:checked+label.bb:before {
     content: "\f058";
     font-weight: 900;
-    color:rgb(250, 227, 0);
+    color: rgb(250, 227, 0);
 }
 
 input#saveId {
@@ -171,7 +166,7 @@ main>div>div>div>:nth-child(2)>form>div>:nth-child(2)>button {
     margin: 10px 0;
 
     color: #DEDEDE;
-    border:none;
+    border: none;
     outline: none;
 
     border-radius: 5px;
@@ -181,7 +176,7 @@ main>div>div>div>:nth-child(2)>form>div>:nth-child(2)>button {
 }
 
 main>div>div>div>:nth-child(2)>form>div>:nth-child(2)>button:hover {
-    color:rgb(250, 227, 0)
+    color: rgb(250, 227, 0)
 }
 
 /* SNS 로그인 */
@@ -193,7 +188,7 @@ main>div>div>div>:nth-child(3) {
 }
 
 main>div>div>div>:nth-child(3)>li>a>img {
-    margin:10px 5px;
+    margin: 10px 5px;
     width: 40px;
     height: 40px;
     align-items: center;
