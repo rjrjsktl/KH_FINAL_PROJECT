@@ -18,10 +18,11 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-<script src="https://kit.fontawesome.com/dc6e43e0ad.js"
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
-
-
 
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/helpDesk/helpDeskHome.css" />
@@ -268,9 +269,7 @@
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-		crossorigin="anonymous"></script>
+
 	<script src="../../js/common/header.js"></script>
 
 	<script src="${contextPath}/resources/js/notice/notice-home.js"></script>

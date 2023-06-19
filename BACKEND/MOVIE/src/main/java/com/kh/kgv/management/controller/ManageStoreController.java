@@ -99,7 +99,7 @@ public class ManageStoreController {
 	public String storeUploadImageFile(@RequestParam("file") MultipartFile[] multipartFiles, HttpServletRequest request) {
 	    JsonArray jsonArray = new JsonArray(); 
 
-	    String webPath = "/resources/images/store_img/";
+	    String webPath = "/resources/images/storeimg/";
 	    String fileRoot = request.getServletContext().getRealPath(webPath);
 
 	    for (MultipartFile multipartFile : multipartFiles) {
@@ -127,5 +127,11 @@ public class ManageStoreController {
 	    System.out.println("이미지: " + jsonResult);
 	    return jsonResult;
 	}
+	
+	
+	
+	
+	
+	
 
 }

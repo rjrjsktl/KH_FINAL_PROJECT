@@ -27,7 +27,7 @@
 </head>
 
 
-<body class="dark light">
+<body>
     <main>
         <div class="main_Wrapper">
 			<div id="left_Nav_Container">

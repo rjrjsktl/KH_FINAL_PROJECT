@@ -21,6 +21,7 @@ import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Pagination;
 import com.kh.kgv.management.model.vo.WeeklyEnter;
+import com.kh.kgv.management.model.vo.banner;
 
 @Service
 public class ManagerServiceImpl implements ManagerService {
@@ -396,9 +397,39 @@ public class ManagerServiceImpl implements ManagerService {
 		
 		return getEvnetList;
 	}
-	
 
-	
+	// 관리자_배너 등록
+	@Override
+	public int addBanner(banner banner) {
+		return dao.addBanner(banner);
+	}
+
+	// 관리자_배너 목록 이동시 목록 조회
+	@Override
+	public Map<String, Object> getBannerList(int cp) {
+		
+		int bannerCount = dao.bannerCount(cp);
+		
+		// 조회한 영화관 수를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, bannerCount);
+
+		// 영화관 리스트 조회
+		
+		List<banner>BannerList = dao.getBannerList(pagination);
+		
+		Map<String, Object>getBannerList = new HashMap<String, Object>();
+		getBannerList.put("BannerList", BannerList);
+		
+		return getBannerList;
+	}
+
+	// 관리자_배너 상태 업데이트
+	@Override
+	public int updateBannerST(banner banner) {
+		return dao.updateBannerST(banner);
+	}
+
+
 
 
 

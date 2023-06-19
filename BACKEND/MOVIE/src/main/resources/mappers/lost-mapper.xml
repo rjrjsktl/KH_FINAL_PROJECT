@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lostMapper">
+
+	<resultMap type="losts" id="lost_rm">
+		<id property="lostNo" column="LOST_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="lostTitle" column="LOST_TITLE" />
+		<result property="lostItem" column="LOST_ITEM" />
+		<result property="lostLocation" column="LOST_LOCATION" />
+		<result property="lostDate" column="LOST_DATE" />
+		<result property="lostFile" column="LOST_FILE" />
+		<result property="lostContent" column="LOST_CONTENT" />
+		<result property="lostWriter" column="LOST_WRITER" />
+		<result property="lostView" column="LOST_VIEW" />
+	</resultMap>
+
+
+
+
+	<select id="getLostCount" resultType="_int">
+		SELECT COUNT(LOST_NO) FROM
+		LOST_PACKAGE
+	</select>
+
+	<select id="userLostList" resultMap="lost_rm">
+		SELECT
+		*
+		FROM
+		LOST_PACKAGE
+		<!-- WHERE USER_NO = ${userNo} -->
+		ORDER BY LOST_NO DESC
+	</select>
+
+	<select id="lostdetail" resultMap="lost_rm">
+		SELECT
+		LOST_NO
+		, LOST_TITLE
+		, LOST_CONTENT
+		, LOST_DATE
+		, LOST_WRITER
+		FROM LOST_PACKAGE
+		WHERE LOST_NO = #{lostNo}
+	</select>
+	
+		<insert id="addLost" parameterType="losts" >
+		INSERT INTO LOST_PACKAGE
+		VALUES (
+		SEQ_LP_NO.NEXTVAL
+		, #{userNo}
+		, #{lostTitle}
+		, #{lostItem}
+		, #{lostLocation}
+		, #{lostDate}
+		, DEFAULT
+		, #{lostContent}
+		, DEFAULT
+		, DEFAULT
+		)
+	</insert>
+
+
+</mapper>

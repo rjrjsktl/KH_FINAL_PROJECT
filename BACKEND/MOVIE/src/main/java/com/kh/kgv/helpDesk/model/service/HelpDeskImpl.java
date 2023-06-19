@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.kgv.helpDesk.model.dao.HelpDeskDAO;
+import com.kh.kgv.helpDesk.model.vo.LostPagenation;
+import com.kh.kgv.helpDesk.model.vo.LostPackage;
 import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.helpDesk.model.vo.MtmPagenation;
 import com.kh.kgv.management.model.dao.ManagerDAO;
@@ -71,6 +73,41 @@ public class HelpDeskImpl implements HelpDeskService {
 	@Override
 	public Mtm selectmTmDetail(int mtmNo) {
 		return dao.selectmTmDetail(mtmNo);
+	}
+
+	@Override
+	public Map<String, Object> getLostList(int cp, int userNo) {
+		
+		int lostlistCount = dao.getLostListCount();
+
+		LostPagenation pagination = new LostPagenation(cp, lostlistCount);
+
+		List<Mtm> lostLists = dao.lostLists(pagination, userNo);
+
+		Map<String, Object> getMtmList = new HashMap<String, Object>();
+		getMtmList.put("pagination", pagination);
+		getMtmList.put("lostLists", lostLists);
+
+		return getMtmList;
+	}
+
+	@Override
+	public LostPackage selectLostDetail(int lostNo) {
+		System.out.println(lostNo+"서비스");
+		return dao.selectLostDetail(lostNo);
+	}
+
+
+
+	@Override
+	public int addmTm(Mtm mtm) {
+		return dao.addmTm(mtm);
+
+	}
+
+	@Override
+	public int addLost(LostPackage lost) {
+		return dao.addLost(lost);
 	}
 
 }

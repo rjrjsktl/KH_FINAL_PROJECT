@@ -23,7 +23,8 @@
 	href="${contextPath}/resources/css/helpDesk/mtm_List.css">
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/common/notice_Aside.css">
-
+         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 </head>
 
@@ -87,21 +88,41 @@
 								</table>
 
 								<div>
-									<button>게시물 등록</button>
+									<button> <a href="${contextPath}/helpDesk/mTm_form/${mtmNo}">게시물 등록</a></button>
 								</div>
 								<!-- 10개씩 -->
-								<ul class="pagination">
-									<li><a href="#">&lt;&lt;</a></li>
-									<li><a href="#">&lt;</a></li>
-									<li><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">&gt;</a></li>
-									<li><a href="#">&gt;&gt;</a></li>
-								</ul>
-
+									<div class="page_Nation">
+								<c:set var="url" value="?cp=" />
+								<c:set var="pagination" value="${mtmList['pagination']}" />
+								<c:set var="currentPage" value="${pagination.currentPage}"
+									scope="request" />
+								<div>
+									<a href="${url}1">&lt;&lt;</a>
+								</div>
+								<div>
+									<a href="${url}${pagination.prevPage}">&lt;</a>
+								</div>
+								<c:forEach var="i" begin="${pagination.startPage}"
+									end="${pagination.endPage}" step="1">
+									<c:choose>
+										<c:when test="${i == currentPage}">
+											<div>
+												<a class="selected_Cp">${i}</a>
+											</div>
+										</c:when>
+										<c:otherwise>
+											<div>
+												<a href="${url}${i}">${i}</a>
+											</div>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<div>
+									<a href="${url}${pagination.nextPage}">&gt;</a>
+								</div>
+								<div>
+									<a href="${url}${pagination.maxPage}">&gt;&gt;</a>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -113,9 +134,7 @@
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-		crossorigin="anonymous"></script>
+
 	<script src="../../js/common/header.js"></script>
 
 

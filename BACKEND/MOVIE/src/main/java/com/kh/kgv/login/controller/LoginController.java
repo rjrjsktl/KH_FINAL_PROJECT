@@ -130,7 +130,9 @@ public class LoginController {
 			
 //			return "redirect:/user/login"; 
 		}
-		return "redirect:/"; 
+		
+		return "redirect:/";
+		
 	}
 	
 		//session.setAttribute("loginUser", loginUser);
@@ -163,6 +165,7 @@ public class LoginController {
 		status.setComplete(); 
 		
 		return "redirect:/";
+		
 		
 	}
 	

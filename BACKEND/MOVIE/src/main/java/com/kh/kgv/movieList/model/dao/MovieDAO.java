@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.items.model.vo.Play;
+import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.management.model.vo.Pagination;
 
 @Repository
@@ -29,5 +32,20 @@ public class MovieDAO {
 	public List<Movie> mainMovieList() {
 		
 		return sqlSession.selectList("movieMapper.mainMovieList", null);
+	}
+
+	// 관리자 페이지 상영 수 조회
+	public int getNowPlayCount() {
+		return sqlSession.selectOne("movieMapper.getNowPlayCount");
+	}
+
+	// 관리자 페이지 상영 조회
+	public List<JoinPlay> getPlayList(Pagination pagination) {
+		
+	int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("movieMapper.getPlayList", null, rowBounds);
 	}
 }
