@@ -12,10 +12,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>로그인 페이지</title>
 
-<link rel="stylesheet"	href="${contextPath}/resources/css/common/outline.css">
-<link rel="stylesheet"	href="${contextPath}/resources/css/login/login.css">
+<link rel="stylesheet"
+	href="${contextPath}/resources/css/common/outline.css">
+<link rel="stylesheet"
+	href="${contextPath}/resources/css/login/login.css">
 
-<script src="https://kit.fontawesome.com/dc6e43e0ad.js"	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/dc6e43e0ad.js"
+	crossorigin="anonymous"></script>
 
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 
@@ -23,7 +26,7 @@
 
 <body>
 	<div id="wrap">
-<%-- 
+		<%-- 
 		<!-- header -->
 		<jsp:include page="/WEB-INF/views/common/header.jsp" /> --%>
 
@@ -41,48 +44,33 @@
 
 						<!-- 로그인 영역 -->
 						<div>
-							<c:choose>
-								<%-- 로그인이 되어있지 않은 경우 --%>
-								<c:when test="${empty sessionScope.loginUser}">
-									<form action="login" method="POST"
-										onsubmit="return loginValidate();">
+							<form action="login" method="POST" onsubmit="return loginValidate();">
+								<div>
+									<div>
 										<div>
-											<div>
-												<%-- <c:choose>
-											 로그인이 되어있지 않은 경우 
-											<c:when test="${empty sessionScope.loginUser}"> --%>
-												<div>
-													<input type="text" placeholder="아이디" name="userEmail" value="${cookie.saveId.value}" maxlength="41"> 
-													<input type="password" placeholder="비밀번호" name="userPw" maxlength="41">
-													<div class="keep_area">
-														<%-- 쿠키에 saveId가 있는 경우--%>
-														<c:if test="${ !empty cookie.saveId.value}">
-															<%-- chk 변수 생성(page scope)--%>
-															<c:set var="chk" value="checked" />
-														</c:if>
-														<input type="checkbox" name="saveId" ${chk} id="saveId">
-														<label for="saveId" class="bb"></label> 
-														<label for="saveId" class="cc">아이디 저장</label>
-													</div>
-												</div>
-												<%-- </c:when> --%>
-												<%-- <c:otherwise>
-													<!-- 다른 조건에 따른 처리 -->
-												</c:otherwise> --%>
-												<%-- </c:choose> --%>
+											<input type="text" placeholder="아이디" name="userEmail" id="userEmail" value="${cookie.saveId.value}" maxlength="41"> 
+											<input type="password" placeholder="비밀번호" name="userPw" id="userPw"	maxlength="41">
+											<div class="keep_area">
+												<%-- 쿠키에 saveId가 있는 경우--%>
+												<c:if test="${ !empty cookie.saveId.value}">
+													<%-- chk 변수 생성(page scope)--%>
+													<c:set var="chk" value="checked" />
+												</c:if>
+												<input type="checkbox" name="saveId" ${chk} id="saveId">
+												<label for="saveId" class="bb"></label> 
+												<label for="saveId"	class="cc">아이디 저장</label>
 											</div>
-
-											<div>
-												<button>로그인</button>
-											</div>
-											
 										</div>
-									</form>
-								</c:when>
-								<c:otherwise>
-										<!-- 다른 조건에 따른 처리 -->
-								</c:otherwise>
-							</c:choose>
+
+									</div>
+
+									<div>
+										<button id="loginBtn">로그인</button>
+									</div>
+
+								</div>
+							</form>
+
 						</div>
 
 						<!-- SNS 로그인 -->
@@ -117,7 +105,7 @@
 
 	</div>
 
-<%-- 	<!-- footer -->
+	<%-- 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
  --%>
 	<!--
