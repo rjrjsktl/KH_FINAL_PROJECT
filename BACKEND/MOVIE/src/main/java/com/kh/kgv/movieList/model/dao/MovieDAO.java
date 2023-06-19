@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.items.model.vo.Play;
 import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.management.model.vo.Pagination;
 
 @Repository
@@ -38,7 +40,7 @@ public class MovieDAO {
 	}
 
 	// 관리자 페이지 상영 조회
-	public List<Movie> getPlayList(Pagination pagination) {
+	public List<JoinPlay> getPlayList(Pagination pagination) {
 		
 	int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
 		

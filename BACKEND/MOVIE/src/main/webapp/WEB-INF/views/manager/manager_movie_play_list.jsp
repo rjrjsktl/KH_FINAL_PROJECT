@@ -56,22 +56,26 @@
 												<table class="table_main">
 													<tr>
 														<th>번호</th>
-														<th>영화명</th>
-														<th>예매율</th>
-														<th>누적상영횟수</th>
-														<th>누적관람횟수</th>
-														<th>개봉일</th>
+														<th>상영 영화</th>
+														<th>상영 지역</th>
+														<th>상영 영화관</th>
+														<th>상영 스크린 번호</th>
+														<th>상영 스크린 종류</th>
+														<th>상영 시작일</th>
+														<th>상영 종료일</th>
 													</tr>
 													<c:forEach var="movie" items="${getMovieList['playMovieList']}">
 														<tr>
-															<td>${movie['movieNo']}</td>
+															<td>${movie.play.playNo}</td>
 															<td><a
-																	href="${contextPath}/movieList/detail_List/introduce/${movie['movieNo']}">${movie['movieTitle']}</a>
+																	href="${contextPath}/movieList/detail_List/introduce/${movie.movie.movieNo}">${movie.movie.movieTitle}</a>
 															</td>
-															<td>예매율??</td>
-															<td>${movie['moviePlayed']}</td>
-															<td>${movie['movieWatched']}</td>
-															<td>${movie['movieOpen']}</td>
+															<td>${movie.cinema.cinemaArea}</td>
+															<td>${movie.cinema.cinemaName}</td>
+															<td>${movie.screen.screenName}</td>
+															<td>${movie.screen.screenStyle}</td>
+															<td>${movie.play.playStart}</td>
+															<td>${movie.play.playEnd}</td>
 															<td><button class="editBtn">
 																	<i class="fa-sharp fa-solid fa-pen-to-square"></i>
 																</button></td>

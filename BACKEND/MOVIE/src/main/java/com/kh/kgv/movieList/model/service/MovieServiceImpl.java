@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.kh.kgv.common.Util;
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.items.model.vo.Play;
 import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.management.model.vo.Pagination;
 import com.kh.kgv.movieList.model.dao.MovieDAO;
 
@@ -102,8 +104,8 @@ public class MovieServiceImpl implements MovieService{
 		// 조회한 현재 상영중인 영화 수를 pagination 에 담기
 		Pagination pagination = new Pagination(cp, cinemaCount);
 
-		// 영화관 리스트 조회
-		List<Movie> playMovieList = dao.getPlayList(pagination);
+		// 상영중인 영화 리스트 조회
+		List<JoinPlay> playMovieList = dao.getPlayList(pagination);
 		
 		Map<String, Object> getMovieList = new HashMap<String, Object>();
 		getMovieList.put("pagination", pagination);
