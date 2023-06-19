@@ -9,17 +9,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>내 분실물 문의 내용</title>
+    <title>공지 세부</title>
 
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    <script src="/ckeditor5/build/ckeditor.js"></script>
 
     <link rel="stylesheet" href="../../css/common/outline.css">
     <link rel="stylesheet" href="../../css/mypage/myPage_aSide.css">
-    <link rel="stylesheet" href="../../css/mypage/myPage_myLostItemDetail.css">
+    <link rel="stylesheet" href="../../css/mypage/myPage_myMtmDetail.css">
+    <link rel="stylesheet" href="../../css/mypage/myPage_randomMovie.css">
 
 </head>
 
@@ -158,52 +161,147 @@
                     <div class="container">
                         <div class="content-wrap">
 
-                            <h2>분실물 신고</h2>
+                            <h2>1:1 문의</h2>
 
-                            <div class="notice-contents content_inner">
-                                <table class="innerTable">
-                                    <tr>
-                                        <th>제목</th>
-                                        <td><input type="text" placeholder=" 제목을 입력해 주세요."></td>
-                                    </tr>
-                                    <tr>
-                                        <th>물품</th>
-                                        <td><input type="text" placeholder=" 잃어버린 물품에 대해 입력해 주세요."></td>
-                                    </tr>
-                                    <tr>
-                                        <th>위치</th>
-                                        <td><input type="text" placeholder=" 상세한 위치를 입력해 주세요."></td>
-                                    </tr>
-                                    <tr>
-                                        <th>날짜</th>
-                                        <td><input type="date" placeholder=" 잃어버린 날짜를 입력해 주세요." class="dateBtn"
-                                                onfocus="this.showPicker()"></td>
-                                    </tr>
-                                    <tr>
-                                        <th>첨부파일</th>
-                                        <td><input type="file" multiple class="align_File"></td>
-                                    </tr>
-                                </table>
+                            <div class="notice-contents">
+                                <div> <span>1:1 문의 제목</span></div>
+                                <div><span>[등록자]<span></span> <span>|</span> <span>[날짜] </span></span></div>
+                                <div>
+                                    [1:1문의내용]
+                                </div>
                             </div>
 
-                            <div id="writeForm">
-                                <div class="inner_Textarea_Title">상세 내용</div>
-                                <textarea class="inner_Textarea"
-                                    placeholder="잃어버리신 물건의 이름, 크기, 색상 등을 자세하게 설명해 주세요."></textarea>
-                            </div>
+                            <div class="movie-reply">
 
-                            <div class="btn_Container">
-                                <button>작성하기</button>
-                                <button>취소하기</button>
+                                <div class="replywritewrap">
+                                    <span>1:1문의 작성</span>
+
+                                    <div>
+                                        <form action="" class="replywrite">
+                                            <textarea name="" id="" cols="30" rows="3"></textarea>
+                                            <div class="replyBtn">문의 작성</div>
+                                        </form>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="replyList">
+
+
+                                    <ul>
+
+                                        <li class="review" style="display: none;"><span>
+                                                <img src="" alt="이미지">
+                                            </span>
+                                            <div>
+                                                <span>씨*럼</span>
+                                                <span>2023.05.24</span>
+                                            </div>
+                                            <div>
+                                                이제 다리안아픔 개꿀띠임 역시 현대의학 개좆지리누<br>
+                                                ㅋㅋㄹㅃㅃ<br>
+                                            </div>
+                                        </li>
+
+
+
+                                    </ul>
+                                </div>
+
+
+
                             </div>
 
                         </div>
 
+                        <div>
+                            <button>목록으로</button>
+                        </div>
                     </div>
                 </div>
             </section>
         </main>
 
+    </div>
+    <!-- ----------------------------------------------------------------------------------------- -->
+    <div class="event-wrap">
+        <div>
+            <div class="event-title">
+                <a href="">오늘 이 영화를 추천드립니다!<br>(영화 랜덤 뿌리기 기능 찾아보기 9개정도)</a>
+                <div><button>전체보기</button></div>
+            </div>
+
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="../../images/eventList/event001.jpg" alt="" onmouseenter="zoomIn(event)"
+                                onmouseleave="zoomOut(event)">
+                            <strong>이벤트1</strong>
+                            <span>2023.01.01 ~ 2023.02.02</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="../../images/eventList/event002.jpg" alt="" onmouseenter="zoomIn(event)"
+                                onmouseleave="zoomOut(event)">
+                            <strong>이벤트1</strong>
+                            <span>2023.01.01 ~ 2023.02.02</span>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="../../images/eventList/event003.jpg" alt="" onmouseenter="zoomIn(event)"
+                                onmouseleave="zoomOut(event)">
+                            <strong>이벤트1</strong>
+                            <span>2023.01.01 ~ 2023.02.02</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="../../images/eventList/event002.jpg" alt="" onmouseenter="zoomIn(event)"
+                                onmouseleave="zoomOut(event)">
+                            <strong>이벤트1</strong>
+                            <span>2023.01.01 ~ 2023.02.02</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="../../images/eventList/event001.jpg" alt="" onmouseenter="zoomIn(event)"
+                                onmouseleave="zoomOut(event)">
+                            <strong>이벤트1</strong>
+                            <span>2023.01.01 ~ 2023.02.02</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="../../images/eventList/event002.jpg" alt="" onmouseenter="zoomIn(event)"
+                                onmouseleave="zoomOut(event)">
+                            <strong>이벤트1</strong>
+                            <span>2023.01.01 ~ 2023.02.02</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="../../images/eventList/event003.jpg" alt="" onmouseenter="zoomIn(event)"
+                                onmouseleave="zoomOut(event)">
+                            <strong>이벤트1</strong>
+                            <span>2023.01.01 ~ 2023.02.02</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-button-next swipe-nbtn"></div>
+                <div class="swiper-button-prev swipe-pbtn"></div>
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="close-button">&times;</div>
+            <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
+        </div>
     </div>
     <footer>
 
@@ -243,7 +341,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="../../js/common/header.js"></script>
-    <script src="../../js/myPage/myPage_myLostItem.js"></script>
+    <script src="../../js/myPage/myPage_myMtm.js"></script>
     <script src="../../js/myPage/myPage_randomMovie.js"></script>
     <script src="../../js/myPage/myPage_swiper.js"></script>
 </body>
