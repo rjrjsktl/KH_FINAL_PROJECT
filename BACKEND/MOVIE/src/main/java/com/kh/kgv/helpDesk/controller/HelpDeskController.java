@@ -12,10 +12,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -35,7 +39,7 @@ import org.slf4j.LoggerFactory;
 @RequestMapping("/helpDesk")
 @SessionAttributes({"loginUser"})
 public class HelpDeskController {
-	
+
 	private Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 
@@ -117,7 +121,7 @@ public class HelpDeskController {
 		User loginUser = (User)session.getAttribute("loginUser");
 
 
-		int userNo = 1000000000;
+		int userNo = 0;
 
 		if(loginUser != null) {
 			userNo = loginUser.getUserNo();
@@ -147,7 +151,66 @@ public class HelpDeskController {
 		model.addAttribute("mTmdetail", mTmdetail);
 
 		return "helpDesk/mtm_detail";
+	}
 
+
+	//	if ( userNo > 0) {
+	//		model.addAttribute("message","message");
+	//		path = "helpDesk/mTm_form";
+	//	} else {
+	//		model.addAttribute("message","로그인을 해주세용");
+	//		path ="redirect:/user/login";
+	//	}
+	//	
+	@GetMapping("/mTm_form")
+	public String mtmWrite(
+			Model model,
+			HttpSession session
+			) {
+
+		User loginUser = (User)session.getAttribute("loginUser");
+
+		int userNo = 0;
+
+		if(loginUser != null) {
+			userNo = loginUser.getUserNo();
+		}
+		System.out.println("userNo"+userNo+"-----------------------------------------------------------------------");
+
+		String path = null;
+
+		model.addAttribute("userNo", userNo);
+
+		return "helpDesk/mTm_form"; 
+	}
+
+	@ResponseBody
+	@PostMapping("/mTm_form")
+	public int addmTm(
+			@RequestParam("titleInput") String title, 
+			@RequestParam("contentTextarea") String content,
+			@RequestParam("inquirySelect") String inquiry,
+			HttpSession session) {
+
+		User loginUser = (User)session.getAttribute("loginUser");
+
+
+		int userNo = 0;
+
+		if(loginUser != null) {
+			userNo = loginUser.getUserNo();
+		}
+
+		Mtm mtm = new Mtm();
+
+		mtm.setMtmTitle(title);
+		mtm.setMtmContent(content);
+		mtm.setMtmType(inquiry);
+		mtm.setUserNo(userNo);
+
+		int result = services.addmTm(mtm);
+		System.out.println("int result = "+result);
+		return result;
 	}
 
 
@@ -177,8 +240,8 @@ public class HelpDeskController {
 
 		return "helpDesk/lost_List";
 	}
-	
-	
+
+
 	@RequestMapping("/lost_detail/{lostNo}")
 	public String lostdetail(
 			Model model,
@@ -186,22 +249,20 @@ public class HelpDeskController {
 			HttpSession session,
 			HttpServletRequest req, HttpServletResponse resp
 			){
-	
+
 		LostPackage lostdetail = services.selectLostDetail(lostNo);
 		if(lostdetail != null){
-		  System.out.println("=========================================================================" + lostdetail);
-		  String unescapedContent = StringEscapeUtils.unescapeHtml4(lostdetail.getLostContent());
-		  lostdetail.setLostContent(unescapedContent);
-		  model.addAttribute("lostdetail", lostdetail);
+			System.out.println("=========================================================================" + lostdetail);
+			String unescapedContent = StringEscapeUtils.unescapeHtml4(lostdetail.getLostContent());
+			lostdetail.setLostContent(unescapedContent);
+			model.addAttribute("lostdetail", lostdetail);
 		} else {
-		  System.out.println("LostPackage is null for lostNo: " + lostNo);
+			System.out.println("LostPackage is null for lostNo: " + lostNo);
 		}
-		
+
 		return "helpDesk/lost_detail";
 
 	}
-	
-
 
 
 

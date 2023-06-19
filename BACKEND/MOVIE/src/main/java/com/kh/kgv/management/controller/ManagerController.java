@@ -573,8 +573,12 @@ public class ManagerController {
 	// 공지사항 등록
 	@ResponseBody
 	@PostMapping("/notice_add/write_Notice")
-	public int addNotice(@RequestParam("title") String title, @RequestParam("content") String content,
-			@RequestParam("userName") String userName) {
+	public int addNotice(
+			@RequestParam("title") String title, 
+			@RequestParam("content") String content,
+			@RequestParam("userName") String userName) 
+	
+	{
 		Notice notice = new Notice();
 
 		notice.setNoticeTitle(title);

@@ -51,11 +51,12 @@
 							<table class="innerTable">
 								<tr class="tteesstt">
 									<th>제목</th>
-									<td><input type="text" placeholder=" 제목을 입력해 주세요."></td>
+									<td><input type="text" id="titleInput"
+										placeholder="제목을 입력해 주세요."></td>
 								</tr>
 								<tr>
 									<th>문의종류</th>
-									<td><select>
+									<td><select id="inquirySelect">
 											<option disabled selected>문의 내용을 선택해주세요.</option>
 											<option value="movie">영화 문의</option>
 											<option value="using">이용 문의</option>
@@ -63,9 +64,6 @@
 											<option value="refund">환불 문의</option>
 											<option value="NAMOONY">나문희</option>
 									</select></td>
-									<td></td>
-									<td></td>
-									<td></td>
 								</tr>
 								<tr>
 									<th>첨부파일</th>
@@ -73,16 +71,17 @@
 								</tr>
 							</table>
 						</div>
-
 						<div id="writeForm">
 							<div class="inner_Textarea_Title">내용</div>
-							<textarea class="inner_Textarea"></textarea>
+							<textarea class="inner_Textarea" id="contentTextarea"></textarea>
 						</div>
+						<button id="submitButton">Submit</button>
 
 						<div class="btn_Container">
 							<button>작성하기</button>
 							<button>취소하기</button>
 						</div>
+						<p id="userNo"></p>
 
 					</div>
 
@@ -97,6 +96,8 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 		crossorigin="anonymous"></script>
+		
+		<script src="${contextPath}/resources/js/helpDesk/mTm.js"></script>
 
 </body>
 

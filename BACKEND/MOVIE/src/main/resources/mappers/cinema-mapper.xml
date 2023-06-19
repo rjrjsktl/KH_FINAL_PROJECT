@@ -74,4 +74,11 @@
         SELECT SCREEN_NO FROM SCREEN
         WHERE CINEMA_NAME = #{cinemaName} AND SCREEN_NAME = #{screenName}
     </select>
+    
+    <!-- 스크린 리스트 조회 -->
+    
+    <select id="getScreenList" parameterType="string" resultMap="screen_rm">
+        SELECT * FROM SCREEN
+        WHERE CINEMA_NAME = #{cinemaName}
+    </select>
 </mapper>

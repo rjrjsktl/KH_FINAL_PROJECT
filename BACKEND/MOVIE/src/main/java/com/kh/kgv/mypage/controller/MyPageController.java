@@ -51,7 +51,7 @@ public class MyPageController {
 		HttpSession session = req.getSession(false);
 		if( session != null && session.getAttribute("loginUser") != null) {
 			logger.info("로그인 o 마페 ㄱㄱ");
-			path = "myPage/myPage_info";
+			path = "myPage/myPage_home";
 		} else {
 			logger.info("로그인 x 로페 ㄱㄱ");
 			message = "로그인 부터 하시라옹";
@@ -68,20 +68,34 @@ public class MyPageController {
 	// ===========================================================================================
 	// ===========================================================================================
 	// 사이드바 페이지 이동 영역
+	@GetMapping("/myHome")
+	public String myHome() {
+		return "myPage/myPage_home";
+	}
+	
+	@GetMapping("/myMtm")
+	public String myMtm() {
+		return "myPage/myPage_myMtmList";
+	}
+	
+	@GetMapping("/myLostItem")
+	public String myLostItem() {
+		return "myPage/myPage_myLostItemList";
+	}
 	
 	@GetMapping("/info")
 	public String info() {
 		return "myPage/myPage_info";
 	}
 	
-	@GetMapping("/board")
-	public String board() {
-		return "myPage/myPage_myBoard";
+	@GetMapping("/myReview")
+	public String myReview() {
+		return "myPage/myPage_myReview";
 	}
 	
-	@GetMapping("/reservationCf")
-	public String reservationCf() {
-		return "myPage/myPage_reservationCf";
+	@GetMapping("/myMovie")
+	public String myMovie() {
+		return "myPage/myPage_myMovie";
 	}
 	
 	@GetMapping("/changePw")
@@ -93,6 +107,8 @@ public class MyPageController {
 	public String secession() {
 		return "myPage/myPage_secession";
 	}
+	
+	
 	
 	// 사이드바 페이지 이동 영역
 	// ===========================================================================================
