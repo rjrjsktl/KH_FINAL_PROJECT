@@ -36,7 +36,7 @@ public class MyPageController {
 	private MyPageService service;
 	
 	// 마이페이지 첫번째 화면
-	// 로그인o -> 로그인page, 로그인x -> 마이page
+	// 로그인o -> 로그인page, 로그인x -> myPage
 	@GetMapping("/myPgMain")
 	public String info(HttpServletRequest req
 //						, HttpServletResponse resp
