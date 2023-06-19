@@ -2,6 +2,10 @@ console.log("loginPage.js loaded..")
 
 console.log(document.cookie)
 
+const userEmail = document.getElementById("userEmail");
+const userPw = document.getElementById("userPw");
+
+
 // 로그인 유효성 검사
 function loginValidate(){
     
@@ -35,24 +39,32 @@ function loginValidate(){
         userPw.focus();
         return false;
     }
-
+    
+	// $.ajax({
+    //     url: "user/login",
+    //     type: "POST",
+    //     data: {
+    //         "userEmail" : userEmail.value,
+    //         "userPw" : userPw.value
+    //     },
+    //     success: function (response) {
+    //         // 서버로부터의 응답이 성공적으로 도착한 경우
+    //         if (response.success) {
+    //             $("#myModal").css("display", "none"); // 모달 창 닫기
+    //             location.reload(); // 메인 페이지 업데이트
+    //         } else {
+    //             // 로그인 실패 처리
+    //             alert("로그인에 실패했습니다. 다시 시도해주세요.");
+    //         }
+    //     },
+    //     error: function () {
+    //         // 서버와의 통신에 실패한 경우
+    //         alert("서버와의 통신에 실패했습니다. 다시 시도해주세요.");
+    //     }
+    // });
 
     return true; // form 태그 기본 이벤트 정상 수행
 }
 
-// 즉시 실행 함수(속도 빠름, 변수명 중복 문제 해결)
-//(function(){
-//    selectAll(); // 함수 호출 -> 회원 목록을 먼저 조회
-//	window.console.log("slectAll 실행")
-//    //window.setInterval(함수, 딜레이(ms))
-//    window.setInterval(selectAll, 10000); // 10초
-//    // 함수 이름만 작성 -> 함수 코드가 대입
-//    // -> 10초마다 selectAll 함수 수행
-//
-//    // setInterval()은 지연 -> 수행 -> 지연 -> 수행 ... 반복
-//    // --> 처음에 함수가 수행되지 않아서 공백인 상태가 있음
-//
-//})();
 
-
-
+   
