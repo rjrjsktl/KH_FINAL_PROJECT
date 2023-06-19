@@ -44,7 +44,7 @@
 	href="${contextPath}/resources/css/manager/reset.css">
 </head>
 
-<body class="dark light">
+<body>
 	<main>
 
 		<div class="main_Wrapper">
