@@ -190,6 +190,7 @@
     height: 5vh;
     border-bottom: 2px solid black;
     justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .table_Title span {
@@ -198,95 +199,151 @@
     margin-bottom: 15px;
 }
 
-.search_Box {
-    display: flex;
-    width: 350px;
-    height: 25px;
-    margin-bottom: 15px;
-}
-
-.search_Box input {
+.table_main {
     flex: 9;
-}
-
-.search_Box button {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 2;
-}
-
-.table_main tr {
+    flex-direction: column;
     width: 100%;
     height: 6.5vh;
-    text-align: center;
 }
 
-.table_main th,
-.table_main td {
-    vertical-align: middle;
+.enter_Title {
+    display: flex;
+    align-items: center;
+    /* height: 60px;
+    border-bottom: 1px solid black; */
+    padding-bottom: 10px;
 }
 
-.table_main th {
-    font-weight: bold;
+.enter_Title input {
+    width: 100%;
+    border: none;
+    font-size: 2rem;
+    height: 50px;
 }
 
-.table_main td {
-    font-size: 0.7rem;
-    padding: 0 10px;
-}
-
-.table_main tr:nth-child(2n) {
-    background-color: #dbdbdb;
-}
-
-.table_main td a {
-    width: 25px;
-    height: 25px;
-    color: black;
-}
-
-.table_main td a i {
-    padding-top: 4px;
-    padding-right: 2px;
-}
-
-.page_Nation {
+.table_bottom {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.page_Nation div {
+.table_bottom button {
+    color: white;
+}
+
+.table_bottom a {
+    color: white;
+    text-decoration: none;
+}
+
+.table_bottom button:hover {
+    background-color: #FAE300;
+    color: black;
+}
+
+.table_bottom a:hover {
+    background-color: #FAE300;
+    color: black;
+}
+
+.bottom_Submit {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px;
+    width: 150px;
     height: 50px;
     cursor: pointer;
-    margin: 0 10px;
-    border-radius: 5px;
-    background-color: #f0efef;
+    background-color: #333333;
 }
 
-.selected_Cp {
-    border-radius: 5px;
-    font-weight: bold;
-    background-color: #eee;
-    border: 2px solid black;
-}
-
-.page_Nation div:hover {
-    background-color: #ccc;
-}
-
-.page_Nation a {
-    text-align: center;
-    vertical-align: middle;
-    text-decoration: none;
-    line-height: 50px;
-    width: 50px;
+.bottom_Cancel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
     height: 50px;
-    color: black;
+    margin-left: 30px;
+    cursor: pointer;
+    background-color: #333333;
+}
+
+.calendarArea {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid black;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+/* 이벤트 시작일 */
+#play_start {
+    display: flex;
+    align-items: center;
+    width: 350px;
+    height: 50px;
+}
+
+#play_start span {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 8px;
+    margin-right: 30px;
+}
+
+#play_start>div {
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.start_date {
+    height: 50px;
+}
+
+/* 이벤트 종료일 */
+#play_end {
+    display: flex;
+    align-items: center;
+    width: 350px;
+    height: 50px;
+}
+
+#play_end span {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 8px;
+    margin-right: 30px;
+}
+
+#play_end>div {
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.end_date {
+    height: 50px;
+}
+
+/* input Date 선택 시 나오는 달력 아이콘 숨기기 */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+.movie_image1 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    border: 2px solid #ddd;
+    vertical-align: middle;
+}
+
+.movie_image1:hover {
+    border: 2px solid black;
 }

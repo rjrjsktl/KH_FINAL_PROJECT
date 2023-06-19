@@ -32,7 +32,7 @@
 
                     </head>
 
-                    <body>
+                    <body class="dark light">
                         <main>
 
                             <div class="main_Wrapper">

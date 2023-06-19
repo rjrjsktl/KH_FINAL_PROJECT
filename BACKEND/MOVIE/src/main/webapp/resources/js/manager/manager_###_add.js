@@ -43,7 +43,7 @@ $(document).ready(function () {
         var data = new FormData();
         data.append("file", file);
         $.ajax({
-            url: "/movie/manager/event_list/edit/" + eventNo.val() + "/edit_Event/uploadImageFile",
+            url: '(충돌방지용태그)event_add/uploadImageFile',
             type: "POST",
             enctype: 'multipart/form-data',
             data: data,
@@ -64,6 +64,47 @@ $(document).ready(function () {
 
     function jsonFn(jsonArray) {
         console.log(jsonArray);
+    }
+
+
+    // 이벤트 이미지 등록 // 기존거 재활용함.
+
+
+
+    let movie_image1 = $('.movie_image1');
+
+    movie_image1.on('change', function (e) {
+        console.log(e.target.files); // 파일 목록 출력
+
+        // 파일 업로드(다중업로드를 위해 반복문 사용)
+        for (var i = 0; i < e.target.files.length; i++) {
+            uploadImageFile1(e.target.files[i]); // 파일 전달
+        }
+    });
+
+    let imageUrl1;
+
+    function uploadImageFile1(file) {
+        var data = new FormData();
+        data.append("file", file);
+        $.ajax({
+            url: '(충돌방지용태그)event_add/uploadImage',
+            type: "POST",
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data1) {
+                console.log("성공 후 반환 메시지11", data1);
+                let jsonArray = JSON.parse(data1); // JSON 문자열을 파싱하여 배열로 변환
+                let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
+                imageUrl1 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
+                console.log("이미지 URL:", imageUrl1);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
     }
 
 
@@ -122,21 +163,20 @@ $(document).ready(function () {
             return false;
         }
     });
+
     // ===============================================================================
 
     const submitBtn = $('.bottom_Submit');
     const eventTitle = $('.enter_Title > input');
     const textArea = $('#summernote');
-    const eventNo = $('#eventNo');
-
 
     submitBtn.on('click', (e) => {
         e.preventDefault();
-        console.log("번호 : " + eventNo.val());
         console.log("제목 : " + eventTitle.val());
         console.log("이벤트 시작일 : " + startDate.val());
         console.log("이벤트 종료일 : " + endDate.val());
         console.log("본문 내용 : " + textArea.val());
+        console.log("이미지 : " + imageUrl1);
 
         if (!eventTitle.val()) {
             alert('제목이 입력되지 않았습니다.');
@@ -165,31 +205,46 @@ $(document).ready(function () {
             e.preventDefault();
             return false;
         };
+        if (!$('.movie_image1').val()) {
+            alert('메인 이미지를 등록하지 않았습니다.');
+            imageUrl1.focus();
+            e.preventDefault();
+            return false;
+        };
 
         $.ajax({
-            url: "/movie/manager/event_list/edit/" + eventNo.val() + "/edit_Event",
+            url: "(충돌방지용태그)event_add/write_Event",
             data: {
-                "no": eventNo.val()
-                , "title": eventTitle.val()
+                "title": eventTitle.val()
                 , "start": startDate.val()
                 , "end": endDate.val()
                 , "content": textArea.val()
+                , "movieImg1": imageUrl1
             },
             type: "POST",
             success: function (result) {
                 if (result > 0) {
-                    let url = "/movie/manager/event_list/";
-                    alert("이벤트 수정 성공");
+                    alert("이벤트 등록 성공");
+                    let url = "/movie/manager/event_list";
                     window.location.href = url;
                 } else {
-                    alert("이벤트 수정 실패");
+                    alert("이벤트 등록 실패");
                     window.location.reload();
                 }
             },
 
             error: function () {
-                console.log("에러 발생으로 인해 수정 실패");
+                console.log("에러 발생으로 인해 등록 실패");
             }
         });
     });
+
+
+
+
+
+
+
+
+
 });
