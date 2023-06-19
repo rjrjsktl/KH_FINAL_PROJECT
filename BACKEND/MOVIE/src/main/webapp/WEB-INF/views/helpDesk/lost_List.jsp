@@ -61,24 +61,26 @@
                                         <th>조회수</th>
                                     </thead>
                                     <tbody>
-                                        <tr class="row">
-                                            <td>1</td>
-                                            <th><a href="">내용123</a><span>...[0]</span></th>
-                                            <td>2023.01.01</td>
-                                            <td>1</td>
-                                        </tr>
-                                        <tr class="row">
-                                            <td>2</td>
-                                            <th><a href="">내용123</a><span>...[1]</span></th>
-                                            <td>2023.01.01</td>
-                                            <td>23</td>
-                                        </tr>
-                                        <tr class="row">
-                                            <td>3</td>
-                                            <th><a href="">내용123</a><span>...[1]</span></th>
-                                            <td>2023.01.01</td>
-                                            <td>456</td>
-                                        </tr>
+                                      <c:choose>
+											<c:when test="${empty lostList.lostLists}">
+												<tr>
+													<th colspan="3">게시글이 존재하지 않습니다.</th>
+												</tr>
+											</c:when>
+											<c:otherwise>
+												<c:forEach var="lostList"
+													items="${lostList.lostLists}" varStatus="loop">
+													<c:if test="${loop.index < 10}">
+														<tr class="row">
+															<td>${lostList.lostNo}</td>
+															<td><a href="${contextPath}/helpDesk/lost_detail/${lostList.lostNo}" style="color:white">${lostList.lostTitle}</a></td>
+															<td>${lostList.lostDate}</td>
+															<td>${lostList.lostView}</td>
+														</tr>
+													</c:if>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
 
 
 
@@ -90,17 +92,39 @@
                                     <button><a href="#">게시물 등록</a></button>
                                 </div>
                                 <!-- 10개씩 -->
-                                <ul class="pagination">
-                                    <li><a href="#">&lt;&lt;</a></li>
-                                    <li><a href="#">&lt;</a></li>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li><a href="#">&gt;</a></li>
-                                    <li><a href="#">&gt;&gt;</a></li>
-                                </ul>
+                               	<div class="page_Nation">
+								<c:set var="url" value="?cp=" />
+								<c:set var="pagination" value="${lostList['pagination']}" />
+								<c:set var="currentPage" value="${pagination.currentPage}"
+									scope="request" />
+								<div>
+									<a href="${url}1">&lt;&lt;</a>
+								</div>
+								<div>
+									<a href="${url}${pagination.prevPage}">&lt;</a>
+								</div>
+								<c:forEach var="i" begin="${pagination.startPage}"
+									end="${pagination.endPage}" step="1">
+									<c:choose>
+										<c:when test="${i == currentPage}">
+											<div>
+												<a class="selected_Cp">${i}</a>
+											</div>
+										</c:when>
+										<c:otherwise>
+											<div>
+												<a href="${url}${i}">${i}</a>
+											</div>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<div>
+									<a href="${url}${pagination.nextPage}">&gt;</a>
+								</div>
+								<div>
+									<a href="${url}${pagination.maxPage}">&gt;&gt;</a>
+								</div>
+							</div>
 
                             </div>
                         </div>

@@ -28,12 +28,7 @@
 							integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 							crossorigin="anonymous"></script>
 
-						<!-- 그래프용 CDN -->
-						<script src="https://code.highcharts.com/highcharts.js"></script>
-						<script src="https://code.highcharts.com/modules/series-label.js"></script>
-						<script src="https://code.highcharts.com/modules/exporting.js"></script>
-						<script src="https://code.highcharts.com/modules/export-data.js"></script>
-						<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+						<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 						<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -55,16 +50,12 @@
 
 											<!-- 일일 접속자 수 -->
 											<div class="left_Inner_Contents">
-												<div id="daily_Enter">
-													<figure class="highcharts-figure"></figure>
-												</div>
+												<canvas id="dailyEnter"></canvas>
 											</div>
 
 											<!-- 일일 관람객 수 -->
 											<div class="left_Inner_Contents algin_Left">
-												<div id="daily_Movie_Watch">
-													<figure class="highcharts-figure"></figure>
-												</div>
+												<canvas id="dailyWatch"></canvas>
 											</div>
 
 											<!-- 신규 회원 -->
@@ -256,30 +247,7 @@
 												</div>
 											</div>
 										</div>
-										<div class="right_Item_Container">
-											<div class="top_Click_area">
-												<!-- TODO LIST 하면 괜찮을 듯 -->
-												<div class="top_items top_click1 active">메모</div>
-												<!-- <div class="top_items top_click2">일정표</div>
-                            <div class="top_items top_click3">ㅁㄴㅇㄹ</div> -->
-											</div>
-											<div class="right_Items_Area">
-												<div>
-													<textarea type="text" id="crtMemo" class="crtMemo"
-														autocomplete="off"></textarea>
-													<button id="crtbtn" class="crtbtn">등록</button>
 
-												</div>
-												<ul id="managerMemo" class="managerMemo">
-													<!-- 어차피 메모 값이 있다면 초기화 될거임(틀잡기용) -->
-													<li id="memoList" class="memoList"><textarea id="viewMemo"
-															class="viewMemo"></textarea> <!-- 수정 필요? -->
-														<button type="button" id="dltbtn" class="dltbtn" name="momoNo"
-															value="" onclick="delMemo()">삭제</button>
-													</li>
-												</ul>
-											</div>
-										</div>
 									</div>
 								</div>
 							</div>

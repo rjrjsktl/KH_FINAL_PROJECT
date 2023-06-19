@@ -98,38 +98,41 @@
 						<nav>
 							<div>
 								<ul>
-									<li class="navBar"><a href="#">영화</a>
+									<li class="navBar"><a href="${contextPath}/movieList/detail_List">영화</a>
 										<ul class="menuBar" style="display: none">
-											<li><a href="${contextPath}/movieList/detail_List">무비 차트</a></li>
+											<li><a href="${contextPath}/movieList/detail_List">상영중인 영화</a></li>
+											<li><a href="${contextPath}/movieList/all_List">전체 영화 목록</a></li>
 										</ul>
 									</li>
-									<li class="navBar"><a href="#">상영관</a>
+									<li class="navBar"><a href="${contextPath}/theater/normalTheater">상영관</a>
 										<ul class="menuBar" style="display: none">
 											<!-- 지역별로 이동 -->
 											<li><a href="${contextPath}/theater/normalTheater">지역별</a></li>
 											<li><a href="${contextPath}/theater/specialTheater">특별관</a></li>
 										</ul>
 									</li>
-									<li class="navBar"><a href="#">예매</a>
+									<li class="navBar"><a href="${contextPath}/reserve/choicePlay">예매</a>
 										<ul class="menuBar" style="display: none">
 											<li><a href="${contextPath}/reserve/choicePlay">빠른 예매</a></li>
 										</ul>
 									</li>
 
-									<li class="navBar"><a href="#">이벤트</a>
+									<li class="navBar"><a href="${contextPath}/eventList/detail_List">이벤트</a>
 										<ul class="menuBar" style="display: none">
-											<li><a href="">진행중 이벤트</a></li>
-											<li><a href="">지난 이벤트</a></li>
+											<li><a href="${contextPath}/eventList/detail_List">진행중 이벤트</a></li>
+											<li><a href="${contextPath}/eventList/end_List">지난 이벤트</a></li>
 											<li><a href="">당첨자 발표</a></li>
 										</ul>
 									</li>
-									<li class="navBar"><a href="${contextPath}/store/storeMain">스토어</a></li>
+
 									<li class="navBar"><a href="#">혜택</a>
 										<ul class="menuBar" style="display: none">
 											<li><a href="">멤버쉽</a></li>
 											<li><a href="">제휴/할인</a></li>
 										</ul>
 									</li>
+									<li class="navBar"><a href="${contextPath}/store/storeMain">스토어</a></li>
+
 								</ul>
 								<div class="dummy" style="display: none"></div>
 								<div>

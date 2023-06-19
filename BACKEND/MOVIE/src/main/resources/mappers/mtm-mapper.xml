@@ -33,6 +33,18 @@
 		<!-- WHERE USER_NO = ${userNo} -->
 		ORDER BY MTM_NO DESC
 	</select>
+	
+	<select id="mtmDetail" resultMap="mtm_rm">
+	SELECT
+	MTM_NO
+	, MTM_TITLE
+	, MTM_CONTENT
+	, TO_CHAR(MTM_REGDATE, 'YYYY.MM.DD') AS MTM_REGDATE
+	, MTM_WRITER
+	FROM MTM_TBL
+	WHERE MTM_NO = #{mtmNo}
+	</select>
+
 
 
 </mapper>

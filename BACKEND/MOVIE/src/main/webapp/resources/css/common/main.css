@@ -28,7 +28,7 @@ main>section:nth-child(1)>.swiper-container>.swiper-wrapper>.swiper-slide {
     display: flex;
 }
 
-main>section:nth-child(1)>.swiper-container>.swiper-wrapper>.swiper-slide> a >img {
+main>section:nth-child(1)>.swiper-container>.swiper-wrapper>.swiper-slide>a>img {
     width: 980px;
     height: 100%;
     border-radius: 10px;
@@ -44,11 +44,12 @@ main>section:nth-child(1)>.swiper-container .swiper-button-prev {
     opacity: 0.3;
 }
 
-main>section:nth-child(1)>.swiper-container .swiper-button-next{
-    right:0;
+main>section:nth-child(1)>.swiper-container .swiper-button-next {
+    right: 0;
 }
-main>section:nth-child(1)>.swiper-container .swiper-button-prev{
-    left:0;
+
+main>section:nth-child(1)>.swiper-container .swiper-button-prev {
+    left: 0;
 }
 
 main>section:nth-child(1)>.swiper-container>div:nth-child(2)::after,
@@ -127,7 +128,7 @@ main>section:nth-child(2) .swiper-slide>div:nth-child(1)>em {
 
 main>section:nth-child(2) .swiper-slide>div:nth-child(1)>a>img {
     width: 100%;
-    height:312px;
+    height: 312px;
     border-radius: 10px;
 
 }
@@ -207,12 +208,12 @@ main>section:nth-child(2)>div:nth-child(4) {
     cursor: pointer;
 }
 
-main>section:nth-child(2)>div:nth-child(3){
-    right:-1px;
+main>section:nth-child(2)>div:nth-child(3) {
+    right: -1px;
 }
 
-main>section:nth-child(2)>div:nth-child(4){
-    left:-1px;
+main>section:nth-child(2)>div:nth-child(4) {
+    left: -1px;
 }
 
 /* ------------------------------------------------------------------------------------------- 2 */
@@ -240,25 +241,25 @@ main>section:nth-child(3)>div:nth-child(1) {
     justify-content: space-between;
 }
 
-.event-title > a{
-       font-size: 1.5rem;
+.event-title>a {
+    font-size: 1.5rem;
     font-weight: bold;
     margin-right: 30px;
 }
 
-.event-title > a:hover{
-    color:#FCFCFC;
+.event-title>a:hover {
+    color: #FCFCFC;
 }
 
-.event-title>div{
-    width:145px;
-    height:60px;
+.event-title>div {
+    width: 145px;
+    height: 60px;
     display: flex;
 }
 
-.event-title>div>button{
-    width:100%;
-    height:40px;
+.event-title>div>button {
+    width: 100%;
+    height: 40px;
     background-color: #494949;
     border-radius: 10px;
     outline: none;
@@ -267,50 +268,51 @@ main>section:nth-child(3)>div:nth-child(1) {
     border: none;
 }
 
-.event-title>div>button:hover{
+.event-title>div>button:hover {
     background-color: #FCFCFC;
-    color:#191919;
+    color: #191919;
 }
 
-main>section:nth-child(3)>div:nth-child(1) .swiper-container{
-    height:100%;
+main>section:nth-child(3)>div:nth-child(1) .swiper-container {
+    height: 100%;
     position: relative;
 }
 
 
-main>section:nth-child(3)>div:nth-child(1) .swiper-container .swiper-wrapper .swiper-slide{
-    width:33%;
+main>section:nth-child(3)>div:nth-child(1) .swiper-container .swiper-wrapper .swiper-slide {
+    width: 33%;
 }
 
-main>section:nth-child(3)>div:nth-child(1) .swiper-container .swiper-wrapper .swiper-slide>a{
+main>section:nth-child(3)>div:nth-child(1) .swiper-container .swiper-wrapper .swiper-slide>a {
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 
-main>section:nth-child(3)>div:nth-child(1) .swiper-container .swiper-wrapper .swiper-slide>a>img{
-    width:100%;
-    height:207px;
+main>section:nth-child(3)>div:nth-child(1) .swiper-container .swiper-wrapper .swiper-slide>a>img {
+    width: 100%;
+    height: 207px;
     border-radius: 10px;
-    
+
 }
 
-main>section:nth-child(3)>div:nth-child(1) .swiper-container .swiper-wrapper .swiper-slide>a>strong{
-    margin-top:10px;
+main>section:nth-child(3)>div:nth-child(1) .swiper-container .swiper-wrapper .swiper-slide>a>strong {
+    margin-top: 10px;
     font-size: 1.2rem;
 }
-main>section:nth-child(3)>div:nth-child(1) .swiper-container .swiper-wrapper .swiper-slide>a>span{
-    margin-top:5px;
+
+main>section:nth-child(3)>div:nth-child(1) .swiper-container .swiper-wrapper .swiper-slide>a>span {
+    margin-top: 5px;
 }
 
-main>section:nth-child(3)>div:nth-child(1) > .swiper-container > div:nth-child(2)::after,
-main>section:nth-child(3)>div:nth-child(1) > .swiper-container > div:nth-child(3)::after {
+main>section:nth-child(3)>div:nth-child(1)>.swiper-container>div:nth-child(2)::after,
+main>section:nth-child(3)>div:nth-child(1)>.swiper-container>div:nth-child(3)::after {
     font-size: 1rem;
     color: black;
 }
 
-main>section:nth-child(3)>div:nth-child(1) > .swiper-container  > div:nth-child(2),
-main>section:nth-child(3)>div:nth-child(1) > .swiper-container  > div:nth-child(3) {
+main>section:nth-child(3)>div:nth-child(1)>.swiper-container>div:nth-child(2),
+main>section:nth-child(3)>div:nth-child(1)>.swiper-container>div:nth-child(3) {
     width: 44px;
     height: 44px;
     color: transparent;
@@ -326,12 +328,12 @@ main>section:nth-child(3)>div:nth-child(1) > .swiper-container  > div:nth-child(
     z-index: 5;
 }
 
-main>section:nth-child(3)>div:nth-child(1) > .swiper-container  > div:nth-child(2){
-    right:-30px;
+main>section:nth-child(3)>div:nth-child(1)>.swiper-container>div:nth-child(2) {
+    right: -30px;
 }
 
-main>section:nth-child(3)>div:nth-child(1) > .swiper-container  > div:nth-child(3){
-    left:-30px;
+main>section:nth-child(3)>div:nth-child(1)>.swiper-container>div:nth-child(3) {
+    left: -30px;
 }
 
 
@@ -362,11 +364,11 @@ main>section:nth-child(4)>div>div:nth-child(1)>div:nth-child(1) * {
     margin-right: 30px;
 }
 
-main>section:nth-child(4)>div>div:nth-child(1)>div:nth-child(1)>a:hover{
-    color:#FCFCFC;
+main>section:nth-child(4)>div>div:nth-child(1)>div:nth-child(1)>a:hover {
+    color: #FCFCFC;
 }
 
-main>section:nth-child(4)>div>div:nth-child(1) > button {
+main>section:nth-child(4)>div>div:nth-child(1)>button {
     width: 145px;
     height: 40px;
     background-color: #494949;
@@ -377,9 +379,9 @@ main>section:nth-child(4)>div>div:nth-child(1) > button {
     border: none;
 }
 
-main>section:nth-child(4)>div>div:nth-child(1) > button:hover{
+main>section:nth-child(4)>div>div:nth-child(1)>button:hover {
     background-color: #FCFCFC;
-    color:#191919
+    color: #191919
 }
 
 main>section:nth-child(4)>div>div:nth-child(1)>div:nth-child(2)>a:hover {
@@ -409,7 +411,7 @@ main>section:nth-child(4)>div>div:nth-child(2)>div:first-child>a {
 main>section:nth-child(4)>div:nth-child(1)>div:nth-child(2)>div:first-child>a>img {
     width: 100%;
     border-radius: 10px;
-    height:350px;
+    height: 350px;
 }
 
 
@@ -421,7 +423,7 @@ main>section:nth-child(4)>div>div:nth-child(2)>div:last-child {
     border-bottom: 1px solid #a3a3a3;
 }
 
-.rounded-border{
+.rounded-border {
     border-radius: 10px;
 }
 
@@ -435,8 +437,8 @@ main>section:nth-child(4)>div>div:nth-child(2)>div:last-child>a {
     justify-content: space-between;
 }
 
-main>section:nth-child(4)>div>div:nth-child(2)>div:last-child>a:first-child{
-    border-top:1px solid #a3a3a3;
+main>section:nth-child(4)>div>div:nth-child(2)>div:last-child>a:first-child {
+    border-top: 1px solid #a3a3a3;
 }
 
 
@@ -444,7 +446,7 @@ main>section:nth-child(4)>div>div:nth-child(2)>div:last-child>a>span {
     font-size: 0.7rem;
 }
 
-main>section:nth-child(4)>div>div:nth-child(2)>div:last-child>a>span:first-child{
+main>section:nth-child(4)>div>div:nth-child(2)>div:last-child>a>span:first-child {
     font-size: 1rem;
     font-weight: 500;
 }
@@ -456,8 +458,7 @@ main>section:nth-child(4)>div>div:nth-child(2)>div:last-child>a>span:last-child 
     background-color: #191919;
     border-radius: 10px;
     font-size: 1rem;
-    color:#a3a3a3
-
+    color: #a3a3a3
 }
 
 main>section:nth-child(5) {
@@ -529,8 +530,8 @@ main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(2)> :nth-child(1) {
 
 
 
-.preventDiv{
-    border-top:#494949;
+.preventDiv {
+    border-top: #494949;
     border-bottom: #494949;
 }
 
@@ -585,6 +586,49 @@ main>section:nth-child(5)>div>div:nth-child(2) {
 
 }
 
-.uLine{
-    border-bottom:none;
+.uLine {
+    border-bottom: none;
+}
+
+#positionSet {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 관람등급 */
+/* 관람등급 */
+
+.age-img-area {
+    position: absolute;
+    z-index: 5;
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    opacity: 0.9;
+
+}
+
+.ageIndexLeve {
+    z-index: 4;
+
+}
+
+.moveBtn {
+    width: 145px;
+    height: 40px;
+    background-color: #494949;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    color: #a3a3a3;
+    border: none;
+    text-align: center;
+    line-height: 40px;
+
+}
+
+.moveBtn:hover {
+    background-color: #FCFCFC;
+    color: #191919;
+
 }

@@ -43,8 +43,7 @@
 					    
 						    <div class="table_Title">
 							    <span>상영시간 등록</span>
-							</div>
-												
+							</div>			
 							<div class="table_main">
 							
 								<div id="play_cinema_area">
@@ -90,81 +89,73 @@
 										</div>
 									</div>
 									
-									
-													<div id="play_movie">
-														<span>상영 영화</span>
-														<div class="relative">
-															<div class="play_movie_enter"></div>
-															<div class="movie_Items">
-																<div class="play_movie_slide">
-																	<div>test1</div>
-																	<div>test2</div>
-																	<div>test3</div>
-																	<div>test4</div>
-																	<div>test5</div>
-																	<div>test6</div>
-																	<div>test7</div>
-																	<div>test8</div>
-																	<div>test9</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div id="play_time">
-														<span>상영 시간</span>
-														<div class="relative">
-															<div class="play_time_enter"></div>
-															<div class="time_Items">
-																<div class="play_time_slide">
-																	<div>test1</div>
-																	<div>test2</div>
-																	<div>test3</div>
-																	<div>test4</div>
-																	<div>test5</div>
-																	<div>test6</div>
-																	<div>test7</div>
-																	<div>test8</div>
-																	<div>test9</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div id="play_start">
-														<span>상영 시작일</span>
-														<div class="play_start_container">
-															<div>
-																<input class="start_date" type="date"
-																	onfocus="this.showPicker()" />
-															</div>
-														</div>
-													</div>
-													<div id="play_end">
-														<span>상영 종료일</span>
-														<div>
-															<div>
-																<input class="end_date" type="date"
-																	onfocus="this.showPicker()" />
-															</div>
-														</div>
-													</div>
-
-												</div>
-												<div class="table_bottom">
-													<button class="bottom_Submit">저장</button>
-													<button class="bottom_Cancel">취소</button>
+									<div id="play_movie">
+										<span>상영 영화</span>
+										<div class="relative">
+											<div class="play_movie_enter"></div>
+											<div class="movie_Items">
+												<div class="play_movie_slide">
+												    <c:forEach var="playingMovie" items="${playMap['playingMovieList']}">
+												    <div>${playingMovie['movieTitle']}</div>
+												    </c:forEach>
 												</div>
 											</div>
 										</div>
 									</div>
+									
+									<div id="play_time">
+										<span>상영 시간</span>
+										<div class="relative">
+											<div class="play_time_enter"></div>
+											<div class="time_Items">
+												<div class="play_time_slide">
+												    <c:forEach var="timeTable" items="${playMap['timeTableList']}">
+												    <div>${timeTable['ttTime']}</div>
+												    </c:forEach>			
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<div id="play_start">
+										<span>상영 시작일</span>
+										<div class="play_start_container">
+											<div>
+												<input class="start_date" type="date" onfocus="this.showPicker()" />
+											</div>
+										</div>
+									</div>
+									
+									<div id="play_end">
+										<span>상영 종료일</span>
+										<div>
+											<div>
+												<input class="end_date" type="date" onfocus="this.showPicker()" />
+											</div>
+										</div>
+									</div>
+
 								</div>
-
+								
+								<form action="play_add/enroll" method="post" id="playAddForm"> 
+								</form>	
+											
+								<div class="table_bottom">
+									<button class="bottom_Submit">저장</button>
+									<button class="bottom_Cancel">취소</button>
+								</div>
 							</div>
+						</div>
+					</div>
+				</div>
 
-						</main>
+			</div>
 
-						<script src="${contextPath}/resources/js/manager/manager_movie_play.js"></script>
-						<script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
-						<script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
-					</body>
+		</main>
 
-					</html>
+		<script src="${contextPath}/resources/js/manager/manager_movie_play.js"></script>
+		<script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
+		<script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
+	</body>
+
+</html>

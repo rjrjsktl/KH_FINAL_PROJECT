@@ -42,99 +42,28 @@
                   <div>Tab</div>
                   <div>
                       <div>
-                          <ul id="region_list">
-                              <li><a href="#none"><span>서울</span></a></li>
-                              <li><a href="#none"><span>경기 / 인천</span></a></li>
-                              <li><a href="#none"><span>충청 / 대전</span></a></li>
-                              <li><a href="#none"><span>경남 / 부산</span></a></li>
-                              <li><a href="#none"><span>경북 / 대구</span></a></li>
-                              <li><a href="#none"><span>전라 / 광주</span></a></li>
-                              <li><a href="#none"><span>강원 / 제주</span></a></li>
+                          <ul id="area_list">
+                              <li><a href="#none" class="clicked">서울</a></li>
+                              <li><a href="#none">인천 경기</a></li>
+                              <li><a href="#none">대전 충청</a></li>
+                              <li><a href="#none">광주 전라</a></li>
+                              <li><a href="#none">부산 울산 경남</a></li>
+                              <li><a href="#none">대구 경북</a></li>
+                              <li><a href="#none">강원</a></li>
+                              <li><a href="#none">제주</a></li>
+                          </ul>
+                          <ul id="special_list" style="display: none">
+                            
                           </ul>
                       </div>
                       <div>
-                          <ul class="cinema_list" data-region="서울">
-                              <li><a href="#none"><span>강남</span></a></li>
-                              <li><a href="#none"><span>건대입구</span></a></li>
-                              <li><a href="#none"><span>구로</span></a></li>
-                              <li><a href="#none"><span>노원</span></a></li>
-                              <li><a href="#none"><span>동대문</span></a></li>
-                              <li><a href="#none"><span>명동</span></a></li>
-                              <li><a href="#none"><span>상봉</span></a></li>
-                              <li><a href="#none"><span>상암</span></a></li>
-                              <li><a href="#none"><span>신림</span></a></li>
-                              <li><a href="#none"><span>신촌</span></a></li>
-                              <li><a href="#none"><span>영등포</span></a></li>
-                              <li><a href="#none"><span>왕십리</span></a></li>
-                              <li><a href="#none"><span>용산</span></a></li>
-                              <li><a href="#none"><span>잠실</span></a></li>
-                              <li><a href="#none"><span>종로</span></a></li>
-                              <li><a href="#none"><span>청량리</span></a></li>
-
-                          </ul>
-                          <ul class="cinema_list" data-region="경기">
-                              <li><a href="#none"><span>광명</span></a></li> 
-                              <li><a href="#none"><span>구리</span></a></li>   
-                              <li><a href="#none"><span>김포</span></a></li>
-                              <li><a href="#none"><span>남양주</span></a></li>
-                              <li><a href="#none"><span>동탄</span></a></li>
-                              <li><a href="#none"><span>부천</span></a></li>
-                              <li><a href="#none"><span>성남</span></a></li> 
-                              <li><a href="#none"><span>수원</span></a></li>
-                              <li><a href="#none"><span>안산</span></a></li>
-                              <li><a href="#none"><span>안양</span></a></li>
-                              <li><a href="#none"><span>인천(부평)</span></a></li>
-                              <li><a href="#none"><span>인천(송도)</span></a></li>
-                              <li><a href="#none"><span>인천(주안)</span></a></li>
-                              <li><a href="#none"><span>일산</span></a></li>
-                              <li><a href="#none"><span>하남</span></a></li>
-                          </ul>
-                          <ul class="cinema_list" data-region="충청">
-                              <li><a href="#none"><span>공주</span></a></li>
-                              <li><a href="#none"><span>대전(은행동)</span></a></li>
-                              <li><a href="#none"><span>대전(충남대)</span></a></li>
-                              <li><a href="#none"><span>세종</span></a></li>  
-                              <li><a href="#none"><span>아산</span></a></li>  
-                              <li><a href="#none"><span>천안</span></a></li>
-                              <li><a href="#none"><span>충주</span></a></li>
-                          </ul>
-                          <ul class="cinema_list" data-region="경남">
-                              <li><a href="#none"><span>김해</span></a></li>
-                              <li><a href="#none"><span>마산</span></a></li>
-                              <li><a href="#none"><span>부산(부산대)</span></a></li>
-                              <li><a href="#none"><span>부산(서면)</span></a></li>
-                              <li><a href="#none"><span>부산(센텀시티)</span></a></li>
-                              <li><a href="#none"><span>부산(해운대)</span></a></li>
-                              <li><a href="#none"><span>울산(울산역)</span></a></li> 
-                              <li><a href="#none"><span>울산(태화강)</span></a></li>   
-                              <li><a href="#none"><span>진주</span></a></li>  
-                              <li><a href="#none"><span>창원</span></a></li>
-                          </ul>
-                          <ul class="cinema_list" data-region="경북">
-                              <li><a href="#none"><span>경주</span></a></li>
-                              <li><a href="#none"><span>구미</span></a></li>
-                              <li><a href="#none"><span>대구(경북대)</span></a></li>
-                              <li><a href="#none"><span>대구(동성로)</span></a></li>
-                              <li><a href="#none"><span>안동</span></a></li>
-                              <li><a href="#none"><span>영주</span></a></li>
-                              <li><a href="#none"><span>포항</span></a></li>
-                          </ul>
-                          <ul class="cinema_list" data-region="전라">
-                              <li><a href="#none"><span>광주(상무)</span></a></li>
-                              <li><a href="#none"><span>광주(전남대)</span></a></li>
-                              <li><a href="#none"><span>군산</span></a></li>
-                              <li><a href="#none"><span>목포</span></a></li>
-                              <li><a href="#none"><span>순천</span></a></li>
-                              <li><a href="#none"><span>익산</span></a></li>
-                              <li><a href="#none"><span>전주</span></a></li>
-                          </ul>
-                          <ul class="cinema_list" data-region="강원">
-                              <li><a href="#none"><span>동해</span></a></li>
-                              <li><a href="#none"><span>원주</span></a></li>
-                              <li><a href="#none"><span>제주</span></a></li>
-                              <li><a href="#none"><span>춘천</span></a></li>
+                          <ul id="cinema_list">
+                            <c:forEach var="cinema" items="${reserveMap['cinemaList']}">
+                              <li><a href="#none">${cinema['cinemaName']}</a></li>
+                            </c:forEach>
                           </ul>
                       </div>
+                      
                   </div>
               </div>
               <div>
@@ -147,163 +76,67 @@
                   </div>
                   <div>
                     <ul class="movielist" id="movielist_text">
-                      <li><a href="#none">
-                        <div class="age15">15</div>
-                        <div><span class="movie_name">던전앤파이터</span></div>
-                      </a></li>
-                      <li><a href="#none">
-                        <div class="age12">12</div>
-                        <div><span class="movie_name">마비노기</span></div>
-                      </a></li>
-                      <li><a href="#none">
-                        <div class="age12">12</div>
-                        <div><span class="movie_name">메이플스토리</span></div>
-                      </a></li>
-                      <li><a href="#none">
-                        <div class="age00">All</div>
-                        <div><span class="movie_name">원신</span></div>
-                      </a></li>
-                      <li><a href="#none">
-                        <div class="age19">19</div>
-                        <div><span class="movie_name">카트라이더: 킬러조의 습격</span></div>
-                      </a></li>
-                      <li><a href="#none">
-                        <div class="age19">19</div>
-                        <div><span class="movie_name">크레이지 아케이드: 정상인 출입금지 유해불건전 병동방송</span></div>
-                      </a></li>
-                      <li><a href="#none">
-                        <div class="age12">12</div>
-                        <div><span class="movie_name">피파온라인4</span></div>
-                      </a></li>
+                      <c:forEach var="movie" items="${reserveMap['movieList']}">
+                        <li><a href="#none">
+                           <c:choose>
+                             <c:when test="${fn:contains(movie['mgNo'], '전체')}">
+                               <div class="age00">All</div>
+                             </c:when>
+                             <c:when test="${fn:contains(movie['mgNo'], '12')}">
+                               <div class="age12">12</div>
+                             </c:when>
+                             <c:when test="${fn:contains(movie['mgNo'], '15')}">
+                               <div class="age15">15</div>
+                             </c:when>
+                             <c:otherwise>
+                               <div class="age19">19</div>
+                             </c:otherwise>
+                           </c:choose> 
+                           <div><span class="movie_name">${movie['movieTitle']}</span></div>
+                           
+                        </a></li>
+                      </c:forEach>
                     </ul>
+                 
                     <ul class="movielist" id="movielist_thumb">
-                      <li><a href="#none">
-                        <div><span>1</span></div>
-                        <div>
+                      <c:forEach var="movie" items="${reserveMap['thumbList']}" varStatus="status">
+                        <li><a href="#none">
                           <div>
-                            <div class="age12">12</div>
-                            <div><span class="movie_name">메이플스토리</span></div>
+                            <img src="${movie['movieImg1']}"/>
+                            <span>${status.count}</span>
                           </div>
                           <div>
                             <div>
-                              <div>예매율 : <strong><span>30.2</span>%</strong></div>
-                              <div><i class="fa solid fa-star"></i><strong><span>9.5</span></strong></div>
+                              <c:choose>
+                                <c:when test="${fn:contains(movie['mgNo'], '전체')}">
+                                  <div class="age00">All</div>
+                                </c:when>
+                                <c:when test="${fn:contains(movie['mgNo'], '12')}">
+                                  <div class="age12">12</div>
+                                </c:when>
+                                <c:when test="${fn:contains(movie['mgNo'], '15')}">
+                                  <div class="age15">15</div>
+                                </c:when>
+                                <c:otherwise>
+                                  <div class="age19">19</div>
+                                </c:otherwise>
+                              </c:choose> 
+                              <div><span class="movie_name">${movie['movieTitle']}</span></div>
                             </div>
                             <div>
-                              개봉일 : <span>2023.05.22</span>
+                              <div>
+                                <div>예매율 : <strong><span>10.0</span>%</strong></div>
+                                <div><i class="fa solid fa-star"></i><strong><span>9.0</span></strong></div>
+                              </div>
+                              <div>개봉일 : <span>${movie['movieOpen']}</span></div>
                             </div>
                           </div>
-                        </div>
-                      </a></li>
-                      <li><a href="#none">
-                        <div><span>2</span></div>
-                        <div>
-                          <div>
-                            <div class="age15">15</div>
-                            <div><span class="movie_name">던전앤파이터</span></div>
-                          </div>
-                          <div>
-                            <div>
-                              <div>예매율 : <strong><span>23.8</span>%</strong></div>
-                              <div><i class="fa solid fa-star"></i><strong><span>9.1</span></strong></div>
-                            </div>
-                            <div>
-                              개봉일 : <span>2023.05.17</span>
-                            </div>
-                          </div>
-                        </div>
-                      </a></li>
-                      <li><a href="#none">
-                        <div><span>3</span></div>
-                        <div>
-                          <div>
-                            <div class="age19">19</div>
-                            <div><span class="movie_name">크레이지 아케이드: 정상인 출입금지 유해불건전 병동방송</span></div>
-                          </div>
-                          <div>
-                            <div>
-                              <div>예매율 : <strong><span>17.2</span>%</strong></div>
-                              <div><i class="fa solid fa-star"></i><strong><span>8.8</span></strong></div>
-                            </div>
-                            <div>
-                              개봉일 : <span>2023.05.19</span>
-                            </div>
-                          </div>
-                        </div>
-                      </a></li>
-                      <li><a href="#none">
-                        <div><span>4</span></div>
-                        <div>
-                          <div>
-                            <div class="age12">12</div>
-                            <div><span class="movie_name">피파온라인4</span></div>
-                          </div>
-                          <div>
-                            <div>
-                              <div>예매율 : <strong><span>11.8</span>%</strong></div>
-                              <div><i class="fa solid fa-star"></i><strong><span>9.0</span></strong></div>
-                            </div>
-                            <div>
-                              개봉일 : <span>2023.05.10</span>
-                            </div>
-                          </div>
-                        </div>
-                      </a></li>
-                      <li><a href="#none">
-                        <div><span>5</span></div>
-                        <div>
-                          <div>
-                            <div class="age00">All</div>
-                            <div><span class="movie_name">원신</span></div>
-                          </div>
-                          <div>
-                            <div>
-                              <div>예매율 : <strong><span>7.7</span>%</strong></div>
-                              <div><i class="fa solid fa-star"></i><strong><span>9.9</span></strong></div>
-                            </div>
-                            <div>
-                              개봉일 : <span>2023.05.01</span>
-                            </div>
-                          </div>
-                        </div>
-                      </a></li>
-                      <li><a href="#none">
-                        <div><span>6</span></div>
-                        <div>
-                          <div>
-                            <div class="age19">19</div>
-                            <div><span class="movie_name">카트라이더: 킬러조의 습격</span></div>
-                          </div>
-                          <div>
-                            <div>
-                              <div>예매율 : <strong><span>4.4</span>%</strong></div>
-                              <div><i class="fa solid fa-star"></i><strong><span>8.5</span></strong></div>
-                            </div>
-                            <div>
-                              개봉일 : <span>2023.05.20</span>
-                            </div>
-                          </div>
-                        </div>
-                      </a></li>
-                      <li><a href="#none">
-                        <div><span>7</span></div>
-                        <div>
-                          <div>
-                            <div class="age12">12</div>
-                            <div><span class="movie_name">마비노기</span></div>
-                          </div>
-                          <div>
-                            <div>
-                              <div>예매율 : <strong><span>2.9</span>%</strong></div>
-                              <div><i class="fa solid fa-star"></i><strong><span>8.9</span></strong></div>
-                            </div>
-                            <div>
-                              개봉일 : <span>2023.05.19</span>
-                            </div>
-                          </div>
-                        </div>
-                      </a></li>
+                        </a></li>
+                      </c:forEach>
                     </ul>
+                    
+                      
+                    
                   </div>
               </div>
               <div>

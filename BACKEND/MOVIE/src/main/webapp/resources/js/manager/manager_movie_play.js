@@ -1,20 +1,40 @@
 $(document).ready(function () {
 
+    let area_Arr = [];
+    let cinema_Arr = [];
+    let screen_Arr = [];
+    
+    
+    // 사용자가 콘솔 창에서 html 내용을 수정하면 text()에 기반한 서버 검색에 악영향이 갈 수 있을 것 같습니다.
+    // text()는 출력용으로만 하고, index()를 통해 서버에 검색하는 게 낫지 않을까 하여 index 변수들을 선언하였습니다. 
+    
+    
+    let areaIndex =  -1;
+	let cinemaIndex =  -1;
+	let screenIndex = -1;
+    let movieIndex = -1;
+    let timeIndex = -1;
+    
+    let enrollCheck = false;
+
+    let areaList = ["서울", "경기", "충청", "전라", "경남", "경북", "강원", "제주"];
+    let areaCinemaList;
+    
+
+
     // ===============================================================================
     // 상영 지역 추가 기능 및 슬라이드
-    let area_Arr = [];
     const play_cinema_area_enter = $('.play_cinema_area_enter');
     const play_cinema_area_slide = $('.play_cinema_area_slide > div');
 
     play_cinema_area_slide.on('click', (e) => {
         e.preventDefault();
-        // alert((e.currentTarget).innerText);
         const newDiv = document.createElement('div');
-        const addText = $(e.currentTarget).text();
+        const addText = areaList[$(e.currentTarget).index()];
         const delBtn = '<div class="deleteBtn"><i class="fa-solid fa-xmark fa-2xs"></i></div>';
         const clickCount = play_cinema_area_enter.children().length;
 
-        if ($.inArray($(e.currentTarget).text(), area_Arr) == -1) {
+        if ($.inArray(addText, area_Arr) == -1) {
             if (clickCount >= 1) {
                 alert('1개만 선택 가능합니다.');
                 return false;
@@ -37,8 +57,7 @@ $(document).ready(function () {
     // 배열에서 삭제
     play_cinema_area_enter.on('click', '.added', (e) => {
         e.stopPropagation();
-        const clickedText = $(e.currentTarget).text();
-
+        const clickedText = areaList[areaIndex];
         for (let i = 0; i < area_Arr.length; i++) {
             if (area_Arr[i] === clickedText) {
                 area_Arr.splice(i, 1);
@@ -52,6 +71,11 @@ $(document).ready(function () {
         $(".play_screen_slide").empty();
         $(".play_cinema_enter").empty();
         $(".play_screen_enter").empty();
+        cinema_Arr = [];
+        screen_Arr = [];
+        areaIndex = -1;
+        cinemaIndex = -1;
+        screenIndex = -1;
     });
 
 
@@ -80,12 +104,12 @@ $(document).ready(function () {
     });
     
     // 지역을 선택하면
-    let areaCinemaList;
     
     $(".area_item").on("click", function(){
+        areaIndex = $(this).index();
         $.ajax({
             url: "play_add/areaCinemaList",
-            data: { "areaName": $(this).text() },
+            data: { "areaIndex": areaIndex },
             type: "GET",
             success: function (cinemaList) {
                 areaCinemaList = cinemaList;
@@ -110,23 +134,22 @@ $(document).ready(function () {
     // ===============================================================================
     // 상영 영화관 추가 기능 및 슬라이드
     // 동적 요소로 인해 이벤트 추가 방식을 살짝 변경합니다.
-    let cinema_Arr = [];
     const play_cinema_enter = $('.play_cinema_enter');
     const play_cinema_slide = $('.play_cinema_slide > div');
 
     function cinemaSlideEvent(e) {
         e.preventDefault();
-        // alert((e.currentTarget).innerText);
         const newDiv = document.createElement('div');
-        const addText = $(e.currentTarget).text();
+        const addText = areaCinemaList[$(e.currentTarget).index()].cinemaName;
         const delBtn = '<div class="deleteBtn"><i class="fa-solid fa-xmark fa-2xs"></i></div>';
         const clickCount = play_cinema_enter.children().length;
 
-        if ($.inArray($(e.currentTarget).text(), cinema_Arr) == -1) {
+        if ($.inArray(addText, cinema_Arr) == -1) {
             if (clickCount >= 1) {
                 alert('1개만 선택 가능합니다.');
                 return false;
             } else {
+                cinemaIndex = $(e.currentTarget).index();
                 newDiv.append(addText);
                 newDiv.classList.add('added');
                 newDiv.innerHTML += delBtn;
@@ -146,7 +169,7 @@ $(document).ready(function () {
     // 배열에서 삭제
     play_cinema_enter.on('click', '.added', (e) => {
         e.stopPropagation();
-        const clickedText = $(e.currentTarget).text();
+        const clickedText = areaCinemaList[cinemaIndex].cinemaName;
 
         for (let i = 0; i < cinema_Arr.length; i++) {
             if (cinema_Arr[i] === clickedText) {
@@ -159,6 +182,9 @@ $(document).ready(function () {
         $(e.currentTarget).remove();
         $(".play_screen_slide").empty();
         $(".play_screen_enter").empty();
+        screen_Arr = [];
+        cinemaIndex = -1;
+        screenIndex = -1;
     });
     
     
@@ -172,6 +198,9 @@ $(document).ready(function () {
               screenSlideEvent(e)
             });
             screenItem.classList.add("screen_item");
+            screenItem.addEventListener("click", function() {
+              timeCheck();
+            });
             $(screenItem).text(`${i}관`);
             $(".play_screen_slide").append(screenItem);
         }
@@ -204,20 +233,18 @@ $(document).ready(function () {
 
     // ===============================================================================
     // 상영 스크린 추가 기능 및 슬라이드
-    let screen_Arr = [];
     const play_screen_enter = $('.play_screen_enter');
     const play_screen_slide = $('.play_screen_slide > div');
 	
 	
     function screenSlideEvent(e){
         e.preventDefault();
-        // alert((e.currentTarget).innerText);
         const newDiv = document.createElement('div');
-        const addText = $(e.currentTarget).text();
+        const addText = ($(e.currentTarget).index()+1)+"관";
         const delBtn = '<div class="deleteBtn"><i class="fa-solid fa-xmark fa-2xs"></i></div>';
         const clickCount = play_screen_enter.children().length;
 
-        if ($.inArray($(e.currentTarget).text(), screen_Arr) == -1) {
+        if ($.inArray(addText, screen_Arr) == -1) {
             if (clickCount >= 1) {
                 alert('최대 1개 까지 선택 가능합니다.');
                 return false;
@@ -228,6 +255,7 @@ $(document).ready(function () {
                 play_screen_enter.append(newDiv);
                 screen_Arr.push(addText)
                 console.log("추가된 값은 : " + addText);
+                screenIndex = $(e.currentTarget).index();
             }
         } else {
             alert('같은 값은 추가 할 수 없습니다.');
@@ -241,7 +269,7 @@ $(document).ready(function () {
     // 배열에서 삭제
     play_screen_enter.on('click', '.added', (e) => {
         e.stopPropagation();
-        const clickedText = $(e.currentTarget).text();
+        const clickedText = (screenIndex+1)+"관";
 
         for (let i = 0; i < screen_Arr.length; i++) {
             if (screen_Arr[i] === clickedText) {
@@ -252,6 +280,7 @@ $(document).ready(function () {
         }
         console.log(screen_Arr);
         $(e.currentTarget).remove();
+        screenIndex = -1;
     });
 
 
@@ -267,6 +296,7 @@ $(document).ready(function () {
         movie_slide.hide();
         time_slide.hide();
     });
+    
     Screen_slide.on('click', (e) => {
         e.stopPropagation();
         Screen_slide.toggle();
@@ -305,6 +335,7 @@ $(document).ready(function () {
                 play_movie_enter.append(newDiv);
                 movie_Arr.push(addText)
                 console.log("추가된 값은 : " + addText);
+                movieIndex = $(e.currentTarget).index();
             }
         } else {
             alert('같은 값은 추가 할 수 없습니다.');
@@ -313,6 +344,7 @@ $(document).ready(function () {
         console.log("clickCount : " + clickCount);
         console.log(movie_Arr);
     });
+
 
     // 배열에서 삭제
     play_movie_enter.on('click', '.added', (e) => {
@@ -328,6 +360,7 @@ $(document).ready(function () {
         }
         console.log(movie_Arr);
         $(e.currentTarget).remove();
+        movieIndex = -1;
     });
 
     // 상영 영화 슬라이드 토글
@@ -341,6 +374,7 @@ $(document).ready(function () {
         Screen_slide.hide();
         time_slide.hide();
     });
+    
     movie_slide.on('click', (e) => {
         e.stopPropagation();
         movie_slide.toggle();
@@ -352,6 +386,10 @@ $(document).ready(function () {
 
     $(document).on('click', () => {
         movie_slide.hide();
+    });
+    
+    $(play_movie_slide).on("click", function() {
+        timeCheck();
     });
 
     // ===============================================================================
@@ -369,8 +407,8 @@ $(document).ready(function () {
         const clickCount = play_time_enter.children().length;
 
         if ($.inArray($(e.currentTarget).text(), time_Arr) == -1) {
-            if (clickCount >= 8) {
-                alert('최대 8개까지 선택 가능합니다.');
+            if (clickCount >= 1) {
+                alert('최대 1개까지 선택 가능합니다.');
                 return false;
             } else {
                 newDiv.append(addText);
@@ -379,6 +417,7 @@ $(document).ready(function () {
                 play_time_enter.append(newDiv);
                 time_Arr.push(addText)
                 console.log("추가된 값은 : " + addText);
+                timeIndex = $(e.currentTarget).index();
             }
         } else {
             alert('같은 값은 추가 할 수 없습니다.');
@@ -423,6 +462,11 @@ $(document).ready(function () {
         Screen_slide.hide();
         movie_slide.hide();
     });
+    
+    $(play_time_slide).on("click", function() {
+        timeCheck();
+    });
+    
 
     $(document).on('click', () => {
         time_slide.hide();
@@ -463,7 +507,10 @@ $(document).ready(function () {
         if (!startDate.val()) {
             alert('시작일을 먼저 선택해 주세요.');
             $('.end_date').val("");
+            return false;
         }
+        
+        timeCheck();
     });
 
     // 상영 시작일
@@ -493,6 +540,37 @@ $(document).ready(function () {
             $('.end_date').val("");
         }
     })
+    
+    
+    // 상영시간 유효성 검사
+    function timeCheck() {
+        if(screen_Arr.length && movie_Arr.length && time_Arr.length && endDate.val()) {
+      
+	        $.ajax({
+	            url: "play_add/playTimeCheck",
+	            data: { areaIndex, cinemaIndex, screenIndex, movieIndex, timeIndex, "startDate":startDate.val(), "endDate":endDate.val()},
+	            type: "GET",
+	            
+	            success: function(result) {
+	                if(!result.length) {
+	                    enrollCheck = true;
+	                    alert("히힛, 등록하셔유");
+	                } else {
+	                    enrollCheck = false;
+	                    alert("글쎄");
+	                }
+	            },
+	           
+	            error: function () {
+	                console.log("에러 발생");
+	            }
+	        });
+        
+        }
+      
+    }
+    
+    
     // ===============================================================================
     // 결과값 확인용
 
@@ -507,6 +585,27 @@ $(document).ready(function () {
         console.log('상영 시간 : ' + time_Arr);
         console.log('상영 시작일 : ' + startDate.val());
         console.log('상영 종료일 : ' + endDate.val());
+        
+        if(enrollCheck) {
+            let dataName = ["areaIndex", "cinemaIndex", "screenIndex", "movieIndex", "timeIndex", "startDate", "endDate"];
+            let dataValue = [areaIndex, cinemaIndex, screenIndex, movieIndex, timeIndex, startDate.val(), endDate.val()]; 
+            let el;
+            
+            for (let i=0; i < dataName.length; i++){
+            
+                el = document.createElement("input");
+                el.type = "hidden";
+                el.name = dataName[i];
+                el.value = dataValue[i];
+                
+                $("#playAddForm").append(el);    
+            }
+            
+            $("#playAddForm").submit();
+
+            
+        }
+        
     });
 
     // const slideUpAll = $('.set_Edge');
@@ -516,6 +615,9 @@ $(document).ready(function () {
     //     movie_slide.slideUp();
     //     time_slide.slideUp();
     // });
+    
+    
+   
 
 
 });
