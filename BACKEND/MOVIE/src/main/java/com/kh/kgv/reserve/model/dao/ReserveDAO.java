@@ -1,13 +1,16 @@
 package com.kh.kgv.reserve.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.items.model.vo.Play;
 import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.Screen;
 
 @Repository
 public class ReserveDAO {
@@ -28,5 +31,15 @@ public class ReserveDAO {
 	public List<Movie> getPlayingThumbList() {
 		return sqlSession.selectList("playMapper.getPlayingThumbList");
 	}
+
+	public List<Play> getTotalPlayList(Map<String, Object> condition) {
+		return sqlSession.selectList("playMapper.getTotalPlayList", condition);
+	}
+
+	public List<Screen> getScreenList(String cinemaName) {
+		return sqlSession.selectList("cinemaMapper.getScreenList", cinemaName);
+	}
+
+
 
 }
