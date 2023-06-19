@@ -20,6 +20,7 @@ import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Pagination;
 import com.kh.kgv.management.model.vo.WeeklyEnter;
+import com.kh.kgv.management.model.vo.banner;
 import com.kh.kgv.mypage.controller.MyPageController;
 
 @Repository
@@ -273,6 +274,30 @@ public class ManagerDAO {
 	public List<Event> mainEventList() {
 		return sqlSession.selectList("managerMapper.mainEventList");
 	}
+	
+	// 관리자_배너 등록
+	public int addBanner(banner banner) {
+		return sqlSession.insert("managerMapper.addBanner", banner);
+	}
+	
+	// 관리자_배너 목록 이동시 배너 수 조회
+	public int bannerCount(int cp) {
+		return sqlSession.selectOne("managerMapper.bannerCount");
+	}
+	
+	// 관리자_배너 목록 이동시 목록 조회
+	public List<banner> getBannerList(Pagination pagination ) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());		
+		return sqlSession.selectList("managerMapper.getBannerList", null, rowBounds);
+	}
+	
+	// 관리자_배너 상태 업데이트
+	public int updateBannerST(banner banner) {
+		return sqlSession.update("managerMapper.updateBannerST",banner);
+	}
+
 
 
 }

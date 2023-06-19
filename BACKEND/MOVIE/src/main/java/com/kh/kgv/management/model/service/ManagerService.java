@@ -9,6 +9,7 @@ import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.WeeklyEnter;
+import com.kh.kgv.management.model.vo.banner;
 
 public interface ManagerService {
 	
@@ -101,6 +102,15 @@ public interface ManagerService {
 
 	// 메인 이벤트 목록 가지고 오기 - 7개
 	Map<String, Object> mainEventList();
+	
+	// 관리자_배너 등록
+	int addBanner(banner banner);
+
+	// 관리자_배너 목록 이동시 목록 조회
+	Map<String, Object> getBannerList(int cp);
+
+	// 관리자_배너 상태 업데이트
+	int updateBannerST(banner banner);
 
 
 	

@@ -21,16 +21,23 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.helpDesk.model.service.HelpDeskService;
+import com.kh.kgv.helpDesk.model.vo.LostPackage;
 import com.kh.kgv.helpDesk.model.vo.Mtm;
+import com.kh.kgv.login.controller.LoginController;
 import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.management.model.vo.Notice;
 import org.apache.commons.text.StringEscapeUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 @Controller
 @RequestMapping("/helpDesk")
 @SessionAttributes({"loginUser"})
 public class HelpDeskController {
+	
+	private Logger logger = LoggerFactory.getLogger(LoginController.class);
+
 
 	@Autowired
 	private ManagerService service;
@@ -73,7 +80,7 @@ public class HelpDeskController {
 	}
 
 
-	
+
 
 	@RequestMapping("/notice_detail/{noticeNo}")
 	public String noticedetail(
@@ -102,14 +109,14 @@ public class HelpDeskController {
 	public String mtmform(
 			Model model,
 			@RequestParam(value = "cp", required = false, defaultValue="1" ) int cp,
-				RedirectAttributes ra,
+			RedirectAttributes ra,
 			HttpSession session,
 			HttpServletRequest req,HttpServletResponse resp
 			){
-		
+
 		User loginUser = (User)session.getAttribute("loginUser");
 
-		
+
 		int userNo = 1000000000;
 
 		if(loginUser != null) {
@@ -117,15 +124,15 @@ public class HelpDeskController {
 		}
 
 		Map<String, Object>mtmList = null;
-		
+
 		mtmList = services.getMtmList(cp,userNo);
-		
+
 		model.addAttribute("mtmList", mtmList);
-	
+
 		return "helpDesk/mTm_List";
 	}
 
-	
+
 	@RequestMapping("/mtm_detail/{mtmNo}")
 	public String mtmdetail(
 			Model model,
@@ -140,9 +147,60 @@ public class HelpDeskController {
 		model.addAttribute("mTmdetail", mTmdetail);
 
 		return "helpDesk/mtm_detail";
-		
+
 	}
 
+
+	@RequestMapping("/lost_List")
+	public String lostList(
+			Model model,
+			@RequestParam(value = "cp", required = false, defaultValue="1" ) int cp,
+			HttpSession session,
+			RedirectAttributes ra,
+			HttpServletRequest req, HttpServletResponse resp
+			){
+
+		User loginUser = (User)session.getAttribute("loginUser");
+
+
+		int userNo = 1000000000;
+
+		if(loginUser != null) {
+			userNo = loginUser.getUserNo();
+		}
+
+		Map<String, Object>lostList = null;
+
+		lostList = services.getLostList(cp,userNo);
+
+		model.addAttribute("lostList", lostList);
+
+		return "helpDesk/lost_List";
+	}
+	
+	
+	@RequestMapping("/lost_detail/{lostNo}")
+	public String lostdetail(
+			Model model,
+			@PathVariable("lostNo") int lostNo,
+			HttpSession session,
+			HttpServletRequest req, HttpServletResponse resp
+			){
+	
+		LostPackage lostdetail = services.selectLostDetail(lostNo);
+		if(lostdetail != null){
+		  System.out.println("=========================================================================" + lostdetail);
+		  String unescapedContent = StringEscapeUtils.unescapeHtml4(lostdetail.getLostContent());
+		  lostdetail.setLostContent(unescapedContent);
+		  model.addAttribute("lostdetail", lostdetail);
+		} else {
+		  System.out.println("LostPackage is null for lostNo: " + lostNo);
+		}
+		
+		return "helpDesk/lost_detail";
+
+	}
+	
 
 
 
@@ -158,13 +216,6 @@ public class HelpDeskController {
 			Model model
 			){
 		return "helpDesk/question_home";
-	}
-
-	@RequestMapping("/lost_List")
-	public String lostList(
-			Model model
-			){
-		return "helpDesk/lost_List";
 	}
 
 }
