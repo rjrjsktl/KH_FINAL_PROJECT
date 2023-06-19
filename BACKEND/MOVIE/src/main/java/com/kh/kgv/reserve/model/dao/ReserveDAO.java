@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.kgv.items.model.vo.Movie;
-import com.kh.kgv.items.model.vo.Play;
 import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.management.model.vo.Screen;
 
 @Repository
@@ -32,7 +32,7 @@ public class ReserveDAO {
 		return sqlSession.selectList("playMapper.getPlayingThumbList");
 	}
 
-	public List<Play> getTotalPlayList(Map<String, Object> condition) {
+	public List<JoinPlay> getTotalPlayList(Map<String, Object> condition) {
 		return sqlSession.selectList("playMapper.getTotalPlayList", condition);
 	}
 

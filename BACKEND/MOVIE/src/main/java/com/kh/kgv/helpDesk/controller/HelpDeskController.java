@@ -47,6 +47,8 @@ public class HelpDeskController {
 	private ManagerService service;
 	@Autowired
 	private HelpDeskService services;
+	
+	
 
 
 	@RequestMapping("/helpDesk_home")
@@ -54,6 +56,10 @@ public class HelpDeskController {
 			Model model
 			, @RequestParam(value = "cp", required = false, defaultValue="1" ) int cp	
 			) {
+		
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = service.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
 
 		Map<String, Object>userNoticeList = null;
 
@@ -119,8 +125,7 @@ public class HelpDeskController {
 			){
 
 		User loginUser = (User)session.getAttribute("loginUser");
-
-
+		
 		int userNo = 0;
 
 		if(loginUser != null) {
@@ -130,7 +135,10 @@ public class HelpDeskController {
 		Map<String, Object>mtmList = null;
 
 		mtmList = services.getMtmList(cp,userNo);
-
+		
+		int mtmCount = 0;
+		mtmCount = services.getMtmListCount(userNo);
+		model.addAttribute("mtmCount", mtmCount);
 		model.addAttribute("mtmList", mtmList);
 
 		return "helpDesk/mTm_List";
@@ -238,6 +246,12 @@ public class HelpDeskController {
 		Map<String, Object>lostList = null;
 
 		lostList = services.getLostList(cp,userNo);
+		
+		int lostCount = 0;
+		
+		lostCount = services.getLostListCount(userNo);
+		model.addAttribute("lostCount", lostCount);
+
 
 		model.addAttribute("lostList", lostList);
 
@@ -324,12 +338,6 @@ public class HelpDeskController {
 	}
 
 	
-
-	
-
-
-
-
 
 	@RequestMapping("/question_home")
 	public String question(
