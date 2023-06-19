@@ -280,6 +280,39 @@
 									</a>
 								</ul>
 							</li>
+							<li class="slide_Content">
+								<div class="slide_Wrapper">
+									<div class="slide_Left_Icon">
+										<i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+									</div>
+									<span class="slide_Inner_Title">혜택관리</span>
+									<div class="slide_Right_Icon">
+										<i class="fa-solid fa-caret-down"></i>
+									</div>
+								</div>
+								<ul class="slide_Down_items">
+									<a href="${contextPath}/manager/benefit_list">
+										<li>
+											<div class="inner_align">
+												<div class="inner_Left_Icon">
+													<i class="fa-solid fa-play fa-2xs"></i>
+												</div>
+												<span>혜택 목록</span>
+											</div>
+										</li>
+									</a>
+									<a href="${contextPath}/manager/benefit_add">
+										<li>
+											<div class="inner_align">
+												<div class="inner_Left_Icon">
+													<i class="fa-solid fa-play fa-2xs"></i>
+												</div>
+												<span>혜택 등록</span>
+											</div>
+										</li>
+									</a>
+								</ul>
+							</li>
 						</ul>
 					</nav>
 

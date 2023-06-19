@@ -113,6 +113,7 @@ public interface ManagerService {
 	int updateBannerST(banner banner);
 
 
+
 	
 	
 

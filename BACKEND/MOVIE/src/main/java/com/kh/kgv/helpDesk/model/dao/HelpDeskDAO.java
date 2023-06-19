@@ -62,7 +62,7 @@ public class HelpDeskDAO {
 	public int getLostListCount() {
 		return sqlSession.selectOne("lostMapper.getLostCount");
 	}
-
+	
 
 	public List<Mtm> lostLists(LostPagenation pagination, int userNo) {
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
@@ -77,9 +77,24 @@ public class HelpDeskDAO {
 
 	public LostPackage selectLostDetail(int lostNo) {
 		System.out.println(lostNo+"DAO");
-		return sqlSession.selectOne("lostMapper.lostdetail");
+		return sqlSession.selectOne("lostMapper.lostdetail",lostNo);
 
 	}
+
+
+	public int addmTm(Mtm mtm) {
+		
+		return sqlSession.insert("mtmMapper.addmTm", mtm);
+		
+	}
+
+
+	public int addLost(LostPackage lost) {
+		return sqlSession.insert("lostMapper.addLost", lost);
+	}
+
+
+
 
 
 

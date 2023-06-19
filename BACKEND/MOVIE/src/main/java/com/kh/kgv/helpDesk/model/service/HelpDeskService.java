@@ -23,4 +23,9 @@ public interface HelpDeskService {
 	LostPackage selectLostDetail(int lostNo);
 
 
+	int addmTm(Mtm mtm);
+
+	int addLost(LostPackage lost);
+
+
 }

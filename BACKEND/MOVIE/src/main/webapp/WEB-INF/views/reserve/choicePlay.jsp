@@ -45,8 +45,8 @@
                           <ul id="area_list">
                               <li><a href="#none" class="clicked">서울</a></li>
                               <li><a href="#none">인천 경기</a></li>
-                              <li><a href="#none">대전 충청</a></li>
-                              <li><a href="#none">광주 전라</a></li>
+                              <li><a href="#none">대전 충남 충북</a></li>
+                              <li><a href="#none">광주 전남 전북</a></li>
                               <li><a href="#none">부산 울산 경남</a></li>
                               <li><a href="#none">대구 경북</a></li>
                               <li><a href="#none">강원</a></li>
@@ -171,11 +171,11 @@
                   </div>
                   
                   <div>
-                    <ul>
+                    <ul id="total_play">
                       <li class="movie_play" data-movie="메이플스토리">
                         <div>메이플스토리</div>
                         <div><ul class="playlist">
-                          <li><a href="#none">
+                          <li id="origin_play"><a href="#none">
                             <div>
                               <div>
                                 <strong>

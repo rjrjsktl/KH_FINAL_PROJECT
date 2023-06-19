@@ -23,7 +23,8 @@
 	href="${contextPath}/resources/css/helpDesk/mtm_List.css">
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/common/notice_Aside.css">
-
+         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 </head>
 
@@ -87,7 +88,7 @@
 								</table>
 
 								<div>
-									<button>게시물 등록</button>
+									<button> <a href="${contextPath}/helpDesk/mTm_form/${mtmNo}">게시물 등록</a></button>
 								</div>
 								<!-- 10개씩 -->
 									<div class="page_Nation">
@@ -133,9 +134,7 @@
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-		crossorigin="anonymous"></script>
+
 	<script src="../../js/common/header.js"></script>
 
 
