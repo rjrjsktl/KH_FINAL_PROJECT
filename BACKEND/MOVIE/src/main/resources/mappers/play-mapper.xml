@@ -39,7 +39,35 @@
 	    <result property="playEnd"              column="PLAY_END"/>
 	    <result property="playRegDate"          column="PLAY_REGDATE"/>
 	    <result property="playUploader"         column="PLAY_UPLOADER"/>
+	    <result property="playBookCount"        column="PLAY_BOOKCOUNT"/>
+	    <result property="playBookSeat"         column="PLAY_BOOKSEAT"/>
 	</resultMap>
+	
+	<resultMap type="screen" id="screen_rm">
+		<id property="screenNo"                 column="SCREEN_NO" />
+		<result property="cinemaName"           column="CINEMA_NAME" />
+		<result property="screenName"           column="SCREEN_NAME" />
+		<result property="screenStyle"          column="SCREEN_STYLE" />
+		<result property="screenSeat"           column="SCREEN_SEAT" />
+		<result property="screenDetail"         column="SCREEN_DETAIL" />
+	</resultMap>
+	
+	<resultMap type="cinema" id="cinema_rm">
+		<id property="cinemaNo"                 column="CINEMA_NO" />
+		<result property="cinemaName"           column="CINEMA_NAME" />
+		<result property="cinemaArea"           column="CINEMA_AREA" />
+		<result property="cinemaRegion"         column="CINEMA_REGION" />
+		<result property="cinemaScreen"         column="CINEMA_SCREEN" />
+	</resultMap>
+	
+	<resultMap type="jp" id="jp_rm">
+		<collection property="play" resultMap="play_rm" />
+		<collection property="cinema" resultMap="cinema_rm" />
+		<collection property="movie" resultMap="movie_rm" />
+		<collection property="tt" resultMap="tt_rm" />
+		<collection property="screen" resultMap="screen_rm" />
+	</resultMap>
+	
 	
 	<!-- 상영 중인 영화 리스트 (이름 순) -->
 	
@@ -81,9 +109,10 @@
 	</insert>
 	
 	<!-- 영화관별 전체 상영 검색 -->
-	<select id="getTotalPlayList" parameterType="Map" resultMap="play_rm">
+	<select id="getTotalPlayList" parameterType="Map" resultMap="jp_rm">
 	<![CDATA[
-	    SELECT P.*  FROM PLAY p
+	    SELECT m.MOVIE_NO, m.MOVIE_TITLE, c.CINEMA_NAME, s.SCREEN_NAME, s.SCREEN_SEAT, p.PLAY_START, p.PLAY_END  
+	    FROM PLAY p
         INNER JOIN SCREEN s ON p.SCREEN_NO  = s.SCREEN_NO 
         INNER JOIN CINEMA c ON s.CINEMA_NAME = c.CINEMA_NAME
         INNER JOIN MOVIE m ON p.MOVIE_NO = m.MOVIE_NO

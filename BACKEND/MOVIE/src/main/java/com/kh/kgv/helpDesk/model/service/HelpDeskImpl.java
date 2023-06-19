@@ -110,4 +110,15 @@ public class HelpDeskImpl implements HelpDeskService {
 		return dao.addLost(lost);
 	}
 
+	@Override
+	public int getMtmListCount(int userNo) {
+		return dao.getMtmListCount(userNo);
+	}
+
+	@Override
+	public int getLostListCount(int userNo) {
+		return dao.getLostListCount(userNo);
+
+	}
+
 }

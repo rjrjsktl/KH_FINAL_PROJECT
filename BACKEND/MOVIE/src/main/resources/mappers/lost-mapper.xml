@@ -22,13 +22,20 @@
 		SELECT COUNT(LOST_NO) FROM
 		LOST_PACKAGE
 	</select>
+	
+	<select id="getUserLostCount" resultType="_int">
+		SELECT COUNT(LOST_NO) FROM
+		LOST_PACKAGE
+		WHERE USER_NO = #{userNo}
+	</select>
+	
 
 	<select id="userLostList" resultMap="lost_rm">
 		SELECT
 		*
 		FROM
 		LOST_PACKAGE
-		<!-- WHERE USER_NO = ${userNo} -->
+		WHERE USER_NO = ${userNo}
 		ORDER BY LOST_NO DESC
 	</select>
 
