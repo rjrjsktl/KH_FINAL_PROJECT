@@ -4,8 +4,13 @@ let cinemaIndex = -1;
 let dateIndex = 0;
 
 let areaCinemaList = [];
+let movieNumList = [];
+
 let originPlay = $("#origin_play").clone(true);
 let clonePlay;
+
+
+// 페이지가 로딩되면 서울 지역의 극장을 극장 리스트에 저장함.
 
 $.ajax({
     url: "cinemaList",
@@ -75,9 +80,11 @@ let area = $('#area_list > li');
 let areaName;
 
 area.on("click", function(){
+
   $(area).children().removeClass('clicked');
   $(this).children().addClass('clicked');
   areaIndex = $(this).index();
+  
   $.ajax({
     url: "cinemaList",
     data: {"areaIndex": areaIndex},
@@ -85,18 +92,7 @@ area.on("click", function(){
     success: function(cinemaList) {
       areaCinemaList = cinemaList;
       $("#cinema_list").empty();
-      for(let cinema of cinemaList) {
-        let cinemaLi = document.createElement("li");
-        let cinemaItem = document.createElement("a");
-        $(cinemaItem).html(cinema.cinemaName);
-        $(cinemaItem).attr("href", "#none");
-        $(cinemaItem).on("click", function(e) {
-          clickCinema(e);
-        });
-        $(cinemaLi).append(cinemaItem);
-    	$("#cinema_list").append(cinemaLi);
-      }
-      
+      updateCinemaSection(cinemaList);
       if(prevAreaIndex == areaIndex) {
     	$('#cinema_list').children().eq(cinemaIndex).children().click();
   	  }
@@ -106,8 +102,32 @@ area.on("click", function(){
     }
   });
   
-  
 });
+
+
+
+// 지역을 클릭하면 지역별 극장을 업데이트하는 함수
+
+function updateCinemaSection(cinemaList) {
+
+  for(let cinema of cinemaList) {
+  
+    let cinemaLi = document.createElement("li");
+    let cinemaItem = document.createElement("a");
+        
+    $(cinemaItem).html(cinema.cinemaName);
+    $(cinemaItem).attr("href", "#none");
+    $(cinemaItem).on("click", function(e) {
+       clickCinema(e);
+    });
+        
+    $(cinemaLi).append(cinemaItem);
+    $("#cinema_list").append(cinemaLi);
+  
+  }
+  
+}
+
 
 
 // 극장 선택 
@@ -116,11 +136,11 @@ area.on("click", function(){
 // 이러한 문제는 스프링 격리성을 고안하면 됩니다. MVCC
 // 당장 우리 프로젝트에서 적용하기 어려우므로, 추후 학습하는 게 좋을 것 같습니다.
 
-let movieNumList= [];
-
 function clickCinema(e) {
+
   cinemaIndex = $(e.target).parent().index();
   prevAreaIndex = areaIndex;
+  
   $("#cinema_select").html(areaCinemaList[cinemaIndex].cinemaName);
   $('#cinema_list > li > a').removeClass("clicked");
   $(e.target).addClass("clicked");
@@ -129,41 +149,83 @@ function clickCinema(e) {
     url: "playList",
     data: {areaIndex, cinemaIndex, dateIndex},
     type: "GET",
-    success: function(playMap) {
+    success: function(joinPlayList) {
+      /*
+      console.log(playMap);
       movieNumList = [];
       $("#total_play").empty();
-      playMap.playList.forEach(play => movieNumList.push(play['movieNo']));
-      movieNumList = movieNumList.filter((element, index) => {
-        return movieNumList.indexOf(element) === index;
-      });
-      console.log(playMap.playList);
-      for(let num of movieNumList) {
-        let moviePlay = $('<li class="movie_play"></li>');
-        let questMovie = playMap.thumbList.filter((movie) => {
-            return movie.movieNo == num;
-        });
-        moviePlay.append(`<div>${questMovie[0]['movieTitle']}</div>`);
-        let playBundle = $('<div><ul class="playlist"></ul></div>');
-        let questPlay = playMap.playList.filter((play) => {
-            return play.movieNo == num;
-        });
-        questPlay.forEach(function(play) {
-          let clonePlay = originPlay.clone(true);
-          clonePlay.removeAttr('id');
-          clonePlay.find('.open_hour').html(play.playStart.substring(11,13));
-          clonePlay.find('.open_minute').html(play.playStart.substring(14,16));
-          playBundle.find('.playlist').append(clonePlay);
-        });
-        moviePlay.append(playBundle);
-        $("#total_play").append(moviePlay);
-        
-      } 
+      updatePlaySection(playMap);
+      */
+      console.log(joinPlayList[0].screen.screenName + "관");
+      console.log(joinPlayList[0].screen.screenSeat + "석");
+      console.log(joinPlayList[0].play.playBookCount + "석");
+      console.log(joinPlayList[0].play.playStart);
+      console.log(joinPlayList[0].movie.movieTitle);
       
     },
     error: function () {
       console.log("에러 발생");
     }
   });
+}
+
+
+// 상영 정보를 업데이트하는 함수
+
+let moviePlay;
+let playBundle;
+let questMovie;
+let questPlay;
+let questScreen;
+
+function updatePlaySection(playMap) {
+  
+  // 해당 극장에서 상영 중인 영화 번호를 중복 없이 예매율 순으로 저장함.
+  
+  playMap.playList.forEach(play => movieNumList.push(play['movieNo']));
+  
+  movieNumList = movieNumList.filter((element, index) => {
+    return movieNumList.indexOf(element) === index;
+  });
+  
+  
+  for(let num of movieNumList) {
+  
+    moviePlay = $('<li class="movie_play"></li>');
+    playBundle = $('<div><ul class="playlist"></ul></div>');
+
+    // 영화 제목을 업데이트함
+    
+    questMovie = playMap.thumbList.filter((movie) => {
+      return movie.movieNo == num;
+    });
+    
+    moviePlay.append(`<div>${questMovie[0]['movieTitle']}</div>`);
+    
+    // 시작 시간을 업데이트함
+    
+    questPlay = playMap.playList.filter((play) => {
+      return play.movieNo == num;
+    });
+        
+    questPlay.forEach(function(play) {
+      clonePlay = originPlay.clone(true);
+      clonePlay.removeAttr('id');
+      questScreen = playMap.screenList.filter((screen) => {
+        return screen.screenNo = play.screenNo
+      });
+      console.log(questScreen[0]);
+      clonePlay.find('.open_hour').html(play.playStart.substring(11,13));
+      clonePlay.find('.open_minute').html(play.playStart.substring(14,16));
+      playBundle.find('.playlist').append(clonePlay);
+      
+    });
+    
+    moviePlay.append(playBundle);
+    $("#total_play").append(moviePlay);
+        
+  } 
+
 }
 
 $("#cinema_list > li > a").on("click", function(e){
