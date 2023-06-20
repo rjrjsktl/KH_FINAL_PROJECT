@@ -1,5 +1,7 @@
 package com.kh.kgv.mypage.model.service;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -8,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.kh.kgv.customer.model.vo.Review;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.mypage.controller.MyPageController;
 import com.kh.kgv.mypage.model.dao.MyPageDAO;
@@ -23,6 +26,17 @@ public class MyPageServiceImpl implements MyPageService {
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
 	
+	/** review카드 불러오기 serviceimpl
+	 *
+	 */
+	@Override
+	public List<Review> myReviewList(int userNo) {
+		
+		List<Review> myReviewList = dao.myReviewList(userNo);
+		
+		return myReviewList;
+	}
+
 	/** 회원 비번번호 변경
 	 *
 	 */

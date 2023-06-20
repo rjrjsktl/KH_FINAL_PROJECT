@@ -53,21 +53,20 @@
                             <!-- 내가 본 영화, 내가 쓴 리뷰 페이지 form이 필요 없을듯? -->
                             <form action="myboard" method="POST" name="myPage-form" onsubmit="return infoValidate()">
                                 <ul class="more-load">
-
-                                <c:forEach var="review" item="getReviewList['myReviewList']">
+                                <c:forEach var="review" items="${getReviewList}">
                                     <!-- review_no사용하면됨 -->
                                     <!-- 나중에 append나 폼 추가 할 때 이 li을 그대로 가져가면 됨 -->
                                     <li class="myreview">
                                         <div>
                                             <div>
                                                 <!-- 나중에 db건들 때 따오는 값 바꿔줘야함 -->
-                                                <a href="#"><img src="../../images/123123.jpg"
+                                                <a href="${contextPath}/movieList/detail_List/introduce/${review.movieNo}"><img src="${review.movieImg1}"
                                                         alt="영화 포스터 w=184px,h=210px"></a>
                                             </div>
 
                                             <div>
                                                 <div>
-                                                    <div>영화 제목</div>
+                                                    <div>${review.movieTitle}</div>
                                                     <a class="i-dlt-btn" href="#"><i
                                                             class="fa-regular fa-circle-xmark"></i></a>
                                                 </div>
@@ -79,8 +78,8 @@
                                                     </ul>
                                                     <ul>
                                                         <!-- db에 들어가는거 보고 영화 날짜, 시간, 인원, 몇관 등 추가 해야함 -->
-                                                        <li>2069.69.69 </li>
-                                                        <li>69:74 ~ 69:74</li>
+                                                        <li>${review.revDate}</li>
+                                                        <li>${review.revTime}</li>
                                                     </ul>
 
                                                 </div>
@@ -98,7 +97,7 @@
                                 </c:forEach>
                                 </ul>
                                 <!-- 더보기 버튼 만들 영역 -->
-                                <div id="listmore-wrap"><a href="javascript:;" id="listmore-btn">내 영화 더 보기</a></div>
+                                <div id="listmore-wrap"><a href="javascript:;" id="list-more-btn">내 영화 더 보기</a></div>
                             </form>
                         </div>
                     </div>
