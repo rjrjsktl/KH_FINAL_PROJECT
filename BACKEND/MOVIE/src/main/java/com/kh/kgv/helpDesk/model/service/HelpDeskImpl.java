@@ -121,4 +121,14 @@ public class HelpDeskImpl implements HelpDeskService {
 
 	}
 
+	@Override
+	public int selectMtmNo(Mtm mtm) {
+		return  dao.selectMtmNo(mtm);
+	}
+
+	@Override
+	public int selectLostNo(LostPackage lost) {
+		return dao.selectLostNo(lost);
+	}
+
 }

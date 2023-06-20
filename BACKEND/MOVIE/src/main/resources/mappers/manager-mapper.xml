@@ -89,7 +89,17 @@
 		<result property="bannerSt" column="BANNER_ST" />
 		<result property="bannerUrl" column="BANNER_URL" />
 	</resultMap>
-
+	
+	<resultMap type="benefits" id="benefits_rm">
+		<id property="benefitsNo" 			column="BENEFITS_NO" />
+		<result property="benefitsTitle" 	column="BENEFITS_TITLE" />
+		<result property="benefitsContent" 	column="BENEFITS_CONTENT" />
+		<result property="benefitsStart" 	column="BENEFITS_START" />
+		<result property="benefitsEnd" 		column="BENEFITS_END" />
+		<result property="benefitsStatus" 	column="BENEFITS_STATUS" />
+		<result property="benefitsReg" 		column="BENEFITS_REG" />
+		<result property="benefitsImg" 		column="BENEFITS_IMG" />
+	</resultMap>
 
 
 
@@ -397,5 +407,25 @@
 		SET BANNER_ST = #{bannerSt}
 		WHERE BANNER_NO = #{bannerNo}
 	</update>
+	
+	<!-- 혜택 등록 -->
+	<insert id="addBenefits" parameterType="benefits">
+		INSERT INTO EVENT
+		VALUES (
+		SEQ_BENEFITS_NO.NEXTVAL
+		, #{benefitsTitle}
+		, #{benefitsContent}
+		, #{benefitsStart}
+		, #{benefitsEnd}
+		, DEFAULT
+		, DEFAULT
+		,#{benefitsImg}
+		)
+	</insert>
+	
+	
+	
+	
+	
 
 </mapper>

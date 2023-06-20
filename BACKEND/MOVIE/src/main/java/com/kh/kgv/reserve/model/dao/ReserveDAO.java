@@ -40,6 +40,14 @@ public class ReserveDAO {
 		return sqlSession.selectList("cinemaMapper.getScreenList", cinemaName);
 	}
 
+	public List<JoinPlay> getMovieNamePlayList(Map<String, Object> condition) {
+		return sqlSession.selectList("playMapper.getMovieNamePlayList");
+	}
+
+	public List<JoinPlay> getMovieRankPlayList(Map<String, Object> condition) {
+		return sqlSession.selectList("playMapper.getMovieNamePlayList");
+	}
+
 
 
 }
