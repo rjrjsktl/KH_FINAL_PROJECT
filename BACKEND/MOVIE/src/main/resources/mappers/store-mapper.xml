@@ -58,4 +58,26 @@
 		WHERE STORE_NO = #{storeNo}
 	</select>
 	
+	<!-- 스토어 수정 페이지 이동 후 값 불러오기 -->
+	<select id="getEditStoreList" resultMap="store_rm">
+		SELECT * FROM STORE
+		WHERE STORE_NO = #{storeNo}
+	</select>
+	
+	<!-- 스토어 수정 -->
+	<update id="StoreEdit" parameterType="store">
+		
+		
+		UPDATE STORE SET		
+        	STORE_CATEGORY = #{storeCategory}
+        	,STORE_NAME = #{storeName}
+        	,STORE_PRICE = #{storePrice}
+        	,STORE_IMAGE = #{storeImage}
+        	,STORE_DESC = #{storeDesc}
+        	,STORE_STOCK= #{storeStock}
+        	,STORE_IMAGE_BIG = #{storeImageBig}
+        WHERE STORE_NO = ${storeNo}
+        	
+	</update>
+	
 </mapper>

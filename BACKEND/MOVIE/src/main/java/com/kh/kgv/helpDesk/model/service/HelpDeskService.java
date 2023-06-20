@@ -30,5 +30,9 @@ public interface HelpDeskService {
 
 	int getLostListCount(int userNo);
 
+	int selectMtmNo(Mtm mtm);
+
+	int selectLostNo(LostPackage lost);
+
 
 }

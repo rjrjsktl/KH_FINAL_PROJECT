@@ -29,7 +29,6 @@ public class ReserveController {
 	
 	private String[] areaArray = {"서울", "경기", "충청", "전라", "경남", "경북", "강원", "제주"};
 	private List<Cinema> cinemaList = null;
-	private List<Screen> screenList = null;
 	private List<Movie> movieList = null;
 	private List<Movie> thumbList = null;
 	private List<JoinPlay> joinPlayList = null;
@@ -82,7 +81,43 @@ public class ReserveController {
 			String strDate = date.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
 			
 			joinPlayList = service.getTotalPlayList(cinemaNo, strDate);
-			System.out.println(joinPlayList.get(0).getMovie().getMovieTitle());
+			
+		} catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println("배열 범위 이외의 숫자입니다.");
+		} catch(NumberFormatException e) {
+			System.out.println("잘못된 인덱스입니다.");
+		}
+		return joinPlayList;
+	}
+	
+	
+	@GetMapping("/moviePlayList")
+	@ResponseBody
+	public List<JoinPlay> getMoviePlayList(String areaIndex, String cinemaIndex, String dateIndex, 
+			                               String movieOptionIndex, String movieIndex ) {
+		
+		try {
+			String areaName = areaArray[Integer.parseInt(areaIndex)];
+			cinemaList = service.getAreaCinemaList(areaName);
+			int cinemaNo = cinemaList.get(Integer.parseInt(cinemaIndex)).getCinemaNo();
+			int movieNo;
+			
+			LocalDateTime now = LocalDateTime.now();
+			LocalDateTime date = now.plusDays(Integer.parseInt(dateIndex));
+			String strDate = date.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+			
+			if(movieOptionIndex.equals("0")) {
+				movieList = service.getPlayingMovieList();
+				movieNo = movieList.get(Integer.parseInt(movieIndex)).getMovieNo();
+				joinPlayList = service.getMovieNamePlayList(cinemaNo, strDate, movieNo);
+			} else if(movieOptionIndex.equals("1")) {
+				thumbList = service.getPlayingThumbList();
+				movieNo = thumbList.get(Integer.parseInt(movieIndex)).getMovieNo();
+				joinPlayList = service.getMovieRankPlayList(cinemaNo, strDate, movieNo);
+			}
+			
+			
+			
 		} catch(ArrayIndexOutOfBoundsException e) {
 			System.out.println("배열 범위 이외의 숫자입니다.");
 		} catch(NumberFormatException e) {

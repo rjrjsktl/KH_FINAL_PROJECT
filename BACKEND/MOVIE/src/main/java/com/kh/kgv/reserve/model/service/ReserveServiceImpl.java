@@ -54,4 +54,26 @@ public class ReserveServiceImpl implements ReserveService {
 		return screenList;
 	}
 
+	@Override
+	public List<JoinPlay> getMovieNamePlayList(int cinemaNo, String strDate, int movieNo) {
+		Map<String, Object> condition = new HashMap<>();
+		condition.put("cinemaNo", cinemaNo);
+		condition.put("strDate", strDate);
+		condition.put("movieNo", movieNo);
+		List<JoinPlay> moviePlayList = dao.getMovieNamePlayList(condition);
+		return moviePlayList;
+	}
+
+	@Override
+	public List<JoinPlay> getMovieRankPlayList(int cinemaNo, String strDate, int movieNo) {
+		Map<String, Object> condition = new HashMap<>();
+		condition.put("cinemaNo", cinemaNo);
+		condition.put("strDate", strDate);
+		condition.put("movieNo", movieNo);
+		List<JoinPlay> moviePlayList = dao.getMovieRankPlayList(condition);
+		return moviePlayList;
+	}
+
+
+
 }
