@@ -36,7 +36,9 @@ $(document).ready(function () {
     navigation: {
       nextEl: '.first .swiper-button-next',
       prevEl: '.first .swiper-button-prev',
-    }
+    },
+    loop: true
+
   });
 
   var swiper2 = new Swiper('.swiper-container.second', {
@@ -125,6 +127,16 @@ $(document).ready(function () {
   $('.morePage').on('click', function () {
     itemsToShow++;
     $('.review').slice(0, itemsToShow).slideDown();
+  });
+
+
+  let imgs = document.querySelectorAll(".swiper-slide img");
+
+  imgs.forEach(item => {
+    if (item.getAttribute('src') === "") {
+      item.parentNode.remove();
+      item.parentElement.remove();
+    }
   });
 
 

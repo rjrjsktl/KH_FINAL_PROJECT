@@ -1,7 +1,5 @@
 package com.kh.kgv.management.model.vo;
 
-import com.kh.kgv.customer.model.vo.Sns;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
