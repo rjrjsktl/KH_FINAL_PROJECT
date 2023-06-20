@@ -1,5 +1,6 @@
 package com.kh.kgv.customer.model.vo;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,5 +19,6 @@ public class Review {
 	private String revSt;
 	private String revLike;
 	private String revDate;
+	private String revTime;
 	private String revFixed;
 }
