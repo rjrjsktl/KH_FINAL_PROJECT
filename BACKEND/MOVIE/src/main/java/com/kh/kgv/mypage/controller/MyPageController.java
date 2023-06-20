@@ -36,7 +36,7 @@ public class MyPageController {
 	private MyPageService service;
 	
 	// 마이페이지 첫번째 화면
-	// 로그인o -> 로그인page, 로그인x -> 마이page
+	// 로그인o -> 로그인page, 로그인x -> myPage
 	@GetMapping("/myPgMain")
 	public String info(HttpServletRequest req
 //						, HttpServletResponse resp
@@ -58,11 +58,11 @@ public class MyPageController {
 			// 로그인되지 않은 상태, 로그인 페이지로 리다이렉트
 //	        String loginUrl = req.getContextPath() + "/user/login";
 //	        resp.sendRedirect(loginUrl);
-	        path = "/user/login"; 
+	        path = "redirect:/user/login"; 
 		}
 		ra.addFlashAttribute("message", message);
 		
-		return "redirect:" + path;
+		return path;
 	}
 	
 	// ===========================================================================================
@@ -80,7 +80,8 @@ public class MyPageController {
 	
 	@GetMapping("/myLostItem")
 	public String myLostItem() {
-		return "myPage/myPage_myLostItemList";
+		logger.info("LostList페이지 들어옴");
+		return "myPage/myPage_myLostList";
 	}
 	
 	@GetMapping("/info")
@@ -107,8 +108,6 @@ public class MyPageController {
 	public String secession() {
 		return "myPage/myPage_secession";
 	}
-	
-	
 	
 	// 사이드바 페이지 이동 영역
 	// ===========================================================================================
@@ -170,20 +169,17 @@ public class MyPageController {
 		int result = service.changePw(paramMap);
 		
 		String message = null;
-		String path = null;
 		
 		if( result > 0 ) {
 			// 변경 -> info
 			message = "비밀번호가 변경되었습니다.";
-			path = "info";
 		} else {
 			// 실패 -> changePw
 			message = "현재 비밀번호가 일치하지 않습니다.";
-			path = "changePw";
 		}
 		ra.addFlashAttribute("message", message);
 		
-		return "redirect:" + path;
+		return "redirect:changePw";
 	}
 	
 	// ===========================================================================================

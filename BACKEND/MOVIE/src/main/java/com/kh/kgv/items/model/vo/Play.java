@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-//@Data를 쓰면, @Getter @Setter @RequiredArgsConstructor @ToString @EqulasAndHashCode를 한번에 설정한다.
 @NoArgsConstructor
 @AllArgsConstructor
 
@@ -18,4 +17,6 @@ public class Play {
 	private String playEnd;
 	private String playRegDate;
 	private String playUploader;
+	private int playBookCount;
+	private String playBookSeat;
 }

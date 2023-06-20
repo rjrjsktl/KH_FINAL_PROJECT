@@ -82,19 +82,19 @@ main>div:nth-child(2)>ol>li>div:nth-child(2) {
 }
 
 main>div:nth-child(2)>ol>li>div:nth-child(2)>a {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 main>div:nth-child(2)>ol>li>div:nth-child(2)>div {
     display: flex;
     align-items: center;
     margin: 10px 0;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
 }
 
 main>div:nth-child(2)>ol>li>div:nth-child(2)>div>p:nth-child(1) {
     width: 40%;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 main>div:nth-child(2)>ol>li>div:nth-child(3) {
@@ -135,6 +135,7 @@ main>div:nth-child(2)>ol>li>div:nth-child(3)>button:nth-child(2) {
     color: rgb(255, 196, 0);
 }
 
+/* 관람 등급 */
 .age-img-area {
     position: absolute;
     z-index: 5;
@@ -142,4 +143,14 @@ main>div:nth-child(2)>ol>li>div:nth-child(3)>button:nth-child(2) {
     left: 160px;
     width: 35px;
     opacity: 0.9;
+}
+
+/* 예매율, 개봉일 폰트 사이즈 */
+.textSize {
+    font-size: 0.8rem;
+}
+
+/* 영화 제목 */
+.titleFont {
+    font-weight: bold;
 }

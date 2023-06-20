@@ -368,7 +368,7 @@ public class ManagerController {
 	// ===================================================
 	// ===================================================
 
-	// 관리자_상영시간 목록 이동
+	// 관리자_상영영화 목록 이동
 	@GetMapping("/play_list")
 	public String movePlayList(
 			Model model
@@ -377,10 +377,6 @@ public class ManagerController {
 				getMovieList = movieService.managerMovieList(cp);
 				
 				model.addAttribute("getMovieList", getMovieList);
-		
-		
-		
-		
 		
 		System.out.println("관리자_상영시간 목록 이동");
 		return "manager/manager_movie_play_list";

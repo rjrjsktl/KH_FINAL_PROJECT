@@ -47,7 +47,7 @@
 
 							<div class="search-area">
 								<p>
-									1:1문의 게시글 총<span style="color: red">1</span><span>/</span><span>3</span>건
+									1:1문의 게시글 총<span>${mtmCount}</span>건
 								</p>
 							</div>
 
@@ -64,8 +64,8 @@
 
 										<c:choose>
 											<c:when test="${empty mtmList.mtmLists}">
-												<tr>
-													<th colspan="3">게시글이 존재하지 않습니다.</th>
+												<tr class="row">
+													<td colspan="3">게시글이 존재하지 않습니다.</td>
 												</tr>
 											</c:when>
 											<c:otherwise>
