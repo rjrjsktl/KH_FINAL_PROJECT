@@ -1,5 +1,6 @@
 package com.kh.kgv.mypage.model.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.kgv.customer.model.vo.Review;
 import com.kh.kgv.mypage.controller.MyPageController;
 
 @Repository
@@ -49,6 +51,11 @@ public class MyPageDAO {
 	public int updateInfo(Map<String, Object> paramMap) {
 		logger.info("뜬다 updateInfo.dao 페이지 들어왔다");
 		return sqlSession.update("myPageMapper.updateInfo", paramMap);
+	}
+
+	public List<Review> myReviewList(int userNo) {
+		logger.info("review::dao 실행 ㄱㄱㄱ");
+		return sqlSession.selectList("myPageMapper.myReviewList", userNo);
 	}
 
 	

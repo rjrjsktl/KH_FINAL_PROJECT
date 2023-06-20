@@ -11,13 +11,76 @@
 		3) 생략 (TypeHandler가 알아서 지정해줌)
 	
 	 -->
+	 
+	 <resultMap type="user" id="user_rm">
+		<id property="userNo" column="USER_NO" />
+		<result property="userEmail" column="USER_EMAIL" />
+		<result property="userPw" column="USER_PW" />
+		<result property="userName" column="USER_NAME" />
+		<result property="userNick" column="USER_NICKNAME" />
+		<result property="userTel" column="USER_TEL" />
+		<result property="userAddr" column="USER_ADDR" />
+		<result property="userBirth" column="USER_BIRTH" />
+		<result property="userGender" column="USER_GENDER" />
+		<result property="userRegDate" column="USER_REGDATE" />
+		<result property="userSt" column="USER_ST" />
+		<result property="userImg" column="USER_IMG" />
+		<result property="userPoint" column="USER_POINT" />
+		<result property="userSns" column="USER_SNS" />
+		<result property="userDelete" column="USER_DELETE" />
+		<result property="userManagerSt" column="USER_MANAGERST" />
+		<result property="userBlock" column="USER_BLOCK" />
+	</resultMap>
+	
+	 <resultMap type="movie" id="movie_rm">
+		<id property="movieNo" column="MOVIE_NO" />
+		<result property="movieRuntime" column="MOVIE_RUNTIME" />
+		<result property="movieTitle" column="MOVIE_TITLE" />
+		<result property="movieNation" column="MOVIE_NATION" />
+		<result property="movieOpen" column="MOVIE_OPEN" />
+		<result property="mgNo" column="MG_CONTENT" />
+		<result property="movieContent" column="MOVIE_CONTENT" />
+		<result property="movieDirector" column="MOVIE_DIRECTOR" />
+		<result property="movieCast" column="MOVIE_CAST" />
+		<result property="moviePlayed" column="MOVIE_PLAYED" />
+		<result property="movieWatched" column="MOVIE_WATCHED" />
+		<result property="movieRegdate" column="MOVIE_REGDATE" />
+		<result property="movieUploader" column="MOVIE_UPLOADER" />
+		<result property="genreName" column="GENRE_NAME" />
+		<result property="movieImg1" column="MOVIE_IMG1" />
+		<result property="movieImg2" column="MOVIE_IMG2" />
+		<result property="movieImg3" column="MOVIE_IMG3" />
+		<result property="movieImg4" column="MOVIE_IMG4" />
+		<result property="movieImg5" column="MOVIE_IMG5" />
+		<result property="movieImg6" column="MOVIE_IMG6" />
+		<result property="movieSt" column="MOVIE_ST" />
+	</resultMap>
+	
+	<resultMap type="review" id="review_rm">
+		<id property="reviewNo" column="REVIEW_NO" />
+		<result property="movieNo" column="MOVIE_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="revContent" column="REV_CONTENT" />
+		<result property="revSt" column="REV_ST" />
+		<result property="revLike" column="REV_LIKE" />
+		<result property="revDate" column="REV_DATE" />
+		<result property="revTime" column="REV_TIME" />
+		<result property="revFixed" column="REV_FIXED" />
+	</resultMap>
+	
+	<resultMap type="jr" id="jr_rm">
+		<collection property="review" resultMap="review_rm" />
+		<collection property="movie" resultMap="movie_rm" />
+		<collection property="user" resultMap="user_rm" />
+	</resultMap>
 	
 		
 	<!-- 현재 로그인한 회원의 암호화된 비밀번호 조회 -->
-	<select id="selectEncPw" resultType="string">
-		SELECT USER_PW FROM USERS
-		WHERE USER_NO = ${userNo}
-	</select>
+	<!-- 현재 로그인한 회원의 암호화된 비밀번호 조회 -->
+   <select id="selectEncPw" resultType="string">
+      SELECT USER_PW FROM USERS
+      WHERE USER_NO = ${userNo}
+   </select>
 	
 	<!-- 비밀번호 변경 -->
 	<update id="changePw">
@@ -32,7 +95,6 @@
 		USER_ST = 'N'
 		WHERE USER_NO = ${userNo}
 	</update>
-	
 		
 	<!-- 회원 정보 수정 -->
 	<update id="updateInfo">
@@ -43,6 +105,19 @@
 		WHERE USER_NO = ${userNo}
 	</update>
 	
+	<select id="myReviewList" resultMap="jr_rm">
+		SELECT 
+	 		r.REV_CONTENT
+	 		, m.MOVIE_NO
+	 		, m.MOVIE_TITLE
+	 		, m.MOVIE_IMG1
+	 		, TO_CHAR(REV_DATE, 'YYYY-MM-DD') AS REV_DATE
+	 		, TO_CHAR(REV_DATE, 'HH24:MI') AS REV_TIME
+		FROM REVIEW r
+		INNER JOIN MOVIE m ON r.MOVIE_NO = m.MOVIE_NO
+			WHERE USER_NO = ${userNo}
+			AND REV_ST = 'N'
+	</select>
 	
   	
 </mapper>
