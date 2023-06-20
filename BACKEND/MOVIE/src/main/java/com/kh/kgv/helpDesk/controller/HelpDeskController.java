@@ -155,10 +155,13 @@ public class HelpDeskController {
 			HttpServletRequest req, HttpServletResponse resp
 			){
 		Mtm mTmdetail = services.selectmTmDetail(mtmNo);
+		User loginUser = (User)session.getAttribute("loginUser");
+		String userNick = loginUser.getUserNick();
 		System.out.println("=========================================================================" + mTmdetail);
 		String unescapedContent = StringEscapeUtils.unescapeHtml4(mTmdetail.getMtmContent());
 		mTmdetail.setMtmContent(unescapedContent);
 		model.addAttribute("mTmdetail", mTmdetail);
+		model.addAttribute("userNick", userNick);
 
 		return "helpDesk/mtm_detail";
 	}
@@ -250,7 +253,7 @@ public class HelpDeskController {
 		User loginUser = (User)session.getAttribute("loginUser");
 
 
-		int userNo = 1000000000;
+		int userNo = 0;
 
 		if(loginUser != null) {
 			userNo = loginUser.getUserNo();
@@ -280,12 +283,18 @@ public class HelpDeskController {
 			HttpServletRequest req, HttpServletResponse resp
 			){
 
+		User loginUser = (User)session.getAttribute("loginUser");
+		String userNick = loginUser.getUserNick();
+		
+	
 		LostPackage lostdetail = services.selectLostDetail(lostNo);
 		if(lostdetail != null){
 			System.out.println("=========================================================================" + lostdetail);
 			String unescapedContent = StringEscapeUtils.unescapeHtml4(lostdetail.getLostContent());
 			lostdetail.setLostContent(unescapedContent);
 			model.addAttribute("lostdetail", lostdetail);
+			model.addAttribute("userNick", userNick);
+			
 		} else {
 			System.out.println("LostPackage is null for lostNo: " + lostNo);
 		}
