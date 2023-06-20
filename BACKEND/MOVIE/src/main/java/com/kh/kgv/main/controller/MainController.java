@@ -3,6 +3,7 @@ package com.kh.kgv.main.controller;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.main.controller.model.service.EnterCheckService;
 import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.management.model.vo.DailyEnter;
@@ -33,7 +35,10 @@ public class MainController {
 
 	@RequestMapping("/main")
 	public String mainForward(HttpServletRequest request, DailyEnter de, Model model,
-			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp,
+			HttpServletRequest req,
+			HttpSession session
+			) {
 		String pageMove = null;
 
 		// IP 찾는 로직
@@ -55,6 +60,8 @@ public class MainController {
 		} else {
 			System.out.println("접속 기록을 추가하지 못함.");
 		}
+		
+		
 
 		// 회원 리스트 얻어오기
 		Map<String, Object> getNoticeList = null;
@@ -75,7 +82,8 @@ public class MainController {
 		Map<String, Object> getBannerList = null;
 		getBannerList = service.getBannerList(cp);
 		model.addAttribute("getBannerList", getBannerList);
-
+		
+		
 		return pageMove;
 	}
 

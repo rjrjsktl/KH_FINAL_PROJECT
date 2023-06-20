@@ -166,7 +166,9 @@ public class HelpDeskController {
 	@GetMapping("/mTm_form")
 	public String mtmWrite(
 			Model model,
-			HttpSession session
+			HttpSession session,
+			HttpServletRequest req, HttpServletResponse resp
+			
 			) {
 
 		User loginUser = (User)session.getAttribute("loginUser");
@@ -180,18 +182,20 @@ public class HelpDeskController {
 		String path = null;
 		
 		if ( userNo > 0) {
-				path = "helpDesk/mTm_form";
-			} else {
-				model.addAttribute("message","로그인을 해주세용");
-				path ="redirect:/user/login";
-			}
+			path = "helpDesk/mTm_form";
+		} else {
+			String referer = req.getHeader("Referer"); // 이전 페이지의 URL을 가져옵니다.
+	        session.setAttribute("prevPage", referer); // 이전 페이지의 URL을 세션에 저장합니다.
+	        
+	    	logger.debug("referer은~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+referer);
+			path ="redirect:/user/login";
 			
+		}
 		
 		System.out.println("userNo"+userNo+"-----------------------------------------------------------------------");
 
 
 		model.addAttribute("userNo", userNo);
-
 		return path; 
 	}
 
@@ -285,21 +289,33 @@ public class HelpDeskController {
 	@GetMapping("/lost_form")
 	public String lostwrite(
 			Model model,
-			HttpSession session
+			HttpSession session,		HttpServletRequest req, HttpServletResponse resp
 			) {
 
 		User loginUser = (User)session.getAttribute("loginUser");
 
 		int userNo = 0;
+		
+		String path = null;
 
 		if(loginUser != null) {
 			userNo = loginUser.getUserNo();
 		}
-
-
 		model.addAttribute("userNo", userNo);
+		
+		if ( userNo > 0) {
+			path = "helpDesk/mTm_form";
+		} else {
+			String referer = req.getHeader("Referer"); // 이전 페이지의 URL을 가져옵니다.
+	        session.setAttribute("prevPage", referer); // 이전 페이지의 URL을 세션에 저장합니다.
+	        
+	    	logger.debug("referer은~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+referer);
+			path ="redirect:/user/login";
+			
+		
+		}
 
-		return "helpDesk/lost_form"; 
+		return path; 
 	}
 
 	
