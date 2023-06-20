@@ -54,13 +54,13 @@
 								<span>${mTmdetail.mtmTitle}</span>
 							</div>
 							<div>
-								<span><span>${userNick}</span> <span>|</span> <span>${mTmdetail.mtmRegdate}
+								<span><span>${mTmdetail.mtmWriter}</span> <span>|</span> <span>${mTmdetail.mtmRegdate}
 								</span></span>
 							</div>
-							<div>${mTmdetail.mtmContent} </div>
+							<div class="contentText-wrap">${mTmdetail.mtmContent} </div>
 						</div>
 
-						<div class="movie-reply">
+			<!-- 			<div class="movie-reply" style="display:none">
 
 							<div class="replywritewrap">
 								<span>1:1문의 작성</span>
@@ -73,38 +73,15 @@
 								</div>
 							</div>
 
-
-
-
-
-							<div class="replyList">
-
-
-								<ul>
-
-									<li class="review" style="display: none;"><span> <img
-											src="" alt="이미지">
-									</span>
-										<div>
-											<span>씨*럼</span> <span>2023.05.24</span>
-										</div>
-										<div>
-											이제 다리안아픔 개꿀띠임 역시 현대의학 개좆지리누<br> ㅋㅋㄹㅃㅃ<br>
-										</div></li>
-
-
-
-								</ul>
-							</div>
-
-
-
 						</div>
-
+						 -->
 					</div>
 
-					<div>
-						<button>목록으로</button>
+					<div class="btn_wraper" >
+						
+						<button id="deleteMtm" data-mtmno="${mTmdetail.mtmNo}"><a>삭제</a></button>
+						<button class="goback"><a href="${contextPath}/helpDesk/mTm_List">목록으로</a></button>
+						
 					</div>
 				</div>
 
@@ -115,7 +92,8 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 	
-	<script src="${contextPath}/resources/js/common/replys.js"></script>
+	<script src="${contextPath}/resources/js/helpDesk/replys.js"></script>
+	<script src="${contextPath}/resources/js/helpDesk/mTm.js"></script>
 </body>
 
 </html>

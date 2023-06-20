@@ -22,6 +22,7 @@
 		MTM_TBL
 	</select>
 
+
 	<select id="selectMtmNo" resultType="_int">
 		SELECT MAX(MTM_NO) AS
 		maxMtmNo FROM MTM_TBL WHERE USER_NO = ${userNo}
@@ -30,9 +31,15 @@
 
 	<select id="getUserMtmCount" resultType="_int">
 		SELECT COUNT(MTM_NO)
-		FROM
-		MTM_TBL
-		WHERE USER_NO = #{userNo}
+		FROM MTM_TBL
+		<where>
+			<if test="managerSt != 'Y'">
+				USER_NO = #{userNo} AND MTM_ST = 'N'
+			</if>
+			<if test="managerSt == 'Y'">
+				MTM_ST = 'N'
+			</if>
+		</where>
 	</select>
 
 
@@ -42,19 +49,22 @@
 		AS NEXT_MTM_NO FROM MTM_TBL
 	</select>
 
-	<select id="userMtmList" resultMap="mtm_rm">
-		SELECT
-		MTM_NO
-		, MTM_TITLE
-		,
-		TO_CHAR(MTM_REGDATE, 'YYYY.MM.DD') AS
-		MTM_REGDATE
-		, MTM_COUNT
-		FROM
+<select id="userMtmList" resultMap="mtm_rm">
+	SELECT
+		MTM_NO,
+		MTM_TITLE,
+		TO_CHAR(MTM_REGDATE, 'YYYY.MM.DD') AS MTM_REGDATE,
+		MTM_COUNT,
+		MTM_TYPE
+	FROM
 		MTM_TBL
-		WHERE USER_NO = ${userNo}
-		ORDER BY MTM_NO DESC
-	</select>
+	WHERE
+	USER_NO = #{userNo}
+	AND MTM_TBL.MTM_ST = 'N' 
+	
+	ORDER BY
+		MTM_TBL.MTM_NO DESC
+</select>
 
 	<select id="mtmDetail" resultMap="mtm_rm">
 		SELECT
@@ -78,13 +88,20 @@
 		, NULL
 		,
 		#{userNo}
-		, #{mtmType}
+		,
+		#{mtmType}
 		, DEFAULT
 		, DEFAULT
 		, DEFAULT
-		, DEFAULT
+		, #{mtmWriter}
 		)
 	</insert>
+
+	<update id="deleteBoard">
+		UPDATE MTM_TBL SET
+		MTM_ST = 'Y'
+		WHERE MTM_NO = ${mtmNo}
+	</update>
 
 
 </mapper>
