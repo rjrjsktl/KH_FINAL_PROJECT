@@ -10,6 +10,8 @@
 		<result property="playEnd" column="PLAY_END" />
 		<result property="playRegDate" column="PLAY_REGDATE" />
 		<result property="playUploader" column="PLAY_UPLOADER" />
+		<result property="playBookCount"        column="PLAY_BOOKCOUNT"/>
+       <result property="playBookSeat"         column="PLAY_BOOKSEAT"/>
 	</resultMap>
 
 	<resultMap type="cinema" id="cinema_rm">
@@ -198,16 +200,27 @@
 	<!-- 관리자_상영영화 수 조회 -->
 	<select id="getNowPlayCount" resultType="_int">
 		SELECT COUNT(PLAY_NO) FROM PLAY
+		WHERE PLAY_END > SYSDATE
 	</select>
 
 	<!-- 관리자_상영영화 목록 조회 -->
 	<select id="getPlayList" resultMap="jp_rm">
-		SELECT m.MOVIE_TITLE, c.CINEMA_AREA, c.CINEMA_NAME, s.SCREEN_NAME,
-		p.PLAY_START, p.PLAY_END
+		SELECT 
+		p.PLAY_NO
+		 , m.MOVIE_TITLE
+		 , c.CINEMA_AREA
+		 , c.CINEMA_NAME
+		 , s.SCREEN_NAME, 
+		TO_CHAR(p.PLAY_START, 'YYYY-MM-DD HH24:MI') AS PLAY_START
+		, TO_CHAR(p.PLAY_END, 'YYYY-MM-DD HH24:MI') AS PLAY_END
+		, s.SCREEN_STYLE
+		, m.MOVIE_NO
 		FROM PLAY p
 		INNER JOIN SCREEN s ON p.SCREEN_NO = s.SCREEN_NO
 		INNER JOIN CINEMA c ON s.CINEMA_NAME = c.CINEMA_NAME
 		INNER JOIN MOVIE m ON p.MOVIE_NO = m.MOVIE_NO
+		WHERE p.PLAY_END > SYSDATE
+		ORDER BY p.PLAY_START ASC
 	</select>
 
 

@@ -46,23 +46,28 @@ public class Pagination {
 
 	// 페이징 처리에 필요한 값을 계산하는 메서드
     private void calculatePagination() {
-   	
         maxPage = (int) Math.ceil((double) listCount / limit);
         startPage = (currentPage - 1) / pageSize * pageSize + 1;
         endPage = startPage + pageSize - 1;
-        
+
         if (endPage > maxPage) {
             endPage = maxPage;
         }
-        if (currentPage <= pageSize) {
+
+        if (currentPage <= 1) {
             prevPage = 1;
         } else {
-            prevPage = startPage - 1;
+            prevPage = currentPage - 1;
         }
-        if (endPage == maxPage) {
+
+        if (currentPage >= maxPage) {
             nextPage = maxPage;
         } else {
-            nextPage = endPage + 1;
+            nextPage = currentPage + 1;
+        }
+
+        if (endPage < maxPage) {
+            nextPage = currentPage + 1;
         }
     }
 }

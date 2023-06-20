@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Play;
 import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.management.model.vo.Screen;
 import com.kh.kgv.reserve.model.service.ReserveService;
 
@@ -31,8 +32,7 @@ public class ReserveController {
 	private List<Screen> screenList = null;
 	private List<Movie> movieList = null;
 	private List<Movie> thumbList = null;
-	private List<Play> playList = null;
-	private Map<String, Object> playMap = null; 
+	private List<JoinPlay> joinPlayList = null;
 	private Map<String, Object> reserveMap = null;
 	
 
@@ -42,11 +42,11 @@ public class ReserveController {
 		movieList = service.getPlayingMovieList();
 		thumbList = service.getPlayingThumbList();
 		cinemaList = service.getAreaCinemaList("서울");
+		
 		reserveMap.put("movieList", movieList);
 		reserveMap.put("thumbList", thumbList);
 		reserveMap.put("cinemaList", cinemaList);
 		model.addAttribute("reserveMap", reserveMap);
-		
 		
 		return "reserve/choicePlay";
 	}
@@ -70,32 +70,25 @@ public class ReserveController {
 	
 	@GetMapping("/playList")
 	@ResponseBody
-	public Map<String, Object> getTotalPlayMap(String areaIndex, String cinemaIndex, String dateIndex ) {
+	public List<JoinPlay> getTotalPlayList(String areaIndex, String cinemaIndex, String dateIndex ) {
 		
 		try {
 			String areaName = areaArray[Integer.parseInt(areaIndex)];
 			cinemaList = service.getAreaCinemaList(areaName);
 			int cinemaNo = cinemaList.get(Integer.parseInt(cinemaIndex)).getCinemaNo();
-			String cinemaName = cinemaList.get(Integer.parseInt(cinemaIndex)).getCinemaName();
 			
 			LocalDateTime now = LocalDateTime.now();
 			LocalDateTime date = now.plusDays(Integer.parseInt(dateIndex));
 			String strDate = date.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
 			
-			playList = service.getTotalPlayList(cinemaNo, strDate);
-			thumbList = service.getPlayingThumbList();
-			screenList = service.getScreenList(cinemaName);
-			
-			playMap = new HashMap<>();
-			playMap.put("playList", playList);
-			playMap.put("thumbList", thumbList);
-			playMap.put("screenList", screenList);
+			joinPlayList = service.getTotalPlayList(cinemaNo, strDate);
+			System.out.println(joinPlayList.get(0).getMovie().getMovieTitle());
 		} catch(ArrayIndexOutOfBoundsException e) {
 			System.out.println("배열 범위 이외의 숫자입니다.");
 		} catch(NumberFormatException e) {
 			System.out.println("잘못된 인덱스입니다.");
 		}
-		return playMap;
+		return joinPlayList;
 	}
 	
 	

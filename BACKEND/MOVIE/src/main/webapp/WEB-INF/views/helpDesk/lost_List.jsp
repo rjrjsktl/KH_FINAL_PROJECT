@@ -50,7 +50,7 @@
                             </div>
 
                             <div class="search-area">
-                                <p>분실물 게시글 총<span style="color:red">1</span><span>/</span><span>3</span>건</p>
+                                <p>분실물 게시글 총<span>${lostCount}</span>건</p>
                             </div>
 
                             <div class="table-wrap">
@@ -65,8 +65,8 @@
                                     <tbody>
                                       <c:choose>
 											<c:when test="${empty lostList.lostLists}">
-												<tr>
-													<th colspan="3">게시글이 존재하지 않습니다.</th>
+												<tr class=row>
+													<td colspan="3">게시글이 존재하지 않습니다.</td>
 												</tr>
 											</c:when>
 											<c:otherwise>

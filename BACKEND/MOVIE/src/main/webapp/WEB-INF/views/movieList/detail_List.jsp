@@ -12,8 +12,8 @@
 						<meta http-equiv="X-UA-Compatible" content="IE=edge">
 						<meta name="viewport" content="width=device-width, initial-scale=1.0">
 						<title>상영중인 영화</title>
-						<link rel="stylesheet" href="${contextPath}/resources/css/movieList/movieList.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
+						<link rel="stylesheet" href="${contextPath}/resources/css/movieList/movieList.css">
 
 						<!-- fontawesome -->
 						<link rel="stylesheet"
@@ -76,14 +76,14 @@
 														</div>
 
 														<div>
-															<a
+															<a class="titleFont"
 																href="${contextPath}/movieList/detail_List/introduce/${movie['movieNo']}">
 																<span>${movie['movieTitle']}</span></a>
 															<div>
-																<p>
+																<p class="textSize">
 																	예매율&nbsp<span>100.0</span>%
 																</p>
-																<p>
+																<p class="textSize">
 																	개봉일&nbsp<span>${movie['movieOpen']}</span>
 																</p>
 															</div>

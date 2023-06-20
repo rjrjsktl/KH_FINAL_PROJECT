@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Play;
 import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.JoinPlay;
+import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.management.model.vo.Screen;
 import com.kh.kgv.reserve.model.dao.ReserveDAO;
 
@@ -38,11 +40,11 @@ public class ReserveServiceImpl implements ReserveService {
 	}
 
 	@Override
-	public List<Play> getTotalPlayList(int cinemaNo, String strDate) {
+	public List<JoinPlay> getTotalPlayList(int cinemaNo, String strDate) {
 		Map<String, Object> condition = new HashMap<>();
 		condition.put("cinemaNo", cinemaNo);
 		condition.put("strDate", strDate);
-		List<Play> totalPlayList = dao.getTotalPlayList(condition);
+		List<JoinPlay> totalPlayList = dao.getTotalPlayList(condition);
 		return totalPlayList;
 	}
 
