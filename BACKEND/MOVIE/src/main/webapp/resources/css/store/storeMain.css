@@ -2,20 +2,40 @@
 
 
 main {
+    width: 100%;
+}
+
+main>div:nth-child(1) {
+    width: 100%;
+    background-color: black;
+    height: 296px;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+}
+
+main>div:nth-child(1) img {
+    width: 1920px;
+    height: 296px;
+    margin: 0 auto;
+
+}
+
+#wrapper {
     width: 1040px;
     height: 100%;
     padding: 50px 30px;
     margin: 0 auto;
 }
 
-main>div:nth-child(1) {
+#wrapper>div:nth-child(1) {
     /* border-bottom: 2px solid yellow; */
     padding-bottom: 30px;
     height: 100%;
 }
 
 /* 스토어 span*/
-main>div:nth-child(1)>span {
+#wrapper>div:nth-child(1)>span {
     font-size: 1.6rem;
     font-weight: bold;
 }
@@ -26,12 +46,12 @@ main>div:nth-child(1)>span {
     background-color: rgba(255, 255, 255);
 } */
 
-main>div:nth-child(2) {
+#wrapper>div:nth-child(2) {
     width: 100%;
     margin-bottom: 50px;
 }
 
-main>div:nth-child(2)>ul {
+#wrapper>div:nth-child(2)>ul {
     display: flex;
 }
 
@@ -48,7 +68,7 @@ main>div:nth-child(2)>ul {
 
 }
 
-main>div:nth-child(2)>ul>li>a:hover {
+#wrapper>div:nth-child(2)>ul>li>a:hover {
     color: darkgoldenrod;
 
 
@@ -62,7 +82,7 @@ main>div:nth-child(2)>ul>li>a:hover {
 
 
 
-main>div:nth-child(2)>ul>li {
+#wrapper>div:nth-child(2)>ul>li {
     /* float: left; */
     width: 20%;
     display: flex;
@@ -76,7 +96,7 @@ main>div:nth-child(2)>ul>li {
 
 }
 
-main>div:nth-child(2)>ul>li>a {
+.storeTab:not(.clicked) {
     border-bottom: 1px solid orange;
 }
 
@@ -87,7 +107,7 @@ main>div:nth-child(2)>ul>li>a {
 
 
 
-main>div:nth-child(3)>ul>div:first-child {
+#wrapper>div:nth-child(3)>ul>div:first-child {
     width: 100%;
 
     margin-bottom: 40px;
@@ -95,7 +115,7 @@ main>div:nth-child(3)>ul>div:first-child {
 
 }
 
-main>div:nth-child(3)>h3 {
+#wrapper>div:nth-child(3)>h3 {
 
     font-size: 1.6rem;
     font-weight: normal;
@@ -103,7 +123,7 @@ main>div:nth-child(3)>h3 {
 
 
 /* 카드 랩퍼 */
-main>div:nth-child(3) {
+#wrapper>div:nth-child(3) {
 
     margin-top: 30px;
     /* width: 100%;
@@ -111,7 +131,7 @@ main>div:nth-child(3) {
 }
 
 /* 카드 스타일 */
-main>div:nth-child(3)>ul {
+#wrapper>div:nth-child(3)>ul {
     margin-top: 30px;
 
     display: flex;
@@ -119,7 +139,7 @@ main>div:nth-child(3)>ul {
     flex-wrap: wrap;
 }
 
-main>div:nth-child(3)>ul>li {
+#wrapper>div:nth-child(3)>ul>li {
 
     border-radius: 12px;
     width: 23%;
@@ -129,7 +149,7 @@ main>div:nth-child(3)>ul>li {
     /* margin-right: 26px; */
 }
 
-main>div:nth-child(3)>ul>li:nth-child(4n) {
+#wrapper>div:nth-child(3)>ul>li:nth-child(4n) {
 
     margin-right: 0;
 
@@ -138,13 +158,13 @@ main>div:nth-child(3)>ul>li:nth-child(4n) {
 
 
 /* 카드 이미지 div */
-main>div:nth-child(3)>ul>li>a>div:nth-child(1) {
+#wrapper>div:nth-child(3)>ul>li>a>div:nth-child(1) {
     width: 100%;
     height: 60%;
 }
 
 /* 카드 내 벨류의 순위 */
-main>div:nth-child(3)>ul>li>div:nth-child(1)>span {
+#wrapper>div:nth-child(3)>ul>li>div:nth-child(1)>span {
     position: absolute;
     width: 30px;
     height: 30px;
@@ -163,7 +183,7 @@ main>div:nth-child(3)>ul>li>div:nth-child(1)>span {
 
 
 /* 카드 이미지 절대크기 */
-main>div:nth-child(3)>ul>li>a>div:nth-child(1)>img {
+#wrapper>div:nth-child(3)>ul>li>a>div:nth-child(1)>img {
     width: 225px;
     height: 187px;
     border-radius: 10px;
@@ -171,26 +191,26 @@ main>div:nth-child(3)>ul>li>a>div:nth-child(1)>img {
 }
 
 
-main>div:nth-child(3)>ul>li>div:nth-child(2) {
+#wrapper>div:nth-child(3)>ul>li>div:nth-child(2) {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
 }
 
-main>div:nth-child(3)>ul>li>a>div:nth-child(2)>div:nth-child(1) {
+#wrapper>div:nth-child(3)>ul>li>a>div:nth-child(2)>div:nth-child(1) {
     font-size: 1.5rem;
     margin: 20px 0px;
     padding-left: 20px;
 }
 
-main>div:nth-child(3)>ul>li>a>div:nth-child(2)>div:nth-child(1)>p {
+#wrapper>div:nth-child(3)>ul>li>a>div:nth-child(2)>div:nth-child(1)>p {
     padding-top: 8px;
     font-size: 0.8rem;
 
 }
 
 
-main>div:nth-child(3)>ul>li>a>div:nth-child(2)>div:nth-child(2) {
+#wrapper>div:nth-child(3)>ul>li>a>div:nth-child(2)>div:nth-child(2) {
     display: flex;
     /* flex-direction: column; */
     align-items: center;
@@ -199,11 +219,11 @@ main>div:nth-child(3)>ul>li>a>div:nth-child(2)>div:nth-child(2) {
     padding-left: 20px;
 }
 
-main>div:nth-child(3)>ul>li>div:nth-child(2)>div>p:nth-child(1) {
+#wrapper>div:nth-child(3)>ul>li>div:nth-child(2)>div>p:nth-child(1) {
     width: 40%;
     margin-right: 20px;
 }
 
-main>div:nth-child(3)>ul>li>div:nth-child(3) {
+#wrapper>div:nth-child(3)>ul>li>div:nth-child(3) {
     display: flex;
 }

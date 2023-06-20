@@ -38,223 +38,230 @@
 
                             <main>
 
-
-                                <div><span>스토어</span></div>
-
-
-                                <div class="tab-list fixed">
-                                    <ul>
-
-                                        <li><a href="#none" id="storeTab_1" class="storeTab clicked" title="전체탭">전체</a>
-                                        </li>
-
-                                        <li><a href="#none" id="storeTab_2" class="storeTab" title="음료탭">음료</a></li>
-
-                                        <li><a href="#none" id="storeTab_3" class="storeTab" title="팝콘탭">팝콘</a></li>
-
-                                        <li><a href="#none" id="storeTab_4" class="storeTab" title="스낵탭">스낵</a></li>
-
-                                        <li><a href="#none" id="storeTab_5" class="storeTab" title="티켓탭">KGV티켓</a></li>
-
-                                    </ul>
-                                </div>
-
                                 <div>
-
-                                    <h3 class="store_h3 store_drink">음료</h3>
-                                    <ul class="store_ul store_drink">
-
-
-
-
-
-                                        <c:forEach var="store" items="${storeMap['storeList']}">
-                                            <c:choose>
-                                                <c:when test="${store.storeCategory eq '음료'}">
-                                                    <li class="">
-                                                        <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
-                                                            title="${store.storeName}">
-                                                            <div class="img">
-                                                                <img src="${store['storeImage']}">
-                                                            </div>
-                                                            <div class="info">
-                                                                <div class="tit">
-                                                                    <h4>${store.storeName}</h4>
-                                                                    <p>${store.storeDesc}</p>
-                                                                </div>
-                                                                <div class="price">
-                                                                    <p class="sale">
-                                                                        <em>
-                                                                            <fmt:formatNumber
-                                                                                value="${store.storePrice}"
-                                                                                pattern="#,###" />
-                                                                        </em>
-                                                                        <span>원</span>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <!-- 다른 카테고리에 대한 처리를 필요에 따라 추가하세요 -->
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </c:forEach>
-
-
-
-
-
-
-
-                                    </ul>
-
-                                    <h3 class="store_h3 store_popcorn">팝콘</h3>
-                                    <ul class="store_ul store_popcorn">
-
-
-
-
-                                        <c:forEach var="store" items="${storeMap['storeList']}">
-                                            <c:choose>
-                                                <c:when test="${store.storeCategory eq '팝콘'}">
-                                                    <li class="">
-                                                        <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
-                                                            title="${store.storeName}">
-                                                            <div class="img">
-                                                                <img src="${store['storeImage']}">
-                                                            </div>
-                                                            <div class="info">
-                                                                <div class="tit">
-                                                                    <h4>${store.storeName}</h4>
-                                                                    <p>${store.storeDesc}</p>
-                                                                </div>
-                                                                <div class="price">
-                                                                    <p class="sale">
-                                                                        <em>
-                                                                            <fmt:formatNumber
-                                                                                value="${store.storePrice}"
-                                                                                pattern="#,###" />
-                                                                        </em>
-                                                                        <span>원</span>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <!-- 다른 카테고리에 대한 처리를 필요에 따라 추가하세요 -->
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </c:forEach>
-
-
-
-
-
-
-
-                                    </ul>
-
-
-
-                                    <h3 class="store_h3 store_snack">스낵</h3>
-                                    <ul class="store_ul store_snack">
-
-
-
-                                        <c:forEach var="store" items="${storeMap['storeList']}">
-                                            <c:choose>
-                                                <c:when test="${store.storeCategory eq '스낵'}">
-                                                    <li class="">
-                                                        <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
-                                                            title="${store.storeName}">
-                                                            <div class="img">
-                                                                <img src="${store['storeImage']}">
-                                                            </div>
-                                                            <div class="info">
-                                                                <div class="tit">
-                                                                    <h4>${store.storeName}</h4>
-                                                                    <p>${store.storeDesc}</p>
-                                                                </div>
-                                                                <div class="price">
-                                                                    <p class="sale">
-                                                                        <em>
-                                                                            <fmt:formatNumber
-                                                                                value="${store.storePrice}"
-                                                                                pattern="#,###" />
-                                                                        </em>
-                                                                        <span>원</span>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <!-- 다른 카테고리에 대한 처리를 필요에 따라 추가하세요 -->
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </c:forEach>
-
-
-
-
-
-                                    </ul>
-
-
-                                    <h3 class="store_h3 store_ticket">티켓</h3>
-                                    <ul class="store_ul store_ticket">
-
-
-
-                                        <c:forEach var="store" items="${storeMap['storeList']}">
-                                            <c:choose>
-                                                <c:when test="${store.storeCategory eq '티켓'}">
-                                                    <li class="">
-                                                        <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
-                                                            title="${store.storeName}">
-                                                            <div class="img">
-                                                                <img src="${store['storeImage']}">
-                                                            </div>
-                                                            <div class="info">
-                                                                <div class="tit">
-                                                                    <h4>${store.storeName}</h4>
-                                                                    <p>${store.storeDesc}</p>
-                                                                </div>
-                                                                <div class="price">
-                                                                    <p class="sale">
-                                                                        <em>
-                                                                            <fmt:formatNumber
-                                                                                value="${store.storePrice}"
-                                                                                pattern="#,###" />
-                                                                        </em>
-                                                                        <span>원</span>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <!-- 다른 카테고리에 대한 처리를 필요에 따라 추가하세요 -->
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </c:forEach>
-
-
-
-
-
-                                    </ul>
-
-
+                                    <img src="${contextPath}/resources/images/storeimg/cd29de8de4104808ac9a22160cfcff76.png"
+                                        alt="">
                                 </div>
 
+                                <div id="wrapper">
+                                    <div><span>스토어</span></div>
 
+
+                                    <div class="tab-list fixed">
+                                        <ul>
+
+                                            <li><a href="#none" id="storeTab_1" class="storeTab clicked"
+                                                    title="전체탭">전체</a>
+                                            </li>
+
+                                            <li><a href="#none" id="storeTab_2" class="storeTab" title="음료탭">음료</a></li>
+
+                                            <li><a href="#none" id="storeTab_3" class="storeTab" title="팝콘탭">팝콘</a></li>
+
+                                            <li><a href="#none" id="storeTab_4" class="storeTab" title="스낵탭">스낵</a></li>
+
+                                            <li><a href="#none" id="storeTab_5" class="storeTab" title="티켓탭">KGV티켓</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+                                    <div>
+
+                                        <h3 class="store_h3 store_drink">음료</h3>
+                                        <ul class="store_ul store_drink">
+
+
+
+
+
+                                            <c:forEach var="store" items="${storeMap['storeList']}">
+                                                <c:choose>
+                                                    <c:when test="${store.storeCategory eq '음료'}">
+                                                        <li class="">
+                                                            <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
+                                                                title="${store.storeName}">
+                                                                <div class="img">
+                                                                    <img src="${store['storeImage']}">
+                                                                </div>
+                                                                <div class="info">
+                                                                    <div class="tit">
+                                                                        <h4>${store.storeName}</h4>
+                                                                        <p>${store.storeDesc}</p>
+                                                                    </div>
+                                                                    <div class="price">
+                                                                        <p class="sale">
+                                                                            <em>
+                                                                                <fmt:formatNumber
+                                                                                    value="${store.storePrice}"
+                                                                                    pattern="#,###" />
+                                                                            </em>
+                                                                            <span>원</span>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <!-- 다른 카테고리에 대한 처리를 필요에 따라 추가하세요 -->
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </c:forEach>
+
+
+
+
+
+
+
+                                        </ul>
+
+                                        <h3 class="store_h3 store_popcorn">팝콘</h3>
+                                        <ul class="store_ul store_popcorn">
+
+
+
+
+                                            <c:forEach var="store" items="${storeMap['storeList']}">
+                                                <c:choose>
+                                                    <c:when test="${store.storeCategory eq '팝콘'}">
+                                                        <li class="">
+                                                            <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
+                                                                title="${store.storeName}">
+                                                                <div class="img">
+                                                                    <img src="${store['storeImage']}">
+                                                                </div>
+                                                                <div class="info">
+                                                                    <div class="tit">
+                                                                        <h4>${store.storeName}</h4>
+                                                                        <p>${store.storeDesc}</p>
+                                                                    </div>
+                                                                    <div class="price">
+                                                                        <p class="sale">
+                                                                            <em>
+                                                                                <fmt:formatNumber
+                                                                                    value="${store.storePrice}"
+                                                                                    pattern="#,###" />
+                                                                            </em>
+                                                                            <span>원</span>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <!-- 다른 카테고리에 대한 처리를 필요에 따라 추가하세요 -->
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </c:forEach>
+
+
+
+
+
+
+
+                                        </ul>
+
+
+
+                                        <h3 class="store_h3 store_snack">스낵</h3>
+                                        <ul class="store_ul store_snack">
+
+
+
+                                            <c:forEach var="store" items="${storeMap['storeList']}">
+                                                <c:choose>
+                                                    <c:when test="${store.storeCategory eq '스낵'}">
+                                                        <li class="">
+                                                            <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
+                                                                title="${store.storeName}">
+                                                                <div class="img">
+                                                                    <img src="${store['storeImage']}">
+                                                                </div>
+                                                                <div class="info">
+                                                                    <div class="tit">
+                                                                        <h4>${store.storeName}</h4>
+                                                                        <p>${store.storeDesc}</p>
+                                                                    </div>
+                                                                    <div class="price">
+                                                                        <p class="sale">
+                                                                            <em>
+                                                                                <fmt:formatNumber
+                                                                                    value="${store.storePrice}"
+                                                                                    pattern="#,###" />
+                                                                            </em>
+                                                                            <span>원</span>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <!-- 다른 카테고리에 대한 처리를 필요에 따라 추가하세요 -->
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </c:forEach>
+
+
+
+
+
+                                        </ul>
+
+
+                                        <h3 class="store_h3 store_ticket">티켓</h3>
+                                        <ul class="store_ul store_ticket">
+
+
+
+                                            <c:forEach var="store" items="${storeMap['storeList']}">
+                                                <c:choose>
+                                                    <c:when test="${store.storeCategory eq '티켓'}">
+                                                        <li class="">
+                                                            <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
+                                                                title="${store.storeName}">
+                                                                <div class="img">
+                                                                    <img src="${store['storeImage']}">
+                                                                </div>
+                                                                <div class="info">
+                                                                    <div class="tit">
+                                                                        <h4>${store.storeName}</h4>
+                                                                        <p>${store.storeDesc}</p>
+                                                                    </div>
+                                                                    <div class="price">
+                                                                        <p class="sale">
+                                                                            <em>
+                                                                                <fmt:formatNumber
+                                                                                    value="${store.storePrice}"
+                                                                                    pattern="#,###" />
+                                                                            </em>
+                                                                            <span>원</span>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <!-- 다른 카테고리에 대한 처리를 필요에 따라 추가하세요 -->
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </c:forEach>
+
+
+
+
+
+                                        </ul>
+
+
+                                    </div>
+
+                                </div>
 
                             </main>
                         </div>
