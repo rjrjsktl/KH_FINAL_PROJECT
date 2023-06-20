@@ -297,6 +297,15 @@ public class ManagerDAO {
 	public int updateBannerST(banner banner) {
 		return sqlSession.update("managerMapper.updateBannerST",banner);
 	}
+	
+	// 스토어_물품 수정
+	public Store getEditStoreList(Store store) {
+		return sqlSession.selectOne("storeMapper.getEditStoreList", store);
+	}
+	// 스토어 수정 등록
+	public int StoreEdit(Store updateStore) {
+		return sqlSession.update("storeMapper.StoreEdit", updateStore);
+	}
 
 
 

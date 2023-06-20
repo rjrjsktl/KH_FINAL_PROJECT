@@ -84,7 +84,7 @@
 
 
 
-															<td><a href="${contextPath}/manager/event_list/edit/${getEvent['eventNo']}"
+															<td><a href="${contextPath}/manager/store_list/edit/${store['storeNo']}"
 																	class="editEvent"><i
 																		class="fa-sharp fa-solid fa-pen-to-square"></i></a>
 															</td>
