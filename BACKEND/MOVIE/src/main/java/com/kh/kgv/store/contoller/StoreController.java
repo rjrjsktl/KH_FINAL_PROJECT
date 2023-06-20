@@ -53,13 +53,7 @@ public class StoreController {
 			 
 			) {
 		
-//		Map<String, Object> storeMap = null;
-//		storeMap = service.getStoreMap();
-//		logger.debug("storeDetail : " + storeMap);
-//		
-//		model.addAttribute("storeMap", storeMap);
-//		
-//		store.setStoreNo(storeNo);
+
 		
 		Store getStoreDetail = service.getStoreDetail(store);
 		
@@ -71,15 +65,6 @@ public class StoreController {
 	}
 	
 	
-//	@RequestMapping("/storeMain/store_detail/{storeNo}")
-//	public String getStoreDetail(Model model, @PathVariable("storeNo") int storeNo) {
-//
-//	    Store store = service.getStoreByNo(storeNo);
-//	    logger.debug("storeDetail: " + store);
-//
-//	    model.addAttribute("storeDetail", store);
-//
-//	    return "store/store_detail";
-//	}
+
 	
 }

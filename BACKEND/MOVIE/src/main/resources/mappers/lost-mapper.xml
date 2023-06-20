@@ -23,6 +23,11 @@
 		LOST_PACKAGE
 	</select>
 	
+		<select id="selectLostNo" resultType="_int">
+		SELECT MAX(LOST_NO) AS
+		maxLostNo FROM LOST_PACKAGE WHERE USER_NO = ${userNo}
+	</select>
+	
 	<select id="getUserLostCount" resultType="_int">
 		SELECT COUNT(LOST_NO) FROM
 		LOST_PACKAGE

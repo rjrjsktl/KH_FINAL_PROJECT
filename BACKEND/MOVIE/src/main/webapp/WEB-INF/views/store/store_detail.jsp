@@ -10,11 +10,11 @@
                 <meta charset="UTF-8">
                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>${storeDetail.storeName}</title>
+                <title>스토어 상세 -KGV</title>
                 <link rel="stylesheet" href="${contextPath}/resources/css/store/store_detail.css">
                 <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
                 <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"
                     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
             </head>
 
@@ -165,7 +165,7 @@
                         <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
                     </div>
                 </div>
-              
+
                 <script src="${contextPath}/resources/js/store/store_detail.js"></script>
                 <script src="${contextPath}/resources/js/common/header.js"></script>
             </body>

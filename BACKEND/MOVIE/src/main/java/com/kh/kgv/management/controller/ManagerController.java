@@ -32,6 +32,7 @@ import com.google.gson.JsonObject;
 import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
@@ -760,6 +761,39 @@ public class ManagerController {
 	// ===================================================
 	// ===================================================
 
+	// 관리자 스토어 물품 수정
+	@GetMapping("/store_list/edit/{storeNo}")
+	public String editStore(@PathVariable("storeNo") int storeNo,Model model, Store store ) {
+		
+		store.setStoreNo(storeNo);
+		
+		Store editStore = service.getEditStoreList(store);
+		
+		
+		model.addAttribute("editStore", editStore);
+
+		
+		
+		return "manager/manager_store_edit";
+	}
+	
+	
+	//// 영화 수정 등록
+	@ResponseBody
+	@PostMapping("/movie_list/edit/{movieNo}/store_edit")
+	public int StoreEdit(Store updateStore, @PathVariable("storeNo") int storeNo) {
+		logger.info("스토어ㅏ 수정 기능 수행");
+
+		logger.info("updateStore" + updateStore);
+
+		int result = service.StoreEdit(updateStore);
+
+		logger.info("update result:::" + result);
+		
+		return result;
+	}
+	
+	
 	// 관리자_스토어 물품 등록
 	@GetMapping("/store_add")
 	public String moveStoreAdd() {
@@ -994,5 +1028,31 @@ public class ManagerController {
 		System.out.println("이미지: " + jsonResult);
 		return jsonResult;
 	}
+	
+	// ===================================================
+	// ===================================================
 
+	// 관리자_혜택 목록 이동
+	@GetMapping("/benefits_list")
+	public String moveBenefitsList() {
+
+		System.out.println("관리자_혜택 목록 이동");
+
+		return "manager/manager_benefits_list";
+	}
+	
+	// ===================================================
+	// ===================================================
+
+	// 관리자_혜택 등록 이동
+	@GetMapping("/benefits_add")
+	public String moveBenefitsAdd() {
+		System.out.println("관리자_혜택 등록 이동");
+		return "manager/manager_benefits_add";
+	}
+	
+	
+	
+	
+	
 }

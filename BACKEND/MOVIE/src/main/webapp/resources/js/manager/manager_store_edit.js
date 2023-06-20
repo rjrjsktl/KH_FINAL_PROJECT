@@ -2,6 +2,26 @@
 $(document).ready(function () {
     // ===============================================================================
 
+
+    const storeNo = $('#storeNo');
+
+
+
+    // var storeImage = "${editStore.storeImage}";
+    // console.log(storeImage);
+
+
+    // console.log("상품 이미지 : " + "${editStore.storeImage}");
+
+
+
+
+
+
+
+
+
+
     // 이미지 등록 
     let storeImage = $('#storeImage')
 
@@ -21,7 +41,7 @@ $(document).ready(function () {
         var data = new FormData();
         data.append("file", file);
         $.ajax({
-            url: 'store_add/uploadImageFile',
+            url: "/movie/manager/store_list/edit/" + storeNo.val() + "/store_edit/uploadImageFile",
             type: "POST",
             data: data,
             cache: false,
@@ -60,7 +80,7 @@ $(document).ready(function () {
         var data = new FormData();
         data.append("file", file);
         $.ajax({
-            url: 'store_add/uploadImageFile',
+            url: "/movie/manager/store_list/edit/" + storeNo.val() + "/store_edit/uploadImageFile",
             type: "POST",
             data: data,
             cache: false,
@@ -183,7 +203,7 @@ $(document).ready(function () {
 
 
         $.ajax({
-            url: "store_add/addStore",
+            url: "/movie/manager/store_list/edit/" + storeNo.val() + "/store_edit",
             data: {
                 "storeCategory": $("#storeCategory").val()
                 , "storeName": $("#storeName").val()
@@ -197,12 +217,12 @@ $(document).ready(function () {
             type: "POST",
             success: function (result) {
                 if (result > 0) {
-                    alert("스토어 물품 등록 성공");
+                    alert("스토어 물품 수정 등록 성공");
                     window.location.reload();
                     let url = "/movie/manager/store_list";
                     window.location.href = url;
                 } else {
-                    alert("스토어 물품 등록 실패");
+                    alert("스토어 물품 수정 등록 실패");
                     window.location.reload();
                 }
             },
