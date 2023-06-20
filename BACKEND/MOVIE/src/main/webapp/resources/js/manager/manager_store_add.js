@@ -97,7 +97,7 @@ $(document).ready(function () {
 
     let nameCheck = false;
 
-    const titleRegex = /^[가-힣|a-z|A-Z|0-9|{1,}$\s]+$/;
+    const titleRegex = /^[가-힣|a-z|A-Z|0-9|{1,}$/()\s]+$/;
 
     $("#storeName").on("input", function () {
         if (titleRegex.test($(this).val())) {

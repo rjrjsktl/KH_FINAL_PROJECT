@@ -21,6 +21,14 @@
 		SELECT COUNT(MTM_NO) FROM
 		MTM_TBL
 	</select>
+	
+	<select id="getUserMtmCount" resultType="_int">
+		SELECT COUNT(MTM_NO) FROM
+		MTM_TBL
+		WHERE USER_NO = #{userNo}
+	</select>
+
+
 
 	<select id="getNextmtmNo" resultType="_int">
 		SELECT (COUNT(MTM_NO) + 1) AS NEXT_MTM_NO FROM MTM_TBL

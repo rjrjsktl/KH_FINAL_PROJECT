@@ -22,8 +22,13 @@ public class HelpDeskDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	//mtmlistCount
+	
 	public int getMtmListCount() {
 		return sqlSession.selectOne("mtmMapper.getMtmCount");
+	}
+	
+	public int getMtmListCount(int userNo) {
+		return sqlSession.selectOne("mtmMapper.getUserMtmCount", userNo);
 	}
 	
 
@@ -91,6 +96,10 @@ public class HelpDeskDAO {
 
 	public int addLost(LostPackage lost) {
 		return sqlSession.insert("lostMapper.addLost", lost);
+	}
+
+	public int getLostListCount(int userNo) {
+		return sqlSession.selectOne("lostMapper.getUserLostCount", userNo);
 	}
 
 

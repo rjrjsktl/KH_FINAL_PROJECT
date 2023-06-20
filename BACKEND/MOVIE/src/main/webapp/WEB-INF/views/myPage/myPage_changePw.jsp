@@ -1,6 +1,8 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="false"%>
 
 <!-- 최신화 종료 건들일없음 -->
 
@@ -19,6 +21,10 @@
     <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
+	
     <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_aSide.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_changePw.css">
@@ -87,8 +93,7 @@
             <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
     <script src="${contextPath}/resources/js/common/header.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_swiper.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_main.js"></script>
