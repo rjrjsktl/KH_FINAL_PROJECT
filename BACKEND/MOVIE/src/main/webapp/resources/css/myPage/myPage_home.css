@@ -47,6 +47,14 @@ main>section {
     padding: 5px;
 }
 
+.new-wrap>div:nth-child(2)>a:nth-child(1)>img {
+    padding: 5px;
+}
+
+.new-wrap>div:nth-child(3)>a:nth-child(1)>img {
+    padding: 5px 5px 5px 0;
+}
+
 .new-wrap>div:nth-child(4)>a:nth-child(1)>img {
     padding: 5px;
 }

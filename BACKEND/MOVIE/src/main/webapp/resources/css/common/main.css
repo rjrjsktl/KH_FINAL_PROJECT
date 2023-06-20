@@ -139,7 +139,7 @@ main>section:nth-child(2) .swiper-slide>div:nth-child(2) {
 }
 
 main>section:nth-child(2) .swiper-slide>div:nth-child(2)>a>span {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     font-weight: bold;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -301,7 +301,7 @@ main>section:nth-child(3)>div:nth-child(1) .swiper-container .swiper-wrapper .sw
 
 main>section:nth-child(3)>div:nth-child(1) .swiper-container .swiper-wrapper .swiper-slide>a>strong {
     margin-top: 10px;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
 }
 
 main>section:nth-child(3)>div:nth-child(1) .swiper-container .swiper-wrapper .swiper-slide>a>span {

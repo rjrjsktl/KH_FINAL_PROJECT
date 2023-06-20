@@ -33,6 +33,7 @@
 		<typeAlias type="com.kh.kgv.management.model.vo.DailyEnter" alias="de"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.WeeklyEnter" alias="we"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.banner" alias="banner"/>
+		<typeAlias type="com.kh.kgv.management.model.vo.JoinPlay" alias="jp"/>
 		
 		<typeAlias type="com.kh.kgv.management.model.vo.Cinema" alias="cinema"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.Screen" alias="screen"/>
