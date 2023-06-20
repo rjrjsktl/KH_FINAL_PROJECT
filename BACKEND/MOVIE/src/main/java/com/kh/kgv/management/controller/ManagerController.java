@@ -975,5 +975,31 @@ public class ManagerController {
 		System.out.println("이미지: " + jsonResult);
 		return jsonResult;
 	}
+	
+	// ===================================================
+	// ===================================================
 
+	// 관리자_혜택 목록 이동
+	@GetMapping("/benefits_list")
+	public String moveBenefitsList() {
+
+		System.out.println("관리자_혜택 목록 이동");
+
+		return "manager/manager_benefits_list";
+	}
+	
+	// ===================================================
+	// ===================================================
+
+	// 관리자_혜택 등록 이동
+	@GetMapping("/benefits_add")
+	public String moveBenefitsAdd() {
+		System.out.println("관리자_혜택 등록 이동");
+		return "manager/manager_benefits_add";
+	}
+	
+	
+	
+	
+	
 }
