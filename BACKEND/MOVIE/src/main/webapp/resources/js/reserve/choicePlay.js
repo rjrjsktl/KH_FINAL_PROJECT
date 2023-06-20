@@ -1,13 +1,17 @@
 let areaIndex = 0;
 let prevAreaIndex = -1;
-let cinemaIndex = -1;
+let cinemaIndex = 0;
 let dateIndex = 0;
+let movieIndex = 0;
+let movieOptionIndex = 1;
 
 let areaCinemaList = [];
-let movieNumList = [];
 
 let originPlay = $("#origin_play").clone(true);
 let clonePlay;
+let moviePlay;
+let playBundle;
+let movieTitle;
 
 
 // 페이지가 로딩되면 서울 지역의 극장을 극장 리스트에 저장함.
@@ -18,6 +22,7 @@ $.ajax({
     type: "GET",
     success: function(cinemaList) {
       areaCinemaList = cinemaList;
+      $("#cinema_list").children().eq(0).find("a").click();
     },
     error: function () {
         console.log("에러 발생");
@@ -70,6 +75,20 @@ $('.swiper-slide.date').on("click", function(){
   playDay += $(this).data('date') + "일 ";
   playDay += $(this).data('day') + "요일";
   $('#play_select').html(playDay);
+  
+  $.ajax({
+    url: "playList",
+    data: {areaIndex, cinemaIndex, dateIndex},
+    type: "GET",
+    success: function(joinPlayList) {
+      $("#total_play").empty();
+	  updatePlay(joinPlayList);
+    },
+    error: function () {
+      console.log("에러 발생");
+    }
+  });
+  
 });
 
 
@@ -150,18 +169,8 @@ function clickCinema(e) {
     data: {areaIndex, cinemaIndex, dateIndex},
     type: "GET",
     success: function(joinPlayList) {
-      /*
-      console.log(playMap);
-      movieNumList = [];
       $("#total_play").empty();
-      updatePlaySection(playMap);
-      */
-      console.log(joinPlayList[0].screen.screenName + "관");
-      console.log(joinPlayList[0].screen.screenSeat + "석");
-      console.log(joinPlayList[0].play.playBookCount + "석");
-      console.log(joinPlayList[0].play.playStart);
-      console.log(joinPlayList[0].movie.movieTitle);
-      
+	  updatePlay(joinPlayList);
     },
     error: function () {
       console.log("에러 발생");
@@ -169,14 +178,54 @@ function clickCinema(e) {
   });
 }
 
+$("#cinema_list > li > a").on("click", function(e){
+  clickCinema(e);
+});
+
 
 // 상영 정보를 업데이트하는 함수
 
-let moviePlay;
-let playBundle;
-let questMovie;
-let questPlay;
-let questScreen;
+function updatePlay(joinPlayList) {
+
+  if(joinPlayList.length) {
+    
+    // 영화번호 별로 그룹화함
+    const movieGroup = joinPlayList.reduce((acc, play) => {
+      acc[play.movie.movieNo] = acc[play.movie.movieNo] || [];
+      acc[play.movie.movieNo].push(play);
+      return acc;
+    }, {}); 
+         
+    // 영화번호 별로 상영 목록을 만듦.
+    for(let i in movieGroup) {
+      moviePlay = $('<li class="movie_play"></li>');
+      movieTitle = movieGroup[i][0]['movie'].movieTitle;
+      moviePlay.append(`<div>${movieTitle}</div>`);
+           
+      playBundle = $('<div><ul class="playlist"></ul></div>');
+      
+      // 각 상영 별로 정보를 초기화함.
+      for(let k in movieGroup[i]) {
+        clonePlay = originPlay.clone(true);
+        clonePlay.removeAttr('id');
+             
+        clonePlay.find('.open_hour').html(movieGroup[i][k].play.playStart.substring(11,13));
+        clonePlay.find('.open_minute').html(movieGroup[i][k].play.playStart.substring(14,16));
+        clonePlay.find('.entire_seat').html(movieGroup[i][k].screen.screenSeat);
+        clonePlay.find('.empty_seat').html(movieGroup[i][k].screen.screenSeat - movieGroup[i][k].play.playBookCount);
+        clonePlay.find('.cinema_room').html(movieGroup[i][k].screen.screenName);
+        playBundle.find('.playlist').append(clonePlay);
+      }
+           
+      moviePlay.append(playBundle);
+      $("#total_play").append(moviePlay);
+           
+    }
+  }
+}
+
+/*
+안 쓰는 함수...
 
 function updatePlaySection(playMap) {
   
@@ -191,8 +240,7 @@ function updatePlaySection(playMap) {
   
   for(let num of movieNumList) {
   
-    moviePlay = $('<li class="movie_play"></li>');
-    playBundle = $('<div><ul class="playlist"></ul></div>');
+    
 
     // 영화 제목을 업데이트함
     
@@ -227,10 +275,9 @@ function updatePlaySection(playMap) {
   } 
 
 }
+*/
 
-$("#cinema_list > li > a").on("click", function(e){
-  clickCinema(e);
-});
+
 
 
 // 영화 리스트 버전 선택
@@ -238,11 +285,13 @@ $("#cinema_list > li > a").on("click", function(e){
 $('#movie_option1').on("click", function(){
   $("#movielist_text").css('display', 'block');
   $("#movielist_thumb").css('display', 'none');
+  movieOptionIndex = 0;
 });
 
 $('#movie_option2').on("click", function(){
   $("#movielist_text").css('display', 'none');
   $("#movielist_thumb").css('display', 'block');
+  movieOptionIndex = 1;
 });
 
 
@@ -252,6 +301,21 @@ let movie = $('.movielist > li > a');
 let movieName;
 
 movie.on("click", function(){
+  movieIndex = $(this).parent().index();
+  $.ajax({
+    url: "moviePlayList",
+    data: {areaIndex, cinemaIndex, dateIndex, movieOptionIndex, movieIndex},
+    type: "GET",
+    success: function(joinPlayList) {
+      $("#total_play").empty();
+	  if(joinPlayList.length){
+	    console.log(joinPlayList);
+	  }
+    },
+    error: function () {
+      console.log("에러 발생");
+    }
+  });
   movieName = this.querySelector('.movie_name').innerText;
   $('#movie_select').html(movieName);
   $('.movie_play').css('display', 'none');

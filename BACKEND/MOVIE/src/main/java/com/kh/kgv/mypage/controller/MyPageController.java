@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,7 +39,7 @@ public class MyPageController {
 	// 마이페이지 첫번째 화면
 	// 로그인o -> 로그인page, 로그인x -> myPage
 	@GetMapping("/myPgMain")
-	public String info(HttpServletRequest req
+	public String myPgMain(HttpServletRequest req
 //						, HttpServletResponse resp
 						, RedirectAttributes ra
 						) throws IOException {
@@ -55,9 +56,10 @@ public class MyPageController {
 		} else {
 			logger.info("로그인 x 로페 ㄱㄱ");
 			message = "로그인 부터 하시라옹";
-			// 로그인되지 않은 상태, 로그인 페이지로 리다이렉트
-//	        String loginUrl = req.getContextPath() + "/user/login";
-//	        resp.sendRedirect(loginUrl);
+
+//			String referer = req.getHeader("Referer"); // 이전 페이지의 URL을 가져옵니다.
+//	        session.setAttribute("prevPage", referer); // 이전 페이지의 URL을 세션에 저장합니다.
+	           
 	        path = "redirect:/user/login"; 
 		}
 		ra.addFlashAttribute("message", message);
@@ -90,7 +92,10 @@ public class MyPageController {
 	}
 	
 	@GetMapping("/myReview")
-	public String myReview() {
+	public String myReview(Model model
+							, @RequestParam Map<String,Object> paramMap
+							, @ModelAttribute("loginUser") User loginUser
+							, RedirectAttributes ra) {
 		return "myPage/myPage_myReview";
 	}
 	

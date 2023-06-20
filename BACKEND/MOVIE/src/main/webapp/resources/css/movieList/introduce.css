@@ -754,3 +754,7 @@ main>section:nth-child(3)>div>div:nth-child(3) {
     background-color: rgb(251, 251, 251);
     color: rgb(21, 21, 21);
 }
+
+img[src=""] {
+    display: none;
+}

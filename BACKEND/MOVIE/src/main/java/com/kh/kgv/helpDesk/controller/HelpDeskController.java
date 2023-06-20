@@ -1,6 +1,7 @@
 package com.kh.kgv.helpDesk.controller;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,8 +49,8 @@ public class HelpDeskController {
 	private ManagerService service;
 	@Autowired
 	private HelpDeskService services;
-	
-	
+
+
 
 
 	@RequestMapping("/helpDesk_home")
@@ -56,7 +58,7 @@ public class HelpDeskController {
 			Model model
 			, @RequestParam(value = "cp", required = false, defaultValue="1" ) int cp	
 			) {
-		
+
 		Map<String, Object> getEvnetList = null;
 		getEvnetList = service.mainEventList();
 		model.addAttribute("getEvnetList", getEvnetList);
@@ -125,7 +127,7 @@ public class HelpDeskController {
 			){
 
 		User loginUser = (User)session.getAttribute("loginUser");
-		
+
 		int userNo = 0;
 
 		if(loginUser != null) {
@@ -135,7 +137,7 @@ public class HelpDeskController {
 		Map<String, Object>mtmList = null;
 
 		mtmList = services.getMtmList(cp,userNo);
-		
+
 		int mtmCount = 0;
 		mtmCount = services.getMtmListCount(userNo);
 		model.addAttribute("mtmCount", mtmCount);
@@ -153,20 +155,25 @@ public class HelpDeskController {
 			HttpServletRequest req, HttpServletResponse resp
 			){
 		Mtm mTmdetail = services.selectmTmDetail(mtmNo);
+		User loginUser = (User)session.getAttribute("loginUser");
+		String userNick = loginUser.getUserNick();
 		System.out.println("=========================================================================" + mTmdetail);
 		String unescapedContent = StringEscapeUtils.unescapeHtml4(mTmdetail.getMtmContent());
 		mTmdetail.setMtmContent(unescapedContent);
 		model.addAttribute("mTmdetail", mTmdetail);
+		model.addAttribute("userNick", userNick);
 
 		return "helpDesk/mtm_detail";
 	}
 
 
-	
+
 	@GetMapping("/mTm_form")
 	public String mtmWrite(
 			Model model,
-			HttpSession session
+			HttpSession session,
+			HttpServletRequest req, HttpServletResponse resp
+
 			) {
 
 		User loginUser = (User)session.getAttribute("loginUser");
@@ -176,35 +183,36 @@ public class HelpDeskController {
 		if(loginUser != null) {
 			userNo = loginUser.getUserNo();
 		}
-		
+
 		String path = null;
-		
+
 		if ( userNo > 0) {
-				path = "helpDesk/mTm_form";
-			} else {
-				model.addAttribute("message","로그인을 해주세용");
-				path ="redirect:/user/login";
-			}
-			
-		
+			path = "helpDesk/mTm_form";
+		} else {
+			String referer = req.getHeader("Referer"); // 이전 페이지의 URL을 가져옵니다.
+			session.setAttribute("prevPage", referer); // 이전 페이지의 URL을 세션에 저장합니다.
+
+			logger.debug("referer은~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+referer);
+			path ="redirect:/user/login";
+
+		}
+
 		System.out.println("userNo"+userNo+"-----------------------------------------------------------------------");
 
 
 		model.addAttribute("userNo", userNo);
-
 		return path; 
 	}
 
-	@ResponseBody
+
 	@PostMapping("/mTm_form")
-	public int addmTm(
+	public ResponseEntity<Map<String, Object>> addmTm(
 			@RequestParam("titleInput") String title, 
 			@RequestParam("contentTextarea") String content,
 			@RequestParam("inquirySelect") String inquiry,
 			HttpSession session) {
 
 		User loginUser = (User)session.getAttribute("loginUser");
-
 
 		int userNo = 0;
 
@@ -219,9 +227,17 @@ public class HelpDeskController {
 		mtm.setMtmType(inquiry);
 		mtm.setUserNo(userNo);
 
-		int result = services.addmTm(mtm);
-		System.out.println("int result = "+result);
-		return result;
+		int mtmNo = services.selectMtmNo(mtm); 
+
+		Map<String, Object> response = new HashMap<>();
+
+
+		response.put("mtmNo", mtmNo);
+
+		System.out.println("mtmNo------------------------------------------------" + mtmNo);
+
+
+		return ResponseEntity.ok(response);
 	}
 
 
@@ -237,7 +253,7 @@ public class HelpDeskController {
 		User loginUser = (User)session.getAttribute("loginUser");
 
 
-		int userNo = 1000000000;
+		int userNo = 0;
 
 		if(loginUser != null) {
 			userNo = loginUser.getUserNo();
@@ -246,9 +262,9 @@ public class HelpDeskController {
 		Map<String, Object>lostList = null;
 
 		lostList = services.getLostList(cp,userNo);
-		
+
 		int lostCount = 0;
-		
+
 		lostCount = services.getLostListCount(userNo);
 		model.addAttribute("lostCount", lostCount);
 
@@ -267,12 +283,18 @@ public class HelpDeskController {
 			HttpServletRequest req, HttpServletResponse resp
 			){
 
+		User loginUser = (User)session.getAttribute("loginUser");
+		String userNick = loginUser.getUserNick();
+		
+	
 		LostPackage lostdetail = services.selectLostDetail(lostNo);
 		if(lostdetail != null){
 			System.out.println("=========================================================================" + lostdetail);
 			String unescapedContent = StringEscapeUtils.unescapeHtml4(lostdetail.getLostContent());
 			lostdetail.setLostContent(unescapedContent);
 			model.addAttribute("lostdetail", lostdetail);
+			model.addAttribute("userNick", userNick);
+			
 		} else {
 			System.out.println("LostPackage is null for lostNo: " + lostNo);
 		}
@@ -281,31 +303,42 @@ public class HelpDeskController {
 
 	}
 
-	//	
+
 	@GetMapping("/lost_form")
 	public String lostwrite(
 			Model model,
-			HttpSession session
+			HttpSession session,		HttpServletRequest req, HttpServletResponse resp
 			) {
 
 		User loginUser = (User)session.getAttribute("loginUser");
 
 		int userNo = 0;
 
+		String path = null;
+
 		if(loginUser != null) {
 			userNo = loginUser.getUserNo();
 		}
-
-
 		model.addAttribute("userNo", userNo);
 
-		return "helpDesk/lost_form"; 
+		if ( userNo > 0) {
+			path = "helpDesk/lost_form";
+		} else {
+			String referer = req.getHeader("Referer"); // 이전 페이지의 URL을 가져옵니다.
+			session.setAttribute("prevPage", referer); // 이전 페이지의 URL을 세션에 저장합니다.
+
+			logger.debug("referer은~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+referer);
+			path ="redirect:/user/login";
+
+
+		}
+
+		return path; 
 	}
 
-	
-	@ResponseBody
+
 	@PostMapping("/lost_form")
-	public int addLost(
+	public ResponseEntity<Map<String, Object>> addLost(
 			@RequestParam("titleInput") String title, 
 			@RequestParam("lostItem") String item, 
 			@RequestParam("lostArea") String area, 
@@ -315,7 +348,6 @@ public class HelpDeskController {
 
 		User loginUser = (User)session.getAttribute("loginUser");
 
-
 		int userNo = 0;
 
 		if(loginUser != null) {
@@ -323,7 +355,7 @@ public class HelpDeskController {
 		}
 
 		LostPackage lost = new LostPackage();
-		
+
 		lost.setLostTitle(title);
 		lost.setUserNo(userNo);
 		lost.setLostItem(item);
@@ -331,13 +363,23 @@ public class HelpDeskController {
 		lost.setLostContent(details);
 		lost.setLostDate(date);
 
-		int result = services.addLost(lost);
-		
-		System.out.println("int result = "+result);
-		return result;
+		services.addLost(lost);  
+
+		int lostNo = services.selectLostNo(lost); 
+
+		Map<String, Object> response = new HashMap<>();
+		response.put("lostNo", lostNo);
+
+		System.out.println("lostNo------------------------------------------------" + lostNo);
+
+
+		return ResponseEntity.ok(response);
 	}
 
-	
+
+
+
+
 
 	@RequestMapping("/question_home")
 	public String question(
