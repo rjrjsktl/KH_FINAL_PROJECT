@@ -11,7 +11,7 @@
                         <meta charset="UTF-8">
                         <meta http-equiv="X-UA-Compatible" content="IE=edge">
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>스토어 물품 등록</title>
+                        <title>스토어 물품 수정</title>
 
 
 
@@ -26,7 +26,7 @@
                             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
                             crossorigin="anonymous"></script>
 
-                        <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_store_add.css">
+                        <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_store_edit.css">
                         <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
                         <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_nav.css">
                         <link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
@@ -49,7 +49,7 @@
                                         <div class="set_Edge">
                                             <div class="table_Wrapper">
                                                 <div class="table_Title">
-                                                    <span>스토어 물품 등록</span>
+                                                    <span>스토어 물품 수정 등록</span>
                                                 </div>
 
 
@@ -57,11 +57,15 @@
                                                     <div class="table_main">
 
                                                         <div id="store_sub">
+                                                            <input type="hidden" id="storeNo"
+                                                                value="${editStore.storeNo}">
+
                                                             <span>카테고리</span>
                                                             <div>
                                                                 <select id="storeCategory" name="storeCategory"
                                                                     class="storeCategory" aria-label="성별">
-                                                                    <option value="" selected="">선택</option>
+                                                                    <option value="" selected="">
+                                                                        ${editStore.storeCategory}</option>
                                                                     <option value="음료">음료</option>
                                                                     <option value="팝콘">팝콘</option>
                                                                     <option value="티켓">티켓</option>
@@ -75,7 +79,7 @@
                                                             <span>상품 이름</span>
                                                             <div id="store_Name">
                                                                 <input type="text" class="store_sub_enter storeName"
-                                                                    id="storeName">
+                                                                    id="storeName" value="${editStore.storeName}">
                                                                 <p id="storeNameMessage">메시지</p>
                                                             </div>
 
@@ -85,14 +89,14 @@
                                                             <span>상품 설명</span>
                                                             <div>
                                                                 <input type="text" class="store_sub_enter storeDesc"
-                                                                    id="storeDesc">
+                                                                    id="storeDesc" value="${editStore.storeDesc}">
                                                             </div>
                                                         </div>
                                                         <div id="store_sub">
                                                             <span>상품 가격</span>
                                                             <div>
                                                                 <input type="number" class="store_sub_enter storePrice"
-                                                                    id="storePrice">
+                                                                    id="storePrice" value="${editStore.storePrice}">
                                                             </div>
                                                         </div>
 
@@ -100,25 +104,39 @@
                                                             <span>상품 제한개수</span>
                                                             <div>
                                                                 <input type="number" class="store_sub_enter storeStock"
-                                                                    id="storeStock">
+                                                                    id="storeStock" value="${editStore.storeStock}">
                                                             </div>
                                                         </div>
 
 
-                                                        <div id="store_sub">
-                                                            <span>이미지</span>
+
+
+                                                        <div id="store_sub_image">
                                                             <div>
-                                                                <input type="file" class="storeImage" id="storeImage">
+                                                                <div><span>이미지</span></div>
+                                                                <div>
+                                                                    <input type="file" class="storeImage"
+                                                                        id="storeImage">
+                                                                </div>
+                                                                <div>
+                                                                    <img src="${editStore.storeImage}">
+                                                                </div>
                                                             </div>
+
+                                                            <div>
+                                                                <div><span>빅이미지</span></div>
+                                                                <div>
+                                                                    <input type="file" class="storeImageBig"
+                                                                        id="storeImageBig">
+                                                                </div>
+                                                                <div>
+                                                                    <img src="${editStore.storeImageBig}">
+                                                                </div>
+                                                            </div>
+
+
                                                         </div>
 
-                                                        <div id="store_sub">
-                                                            <span>빅이미지</span>
-                                                            <div>
-                                                                <input type="file" class="storeImageBig"
-                                                                    id="storeImageBig">
-                                                            </div>
-                                                        </div>
 
 
 
@@ -150,7 +168,7 @@
                             </div>
 
                         </main>
-                        <script src="${contextPath}/resources/js/manager/manager_store_add.js"></script>
+                        <script src="${contextPath}/resources/js/manager/manager_store_edit.js"></script>
                         <script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
                         <script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
 

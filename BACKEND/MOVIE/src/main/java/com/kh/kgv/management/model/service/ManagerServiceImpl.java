@@ -428,6 +428,20 @@ public class ManagerServiceImpl implements ManagerService {
 	public int updateBannerST(banner banner) {
 		return dao.updateBannerST(banner);
 	}
+	
+	// 스토어 수정 조회
+	@Override
+	public Store getEditStoreList(Store store) {
+		return dao.getEditStoreList(store);
+	}
+	
+	// 스토어 수정 등록
+	@Override
+	public int StoreEdit(Store updateStore) {
+		int result = dao.StoreEdit(updateStore);
+		System.out.println("serviceImpl result:::::" + result);
+		return result;
+	}
 
 
 

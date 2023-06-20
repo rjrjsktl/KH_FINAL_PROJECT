@@ -80,6 +80,35 @@
     margin-bottom: 15px;
 }
 
+#store_sub_image {
+
+    display: flex;
+}
+
+#store_sub_image>div {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#store_sub_image>div>div:nth-child(1) {
+
+    height: 20px;
+}
+
+#store_sub_image>div>div:nth-child(3) {
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+}
+
+#store_sub_image img {
+    height: 100%;
+    width: 100%;
+
+}
+
+
 #store_sub span {
     flex: 1;
     display: flex;
