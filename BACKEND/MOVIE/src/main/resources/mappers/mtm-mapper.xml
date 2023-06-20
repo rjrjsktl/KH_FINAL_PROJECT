@@ -4,7 +4,6 @@
 
 	<resultMap type="mtm" id="mtm_rm">
 		<id property="mtmNo" column="MTM_NO" />
-		<result property="mtmNo" column="MTM_NO" />
 		<result property="mtmTitle" column="MTM_TITLE" />
 		<result property="mtmContent" column="MTM_CONTENT" />
 		<result property="mtmSt" column="MTM_ST" />
@@ -15,10 +14,32 @@
 		<result property="mtmCount" column="MTM_COUNT" />
 		<result property="mtmWriter" column="MTM_WRITER" />
 
+
 	</resultMap>
 
 	<select id="getMtmCount" resultType="_int">
-		SELECT COUNT(MTM_NO) FROM MTM_TBL
+		SELECT COUNT(MTM_NO) FROM
+		MTM_TBL
+	</select>
+
+	<select id="selectMtmNo" resultType="_int">
+		SELECT MAX(MTM_NO) AS
+		maxMtmNo FROM MTM_TBL WHERE USER_NO = ${userNo}
+	</select>
+
+
+	<select id="getUserMtmCount" resultType="_int">
+		SELECT COUNT(MTM_NO)
+		FROM
+		MTM_TBL
+		WHERE USER_NO = #{userNo}
+	</select>
+
+
+
+	<select id="getNextmtmNo" resultType="_int">
+		SELECT (COUNT(MTM_NO) + 1)
+		AS NEXT_MTM_NO FROM MTM_TBL
 	</select>
 
 	<select id="userMtmList" resultMap="mtm_rm">
@@ -26,25 +47,44 @@
 		MTM_NO
 		, MTM_TITLE
 		,
-		TO_CHAR(MTM_REGDATE, 'YYYY.MM.DD') AS MTM_REGDATE
+		TO_CHAR(MTM_REGDATE, 'YYYY.MM.DD') AS
+		MTM_REGDATE
 		, MTM_COUNT
 		FROM
 		MTM_TBL
-		<!-- WHERE USER_NO = ${userNo} -->
+		WHERE USER_NO = ${userNo}
 		ORDER BY MTM_NO DESC
 	</select>
-	
+
 	<select id="mtmDetail" resultMap="mtm_rm">
-	SELECT
-	MTM_NO
-	, MTM_TITLE
-	, MTM_CONTENT
-	, TO_CHAR(MTM_REGDATE, 'YYYY.MM.DD') AS MTM_REGDATE
-	, MTM_WRITER
-	FROM MTM_TBL
-	WHERE MTM_NO = #{mtmNo}
+		SELECT
+		MTM_NO
+		, MTM_TITLE
+		,
+		MTM_CONTENT
+		, TO_CHAR(MTM_REGDATE, 'YYYY.MM.DD') AS MTM_REGDATE
+		,
+		MTM_WRITER
+		FROM MTM_TBL
+		WHERE MTM_NO = #{mtmNo}
 	</select>
 
+	<insert id="addmTm" parameterType="mtm">
+		INSERT INTO MTM_TBL
+		VALUES (
+		SEQ_MTM_NO.NEXTVAL
+		, #{mtmTitle}
+		, #{mtmContent}
+		, NULL
+		,
+		#{userNo}
+		, #{mtmType}
+		, DEFAULT
+		, DEFAULT
+		, DEFAULT
+		, DEFAULT
+		)
+	</insert>
 
 
 </mapper>

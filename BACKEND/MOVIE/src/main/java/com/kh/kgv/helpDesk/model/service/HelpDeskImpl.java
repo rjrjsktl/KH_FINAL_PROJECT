@@ -97,4 +97,38 @@ public class HelpDeskImpl implements HelpDeskService {
 		return dao.selectLostDetail(lostNo);
 	}
 
+
+
+	@Override
+	public int addmTm(Mtm mtm) {
+		return dao.addmTm(mtm);
+
+	}
+
+	@Override
+	public int addLost(LostPackage lost) {
+		return dao.addLost(lost);
+	}
+
+	@Override
+	public int getMtmListCount(int userNo) {
+		return dao.getMtmListCount(userNo);
+	}
+
+	@Override
+	public int getLostListCount(int userNo) {
+		return dao.getLostListCount(userNo);
+
+	}
+
+	@Override
+	public int selectMtmNo(Mtm mtm) {
+		return  dao.selectMtmNo(mtm);
+	}
+
+	@Override
+	public int selectLostNo(LostPackage lost) {
+		return dao.selectLostNo(lost);
+	}
+
 }

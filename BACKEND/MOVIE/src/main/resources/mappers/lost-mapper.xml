@@ -14,34 +14,62 @@
 		<result property="lostWriter" column="LOST_WRITER" />
 		<result property="lostView" column="LOST_VIEW" />
 	</resultMap>
-	
-	
-	
+
+
+
 
 	<select id="getLostCount" resultType="_int">
 		SELECT COUNT(LOST_NO) FROM
 		LOST_PACKAGE
 	</select>
+	
+		<select id="selectLostNo" resultType="_int">
+		SELECT MAX(LOST_NO) AS
+		maxLostNo FROM LOST_PACKAGE WHERE USER_NO = ${userNo}
+	</select>
+	
+	<select id="getUserLostCount" resultType="_int">
+		SELECT COUNT(LOST_NO) FROM
+		LOST_PACKAGE
+		WHERE USER_NO = #{userNo}
+	</select>
+	
 
 	<select id="userLostList" resultMap="lost_rm">
 		SELECT
 		*
 		FROM
 		LOST_PACKAGE
-		<!-- WHERE USER_NO = ${userNo} -->
+		WHERE USER_NO = ${userNo}
 		ORDER BY LOST_NO DESC
 	</select>
 
 	<select id="lostdetail" resultMap="lost_rm">
-    SELECT
-    LOST_NO
-    , LOST_TITLE
-    , LOST_CONTENT
-    , LOST_DATE
-    , LOST_WRITER
-    FROM LOST_PACKAGE
-    WHERE LOST_NO = #{lostNo}
-</select>
+		SELECT
+		LOST_NO
+		, LOST_TITLE
+		, LOST_CONTENT
+		, LOST_DATE
+		, LOST_WRITER
+		FROM LOST_PACKAGE
+		WHERE LOST_NO = #{lostNo}
+	</select>
+	
+		<insert id="addLost" parameterType="losts" >
+		INSERT INTO LOST_PACKAGE
+		VALUES (
+		SEQ_LP_NO.NEXTVAL
+		, #{userNo}
+		, #{lostTitle}
+		, #{lostItem}
+		, #{lostLocation}
+		, #{lostDate}
+		, DEFAULT
+		, #{lostContent}
+		, DEFAULT
+		, DEFAULT
+		)
+	</insert>
 
 
 </mapper>

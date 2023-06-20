@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -99,7 +100,7 @@ public class ManageStoreController {
 	public String storeUploadImageFile(@RequestParam("file") MultipartFile[] multipartFiles, HttpServletRequest request) {
 	    JsonArray jsonArray = new JsonArray(); 
 
-	    String webPath = "/resources/images/store_img/";
+	    String webPath = "/resources/images/storeimg/";
 	    String fileRoot = request.getServletContext().getRealPath(webPath);
 
 	    for (MultipartFile multipartFile : multipartFiles) {
@@ -127,7 +128,6 @@ public class ManageStoreController {
 	    System.out.println("이미지: " + jsonResult);
 	    return jsonResult;
 	}
-	
 	
 	
 	

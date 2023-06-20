@@ -15,6 +15,7 @@
 
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/managerPage.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
+						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_nav.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
 						<!-- fontawesome -->
@@ -72,9 +73,10 @@
 															<th class="boardWriter">닉네임</th>
 															<th class="boardDate">가입일</th>
 															<th class="boardWatch">SNS</th>
-															<c:forEach var="getUser" items="${getUser}">
+															<c:forEach var="getUser" items="${getUser}"
+																varStatus="status">
 																<tr>
-																	<td>${getUser.userNo}</td>
+																	<td>${status.count}</td>
 																	<td>${getUser.userEmail}</td>
 																	<td>${getUser.userNick}</td>
 																	<td>${getUser.userRegDate}</td>
@@ -99,57 +101,23 @@
 															<th class="boardNum">번호</th>
 															<th class="boardTItle">영화명</th>
 															<th class="boardWriter">예매율</th>
-															<th class="boardDate">상영시작</th>
-															<th class="boardDate">상영종료</th>
-															<th class="boardWatch">관람수</th>
-															<tr>
-																<td>06</td>
-																<td>영화 01</td>
-																<td>111%</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>1200</td>
-															</tr>
-															<tr>
-																<td>05</td>
-																<td>영화 02</td>
-																<td>10%</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>1582</td>
-															</tr>
-															<tr>
-																<td>04</td>
-																<td>영화 03</td>
-																<td>30%</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>120</td>
-															</tr>
-															<tr>
-																<td>03</td>
-																<td>영화 04</td>
-																<td>15%</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>11112</td>
-															</tr>
-															<tr>
-																<td>02</td>
-																<td>영화 05</td>
-																<td>1000%</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>157382</td>
-															</tr>
-															<tr>
-																<td>01</td>
-																<td>영화 06</td>
-																<td>1%</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>121687</td>
-															</tr>
+															<th class="boardDate">누적상영횟수</th>
+															<th class="boardDate">누적관람횟수</th>
+															<th class="boardWatch">개봉일</th>
+															<c:forEach var="movie"
+																items="${getMovieList['cleanedList']}"
+																varStatus="status">
+																<tr>
+																	<td>${status.count}</td>
+																	<td><a
+																			href="${contextPath}/movieList/detail_List/introduce/${movie['movieNo']}">
+																			${movie['movieTitle']}</a></td>
+																	<td>예매율</td>
+																	<td>${movie['moviePlayed']}</td>
+																	<td>${movie['movieWatched']}</td>
+																	<td>${movie['movieOpen']}</td>
+																</tr>
+															</c:forEach>
 														</table>
 													</div>
 												</div>
@@ -170,9 +138,10 @@
 															<th class="boardWriter">작성자</th>
 															<th class="boardDate">작성일</th>
 															<th class="boardWatch">조회수</th>
-															<c:forEach var="getNotice" items="${getNotice}">
+															<c:forEach var="getNotice" items="${getNotice}"
+																varStatus="status">
 																<tr>
-																	<td>${getNotice.noticeNo}</td>
+																	<td>${status.count}</td>
 																	<td><a
 																			href="${contextPath}/helpDesk/notice_detail/${getNotice['noticeNo']}">${getNotice['noticeTitle']}</a>
 																	</td>

@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.JoinPlay;
+import com.kh.kgv.management.model.vo.Screen;
 
 public interface ReserveService {
 
@@ -12,5 +14,14 @@ public interface ReserveService {
 	List<Movie> getPlayingMovieList();
 
 	List<Movie> getPlayingThumbList();
+
+	List<JoinPlay> getTotalPlayList(int cinemaNo, String strDate);
+
+	List<Screen> getScreenList(String cinemaName);
+
+	List<JoinPlay> getMovieNamePlayList(int cinemaNo, String strDate, int movieNo);
+
+	List<JoinPlay> getMovieRankPlayList(int cinemaNo, String strDate, int movieNo);
+
 
 }

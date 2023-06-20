@@ -32,12 +32,14 @@ import com.google.gson.JsonObject;
 import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.WeeklyEnter;
 import com.kh.kgv.management.model.vo.banner;
+import com.kh.kgv.movieList.model.service.MovieService;
 import com.kh.kgv.mypage.controller.MyPageController;
 
 @Controller
@@ -49,6 +51,9 @@ public class ManagerController {
 
 	@Autowired
 	private ManagerService service;
+	
+	@Autowired
+	private MovieService movieService;
 
 	// 관리자_메인페이지 이동
 	@GetMapping("/main")
@@ -61,9 +66,13 @@ public class ManagerController {
 		// 관리자 메인 공지사항 목록 조회
 		List<Notice> getNotice = null;
 		getNotice = service.getAllNotice();
-
+		
+		// 관리자 메인 상영중인 영화
+		Map<String, Object> getMovieList = null;
+		getMovieList = movieService.mainMovieList();
 		model.addAttribute("getUser", getUser);
 		model.addAttribute("getNotice", getNotice);
+		model.addAttribute("getMovieList", getMovieList);
 
 		System.out.println("관리자_메인페이지 이동");
 		return "manager/managerPage";
@@ -360,9 +369,16 @@ public class ManagerController {
 	// ===================================================
 	// ===================================================
 
-	// 관리자_상영시간 목록 이동
+	// 관리자_상영영화 목록 이동
 	@GetMapping("/play_list")
-	public String movePlayList() {
+	public String movePlayList(
+			Model model
+			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+				Map<String, Object> getMovieList = null;
+				getMovieList = movieService.managerMovieList(cp);
+				
+				model.addAttribute("getMovieList", getMovieList);
+		
 		System.out.println("관리자_상영시간 목록 이동");
 		return "manager/manager_movie_play_list";
 	}
@@ -554,8 +570,12 @@ public class ManagerController {
 	// 공지사항 등록
 	@ResponseBody
 	@PostMapping("/notice_add/write_Notice")
-	public int addNotice(@RequestParam("title") String title, @RequestParam("content") String content,
-			@RequestParam("userName") String userName) {
+	public int addNotice(
+			@RequestParam("title") String title, 
+			@RequestParam("content") String content,
+			@RequestParam("userName") String userName) 
+	
+	{
 		Notice notice = new Notice();
 
 		notice.setNoticeTitle(title);
@@ -741,6 +761,39 @@ public class ManagerController {
 	// ===================================================
 	// ===================================================
 
+	// 관리자 스토어 물품 수정
+	@GetMapping("/store_list/edit/{storeNo}")
+	public String editStore(@PathVariable("storeNo") int storeNo,Model model, Store store ) {
+		
+		store.setStoreNo(storeNo);
+		
+		Store editStore = service.getEditStoreList(store);
+		
+		
+		model.addAttribute("editStore", editStore);
+
+		
+		
+		return "manager/manager_store_edit";
+	}
+	
+	
+	//// 영화 수정 등록
+	@ResponseBody
+	@PostMapping("/movie_list/edit/{movieNo}/store_edit")
+	public int StoreEdit(Store updateStore, @PathVariable("storeNo") int storeNo) {
+		logger.info("스토어ㅏ 수정 기능 수행");
+
+		logger.info("updateStore" + updateStore);
+
+		int result = service.StoreEdit(updateStore);
+
+		logger.info("update result:::" + result);
+		
+		return result;
+	}
+	
+	
 	// 관리자_스토어 물품 등록
 	@GetMapping("/store_add")
 	public String moveStoreAdd() {

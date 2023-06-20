@@ -22,5 +22,17 @@ public interface HelpDeskService {
 
 	LostPackage selectLostDetail(int lostNo);
 
+	int addmTm(Mtm mtm);
+
+	int addLost(LostPackage lost);
+
+	int getMtmListCount(int userNo);
+
+	int getLostListCount(int userNo);
+
+	int selectMtmNo(Mtm mtm);
+
+	int selectLostNo(LostPackage lost);
+
 
 }
