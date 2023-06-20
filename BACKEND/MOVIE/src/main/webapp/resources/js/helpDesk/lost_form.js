@@ -20,7 +20,10 @@ $(document).ready(function(){
                "contentTextarea":details
             },
             success: function(response){
-                alert("성공~");
+                var lostNo = response.lostNo;
+        alert("작성성공");
+        var url = `/movie/helpDesk/lost_detail/${lostNo}`;
+        location.href = url;
             },
             error: function(jqXHR, textStatus, errorMessage){
                 alert("ㅗ");

@@ -116,6 +116,12 @@
 
 
 	<script src="${contextPath}/resources/js/common/replys.js"></script>
+		<script>
+   
+        const mtmNo = "${userMtmList.mtmNo}";
+        
+
+    </script>
 </body>
 
 </html>

@@ -83,6 +83,7 @@ public class LoginController {
 
 		String prevPage = (String) session.getAttribute("prevPage");
 	    String mainPage = "http://localhost:8080/movie/";
+	
 	    
 	    if (prevPage == null) {
 	        prevPage = mainPage;
@@ -96,7 +97,7 @@ public class LoginController {
 
 			if (prevPage != null) {
 				path =  "redirect:" + prevPage;
-
+				session.removeAttribute("prevPage");
 			}
 
 			String blockUser = loginUser.getUserBlock();
@@ -136,7 +137,7 @@ public class LoginController {
 			// 쿠키를 응답 시 클라이언트에게 전달
 			resp.addCookie(cookie);
 			
-
+			
 
 
 
