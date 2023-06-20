@@ -53,6 +53,9 @@
                             <!-- 내가 본 영화, 내가 쓴 리뷰 페이지 form이 필요 없을듯? -->
                             <form action="myboard" method="POST" name="myPage-form" onsubmit="return infoValidate()">
                                 <ul class="more-load">
+
+                                <c:forEach var="review" item="getReviewList['myReviewList']">
+                                    <!-- review_no사용하면됨 -->
                                     <!-- 나중에 append나 폼 추가 할 때 이 li을 그대로 가져가면 됨 -->
                                     <li class="myreview">
                                         <div>
@@ -92,7 +95,7 @@
                                             </div>
                                         </div>
                                     </li>
-
+                                </c:forEach>
                                 </ul>
                                 <!-- 더보기 버튼 만들 영역 -->
                                 <div id="listmore-wrap"><a href="javascript:;" id="listmore-btn">내 영화 더 보기</a></div>

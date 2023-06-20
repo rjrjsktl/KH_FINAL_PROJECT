@@ -1,5 +1,6 @@
 package com.kh.kgv.management.model.vo;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,14 +10,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Event {
-	// 이벤트 테이블
-	private int eventNo;
-	private String eventTitle;
-	private String eventContent;
-	private String eventStart;
-	private String eventEnd;
-	private String eventStatus;
-	private String eventReg;
-	private String eventImg;
+public class Benefits {
+	// 혜택 테이블
+	private int benefitsNo;
+	private String benefitsTitle;
+	private String benefitsContent;
+	private String benefitsStart;
+	private String benefitsEnd;
+	private String benefitsStatus;
+	private String benefitsReg;
+	private String benefitsImg;
 }

@@ -120,4 +120,31 @@
         ORDER BY m.MOVIE_TITLE DESC
 	]]>
 	</select>
+	
+	<!-- 특정 영화관의 특정 영화에 대한 전체 상영 검색 (이름 순) -->
+	<select id="getMovieNamePlayList" parameterType="Map" resultMap="jp_rm">
+	<![CDATA[
+	    SELECT m.MOVIE_NO, m.MOVIE_TITLE, c.CINEMA_NAME, s.SCREEN_NAME, s.SCREEN_SEAT, p.PLAY_START, p.PLAY_END  
+	    FROM PLAY p
+        INNER JOIN SCREEN s ON p.SCREEN_NO  = s.SCREEN_NO 
+        INNER JOIN CINEMA c ON s.CINEMA_NAME = c.CINEMA_NAME
+        INNER JOIN MOVIE m ON p.MOVIE_NO = m.MOVIE_NO
+        WHERE c.CINEMA_NO = #{cinemaNo} AND TO_CHAR(p.PLAY_START, 'YYYYMMDD') = #{strDate} AND p.PLAY_START > SYSDATE
+              AND m.MOVIE_NO = #{movieNo}
+	]]>
+	</select>
+	
+	
+	<!-- 특정 영화관의 특정 영화에 대한 전체 상영 검색 (예매율 순) -->
+	<select id="getMovieRankPlayList" parameterType="Map" resultMap="jp_rm">
+	<![CDATA[
+	    SELECT m.MOVIE_NO, m.MOVIE_TITLE, c.CINEMA_NAME, s.SCREEN_NAME, s.SCREEN_SEAT, p.PLAY_START, p.PLAY_END  
+	    FROM PLAY p
+        INNER JOIN SCREEN s ON p.SCREEN_NO  = s.SCREEN_NO 
+        INNER JOIN CINEMA c ON s.CINEMA_NAME = c.CINEMA_NAME
+        INNER JOIN MOVIE m ON p.MOVIE_NO = m.MOVIE_NO
+        WHERE c.CINEMA_NO = #{cinemaNo} AND TO_CHAR(p.PLAY_START, 'YYYYMMDD') = #{strDate} AND p.PLAY_START > SYSDATE
+              AND m.MOVIE_NO = #{movieNo}
+	]]>
+	</select>
 </mapper>

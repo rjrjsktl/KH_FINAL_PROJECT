@@ -3,7 +3,6 @@
 		<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 			<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 				<%@ page session="false" %>
-
 					<!DOCTYPE html>
 					<html lang="ko">
 
@@ -11,11 +10,10 @@
 						<meta charset="UTF-8">
 						<meta http-equiv="X-UA-Compatible" content="IE=edge">
 						<meta name="viewport" content="width=device-width, initial-scale=1.0">
-						<title>스토어 물품 목록</title>
+						<title>혜택 목록</title>
 
-						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_store_list.css">
+						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_benefits_list.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
-						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_nav.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
 						<!-- fontawesome -->
@@ -46,10 +44,10 @@
 										<div class="set_Edge">
 											<div class="table_Wrapper">
 												<div class="table_Title">
-													<span>스토어 물품 목록</span>
+													<span>혜택 목록</span>
 													<div class="search_Box">
 														<input placeholder="검색" />
-														<button>
+														<button class="checkBtn">
 															<i class="fa-solid fa-magnifying-glass fa-2xs"></i>
 														</button>
 													</div>
@@ -57,46 +55,63 @@
 												<table class="table_main">
 													<tr>
 														<th>번호</th>
-														<th>카테고리</th>
-														<th>상품 이름</th>
-														<th>상품 설명</th>
-														<th>상품 제한개수</th>
-														<th>상품 가격</th>
-														<th>상품 이미지</th>
-														<th>상품 빅 이미지</th>
+														<th>혜택 제목</th>
+														<th>혜택 시작일</th>
+														<th>혜택 종료일</th>
+														<th>혜택 작성일</th>
+														<th>혜택 상태</th>
 														<th>수정</th>
 														<th>삭제</th>
 													</tr>
-													<c:forEach var="store" items="${storeMap['storeList']}">
+													<c:forEach var="getEvent" items="${getEventList['eventList']}">
 														<tr>
-															<td>${store['storeNo']}</td>
-															<td>${store['storeCategory']}</td>
+															<td>${getEvent['eventNo']}</td>
+
 															<td>
-																<a
-																	href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}">${store['storeName']}</a>
-
+																<c:choose>
+																	<c:when test="${getEvent['eventStatus'] == 'Y'}">
+																		<a
+																			href="${contextPath}/eventList/detail_List/introduce/${getEvent['eventNo']}">${getEvent['eventTitle']}</a>
+																	</c:when>
+																	<c:otherwise>
+																		<a
+																			href="${contextPath}/eventList/end_List/introduce//${getEvent['eventNo']}">${getEvent['eventTitle']}</a>
+																	</c:otherwise>
+																</c:choose>
 															</td>
-															<td>${store['storeDesc']}</td>
-															<td>${store['storeStock']}</td>
-															<td>${store['storePrice']}</td>
-															<td>${store['storeImage']}</td>
-															<td>${store['storeImageBig']}</td>
+															<td>${getEvent['eventStart']}</td>
+															<td>${getEvent['eventEnd']}</td>
+															<td>${getEvent['eventReg']}</td>
+															<c:choose>
+																<c:when test="${getEvent['eventStatus'] == 'Y'}">
+																	<td><select class="Is_On"
+																			data-id="${getEvent['eventNo']}">
+																			<option value="N">N</option>
+																			<option value="Y" selected>Y</option>
+																		</select></td>
+																</c:when>
+																<c:otherwise>
+																	<td><select class="Is_On"
+																			data-id="${getEvent['eventNo']}">
+																			<option value="N" selected>N</option>
+																			<option value="Y">Y</option>
+																		</select></td>
+																</c:otherwise>
+															</c:choose>
 
-
-
-															<td><a href="${contextPath}/manager/store_list/edit/${store['storeNo']}"
+															<td><a href="${contextPath}/manager/event_list/edit/${getEvent['eventNo']}"
 																	class="editEvent"><i
 																		class="fa-sharp fa-solid fa-pen-to-square"></i></a>
 															</td>
 															<td><a class="deleteEvent"><i
 																		class="fa-sharp fa-solid fa-xmark"></i></a></td>
-
 														</tr>
 													</c:forEach>
+
 												</table>
 												<div class="page_Nation">
 													<c:set var="url" value="?cp=" />
-													<c:set var="pagination" value="${storeMap['pagination']}" />
+													<c:set var="pagination" value="${getEventList['pagination']}" />
 													<c:set var="currentPage" value="${pagination.currentPage}"
 														scope="request" />
 													<div>
@@ -136,7 +151,7 @@
 
 						</main>
 
-						<script src="${contextPath}/resources/js/manager/manager_store_list.js"></script>
+						<script src="${contextPath}/resources/js/manager/manager_benefits_list.js"></script>
 						<script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
 						<script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
 					</body>
