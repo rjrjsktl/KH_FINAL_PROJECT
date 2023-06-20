@@ -1,5 +1,5 @@
-$(document).ready(function() {
-    $('#submitButton').click(function() {
+$(document).ready(function () {
+    $('#submitButton').click(function () {
         var title = $('#titleInput').val();
         var inquiry = $('#inquirySelect').val();
         var content = $('#contentTextarea').val();
@@ -14,10 +14,10 @@ $(document).ready(function() {
                 "contentTextarea": content,
                 "userNo": userNo
             },
-            success: function(response) {
+            success: function (response) {
                 alert("성공~");
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 alert("ㅗ");
             }
         });
