@@ -23,7 +23,8 @@
 	href="${contextPath}/resources/css/helpDesk/mtm_List.css">
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/common/notice_Aside.css">
-
+         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 </head>
 
@@ -46,7 +47,7 @@
 
 							<div class="search-area">
 								<p>
-									1:1문의 게시글 총<span style="color: red">1</span><span>/</span><span>3</span>건
+									1:1문의 게시글 총<span>${mtmCount}</span>건
 								</p>
 							</div>
 
@@ -63,8 +64,8 @@
 
 										<c:choose>
 											<c:when test="${empty mtmList.mtmLists}">
-												<tr>
-													<th colspan="3">게시글이 존재하지 않습니다.</th>
+												<tr class="row">
+													<td colspan="3">게시글이 존재하지 않습니다.</td>
 												</tr>
 											</c:when>
 											<c:otherwise>
@@ -87,7 +88,7 @@
 								</table>
 
 								<div>
-									<button>게시물 등록</button>
+									<button> <a href="${contextPath}/helpDesk/mTm_form/${mtmNo}">게시물 등록</a></button>
 								</div>
 								<!-- 10개씩 -->
 									<div class="page_Nation">
@@ -133,10 +134,10 @@
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-		crossorigin="anonymous"></script>
+
 	<script src="../../js/common/header.js"></script>
+
+	
 
 
 </body>

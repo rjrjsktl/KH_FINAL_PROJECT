@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
@@ -111,6 +112,15 @@ public interface ManagerService {
 
 	// 관리자_배너 상태 업데이트
 	int updateBannerST(banner banner);
+	
+	
+	// 스토어 수정 조회
+	Store getEditStoreList(Store store);
+	
+	// 스토어 수정하기
+	int StoreEdit(Store updateStore);
+
+
 
 
 	

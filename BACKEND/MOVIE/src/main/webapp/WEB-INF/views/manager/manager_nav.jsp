@@ -291,7 +291,7 @@
 									</div>
 								</div>
 								<ul class="slide_Down_items">
-									<a href="${contextPath}/manager/#">
+									<a href="${contextPath}/manager/benefit_list">
 										<li>
 											<div class="inner_align">
 												<div class="inner_Left_Icon">
@@ -301,7 +301,7 @@
 											</div>
 										</li>
 									</a>
-									<a href="${contextPath}/manager/#">
+									<a href="${contextPath}/manager/benefit_add">
 										<li>
 											<div class="inner_align">
 												<div class="inner_Left_Icon">

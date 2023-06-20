@@ -15,6 +15,7 @@
 
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_store_list.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
+						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_nav.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
 						<!-- fontawesome -->
@@ -70,7 +71,11 @@
 														<tr>
 															<td>${store['storeNo']}</td>
 															<td>${store['storeCategory']}</td>
-															<td>${store['storeName']}</td>
+															<td>
+																<a
+																	href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}">${store['storeName']}</a>
+
+															</td>
 															<td>${store['storeDesc']}</td>
 															<td>${store['storeStock']}</td>
 															<td>${store['storePrice']}</td>
@@ -79,7 +84,7 @@
 
 
 
-															<td><a href="${contextPath}/manager/event_list/edit/${getEvent['eventNo']}"
+															<td><a href="${contextPath}/manager/store_list/edit/${store['storeNo']}"
 																	class="editEvent"><i
 																		class="fa-sharp fa-solid fa-pen-to-square"></i></a>
 															</td>
