@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -122,24 +123,25 @@ public class HelpDeskController {
 			Model model,
 			@RequestParam(value = "cp", required = false, defaultValue="1" ) int cp,
 			RedirectAttributes ra,
+			
 			HttpSession session,
 			HttpServletRequest req,HttpServletResponse resp
 			){
 
 		User loginUser = (User)session.getAttribute("loginUser");
-
 		int userNo = 0;
-
+		String userManagerSt = null;
 		if(loginUser != null) {
 			userNo = loginUser.getUserNo();
+			userManagerSt = loginUser.getUserManagerSt();
 		}
-
-		Map<String, Object>mtmList = null;
-
-		mtmList = services.getMtmList(cp,userNo);
-
 		int mtmCount = 0;
 		mtmCount = services.getMtmListCount(userNo);
+		
+		Map<String, Object>mtmList = null;
+		mtmList = services.getMtmList(cp,userNo);
+
+	
 		model.addAttribute("mtmCount", mtmCount);
 		model.addAttribute("mtmList", mtmList);
 
@@ -156,16 +158,45 @@ public class HelpDeskController {
 			){
 		Mtm mTmdetail = services.selectmTmDetail(mtmNo);
 		User loginUser = (User)session.getAttribute("loginUser");
-		String userNick = loginUser.getUserNick();
 		System.out.println("=========================================================================" + mTmdetail);
 		String unescapedContent = StringEscapeUtils.unescapeHtml4(mTmdetail.getMtmContent());
 		mTmdetail.setMtmContent(unescapedContent);
 		model.addAttribute("mTmdetail", mTmdetail);
-		model.addAttribute("userNick", userNick);
 
 		return "helpDesk/mtm_detail";
 	}
 
+	@GetMapping("/deleteMtm/{mtmNo}")
+	public String boardDelete(
+			@PathVariable("mtmNo") int mtmNo,
+			@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
+			Model model,
+			RedirectAttributes ra,
+			@RequestHeader ("referer") String referer
+			) {
+
+		String path = null;
+		String message = null;
+
+
+
+		int result = services.deleteBoard(mtmNo);
+
+		if(result > 0 ) {
+			path = "helpDesk/mTm_List";
+			message = "글 삭제에 성공했다.";
+
+		}else {
+			path = "referer";  
+		}
+
+		ra.addFlashAttribute("message",message);
+
+
+		return "redirect:/" +path;
+	}
+
+	//	000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 
 	@GetMapping("/mTm_form")
@@ -215,19 +246,28 @@ public class HelpDeskController {
 		User loginUser = (User)session.getAttribute("loginUser");
 
 		int userNo = 0;
+		String userNick = null;
 
 		if(loginUser != null) {
 			userNo = loginUser.getUserNo();
+			userNick = loginUser.getUserNick();
 		}
 
 		Mtm mtm = new Mtm();
+
+	    content = content.replaceAll("\n", "<br>");
+	    content = content.replaceAll("\r\n", "<br>");
+	    content = content.replaceAll(" ", "&nbsp;");
 
 		mtm.setMtmTitle(title);
 		mtm.setMtmContent(content);
 		mtm.setMtmType(inquiry);
 		mtm.setUserNo(userNo);
+		mtm.setMtmWriter(userNick);
 
-		int mtmNo = services.selectMtmNo(mtm); 
+		services.addmTm(mtm);  
+
+		int mtmNo = services.selectMtmNo(mtm);
 
 		Map<String, Object> response = new HashMap<>();
 
@@ -285,8 +325,8 @@ public class HelpDeskController {
 
 		User loginUser = (User)session.getAttribute("loginUser");
 		String userNick = loginUser.getUserNick();
-		
-	
+
+
 		LostPackage lostdetail = services.selectLostDetail(lostNo);
 		if(lostdetail != null){
 			System.out.println("=========================================================================" + lostdetail);
@@ -294,7 +334,7 @@ public class HelpDeskController {
 			lostdetail.setLostContent(unescapedContent);
 			model.addAttribute("lostdetail", lostdetail);
 			model.addAttribute("userNick", userNick);
-			
+
 		} else {
 			System.out.println("LostPackage is null for lostNo: " + lostNo);
 		}
@@ -355,9 +395,13 @@ public class HelpDeskController {
 		}
 
 		LostPackage lost = new LostPackage();
+		
+		details = details.replaceAll("\n", "<br>");
+		details = details.replaceAll("\r\n", "<br>");
+		details = details.replaceAll(" ", "&nbsp;");
 
 		lost.setLostTitle(title);
-		lost.setUserNo(userNo);
+		lost.setUserNo(userNo);  
 		lost.setLostItem(item);
 		lost.setLostLocation(area);
 		lost.setLostContent(details);

@@ -6,17 +6,24 @@ import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.kgv.helpDesk.model.vo.LostPagenation;
+import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.helpDesk.model.vo.LostPackage;
 import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.helpDesk.model.vo.MtmPagenation;
+import com.kh.kgv.login.controller.LoginController;
 import com.kh.kgv.management.model.vo.Notice;
 
 @Repository
 public class HelpDeskDAO {
+	
+	private Logger logger = LoggerFactory.getLogger(LoginController.class);
+
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
@@ -28,7 +35,12 @@ public class HelpDeskDAO {
 	}
 	
 	public int getMtmListCount(int userNo) {
-		return sqlSession.selectOne("mtmMapper.getUserMtmCount", userNo);
+		Map<String, Object> params = new HashMap<>();
+		params.put("userNo", userNo);
+		User users = new User();
+		params.put("managerSt", users.getUserManagerSt());
+		System.out.println("현재 접속중인 유저 넘버는 =====================%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+userNo);
+		return sqlSession.selectOne("mtmMapper.getUserMtmCount", params);
 	}
 	
 
@@ -53,6 +65,9 @@ public class HelpDeskDAO {
 		
 	    Map<String, Object> params = new HashMap<>();
 	    params.put("userNo", userNo);
+	    
+		System.out.println("현재 접속중인 유저 넘버는 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆"+userNo);
+		
 		
 		return sqlSession.selectList("mtmMapper.userMtmList", params , rowBounds);
 	}
@@ -108,6 +123,11 @@ public class HelpDeskDAO {
 	public int selectLostNo(LostPackage lost) {
 		return sqlSession.selectOne("lostMapper.selectLostNo", lost);
 	}
+
+	public int deleteBoard(int mtmNo) {
+		return sqlSession.update("mtmMapper.deleteBoard", mtmNo);
+	}
+
 
 
 

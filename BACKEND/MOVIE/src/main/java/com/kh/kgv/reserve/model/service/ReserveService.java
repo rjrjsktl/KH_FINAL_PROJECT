@@ -19,9 +19,6 @@ public interface ReserveService {
 
 	List<Screen> getScreenList(String cinemaName);
 
-	List<JoinPlay> getMovieNamePlayList(int cinemaNo, String strDate, int movieNo);
-
-	List<JoinPlay> getMovieRankPlayList(int cinemaNo, String strDate, int movieNo);
-
+	List<JoinPlay> getMoviePlayList(int cinemaNo, String strDate, int movieNo);
 
 }
