@@ -136,13 +136,24 @@
 											</div>
 										</li>
 									</a>
+
 									<a href="${contextPath}/manager/manager_cinema_price">
 										<li>
 											<div class="inner_align">
 												<div class="inner_Left_Icon">
 													<i class="fa-solid fa-play fa-2xs"></i>
 												</div>
-												<span>가격 관리</span>
+												<span>가격 등록</span>
+											</div>
+										</li>
+									</a>
+									<a href="${contextPath}/manager/manager_cinemaPrice_list">
+										<li>
+											<div class="inner_align">
+												<div class="inner_Left_Icon">
+													<i class="fa-solid fa-play fa-2xs"></i>
+												</div>
+												<span>가격 목록</span>
 											</div>
 										</li>
 									</a>
