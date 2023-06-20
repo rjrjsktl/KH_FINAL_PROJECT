@@ -15,6 +15,7 @@ import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.items.model.vo.TimeTable;
 import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
@@ -212,6 +213,24 @@ public class ManagerDAO {
 		return sqlSession.selectOne("cinemaMapper.getCinemaCount");
 	}
 	
+	// 극장 가격 수 조회
+	public int getCinemaPriceCount() {
+		return sqlSession.selectOne("cinemaMapper.getCinemaPriceCount");
+	}
+	
+	// 극장 가격 수 목록 조회
+	public List<CinemaPrice> getCinemaPriceList(Pagination pagination) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());		
+		
+		return sqlSession.selectList("cinemaMapper.getCinemaPriceList", null, rowBounds);
+	}
+	
+	// 관리자_극장 가격 수정 이동
+	public Map<String, Object> getEditPriceList(CinemaPrice price) {
+		return sqlSession.selectOne("cinemaMapper.getEditPriceList", price);
+	}
+	
 	// 유저용 공지사항 조회
 	public List<Notice> userNoticeList(Pagination pagination) {
 		
@@ -306,6 +325,30 @@ public class ManagerDAO {
 	public int StoreEdit(Store updateStore) {
 		return sqlSession.update("storeMapper.StoreEdit", updateStore);
 	}
+	
+	// 관리자_극장 가격 중복 조회
+	public Boolean checkPrice(CinemaPrice cp) {
+		
+		Boolean result = sqlSession.selectOne("managerMapper.checkPrice", cp);
+		 
+		return result != null ? result : false;
+	}
+	
+	// 관리자_극장 가격 등록
+	public int addCinemaPrice(CinemaPrice cp) {
+		return sqlSession.insert("managerMapper.addCinemaPrice", cp);
+	}
+	
+	// 관리자_극장 가격 수정
+	public int EditCinemaPrice(CinemaPrice cp) {
+		return sqlSession.update("cinemaMapper.EditCinemaPrice", cp);
+	}
+	
+
+
+
+
+
 
 
 
