@@ -131,4 +131,10 @@ public class HelpDeskImpl implements HelpDeskService {
 		return dao.selectLostNo(lost);
 	}
 
+	@Override
+	public int deleteBoard(int mtmNo) {
+		return dao.deleteBoard(mtmNo);
+	}
+
+
 }

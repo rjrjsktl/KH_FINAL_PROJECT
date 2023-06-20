@@ -57,7 +57,7 @@
 								<span><span>${userNick}</span> <span>|</span> <span>${lostdetail.lostDate}
 								</span></span>
 							</div>
-							<div>${lostdetail.lostContent} </div>
+							<div class="contentText-wrap">${lostdetail.lostContent} </div>
 						</div>
 
 						<div class="movie-reply" style="display:none">
@@ -72,41 +72,20 @@
 									</form>
 								</div>
 							</div>
-
-
-
-
-
-							<div class="replyList">
-
-
-								<ul>
-
-									<li class="review" style="display: none;"><span> <img
-											src="" alt="이미지">
-									</span>
-										<div>
-											<span>씨*럼</span> <span>2023.05.24</span>
-										</div>
-										<div>
-											이제 다리안아픔 개꿀띠임 역시 현대의학 개좆지리누<br> ㅋㅋㄹㅃㅃ<br>
-										</div></li>
-
-
-
-								</ul>
-							</div>
-
-
-
 						</div>
 
 					</div>
 
-					<div>
-						<button>목록으로</button>
+					<div class="btn_wraper" >
+						
+						<button id="deleteLost" data-mtmno="${mTmdetail.mtmNo}"><a>삭제</a></button>
+						<button class="goback"><a href="${contextPath}/helpDesk/lost_List">목록으로</a></button>
+						
 					</div>
+					
 				</div>
+				
+		
 
 			</section>
 		</main>
@@ -116,12 +95,8 @@
 
 
 	<script src="${contextPath}/resources/js/common/replys.js"></script>
-		<script>
-   
-        const mtmNo = "${userMtmList.mtmNo}";
-        
-
-    </script>
+	<script src="${contextPath}/resources/js/helpDesk/lost.js"></script>
+	
 </body>
 
 </html>
