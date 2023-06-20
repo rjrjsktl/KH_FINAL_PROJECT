@@ -49,6 +49,7 @@
   display: flex;
   flex-direction: column;
   margin: 30px 30px;
+
 }
 
 .table_Title {
@@ -58,6 +59,7 @@
   height: 5vh;
   border-bottom: 2px solid black;
   justify-content: space-between;
+  margin-bottom: 40px;
 }
 
 .table_Title span {
@@ -66,342 +68,535 @@
   margin-bottom: 15px;
 }
 
-.search_Box {
+.table_main {
+  flex: 9;
   display: flex;
-  width: 350px;
-  height: 25px;
-  margin-bottom: 15px;
+  flex-direction: column;
+  width: 100%;
+  height: 6.5vh;
 }
 
-.search_Box input {
+/* 상영 영화관 */
+#play_cinema_area {
+  display: flex;
+  width: 50vw;
+  margin-bottom: 50px;
+}
+
+#play_cinema_area span {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 8px;
+  margin-right: 30px;
+}
+
+#play_cinema_area>div {
   flex: 9;
 }
 
-.search_Box button {
+.play_cinema_area_enter {
+  z-index: 6;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 800px;
+  height: 50px;
+  border-bottom: 2px solid #ddd;
+}
+
+.play_cinema_area_enter:hover {
+  border-bottom: 2px solid black;
+}
+
+.play_cinema_area_enter>div {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 2;
+  margin-right: 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #333333;
+  color: white;
+  cursor: pointer;
 }
 
-.table_main {
-  position: relative;
+.play_cinema_area_enter div:hover {
+  background-color: #FAE300;
+  color: black;
 }
 
-.table_main tr {
-  width: 100%;
-  height: 6.5vh;
-  text-align: center;
-}
 
-.table_main th,
-.table_main td {
-  vertical-align: middle;
-}
-
-.table_main th {
-  font-weight: bold;
-}
-
-.table_main td {
+.deleteBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
   font-size: 0.8rem;
 }
 
-.table_main tr:nth-child(2n) {
-  background-color: #dbdbdb;
-}
-
-.table_main td button {
-  width: 25px;
-  height: 25px;
-}
-
-.table_main td button i {
-  padding-top: 4px;
-  padding-right: 2px;
-}
-
-
-/* 극장 이름 */
-.table_main>div:first-child {
-  display: flex;
-  width: 800px;
-  height: 60px;
-  margin: 10px 0 40px;
-  padding-top: 10px;
-  padding-left: 30px;
-}
-
-.table_main>div:first-child>span {
-  margin-top: 10px;
-  margin-right: 30px;
-}
-
-.table_main>div:first-child>div {
-  width: 380px;
-}
-
-.table_main>div:first-child>div>input {
-  display: block;
-  width: 100%;
-  height: 35px;
-  margin-bottom: 20px;
-}
-
-.table_main>div:first-child>div>p {
-  font-size: 14px;
-  /* display: none;*/
-}
-
-
-
-/* 극장 주소 */
-.table_main>div:nth-child(2) {
-  display: flex;
-  width: 1000px;
-  height: 140px;
-  margin: 40px 0;
-  padding-left: 30px;
-}
-
-.table_main>div:nth-child(2)>span {
-  margin-right: 30px;
-  margin-top: 10px;
-}
-
-.table_main>div:nth-child(2)>div>div {
-  margin-bottom: 14px;
-  height: 35px;
-}
-
-.table_main>div:nth-child(2)>div>div>input {
-  width: 380px;
-  height: 35px;
-  margin-right: 12px;
-  padding-left: 5px;
-}
-
-.table_main>div:nth-child(2)>div>div:first-child>input:first-child {
-  width: 257px;
-}
-
-.table_main>div:nth-child(2)>div>div:first-child>button {
-  width: 105px;
-  height: 35px;
-}
-
-
-/* 상영관 */
-
-.table_main>div:nth-child(3) {
-  display: flex;
-  align-items: center;
-  height: 180px;
-  margin: 10px 0;
-  padding-left: 14px;
-}
-
-.table_main>div:nth-child(3)>span {
-  margin-right: 30px;
-}
-
-.table_main>div:nth-child(3)>.swiper {
-  margin: 0;
-  width: 980px;
-  height: 180px;
-}
-
-.swiper-slide {
-  width: 180px;
-  height: 120px;
-  margin-right: 20px;
-  border: 1px solid black;
-}
-
-.swiper-slide>div:first-child {
-  display: flex;
-  align-items: center;
-  position: relative;
-  font-size: 14px;
-  width: 100%;
-  height: 30px;
-  border-bottom: 1px solid black;
-  padding-left: 10px;
-}
-
-.swiper-slide>div:first-child>div:first-child {
-  position: relative;
-  top: 2px;
-}
-
-.swiper-slide>div:first-child>div:last-child {
-  position: absolute;
-  right: 8px;
-}
-
-/* 상영관 편집*/
-
-.table_main>#room_area {
-  display: none;
-  position: absolute;
-  top: 20px;
-  left: 15px;
-  z-index: 0;
-  width: 1055px;
-  height: 497px;
-  background-color: #ccc;
-}
-
-#room_area>div:first-child {
-  width: 100%;
-  height: 37px;
-  text-align: center;
-  line-height: 40px;
-  border-bottom: 1px solid black;
-}
-
-#room_area>div:nth-child(2) {
-  display: flex;
-}
-
-#room_area>div:nth-child(2)>#seat_area {
-  width: 80%;
-  border-right: lpx solid black;
-  padding-top: 30px;
-  padding-left: 50px;
-}
-
-
-/* 상영관 편집 > 좌석 */
-
-#seat_area>div {
-  display: flex;
-  flex-wrap: nowrap;
-  position: relative;
-  width: 100%;
-  height: 25px;
-  line-height: 25px;
-  margin-bottom: 7px;
-}
-
-#seat_area>div:last-child {
-  margin-bottom: 0;
-}
-
-
-#seat_area>div>div {
-
-  position: absolute;
-  left: -30.98px;
-  width: 25px;
-  height: 25px;
-  font-size: 10px;
-  line-height: 27.5px;
-  text-align: center;
-}
-
-#seat_area>div>a {
-  position: relative;
-  width: 25px;
-  height: 25px;
-  text-decoration: none;
-  text-align: center;
-  line-height: 27.5px;
-  color: black;
-  font-size: 10px;
-  margin-right: 5.98px;
-  border: 1px solid white;
-}
-
-#seat_area>div>a.aisle {
-  background-color: #ddd;
-  border-color: #ddd;
-}
-
-#seat_area>div>a.space {
-  background-color: #aaa;
-  border-color: #aaa;
-}
-
-#seat_area>div>a.sweet {
-  background-color: magenta;
-  border-color: magenta;
-}
-
-#seat_area>div>a.impared {
-  background-color: green;
-  border-color: green;
-}
-
-#seat_area>div>a.option {
-  background-color: pink;
-  border-color: pink;
-}
-
-#seat_area>div>a:hover {
-  background-color: orange;
-  border-color: orange;
-}
-
-#seat_area>div>a.clicked {
-  background-color: red;
-  border-color: red;
-}
-
-#seat_area>div>a * {
-  font-size: 12px;
-}
-
-#room_area>div:nth-child(2)>div:nth-child(2) {
-  padding-top: 30px;
-}
-
-/* 상영관의 가로, 세로 */
-
-#room_area>div:nth-child(2)>div:nth-child(2)>div {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  height: 30px;
-}
-
-#room_area>div:nth-child(2)>div:nth-child(2)>div>input {
-  margin-left: 5.5px;
-  width: 50px;
-}
-
-#room_area>div:nth-child(2)>div:nth-child(2)>div>select {
-  margin-left: 5.5px;
-  width: 120px;
-  height: 30px;
-}
-
-
-/* 좌석 옵션 */
-
-#room_area>div:nth-child(2)>div:nth-child(2)>#seat_option {
-  margin-top: 50px;
-  display: none;
-}
-
-#room_area>div:nth-child(2)>div:nth-child(2)>#seat_option_confirm {
-  display: flex;
-  text-align: center;
-  width: 100%;
-  height: 50px;
-  border: 1px solid black;
+.play_cinema_area_slide {
   background-color: white;
+  position: absolute;
+  top: 50px;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: 250px;
+  overflow-y: scroll;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
 }
 
-#seat_option_confirm>a {
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
-  text-align: center;
-  line-height: 50px;
+.play_cinema_area_slide div {
+  padding: 10px 20px;
+}
+
+.play_cinema_area_slide div:hover {
+  background-color: #FAE300;
   color: black;
 }
 
-#seat_option_confirm>a:hover {
-  color: orange;
+/* 상영 영화관 */
+#play_cinema {
+  display: flex;
+  width: 50vw;
+  margin-bottom: 50px;
+}
+
+#play_cinema span {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 8px;
+  margin-right: 30px;
+}
+
+#play_cinema>div {
+  flex: 9;
+}
+
+.cinema_Items {
+  display: none;
+}
+
+.play_cinema_enter {
+  z-index: 5;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 800px;
+  height: 50px;
+  border-bottom: 2px solid #ddd;
+}
+
+.play_cinema_enter:hover {
+  border-bottom: 2px solid black;
+}
+
+.play_cinema_enter>div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #333333;
+  color: white;
+  cursor: pointer;
+}
+
+.play_cinema_enter div:hover {
+  background-color: #FAE300;
+  color: black;
+}
+
+
+.deleteBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+  font-size: 0.8rem;
+}
+
+.play_cinema_slide {
+  background-color: white;
+  position: absolute;
+  top: 50px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: 250px;
+  overflow-y: scroll;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.play_cinema_slide div {
+  padding: 10px 20px;
+}
+
+.play_cinema_slide div:hover {
+  background-color: #FAE300;
+  color: black;
+}
+
+/* 상영 스크린 */
+#play_screen {
+  display: flex;
+  width: 50vw;
+  margin-bottom: 50px;
+}
+
+#play_screen span {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 8px;
+  margin-right: 30px;
+}
+
+#play_screen>div {
+  flex: 9;
+}
+
+.screen_Items {
+  display: none;
+}
+
+.play_screen_enter {
+  z-index: 4;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 800px;
+  height: 50px;
+  border-bottom: 2px solid #ddd;
+}
+
+.play_screen_enter:hover {
+  border-bottom: 2px solid black;
+}
+
+.play_screen_enter>div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #333333;
+  color: white;
+  cursor: pointer;
+}
+
+.play_screen_enter div:hover {
+  background-color: #FAE300;
+  color: black;
+}
+
+
+.deleteBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+  font-size: 0.8rem;
+}
+
+.play_screen_slide {
+  background-color: white;
+  position: absolute;
+  top: 50px;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: 250px;
+  overflow-y: scroll;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.play_screen_slide div {
+  padding: 10px 20px;
+}
+
+.play_screen_slide div:hover {
+  background-color: #FAE300;
+  color: black;
+}
+
+/* 상영 영화 */
+#play_movie {
+  display: flex;
+  width: 50vw;
+  margin-bottom: 50px;
+  height: 50px;
+}
+
+#play_movie span {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 8px;
+  margin-right: 30px;
+}
+
+#play_movie>div {
+  flex: 9;
+}
+
+.movie_Items {
+  display: none;
+}
+
+.play_movie_enter {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 800px;
+  height: 50px;
+  border-bottom: 2px solid #ddd;
+}
+
+.play_movie_enter:hover {
+  border-bottom: 2px solid black;
+}
+
+.play_movie_enter>div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #333333;
+  color: white;
+  cursor: pointer;
+}
+
+.play_movie_enter div:hover {
+  background-color: #FAE300;
+  color: black;
+}
+
+.play_movie_slide {
+  background-color: white;
+  position: absolute;
+  top: 50px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: 250px;
+  overflow-y: scroll;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.play_movie_slide div {
+  padding: 10px 20px;
+}
+
+.play_movie_slide div:hover {
+  background-color: #FAE300;
+  color: black;
+}
+
+/* 상영 시작일 */
+#play_start {
+  display: flex;
+  align-items: center;
+  width: 50vw;
+  margin-bottom: 50px;
+  height: 50px;
+}
+
+#play_start span {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 8px;
+  margin-right: 30px;
+}
+
+#play_start>div {
+  flex: 9;
+}
+
+.start_date {
+  height: 50px;
+}
+
+/* 상영 종료일 */
+#play_end {
+  display: flex;
+  align-items: center;
+  width: 50vw;
+  margin-bottom: 50px;
+  height: 50px;
+}
+
+#play_end span {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 8px;
+  margin-right: 30px;
+}
+
+#play_end>div {
+  flex: 9;
+}
+
+.end_date {
+  height: 50px;
+}
+
+/* input Date 선택 시 나오는 달력 아이콘 숨기기 */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+/* 상영 시간 */
+#play_time {
+  display: flex;
+  width: 50vw;
+  margin-bottom: 50px;
+  height: 50px;
+}
+
+#play_time span {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 8px;
+  margin-right: 30px;
+}
+
+#play_time>div {
+  flex: 9;
+}
+
+.time_Items {
+  display: none;
+}
+
+.play_time_enter {
+  z-index: 2;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 800px;
+  height: 50px;
+  border-bottom: 2px solid #ddd;
+}
+
+.play_time_enter:hover {
+  border-bottom: 2px solid black;
+}
+
+.added {
+  width: auto;
+  height: 30px;
+}
+
+.play_time_enter>div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #333333;
+  color: white;
+  cursor: pointer;
+}
+
+.play_time_enter div:hover {
+  background-color: #FAE300;
+  color: black;
+}
+
+.play_time_slide {
+  background-color: white;
+  position: absolute;
+  top: 50px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: 250px;
+  overflow-y: scroll;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.play_time_slide div {
+  padding: 10px 20px;
+}
+
+.play_time_slide div:hover {
+  background-color: #FAE300;
+  color: black;
+}
+
+
+/* 저장 및 취소 버튼 */
+.table_bottom {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table_bottom button {
+  color: white;
+}
+
+.table_bottom button:hover {
+  background-color: #FAE300;
+  color: black;
+}
+
+.bottom_Submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  background-color: #333333;
+}
+
+.bottom_Cancel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 50px;
+  margin-left: 30px;
+  cursor: pointer;
+  background-color: #333333;
+}
+
+.relative {
+  position: relative;
 }

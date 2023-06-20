@@ -54,13 +54,13 @@
 								<span>${lostdetail.lostTitle}</span>
 							</div>
 							<div>
-								<span><span>${lostdetail.lostWriter}</span> <span>|</span> <span>${lostdetail.lostDate}
+								<span><span>${userNick}</span> <span>|</span> <span>${lostdetail.lostDate}
 								</span></span>
 							</div>
 							<div>${lostdetail.lostContent} </div>
 						</div>
 
-						<div class="movie-reply">
+						<div class="movie-reply" style="display:none">
 
 							<div class="replywritewrap">
 								<span>분실물 작성</span>
@@ -116,6 +116,12 @@
 
 
 	<script src="${contextPath}/resources/js/common/replys.js"></script>
+		<script>
+   
+        const mtmNo = "${userMtmList.mtmNo}";
+        
+
+    </script>
 </body>
 
 </html>

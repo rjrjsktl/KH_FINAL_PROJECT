@@ -54,7 +54,7 @@
 								<span>${mTmdetail.mtmTitle}</span>
 							</div>
 							<div>
-								<span><span>${mTmdetail.mtmWriter}</span> <span>|</span> <span>${mTmdetail.mtmRegdate}
+								<span><span>${userNick}</span> <span>|</span> <span>${mTmdetail.mtmRegdate}
 								</span></span>
 							</div>
 							<div>${mTmdetail.mtmContent} </div>
