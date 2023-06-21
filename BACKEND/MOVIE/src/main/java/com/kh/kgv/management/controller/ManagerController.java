@@ -34,6 +34,7 @@ import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.management.model.service.ManagerService;
+import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
@@ -355,6 +356,22 @@ public class ManagerController {
 		System.out.println("관리자_극장 목록 이동");
 		return "manager/manager_cinema_list";
 	}
+	
+	// ===================================================
+	// ===================================================
+	
+	// 관리자_극장 가격 목록 이동
+	@GetMapping("/manager_cinemaPrice_list")
+	public String moveCinemaPriceList(Model model,
+			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+		
+		Map<String, Object> cinemaPriceMap = null;
+		cinemaPriceMap = service.getCinemaPriceMap(cp);
+		model.addAttribute("cinemaMap", cinemaPriceMap);
+		
+		System.out.println("관리자_가격 목록 이동");
+		return "manager/manager_cinemaPrice_list";
+	}
 
 	// ===================================================
 	// ===================================================
@@ -368,6 +385,131 @@ public class ManagerController {
 
 	// ===================================================
 	// ===================================================
+	
+	// 관리자_극장 가격 수정 이동
+	@GetMapping("/manager_cinemaPrice_list/edit/{priceNo}")
+	public String moveCinemaPriceEdit(
+			Model model
+			, CinemaPrice price
+			, @PathVariable("priceNo") int priceNo) {
+		
+		Map<String, Object> editPrice = null;
+
+		price.setPriceNo(priceNo);
+
+		editPrice = service.getEditPriceList(price);
+		System.out.println("DAO에서 가지고 온 editEvent : " + editPrice);
+		model.addAttribute("editPrice", editPrice);
+						
+		System.out.println("관리자_극장 가격 수정 이동");
+		return "manager/manager_cinemaPrice_list_edit";
+	}
+	
+	// ===================================================
+	// ===================================================
+	
+	// 관리자_극장 가격 중복 조회
+	@PostMapping("/manager_cinema_price/check")
+	@ResponseBody
+	public Boolean checkCinemaPrice(
+			@RequestParam("checkScreen") String checkScreen
+			, @RequestParam("checkWeek") String checkWeek
+			, @RequestParam("checkTime") String checkTime
+			, CinemaPrice cp
+			) {
+		
+		cp.setScreenStyle(checkScreen);
+		cp.setPriceDay(checkWeek);
+		cp.setPriceTime(checkTime);
+		
+		Boolean result = service.checkPrice(cp);
+		
+		if(result ) {
+			System.out.println("이미 가격이 DB에 있음");
+		} else {
+			System.out.println("가격이 DB에 없음");
+		}
+		
+
+		return result;
+	}
+	
+	// ===================================================
+	// ===================================================
+	
+	// 관리자_극장 가격 등록
+	@PostMapping("/manager_cinema_price/add")
+	@ResponseBody
+	public int addCinemaPrice(
+			@RequestParam("screenType") String screenType
+			, @RequestParam("chooseDay") String chooseDay
+			, @RequestParam("chooseTime") String chooseTime
+			, @RequestParam("teen") String teen
+			, @RequestParam("normal") String normal
+			, @RequestParam("elder") String elder
+			, @RequestParam("special") String special
+			, @RequestParam("couple") String couple
+			, CinemaPrice cp
+			) {
+		
+		cp.setScreenStyle(screenType);
+		cp.setPriceDay(chooseDay);
+		cp.setPriceTime(chooseTime);
+		cp.setPriceTeen(teen);
+		cp.setPriceNormal(normal);
+		cp.setPriceElder(elder);
+		cp.setPriceSpecial(special);
+		cp.setPriceCouple(couple);
+		
+		int result = service.addCinemaPrice(cp);
+		
+		if(result > 0 ) {
+			System.out.println("가격을 DB에 추가 완료");
+		} else {
+			System.out.println("가격을 DB에 추가 실패");
+		}
+		
+		
+		return result;
+	}
+	
+	// ===================================================
+	// ===================================================
+	
+	// 관리자_극장 가격 수정
+		@ResponseBody
+		@PostMapping("/manager_cinemaPrice_list/edit/{priceNo}/edit")
+		public int EditCinemaPrice(
+				@RequestParam("screenType") String screenType
+				, @RequestParam("chooseDay") String chooseDay
+				, @RequestParam("chooseTime") String chooseTime
+				, @RequestParam("teen") String teen
+				, @RequestParam("normal") String normal
+				, @RequestParam("elder") String elder
+				, @RequestParam("special") String special
+				, @RequestParam("couple") String couple
+				, @RequestParam("priceNo") int priceNo				
+				, CinemaPrice cp) {
+			
+			cp.setScreenStyle(screenType);
+			cp.setPriceDay(chooseDay);
+			cp.setPriceTime(chooseTime);
+			cp.setPriceTeen(teen);
+			cp.setPriceNormal(normal);
+			cp.setPriceElder(elder);
+			cp.setPriceSpecial(special);
+			cp.setPriceCouple(couple);
+			cp.setPriceNo(priceNo);
+			
+			
+			int result = service.EditCinemaPrice(cp);
+
+
+			return result;
+		}
+
+		// ===================================================
+		// ===================================================
 
 	// 관리자_상영영화 목록 이동
 	@GetMapping("/play_list")

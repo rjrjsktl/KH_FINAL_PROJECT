@@ -109,14 +109,44 @@ public class ReserveController {
 			if(movieOptionIndex.equals("0")) {
 				movieList = service.getPlayingMovieList();
 				movieNo = movieList.get(Integer.parseInt(movieIndex)).getMovieNo();
-				joinPlayList = service.getMovieNamePlayList(cinemaNo, strDate, movieNo);
+				joinPlayList = service.getMoviePlayList(cinemaNo, strDate, movieNo);
 			} else if(movieOptionIndex.equals("1")) {
 				thumbList = service.getPlayingThumbList();
 				movieNo = thumbList.get(Integer.parseInt(movieIndex)).getMovieNo();
-				joinPlayList = service.getMovieRankPlayList(cinemaNo, strDate, movieNo);
+				joinPlayList = service.getMoviePlayList(cinemaNo, strDate, movieNo);
 			}
 			
+		} catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println("배열 범위 이외의 숫자입니다.");
+		} catch(NumberFormatException e) {
+			System.out.println("잘못된 인덱스입니다.");
+		}
+		return joinPlayList;
+	}
+	
+	
+	
+	@GetMapping("/selectPlay")
+	@ResponseBody
+	public List<JoinPlay> selectPlay(String areaIndex, String cinemaIndex, String dateIndex, 
+			                         String movieIndex, String playIndex ) {
+		
+		try {
+			String areaName = areaArray[Integer.parseInt(areaIndex)];
+			cinemaList = service.getAreaCinemaList(areaName);
+			int cinemaNo = cinemaList.get(Integer.parseInt(cinemaIndex)).getCinemaNo();
+			int movieNo;
 			
+			LocalDateTime now = LocalDateTime.now();
+			LocalDateTime date = now.plusDays(Integer.parseInt(dateIndex));
+			String strDate = date.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+			
+			if(movieIndex.equals("-1")) {
+				
+			} else {
+				
+				
+			}
 			
 		} catch(ArrayIndexOutOfBoundsException e) {
 			System.out.println("배열 범위 이외의 숫자입니다.");
