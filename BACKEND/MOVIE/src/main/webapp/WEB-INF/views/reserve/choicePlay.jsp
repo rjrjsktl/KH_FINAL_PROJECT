@@ -172,27 +172,27 @@
                   
                   <div>
                     <ul id="total_play">
-                      <li class="movie_play" data-movie="메이플스토리">
-                        <div>메이플스토리</div>
+                      <li class="movie_play">
+                        <div>영화</div>
                         <div><ul class="playlist">
-                          <li id="origin_play"><a href="#none">
+                          <li id="origin_play"><a href="#result_section">
                             <div>
                               <div>
                                 <strong>
-                                  <span class="open_hour">14</span>&nbsp;:&nbsp;<span class="open_minute">30</span>
+                                  <span class="open_hour"></span>&nbsp;:&nbsp;<span class="open_minute"></span>
                                 </strong>
                               </div>
                               <div>
                                 <div>
-                                  <span class="empty_seat">68</span>&nbsp;/&nbsp;<span class="entire_seat">180</span>
+                                  <span class="empty_seat"></span>&nbsp;/&nbsp;<span class="entire_seat"></span>
                                 </div>
                                 <div>
-                                  <span class="cinema_room">3</span><span>관</span>
+                                  <span class="cinema_room"></span><span>관</span>
                                 </div>
                               </div>
                             </div>
                             <div>
-                              종료&nbsp;<span>16</span>&nbsp;:&nbsp;<span>50</span>
+                              종료&nbsp;<span></span>&nbsp;:&nbsp;<span></span>
                             </div>
                           </a></li>
                         </ul></div>
@@ -203,58 +203,33 @@
                   </div>
               </div>  
           </section>
-          <section>
+          <section id="result_section">
               <div>
-                    <div id="movie_thumb"></div>
-                    <div id="movie_detail">
-                      <div>
-                        <div class="age00">All</div>
-                        <div><span id="movie_name">원신: 신들의 마지막 전쟁</span></div>
-                      </div>
-                      <div id="play_date">2023년 05월 20일 토요일</div>
-                      <div id="play_time">16시 10분 &#126; 18시 05분</div>
-                    </div>
+                  <div id="movie_thumb">
+                    <img/>
                   </div>
+                  <div id="movie_detail">
+                      <div>
+                          <div id="movie_grade"></div>
+                          <div><span id="movie_name"></span></div>
+                      </div>
+                      <div id="play_date"><span id="up_year"></span> <span id="up_month"></span> 
+                                          <span id="up_date"></span> <span id="up_day"></div>
+                      <div id="play_time"><span id="start_hour"></span> <span id="start_minute"></span>  
+                                          <span id="end_hour"></span> <span id="end_minute"></span></div>
+                  </div>
+              </div>
+              <div>
                   <div>
-                    <div>강남 1관 일반석</div>
-                    <div id="seat_code">
-                      <div></div> 
-                      <div></div>
-                    </div>
+                      <span id="play_cinema"></span> <span id="play_screen"></span> 
+                      <span id="play_style"></span>
                   </div>
-                  <div id="price_calc">
-                    <div>
-                      성인
-                      <div>
-                        <span id="adult_price"></span>원 &times; <span id="adult_pick"></span>
-                      </div>
-                    </div>
-                    <div>
-                      청소년
-                      <div>
-                        <span id="youth_price"></span>원 &times; <span id="youth_pick"></span>
-                      </div>
-                    </div> 
-                    <div>
-                      경로
-                      <div>
-                        <span id="senior_price"></span>원 &times; <span id="senior_pick"></span>
-                      </div>
-                    </div>
-                    <div>
-                      우대
-                      <div>
-                        <span id="special_price"></span>원 &times; <span id="special_pick"></span>
-                      </div> 
-                    </div>
-                    <div>
-                      합계
-                      <div style="color: crimson">
-                        <span id="total_price" style="color: crimson"></span>원
-                      </div>
-                    </div>
-                  </div>
-                  <div><a href="#none">좌석 선택</a></div>
+               
+              </div>
+                  
+              <div><a href="#none" id="next_stage">좌석 선택</a></div>
+              <form action="moveNext" method="post" id="moveNextForm">
+			  </form>
           </section>
         </main>
 
