@@ -77,15 +77,12 @@
 							<div class="inner_Textarea_Title">내용</div>
 							<textarea class="inner_Textarea" id="contentTextarea"></textarea>
 						</div>
-						<button id="submitButton">Submit</button>
 
-						<div class="btn_Container">
-							<button>작성하기</button>
-							<button>취소하기</button>
+						<div class="btn_wraper">
+							<button id="submitButton"><a>작성하기</a></button>
+							<button><a href="${contextPath}/helpDesk/mTm_List">돌아가기</a></button>
 						</div>
-						<p id="mtmNo"></p>
-						<p id="userNo"></p>
-
+		
 					</div>
 
 				</div>
