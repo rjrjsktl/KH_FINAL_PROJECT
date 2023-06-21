@@ -63,43 +63,43 @@
 														<th>수정</th>
 														<th>삭제</th>
 													</tr>
-													<c:forEach var="getEvent" items="${getEventList['eventList']}">
+													<c:forEach var="getBenefits" items="${getBenefitsList['benefitsList']}">
 														<tr>
-															<td>${getEvent['eventNo']}</td>
+															<td>${getBenefits['benefitsNo']}</td>
 
 															<td>
 																<c:choose>
-																	<c:when test="${getEvent['eventStatus'] == 'Y'}">
+																	<c:when test="${getBenefits['benefitsStatus'] == 'Y'}">
 																		<a
-																			href="${contextPath}/eventList/detail_List/introduce/${getEvent['eventNo']}">${getEvent['eventTitle']}</a>
+																			href="${contextPath}/benefitsList/detail_List/introduce/${getBenefits['benefitsNo']}">${getBenefits['benefitsTitle']}</a>
 																	</c:when>
 																	<c:otherwise>
 																		<a
-																			href="${contextPath}/eventList/end_List/introduce//${getEvent['eventNo']}">${getEvent['eventTitle']}</a>
+																			href="${contextPath}/benefitsList/end_List/introduce//${getBenefits['benefitsNo']}">${getBenefits['benefitsTitle']}</a>
 																	</c:otherwise>
 																</c:choose>
 															</td>
-															<td>${getEvent['eventStart']}</td>
-															<td>${getEvent['eventEnd']}</td>
-															<td>${getEvent['eventReg']}</td>
+															<td>${getBenefits['benefitsStart']}</td>
+															<td>${getBenefits['benefitsEnd']}</td>
+															<td>${getBenefits['benefitsReg']}</td>
 															<c:choose>
-																<c:when test="${getEvent['eventStatus'] == 'Y'}">
+																<c:when test="${getBenefits['benefitsStatus'] == 'Y'}">
 																	<td><select class="Is_On"
-																			data-id="${getEvent['eventNo']}">
+																			data-id="${getBenefits['benefitsNo']}">
 																			<option value="N">N</option>
 																			<option value="Y" selected>Y</option>
 																		</select></td>
 																</c:when>
 																<c:otherwise>
 																	<td><select class="Is_On"
-																			data-id="${getEvent['eventNo']}">
+																			data-id="${getBenefits['benefitsNo']}">
 																			<option value="N" selected>N</option>
 																			<option value="Y">Y</option>
 																		</select></td>
 																</c:otherwise>
 															</c:choose>
 
-															<td><a href="${contextPath}/manager/event_list/edit/${getEvent['eventNo']}"
+															<td><a href="${contextPath}/manager/benefits_list/edit/${getBenefits['benefitsNo']}"
 																	class="editEvent"><i
 																		class="fa-sharp fa-solid fa-pen-to-square"></i></a>
 															</td>
@@ -111,7 +111,7 @@
 												</table>
 												<div class="page_Nation">
 													<c:set var="url" value="?cp=" />
-													<c:set var="pagination" value="${getEventList['pagination']}" />
+													<c:set var="pagination" value="${getBenefits['pagination']}" />
 													<c:set var="currentPage" value="${pagination.currentPage}"
 														scope="request" />
 													<div>
