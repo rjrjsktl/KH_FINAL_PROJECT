@@ -49,17 +49,20 @@
 												<div class="table_Title">
 													<span>메인배너 수정</span>
 												</div>
+												<input type="hidden" class="bannerNo"
+													value="${editBannerList['BANNER_NO']}" />
+												<!-- 숨겨진 원래 이미지 URL -->
+												<input type="hidden" class="hiddenImg"
+													value="${editBannerList['BANNER_IMG']}" />
 												<div class="table_main">
 													<div class="enter_Title">
 														<input type="text" placeholder="제목을 입력하세요."
-															value="${editEvent['EVENT_TITLE']}">
+															value="${editBannerList['BANNER_TITLE']}">
 													</div>
 													<div class="enter_url">
 														<input type="text" placeholder="URL을 입력하세요."
-															value="${editEvent['EVENT_TITLE']}">
+															value="${editBannerList['BANNER_URL']}">
 													</div>
-													<input type="hidden" id="eventNo"
-														value="${editEvent['EVENT_NO']}" />
 													<div class="addArea">
 														<div id="bannerImg">
 															<span>메인배너 이미지</span>
@@ -72,13 +75,13 @@
 														</div>
 													</div>
 													<div id="showImg">
-														<span>등록 할 이미지는 아래와 같습니다.</span>
-														<img id="imgSize" src="" />
+														<span>현재 이미지는 아래와 같습니다.</span>
+														<img id="imgSize" src="${editBannerList['BANNER_IMG']}" />
 													</div>
-												</div>
-												<div class="table_bottom">
-													<button class="bottom_Submit">저장</button>
-													<button class="bottom_Cancel">취소</button>
+													<div class="table_bottom">
+														<button class="bottom_Submit">저장</button>
+														<button class="bottom_Cancel">취소</button>
+													</div>
 												</div>
 											</div>
 										</div>

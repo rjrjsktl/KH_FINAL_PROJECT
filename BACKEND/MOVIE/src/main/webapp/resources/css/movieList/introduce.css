@@ -156,6 +156,7 @@ main section>div:nth-child(3)::after {
 
 .movie-makers-wrap>li {
     margin-bottom: 8px;
+    flex: 1;
 }
 
 .movie-makers-wrap>li>span {
@@ -699,7 +700,6 @@ main>section:nth-child(3)>div>div:nth-child(3) {
 
 .actorList {
     display: flex;
-
 }
 
 .actorList>ul {
@@ -707,7 +707,6 @@ main>section:nth-child(3)>div>div:nth-child(3) {
 }
 
 .actorList>ul>li {
-
     padding-left: 10px;
 }
 
