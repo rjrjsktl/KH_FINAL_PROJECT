@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
@@ -486,6 +487,12 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public int EditCinemaPrice(CinemaPrice cp) {
 		return dao.EditCinemaPrice(cp);
+	}
+
+	// 관리자_배너 수정 이동
+	@Override
+	public Map<String, Object> getEditBannerList(banner banner) {
+		return dao.getEditBannerList(banner);
 	}
 
 
