@@ -33,6 +33,7 @@ import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
+import com.kh.kgv.management.model.service.ManageStoreService;
 import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
@@ -55,6 +56,9 @@ public class ManagerController {
 	
 	@Autowired
 	private MovieService movieService;
+	
+	@Autowired
+	private ManageStoreService services;
 
 	// 관리자_메인페이지 이동
 	@GetMapping("/main")
@@ -935,6 +939,18 @@ public class ManagerController {
 		return result;
 	}
 	
+	//  스토어 수정 이름 중복 검사
+		@ResponseBody
+		@GetMapping("/store_list/edit/{storeNo}/store_edit/NameDupChecks")
+		public int NameDupChecks(String storeName) {
+			System.out.println(storeName);
+			int result = services.NameDupCheck(storeName);
+					
+			System.out.println(result);
+			return result;
+					
+		}
+	
 	
 	// 스토어 수정 이미지 업로드
 			@PostMapping("/store_list/edit/{storeNo}/store_edit/uploadImageFile")
@@ -945,7 +961,8 @@ public class ManagerController {
 
 				String webPath = "/resources/images/storeimg/";
 				String fileRoot = request.getServletContext().getRealPath(webPath);
-
+				
+				
 				for (MultipartFile multipartFile : multipartFiles) {
 					JsonObject jsonObject = new JsonObject();
 

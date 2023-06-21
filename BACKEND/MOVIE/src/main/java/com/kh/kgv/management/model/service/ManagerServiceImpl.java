@@ -495,6 +495,9 @@ public class ManagerServiceImpl implements ManagerService {
 		return dao.getEditBannerList(banner);
 	}
 
+	
+
+	
 
 
 
