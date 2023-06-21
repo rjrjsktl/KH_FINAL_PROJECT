@@ -495,6 +495,12 @@ public class ManagerServiceImpl implements ManagerService {
 		return dao.getEditBannerList(banner);
 	}
 
+	// 관리자_배너 수정
+	@Override
+	public int editBanner(banner banner) {
+		return dao.editBanner(banner);
+	}
+
 
 
 

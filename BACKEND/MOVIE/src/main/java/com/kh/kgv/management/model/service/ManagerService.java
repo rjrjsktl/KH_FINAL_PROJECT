@@ -141,6 +141,9 @@ public interface ManagerService {
 	// 관리자_배너 수정 이동
 	Map<String, Object> getEditBannerList(banner banner);
 
+	// 관리자_배너 수정
+	int editBanner(banner banner);
+
 
 
 

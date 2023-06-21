@@ -944,7 +944,7 @@ public class ManagerController {
 				JsonArray jsonArray = new JsonArray();
 
 				String webPath = "/resources/images/storeimg/";
-				String fileRoot = request.getServletContext().getRealPath(webPath);
+				String fileRoot = request.getSession().getServletContext().getRealPath(webPath);
 
 				for (MultipartFile multipartFile : multipartFiles) {
 					JsonObject jsonObject = new JsonObject();
@@ -1120,10 +1120,6 @@ public class ManagerController {
 		banner.setBannerUrl(url);
 		banner.setBannerImg(img);
 
-		System.out.println("들어온 title : " + title);
-		System.out.println("들어온 url : " + url);
-		System.out.println("들어온 img : " + img);
-
 		int result = service.addBanner(banner);
 
 		return result;
@@ -1152,6 +1148,36 @@ public class ManagerController {
 		System.out.println("관리자_배너 수정 이동");
 
 		return "manager/manager_banner_edit";
+	}
+	
+	// ===================================================
+	// ===================================================
+	
+	// 관리자_배너 수정
+	@PostMapping("/banner_list/edit/{bannerNo}/edit")
+	@ResponseBody
+	public int editBanner(
+			banner banner
+			, @RequestParam("title") String title
+			, @RequestParam("url") String url
+			, @RequestParam("movieImg1") String img
+			,  @RequestParam("bannerNo") int bannerNo
+			) {
+
+	
+	banner.setBannerTitle(title);
+	banner.setBannerUrl(url);
+	banner.setBannerImg(img);
+	banner.setBannerNo(bannerNo);
+	
+	System.out.println("=======================들어온 banner는 : " + banner);
+	
+//	int result = 1;
+
+	int result = service.editBanner(banner);
+
+	return result;
+
 	}
 
 	// ===================================================

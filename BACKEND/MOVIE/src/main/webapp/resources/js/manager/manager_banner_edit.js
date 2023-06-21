@@ -79,36 +79,30 @@ $(document).ready(function () {
             return false;
         };
 
-        // if (!$('.movie_image1').val()) {
-        //     alert('메인 이미지를 등록하지 않았습니다.');
-        //     imageUrl1.focus();
-        //     e.preventDefault();
-        //     return false;
-        // };
+        $.ajax({
+            url: "/movie/manager/banner_list/edit/" + bannerNo.val() + "/edit",
+            data: {
+                title: eventTitle.val()
+                , url: enterUrl.val()
+                , movieImg1: imageUrl1
+                , bannerNo: bannerNo.val()
+            },
+            type: "POST",
+            success: function (result) {
+                if (result > 0) {
+                    alert("배너 수정 성공");
+                    let url = "/movie/manager/banner_list";
+                    window.location.href = url;
+                } else {
+                    alert("배너 수정 실패");
+                    window.location.reload();
+                }
+            },
 
-        // $.ajax({
-        //     url: "/movie/manager/banner_list/edit/" + bannerNo.val() + "/edit",
-        //     data: {
-        //         "title": eventTitle.val()
-        //         , "url": enterUrl.val()
-        //         , "movieImg1": imageUrl1
-        //     },
-        //     type: "POST",
-        //     success: function (result) {
-        //         if (result > 0) {
-        //             alert("이벤트 등록 성공");
-        //             let url = "/movie/manager/banner_list";
-        //             window.location.href = url;
-        //         } else {
-        //             alert("이벤트 등록 실패");
-        //             window.location.reload();
-        //         }
-        //     },
-
-        //     error: function () {
-        //         console.log("에러 발생으로 인해 등록 실패");
-        //     }
-        // });
+            error: function () {
+                console.log("에러 발생으로 인해 배너 수정 실패");
+            }
+        });
     });
 
 
