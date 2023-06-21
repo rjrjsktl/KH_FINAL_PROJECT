@@ -59,8 +59,8 @@
 								<h2>My Page</h2>
 								<div class="cont-search-wrap">
 
-									<sapn>${loginUser.userNick}</sapn>
-									<span>님 환영합니다.</span>
+									<sapn class="homeUserNick">${loginUser.userNick}</sapn>
+									<span>&nbsp;님 환영합니다.</span>
 
 								</div>
 							</div>
