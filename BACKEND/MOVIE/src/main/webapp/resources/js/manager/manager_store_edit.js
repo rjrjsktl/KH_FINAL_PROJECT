@@ -215,7 +215,9 @@ $(document).ready(function () {
 
             },
             type: "POST",
+            dataType: "json",
             success: function (result) {
+                console.log(result);
                 if (result > 0) {
                     alert("스토어 물품 수정 등록 성공");
                     window.location.reload();
