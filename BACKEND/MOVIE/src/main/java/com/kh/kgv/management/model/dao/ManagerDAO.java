@@ -348,6 +348,10 @@ public class ManagerDAO {
 	public Map<String, Object> getEditBannerList(banner banner) {
 		return sqlSession.selectOne("managerMapper.getEditBannerList", banner);
 	}
+	public int editBanner(banner banner) {
+		return sqlSession.update("managerMapper.editBanner",   banner);
+	}
+	
 	
 
 

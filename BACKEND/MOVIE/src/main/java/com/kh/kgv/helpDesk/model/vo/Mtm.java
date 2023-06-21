@@ -19,4 +19,8 @@ public class Mtm {
 	private String mtmRegdate;
 	private int mtmCount;
 	private String mtmWriter;
+	private String mtmRepWriter;
+	private String mtmRepSt;
+	private String mtmRepContent;
+	private String mtmRepDate;
 }

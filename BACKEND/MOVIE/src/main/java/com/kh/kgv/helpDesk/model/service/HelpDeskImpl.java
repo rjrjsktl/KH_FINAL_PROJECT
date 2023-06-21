@@ -23,51 +23,59 @@ public class HelpDeskImpl implements HelpDeskService {
 
 	@Autowired
 	private HelpDeskDAO dao;
-	
 
-	
+
+
 	@Override
 	public Notice selectNoticeDetail(int noticeNo) {
 		return dao.selectNoticeDetail(noticeNo);
-		
+
 	}
 
 	@Override
 	public Notice getPreviousNotice(int noticeNo) {
-		  int prevNoticeNo = noticeNo - 1;
+		int prevNoticeNo = noticeNo - 1;
 
-		    // 이전 게시물의 정보를 데이터베이스에서 조회
-		    Notice prevNotice = dao.findPrevNoticeNo(prevNoticeNo);
+		// 이전 게시물의 정보를 데이터베이스에서 조회
+		Notice prevNotice = dao.findPrevNoticeNo(prevNoticeNo);
 
-		    return prevNotice;
+		return prevNotice;
 	}
 
 	@Override
 	public Notice getNextNotice(int noticeNo) {
-	    int nextNoticeNo = noticeNo + 1;
+		int nextNoticeNo = noticeNo + 1;
 
-	    // 다음 게시물의 정보를 데이터베이스에서 조회
-	    Notice nextNotice = dao.findNextNoticeNo(nextNoticeNo);
+		// 다음 게시물의 정보를 데이터베이스에서 조회
+		Notice nextNotice = dao.findNextNoticeNo(nextNoticeNo);
 
-	    return nextNotice;
+		return nextNotice;
 	}
 
 	@Override
-	public Map<String, Object> getMtmList(int cp, int userNo) {
-		
+	public Map<String, Object> getMtmList(int cp, int userNo, String userManagerSt) {
+
+		int userManagerStAsInt = 0;
+		if(userManagerSt != null) {
+			if(userManagerSt.equals("Y")) {
+				userManagerStAsInt = 1;
+			}else if (userManagerSt.equals("null")) {
+				userManagerStAsInt = 0;
+			}
+		}
 
 		int mtmlistCount = dao.getMtmListCount();
-
 		MtmPagenation pagination = new MtmPagenation(cp, mtmlistCount);
 
-		List<Mtm> mtmLists = dao.getMtmList(pagination, userNo);
+		List<Mtm> mtmLists = dao.getMtmList(pagination, userNo, userManagerStAsInt);
+
 
 		Map<String, Object> getMtmList = new HashMap<String, Object>();
 		getMtmList.put("pagination", pagination);
 		getMtmList.put("mtmLists", mtmLists);
 
 		return getMtmList;
-		
+
 	}
 
 	@Override
@@ -77,7 +85,7 @@ public class HelpDeskImpl implements HelpDeskService {
 
 	@Override
 	public Map<String, Object> getLostList(int cp, int userNo) {
-		
+
 		int lostlistCount = dao.getLostListCount();
 
 		LostPagenation pagination = new LostPagenation(cp, lostlistCount);
@@ -90,6 +98,8 @@ public class HelpDeskImpl implements HelpDeskService {
 
 		return getMtmList;
 	}
+	
+
 
 	@Override
 	public LostPackage selectLostDetail(int lostNo) {
@@ -110,10 +120,6 @@ public class HelpDeskImpl implements HelpDeskService {
 		return dao.addLost(lost);
 	}
 
-	@Override
-	public int getMtmListCount(int userNo) {
-		return dao.getMtmListCount(userNo);
-	}
 
 	@Override
 	public int getLostListCount(int userNo) {
@@ -135,6 +141,23 @@ public class HelpDeskImpl implements HelpDeskService {
 	public int deleteBoard(int mtmNo) {
 		return dao.deleteBoard(mtmNo);
 	}
+
+	@Override
+	public int getuserMtmListCount(int userNo, String userManagerSt) {
+		int userManagerStAsInt = 0;
+		if(userManagerSt != null) {
+			if(userManagerSt.equals("Y")) {
+				userManagerStAsInt = 1;
+			}else if (userManagerSt.equals("null")) {
+				userManagerStAsInt = 0;
+			}
+		}
+		return dao.getMtmListCount(userNo, userManagerStAsInt);
+	}
+
+
+
+
 
 
 }
