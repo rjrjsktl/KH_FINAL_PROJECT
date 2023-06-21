@@ -8,14 +8,20 @@ let playListIndex = -1;
 let playIndex = -1;
 
 let areaCinemaList = [];
+let movieNumList = [];
+let userPlayList;
 
 let originPlay = $("#origin_play").clone(true);
 let clonePlay;
 let moviePlay;
+let userPlay;
 let playBundle;
 let movieTitle;
 
+let originResultSection = $('main > section:nth-child(2)').clone(true);
+$('main > section:nth-child(2)').remove();
 
+$('#total_play').empty();
 
 // [ajax] 페이지가 로딩되면 서울 지역의 극장을 극장 리스트에 저장함.
 
@@ -25,7 +31,6 @@ $.ajax({
   type: "GET",
   success: function(cinemaList) {
     areaCinemaList = cinemaList;
-    $('#total_play').empty();
   },
   error: function () {
     console.log("페이지 로딩 중 에러 발생");
@@ -45,6 +50,7 @@ function updatePlayAjax() {
       $("#total_play").empty();
 	  if(joinPlayList.length){
 	    updateMoviePlay(joinPlayList);
+	    userPlayList = joinPlayList; 
 	  }
     },
     error: function () {
@@ -65,7 +71,9 @@ function updateGreatPlayAjax() {
     type: "GET",
     success: function(joinPlayList) {
       $("#total_play").empty();
-	  updateTotalPlay(joinPlayList);
+      if(joinPlayList.length) {
+        updateTotalPlay(joinPlayList);      
+      }
     },
     error: function () {
       console.log("에러 발생");
@@ -99,21 +107,7 @@ function selectAreaAjax() {
 
 
 
-// [ajax] 상영을 선택하면
 
-function selectPlayAjax() {
-  $.ajax({
-    url: "selectPlay",
-    data: {areaIndex, cinemaIndex, dateIndex, movieIndex, playIndex},
-    type: "GET",
-    success: function(joinPlayList) {
-      alert(3);
-    },
-    error: function () {
-      console.log("에러 발생");
-    }
-  });
-}
 
 // 날짜 슬라이더
 
@@ -183,11 +177,11 @@ let area = $('#area_list > li');
 let areaName;
 
 area.on("click", function(){
-  $(this).children().removeClass('clicked');
+  $(this).siblings().children().removeClass('clicked');
   $(this).children().addClass('clicked');
   areaIndex = $(this).index(); 
   
-  selectAreaAjax()
+  selectAreaAjax();
 });
 
 
@@ -231,6 +225,7 @@ function clickCinema(e) {
   $('#cinema_list > li > a').removeClass("clicked");
   $(e.target).addClass("clicked");
   
+  $('main > section:nth-child(2)').remove();
   updateGreatPlayAjax();
 }
 
@@ -251,6 +246,9 @@ function updateTotalPlay(joinPlayList) {
       acc[play.movie.movieNo].push(play);
       return acc;
     }, {}); 
+    
+    userPlayList = movieGroup;
+    movieNumList = [];
          
     // 영화번호 별로 상영 목록을 만듦.
     for(let i in movieGroup) {
@@ -259,6 +257,7 @@ function updateTotalPlay(joinPlayList) {
       moviePlay.append(`<div>${movieTitle}</div>`);
            
       playBundle = $('<div><ul class="playlist"></ul></div>');
+      movieNumList.push(movieGroup[i][0]['movie'].movieNo);
       
       // 각 상영 별로 정보를 초기화함.
       for(let k in movieGroup[i]) {
@@ -270,7 +269,7 @@ function updateTotalPlay(joinPlayList) {
         clonePlay.find('.empty_seat').html(movieGroup[i][k].screen.screenSeat - movieGroup[i][k].play.playBookCount);
         clonePlay.find('.cinema_room').html(movieGroup[i][k].screen.screenName);
         clonePlay.on("click", function(e) {
-          clickPlay(e);
+          clickSuperPlay(e);
         });
         playBundle.find('.playlist').append(clonePlay);
       }
@@ -339,6 +338,7 @@ let movie = $('.movielist > li > a');
 let movieName;
 
 movie.on("click", function(){
+  $('main > section:nth-child(2)').remove();
   movieIndex = $(this).parent().index();
   if(cinemaIndex != -1) {
     updatePlayAjax()
@@ -355,17 +355,81 @@ movie.on("click", function(){
 // 상영 선택
 
 let play = $('.playlist > li > a');
-let openHour;
-let openMinute;
-let cinemaRoom;
+let resultSection;
 
+
+// 전체 영화 상영 중에서 
+
+function clickSuperPlay(e) {
+  playIndex = $(e.target).closest('li').index();
+  playListIndex = $(e.target).closest('.movie_play').index();
+  userPlay = userPlayList[movieNumList[playListIndex]][playIndex];
+  updateResultSection(userPlay)
+}    
+
+
+// 한 영화만 나올 때
 
 function clickPlay(e) {
   playIndex = $(e.target).closest('li').index();
-  playListIndex = $(e.target).closest('li').parent().index();
-  alert(playListIndex);
-  selectPlayAjax()
+  userPlay = userPlayList[playIndex];
+  console.log(userPlay);
+  updateResultSection(userPlay);
 }
+	
+
+function updateResultSection(userPlay) {
+  $('main > section:nth-child(2)').remove();
+  resultSection = originResultSection.clone(true);
+  resultSection.find('#movie_thumb > img').attr("src", `${userPlay.movie.movieImg1}`);
+  console.log(userPlay);
+  resultSection.find('#movie_name').html(userPlay.movie.movieTitle);
+  
+  resultSection.find('#movie_grade').removeClass();
+  if(userPlay.movie.mgNo.indexOf('전체') != -1) {
+    resultSection.find('#movie_grade').addClass('age00');
+    resultSection.find('#movie_grade').html('All');
+  } else if(userPlay.movie.mgNo.indexOf('12') != -1) {
+    resultSection.find('#movie_grade').addClass('age12');
+    resultSection.find('#movie_grade').html('12');
+  } else if(userPlay.movie.mgNo.indexOf('15') != -1) {
+    resultSection.find('#movie_grade').addClass('age15');
+    resultSection.find('#movie_grade').html('15');
+  } else {
+    resultSection.find('#movie_grade').addClass('age18');
+    resultSection.find('#movie_grade').html('18');  
+  }
+
+  
+  let up_start = new Date(userPlay.play.playStart);
+  let up_end = new Date(userPlay.play.playEnd);
+  resultSection.find('#up_year').html(up_start.getFullYear() + "년");
+  resultSection.find('#up_month').html((up_start.getMonth()+1) + "월");
+  resultSection.find('#up_date').html(up_start.getDate() + "일");
+  resultSection.find('#up_day').html(weeks[up_start.getDay()] + "요일");
+  
+  resultSection.find('#start_hour').html(String(up_start.getHours()).padStart(2, "0") + "시");
+  resultSection.find('#start_minute').html(String(up_start.getMinutes()).padStart(2, "0") + "분 &#126;");
+  
+  if(up_start.getDate() == up_end.getDate()) {
+    resultSection.find('#end_hour').html(String(up_end.getHours()).padStart(2, "0") + "시"); 
+  } else {
+    resultSection.find('#end_hour').html((up_end.getHours()+24) + "시");
+  }
+  resultSection.find('#end_minute').html(String(up_end.getMinutes()).padStart(2, "0") + "분"); 
+  resultSection.find('#end_minute').html(String(up_end.getMinutes()).padStart(2, "0") + "분");
+  
+  resultSection.find('#play_cinema').html(userPlay.cinema.cinemaName);
+  resultSection.find('#play_screen').html(userPlay.screen.screenName + "관");
+  resultSection.find('#play_style').html("(" + userPlay.screen.screenStyle + ")");
+  
+  resultSection.find('#next_stage').on("click", function() {
+     
+  })
+  
+  $('main').append(resultSection);
+}
+
 
 
 
