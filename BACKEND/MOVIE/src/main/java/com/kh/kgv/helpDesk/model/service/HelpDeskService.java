@@ -14,7 +14,7 @@ public interface HelpDeskService {
 
 	Notice getNextNotice(int noticeNo);
 
-	Map<String, Object> getMtmList(int cp, int userNo);
+	Map<String, Object> getMtmList(int cp, int userNo, String userManagerSt);
 
 	Mtm selectmTmDetail(int mtmNo);
 
@@ -26,8 +26,6 @@ public interface HelpDeskService {
 
 	int addLost(LostPackage lost);
 
-	int getMtmListCount(int userNo);
-
 	int getLostListCount(int userNo);
 
 	int selectMtmNo(Mtm mtm);
@@ -35,6 +33,8 @@ public interface HelpDeskService {
 	int selectLostNo(LostPackage lost);
 
 	int deleteBoard(int mtmNo);
+
+	int getuserMtmListCount(int userNo, String userManagerSt);
 
 
 
