@@ -53,12 +53,24 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.updateInfo", paramMap);
 	}
 
+	/** 리뷰 불러오기 DAO
+	 * @param userNo
+	 * @return
+	 */
 	public List<Review> myReviewList(int userNo) {
 		logger.info("review::dao 실행 ㄱㄱㄱ");
 		return sqlSession.selectList("myPageMapper.myReviewList", userNo);
 	}
 
-	
-
+//	/** 리뷰 5개씩 불러오기 DAO
+//	 * @param userNo
+//	 * @param startMovie
+//	 * @param endMovie
+//	 * @return
+//	 */
+//	public List<Review> getReviewListInRange(Map<String, Object> paramMap) {
+//		logger.info("review::dao 실행 ㄱㄱㄱ");
+//		return sqlSession.selectList("myPageMapper.getReviewListInRange", paramMap);
+//	}
 
 }
