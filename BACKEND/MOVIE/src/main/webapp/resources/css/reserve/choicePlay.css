@@ -456,8 +456,6 @@ main > section:first-child > div:last-child > div:nth-child(3) > ul > li > div:f
 }
 
 
-/*main > section > :nth-child(2) > div:last-child > div:nth-child(3) > ul > li > div:second-child > .playlist */
-
 .playlist {
   display: flex;
   flex-wrap: wrap;
@@ -547,7 +545,7 @@ main > section:nth-child(2) {
 
 main > section:nth-child(2) > div {
   height: 100px;
-  margin-right: 4%;
+  margin-right: calc(4% - 0.5px);
 }
 
 /* 썸네일 + 영화 정보 */
@@ -555,19 +553,22 @@ main > section:nth-child(2) > div {
 main > section:nth-child(2) > div:first-child {
   border-right: 1px solid white;
   display: flex;
-  width: calc(350px + 1%);
+  width: 32.5%;
 }
 
 
 /* 썸네일 */
 
 main > section:nth-child(2) > div:first-child > #movie_thumb {
-  width: 61.4px;
+  width: 65px;
   height: 98px;
-  background-image: url("https://cdn.ize.co.kr/news/photo/201505/22033_24447_742.jpg");
-  background-repeat: no-repeat;
-  background-size: 61.4px 98px;
+  border: 1px solid white;
   margin-right: 6%;
+}
+
+main > section:nth-child(2) > div:first-child > #movie_thumb > img {
+  width: 100%;
+  height: 100%;	
 }
 
 /* 영화 정보 */
@@ -592,15 +593,17 @@ main > section:nth-child(2) > div:first-child > #movie_detail {
 /* 연령 */
 
 #movie_detail > div:first-child > div:first-child {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 25px;
   height: 25px;
-  font-size: 12px;
+  line-height: 19.5px;
+  text-align: center;
   border: 1px solid transparent;
   border-radius: 3px;
   margin-right: 10px;
+}
+
+#movie_detail > div:first-child > div:first-child > * {
+  font-size: 16px;
 }
 
 
@@ -619,10 +622,18 @@ main > section:nth-child(2) > div:first-child > #movie_detail {
 
 #movie_detail > div:nth-child(2) {
   margin-bottom: 5px;
+}
+
+#movie_detail > div:nth-child(2) > span {
   font-size: 13px;
 }
 
 #movie_detail > div:nth-child(3) {
+  font-size: 13px;
+	
+}
+
+#movie_detail > div:nth-child(3) * {
   font-size: 13px;
 }
 
@@ -630,7 +641,7 @@ main > section:nth-child(2) > div:first-child > #movie_detail {
 /* 상영관 + 좌석 */
 
 main > section:nth-child(2) > div:nth-child(2) {
-  width: 17.5%;
+  width: 22.25%;
   border-right: 1px solid white;
   padding-top: 8px;
 }
@@ -680,10 +691,9 @@ main > section:nth-child(2) > div:last-child {
   top: 0;
   right: 0;
 
-  width: 18%;
+  width: 15%;
   height: 99%;
   background-color: crimson;
-  font-size: 22px;
 
   margin-right: 0;
   border-left: 1px solid white;
@@ -692,4 +702,5 @@ main > section:nth-child(2) > div:last-child {
 
 main > section:nth-child(2) > div:last-child > a {
   color: white;
+  font-size: 21px;
 }
