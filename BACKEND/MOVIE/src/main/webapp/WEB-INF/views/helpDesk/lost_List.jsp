@@ -56,12 +56,12 @@
                             <div class="table-wrap">
                                 <table>
 
-                                    <thead>
-                                        <th>번호</th>
-                                        <th>내용</th>
-                                        <th>등록일</th>
-                                        <th>조회수</th>
-                                    </thead>
+                                   <thead>
+										<th>영화관</th>
+										<th>내용</th>
+										<th>등록일</th>
+										<th>조회수</th>
+									</thead>
                                     <tbody>
                                       <c:choose>
 											<c:when test="${empty lostList.lostLists}">
@@ -74,7 +74,7 @@
 													items="${lostList.lostLists}" varStatus="loop">
 													<c:if test="${loop.index < 10}">
 														<tr class="row">
-															<td>${lostList.lostNo}</td>
+															<td>${lostList.lostLocation}</td>
 															<td><a href="${contextPath}/helpDesk/lost_detail/${lostList.lostNo}" style="color:white">${lostList.lostTitle}</a></td>
 															<td>${lostList.lostDate}</td>
 															<td>${lostList.lostView}</td>

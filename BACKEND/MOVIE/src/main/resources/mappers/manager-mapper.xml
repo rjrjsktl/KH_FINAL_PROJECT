@@ -23,6 +23,18 @@
 		<result property="userManagerSt" column="USER_MANAGERST" />
 		<result property="userBlock" column="USER_BLOCK" />
 	</resultMap>
+	
+		<resultMap type="cinemaPrice" id="cinemaprice_rm">
+		<id property="priceNo" column="PRICE_NO" />
+		<result property="screenStyle" column="SCREEN_STYLE" />
+		<result property="priceDay" column="PRICE_DAY" />
+		<result property="priceTime" column="PRICE_TIME" />
+		<result property="priceTeen" column="PRICE_TEEN" />
+		<result property="priceNormal" column="PRICE_NORMAL" />
+		<result property="priceElder" column="PRICE_ELDER" />
+		<result property="priceSpecial" column="PRICE_SPECIAL" />
+		<result property="priceCouple" column="PRICE_COUPLE" />
+		</resultMap>
 
 
 	<resultMap type="movie" id="movie_rm">
@@ -423,9 +435,32 @@
 		)
 	</insert>
 	
+		<!--관리자_배너 목록 이동시 배너 수 조회 -->
+	<select id="checkPrice" resultType="boolean">
+		SELECT 
+		*
+		 FROM PRICE
+		 WHERE 
+		 SCREEN_STYLE = #{screenStyle}
+		 AND PRICE_DAY = #{priceDay}
+		 AND  PRICE_TIME = #{priceTime}
+	</select>
 	
-	
-	
+		<!-- 관리자_극장 가격 등록 -->
+	<insert id="addCinemaPrice" parameterType="cinemaPrice">
+		INSERT INTO PRICE
+		VALUES (
+		SEQ_PRICE_NO.NEXTVAL
+		, #{screenStyle}
+		, #{priceDay}
+		, #{priceTime}
+		, #{priceTeen}
+		, #{priceNormal}
+		, #{priceElder}
+		, #{priceSpecial}
+		, #{priceCouple}
+		)
+	</insert>
 	
 
 </mapper>

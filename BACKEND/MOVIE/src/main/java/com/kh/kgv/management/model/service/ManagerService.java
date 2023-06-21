@@ -6,6 +6,7 @@ import java.util.Map;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
+import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
@@ -79,6 +80,9 @@ public interface ManagerService {
 	
 	// 영화관 목록 조회 
 	Map<String, Object> getCinemaMap(int cp);
+	
+	// 관리자_극장 가격 목록 이동
+	Map<String, Object> getCinemaPriceMap(int cp);
 
 	//공지사항 갯수 조회	
 	int getNoticeListCount();
@@ -119,6 +123,19 @@ public interface ManagerService {
 	
 	// 스토어 수정하기
 	int StoreEdit(Store updateStore);
+
+	// 관리자_극장 가격 중복 조회
+	Boolean checkPrice(CinemaPrice cp);
+
+	// 관리자_극장 가격 등록
+	int addCinemaPrice(CinemaPrice cp);
+
+	// 관리자_극장 가격 수정 이동
+	Map<String, Object> getEditPriceList(CinemaPrice price);
+
+	// 관리자_극장 가격 수정
+	int EditCinemaPrice(CinemaPrice cp);
+
 
 
 

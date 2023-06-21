@@ -34,5 +34,8 @@ public interface HelpDeskService {
 
 	int selectLostNo(LostPackage lost);
 
+	int deleteBoard(int mtmNo);
+
+
 
 }

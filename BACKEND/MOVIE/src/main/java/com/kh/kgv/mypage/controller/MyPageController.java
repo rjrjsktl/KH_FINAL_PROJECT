@@ -1,6 +1,7 @@
 package com.kh.kgv.mypage.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kh.kgv.customer.model.vo.Review;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.mypage.model.service.MyPageService;
 
@@ -92,10 +94,24 @@ public class MyPageController {
 	}
 	
 	@GetMapping("/myReview")
-	public String myReview(Model model
+	public String myReviewList(Model model
 							, @RequestParam Map<String,Object> paramMap
 							, @ModelAttribute("loginUser") User loginUser
 							, RedirectAttributes ra) {
+		
+		logger.info("review페이지 시작");
+		logger.info("loginUserNo:::::" + loginUser.getUserNo() );
+		// 로그인된 회원의 번호를 paramMap 추가
+		
+		int userNo = loginUser.getUserNo();
+		
+		List<Review> myReviewList = null;
+		myReviewList = service.myReviewList(userNo);
+		Object getReviewList = paramMap.put("myReviewList", myReviewList);
+		model.addAttribute("getReviewList", getReviewList);
+		
+		logger.info("myReviewList::::" + myReviewList);
+		
 		return "myPage/myPage_myReview";
 	}
 	

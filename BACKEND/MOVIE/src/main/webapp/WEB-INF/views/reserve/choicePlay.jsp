@@ -72,7 +72,7 @@
                   </div>
                   <div>
                     <div><a href="#none" id="movie_option1">영화명 순</a></div>
-                    <div><a href="#none" id="movie_option2">예매율 순</a></div>
+                    <div><a href="#none" id="movie_option2" class="clicked">예매율 순</a></div>
                   </div>
                   <div>
                     <ul class="movielist" id="movielist_text">
@@ -202,8 +202,59 @@
 
                   </div>
               </div>  
-
-
+          </section>
+          <section>
+              <div>
+                    <div id="movie_thumb"></div>
+                    <div id="movie_detail">
+                      <div>
+                        <div class="age00">All</div>
+                        <div><span id="movie_name">원신: 신들의 마지막 전쟁</span></div>
+                      </div>
+                      <div id="play_date">2023년 05월 20일 토요일</div>
+                      <div id="play_time">16시 10분 &#126; 18시 05분</div>
+                    </div>
+                  </div>
+                  <div>
+                    <div>강남 1관 일반석</div>
+                    <div id="seat_code">
+                      <div></div> 
+                      <div></div>
+                    </div>
+                  </div>
+                  <div id="price_calc">
+                    <div>
+                      성인
+                      <div>
+                        <span id="adult_price"></span>원 &times; <span id="adult_pick"></span>
+                      </div>
+                    </div>
+                    <div>
+                      청소년
+                      <div>
+                        <span id="youth_price"></span>원 &times; <span id="youth_pick"></span>
+                      </div>
+                    </div> 
+                    <div>
+                      경로
+                      <div>
+                        <span id="senior_price"></span>원 &times; <span id="senior_pick"></span>
+                      </div>
+                    </div>
+                    <div>
+                      우대
+                      <div>
+                        <span id="special_price"></span>원 &times; <span id="special_pick"></span>
+                      </div> 
+                    </div>
+                    <div>
+                      합계
+                      <div style="color: crimson">
+                        <span id="total_price" style="color: crimson"></span>원
+                      </div>
+                    </div>
+                  </div>
+                  <div><a href="#none">좌석 선택</a></div>
           </section>
         </main>
 

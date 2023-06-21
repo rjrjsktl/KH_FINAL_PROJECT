@@ -16,6 +16,7 @@ import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.items.model.vo.TimeTable;
 import com.kh.kgv.management.model.dao.ManagerDAO;
 import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
@@ -303,6 +304,26 @@ public class ManagerServiceImpl implements ManagerService {
 	
 	}
 	
+	// 관리자_극장 가격 목록 이동
+	@Override
+	public Map<String, Object> getCinemaPriceMap(int cp) {
+		// 영화관 수 조회
+		int cinemaPriceCount = dao.getCinemaPriceCount();
+
+		// 조회한 영화관 수를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, cinemaPriceCount);
+
+		// 영화관 리스트 조회
+		List<CinemaPrice> cinemaPriceList = dao.getCinemaPriceList(pagination);
+		
+		Map<String, Object> cinemaMap = new HashMap<String, Object>();
+		cinemaMap.put("pagination", pagination);
+		cinemaMap.put("cinemaPriceList", cinemaPriceList);
+		
+		return cinemaMap;
+	}
+
+	
 	//	 영화 상영 상태 업데이트
 	@Override
 	public int updateMovieST(Movie movie) {
@@ -442,6 +463,31 @@ public class ManagerServiceImpl implements ManagerService {
 		System.out.println("serviceImpl result:::::" + result);
 		return result;
 	}
+	
+	// 관리자_극장 가격 중복 조회
+	@Override
+	public Boolean checkPrice(CinemaPrice cp) {
+		return dao.checkPrice(cp);
+	}
+	
+	// 관리자_극장 가격 등록
+	@Override
+	public int addCinemaPrice(CinemaPrice cp) {
+		return dao.addCinemaPrice(cp);
+	}
+	
+	// 관리자_극장 가격 수정 이동
+	@Override
+	public Map<String, Object> getEditPriceList(CinemaPrice price) {
+		return dao.getEditPriceList(price);
+	}
+
+	// 관리자_극장 가격 수정
+	@Override
+	public int EditCinemaPrice(CinemaPrice cp) {
+		return dao.EditCinemaPrice(cp);
+	}
+
 
 
 
