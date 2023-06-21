@@ -3,6 +3,8 @@ package com.kh.kgv.management.model.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.ui.Model;
+
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
@@ -135,6 +137,9 @@ public interface ManagerService {
 
 	// 관리자_극장 가격 수정
 	int EditCinemaPrice(CinemaPrice cp);
+	
+	// 관리자_배너 수정 이동
+	Map<String, Object> getEditBannerList(banner banner);
 
 
 

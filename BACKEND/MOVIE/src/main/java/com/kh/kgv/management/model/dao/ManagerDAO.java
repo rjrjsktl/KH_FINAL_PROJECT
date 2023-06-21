@@ -344,6 +344,11 @@ public class ManagerDAO {
 		return sqlSession.update("cinemaMapper.EditCinemaPrice", cp);
 	}
 	
+	// 관리자_배너 수정 이동
+	public Map<String, Object> getEditBannerList(banner banner) {
+		return sqlSession.selectOne("managerMapper.getEditBannerList", banner);
+	}
+	
 
 
 

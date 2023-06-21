@@ -1096,9 +1096,22 @@ public class ManagerController {
 	// ===================================================
 
 	// 관리자_배너 수정 이동
-	@GetMapping("/banner_edit")
-	public String moveBannerEdit() {
+	@GetMapping("/banner_list/edit/{bannerNo}")
+	public String moveBannerEdit(
+			banner banner
+			, Model model
+			, @PathVariable("bannerNo") int bannerNo
+			) {
 
+		Map<String, Object> editBannerList = null;
+
+		banner.setBannerNo(bannerNo);
+
+		editBannerList = service.getEditBannerList(banner);
+		
+		model.addAttribute("editBannerList", editBannerList);
+
+		
 		System.out.println("관리자_배너 수정 이동");
 
 		return "manager/manager_banner_edit";
@@ -1166,6 +1179,44 @@ public class ManagerController {
 			jsonArray.add(jsonObject);
 		}
 
+		String jsonResult = jsonArray.toString();
+		System.out.println("이미지: " + jsonResult);
+		return jsonResult;
+	}
+	
+	// ===================================================
+	// ===================================================
+	// 배너 수정 이미지 업로드
+	@PostMapping("/banner_list/edit/{bannerNo}/uploadImageFile")
+	@ResponseBody
+	public String bannerEditImageFile(@RequestParam("file") MultipartFile[] multipartFiles,
+			HttpServletRequest request) {
+		JsonArray jsonArray = new JsonArray();
+		
+		String webPath = "/resources/images/banner_img/";
+		String fileRoot = request.getServletContext().getRealPath(webPath);
+		
+		for (MultipartFile multipartFile : multipartFiles) {
+			JsonObject jsonObject = new JsonObject();
+			
+			String originalFileName = multipartFile.getOriginalFilename();
+			String savedFileName = Util.fileRename(originalFileName);
+			
+			File targetFile = new File(fileRoot + savedFileName);
+			try {
+				InputStream fileStream = multipartFile.getInputStream();
+				FileUtils.copyInputStreamToFile(fileStream, targetFile);
+				jsonObject.addProperty("", request.getContextPath() + webPath + savedFileName);
+				
+			} catch (IOException e) {
+				FileUtils.deleteQuietly(targetFile);
+				jsonObject.addProperty("responseCode", "error");
+				e.printStackTrace();
+			}
+			
+			jsonArray.add(jsonObject);
+		}
+		
 		String jsonResult = jsonArray.toString();
 		System.out.println("이미지: " + jsonResult);
 		return jsonResult;
