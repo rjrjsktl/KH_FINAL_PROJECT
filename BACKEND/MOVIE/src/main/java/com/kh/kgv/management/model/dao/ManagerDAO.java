@@ -349,6 +349,7 @@ public class ManagerDAO {
 		return sqlSession.selectOne("managerMapper.getEditBannerList", banner);
 	}
 	
+	
 
 
 
