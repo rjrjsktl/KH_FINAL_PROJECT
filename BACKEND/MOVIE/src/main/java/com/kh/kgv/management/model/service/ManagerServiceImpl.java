@@ -15,6 +15,7 @@ import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.items.model.vo.TimeTable;
 import com.kh.kgv.management.model.dao.ManagerDAO;
+import com.kh.kgv.management.model.vo.Benefits;
 import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
@@ -486,6 +487,26 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public int EditCinemaPrice(CinemaPrice cp) {
 		return dao.EditCinemaPrice(cp);
+	}
+	
+	// 관리자_혜택 목록 조회
+	@Override
+	public Map<String, Object> getBenefitsList(int cp) {
+		// 혜택 수 조회
+		int benefitsCount = dao.getBenefitsCount();
+
+		// 조회한 혜택 수를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, benefitsCount);
+
+		// 혜택 리스트 조회
+		List<Benefits> benefitsList = dao.getBenefitsList(pagination);
+		
+		Map<String, Object> getBenefitsList = new HashMap<String, Object>();
+		getBenefitsList.put("pagination", pagination);
+		getBenefitsList.put("benefitsList", benefitsList);
+		
+		return getBenefitsList;
+		
 	}
 
 

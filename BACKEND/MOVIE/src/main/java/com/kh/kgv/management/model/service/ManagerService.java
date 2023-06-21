@@ -135,6 +135,11 @@ public interface ManagerService {
 
 	// 관리자_극장 가격 수정
 	int EditCinemaPrice(CinemaPrice cp);
+	
+	// 관리자_혜택 목록 조회
+	Map<String, Object> getBenefitsList(int cp);
+
+	
 
 
 

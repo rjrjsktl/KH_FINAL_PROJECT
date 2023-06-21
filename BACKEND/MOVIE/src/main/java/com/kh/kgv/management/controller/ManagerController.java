@@ -1176,8 +1176,14 @@ public class ManagerController {
 
 	// 관리자_혜택 목록 이동
 	@GetMapping("/benefits_list")
-	public String moveBenefitsList() {
-
+	public String moveBenefitsList(Model model,
+								@RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+		
+		Map<String, Object> getBenefitsList = null;
+		getBenefitsList = service.getBenefitsList(cp);
+		model.addAttribute("getBenefitsList", getBenefitsList);
+		
+		
 		System.out.println("관리자_혜택 목록 이동");
 
 		return "manager/manager_benefits_list";
@@ -1194,6 +1200,26 @@ public class ManagerController {
 	}
 	
 	
+	// ===================================================
+	// ===================================================
+
+	// 관리자_혜택 등록 이동
+	@GetMapping("/event_list/edit/{eventNo}")
+	public String moveBenefitsEdit(Model model,
+								   CinemaPrice price,
+								   @PathVariable("priceNo") int priceNo) {
+		
+		Map<String, Object> editPrice = null;
+
+		price.setPriceNo(priceNo);
+
+		editPrice = service.getEditPriceList(price);
+		System.out.println("DAO에서 가지고 온 editEvent : " + editPrice);
+		model.addAttribute("editPrice", editPrice);
+						
+		System.out.println("관리자_극장 가격 수정 이동");
+		return "manager/manager_benfits_list_edit";
+	}
 	
 	
 	

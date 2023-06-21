@@ -14,6 +14,7 @@ import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.items.model.vo.TimeTable;
+import com.kh.kgv.management.model.vo.Benefits;
 import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
@@ -342,6 +343,19 @@ public class ManagerDAO {
 	// 관리자_극장 가격 수정
 	public int EditCinemaPrice(CinemaPrice cp) {
 		return sqlSession.update("cinemaMapper.EditCinemaPrice", cp);
+	}
+	
+	// 관리자_혜택 수 조회
+	public int getBenefitsCount() {
+		return sqlSession.selectOne("managerMapper.getBenefitsCount");
+	}
+	
+	// 관리자_혜택 리스트 조회
+	public List<Benefits> getBenefitsList(Pagination pagination) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("managerMapper.benefitsList", null, rowBounds);
 	}
 	
 

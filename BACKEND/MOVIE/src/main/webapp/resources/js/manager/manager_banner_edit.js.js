@@ -17,7 +17,7 @@ $(document).ready(function () {
         var data = new FormData();
         data.append("file", file);
         $.ajax({
-            url: 'banner_add/bannerUploadImage',
+            url: 'benefits_add/benefitsUploadImage',
             type: "POST",
             data: data,
             cache: false,
@@ -39,18 +39,18 @@ $(document).ready(function () {
     // ===============================================================================
 
     const submitBtn = $('.bottom_Submit');
-    const eventTitle = $('.enter_Title > input');
+    const benefitsTitle = $('.enter_Title > input');
     const enterUrl = $('.enter_url > input');
 
     submitBtn.on('click', (e) => {
         e.preventDefault();
-        console.log("제목 : " + eventTitle.val());
+        console.log("제목 : " + benefitsTitle.val());
         console.log("URL : " + enterUrl.val());
         console.log("이미지 : " + imageUrl1);
 
-        if (!eventTitle.val()) {
+        if (!benefitsTitle.val()) {
             alert('제목이 입력되지 않았습니다.');
-            eventTitle.focus();
+            benefitsTitle.focus();
             e.preventDefault();
             return false;
         };
@@ -63,17 +63,17 @@ $(document).ready(function () {
         };
 
         $.ajax({
-            url: "banner_add/insert",
+            url: "benefits_add/insert",
             data: {
-                "title": eventTitle.val()
+                "title": benefitsTitle.val()
                 , "url": enterUrl.val()
                 , "movieImg1": imageUrl1
             },
             type: "POST",
             success: function (result) {
                 if (result > 0) {
-                    alert("이벤트 등록 성공");
-                    let url = "/movie/manager/banner_list";
+                    alert("혜택 등록 성공");
+                    let url = "/movie/manager/benefits_list";
                     window.location.href = url;
                 } else {
                     alert("이벤트 등록 실패");

@@ -422,7 +422,7 @@
 	
 	<!-- 혜택 등록 -->
 	<insert id="addBenefits" parameterType="benefits">
-		INSERT INTO EVENT
+		INSERT INTO BENEFITS
 		VALUES (
 		SEQ_BENEFITS_NO.NEXTVAL
 		, #{benefitsTitle}
@@ -461,6 +461,20 @@
 		, #{priceCouple}
 		)
 	</insert>
+	
+	<!-- 혜택 수 조회 -->
+	<select id="getBenefitsCount" resultType="_int">
+		SELECT COUNT(BENEFITS_NO) FROM BENEFITS
+	</select>
+	
+	<!-- 혜택 리스트 조회 -->
+	<select id="benefitsList" resultMap="benefits_rm">
+		SELECT * FROM BENEFITS
+		ORDER BY BENEFITS_NO DESC
+	</select>
+	
+	
+	
 	
 
 </mapper>
