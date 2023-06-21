@@ -468,5 +468,14 @@
 		WHERE BANNER_NO = #{bannerNo}
 	</select>
 	
+			<!-- 배너 수정 -->
+		<update id="editBanner" parameterType="banner">
+		UPDATE BANNER SET
+		BANNER_TITLE = #{bannerTitle}
+		, BANNER_IMG = #{bannerImg}
+		, BANNER_URL = #{bannerUrl}
+		WHERE BANNER_NO = #{bannerNo}
+	</update>
+	
 
 </mapper>

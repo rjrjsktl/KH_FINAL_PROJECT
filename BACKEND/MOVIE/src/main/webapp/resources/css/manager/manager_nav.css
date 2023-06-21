@@ -15,7 +15,7 @@
 
 /* Nav 영역 */
 #left_Nav_Container {
-    flex: 1.5;
+    width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
