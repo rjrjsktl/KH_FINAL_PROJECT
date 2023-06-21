@@ -28,18 +28,17 @@ public class HelpDeskDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	//mtmlistCount
-	
 	public int getMtmListCount() {
 		return sqlSession.selectOne("mtmMapper.getMtmCount");
 	}
 	
-	public int getMtmListCount(int userNo) {
+	public int getMtmListCount(int userNo, int userManagerStAsInt) {
 		Map<String, Object> params = new HashMap<>();
 		params.put("userNo", userNo);
-		User users = new User();
-		params.put("managerSt", users.getUserManagerSt());
+		params.put("userManagerSt", userManagerStAsInt);
 		System.out.println("현재 접속중인 유저 넘버는 =====================%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+userNo);
+		System.out.println("현재 카운트가능한 갯수권한은 =====================%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+userManagerStAsInt);
+
 		return sqlSession.selectOne("mtmMapper.getUserMtmCount", params);
 	}
 	
@@ -59,16 +58,14 @@ public class HelpDeskDAO {
 	}
 
 
-	public List<Mtm> getMtmList(MtmPagenation pagination, int userNo) {
+	public List<Mtm> getMtmList(MtmPagenation pagination, int userNo, int userManagerStAsInt) {
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
 	    Map<String, Object> params = new HashMap<>();
 	    params.put("userNo", userNo);
+	    params.put("userManagerSt", userManagerStAsInt);
 	    
-		System.out.println("현재 접속중인 유저 넘버는 ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆"+userNo);
-		
-		
 		return sqlSession.selectList("mtmMapper.userMtmList", params , rowBounds);
 	}
 

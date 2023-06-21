@@ -124,7 +124,7 @@ $(document).ready(function () {
 
             console.log($(this).val());
             $.ajax({
-                url: "store_add/NameDupCheck",
+                url: "/movie/manager/store_list/edit/" + storeNo.val() + "/store_edit/NameDupChecks",
                 data: { "storeName": $(this).val() },
                 type: "GET",
                 success: function (result) {

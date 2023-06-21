@@ -47,41 +47,58 @@
 
 						<h2>1:1 문의</h2>
 
-					
+
 
 						<div class="notice-contents">
 							<div>
 								<span>${mTmdetail.mtmTitle}</span>
 							</div>
 							<div>
-								<span><span>${mTmdetail.mtmWriter}</span> <span>|</span> <span>${mTmdetail.mtmRegdate}
-								</span></span>
+								<span><span>${mTmdetail.mtmWriter}</span> <span>|</span>
+									<span>${mTmdetail.mtmRegdate} </span></span>
 							</div>
-							<div class="contentText-wrap">${mTmdetail.mtmContent} </div>
+							<div class="contentText-wrap">${mTmdetail.mtmContent}</div>
 						</div>
-
-			<!-- 			<div class="movie-reply" style="display:none">
-
-							<div class="replywritewrap">
-								<span>1:1문의 작성</span>
-
-								<div>
-									<form action="" class="replywrite">
-										<textarea name="" id="" cols="30" rows="3"></textarea>
-										<div class="replyBtn">문의 작성</div>
-									</form>
-								</div>
-							</div>
-
-						</div>
-						 -->
 					</div>
 
-					<div class="btn_wraper" >
+					<c:if
+						test="${mTmdetail.mtmRepSt == 'Y'}">
+
+						<div class="reply">
+							<div class="reply-info">
+								<p>${mTmdetail.mtmWriter}님 답변드립니다.</p>
+								<span class="reply-writer-info"><span>${mTmdetail.mtmRepWriter}</span><span>|</span><span>${mTmdetail.mtmRepDate}</span></span>
+							</div>
+							<div>
+								<div class="reply-content">
+									윤석이용!
+								</div>
+							</div>
+						</div>
 						
-						<button id="deleteMtm" data-mtmno="${mTmdetail.mtmNo}"><a>삭제</a></button>
-						<button class="goback"><a href="${contextPath}/helpDesk/mTm_List">목록으로</a></button>
-						
+					<c:if
+						test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y'}">
+						<div class="reply_delete">삭제하기</div>
+					</c:if>
+					</c:if>
+
+					<c:if
+						test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y' && mTmdetail.mtmRepSt == 'N'}">
+
+						<div class="reply_wrap btn_wraper">
+							<textarea></textarea>
+							<button>등록하기</button>
+						</div>
+
+					</c:if>
+					<div class="btn_wraper">
+						<button id="deleteMtm" data-mtmno="${mTmdetail.mtmNo}">
+							<a>삭제</a>
+						</button>
+						<button class="goback">
+							<a href="${contextPath}/helpDesk/mTm_List">목록으로</a>
+						</button>
+
 					</div>
 				</div>
 
@@ -91,7 +108,7 @@
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-	
+
 	<script src="${contextPath}/resources/js/helpDesk/replys.js"></script>
 	<script src="${contextPath}/resources/js/helpDesk/mTm.js"></script>
 </body>
