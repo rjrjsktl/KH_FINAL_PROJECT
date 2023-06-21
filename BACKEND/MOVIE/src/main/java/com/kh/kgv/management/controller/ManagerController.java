@@ -920,11 +920,11 @@ public class ManagerController {
 	}
 	
 	
-	//// 영화 수정 등록
+	//// 스토어 수정 등록
 	@ResponseBody
-	@PostMapping("/movie_list/edit/{movieNo}/store_edit")
+	@PostMapping("/store_list/edit/{storeNo}/store_edit")
 	public int StoreEdit(Store updateStore, @PathVariable("storeNo") int storeNo) {
-		logger.info("스토어ㅏ 수정 기능 수행");
+		logger.info("스토어 수정 기능 수행");
 
 		logger.info("updateStore" + updateStore);
 
@@ -934,6 +934,43 @@ public class ManagerController {
 		
 		return result;
 	}
+	
+	
+	// 스토어 수정 이미지 업로드
+			@PostMapping("/store_list/edit/{storeNo}/store_edit/uploadImageFile")
+			@ResponseBody
+			public String storeUpdateImageFile(@RequestParam("file") MultipartFile[] multipartFiles,
+					HttpServletRequest request) {
+				JsonArray jsonArray = new JsonArray();
+
+				String webPath = "/resources/images/storeimg/";
+				String fileRoot = request.getServletContext().getRealPath(webPath);
+
+				for (MultipartFile multipartFile : multipartFiles) {
+					JsonObject jsonObject = new JsonObject();
+
+					String originalFileName = multipartFile.getOriginalFilename();
+					String savedFileName = Util.fileRename(originalFileName);
+
+					File targetFile = new File(fileRoot + savedFileName);
+					try {
+						InputStream fileStream = multipartFile.getInputStream();
+						FileUtils.copyInputStreamToFile(fileStream, targetFile);
+						jsonObject.addProperty("", request.getContextPath() + webPath + savedFileName);
+
+					} catch (IOException e) {
+						FileUtils.deleteQuietly(targetFile);
+						jsonObject.addProperty("responseCode", "error");
+						e.printStackTrace();
+					}
+
+					jsonArray.add(jsonObject);
+				}
+
+				String jsonResult = jsonArray.toString();
+				System.out.println("이미지: " + jsonResult);
+				return jsonResult;
+			}
 	
 	
 	// 관리자_스토어 물품 등록
