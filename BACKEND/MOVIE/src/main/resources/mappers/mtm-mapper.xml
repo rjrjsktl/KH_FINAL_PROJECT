@@ -26,12 +26,10 @@
 		MTM_TBL
 	</select>
 
-
 	<select id="selectMtmNo" resultType="_int">
 		SELECT MAX(MTM_NO) AS
 		maxMtmNo FROM MTM_TBL WHERE USER_NO = ${userNo}
 	</select>
-
 
 	<select id="getUserMtmCount" resultType="_int">
 		SELECT COUNT(MTM_NO)
@@ -45,20 +43,13 @@
 			<when test="userNo != 0  and userManagerSt == 0">
 				MTM_TBL.USER_NO = #{userNo} AND MTM_TBL.MTM_ST = 'N'
 			</when>
-			<otherwise>	
+			<otherwise>
 				MTM_TBL.USER_NO = 0 AND MTM_TBL.MTM_ST = 'N'
 			</otherwise>
 		</choose>
-		
+
 	</select>
-
-
-
-	<select id="getNextmtmNo" resultType="_int">
-		SELECT (COUNT(MTM_NO) + 1)
-		AS NEXT_MTM_NO FROM MTM_TBL
-	</select>
-
+	
 	<select id="userMtmList" resultMap="mtm_rm">
 		SELECT
 		MTM_NO,
@@ -70,7 +61,8 @@
 		FROM
 		MTM_TBL
 		INNER JOIN
-		USERS ON MTM_TBL.USER_NO = USERS.USER_NO
+		USERS ON
+		MTM_TBL.USER_NO = USERS.USER_NO
 		WHERE
 		<choose>
 			<when
@@ -78,9 +70,10 @@
 				MTM_TBL.MTM_ST = 'N' ORDER BY MTM_TBL.MTM_NO DESC
 			</when>
 			<when test="userNo != 0  and userManagerSt == 0">
-				MTM_TBL.USER_NO = #{userNo} AND MTM_TBL.MTM_ST = 'N' ORDER BY MTM_TBL.MTM_NO DESC
+				MTM_TBL.USER_NO = #{userNo} AND MTM_TBL.MTM_ST = 'N'
+				ORDER BY MTM_TBL.MTM_NO DESC
 			</when>
-			<otherwise>	
+			<otherwise>
 				MTM_TBL.USER_NO = 0 AND MTM_TBL.MTM_ST = 'N'
 			</otherwise>
 		</choose>
@@ -97,6 +90,7 @@
 		MTM_WRITER
 		, MTM_REPST
 		, MTM_REPWRITER
+		, MTM_REPCONTENT
 		,TO_CHAR(MTM_REPDATE, 'YYYY.MM.DD HH24:MM') AS MTM_REPDATE
 		FROM MTM_TBL
 		WHERE MTM_NO = #{mtmNo}
@@ -110,7 +104,8 @@
 		, #{mtmContent}
 		, NULL
 		, #{userNo}
-		, #{mtmType}
+		,
+		#{mtmType}
 		, DEFAULT
 		, DEFAULT
 		, DEFAULT
@@ -120,8 +115,13 @@
 		, DEFAULT
 		, DEFAULT
 		)
-		
+
 	</insert>
+
+
+
+
+
 
 	<update id="deleteBoard">
 		UPDATE MTM_TBL SET
@@ -129,5 +129,24 @@
 		WHERE MTM_NO = ${mtmNo}
 	</update>
 
+	<update id="replyDelete">
+		UPDATE MTM_TBL SET
+		MTM_REPST = 'N'
+		WHERE MTM_NO =
+		${mtmNo}
+	</update>
 
+	<update id="replyWrite">
+		UPDATE MTM_TBL
+		SET
+		MTM_REPCONTENT = #{content},
+		MTM_REPWRITER = #{managerNick},
+		MTM_REPST = 'Y',
+		MTM_REPDATE = DEFAULT
+		WHERE MTM_NO = #{mtmNo}
+	</update>
+	
+	
+	
+	
 </mapper>

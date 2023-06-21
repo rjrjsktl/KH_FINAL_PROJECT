@@ -71,14 +71,14 @@
 							</div>
 							<div>
 								<div class="reply-content">
-									윤석이용!
+									${mTmdetail.mtmRepContent}
 								</div>
 							</div>
 						</div>
 						
 					<c:if
 						test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y'}">
-						<div class="reply_delete">삭제하기</div>
+						<button class="reply_delete" data-mtmno="${mTmdetail.mtmNo}" id="reply_deleteBtn"><a>답변 삭제하기</a></button>
 					</c:if>
 					</c:if>
 
@@ -86,8 +86,8 @@
 						test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y' && mTmdetail.mtmRepSt == 'N'}">
 
 						<div class="reply_wrap btn_wraper">
-							<textarea></textarea>
-							<button>등록하기</button>
+							<textarea id="contentTextarea"></textarea>
+							<button data-mtmno="${mTmdetail.mtmNo}" id="reply_writeBtn"><a>등록하기</a></button>
 						</div>
 
 					</c:if>
@@ -109,7 +109,6 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 
-	<script src="${contextPath}/resources/js/helpDesk/replys.js"></script>
 	<script src="${contextPath}/resources/js/helpDesk/mTm.js"></script>
 </body>
 
