@@ -462,5 +462,11 @@
 		)
 	</insert>
 	
+		<!-- 관리자_배너 수정 이동 -->
+	<select id="getEditBannerList" resultType="HashMap">
+		SELECT * FROM BANNER
+		WHERE BANNER_NO = #{bannerNo}
+	</select>
+	
 
 </mapper>

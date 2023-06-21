@@ -53,7 +53,7 @@ public class StoreController {
 			 
 			) {
 		
-
+//		store.setStoreNo(storeNo);
 		
 		Store getStoreDetail = service.getStoreDetail(store);
 		
