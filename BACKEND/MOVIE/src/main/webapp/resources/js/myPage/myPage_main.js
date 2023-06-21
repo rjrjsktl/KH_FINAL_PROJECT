@@ -151,8 +151,10 @@ function closeDaumPostcode() {
 }
 
 function execDaumPostcode() {
+	console.log("주소 검색 js");	
     new daum.Postcode({
-        oncomplete: function(data) {
+    	oncomplete: function (data) {
+        
             // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
             // 각 주소의 노출 규칙에 따라 주소를 조합한다.
@@ -193,8 +195,8 @@ function execDaumPostcode() {
 // resize이벤트나, orientationchange이벤트를 이용하여 값이 변경될때마다 아래 함수를 실행 시켜 주시거나,
 // 직접 element_layer의 top,left값을 수정해 주시면 됩니다.
 function initLayerPosition(){
-    var width = 500; //우편번호서비스가 들어갈 element의 width
-    var height = 400; //우편번호서비스가 들어갈 element의 height
+    var width = 600; //우편번호서비스가 들어갈 element의 width
+    var height = 450; //우편번호서비스가 들어갈 element의 height
     var borderWidth = 5; //샘플에서 사용하는 border의 두께
 
     // 위에서 선언한 값들을 실제 element에 넣는다.
