@@ -33,6 +33,7 @@ import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
+import com.kh.kgv.management.model.service.ManageStoreService;
 import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
@@ -52,9 +53,12 @@ public class ManagerController {
 
 	@Autowired
 	private ManagerService service;
-	
+
 	@Autowired
 	private MovieService movieService;
+
+	@Autowired
+	private ManageStoreService services;
 
 	// 관리자_메인페이지 이동
 	@GetMapping("/main")
@@ -67,7 +71,7 @@ public class ManagerController {
 		// 관리자 메인 공지사항 목록 조회
 		List<Notice> getNotice = null;
 		getNotice = service.getAllNotice();
-		
+
 		// 관리자 메인 상영중인 영화
 		Map<String, Object> getMovieList = null;
 		getMovieList = movieService.mainMovieList();
@@ -356,19 +360,19 @@ public class ManagerController {
 		System.out.println("관리자_극장 목록 이동");
 		return "manager/manager_cinema_list";
 	}
-	
+
 	// ===================================================
 	// ===================================================
-	
+
 	// 관리자_극장 가격 목록 이동
 	@GetMapping("/manager_cinemaPrice_list")
 	public String moveCinemaPriceList(Model model,
 			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
-		
+
 		Map<String, Object> cinemaPriceMap = null;
 		cinemaPriceMap = service.getCinemaPriceMap(cp);
 		model.addAttribute("cinemaMap", cinemaPriceMap);
-		
+
 		System.out.println("관리자_가격 목록 이동");
 		return "manager/manager_cinemaPrice_list";
 	}
@@ -385,14 +389,12 @@ public class ManagerController {
 
 	// ===================================================
 	// ===================================================
-	
+
 	// 관리자_극장 가격 수정 이동
 	@GetMapping("/manager_cinemaPrice_list/edit/{priceNo}")
 	public String moveCinemaPriceEdit(
-			Model model
-			, CinemaPrice price
-			, @PathVariable("priceNo") int priceNo) {
-		
+			Model model, CinemaPrice price, @PathVariable("priceNo") int priceNo) {
+
 		Map<String, Object> editPrice = null;
 
 		price.setPriceNo(priceNo);
@@ -400,58 +402,48 @@ public class ManagerController {
 		editPrice = service.getEditPriceList(price);
 		System.out.println("DAO에서 가지고 온 editEvent : " + editPrice);
 		model.addAttribute("editPrice", editPrice);
-						
+
 		System.out.println("관리자_극장 가격 수정 이동");
 		return "manager/manager_cinemaPrice_list_edit";
 	}
-	
+
 	// ===================================================
 	// ===================================================
-	
+
 	// 관리자_극장 가격 중복 조회
 	@PostMapping("/manager_cinema_price/check")
 	@ResponseBody
 	public Boolean checkCinemaPrice(
-			@RequestParam("checkScreen") String checkScreen
-			, @RequestParam("checkWeek") String checkWeek
-			, @RequestParam("checkTime") String checkTime
-			, CinemaPrice cp
-			) {
-		
+			@RequestParam("checkScreen") String checkScreen, @RequestParam("checkWeek") String checkWeek,
+			@RequestParam("checkTime") String checkTime, CinemaPrice cp) {
+
 		cp.setScreenStyle(checkScreen);
 		cp.setPriceDay(checkWeek);
 		cp.setPriceTime(checkTime);
-		
+
 		Boolean result = service.checkPrice(cp);
-		
-		if(result ) {
+
+		if (result) {
 			System.out.println("이미 가격이 DB에 있음");
 		} else {
 			System.out.println("가격이 DB에 없음");
 		}
-		
 
 		return result;
 	}
-	
+
 	// ===================================================
 	// ===================================================
-	
+
 	// 관리자_극장 가격 등록
 	@PostMapping("/manager_cinema_price/add")
 	@ResponseBody
 	public int addCinemaPrice(
-			@RequestParam("screenType") String screenType
-			, @RequestParam("chooseDay") String chooseDay
-			, @RequestParam("chooseTime") String chooseTime
-			, @RequestParam("teen") String teen
-			, @RequestParam("normal") String normal
-			, @RequestParam("elder") String elder
-			, @RequestParam("special") String special
-			, @RequestParam("couple") String couple
-			, CinemaPrice cp
-			) {
-		
+			@RequestParam("screenType") String screenType, @RequestParam("chooseDay") String chooseDay,
+			@RequestParam("chooseTime") String chooseTime, @RequestParam("teen") String teen,
+			@RequestParam("normal") String normal, @RequestParam("elder") String elder,
+			@RequestParam("special") String special, @RequestParam("couple") String couple, CinemaPrice cp) {
+
 		cp.setScreenStyle(screenType);
 		cp.setPriceDay(chooseDay);
 		cp.setPriceTime(chooseTime);
@@ -460,67 +452,58 @@ public class ManagerController {
 		cp.setPriceElder(elder);
 		cp.setPriceSpecial(special);
 		cp.setPriceCouple(couple);
-		
+
 		int result = service.addCinemaPrice(cp);
-		
-		if(result > 0 ) {
+
+		if (result > 0) {
 			System.out.println("가격을 DB에 추가 완료");
 		} else {
 			System.out.println("가격을 DB에 추가 실패");
 		}
-		
-		
+
 		return result;
 	}
-	
+
 	// ===================================================
 	// ===================================================
-	
+
 	// 관리자_극장 가격 수정
-		@ResponseBody
-		@PostMapping("/manager_cinemaPrice_list/edit/{priceNo}/edit")
-		public int EditCinemaPrice(
-				@RequestParam("screenType") String screenType
-				, @RequestParam("chooseDay") String chooseDay
-				, @RequestParam("chooseTime") String chooseTime
-				, @RequestParam("teen") String teen
-				, @RequestParam("normal") String normal
-				, @RequestParam("elder") String elder
-				, @RequestParam("special") String special
-				, @RequestParam("couple") String couple
-				, @RequestParam("priceNo") int priceNo				
-				, CinemaPrice cp) {
-			
-			cp.setScreenStyle(screenType);
-			cp.setPriceDay(chooseDay);
-			cp.setPriceTime(chooseTime);
-			cp.setPriceTeen(teen);
-			cp.setPriceNormal(normal);
-			cp.setPriceElder(elder);
-			cp.setPriceSpecial(special);
-			cp.setPriceCouple(couple);
-			cp.setPriceNo(priceNo);
-			
-			
-			int result = service.EditCinemaPrice(cp);
+	@ResponseBody
+	@PostMapping("/manager_cinemaPrice_list/edit/{priceNo}/edit")
+	public int EditCinemaPrice(
+			@RequestParam("screenType") String screenType, @RequestParam("chooseDay") String chooseDay,
+			@RequestParam("chooseTime") String chooseTime, @RequestParam("teen") String teen,
+			@RequestParam("normal") String normal, @RequestParam("elder") String elder,
+			@RequestParam("special") String special, @RequestParam("couple") String couple,
+			@RequestParam("priceNo") int priceNo, CinemaPrice cp) {
 
+		cp.setScreenStyle(screenType);
+		cp.setPriceDay(chooseDay);
+		cp.setPriceTime(chooseTime);
+		cp.setPriceTeen(teen);
+		cp.setPriceNormal(normal);
+		cp.setPriceElder(elder);
+		cp.setPriceSpecial(special);
+		cp.setPriceCouple(couple);
+		cp.setPriceNo(priceNo);
 
-			return result;
-		}
+		int result = service.EditCinemaPrice(cp);
 
-		// ===================================================
-		// ===================================================
+		return result;
+	}
+
+	// ===================================================
+	// ===================================================
 
 	// 관리자_상영영화 목록 이동
 	@GetMapping("/play_list")
 	public String movePlayList(
-			Model model
-			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
-				Map<String, Object> getMovieList = null;
-				getMovieList = movieService.managerMovieList(cp);
-				
-				model.addAttribute("getMovieList", getMovieList);
-		
+			Model model, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+		Map<String, Object> getMovieList = null;
+		getMovieList = movieService.managerMovieList(cp);
+
+		model.addAttribute("getMovieList", getMovieList);
+
 		System.out.println("관리자_상영시간 목록 이동");
 		return "manager/manager_movie_play_list";
 	}
@@ -713,10 +696,10 @@ public class ManagerController {
 	@ResponseBody
 	@PostMapping("/notice_add/write_Notice")
 	public int addNotice(
-			@RequestParam("title") String title, 
+			@RequestParam("title") String title,
 			@RequestParam("content") String content,
-			@RequestParam("userName") String userName) 
-	
+			@RequestParam("userName") String userName)
+
 	{
 		Notice notice = new Notice();
 
@@ -905,21 +888,17 @@ public class ManagerController {
 
 	// 관리자 스토어 물품 수정
 	@GetMapping("/store_list/edit/{storeNo}")
-	public String editStore(@PathVariable("storeNo") int storeNo,Model model, Store store ) {
-		
+	public String editStore(@PathVariable("storeNo") int storeNo, Model model, Store store) {
+
 		store.setStoreNo(storeNo);
-		
+
 		Store editStore = service.getEditStoreList(store);
-		
-		
+
 		model.addAttribute("editStore", editStore);
 
-		
-		
 		return "manager/manager_store_edit";
 	}
-	
-	
+
 	//// 스토어 수정 등록
 	@ResponseBody
 	@PostMapping("/store_list/edit/{storeNo}/store_edit")
@@ -931,48 +910,59 @@ public class ManagerController {
 		int result = service.StoreEdit(updateStore);
 
 		logger.info("update result:::" + result);
-		
+
 		return result;
 	}
-	
-	
+
+	// 스토어 수정 이름 중복 검사
+	@ResponseBody
+	@GetMapping("/store_list/edit/{storeNo}/store_edit/NameDupChecks")
+	public int NameDupChecks(String storeName) {
+		System.out.println(storeName);
+		int result = services.NameDupCheck(storeName);
+
+		System.out.println(result);
+		return result;
+
+	}
+
 	// 스토어 수정 이미지 업로드
-			@PostMapping("/store_list/edit/{storeNo}/store_edit/uploadImageFile")
-			@ResponseBody
-			public String storeUpdateImageFile(@RequestParam("file") MultipartFile[] multipartFiles,
-					HttpServletRequest request) {
-				JsonArray jsonArray = new JsonArray();
+	@PostMapping("/store_list/edit/{storeNo}/store_edit/uploadImageFile")
+	@ResponseBody
+	public String storeUpdateImageFile(@RequestParam("file") MultipartFile[] multipartFiles,
+			HttpServletRequest request) {
+		JsonArray jsonArray = new JsonArray();
 
-				String webPath = "/resources/images/storeimg/";
-				String fileRoot = request.getSession().getServletContext().getRealPath(webPath);
+		String webPath = "/resources/images/storeimg/";
 
-				for (MultipartFile multipartFile : multipartFiles) {
-					JsonObject jsonObject = new JsonObject();
+		String fileRoot = request.getSession().getServletContext().getRealPath(webPath);
 
-					String originalFileName = multipartFile.getOriginalFilename();
-					String savedFileName = Util.fileRename(originalFileName);
+		for (MultipartFile multipartFile : multipartFiles) {
+			JsonObject jsonObject = new JsonObject();
 
-					File targetFile = new File(fileRoot + savedFileName);
-					try {
-						InputStream fileStream = multipartFile.getInputStream();
-						FileUtils.copyInputStreamToFile(fileStream, targetFile);
-						jsonObject.addProperty("", request.getContextPath() + webPath + savedFileName);
+			String originalFileName = multipartFile.getOriginalFilename();
+			String savedFileName = Util.fileRename(originalFileName);
 
-					} catch (IOException e) {
-						FileUtils.deleteQuietly(targetFile);
-						jsonObject.addProperty("responseCode", "error");
-						e.printStackTrace();
-					}
+			File targetFile = new File(fileRoot + savedFileName);
+			try {
+				InputStream fileStream = multipartFile.getInputStream();
+				FileUtils.copyInputStreamToFile(fileStream, targetFile);
+				jsonObject.addProperty("", request.getContextPath() + webPath + savedFileName);
 
-					jsonArray.add(jsonObject);
-				}
-
-				String jsonResult = jsonArray.toString();
-				System.out.println("이미지: " + jsonResult);
-				return jsonResult;
+			} catch (IOException e) {
+				FileUtils.deleteQuietly(targetFile);
+				jsonObject.addProperty("responseCode", "error");
+				e.printStackTrace();
 			}
-	
-	
+
+			jsonArray.add(jsonObject);
+		}
+
+		String jsonResult = jsonArray.toString();
+		System.out.println("이미지: " + jsonResult);
+		return jsonResult;
+	}
+
 	// 관리자_스토어 물품 등록
 	@GetMapping("/store_add")
 	public String moveStoreAdd() {
@@ -1084,13 +1074,11 @@ public class ManagerController {
 	// 관리자_배너 목록 이동
 	@GetMapping("/banner_list")
 	public String moveBannerList(
-			Model model
-			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
-			) {
+			Model model, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
 
 		Map<String, Object> getBannerList = null;
 		getBannerList = service.getBannerList(cp);
-		
+
 		model.addAttribute("getBannerList", getBannerList);
 
 		System.out.println("관리자_배너 목록 이동");
@@ -1131,65 +1119,54 @@ public class ManagerController {
 	// 관리자_배너 수정 이동
 	@GetMapping("/banner_list/edit/{bannerNo}")
 	public String moveBannerEdit(
-			banner banner
-			, Model model
-			, @PathVariable("bannerNo") int bannerNo
-			) {
+			banner banner, Model model, @PathVariable("bannerNo") int bannerNo) {
 
 		Map<String, Object> editBannerList = null;
 
 		banner.setBannerNo(bannerNo);
 
 		editBannerList = service.getEditBannerList(banner);
-		
+
 		model.addAttribute("editBannerList", editBannerList);
 
-		
 		System.out.println("관리자_배너 수정 이동");
 
 		return "manager/manager_banner_edit";
 	}
-	
+
 	// ===================================================
 	// ===================================================
-	
+
 	// 관리자_배너 수정
 	@PostMapping("/banner_list/edit/{bannerNo}/edit")
 	@ResponseBody
 	public int editBanner(
-			banner banner
-			, @RequestParam("title") String title
-			, @RequestParam("url") String url
-			, @RequestParam("movieImg1") String img
-			,  @RequestParam("bannerNo") int bannerNo
-			) {
+			banner banner, @RequestParam("title") String title, @RequestParam("url") String url,
+			@RequestParam("movieImg1") String img, @RequestParam("bannerNo") int bannerNo) {
 
-	
-	banner.setBannerTitle(title);
-	banner.setBannerUrl(url);
-	banner.setBannerImg(img);
-	banner.setBannerNo(bannerNo);
-	
-	System.out.println("=======================들어온 banner는 : " + banner);
-	
-//	int result = 1;
+		banner.setBannerTitle(title);
+		banner.setBannerUrl(url);
+		banner.setBannerImg(img);
+		banner.setBannerNo(bannerNo);
 
-	int result = service.editBanner(banner);
+		System.out.println("=======================들어온 banner는 : " + banner);
 
-	return result;
+		// int result = 1;
+
+		int result = service.editBanner(banner);
+
+		return result;
 
 	}
 
 	// ===================================================
 	// ===================================================
-	
-		// 관리자_배너 상태 업데이트
+
+	// 관리자_배너 상태 업데이트
 	@ResponseBody
 	@PostMapping("/banner_ST")
 	public int changeBannerSt(
-			@RequestParam("BST") String bst
-			, @RequestParam("bannerNo") int bannerNo
-			, banner banner) {
+			@RequestParam("BST") String bst, @RequestParam("bannerNo") int bannerNo, banner banner) {
 
 		banner.setBannerSt(bst);
 		banner.setBannerNo(bannerNo);
@@ -1206,8 +1183,7 @@ public class ManagerController {
 		}
 		return result;
 	}
-	
-	
+
 	// ===================================================
 	// ===================================================
 
@@ -1246,7 +1222,7 @@ public class ManagerController {
 		System.out.println("이미지: " + jsonResult);
 		return jsonResult;
 	}
-	
+
 	// ===================================================
 	// ===================================================
 	// 배너 수정 이미지 업로드
@@ -1255,36 +1231,36 @@ public class ManagerController {
 	public String bannerEditImageFile(@RequestParam("file") MultipartFile[] multipartFiles,
 			HttpServletRequest request) {
 		JsonArray jsonArray = new JsonArray();
-		
+
 		String webPath = "/resources/images/banner_img/";
 		String fileRoot = request.getServletContext().getRealPath(webPath);
-		
+
 		for (MultipartFile multipartFile : multipartFiles) {
 			JsonObject jsonObject = new JsonObject();
-			
+
 			String originalFileName = multipartFile.getOriginalFilename();
 			String savedFileName = Util.fileRename(originalFileName);
-			
+
 			File targetFile = new File(fileRoot + savedFileName);
 			try {
 				InputStream fileStream = multipartFile.getInputStream();
 				FileUtils.copyInputStreamToFile(fileStream, targetFile);
 				jsonObject.addProperty("", request.getContextPath() + webPath + savedFileName);
-				
+
 			} catch (IOException e) {
 				FileUtils.deleteQuietly(targetFile);
 				jsonObject.addProperty("responseCode", "error");
 				e.printStackTrace();
 			}
-			
+
 			jsonArray.add(jsonObject);
 		}
-		
+
 		String jsonResult = jsonArray.toString();
 		System.out.println("이미지: " + jsonResult);
 		return jsonResult;
 	}
-	
+
 	// ===================================================
 	// ===================================================
 
@@ -1296,7 +1272,7 @@ public class ManagerController {
 
 		return "manager/manager_benefits_list";
 	}
-	
+
 	// ===================================================
 	// ===================================================
 
@@ -1306,9 +1282,5 @@ public class ManagerController {
 		System.out.println("관리자_혜택 등록 이동");
 		return "manager/manager_benefits_add";
 	}
-	
-	
-	
-	
-	
+
 }

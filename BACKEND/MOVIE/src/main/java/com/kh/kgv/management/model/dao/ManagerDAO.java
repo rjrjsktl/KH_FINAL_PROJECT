@@ -352,6 +352,7 @@ public class ManagerDAO {
 		return sqlSession.update("managerMapper.editBanner",   banner);
 	}
 	
+	
 
 
 

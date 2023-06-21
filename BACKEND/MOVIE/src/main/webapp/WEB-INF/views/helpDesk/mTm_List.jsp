@@ -23,8 +23,12 @@
 	href="${contextPath}/resources/css/helpDesk/mtm_List.css">
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/common/notice_Aside.css">
-         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
+
+
 
 </head>
 
@@ -47,7 +51,7 @@
 
 							<div class="search-area">
 								<p>
-									1:1문의 게시글 총<span>${mtmCount}</span>건
+									1:1문의 게시글 총<span>${userMtmListCount}</span>건
 								</p>
 							</div>
 
@@ -73,8 +77,9 @@
 													varStatus="loop">
 													<c:if test="${loop.index < 10}">
 														<tr class="row">
-															<td>${userMtmList.mtmType}</td>
-															<td><a href="${contextPath}/helpDesk/mtm_detail/${userMtmList.mtmNo}">${userMtmList.mtmTitle}</a></td>
+															<td class="countRow">${userMtmList.mtmType}</td>
+															<td><a
+																href="${contextPath}/helpDesk/mtm_detail/${userMtmList.mtmNo}">${userMtmList.mtmTitle}</a></td>
 															<td>${userMtmList.mtmRegdate}</td>
 															<td>${userMtmList.mtmCount}</td>
 														</tr>
@@ -88,45 +93,47 @@
 								</table>
 
 								<div>
-									<button> <a href="${contextPath}/helpDesk/mTm_form/${mtmNo}">게시물 등록</a></button>
+									<button>
+										<a href="${contextPath}/helpDesk/mTm_form/${mtmNo}">게시물 등록</a>
+									</button>
 								</div>
 								<!-- 10개씩 -->
-									<div class="page_Nation">
-								<c:set var="url" value="?cp=" />
-								<c:set var="pagination" value="${mtmList['pagination']}" />
-								<c:set var="currentPage" value="${pagination.currentPage}"
-									scope="request" />
-								<div>
-									<a href="${url}1">&lt;&lt;</a>
-								</div>
-								<div>
-									<a href="${url}${pagination.prevPage}">&lt;</a>
-								</div>
-								<c:forEach var="i" begin="${pagination.startPage}"
-									end="${pagination.endPage}" step="1">
-									<c:choose>
-										<c:when test="${i == currentPage}">
-											<div>
-												<a class="selected_Cp">${i}</a>
-											</div>
-										</c:when>
-										<c:otherwise>
-											<div>
-												<a href="${url}${i}">${i}</a>
-											</div>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-								<div>
-									<a href="${url}${pagination.nextPage}">&gt;</a>
-								</div>
-								<div>
-									<a href="${url}${pagination.maxPage}">&gt;&gt;</a>
+								<div class="page_Nation">
+									<c:set var="url" value="?cp=" />
+									<c:set var="pagination" value="${mtmList['pagination']}" />
+									<c:set var="currentPage" value="${pagination.currentPage}"
+										scope="request" />
+									<div>
+										<a href="${url}1">&lt;&lt;</a>
+									</div>
+									<div>
+										<a href="${url}${pagination.prevPage}">&lt;</a>
+									</div>
+									<c:forEach var="i" begin="${pagination.startPage}"
+										end="${pagination.endPage}" step="1">
+										<c:choose>
+											<c:when test="${i == currentPage}">
+												<div>
+													<a class="selected_Cp">${i}</a>
+												</div>
+											</c:when>
+											<c:otherwise>
+												<div>
+													<a href="${url}${i}">${i}</a>
+												</div>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+									<div>
+										<a href="${url}${pagination.nextPage}">&gt;</a>
+									</div>
+									<div>
+										<a href="${url}${pagination.maxPage}">&gt;&gt;</a>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 			</section>
 		</main>
 
@@ -135,9 +142,10 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 
-	<script src="../../js/common/header.js"></script>
 
-	
+
+
+
 
 
 </body>

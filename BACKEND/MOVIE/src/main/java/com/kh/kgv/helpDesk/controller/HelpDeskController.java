@@ -131,19 +131,20 @@ public class HelpDeskController {
 		User loginUser = (User)session.getAttribute("loginUser");
 		int userNo = 0;
 		String userManagerSt = null;
+		
 		if(loginUser != null) {
 			userNo = loginUser.getUserNo();
 			userManagerSt = loginUser.getUserManagerSt();
 		}
-		int mtmCount = 0;
-		mtmCount = services.getMtmListCount(userNo);
 		
 		Map<String, Object>mtmList = null;
-		mtmList = services.getMtmList(cp,userNo);
+		mtmList = services.getMtmList(cp,userNo,userManagerSt);
 
+//	로그인세션에 해당하는 MtmListcount를 받아오는 새로운 컨트롤러작성
+		int userMtmListCount = services.getuserMtmListCount(userNo,userManagerSt);
 	
-		model.addAttribute("mtmCount", mtmCount);
 		model.addAttribute("mtmList", mtmList);
+		model.addAttribute("userMtmListCount",userMtmListCount);
 
 		return "helpDesk/mTm_List";
 	}

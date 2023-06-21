@@ -37,6 +37,18 @@ public class MyPageServiceImpl implements MyPageService {
 		return myReviewList;
 	}
 
+//	/** review카드 5개 씩불러오기 serviceimpl
+//	 *
+//	 */
+//	@Override
+//	public List<Review> getReviewListInRange(Map<String, Object> paramMap) {
+//		
+//		List<Review> myReviewList = dao.getReviewListInRange(paramMap);
+//		
+//		return myReviewList;
+//	}
+
+
 	/** 회원 비번번호 변경
 	 *
 	 */
