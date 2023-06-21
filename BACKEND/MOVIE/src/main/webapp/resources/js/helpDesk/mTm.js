@@ -27,3 +27,27 @@ $(document).ready(function () {
     });
   });
 });
+
+$(document).ready(function(){
+    const deleteMtm = $("#deleteMtm"); 
+
+        deleteMtm.on('click', function(){
+      
+            let mtmNo = $(this).data('mtmno');
+            let url = `/movie/helpDesk/deleteMtm/${mtmNo}`;
+
+            if( confirm("정말로 삭제 하시겠습니까?") ){
+                window.location.href = url; // get방식으로 url에 요청
+            }
+        });
+});
+
+
+$(document).ready(function() {
+    $(".btn_wraper button").hover(function() {
+        $(this).find("a").addClass("hover");
+    }, function() {
+        $(this).find("a").removeClass("hover");
+    });
+});
+

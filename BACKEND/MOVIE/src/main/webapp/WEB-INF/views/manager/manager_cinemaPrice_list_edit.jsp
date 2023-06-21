@@ -11,7 +11,7 @@
                         <meta charset="UTF-8">
                         <meta http-equiv="X-UA-Compatible" content="IE=edge">
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>극장 가격 등록</title>
+                        <title>극장 가격 수정</title>
 
                         <link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
                         <link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
@@ -47,21 +47,28 @@
                                             <div class="table_Wrapper">
 
                                                 <div class="table_Title">
-                                                    <span>극장 가격 등록</span>
+                                                    <span>극장 가격 수정</span>
                                                 </div>
+                                                <input type="hidden" class="priceNo" value="${editPrice['PRICE_NO']}" />
                                                 <div class="table_main">
 
                                                     <div id="play_cinema">
                                                         <span>상영관 종류</span>
                                                         <div class="relative">
-                                                            <select class="play_cinema_enter">
-                                                                <option disabled selected>선택안함</option>
-                                                                <option>일반관</option>
-                                                                <option>KMAX</option>
-                                                                <option>DOLBY</option>
-                                                                <option>CHEF & CINE</option>
-                                                                <option>PUPPY & ME</option>
-                                                                <option>YES KIDS</option>
+                                                            <select class="play_cinema_enter" disabled>
+                                                                <option disabled>선택안함</option>
+                                                                <option ${editPrice['SCREEN_STYLE']=='일반관' ? 'selected'
+                                                                    : '' }>일반관</option>
+                                                                <option ${editPrice['SCREEN_STYLE']=='KMAX' ? 'selected'
+                                                                    : '' }>KMAX</option>
+                                                                <option ${editPrice['SCREEN_STYLE']=='DOLBY'
+                                                                    ? 'selected' : '' }>DOLBY</option>
+                                                                <option ${editPrice['SCREEN_STYLE']=='CHEF &amp; CINE'
+                                                                    ? 'selected' : '' }>CHEF & CINE</option>
+                                                                <option ${editPrice['SCREEN_STYLE']=='PUPPY &amp; ME'
+                                                                    ? 'selected' : '' }>PUPPY & ME</option>
+                                                                <option ${editPrice['SCREEN_STYLE']=='YES KIDS'
+                                                                    ? 'selected' : '' }>YES KIDS</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -69,10 +76,12 @@
                                                     <div id="play_movie">
                                                         <span>주중 / 주말</span>
                                                         <div class="relative">
-                                                            <select class="play_movie_enter">
-                                                                <option disabled selected>선택안함</option>
-                                                                <option>평일</option>
-                                                                <option>주말</option>
+                                                            <select class="play_movie_enter" disabled>
+                                                                <option disabled>선택안함</option>
+                                                                <option ${editPrice['PRICE_DAY']=='평일' ? 'selected' : ''
+                                                                    }>평일</option>
+                                                                <option ${editPrice['PRICE_DAY']=='주말' ? 'selected' : ''
+                                                                    }>주말</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -80,12 +89,13 @@
                                                     <div id="play_time">
                                                         <span>오전 / 오후</span>
                                                         <div class="relative">
-                                                            <select class="play_time_enter">
-                                                                <option disabled selected>선택안함</option>
-                                                                <option>오전</option>
-                                                                <option>오후</option>
+                                                            <select class="play_time_enter" disabled>
+                                                                <option disabled>선택안함</option>
+                                                                <option ${editPrice['PRICE_TIME']=='오전' ? 'selected'
+                                                                    : '' }>오전</option>
+                                                                <option ${editPrice['PRICE_TIME']=='오후' ? 'selected'
+                                                                    : '' }>오후</option>
                                                             </select>
-
                                                         </div>
                                                     </div>
 
@@ -93,7 +103,8 @@
                                                         <span>청소년</span>
                                                         <div class="relative">
                                                             <div>
-                                                                <input type="text" placeholder="가격을 입력하세요." id="teen">
+                                                                <input type="text" placeholder="가격을 입력하세요." id="teen"
+                                                                    value="${editPrice['PRICE_TEEN']}">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -101,7 +112,8 @@
                                                         <span>일반</span>
                                                         <div class="relative">
                                                             <div>
-                                                                <input type="text" placeholder="가격을 입력하세요." id="normal">
+                                                                <input type="text" placeholder="가격을 입력하세요." id="normal"
+                                                                    value="${editPrice['PRICE_NORMAL']}">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -109,7 +121,8 @@
                                                         <span>경로</span>
                                                         <div class="relative">
                                                             <div>
-                                                                <input type="text" placeholder="가격을 입력하세요." id="elder">
+                                                                <input type="text" placeholder="가격을 입력하세요." id="elder"
+                                                                    value="${editPrice['PRICE_ELDER']}">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -117,8 +130,8 @@
                                                         <span>우대</span>
                                                         <div class="relative">
                                                             <div>
-                                                                <input type="text" placeholder="가격을 입력하세요."
-                                                                    id="special">
+                                                                <input type="text" placeholder="가격을 입력하세요." id="special"
+                                                                    value="${editPrice['PRICE_SPECIAL']}">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -126,16 +139,14 @@
                                                         <span>커플</span>
                                                         <div class="relative">
                                                             <div>
-                                                                <input type="text" placeholder="가격을 입력하세요." id="couple">
+                                                                <input type="text" placeholder="가격을 입력하세요." id="couple"
+                                                                    value="${editPrice['PRICE_COUPLE']}">
                                                             </div>
                                                         </div>
                                                     </div>
 
 
                                                 </div>
-
-                                                <form action="play_add/enroll" method="post" id="playAddForm">
-                                                </form>
 
                                                 <div class="table_bottom">
                                                     <button class="bottom_Submit">저장</button>
@@ -150,7 +161,7 @@
 
                         </main>
 
-                        <script src="${contextPath}/resources/js/manager/manager_cinema_price.js"></script>
+                        <script src="${contextPath}/resources/js/manager/manager_cinemaPrice_list_edit.js"></script>
                         <script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
                         <script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
 
