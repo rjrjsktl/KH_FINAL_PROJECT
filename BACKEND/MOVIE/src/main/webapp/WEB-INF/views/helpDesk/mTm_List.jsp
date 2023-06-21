@@ -55,7 +55,7 @@
 								<table>
 
 									<thead>
-										<th>번호</th>
+										<th>문의 종류</th>
 										<th>내용</th>
 										<th>등록일</th>
 										<th>조회수</th>
@@ -73,7 +73,7 @@
 													varStatus="loop">
 													<c:if test="${loop.index < 10}">
 														<tr class="row">
-															<td>${userMtmList.mtmNo}</td>
+															<td>${userMtmList.mtmType}</td>
 															<td><a href="${contextPath}/helpDesk/mtm_detail/${userMtmList.mtmNo}">${userMtmList.mtmTitle}</a></td>
 															<td>${userMtmList.mtmRegdate}</td>
 															<td>${userMtmList.mtmCount}</td>

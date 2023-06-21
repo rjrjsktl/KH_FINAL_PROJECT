@@ -98,25 +98,21 @@ thead * {
 
 
 thead th:nth-child(1) {
-    width: 10%;
+    width: 25%;
     height:50px;
 }
 
 thead th:nth-child(2) {
-    text-align: left;
-    width: 60%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    width: 45%;
 }
 
 thead th:nth-child(3) {
     width: 15%;
 }
-
 thead th:nth-child(4) {
-    width: 10%;
+    width: 15%;
 }
+
 
 tbody{
     text-align: center;
@@ -128,7 +124,7 @@ tbody{
     border-bottom: 1px solid rgba(73, 73, 73, 0.4);
 }
 
-.row th:nth-child(2) {
+.row td:nth-child(2) {
     text-align: left;
     max-width:450px;
     text-overflow: ellipsis;
@@ -137,7 +133,7 @@ tbody{
     padding:10px
 }
 
-.row th:nth-child(2) > a:hover{
+.row td:nth-child(2) > a:hover{
     text-decoration: underline;
     color:rgb(251, 251, 251);
 }
