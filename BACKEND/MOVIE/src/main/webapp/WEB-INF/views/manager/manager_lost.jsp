@@ -11,11 +11,11 @@
 						<meta charset="UTF-8">
 						<meta http-equiv="X-UA-Compatible" content="IE=edge">
 						<meta name="viewport" content="width=device-width, initial-scale=1.0">
-						<title>1:1 문의</title>
+						<title>분실물 문의 목록</title>
 
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_nav.css">
-						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_ask.css">
+						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_lost.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
 						<!-- fontawesome -->
@@ -48,7 +48,7 @@
 										<div class="set_Edge">
 											<div class="table_Wrapper">
 												<div class="table_Title">
-													<span>1 : 1 문의 목록</span>
+													<span>분실물 문의 목록</span>
 													<div class="search_Box">
 														<input placeholder="검색" />
 														<button>
@@ -60,36 +60,35 @@
 													<tr>
 														<th>번호</th>
 														<th>문의 회원 아이디</th>
-														<th>문의 종류</th>
-														<th>문의 제목</th>
-														<th>문의 내용</th>
+														<th>제목</th>
+														<th>내용</th>
 														<th>문의 일자</th>
-														<th>답변상태</th>
+														<th>답변 상태</th>
 														<th>답변 일자</th>
 														<th>담당자</th>
 													</tr>
-													<c:forEach var="mtmList" items="${getMTMList['getMTMList']}">
+													<c:forEach var="lostList" items="${getLostList['getLostList']}">
 														<tr>
-															<td>${mtmList.mtm.mtmNo}</td>
-															<td>${mtmList.user.userEmail}</td>
-															<td>${mtmList.mtm.mtmType}</td>
+															<td>${lostList.losts.lostNo}</td>
+															<td>${lostList.user.userEmail}</td>
 															<td><a
-																	href="${contextPath}/helpDesk/mtm_detail/${mtmList.mtm.mtmNo}">${mtmList.mtm.mtmTitle}</a>
+																	href="${contextPath}/helpDesk/lost_detail/${lostList.losts.lostNo}">${lostList.losts.lostTitle}</a>
 															</td>
-															<td>${mtmList.mtm.mtmContent}</td>
-															<td>${mtmList.mtm.mtmRegdate}</td>
-															<td>${mtmList.mtm.mtmRepSt}</td>
+															<td>${lostList.losts.lostContent}</td>
+															<td>${lostList.losts.lostDate}</td>
+															<td>${lostList.losts.lostSt}</td>
 															<c:choose>
-																<c:when test="${not empty mtmList.mtm.mtmRepDate}">
-																	<td>${mtmList.mtm.mtmRepDate}</td>
+																<c:when test="${not empty lostList.losts.lostRepDate}">
+																	<td>${lostList.losts.lostRepDate}</td>
 																</c:when>
 																<c:otherwise>
 																	<td>-</td>
 																</c:otherwise>
 															</c:choose>
 															<c:choose>
-																<c:when test="${not empty mtmList.mtm.mtmRepWriter}">
-																	<td>${mtmList.mtm.mtmRepWriter}</td>
+																<c:when
+																	test="${not empty lostList.losts.lostRepWriter}">
+																	<td>${lostList.losts.lostRepWriter}</td>
 																</c:when>
 																<c:otherwise>
 																	<td>-</td>
@@ -100,7 +99,7 @@
 												</table>
 												<div class="page_Nation">
 													<c:set var="url" value="?cp=" />
-													<c:set var="pagination" value="${getMTMList['pagination']}" />
+													<c:set var="pagination" value="${getLostList['pagination']}" />
 													<c:set var="currentPage" value="${pagination.currentPage}"
 														scope="request" />
 													<div>
@@ -138,7 +137,7 @@
 								</div>
 							</div>
 						</main>
-						<script src="${contextPath}/resources/js/manager/manager_ask.js"></script>
+						<script src="${contextPath}/resources/js/manager/manager_lost.js"></script>
 						<script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
 						<script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
 					</body>

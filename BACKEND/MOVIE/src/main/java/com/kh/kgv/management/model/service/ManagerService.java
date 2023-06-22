@@ -155,5 +155,8 @@ public interface ManagerService {
 	// 관리자_1:1 문의 목록
 	Map<String, Object> selectMTMList(int cp);
 
+	// 관리자_분실물 목록 조회
+	Map<String, Object> selectLostList(int cp);
+
 
 }
