@@ -426,6 +426,11 @@ public class ManagerDAO {
 
 		return sqlSession.selectList("managerMapper.getAllLostList", null, rowBounds);
 	}
+	
+	// 관리자_혜택 상태 업데이트
+	public int updateBenefitsST(Benefits bene) {
+		return sqlSession.update("managerMapper.updateBenefitsST", bene);
+	}
 
 	public int NameDupChecks(Map<String, Object> condition) {
 		

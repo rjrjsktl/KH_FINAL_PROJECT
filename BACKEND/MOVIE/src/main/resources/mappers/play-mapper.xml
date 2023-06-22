@@ -50,6 +50,12 @@
 		<result property="screenStyle"          column="SCREEN_STYLE" />
 		<result property="screenSeat"           column="SCREEN_SEAT" />
 		<result property="screenDetail"         column="SCREEN_DETAIL" />
+		<result property="screenRow"         column="SCREEN_ROW" />
+		<result property="screenCol"         column="SCREEN_COL" />
+		<result property="screenAisle"         column="SCREEN_AISLE" />
+		<result property="screenSpace"         column="SCREEN_SPACE" />
+		<result property="screenSweet"         column="SCREEN_SWEET" />
+		<result property="screenImpaired"         column="SCREEN_IMPAIRED" />
 	</resultMap>
 	
 	<resultMap type="cinema" id="cinema_rm">
@@ -134,6 +140,17 @@
         WHERE c.CINEMA_NO = #{cinemaNo} AND TO_CHAR(p.PLAY_START, 'YYYYMMDD') = #{strDate} AND p.PLAY_START > SYSDATE
               AND m.MOVIE_NO = #{movieNo}
 	]]>
+	</select>
+	
+	
+	<select id="getUserPlay" parameterType="_int" resultMap="jp_rm">
+	    SELECT *
+	    FROM PLAY p
+        INNER JOIN SCREEN s ON p.SCREEN_NO  = s.SCREEN_NO 
+        INNER JOIN CINEMA c ON s.CINEMA_NAME = c.CINEMA_NAME
+        INNER JOIN MOVIE m ON p.MOVIE_NO = m.MOVIE_NO
+        WHERE p.PLAY_NO = #{playNo}
+	
 	</select>
 	
 </mapper>

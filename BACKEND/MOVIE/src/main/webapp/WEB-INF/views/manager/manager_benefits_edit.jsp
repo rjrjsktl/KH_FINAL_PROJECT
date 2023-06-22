@@ -62,7 +62,7 @@
 														<input type="text" placeholder="제목을 입력하세요."
 															value="${editBenefits['BENEFITS_TITLE']}">
 													</div>
-													<input type="hidden" id="eventNo"
+													<input type="hidden" id="benefitsNo"
 														value="${editBenefits['BENEFITS_NO']}" />
 													<div class="calendarArea">
 														<div id="play_start">

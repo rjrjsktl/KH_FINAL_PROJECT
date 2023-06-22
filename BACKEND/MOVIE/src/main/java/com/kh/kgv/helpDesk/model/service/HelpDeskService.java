@@ -29,6 +29,8 @@ public interface HelpDeskService {
 	int deleteLost(int mtmNo);
 	int replyLostDelete(int lostNo);
 	int replyLostWrite(int lostNo, String content, String managerNick);
+	
+//	int checkPw(int mtmNo);
 
 
 

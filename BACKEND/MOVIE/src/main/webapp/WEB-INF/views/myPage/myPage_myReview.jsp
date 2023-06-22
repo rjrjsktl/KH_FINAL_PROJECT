@@ -118,6 +118,11 @@
                                 <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
                             </div>
                         </div>
+                        <script>
+
+                            const tes1111t = "${myReviewList.movie.movieTitle}";
+	console.log(tes1111t + ": myReviewList 값 =============");
+                        </script>
 
                         <script src="${contextPath}/resources/js/common/header.js"></script>
                         <script src="${contextPath}/resources/js/myPage/myPage_myReview.js"></script>
