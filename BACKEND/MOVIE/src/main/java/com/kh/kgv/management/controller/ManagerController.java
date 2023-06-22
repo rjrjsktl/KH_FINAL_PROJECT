@@ -507,6 +507,21 @@ public class ManagerController {
 		System.out.println("관리자_상영시간 목록 이동");
 		return "manager/manager_movie_play_list";
 	}
+	// ===================================================
+	// ===================================================
+	
+	// 관리자_상영영화 종료 목록 이동
+	@GetMapping("/play_end")
+	public String movePlayEndList(
+			Model model, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+		Map<String, Object> getMovieList = null;
+		getMovieList = movieService.managerMovieListEnd(cp);
+		
+		model.addAttribute("getMovieList", getMovieList);
+		
+		System.out.println("관리자_상영시간 목록 이동");
+		return "manager/manager_movie_play_end";
+	}
 
 	// ===================================================
 	// ===================================================
