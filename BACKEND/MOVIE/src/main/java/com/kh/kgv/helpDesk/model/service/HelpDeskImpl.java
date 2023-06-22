@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.helpDesk.model.dao.HelpDeskDAO;
 import com.kh.kgv.helpDesk.model.vo.LostPagenation;
 import com.kh.kgv.helpDesk.model.vo.LostPackage;
@@ -65,9 +66,13 @@ public class HelpDeskImpl implements HelpDeskService {
 				userManagerStAsInt = 0;
 			}
 		}
-		int mtmlistCount = dao.getMtmListCount();
+		
+		int mtmlistCount = dao.getMtmListCount(userNo, userManagerStAsInt);
+		System.out.println("MTM 리스트 카운트 조회-[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[["+mtmlistCount);
+		System.out.println("1:1문의 리스트 관리자권한 조회-[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[["+userManagerStAsInt);
 		MtmPagenation pagination = new MtmPagenation(cp, mtmlistCount);
 		List<Mtm> mtmLists = dao.getMtmList(pagination, userNo, userManagerStAsInt);
+		
 		Map<String, Object> getMtmList = new HashMap<String, Object>();
 		getMtmList.put("pagination", pagination);
 		getMtmList.put("mtmLists", mtmLists);
@@ -79,6 +84,8 @@ public class HelpDeskImpl implements HelpDeskService {
 		return dao.selectmTmDetail(mtmNo);
 	}
 
+
+	
 	@Override
 	public Map<String, Object> getLostList(int cp, int userNo, String userManagerSt) {
 		
@@ -91,12 +98,18 @@ public class HelpDeskImpl implements HelpDeskService {
 			}
 		}
 
-		int lostlistCount = dao.getLostListCount();
+		int lostlistCount = dao.getLostListCount(userNo, userManagerStAsInt);
+		
 		LostPagenation pagination = new LostPagenation(cp, lostlistCount);
+	
+		System.out.println(lostlistCount+"====================================================================");
+
 		List<Mtm> lostLists = dao.lostLists(pagination, userNo, userManagerStAsInt);
 		Map<String, Object> getMtmList = new HashMap<String, Object>();
 		getMtmList.put("pagination", pagination);
 		getMtmList.put("lostLists", lostLists);
+		
+		
 
 		return getMtmList;
 	}
@@ -123,19 +136,6 @@ public class HelpDeskImpl implements HelpDeskService {
 	}
 
 
-	@Override
-	public int getLostListCount(int userNo, String userManagerSt) {
-		int userManagerStAsInt = 0;
-		if(userManagerSt != null) {
-			if(userManagerSt.equals("Y")) {
-				userManagerStAsInt = 1;
-			}else if (userManagerSt.equals("null")) {
-				userManagerStAsInt = 0;
-			}
-		}
-		return dao.getLostListCount(userNo, userManagerStAsInt);
-
-	}
 
 	@Override
 	public int selectMtmNo(Mtm mtm) {
@@ -173,6 +173,20 @@ public class HelpDeskImpl implements HelpDeskService {
 			}
 		}
 		return dao.getMtmListCount(userNo, userManagerStAsInt);
+	}
+	
+	@Override
+	public int getLostListCount(int userNo, String userManagerSt) {
+		int userManagerStAsInt = 0;
+		if(userManagerSt != null) {
+			if(userManagerSt.equals("Y")) {
+				userManagerStAsInt = 1;
+			}else if (userManagerSt.equals("null")) {
+				userManagerStAsInt = 0;
+			}
+		}
+		return dao.getLostListCount(userNo, userManagerStAsInt);
+
 	}
 
 	@Override

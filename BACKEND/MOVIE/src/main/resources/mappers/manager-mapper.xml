@@ -567,4 +567,34 @@
 		INNER JOIN USERS u ON m.USER_NO = u.USER_NO
 		ORDER BY m.MTM_REGDATE DESC
 	</select>
+	
+			<!--분실물 목록 수 조회 -->
+	<select id="getLostCount" resultType="_int">
+		SELECT COUNT(LOST_NO) FROM LOST_PACKAGE
+	</select>
+	
+		<!-- 분실물 목록 조회 -->
+	<select id="getAllLostList" resultMap="jcs_rm">
+		SELECT 
+		l.LOST_NO
+		, u.USER_EMAIL
+		, l.LOST_TITLE
+		, l.LOST_ITEM
+		, l.LOST_LOCATION
+		, l.LOST_DATE
+		, l.LOST_CONTENT
+		, l.LOST_WRITER
+		, l.LOST_VIEW
+		, l.LOST_ST
+		, l.LOST_REPWRITER
+		, l.LOST_REPST
+		, l.LOST_REPWRITER
+		, TO_CHAR(l.LOST_REPDATE, 'YYYY-MM-DD HH24:MI') AS LOST_REPDATE
+		FROM LOST_PACKAGE l
+		INNER JOIN USERS u ON l.USER_NO = u.USER_NO
+		ORDER BY l.LOST_DATE DESC
+	</select>
+	
+	
+	
 </mapper>
