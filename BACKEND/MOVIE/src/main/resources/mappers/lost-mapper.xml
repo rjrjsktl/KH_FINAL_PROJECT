@@ -20,11 +20,7 @@
 		<result property="lostRepDate" column="LOST_REPDATE" />
 	</resultMap>
 
-	<!-- 전체 LostCount조회 -->
-	<select id="getLostCount" resultType="_int">
-		SELECT COUNT(LOST_NO) FROM
-		LOST_PACKAGE
-	</select>
+
 
 	<!-- 작성 후 이동할 LostNo조회 -->
 	<select id="selectLostNo" resultType="_int">
@@ -85,7 +81,8 @@
 		LOST_NO
 		, LOST_TITLE
 		,
-		LOST_CONTENT
+		LOST_CONTENT,
+		LOST_WRITER
 		, LOST_DATE
 		, LOST_WRITER
 		, LOST_REPWRITER
@@ -107,14 +104,12 @@
 		SEQ_LP_NO.NEXTVAL
 		, #{userNo}
 		, #{lostTitle}
-		,
-		#{lostItem}
+		, #{lostItem}
 		, #{lostLocation}
 		, #{lostDate}
 		, DEFAULT
 		, #{lostContent}
-		,
-		DEFAULT
+		, #{lostWriter}
 		, DEFAULT
 		, DEFAULT
 		, DEFAULT
