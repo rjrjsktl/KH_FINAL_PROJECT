@@ -139,6 +139,9 @@ public class MyPageController {
 							, RedirectAttributes ra) {
 		
 		logger.info("review페이지 시작");
+		
+		logger.info("loginUserNo:::::" + loginUser.getUserNo() );
+		
 //		logger.info("loginUserNo:::::" + loginUser.getUserNo() );
 //		// 로그인된 회원의 번호를 paramMap 추가
 //		
@@ -311,17 +314,19 @@ public class MyPageController {
 	// Java 서버 예시 (Spring Framework)
 	@PostMapping("/loadReviewCards")
 	@ResponseBody
-	public List<Review> loadReviewCards(@RequestParam int loadedCards
-									, @RequestParam int cardsPerLoad
+	public List<Review> loadReviewCards(@RequestParam int startRow
+									, @RequestParam int endRow
 									, @ModelAttribute("loginUser") User loginUser
 									, @RequestParam Map<String, Object> paramMap
 									, Model model
 														) {
 		logger.info("reviewCards시작됨?");
+		
+		
 		int userNo = loginUser.getUserNo();
 		paramMap.put("userNo", userNo);
-	    paramMap.put("loadedCards", loadedCards);
-	    paramMap.put("cardsPerLoad", cardsPerLoad);
+	    paramMap.put("startRow", startRow);
+	    paramMap.put("endRow", endRow);
 	    
 	    List<Review> myReviewList = service.loadReviewCards(paramMap); // 데이터베이스에서 추가 데이터 조회
 
@@ -329,8 +334,6 @@ public class MyPageController {
 	    logger.info("myReviewList", myReviewList);
 	    return myReviewList;
 	}
-
-	
 	
 //	@PostMapping("myReview/addReview")
 //	@ResponseBody
