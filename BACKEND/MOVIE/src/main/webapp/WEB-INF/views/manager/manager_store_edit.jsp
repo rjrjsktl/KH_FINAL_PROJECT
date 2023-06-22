@@ -68,12 +68,20 @@
                                                             <div>
                                                                 <select id="storeCategory" name="storeCategory"
                                                                     class="storeCategory" aria-label="성별">
-                                                                    <option id="selectCategory" value="" selected="">
+                                                                    <!-- <option value="" selected="">
                                                                         ${editStore.storeCategory}</option>
                                                                     <option value="음료">음료</option>
                                                                     <option value="팝콘">팝콘</option>
                                                                     <option value="티켓">티켓</option>
-                                                                    <option value="스낵">스낵</option>
+                                                                    <option value="스낵">스낵</option> -->
+                                                                    <option ${editStore.storeCategory=='음료' ? 'selected'
+                                                                        : '' }>음료</option>
+                                                                    <option ${editStore.storeCategory=='팝콘' ? 'selected'
+                                                                        : '' }>팝콘</option>
+                                                                    <option ${editStore.storeCategory=='티켓' ? 'selected'
+                                                                        : '' }>티켓</option>
+                                                                    <option ${editStore.storeCategory=='스낵' ? 'selected'
+                                                                        : '' }>스낵</option>
                                                                 </select>
                                                             </div>
                                                         </div>

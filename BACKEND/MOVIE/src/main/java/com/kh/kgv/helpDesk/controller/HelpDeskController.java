@@ -43,7 +43,7 @@ import org.slf4j.LoggerFactory;
 @RequestMapping("/helpDesk")
 @SessionAttributes({"loginUser"})
 public class HelpDeskController {
-	
+
 	private Logger logger = LoggerFactory.getLogger(LoginController.class);
 	@Autowired
 	private ManagerService service;
@@ -166,40 +166,40 @@ public class HelpDeskController {
 	// 1:1문의 게시물 삽입 Get
 	@GetMapping("/mTm_form")
 	public String mtmWrite(
-					Model model,
-					HttpSession session,
-					HttpServletRequest req, HttpServletResponse resp
+			Model model,
+			HttpSession session,
+			HttpServletRequest req, HttpServletResponse resp
 
-					) {
+			) {
 
-				User loginUser = (User)session.getAttribute("loginUser");
+		User loginUser = (User)session.getAttribute("loginUser");
 
-				int userNo = 0;
+		int userNo = 0;
 
-				if(loginUser != null) {
-					userNo = loginUser.getUserNo();
-				}
+		if(loginUser != null) {
+			userNo = loginUser.getUserNo();
+		}
 
-				String path = null;
+		String path = null;
 
-				if ( userNo > 0) {
-					path = "helpDesk/mTm_form";
-				} else {
-					String referer = req.getHeader("Referer"); // 이전 페이지의 URL을 가져옵니다.
-					session.setAttribute("prevPage", referer); // 이전 페이지의 URL을 세션에 저장합니다.
+		if ( userNo > 0) {
+			path = "helpDesk/mTm_form";
+		} else {
+			String referer = req.getHeader("Referer"); // 이전 페이지의 URL을 가져옵니다.
+			session.setAttribute("prevPage", referer); // 이전 페이지의 URL을 세션에 저장합니다.
 
-					logger.debug("referer은~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+referer);
-					path ="redirect:/user/login";
+			logger.debug("referer은~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+referer);
+			path ="redirect:/user/login";
 
-				}
+		}
 
-				System.out.println("userNo"+userNo+"-----------------------------------------------------------------------");
+		System.out.println("userNo"+userNo+"-----------------------------------------------------------------------");
 
 
-				model.addAttribute("userNo", userNo);
-				return path; 
-			}
-	
+		model.addAttribute("userNo", userNo);
+		return path; 
+	}
+
 	// 1:1문의 게시물 삽입 Post
 	@PostMapping("/mTm_form")
 	public ResponseEntity<Map<String, Object>> addmTm(
@@ -244,7 +244,7 @@ public class HelpDeskController {
 
 		return ResponseEntity.ok(response);
 	}
-	
+
 	// 1:1문의 게시물 삭제
 	@GetMapping("/deleteMtm/{mtmNo}")
 	public String mtmDelete(
@@ -305,39 +305,39 @@ public class HelpDeskController {
 	// 1:1문의 리플 등록
 	@PostMapping("/replyWrite/{mtmNo}")
 	public ResponseEntity<?> replyWrite(
-	    @PathVariable("mtmNo") int mtmNo,
-	    @RequestParam("contentTextarea") String content,
-	    Model model,	HttpSession session,
-	    RedirectAttributes ra
-	){
-		   User loginUser = (User)session.getAttribute("loginUser");
-		   
-		   String managerNick = null;
+			@PathVariable("mtmNo") int mtmNo,
+			@RequestParam("contentTextarea") String content,
+			Model model,	HttpSession session,
+			RedirectAttributes ra
+			){
+		User loginUser = (User)session.getAttribute("loginUser");
 
-			if(loginUser != null) {
-				managerNick = loginUser.getUserNick();
-			}
-		   
-	    content = content.replaceAll("\n", "<br>");
-	    content = content.replaceAll("\r\n", "<br>");
-	    content = content.replaceAll(" ", "&nbsp;");
-	 
-	    
-	    int result = services.replyWrite(mtmNo, content, managerNick); 
-	    
-	    if(result > 0 ) {
-	    	return ResponseEntity.ok("{\"redirectUrl\": \"/helpDesk/mtm_detail/" + mtmNo + "\"}");
-	    } else {
-	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred");
+		String managerNick = null;
 
-	    }	    
+		if(loginUser != null) {
+			managerNick = loginUser.getUserNick();
+		}
+
+		content = content.replaceAll("\n", "<br>");
+		content = content.replaceAll("\r\n", "<br>");
+		content = content.replaceAll(" ", "&nbsp;");
+
+
+		int result = services.replyWrite(mtmNo, content, managerNick); 
+
+		if(result > 0 ) {
+			return ResponseEntity.ok("{\"redirectUrl\": \"/helpDesk/mtm_detail/" + mtmNo + "\"}");
+		} else {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred");
+
+		}	    
 	}
 
-	
+
 
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////// 아래부터는 분실물리스트
-	
+
 	// 잃어버린물건 리스트 출력
 	@RequestMapping("/lost_List")
 	public String lostList(
@@ -511,7 +511,7 @@ public class HelpDeskController {
 
 		return "redirect:/" +path;
 	}
-	
+
 	//잃어버린물건 답글 삭제
 	@GetMapping("/replyLostDelete/{lostNo}")
 	public String replyLostDelete(
@@ -541,35 +541,35 @@ public class HelpDeskController {
 	}
 
 	//replyLostWrite
-	
+
 	@PostMapping("/replyLostWrite/{lostNo}")
 	public ResponseEntity<?> replyLostWrite(
-	    @PathVariable("lostNo") int lostNo,
-	    @RequestParam("contentTextarea") String content,
-	    Model model,	HttpSession session,
-	    RedirectAttributes ra
-	){
-		   User loginUser = (User)session.getAttribute("loginUser");
-		   
-		   String managerNick = null;
+			@PathVariable("lostNo") int lostNo,
+			@RequestParam("contentTextarea") String content,
+			Model model,	HttpSession session,
+			RedirectAttributes ra
+			){
+		User loginUser = (User)session.getAttribute("loginUser");
 
-			if(loginUser != null) {
-				managerNick = loginUser.getUserNick();
-			}
-		   
-	    content = content.replaceAll("\n", "<br>");
-	    content = content.replaceAll("\r\n", "<br>");
-	    content = content.replaceAll(" ", "&nbsp;");
-	 
-	    
-	    int result = services.replyLostWrite(lostNo, content, managerNick); 
-	    
-	    if(result > 0 ) {
-	    	return ResponseEntity.ok("{\"redirectUrl\": \"/helpDesk/lost_detail/" + lostNo + "\"}");
-	    } else {
-	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred");
+		String managerNick = null;
 
-	    }	    
+		if(loginUser != null) {
+			managerNick = loginUser.getUserNick();
+		}
+
+		content = content.replaceAll("\n", "<br>");
+		content = content.replaceAll("\r\n", "<br>");
+		content = content.replaceAll(" ", "&nbsp;");
+
+
+		int result = services.replyLostWrite(lostNo, content, managerNick); 
+
+		if(result > 0 ) {
+			return ResponseEntity.ok("{\"redirectUrl\": \"/helpDesk/lost_detail/" + lostNo + "\"}");
+		} else {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred");
+
+		}	    
 	}
 
 
@@ -580,6 +580,56 @@ public class HelpDeskController {
 			){
 		return "helpDesk/question_home";
 	}
+
+
+
+	@GetMapping("/checkPw")
+	public String checkPw (
+			@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
+			Model model,
+			RedirectAttributes ra,
+			@RequestHeader ("referer") String referer,
+			HttpSession session
+			) {
+
+		String path = null;
+
+		User loginUser = (User)session.getAttribute("loginUser");
+		int userNo = 0;
+		String userManagerSt = null;
+
+		
+		if(loginUser != null ) {
+			loginUser.getUserNo();
+			userManagerSt = loginUser.getUserManagerSt();
+		}
+		
+		
+		if ( userManagerSt.equals("Y")) {
+			path = "helpDesk/checkPw";
+		}
+		
+		else {
+			path = "redirect:/user/login";
+		}
+		
+
+		
+		return path;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
