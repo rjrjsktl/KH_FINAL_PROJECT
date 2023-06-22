@@ -540,6 +540,24 @@
 		ORDER BY BENEFITS_NO DESC
 	</select>
 	
+	<!-- 혜택 수정 조회 -->
+	<select id="getEditBenefitsList" resultType="HashMap">
+		SELECT
+		BENEFITS_NO, BENEFITS_TITLE, BENEFITS_CONTENT, BENEFITS_START, BENEFITS_END, BENEFITS_IMG 
+		FROM BENEFITS
+		WHERE BENEFITS_NO = #{benefitsNo}
+	</select>
+	
+	<!-- 혜택 수정(업데이트) -->
+	<update id="editBenefits" parameterType="benefits">
+		UPDATE BENEFITS SET
+			BENEFITS_TITLE = #{benefitsTitle},
+			BENEFITS_CONTENT = #{benefitsContent},
+			BENEFITS_START = #{benefitsStart},
+			BENEFITS_END = #{benefitsEnd}
+		WHERE EVENT_NO = #{benefitsNo}
+	</update>
+	
 	
 		<!--1:1 문의 목록 수 조회 -->
 	<select id="getMTMCount" resultType="_int">

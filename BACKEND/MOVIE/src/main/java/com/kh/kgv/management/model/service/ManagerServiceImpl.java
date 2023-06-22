@@ -547,6 +547,20 @@ public class ManagerServiceImpl implements ManagerService {
 
 		return mtmlists;
 	}
+	
+	// 관리자_혜택 수정 페이지
+	@Override
+	public Map<String, Object> getEditBenefitsList(Benefits bene) {
+		return dao.getEditBenefitsList(bene);
+	}
+
+	// 관리자_혜택 수정 등록
+	@Override
+	public int editBenefits(Benefits updatebene) {
+		int result = dao.editBenefits(updatebene);
+		System.out.println("serviceImpl result:::::" + result);
+		return result;
+	}
 
 	
 
