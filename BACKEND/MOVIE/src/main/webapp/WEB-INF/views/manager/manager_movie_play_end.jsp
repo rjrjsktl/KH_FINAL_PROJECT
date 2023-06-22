@@ -3,6 +3,7 @@
 		<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 			<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 				<%@ page session="false" %>
+
 					<!DOCTYPE html>
 					<html lang="ko">
 
@@ -10,10 +11,11 @@
 						<meta charset="UTF-8">
 						<meta http-equiv="X-UA-Compatible" content="IE=edge">
 						<meta name="viewport" content="width=device-width, initial-scale=1.0">
-						<title>혜택 목록</title>
+						<title>끝난 상영 목록</title>
 
-						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_benefits_list.css">
+						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_movie_play_end.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
+						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_nav.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
 						<!-- fontawesome -->
@@ -44,10 +46,10 @@
 										<div class="set_Edge">
 											<div class="table_Wrapper">
 												<div class="table_Title">
-													<span>혜택 목록</span>
+													<span>끝난 상영 목록</span>
 													<div class="search_Box">
 														<input placeholder="검색" />
-														<button class="checkBtn">
+														<button>
 															<i class="fa-solid fa-magnifying-glass fa-2xs"></i>
 														</button>
 													</div>
@@ -55,63 +57,39 @@
 												<table class="table_main">
 													<tr>
 														<th>번호</th>
-														<th>혜택 제목</th>
-														<th>혜택 시작일</th>
-														<th>혜택 종료일</th>
-														<th>혜택 작성일</th>
-														<th>혜택 상태</th>
-														<th>수정</th>
-														<th>삭제</th>
+														<th>상영 영화</th>
+														<th>상영 지역</th>
+														<th>상영 영화관</th>
+														<th>상영 스크린 번호</th>
+														<th>상영 스크린 종류</th>
+														<th>상영 시작일</th>
+														<th>상영 종료일</th>
 													</tr>
-													<c:forEach var="getBenefits" items="${getBenefitsList['benefitsList']}">
+													<c:forEach var="movie" items="${getMovieList['playMovieList']}">
 														<tr>
-															<td>${getBenefits['benefitsNo']}</td>
-
-															<td>
-																<c:choose>
-																	<c:when test="${getBenefits['benefitsStatus'] == 'Y'}">
-																		<a
-																			href="${contextPath}/benefitsList/detail_List/introduce/${getBenefits['benefitsNo']}">${getBenefits['benefitsTitle']}</a>
-																	</c:when>
-																	<c:otherwise>
-																		<a
-																			href="${contextPath}/benefitsList/end_List/introduce//${getBenefits['benefitsNo']}">${getBenefits['benefitsTitle']}</a>
-																	</c:otherwise>
-																</c:choose>
+															<td>${movie.play.playNo}</td>
+															<td><a
+																	href="${contextPath}/movieList/detail_List/introduce/${movie.movie.movieNo}">${movie.movie.movieTitle}</a>
 															</td>
-															<td>${getBenefits['benefitsStart']}</td>
-															<td>${getBenefits['benefitsEnd']}</td>
-															<td>${getBenefits['benefitsReg']}</td>
-															<c:choose>
-																<c:when test="${getBenefits['benefitsStatus'] == 'Y'}">
-																	<td><select class="Is_On"
-																			data-id="${getBenefits['benefitsNo']}">
-																			<option value="N">N</option>
-																			<option value="Y" selected>Y</option>
-																		</select></td>
-																</c:when>
-																<c:otherwise>
-																	<td><select class="Is_On"
-																			data-id="${getBenefits['benefitsNo']}">
-																			<option value="N" selected>N</option>
-																			<option value="Y">Y</option>
-																		</select></td>
-																</c:otherwise>
-															</c:choose>
-
-															<td><a href="${contextPath}/manager/benefits_list/edit/${getBenefits['benefitsNo']}"
-																	class="editEvent"><i
-																		class="fa-sharp fa-solid fa-pen-to-square"></i></a>
-															</td>
-															<td><a class="deleteEvent"><i
-																		class="fa-sharp fa-solid fa-xmark"></i></a></td>
+															<td>${movie.cinema.cinemaArea}</td>
+															<td>${movie.cinema.cinemaName}</td>
+															<td>${movie.screen.screenName}</td>
+															<td>${movie.screen.screenStyle}</td>
+															<td>${movie.play.playStart}</td>
+															<td>${movie.play.playEnd}</td>
+															<td><button class="editBtn">
+																	<i class="fa-sharp fa-solid fa-pen-to-square"></i>
+																</button></td>
+															<td><button class="delBtn">
+																	<i class="fa-sharp fa-solid fa-xmark"></i>
+																</button></td>
 														</tr>
 													</c:forEach>
 
 												</table>
 												<div class="page_Nation">
 													<c:set var="url" value="?cp=" />
-													<c:set var="pagination" value="${getBenefits['pagination']}" />
+													<c:set var="pagination" value="${getMovieList['pagination']}" />
 													<c:set var="currentPage" value="${pagination.currentPage}"
 														scope="request" />
 													<div>
@@ -145,13 +123,14 @@
 											</div>
 										</div>
 									</div>
+
 								</div>
 
 							</div>
 
 						</main>
 
-						<script src="${contextPath}/resources/js/manager/manager_benefits_list.js"></script>
+						<script src="${contextPath}/resources/js/manager/manager_movie_play_end.js"></script>
 						<script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
 						<script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
 					</body>

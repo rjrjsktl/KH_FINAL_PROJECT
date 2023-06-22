@@ -111,11 +111,12 @@
 						</div>
 					</div>
 				</div>
-				<!-- event-wrap -->
-				<jsp:include page="/WEB-INF/views/myPage/myPage_randomMovie.jsp" />
 			</section>
 		</main>
 	</div>
+	
+	<!-- event-wrap -->
+	<jsp:include page="/WEB-INF/views/myPage/myPage_randomMovie.jsp" />
 
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />

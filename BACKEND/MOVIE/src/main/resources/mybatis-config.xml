@@ -38,8 +38,9 @@
 		<typeAlias type="com.kh.kgv.management.model.vo.Benefits" alias="benefits"/>
 
 		<typeAlias type="com.kh.kgv.management.model.vo.JoinPlay" alias="jp"/>
-
+		<typeAlias type="com.kh.kgv.management.model.vo.JoinCS" alias="jcs"/>
 		<typeAlias type="com.kh.kgv.mypage.model.vo.JoinReview" alias="jr"/>
+		
 		
 		<typeAlias type="com.kh.kgv.management.model.vo.Cinema" alias="cinema"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.Screen" alias="screen"/>

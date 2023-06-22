@@ -1,3 +1,12 @@
+$(document).ready(function() {
+    $(".btn_wraper button").hover(function() {
+        $(this).find("a").addClass("hover");
+    }, function() {
+        $(this).find("a").removeClass("hover");
+    });
+});
+
+
 $(document).ready(function(){
     $("#registLost").click(function(event){
         event.preventDefault();
@@ -29,5 +38,60 @@ $(document).ready(function(){
                 alert("ㅗ");
             }
         });
+    });
+});
+
+
+$(document).ready(function(){
+    const deleteLost = $("#deleteLost"); 
+
+        deleteLost.on('click', function(){
+      
+            let lostNo = $(this).data('lostno');
+            let url = `/movie/helpDesk/deleteLost/${lostNo}`;
+
+            if( confirm("정말로 삭제 하시겠습니까?") ){
+                window.location.href = url; // get방식으로 url에 요청
+            }
+        });
+});
+
+$(document).ready(function(){
+    const replyDelete = $("#reply_deleteBtn"); 
+
+        replyDelete.on('click', function(){
+      
+            const lostno = $(this).data('lostno');
+            const url = `/movie/helpDesk/replyLostDelete/${lostno}`;
+
+            if( confirm(" 답변을 정말로 삭제 하시겠습니까?") ){
+                window.location.href = url; // get방식으로 url에 요청
+            }
+        });
+});
+
+
+$(document).ready(function(){
+    const replyWrite = $("#reply_writeBtn"); 
+
+    replyWrite.on('click', function(){
+        const lostNo = $(this).data('lostno');
+        const content = $("#contentTextarea").val();
+        const url = `/movie/helpDesk/replyLostWrite/${lostNo}`;
+
+        if(confirm("답변을 등록 하시겠습니까?")) {
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {contentTextarea: content},
+                success: function(response) {
+                var url = `/movie/helpDesk/lost_detail/${lostNo}`;
+        location.href = url;
+                },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+        }
     });
 });

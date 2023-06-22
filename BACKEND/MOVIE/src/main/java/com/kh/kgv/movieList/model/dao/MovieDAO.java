@@ -48,4 +48,18 @@ public class MovieDAO {
 		
 		return sqlSession.selectList("movieMapper.getPlayList", null, rowBounds);
 	}
+	// 관리자_상영영화 종료 목록 수 조회
+	public int getEndPlayCount() {
+		return sqlSession.selectOne("movieMapper.getEndPlayCount");
+	}
+
+	// 관리자_상영영화 종료 목록 조회
+	public List<JoinPlay> getPlayEndList(Pagination pagination) {
+		
+	int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("movieMapper.getPlayEndList", null, rowBounds);
+	}
 }

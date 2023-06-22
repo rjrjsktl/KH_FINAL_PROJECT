@@ -43,6 +43,49 @@ $(document).ready(function(){
 });
 
 
+
+$(document).ready(function(){
+    const replyDelete = $("#reply_deleteBtn"); 
+
+        replyDelete.on('click', function(){
+      
+            const mtmNo = $(this).data('mtmno');
+            const url = `/movie/helpDesk/replyDelete/${mtmNo}`;
+
+            if( confirm(" 답변을 정말로 삭제 하시겠습니까?") ){
+                window.location.href = url; // get방식으로 url에 요청
+            }
+        });
+});
+
+
+$(document).ready(function(){
+    const replyWrite = $("#reply_writeBtn"); 
+
+    replyWrite.on('click', function(){
+        const mtmNo = $(this).data('mtmno');
+        const content = $("#contentTextarea").val();
+        const url = `/movie/helpDesk/replyWrite/${mtmNo}`;
+
+        if(confirm("답변을 등록 하시겠습니까?")) {
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {contentTextarea: content},
+                success: function(response) {
+                var url = `/movie/helpDesk/mtm_detail/${mtmNo}`;
+        location.href = url;
+                },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+        }
+    });
+});
+
+
+
 $(document).ready(function() {
     $(".btn_wraper button").hover(function() {
         $(this).find("a").addClass("hover");
