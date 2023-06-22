@@ -44,6 +44,10 @@ public class ReserveDAO {
 		return sqlSession.selectList("playMapper.getMoviePlayList", condition);
 	}
 
+	public JoinPlay getUserPlay(int playNo) {
+		return sqlSession.selectOne("playMapper.getUserPlay", playNo);
+	}
+
 
 
 

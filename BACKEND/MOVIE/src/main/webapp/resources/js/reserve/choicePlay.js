@@ -17,6 +17,7 @@ let moviePlay;
 let userPlay;
 let playBundle;
 let movieTitle;
+let playNo = 0;
 
 let originResultSection = $('main > section:nth-child(2)').clone(true);
 $('main > section:nth-child(2)').remove();
@@ -106,7 +107,22 @@ function selectAreaAjax() {
 }
 
 
+// 상영을 선택함
 
+function selectPlayAjax() {
+  $.ajax({
+    url: "selectPlay",
+    data: {"playNo" : playNo},
+    type: "GET",
+    success: function(result) {
+      
+    },
+    error: function () {
+      console.log("에러 발생");
+    }
+  });
+
+}
 
 
 // 날짜 슬라이더
@@ -364,6 +380,8 @@ function clickSuperPlay(e) {
   playIndex = $(e.target).closest('li').index();
   playListIndex = $(e.target).closest('.movie_play').index();
   userPlay = userPlayList[movieNumList[playListIndex]][playIndex];
+  playNo = userPlay.play.playNo;
+  selectPlayAjax();
   updateResultSection(userPlay)
 }    
 
@@ -373,7 +391,8 @@ function clickSuperPlay(e) {
 function clickPlay(e) {
   playIndex = $(e.target).closest('li').index();
   userPlay = userPlayList[playIndex];
-  console.log(userPlay);
+  playNo = userPlay.play.playNo;
+  selectPlayAjax();
   updateResultSection(userPlay);
 }
 	
