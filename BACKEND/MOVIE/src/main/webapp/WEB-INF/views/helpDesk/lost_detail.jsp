@@ -54,7 +54,7 @@
 								<span>${lostdetail.lostTitle}</span>
 							</div>
 							<div>
-								<span><span>${userNick}</span> <span>|</span> <span>${lostdetail.lostDate}
+								<span><span>${lostdetail.lostWriter}</span> <span>|</span> <span>${lostdetail.lostDate}
 								</span></span>
 							</div>
 							<div class="contentText-wrap">${lostdetail.lostContent}</div>
