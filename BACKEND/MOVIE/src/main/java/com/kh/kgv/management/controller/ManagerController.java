@@ -971,8 +971,9 @@ public class ManagerController {
 	// 스토어 수정 이름 중복 검사
 	@ResponseBody
 	@GetMapping("/store_list/edit/{storeNo}/store_edit/NameDupChecks")
-	public int NameDupChecks(String storeName, @PathVariable("storeNo") int storeNo) {
+	public int NameDupChecks(String storeName, @PathVariable("storeNo") int storeNo, Store store) {
 		System.out.println(storeName);
+//		String originName = service.getEditStoreList(store).get;
 		int result = service.NameDupChecks(storeName);
 
 		System.out.println(result);

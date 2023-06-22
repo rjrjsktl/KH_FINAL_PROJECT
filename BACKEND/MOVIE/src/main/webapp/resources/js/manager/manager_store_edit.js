@@ -144,13 +144,7 @@ $(document).ready(function () {
                     if (result == 1) {
                         $("#storeNameMessage").text("중복!");
                         nameCheck = false;
-                    } else if (result == 2) {
-                        $("#storeNameMessage").text("현재NO의이름이라 유효합니다.");
-                        nameCheck = true;
-                    }
-
-                    else {
-
+                    } else {
                         $("#storeNameMessage").text("유효!");
                         nameCheck = true;
                     }
