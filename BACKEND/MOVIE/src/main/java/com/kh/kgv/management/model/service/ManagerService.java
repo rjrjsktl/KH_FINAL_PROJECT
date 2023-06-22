@@ -166,7 +166,9 @@ public interface ManagerService {
 	Map<String, Object> selectLostList(int cp);
 
 	// 스토어 수정 중복검사
-	int NameDupChecks(String storeName);
+	int NameDupChecks(String storeName, String originName);
+
+	Store getStoreInfo(int storeNo);
 
 
 }

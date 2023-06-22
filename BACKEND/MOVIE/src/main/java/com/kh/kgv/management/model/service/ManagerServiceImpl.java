@@ -550,13 +550,15 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 	// 스토어 수정 중복검사
-			@Override
-			public int NameDupChecks(String storeName) {
-				
-				
-				
-				return dao.NameDupChecks(storeName);
-			}
+	@Override
+	public int NameDupChecks(String storeName, String originName) {
+		
+		Map<String, Object> condition = new HashMap<String, Object>();
+		condition.put("storeName", storeName);
+		condition.put("originName", originName);
+		
+		return dao.NameDupChecks(condition);
+	}
 			
 			
 	// 관리자_혜택 수정 페이지
@@ -591,6 +593,12 @@ public class ManagerServiceImpl implements ManagerService {
 		lostslists.put("getLostList", getLostList);
 
 		return lostslists;
+	}
+
+	@Override
+	public Store getStoreInfo(int storeNo) {
+		// TODO Auto-generated method stub
+		return dao.getStoreInfo(storeNo);
 	}
 
 }
