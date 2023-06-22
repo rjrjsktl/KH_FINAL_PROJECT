@@ -3,23 +3,23 @@ $(document).ready(function () {
     let area_Arr = [];
     let cinema_Arr = [];
     let screen_Arr = [];
-    
-    
+
+
     // 사용자가 콘솔 창에서 html 내용을 수정하면 text()에 기반한 서버 검색에 악영향이 갈 수 있을 것 같습니다.
     // text()는 출력용으로만 하고, index()를 통해 서버에 검색하는 게 낫지 않을까 하여 index 변수들을 선언하였습니다. 
-    
-    
-    let areaIndex =  -1;
-	let cinemaIndex =  -1;
-	let screenIndex = -1;
+
+
+    let areaIndex = -1;
+    let cinemaIndex = -1;
+    let screenIndex = -1;
     let movieIndex = -1;
     let timeIndex = -1;
-    
+
     let enrollCheck = false;
 
     let areaList = ["서울", "경기", "충청", "전라", "경남", "경북", "강원", "제주"];
     let areaCinemaList;
-    
+
 
 
     // ===============================================================================
@@ -102,10 +102,10 @@ $(document).ready(function () {
     $(document).on('click', () => {
         Area_slide.hide();
     });
-    
+
     // 지역을 선택하면
-    
-    $(".area_item").on("click", function(){
+
+    $(".area_item").on("click", function () {
         areaIndex = $(this).index();
         $.ajax({
             url: "play_add/areaCinemaList",
@@ -113,17 +113,17 @@ $(document).ready(function () {
             type: "GET",
             success: function (cinemaList) {
                 areaCinemaList = cinemaList;
-	            $('.play_cinema_slide').empty();
+                $('.play_cinema_slide').empty();
 
-	            for(let cinema of cinemaList) {
-	                let cinemaItem = document.createElement("div");
-	                cinemaItem.addEventListener("click", function(e) {
-	                  cinemaSlideEvent(e);
-	                });
-	                cinemaItem.classList.add("cinema_item");
-	                $(cinemaItem).text(cinema.cinemaName);
-	                $('.play_cinema_slide').append(cinemaItem);
-	            }
+                for (let cinema of cinemaList) {
+                    let cinemaItem = document.createElement("div");
+                    cinemaItem.addEventListener("click", function (e) {
+                        cinemaSlideEvent(e);
+                    });
+                    cinemaItem.classList.add("cinema_item");
+                    $(cinemaItem).text(cinema.cinemaName);
+                    $('.play_cinema_slide').append(cinemaItem);
+                }
             },
             error: function () {
                 console.log("에러 발생");
@@ -186,26 +186,26 @@ $(document).ready(function () {
         cinemaIndex = -1;
         screenIndex = -1;
     });
-    
-    
+
+
     function createScreenList(t) {
         $(".play_screen_slide").empty();
         let screenCount = areaCinemaList.find(c => c.cinemaName === t).cinemaScreen;
-      
-        for(let i=1; i<=screenCount; i++) {
+
+        for (let i = 1; i <= screenCount; i++) {
             let screenItem = document.createElement("div");
-            screenItem.addEventListener("click", function(e){
-              screenSlideEvent(e)
+            screenItem.addEventListener("click", function (e) {
+                screenSlideEvent(e)
             });
             screenItem.classList.add("screen_item");
-            screenItem.addEventListener("click", function() {
-              timeCheck();
+            screenItem.addEventListener("click", function () {
+                timeCheck();
             });
             $(screenItem).text(`${i}관`);
             $(".play_screen_slide").append(screenItem);
         }
     }
-    
+
 
     // 상영 영화관 슬라이드 토글
     const Cinema_slide = $('.cinema_Items');
@@ -235,12 +235,12 @@ $(document).ready(function () {
     // 상영 스크린 추가 기능 및 슬라이드
     const play_screen_enter = $('.play_screen_enter');
     const play_screen_slide = $('.play_screen_slide > div');
-	
-	
-    function screenSlideEvent(e){
+
+
+    function screenSlideEvent(e) {
         e.preventDefault();
         const newDiv = document.createElement('div');
-        const addText = ($(e.currentTarget).index()+1)+"관";
+        const addText = ($(e.currentTarget).index() + 1) + "관";
         const delBtn = '<div class="deleteBtn"><i class="fa-solid fa-xmark fa-2xs"></i></div>';
         const clickCount = play_screen_enter.children().length;
 
@@ -269,7 +269,7 @@ $(document).ready(function () {
     // 배열에서 삭제
     play_screen_enter.on('click', '.added', (e) => {
         e.stopPropagation();
-        const clickedText = (screenIndex+1)+"관";
+        const clickedText = (screenIndex + 1) + "관";
 
         for (let i = 0; i < screen_Arr.length; i++) {
             if (screen_Arr[i] === clickedText) {
@@ -296,7 +296,7 @@ $(document).ready(function () {
         movie_slide.hide();
         time_slide.hide();
     });
-    
+
     Screen_slide.on('click', (e) => {
         e.stopPropagation();
         Screen_slide.toggle();
@@ -374,7 +374,7 @@ $(document).ready(function () {
         Screen_slide.hide();
         time_slide.hide();
     });
-    
+
     movie_slide.on('click', (e) => {
         e.stopPropagation();
         movie_slide.toggle();
@@ -387,8 +387,8 @@ $(document).ready(function () {
     $(document).on('click', () => {
         movie_slide.hide();
     });
-    
-    $(play_movie_slide).on("click", function() {
+
+    $(play_movie_slide).on("click", function () {
         timeCheck();
     });
 
@@ -462,11 +462,11 @@ $(document).ready(function () {
         Screen_slide.hide();
         movie_slide.hide();
     });
-    
-    $(play_time_slide).on("click", function() {
+
+    $(play_time_slide).on("click", function () {
         timeCheck();
     });
-    
+
 
     $(document).on('click', () => {
         time_slide.hide();
@@ -509,7 +509,7 @@ $(document).ready(function () {
             $('.end_date').val("");
             return false;
         }
-        
+
         timeCheck();
     });
 
@@ -540,37 +540,50 @@ $(document).ready(function () {
             $('.end_date').val("");
         }
     })
-    
-    
+
+
     // 상영시간 유효성 검사
     function timeCheck() {
-        if(screen_Arr.length && movie_Arr.length && time_Arr.length && endDate.val()) {
-      
-	        $.ajax({
-	            url: "play_add/playTimeCheck",
-	            data: { areaIndex, cinemaIndex, screenIndex, movieIndex, timeIndex, "startDate":startDate.val(), "endDate":endDate.val()},
-	            type: "GET",
-	            
-	            success: function(result) {
-	                if(!result.length) {
-	                    enrollCheck = true;
-	                    alert("히힛, 등록하셔유");
-	                } else {
-	                    enrollCheck = false;
-	                    alert("글쎄");
-	                }
-	            },
-	           
-	            error: function () {
-	                console.log("에러 발생");
-	            }
-	        });
-        
+        if (screen_Arr.length && movie_Arr.length && time_Arr.length && endDate.val()) {
+
+            $.ajax({
+                url: "play_add/playTimeCheck",
+                data: { areaIndex, cinemaIndex, screenIndex, movieIndex, timeIndex, "startDate": startDate.val(), "endDate": endDate.val() },
+                type: "GET",
+
+                success: function (result) {
+                    if (result.length > 0) {
+                        enrollCheck = false;
+
+                        let playData = result[0];
+
+                        console.log(result);
+                        // 정상적인 방법은 아니지만 일단 값은 다 가지고 오니까 패스 ㅋㅋ
+                        alert(playData.playUploader + "는 " + playData.playStart + " ~ " + playData.playEnd + " " + playData.playBookSeat + "부터 " + playData.playRegDate + "까지 등록되어 있습니다.");
+
+                        // if (!$(playData.startDate)) {
+
+                        //     alert("히힛, 등록하셔유");
+                        //     console.log("result : " + result);
+                        // } else {
+
+                        //     alert("글쎄");
+                        // }
+                    } else {
+                        enrollCheck = true;
+                        alert("해당하는 상영 정보가 없습니다.");
+                    }
+                },
+
+                error: function () {
+                    console.log("에러 발생");
+                }
+            });
+
         }
-      
     }
-    
-    
+
+
     // ===============================================================================
     // 결과값 확인용
 
@@ -585,27 +598,27 @@ $(document).ready(function () {
         console.log('상영 시간 : ' + time_Arr);
         console.log('상영 시작일 : ' + startDate.val());
         console.log('상영 종료일 : ' + endDate.val());
-        
-        if(enrollCheck) {
+
+        if (enrollCheck) {
             let dataName = ["areaIndex", "cinemaIndex", "screenIndex", "movieIndex", "timeIndex", "startDate", "endDate"];
-            let dataValue = [areaIndex, cinemaIndex, screenIndex, movieIndex, timeIndex, startDate.val(), endDate.val()]; 
+            let dataValue = [areaIndex, cinemaIndex, screenIndex, movieIndex, timeIndex, startDate.val(), endDate.val()];
             let el;
-            
-            for (let i=0; i < dataName.length; i++){
-            
+
+            for (let i = 0; i < dataName.length; i++) {
+
                 el = document.createElement("input");
                 el.type = "hidden";
                 el.name = dataName[i];
                 el.value = dataValue[i];
-                
-                $("#playAddForm").append(el);    
-            }
-            
-            $("#playAddForm").submit();
 
-            
+                $("#playAddForm").append(el);
+            }
+
+            // $("#playAddForm").submit();
+
+
         }
-        
+
     });
 
     // const slideUpAll = $('.set_Edge');
@@ -615,9 +628,9 @@ $(document).ready(function () {
     //     movie_slide.slideUp();
     //     time_slide.slideUp();
     // });
-    
-    
-   
+
+
+
 
 
 });
