@@ -550,16 +550,13 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 	// 스토어 수정 중복검사
-	@Override
-	public int NameDupChecks(String storeName, String originName) {
-		
-		Map<String, Object> condition = new HashMap<String, Object>();
-		condition.put("storeName", storeName);
-		condition.put("originName", originName);
-		
-		return dao.NameDupChecks(condition);
-	}
+		@Override
+		public int NameDupChecks(String storeName) {
 			
+			
+			return dao.NameDupChecks(storeName);
+		}
+				
 			
 	// 관리자_혜택 수정 페이지
 	@Override
@@ -599,12 +596,6 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public int updateBenefitsST(Benefits bene) {
 		return dao.updateBenefitsST(bene);
-	}
-
-	@Override
-	public Store getStoreInfo(int storeNo) {
-		// TODO Auto-generated method stub
-		return dao.getStoreInfo(storeNo);
 	}
 
 }
