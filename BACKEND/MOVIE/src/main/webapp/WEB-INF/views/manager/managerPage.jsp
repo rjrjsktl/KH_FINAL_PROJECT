@@ -178,7 +178,14 @@
 																			${mtm.mtmTitle}</a></td>
 																	<td>${mtm.mtmRegdate}</td>
 																	<td>${mtm.mtmRepSt}</td>
-																	<td>${mtm.mtmRepDate}</td>
+																	<c:choose>
+																		<c:when test="${not empty mtm.mtmRepDate}">
+																			<td>${mtm.mtmRepDate}</td>
+																		</c:when>
+																		<c:otherwise>
+																			<td>-</td>
+																		</c:otherwise>
+																	</c:choose>
 																</tr>
 															</c:forEach>
 														</table>
@@ -193,7 +200,8 @@
 
 						</main>
 
-						<script src="${contextPath}/resources/js/manager/managerPage.js"></script>
+						<script src=" ${contextPath}/resources/js/manager/managerPage.js">
+						</script>
 						<script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
 						<script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
 					</body>
