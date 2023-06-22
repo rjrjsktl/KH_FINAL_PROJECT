@@ -167,10 +167,10 @@ $(document).ready(function () {
         };
 
         $.ajax({
-            url: "/(충돌방지용태그)movie/manager/event_list/edit/" + benefitsNo.val() + "/edit_Benefits",
+            url: "/movie/manager/benefits_list/edit/" + benefitsNo.val() + "/edit_Benefits",
             data: {
                 "no": benefitsNo.val()
-                , "title": eventTitle.val()
+                , "title": benefitsTitle.val()
                 , "start": startDate.val()
                 , "end": endDate.val()
                 , "content": textArea.val()

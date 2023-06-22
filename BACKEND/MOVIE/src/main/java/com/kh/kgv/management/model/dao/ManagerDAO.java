@@ -403,6 +403,16 @@ public class ManagerDAO {
 
 		return sqlSession.selectList("managerMapper.getAllMTMList", null, rowBounds);
 	}
+	
+	// 관리자_혜택 수정 페이지
+	public Map<String, Object> getEditBenefitsList(Benefits bene) {
+		return sqlSession.selectOne("managerMapper.getEditBenefitsList", bene);
+	}
+	
+	// 관리자_혜택 수정 등록
+	public int editBenefits(Benefits updatebene) {
+		return sqlSession.update("managerMapper.editBenefits", updatebene);
+	}
 
 	// 분실물 목록 수 조회
 	public int getLostCount() {

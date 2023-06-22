@@ -38,6 +38,7 @@ import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.management.model.service.ManageStoreService;
 import com.kh.kgv.management.model.service.ManagerService;
+import com.kh.kgv.management.model.vo.Benefits;
 import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
@@ -1354,22 +1355,47 @@ public class ManagerController {
 	// ===================================================
 	// ===================================================
 
-	// 관리자_혜택 등록 이동
-	@GetMapping("/event_list/edit/{eventNotest}")
+	// 관리자_혜택 수정페이지 이동
+	@GetMapping("/benefits_list/edit/{benefitsNo}")
 	public String moveBenefitsEdit(Model model,
-			CinemaPrice price,
-			@PathVariable("priceNo") int priceNo) {
+								   Benefits bene,
+								   @PathVariable("benefitsNo") int benfitsNo) {
 
-		Map<String, Object> editPrice = null;
+		Map<String, Object> editBenefits = null;
 
-		price.setPriceNo(priceNo);
+		bene.setBenefitsNo(benfitsNo);
 
-		editPrice = service.getEditPriceList(price);
-		System.out.println("DAO에서 가지고 온 editEvent : " + editPrice);
-		model.addAttribute("editPrice", editPrice);
+		editBenefits = service.getEditBenefitsList(bene);
+		
+		System.out.println("DAO에서 가지고 온 editEvent : " + editBenefits);
+		model.addAttribute("editBenefits", editBenefits);
 
-		System.out.println("관리자_극장 가격 수정 이동");
-		return "manager/manager_benfits_list_edit";
+		System.out.println("관리자_혜택 수정페이지 이동");
+		return "manager/manager_benefits_edit";
+		
 	}
+	
+	// ===================================================
+	// ===================================================
+
+	// 관리자_혜택 수정 등록
+	@PostMapping("/benefits_list/edit/{benefitsNo}/edit_Benefits")
+	@ResponseBody
+	public int editBenefits(@RequestParam("no") int no,
+							@RequestParam("title") String title,
+							@RequestParam("start") String start,
+							@RequestParam("end") String end,
+							@RequestParam("content") String content) {
+		Benefits updatebene = new Benefits();
+		updatebene.setBenefitsNo(no);
+		updatebene.setBenefitsTitle(title);
+		updatebene.setBenefitsStart(start);
+		updatebene.setBenefitsEnd(end);
+		updatebene.setBenefitsContent(content);
+		
+		System.out.println("혜택 수정에서 가지고 온 값들 =================================" + updatebene);
+		int result = service.editBenefits(updatebene);
+		return result;
+		}
 
 }
