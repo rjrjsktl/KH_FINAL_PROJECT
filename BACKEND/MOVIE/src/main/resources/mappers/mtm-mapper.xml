@@ -40,8 +40,9 @@
 				MTM_TBL.USER_NO = 0 AND MTM_TBL.MTM_ST = 'N'
 			</otherwise>
 		</choose>
-
 	</select>
+	
+
 
 	<select id="selectMtmNo" resultType="_int">
 		SELECT MAX(MTM_NO) AS
@@ -78,6 +79,27 @@
 			</otherwise>
 		</choose>
 	</select>
+	
+		<!-- 고객센터 전용 count -->
+	<select id="getUserMtmCount-all" resultType="_int">
+	SELECT COUNT(MTM_NO)
+		FROM MTM_TBL
+	</select>
+		<!-- 고객센터 전용 select -->
+	<select id="userMtmList-all" resultMap="mtm_rm">
+		SELECT
+		MTM_NO,
+		MTM_TITLE,
+		TO_CHAR(MTM_REGDATE, 'YYYY.MM.DD') AS
+		MTM_REGDATE,
+		MTM_COUNT,
+		MTM_TYPE
+		FROM
+		MTM_TBL
+		INNER JOIN
+		USERS ON
+		MTM_TBL.USER_NO = USERS.USER_NO
+	</select>	
 
 	<select id="mtmDetail" resultMap="mtm_rm">
 		SELECT

@@ -1,5 +1,6 @@
 package com.kh.kgv.management.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -403,6 +404,16 @@ public class ManagerDAO {
 
 		return sqlSession.selectList("managerMapper.getAllMTMList", null, rowBounds);
 	}
+	
+	// 관리자_혜택 수정 페이지
+	public Map<String, Object> getEditBenefitsList(Benefits bene) {
+		return sqlSession.selectOne("managerMapper.getEditBenefitsList", bene);
+	}
+	
+	// 관리자_혜택 수정 등록
+	public int editBenefits(Benefits updatebene) {
+		return sqlSession.update("managerMapper.editBenefits", updatebene);
+	}
 
 	// 분실물 목록 수 조회
 	public int getLostCount() {
@@ -415,7 +426,19 @@ public class ManagerDAO {
 
 		return sqlSession.selectList("managerMapper.getAllLostList", null, rowBounds);
 	}
+	
+	// 관리자_혜택 상태 업데이트
+	public int updateBenefitsST(Benefits bene) {
+		return sqlSession.update("managerMapper.updateBenefitsST", bene);
+	}
+	
+	
+	public int NameDupChecks(String storeName) {
+		
+	
+		return sqlSession.selectOne("storeMapper.NameDupChecks", storeName );
+	}
 
-
+	
 
 }

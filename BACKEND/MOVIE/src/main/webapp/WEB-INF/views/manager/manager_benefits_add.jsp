@@ -34,6 +34,8 @@
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_benefits_add.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
+						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_nav.css">
+						
 					</head>
 
 					<body>
