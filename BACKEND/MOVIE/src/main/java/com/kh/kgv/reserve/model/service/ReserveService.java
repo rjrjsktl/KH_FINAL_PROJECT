@@ -21,4 +21,6 @@ public interface ReserveService {
 
 	List<JoinPlay> getMoviePlayList(int cinemaNo, String strDate, int movieNo);
 
+	JoinPlay getUserPlay(int playNo);
+
 }

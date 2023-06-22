@@ -64,6 +64,11 @@ public class ReserveServiceImpl implements ReserveService {
 		return moviePlayList;
 	}
 
+	@Override
+	public JoinPlay getUserPlay(int playNo) {
+		return dao.getUserPlay(playNo);
+	}
+
 
 
 

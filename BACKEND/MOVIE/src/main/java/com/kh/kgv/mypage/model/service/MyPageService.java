@@ -17,8 +17,11 @@ public interface MyPageService {
 	// 회원 정보 변경
 	int updateInfo(Map<String, Object> paramMap);
 
+//	// review카드 불러오기
+//	List<Review> myReviewList(int userNo);
+
 	// review카드 불러오기
-	List<Review> myReviewList(int userNo);
+	List<Review> loadReviewCards(Map<String, Object> paramMap);
 	
 //	// review카드 5개씩 불러오기
 //	List<Review> getReviewListInRange(Map<String, Object> paramMap);
