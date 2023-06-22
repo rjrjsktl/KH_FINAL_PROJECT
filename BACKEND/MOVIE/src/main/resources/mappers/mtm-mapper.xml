@@ -21,15 +21,8 @@
 
 	</resultMap>
 
-	<select id="getMtmCount" resultType="_int">
-		SELECT COUNT(MTM_NO) FROM
-		MTM_TBL
-	</select>
 
-	<select id="selectMtmNo" resultType="_int">
-		SELECT MAX(MTM_NO) AS
-		maxMtmNo FROM MTM_TBL WHERE USER_NO = ${userNo}
-	</select>
+	<!-- 조건식을 추가해야합니다. 1. 로그인 한 유저가 일반유저일 경우 2. 로그인 한 유저가 관리자일 경우 -->
 
 	<select id="getUserMtmCount" resultType="_int">
 		SELECT COUNT(MTM_NO)
@@ -49,7 +42,14 @@
 		</choose>
 
 	</select>
-	
+
+	<select id="selectMtmNo" resultType="_int">
+		SELECT MAX(MTM_NO) AS
+		maxMtmNo FROM MTM_TBL WHERE USER_NO = ${userNo}
+	</select>
+
+
+
 	<select id="userMtmList" resultMap="mtm_rm">
 		SELECT
 		MTM_NO,
@@ -145,8 +145,8 @@
 		MTM_REPDATE = DEFAULT
 		WHERE MTM_NO = #{mtmNo}
 	</update>
-	
-	
-	
-	
+
+
+
+
 </mapper>
