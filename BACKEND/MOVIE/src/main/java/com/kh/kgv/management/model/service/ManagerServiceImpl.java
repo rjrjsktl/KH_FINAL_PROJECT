@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 
 import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.items.model.vo.TimeTable;
@@ -51,6 +52,15 @@ public class ManagerServiceImpl implements ManagerService {
 		List<Notice> getNotice = dao.getAllNotice();
 		return getNotice;
 	}
+	
+
+	// 관리자 메인 1 : 1 문의 조회
+	@Override
+	public List<Mtm> getMainMTMList() {
+		List<Mtm> getMTMList = dao.getMainMTMList();
+		return getMTMList;
+	}
+	
 
 	// 관리자 메인 일일 접속자 수 조회
 	@Override
@@ -518,5 +528,26 @@ public class ManagerServiceImpl implements ManagerService {
 	public int editBanner(banner banner) {
 		return dao.editBanner(banner);
 	}
+
+	// 관리자_1:1 문의 목록
+	@Override
+	public Map<String, Object> selectMTMList(int cp) {
+		// 1:1 문의 목록 수 조회
+		int mtmCount = dao.getMTMCount();
+
+		// 조회한 문의 수를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, mtmCount);
+
+		// 영화관 리스트 조회
+		List<Mtm> getMTMList = dao.getAllMTMList(pagination);
+
+		Map<String, Object> mtmlists = new HashMap<String, Object>();
+		mtmlists.put("pagination", pagination);
+		mtmlists.put("getMTMList", getMTMList);
+
+		return mtmlists;
+	}
+
+	
 
 }

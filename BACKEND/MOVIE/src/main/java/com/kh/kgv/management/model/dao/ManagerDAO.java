@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.items.model.vo.TimeTable;
@@ -46,6 +47,11 @@ public class ManagerDAO {
 	// 관리자 메인 일일 접속자 수 조회
 	public List<DailyEnter> getWeeklyEnter(WeeklyEnter we) {
 		return sqlSession.selectList("managerMapper.getDailyEnter", we);
+	}
+	
+	// 관리자 메인 1 : 1 문의 조회
+	public List<Mtm> getMainMTMList() {
+		return sqlSession.selectList("managerMapper.getMainMTMList");
 	}
 
 	/**
@@ -383,5 +389,20 @@ public class ManagerDAO {
 
 		return sqlSession.selectList("managerMapper.benefitsList", null, rowBounds);
 	}
+
+	// 1:1 문의 목록 수 조회
+	public int getMTMCount() {
+		return sqlSession.selectOne("managerMapper.getMTMCount");
+	}
+
+	// 1:1 문의 목록 조회
+	public List<Mtm> getAllMTMList(Pagination pagination) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+		return sqlSession.selectList("managerMapper.getAllMTMList", null, rowBounds);
+	}
+
+
 
 }
