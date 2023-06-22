@@ -10,6 +10,8 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.text.StringEscapeUtils;
@@ -36,6 +38,7 @@ import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.management.model.service.ManageStoreService;
 import com.kh.kgv.management.model.service.ManagerService;
+import com.kh.kgv.management.model.vo.Benefits;
 import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
@@ -63,7 +66,17 @@ public class ManagerController {
 
 	// 관리자_메인페이지 이동
 	@GetMapping("/main")
-	public String moveMain(Model model) {
+	public String moveMain(
+			Model model
+			, HttpSession session
+			) {
+		
+		User loginUser = (User)session.getAttribute("loginUser");
+		
+		String url = "";
+		String st = loginUser.getUserManagerSt(); // 관리자 상태
+		
+		if(loginUser != null && st !=("N")) {
 
 		// 관리자 메인 신규 회원 목록 조회
 		List<User> getUser = null;
@@ -89,7 +102,14 @@ public class ManagerController {
 		model.addAttribute("getMovieList", getMovieList);
 
 		System.out.println("관리자_메인페이지 이동");
-		return "manager/managerPage";
+		 url =  "manager/managerPage";
+		
+		} else {
+			System.out.println("관리자 권한 없음");
+			url = "redirect:/movie";
+		}
+		
+		return url;
 	}
 
 	// ===================================================
@@ -1097,10 +1117,20 @@ public class ManagerController {
 
 	// 관리자_분실물 목록 이동
 	@GetMapping("/lost_list")
-	public String moveLostList() {
-		System.out.println("관리자_분실물 목록 이동");
-		return "manager/manager_lost_list";
-	}
+	public String moveLostList(
+				Model model
+				, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+		
+			Map<String, Object> getLostList = null;
+
+			// 회원 리스트 얻어오기
+			getLostList = service.selectLostList(cp);
+
+			model.addAttribute("getLostList", getLostList);
+			
+			System.out.println("관리자_분실물 목록 이동");
+			return "manager/manager_lost";
+		}
 
 	// ===================================================
 	// ===================================================
@@ -1325,22 +1355,47 @@ public class ManagerController {
 	// ===================================================
 	// ===================================================
 
-	// 관리자_혜택 등록 이동
-	@GetMapping("/event_list/edit/{eventNotest}")
+	// 관리자_혜택 수정페이지 이동
+	@GetMapping("/benefits_list/edit/{benefitsNo}")
 	public String moveBenefitsEdit(Model model,
-			CinemaPrice price,
-			@PathVariable("priceNo") int priceNo) {
+								   Benefits bene,
+								   @PathVariable("benefitsNo") int benfitsNo) {
 
-		Map<String, Object> editPrice = null;
+		Map<String, Object> editBenefits = null;
 
-		price.setPriceNo(priceNo);
+		bene.setBenefitsNo(benfitsNo);
 
-		editPrice = service.getEditPriceList(price);
-		System.out.println("DAO에서 가지고 온 editEvent : " + editPrice);
-		model.addAttribute("editPrice", editPrice);
+		editBenefits = service.getEditBenefitsList(bene);
+		
+		System.out.println("DAO에서 가지고 온 editEvent : " + editBenefits);
+		model.addAttribute("editBenefits", editBenefits);
 
-		System.out.println("관리자_극장 가격 수정 이동");
-		return "manager/manager_benfits_list_edit";
+		System.out.println("관리자_혜택 수정페이지 이동");
+		return "manager/manager_benefits_edit";
+		
 	}
+	
+	// ===================================================
+	// ===================================================
+
+	// 관리자_혜택 수정 등록
+	@PostMapping("/benefits_list/edit/{benefitsNo}/edit_Benefits")
+	@ResponseBody
+	public int editBenefits(@RequestParam("no") int no,
+							@RequestParam("title") String title,
+							@RequestParam("start") String start,
+							@RequestParam("end") String end,
+							@RequestParam("content") String content) {
+		Benefits updatebene = new Benefits();
+		updatebene.setBenefitsNo(no);
+		updatebene.setBenefitsTitle(title);
+		updatebene.setBenefitsStart(start);
+		updatebene.setBenefitsEnd(end);
+		updatebene.setBenefitsContent(content);
+		
+		System.out.println("혜택 수정에서 가지고 온 값들 =================================" + updatebene);
+		int result = service.editBenefits(updatebene);
+		return result;
+		}
 
 }

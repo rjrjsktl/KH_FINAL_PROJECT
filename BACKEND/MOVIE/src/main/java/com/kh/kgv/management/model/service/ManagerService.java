@@ -9,6 +9,7 @@ import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
+import com.kh.kgv.management.model.vo.Benefits;
 import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
@@ -154,6 +155,15 @@ public interface ManagerService {
 
 	// 관리자_1:1 문의 목록
 	Map<String, Object> selectMTMList(int cp);
+	
+	// 관리자_혜택 수정 페이지
+	Map<String, Object> getEditBenefitsList(Benefits bene);
+	
+	// 관리자_혜택 수정 등록
+	int editBenefits(Benefits updatebene);
+
+	// 관리자_분실물 목록 조회
+	Map<String, Object> selectLostList(int cp);
 
 	// 스토어 수정 중복검사
 	int NameDupChecks(String storeName);

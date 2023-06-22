@@ -49,17 +49,25 @@ public class HelpDeskDAO {
 	}
 
 	// 1:1문의 갯수 카운트 ( insert를 위한 카운트 )
-	public int getMtmListCount() {
-		return sqlSession.selectOne("mtmMapper.getMtmCount");
-	}
+//	public int getMtmListCount(int userNo) {
+//		
+//	
+//		Map<String, Object> params = new HashMap<>();
+//		params.put("userNo", userNo);
+//		
+//		System.out.println("현재 접속중인 유저 넘버는 =====================%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+userNo);
+//
+//		
+//		return sqlSession.selectOne("mtmMapper.getMtmCount", params);
+//	}
 
 	// 1:1문의 본인/권한자가 접근하기위한 갯수카운트
 	public int getMtmListCount(int userNo, int userManagerStAsInt) {
 		Map<String, Object> params = new HashMap<>();
 		params.put("userNo", userNo);
 		params.put("userManagerSt", userManagerStAsInt);
-		System.out.println("현재 접속중인 유저 넘버는 =====================%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+userNo);
-		System.out.println("현재 카운트가능한 갯수권한은 =====================%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+userManagerStAsInt);
+		
+		
 		return sqlSession.selectOne("mtmMapper.getUserMtmCount", params);
 	}
 
