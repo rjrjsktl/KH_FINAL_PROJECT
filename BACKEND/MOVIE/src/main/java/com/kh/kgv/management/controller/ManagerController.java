@@ -966,8 +966,8 @@ public class ManagerController {
 		@GetMapping("/store_list/edit/{storeNo}/store_edit/NameDupChecks")
 		public int NameDupChecks(String storeName, @PathVariable("storeNo") int storeNo, Store store) {
 			System.out.println(storeName);
-			String originName = service.getStoreInfo(storeNo).getStoreName();
-			int result = service.NameDupChecks(storeName, originName);
+//			String originName = service.getStoreInfo(storeNo).getStoreName();
+			int result = service.NameDupChecks(storeName);
 
 			System.out.println(result);
 			return result;
