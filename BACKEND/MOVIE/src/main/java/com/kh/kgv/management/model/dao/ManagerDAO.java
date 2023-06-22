@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.helpDesk.model.vo.LostPackage;
 import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
@@ -401,6 +402,18 @@ public class ManagerDAO {
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 
 		return sqlSession.selectList("managerMapper.getAllMTMList", null, rowBounds);
+	}
+
+	// 분실물 목록 수 조회
+	public int getLostCount() {
+		return sqlSession.selectOne("managerMapper.getLostCount");
+	}
+
+	public List<LostPackage> getAllLostList(Pagination pagination) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+		return sqlSession.selectList("managerMapper.getAllLostList", null, rowBounds);
 	}
 
 
