@@ -19,5 +19,8 @@ public interface MyPageService {
 
 	// review카드 불러오기
 	List<Review> myReviewList(int userNo);
+	
+//	// review카드 5개씩 불러오기
+//	List<Review> getReviewListInRange(Map<String, Object> paramMap);
 
 }

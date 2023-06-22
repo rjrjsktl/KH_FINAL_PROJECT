@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,18 +43,14 @@ import org.slf4j.LoggerFactory;
 @RequestMapping("/helpDesk")
 @SessionAttributes({"loginUser"})
 public class HelpDeskController {
-
+	
 	private Logger logger = LoggerFactory.getLogger(LoginController.class);
-
-
 	@Autowired
 	private ManagerService service;
 	@Autowired
 	private HelpDeskService services;
 
-
-
-
+	// 고객센터 접속
 	@RequestMapping("/helpDesk_home")
 	public String helpDesk(
 			Model model
@@ -73,6 +70,7 @@ public class HelpDeskController {
 		return "helpDesk/helpDesk_home";
 	}
 
+	// 고객센터 리스트 출력
 	@RequestMapping("/notice_List")
 	public String noticeList(
 			Model model
@@ -92,9 +90,7 @@ public class HelpDeskController {
 		return "helpDesk/notice_List";
 	}
 
-
-
-
+	// 고객센터 세부사항 진입
 	@RequestMapping("/notice_detail/{noticeNo}")
 	public String noticedetail(
 			Model model,
@@ -117,13 +113,13 @@ public class HelpDeskController {
 		return "helpDesk/notice_detail";
 	}
 
-
+	// 1:1문의 리스트 출력-------------------------------------------------
 	@RequestMapping("/mTm_List")
-	public String mtmform(
+	public String mtmList(
 			Model model,
 			@RequestParam(value = "cp", required = false, defaultValue="1" ) int cp,
 			RedirectAttributes ra,
-			
+
 			HttpSession session,
 			HttpServletRequest req,HttpServletResponse resp
 			){
@@ -131,24 +127,25 @@ public class HelpDeskController {
 		User loginUser = (User)session.getAttribute("loginUser");
 		int userNo = 0;
 		String userManagerSt = null;
+
 		if(loginUser != null) {
 			userNo = loginUser.getUserNo();
 			userManagerSt = loginUser.getUserManagerSt();
 		}
-		int mtmCount = 0;
-		mtmCount = services.getMtmListCount(userNo);
-		
-		Map<String, Object>mtmList = null;
-		mtmList = services.getMtmList(cp,userNo);
 
-	
-		model.addAttribute("mtmCount", mtmCount);
+		Map<String, Object>mtmList = null;
+		mtmList = services.getMtmList(cp,userNo,userManagerSt);
+
+		//	로그인세션에 해당하는 MtmListcount를 받아오는 새로운 컨트롤러작성
+		int userMtmListCount = services.getuserMtmListCount(userNo,userManagerSt);
+
 		model.addAttribute("mtmList", mtmList);
+		model.addAttribute("userMtmListCount",userMtmListCount);
 
 		return "helpDesk/mTm_List";
 	}
 
-
+	// 1:1문의 세부사항 진입
 	@RequestMapping("/mtm_detail/{mtmNo}")
 	public String mtmdetail(
 			Model model,
@@ -166,76 +163,44 @@ public class HelpDeskController {
 		return "helpDesk/mtm_detail";
 	}
 
-	@GetMapping("/deleteMtm/{mtmNo}")
-	public String boardDelete(
-			@PathVariable("mtmNo") int mtmNo,
-			@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
-			Model model,
-			RedirectAttributes ra,
-			@RequestHeader ("referer") String referer
-			) {
-
-		String path = null;
-		String message = null;
-
-
-
-		int result = services.deleteBoard(mtmNo);
-
-		if(result > 0 ) {
-			path = "helpDesk/mTm_List";
-			message = "글 삭제에 성공했다.";
-
-		}else {
-			path = "referer";  
-		}
-
-		ra.addFlashAttribute("message",message);
-
-
-		return "redirect:/" +path;
-	}
-
-	//	000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-
-
+	// 1:1문의 게시물 삽입 Get
 	@GetMapping("/mTm_form")
 	public String mtmWrite(
-			Model model,
-			HttpSession session,
-			HttpServletRequest req, HttpServletResponse resp
+					Model model,
+					HttpSession session,
+					HttpServletRequest req, HttpServletResponse resp
 
-			) {
+					) {
 
-		User loginUser = (User)session.getAttribute("loginUser");
+				User loginUser = (User)session.getAttribute("loginUser");
 
-		int userNo = 0;
+				int userNo = 0;
 
-		if(loginUser != null) {
-			userNo = loginUser.getUserNo();
-		}
+				if(loginUser != null) {
+					userNo = loginUser.getUserNo();
+				}
 
-		String path = null;
+				String path = null;
 
-		if ( userNo > 0) {
-			path = "helpDesk/mTm_form";
-		} else {
-			String referer = req.getHeader("Referer"); // 이전 페이지의 URL을 가져옵니다.
-			session.setAttribute("prevPage", referer); // 이전 페이지의 URL을 세션에 저장합니다.
+				if ( userNo > 0) {
+					path = "helpDesk/mTm_form";
+				} else {
+					String referer = req.getHeader("Referer"); // 이전 페이지의 URL을 가져옵니다.
+					session.setAttribute("prevPage", referer); // 이전 페이지의 URL을 세션에 저장합니다.
 
-			logger.debug("referer은~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+referer);
-			path ="redirect:/user/login";
+					logger.debug("referer은~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+referer);
+					path ="redirect:/user/login";
 
-		}
+				}
 
-		System.out.println("userNo"+userNo+"-----------------------------------------------------------------------");
-
-
-		model.addAttribute("userNo", userNo);
-		return path; 
-	}
+				System.out.println("userNo"+userNo+"-----------------------------------------------------------------------");
 
 
+				model.addAttribute("userNo", userNo);
+				return path; 
+			}
+	
+	// 1:1문의 게시물 삽입 Post
 	@PostMapping("/mTm_form")
 	public ResponseEntity<Map<String, Object>> addmTm(
 			@RequestParam("titleInput") String title, 
@@ -255,9 +220,9 @@ public class HelpDeskController {
 
 		Mtm mtm = new Mtm();
 
-	    content = content.replaceAll("\n", "<br>");
-	    content = content.replaceAll("\r\n", "<br>");
-	    content = content.replaceAll(" ", "&nbsp;");
+		content = content.replaceAll("\n", "<br>");
+		content = content.replaceAll("\r\n", "<br>");
+		content = content.replaceAll(" ", "&nbsp;");
 
 		mtm.setMtmTitle(title);
 		mtm.setMtmContent(content);
@@ -279,8 +244,101 @@ public class HelpDeskController {
 
 		return ResponseEntity.ok(response);
 	}
+	
+	// 1:1문의 게시물 삭제
+	@GetMapping("/deleteMtm/{mtmNo}")
+	public String mtmDelete(
+			@PathVariable("mtmNo") int mtmNo,
+			@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
+			Model model,
+			RedirectAttributes ra,
+			@RequestHeader ("referer") String referer
+			) {
+
+		String path = null;
+		String message = null;
+
+		int result = services.deleteBoard(mtmNo);
+
+		if(result > 0 ) {
+			path = "helpDesk/mTm_List";
+			message = "글 삭제에 성공했다.";
+
+		}else {
+			path = "referer";  
+		}
+
+		ra.addFlashAttribute("message",message);
 
 
+		return "redirect:/" +path;
+	}
+
+	// 1:1문의 리플삭제
+	@GetMapping("/replyDelete/{mtmNo}")
+	public String replyDelete(
+			@PathVariable("mtmNo") int mtmNo,
+			@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
+			Model model,
+			RedirectAttributes ra,
+			@RequestHeader ("referer") String referer
+			) {
+
+		String path = null;
+		String message = null;
+
+		int result = services.replyDelete(mtmNo);
+
+		if(result > 0 ) {
+			path = "helpDesk/mtm_detail/{mtmNo}";
+			message = "댓글 삭제에 성공했다.";
+
+		}else {
+			path = "referer";  
+		}
+
+		ra.addFlashAttribute("message",message);
+
+		return "redirect:/" +path;
+	}
+
+	// 1:1문의 리플 등록
+	@PostMapping("/replyWrite/{mtmNo}")
+	public ResponseEntity<?> replyWrite(
+	    @PathVariable("mtmNo") int mtmNo,
+	    @RequestParam("contentTextarea") String content,
+	    Model model,	HttpSession session,
+	    RedirectAttributes ra
+	){
+		   User loginUser = (User)session.getAttribute("loginUser");
+		   
+		   String managerNick = null;
+
+			if(loginUser != null) {
+				managerNick = loginUser.getUserNick();
+			}
+		   
+	    content = content.replaceAll("\n", "<br>");
+	    content = content.replaceAll("\r\n", "<br>");
+	    content = content.replaceAll(" ", "&nbsp;");
+	 
+	    
+	    int result = services.replyWrite(mtmNo, content, managerNick); 
+	    
+	    if(result > 0 ) {
+	    	return ResponseEntity.ok("{\"redirectUrl\": \"/helpDesk/mtm_detail/" + mtmNo + "\"}");
+	    } else {
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred");
+
+	    }	    
+	}
+
+	
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////// 아래부터는 분실물리스트
+	
+	// 잃어버린물건 리스트 출력
 	@RequestMapping("/lost_List")
 	public String lostList(
 			Model model,
@@ -294,19 +352,20 @@ public class HelpDeskController {
 
 
 		int userNo = 0;
+		String userManagerSt = null;
 
 		if(loginUser != null) {
 			userNo = loginUser.getUserNo();
+			userManagerSt = loginUser.getUserManagerSt();
 		}
 
 		Map<String, Object>lostList = null;
 
-		lostList = services.getLostList(cp,userNo);
+		lostList = services.getLostList(cp,userNo,userManagerSt);
 
-		int lostCount = 0;
 
-		lostCount = services.getLostListCount(userNo);
-		model.addAttribute("lostCount", lostCount);
+		int userLostCount = services.getLostListCount(userNo, userManagerSt);
+		model.addAttribute("lostCount", userLostCount);
 
 
 		model.addAttribute("lostList", lostList);
@@ -314,7 +373,7 @@ public class HelpDeskController {
 		return "helpDesk/lost_List";
 	}
 
-
+	// 잃어버린물건 세부사항 진입
 	@RequestMapping("/lost_detail/{lostNo}")
 	public String lostdetail(
 			Model model,
@@ -343,7 +402,7 @@ public class HelpDeskController {
 
 	}
 
-
+	// 잃어버린물건 삽입 Get
 	@GetMapping("/lost_form")
 	public String lostwrite(
 			Model model,
@@ -376,7 +435,7 @@ public class HelpDeskController {
 		return path; 
 	}
 
-
+	// 잃어버린물건 삽입 Post
 	@PostMapping("/lost_form")
 	public ResponseEntity<Map<String, Object>> addLost(
 			@RequestParam("titleInput") String title, 
@@ -395,7 +454,7 @@ public class HelpDeskController {
 		}
 
 		LostPackage lost = new LostPackage();
-		
+
 		details = details.replaceAll("\n", "<br>");
 		details = details.replaceAll("\r\n", "<br>");
 		details = details.replaceAll(" ", "&nbsp;");
@@ -420,8 +479,94 @@ public class HelpDeskController {
 		return ResponseEntity.ok(response);
 	}
 
+	// 잃어버린물건 삭제
+	@GetMapping("/deleteLost/{lostNo}")
+	public String lostDelete(
+			@PathVariable("lostNo") int lostNo,
+			@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
+			Model model,
+			RedirectAttributes ra,
+			@RequestHeader ("referer") String referer
+			) {
+
+		String path = null;
+		String message = null;
+
+		int result = services.deleteLost(lostNo);
+
+		if(result > 0 ) {
+			path = "helpDesk/lost_List";
+			message = "글 삭제에 성공했다.";
+
+		}else {
+			path = "referer";  
+		}
+
+		ra.addFlashAttribute("message",message);
 
 
+		return "redirect:/" +path;
+	}
+	
+	//잃어버린물건 답글 삭제
+	@GetMapping("/replyLostDelete/{lostNo}")
+	public String replyLostDelete(
+			@PathVariable("lostNo") int lostNo,
+			@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
+			Model model,
+			RedirectAttributes ra,
+			@RequestHeader ("referer") String referer
+			) {
+
+		String path = null;
+		String message = null;
+
+		int result = services.replyLostDelete(lostNo);
+
+		if(result > 0 ) {
+			path = "helpDesk/lost_detail/{lostNo}";
+			message = "댓글 삭제에 성공했다.";
+
+		}else {
+			path = "referer";  
+		}
+
+		ra.addFlashAttribute("message",message);
+
+		return "redirect:/" +path;
+	}
+
+	//replyLostWrite
+	
+	@PostMapping("/replyLostWrite/{lostNo}")
+	public ResponseEntity<?> replyLostWrite(
+	    @PathVariable("lostNo") int lostNo,
+	    @RequestParam("contentTextarea") String content,
+	    Model model,	HttpSession session,
+	    RedirectAttributes ra
+	){
+		   User loginUser = (User)session.getAttribute("loginUser");
+		   
+		   String managerNick = null;
+
+			if(loginUser != null) {
+				managerNick = loginUser.getUserNick();
+			}
+		   
+	    content = content.replaceAll("\n", "<br>");
+	    content = content.replaceAll("\r\n", "<br>");
+	    content = content.replaceAll(" ", "&nbsp;");
+	 
+	    
+	    int result = services.replyLostWrite(lostNo, content, managerNick); 
+	    
+	    if(result > 0 ) {
+	    	return ResponseEntity.ok("{\"redirectUrl\": \"/helpDesk/lost_detail/" + lostNo + "\"}");
+	    } else {
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred");
+
+	    }	    
+	}
 
 
 

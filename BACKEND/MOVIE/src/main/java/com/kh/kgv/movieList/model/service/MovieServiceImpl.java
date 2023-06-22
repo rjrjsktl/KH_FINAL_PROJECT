@@ -114,6 +114,25 @@ public class MovieServiceImpl implements MovieService{
 		return getMovieList;
 	}
 	
+	// 관리자_상영영화 종료 목록 이동
+	@Override
+	public Map<String, Object> managerMovieListEnd(int cp) {
+		// 현재 상영중인 영화 수 조회
+				int cinemaCount = dao.getEndPlayCount();
+
+				// 조회한 현재 상영중인 영화 수를 pagination 에 담기
+				Pagination pagination = new Pagination(cp, cinemaCount);
+
+				// 상영중인 영화 리스트 조회
+				List<JoinPlay> playMovieList = dao.getPlayEndList(pagination);
+				
+				Map<String, Object> getMovieList = new HashMap<String, Object>();
+				getMovieList.put("pagination", pagination);
+				getMovieList.put("playMovieList", playMovieList);
+				
+				return getMovieList;
+	}
+	
 	
 	
 	

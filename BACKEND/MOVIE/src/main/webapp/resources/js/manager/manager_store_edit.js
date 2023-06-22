@@ -3,20 +3,12 @@ $(document).ready(function () {
     // ===============================================================================
 
 
-    const storeNo = $('#storeNo');
-
-
-
-    // var storeImage = "${editStore.storeImage}";
-    // console.log(storeImage);
-
-
-    // console.log("상품 이미지 : " + "${editStore.storeImage}");
 
 
 
 
-
+    // var storeCategory = '${editStore.storeCategory}';
+    // console.log("Value received from the database: " + storeCategory);
 
 
 
@@ -24,7 +16,7 @@ $(document).ready(function () {
 
     // 이미지 등록 
     let storeImage = $('#storeImage')
-
+    const storeImagePreview = $('#storeImagePreview');
 
     storeImage.on('change', function (e) {
         console.log(e.target.files); // 파일 목록 출력
@@ -33,9 +25,19 @@ $(document).ready(function () {
         for (var i = 0; i < e.target.files.length; i++) {
             uploadImageFile1(e.target.files[i]); // 파일 전달
         }
+
+
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            storeImagePreview.attr('src', e.target.result);
+        };
+        reader.readAsDataURL(e.target.files[0]);
+
+
     });
 
     let imageUrl1;
+
 
     function uploadImageFile1(file) {
         var data = new FormData();
@@ -53,6 +55,7 @@ $(document).ready(function () {
                 let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
                 imageUrl1 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
                 console.log("이미지 URL:", imageUrl1);
+                storeImagePreview.attr('src', imageUrl1);
             },
             error: function (e) {
                 console.log(e);
@@ -63,6 +66,7 @@ $(document).ready(function () {
 
 
     let storeImageBig = $('#storeImageBig')
+    const storeImageBigPreview = $('#storeImageBigPreview');
 
     storeImageBig.on('change', function (e) {
         console.log(e.target.files); // 파일 목록 출력
@@ -71,6 +75,13 @@ $(document).ready(function () {
         for (var i = 0; i < e.target.files.length; i++) {
             uploadImageFile2(e.target.files[i]); // 파일 전달
         }
+
+
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            storeImageBigPreview.attr('src', e.target.result);
+        };
+        reader.readAsDataURL(e.target.files[0]);
     });
 
 
@@ -92,6 +103,7 @@ $(document).ready(function () {
                 let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
                 imageUrl2 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
                 console.log("이미지 URL:", imageUrl2);
+                storeImageBigPreview.attr('src', imageUrl2);
             },
             error: function (e) {
                 console.log(e);
@@ -124,7 +136,7 @@ $(document).ready(function () {
 
             console.log($(this).val());
             $.ajax({
-                url: "store_add/NameDupCheck",
+                url: "/movie/manager/store_list/edit/" + storeNo.val() + "/store_edit/NameDupChecks",
                 data: { "storeName": $(this).val() },
                 type: "GET",
                 success: function (result) {
@@ -215,12 +227,16 @@ $(document).ready(function () {
 
             },
             type: "POST",
+            dataType: "json",
             success: function (result) {
+                console.log(result);
                 if (result > 0) {
                     alert("스토어 물품 수정 등록 성공");
                     window.location.reload();
                     let url = "/movie/manager/store_list";
                     window.location.href = url;
+                    storeImagePreview.attr('src', imageUrl1);
+                    storeImagePreview.attr('src', imageUrl2);
                 } else {
                     alert("스토어 물품 수정 등록 실패");
                     window.location.reload();

@@ -9,32 +9,28 @@ import com.kh.kgv.management.model.vo.Notice;
 public interface HelpDeskService {
 
 	Notice selectNoticeDetail(int noticeNo);
-
 	Notice getPreviousNotice(int noticeNo);
-
 	Notice getNextNotice(int noticeNo);
-
-	Map<String, Object> getMtmList(int cp, int userNo);
-
-	Mtm selectmTmDetail(int mtmNo);
-
-	Map<String, Object> getLostList(int cp, int userNo);
-
-	LostPackage selectLostDetail(int lostNo);
-
-	int addmTm(Mtm mtm);
-
-	int addLost(LostPackage lost);
-
-	int getMtmListCount(int userNo);
-
-	int getLostListCount(int userNo);
-
+	
 	int selectMtmNo(Mtm mtm);
+	Map<String, Object> getMtmList(int cp, int userNo, String userManagerSt);
+	Mtm selectmTmDetail(int mtmNo);
+	int addmTm(Mtm mtm);
+	int getuserMtmListCount(int userNo, String userManagerSt);
+	int deleteBoard(int mtmNo);
+	int replyDelete(int mtmNo);
+	int replyWrite(int mtmNo, String content, String managerNick);
 
 	int selectLostNo(LostPackage lost);
+	Map<String, Object> getLostList(int cp, int userNo, String userManagerSt);
+	LostPackage selectLostDetail(int lostNo);
+	int addLost(LostPackage lost);
+	int getLostListCount(int userNo, String userManagerSt);
+	int deleteLost(int mtmNo);
+	int replyLostDelete(int lostNo);
+	int replyLostWrite(int lostNo, String content, String managerNick);
 
-	int deleteBoard(int mtmNo);
+
 
 
 

@@ -23,51 +23,55 @@ public class HelpDeskImpl implements HelpDeskService {
 
 	@Autowired
 	private HelpDeskDAO dao;
-	
 
-	
+
+	//공지사항 세부 접속
 	@Override
 	public Notice selectNoticeDetail(int noticeNo) {
 		return dao.selectNoticeDetail(noticeNo);
-		
 	}
 
+	//공지사항 이전번호 조회
 	@Override
 	public Notice getPreviousNotice(int noticeNo) {
-		  int prevNoticeNo = noticeNo - 1;
+		int prevNoticeNo = noticeNo - 1;
 
-		    // 이전 게시물의 정보를 데이터베이스에서 조회
-		    Notice prevNotice = dao.findPrevNoticeNo(prevNoticeNo);
+		// 이전 게시물의 정보를 데이터베이스에서 조회
+		Notice prevNotice = dao.findPrevNoticeNo(prevNoticeNo);
 
-		    return prevNotice;
+		return prevNotice;
 	}
 
+	// 공지사항 다음번호 조회
 	@Override
 	public Notice getNextNotice(int noticeNo) {
-	    int nextNoticeNo = noticeNo + 1;
+		int nextNoticeNo = noticeNo + 1;
 
-	    // 다음 게시물의 정보를 데이터베이스에서 조회
-	    Notice nextNotice = dao.findNextNoticeNo(nextNoticeNo);
+		// 다음 게시물의 정보를 데이터베이스에서 조회
+		Notice nextNotice = dao.findNextNoticeNo(nextNoticeNo);
 
-	    return nextNotice;
+		return nextNotice;
 	}
 
+	// 1:1문의 리스트 조회
 	@Override
-	public Map<String, Object> getMtmList(int cp, int userNo) {
-		
+	public Map<String, Object> getMtmList(int cp, int userNo, String userManagerSt) {
 
+		int userManagerStAsInt = 0;
+		if(userManagerSt != null) {
+			if(userManagerSt.equals("Y")) {
+				userManagerStAsInt = 1;
+			}else if (userManagerSt.equals("null")) {
+				userManagerStAsInt = 0;
+			}
+		}
 		int mtmlistCount = dao.getMtmListCount();
-
 		MtmPagenation pagination = new MtmPagenation(cp, mtmlistCount);
-
-		List<Mtm> mtmLists = dao.getMtmList(pagination, userNo);
-
+		List<Mtm> mtmLists = dao.getMtmList(pagination, userNo, userManagerStAsInt);
 		Map<String, Object> getMtmList = new HashMap<String, Object>();
 		getMtmList.put("pagination", pagination);
 		getMtmList.put("mtmLists", mtmLists);
-
 		return getMtmList;
-		
 	}
 
 	@Override
@@ -76,20 +80,28 @@ public class HelpDeskImpl implements HelpDeskService {
 	}
 
 	@Override
-	public Map<String, Object> getLostList(int cp, int userNo) {
+	public Map<String, Object> getLostList(int cp, int userNo, String userManagerSt) {
 		
+		int userManagerStAsInt = 0;
+		if(userManagerSt != null) {
+			if(userManagerSt.equals("Y")) {
+				userManagerStAsInt = 1;
+			}else if (userManagerSt.equals("null")) {
+				userManagerStAsInt = 0;
+			}
+		}
+
 		int lostlistCount = dao.getLostListCount();
-
 		LostPagenation pagination = new LostPagenation(cp, lostlistCount);
-
-		List<Mtm> lostLists = dao.lostLists(pagination, userNo);
-
+		List<Mtm> lostLists = dao.lostLists(pagination, userNo, userManagerStAsInt);
 		Map<String, Object> getMtmList = new HashMap<String, Object>();
 		getMtmList.put("pagination", pagination);
 		getMtmList.put("lostLists", lostLists);
 
 		return getMtmList;
 	}
+	
+
 
 	@Override
 	public LostPackage selectLostDetail(int lostNo) {
@@ -110,14 +122,18 @@ public class HelpDeskImpl implements HelpDeskService {
 		return dao.addLost(lost);
 	}
 
-	@Override
-	public int getMtmListCount(int userNo) {
-		return dao.getMtmListCount(userNo);
-	}
 
 	@Override
-	public int getLostListCount(int userNo) {
-		return dao.getLostListCount(userNo);
+	public int getLostListCount(int userNo, String userManagerSt) {
+		int userManagerStAsInt = 0;
+		if(userManagerSt != null) {
+			if(userManagerSt.equals("Y")) {
+				userManagerStAsInt = 1;
+			}else if (userManagerSt.equals("null")) {
+				userManagerStAsInt = 0;
+			}
+		}
+		return dao.getLostListCount(userNo, userManagerStAsInt);
 
 	}
 
@@ -135,6 +151,52 @@ public class HelpDeskImpl implements HelpDeskService {
 	public int deleteBoard(int mtmNo) {
 		return dao.deleteBoard(mtmNo);
 	}
+	
+	@Override
+	public int replyDelete(int mtmNo) {
+		return dao.replyDelete(mtmNo);
+	}
+	
+	@Override
+	public int replyWrite(int mtmNo, String content,  String managerNick) {
+		return  dao.replyWrite(mtmNo, content, managerNick);
+	}
+
+	@Override
+	public int getuserMtmListCount(int userNo, String userManagerSt) {
+		int userManagerStAsInt = 0;
+		if(userManagerSt != null) {
+			if(userManagerSt.equals("Y")) {
+				userManagerStAsInt = 1;
+			}else if (userManagerSt.equals("null")) {
+				userManagerStAsInt = 0;
+			}
+		}
+		return dao.getMtmListCount(userNo, userManagerStAsInt);
+	}
+
+	@Override
+	public int deleteLost(int mtmNo) {
+		return dao.deleteLost(mtmNo);
+	}
+
+	@Override
+	public int replyLostDelete(int lostNo) {
+		return dao.replyLostDelete(lostNo);
+	}
+
+	@Override
+	public int replyLostWrite(int lostNo, String content, String managerNick) {
+		return  dao.replyLostWrite(lostNo, content, managerNick);
+	}
+
+
+
+
+
+
+
+
 
 
 }

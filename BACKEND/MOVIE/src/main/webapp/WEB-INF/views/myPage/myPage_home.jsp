@@ -59,8 +59,8 @@
 								<h2>My Page</h2>
 								<div class="cont-search-wrap">
 
-									<sapn>${loginUser.userNick}</sapn>
-									<span>님 환영합니다.</span>
+									<sapn class="homeUserNick">${loginUser.userNick}</sapn>
+									<span>&nbsp;님 환영합니다.</span>
 
 								</div>
 							</div>
@@ -111,11 +111,12 @@
 						</div>
 					</div>
 				</div>
-				<!-- event-wrap -->
-				<jsp:include page="/WEB-INF/views/myPage/myPage_randomMovie.jsp" />
 			</section>
 		</main>
 	</div>
+	
+	<!-- event-wrap -->
+	<jsp:include page="/WEB-INF/views/myPage/myPage_randomMovie.jsp" />
 
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />

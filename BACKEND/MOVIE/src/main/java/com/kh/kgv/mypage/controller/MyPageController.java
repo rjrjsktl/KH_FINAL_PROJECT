@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,6 +27,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.kgv.customer.model.vo.Review;
 import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.mypage.model.service.MyPageService;
 
 @Controller
@@ -38,12 +40,16 @@ public class MyPageController {
 	@Autowired
 	private MyPageService service;
 	
+	@Autowired
+	private ManagerService managerService;
+	
 	// 마이페이지 첫번째 화면
 	// 로그인o -> 로그인page, 로그인x -> myPage
 	@GetMapping("/myPgMain")
 	public String myPgMain(HttpServletRequest req
 //						, HttpServletResponse resp
 						, RedirectAttributes ra
+						, Model model
 						) throws IOException {
 		
 		logger.info("1. 마이페이지 버튼 누름");
@@ -64,6 +70,12 @@ public class MyPageController {
 	           
 	        path = "redirect:/user/login"; 
 		}
+		
+		// 메인 이벤트 목록 가지고 오기 - 7개
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = managerService.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
+		
 		ra.addFlashAttribute("message", message);
 		
 		return path;
@@ -73,29 +85,52 @@ public class MyPageController {
 	// ===========================================================================================
 	// 사이드바 페이지 이동 영역
 	@GetMapping("/myHome")
-	public String myHome() {
+	public String myHome(Model model) {
+		// 메인 이벤트 목록 가지고 오기 - 7개
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = managerService.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
+				
 		return "myPage/myPage_home";
 	}
 	
 	@GetMapping("/myMtm")
-	public String myMtm() {
+	public String myMtm(Model model) {
+		// 메인 이벤트 목록 가지고 오기 - 7개
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = managerService.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
+				
 		return "myPage/myPage_myMtmList";
 	}
 	
 	@GetMapping("/myLostItem")
-	public String myLostItem() {
+	public String myLostItem(Model model) {
 		logger.info("LostList페이지 들어옴");
+		
+		// 메인 이벤트 목록 가지고 오기 - 7개
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = managerService.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
+				
 		return "myPage/myPage_myLostList";
 	}
 	
 	@GetMapping("/info")
-	public String info() {
+	public String info(Model model) {
+		
+		// 메인 이벤트 목록 가지고 오기 - 7개
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = managerService.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
+				
 		return "myPage/myPage_info";
 	}
 	
 	@GetMapping("/myReview")
-	public String myReviewList(Model model
-							, @RequestParam Map<String,Object> paramMap
+	public String myReview(
+							Model model
+//							, @RequestParam Map<String,Object> paramMap
 							, @ModelAttribute("loginUser") User loginUser
 							, RedirectAttributes ra) {
 		
@@ -105,28 +140,50 @@ public class MyPageController {
 		
 		int userNo = loginUser.getUserNo();
 		
-		List<Review> myReviewList = null;
-		myReviewList = service.myReviewList(userNo);
-		Object getReviewList = paramMap.put("myReviewList", myReviewList);
-		model.addAttribute("getReviewList", getReviewList);
-		
+		List<Review> myReviewList = service.myReviewList(userNo);
+
+		model.addAttribute("myReviewList", myReviewList);
+
+		// 메인 이벤트 목록 가지고 오기 - 7개
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = managerService.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
+				
 		logger.info("myReviewList::::" + myReviewList);
 		
 		return "myPage/myPage_myReview";
 	}
 	
 	@GetMapping("/myMovie")
-	public String myMovie() {
+	public String myMovie(Model model) {
+		
+		// 메인 이벤트 목록 가지고 오기 - 7개
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = managerService.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
+				
 		return "myPage/myPage_myMovie";
 	}
 	
 	@GetMapping("/changePw")
-	public String changePw() {
+	public String changePw(Model model) {
+		
+		// 메인 이벤트 목록 가지고 오기 - 7개
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = managerService.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
+				
 		return "myPage/myPage_changePw";
 	}
 	
 	@GetMapping("/secession")
-	public String secession() {
+	public String secession(Model model) {
+		
+		// 메인 이벤트 목록 가지고 오기 - 7개
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = managerService.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
+				
 		return "myPage/myPage_secession";
 	}
 	
@@ -247,6 +304,28 @@ public class MyPageController {
 		return "redirect:" + path;
 	}
 	
-	// 리뷰나 영화예매내역 같은건 하나 더 만들생각 ㄱㄱ
+//	@PostMapping("myReview/addReview")
+//	@ResponseBody
+//	public List<Review> addReviewList(
+//									@ModelAttribute("loginUser") User loginUser,
+//									@RequestParam Map<String,Object> paramMap,
+//	                                  @RequestParam("startMovie") int startMovie,
+//	                                  @RequestParam("endMovie") int endMovie) {
+//
+//	    logger.info("addReviewList 호출");
+//	    logger.info("loginUserNo:::::" + loginUser.getUserNo());
+//
+//	    int userNo = loginUser.getUserNo();
+//	    
+//	    paramMap.put("userNo", userNo);
+//	    paramMap.put("startMovie", startMovie);
+//	    paramMap.put("endMovie", endMovie);
+//	    // startMovie와 endMovie를 사용하여 원하는 범위의 데이터를 가져오도록 수정
+//	    List<Review> myReviewList = service.getReviewListInRange(paramMap);
+//
+//	    logger.info("myReviewList::::" + myReviewList);
+//
+//	    return myReviewList;
+//	}
 	
 }
