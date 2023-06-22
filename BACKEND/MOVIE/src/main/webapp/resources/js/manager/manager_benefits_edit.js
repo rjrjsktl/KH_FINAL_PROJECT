@@ -43,7 +43,7 @@ $(document).ready(function () {
         var data = new FormData();
         data.append("file", file);
         $.ajax({
-            url: "/(충돌방지용태그)movie/manager/event_list/edit/" + eventNo.val() + "/edit_Event/uploadImageFile",
+            url: "/movie/manager/benefits_list/edit/" + benefitsNo.val() + "/edit_Benefits/uploadImageFile",
             type: "POST",
             enctype: 'multipart/form-data',
             data: data,
@@ -77,7 +77,7 @@ $(document).ready(function () {
     // ('0' + (getCurrentDate.getMonth() + 1)).slice(-2) 을 사용하는 이유
     // -> 앞에 0을 추가해준 상태로 출력하면, 011월 012월 같은 혼종이 나오기 때문에, 뒤에서 두자리만 자르게끔 한다.
 
-    // 상영 종료일
+    // 혜택 종료일
     endDate.on('change', () => {
 
         let startValue = startDate.val(); // 시작일의 값
@@ -103,7 +103,7 @@ $(document).ready(function () {
         }
     });
 
-    // 상영 시작일
+    // 혜택 시작일
     startDate.on('change', () => {
 
         let currentValue = currentDate;
@@ -125,22 +125,22 @@ $(document).ready(function () {
     // ===============================================================================
 
     const submitBtn = $('.bottom_Submit');
-    const eventTitle = $('.enter_Title > input');
+    const benefitsTitle = $('.enter_Title > input');
     const textArea = $('#summernote');
-    const eventNo = $('#eventNo');
+    const benefitsNo = $('#benefitsNo');
 
 
     submitBtn.on('click', (e) => {
         e.preventDefault();
-        console.log("번호 : " + eventNo.val());
-        console.log("제목 : " + eventTitle.val());
+        console.log("번호 : " + benefitsNo.val());
+        console.log("제목 : " + benefitsTitle.val());
         console.log("이벤트 시작일 : " + startDate.val());
         console.log("이벤트 종료일 : " + endDate.val());
         console.log("본문 내용 : " + textArea.val());
 
-        if (!eventTitle.val()) {
+        if (!benefitsTitle.val()) {
             alert('제목이 입력되지 않았습니다.');
-            eventTitle.focus();
+            benefitsTitle.focus();
             e.preventDefault();
             return false;
         };
@@ -167,9 +167,9 @@ $(document).ready(function () {
         };
 
         $.ajax({
-            url: "/(충돌방지용태그)movie/manager/event_list/edit/" + eventNo.val() + "/edit_Event",
+            url: "/(충돌방지용태그)movie/manager/event_list/edit/" + benefitsNo.val() + "/edit_Benefits",
             data: {
-                "no": eventNo.val()
+                "no": benefitsNo.val()
                 , "title": eventTitle.val()
                 , "start": startDate.val()
                 , "end": endDate.val()
@@ -178,7 +178,7 @@ $(document).ready(function () {
             type: "POST",
             success: function (result) {
                 if (result > 0) {
-                    let url = "/movie/manager/event_list/";
+                    let url = "/movie/manager/benefits_list/";
                     alert("이벤트 수정 성공");
                     window.location.href = url;
                 } else {

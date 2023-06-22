@@ -31,6 +31,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.management.model.service.ManageStoreService;
@@ -71,12 +72,20 @@ public class ManagerController {
 		// 관리자 메인 공지사항 목록 조회
 		List<Notice> getNotice = null;
 		getNotice = service.getAllNotice();
-
+		
+		// 관리자 메인 1 : 1 문의 조회
+		List<Mtm> getMTMList = null;
+		getMTMList = service.getMainMTMList();
+		
 		// 관리자 메인 상영중인 영화
 		Map<String, Object> getMovieList = null;
 		getMovieList = movieService.mainMovieList();
+		
+
+		
 		model.addAttribute("getUser", getUser);
 		model.addAttribute("getNotice", getNotice);
+		model.addAttribute("getMTMList", getMTMList);
 		model.addAttribute("getMovieList", getMovieList);
 
 		System.out.println("관리자_메인페이지 이동");
@@ -179,7 +188,17 @@ public class ManagerController {
 
 	// 관리자_1:1 문의 목록 이동
 	@GetMapping("/ask_list")
-	public String moveAskList() {
+	public String moveAskList(
+			Model model
+			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+		Map<String, Object> getMTMList = null;
+
+		// 회원 리스트 얻어오기
+		getMTMList = service.selectMTMList(cp);
+
+		model.addAttribute("getMTMList", getMTMList);
+		
+		
 		System.out.println("관리자_1:1 문의 목록 이동");
 		return "manager/manager_ask_list";
 	}
@@ -506,6 +525,21 @@ public class ManagerController {
 
 		System.out.println("관리자_상영시간 목록 이동");
 		return "manager/manager_movie_play_list";
+	}
+	// ===================================================
+	// ===================================================
+	
+	// 관리자_상영영화 종료 목록 이동
+	@GetMapping("/play_end")
+	public String movePlayEndList(
+			Model model, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+		Map<String, Object> getMovieList = null;
+		getMovieList = movieService.managerMovieListEnd(cp);
+		
+		model.addAttribute("getMovieList", getMovieList);
+		
+		System.out.println("관리자_상영시간 목록 이동");
+		return "manager/manager_movie_play_end";
 	}
 
 	// ===================================================
@@ -1266,7 +1300,12 @@ public class ManagerController {
 
 	// 관리자_혜택 목록 이동
 	@GetMapping("/benefits_list")
-	public String moveBenefitsList() {
+	public String moveBenefitsList(Model model,
+			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+
+		Map<String, Object> getBenefitsList = null;
+		getBenefitsList = service.getBenefitsList(cp);
+		model.addAttribute("getBenefitsList", getBenefitsList);
 
 		System.out.println("관리자_혜택 목록 이동");
 
@@ -1281,6 +1320,27 @@ public class ManagerController {
 	public String moveBenefitsAdd() {
 		System.out.println("관리자_혜택 등록 이동");
 		return "manager/manager_benefits_add";
+	}
+
+	// ===================================================
+	// ===================================================
+
+	// 관리자_혜택 등록 이동
+	@GetMapping("/event_list/edit/{eventNotest}")
+	public String moveBenefitsEdit(Model model,
+			CinemaPrice price,
+			@PathVariable("priceNo") int priceNo) {
+
+		Map<String, Object> editPrice = null;
+
+		price.setPriceNo(priceNo);
+
+		editPrice = service.getEditPriceList(price);
+		System.out.println("DAO에서 가지고 온 editEvent : " + editPrice);
+		model.addAttribute("editPrice", editPrice);
+
+		System.out.println("관리자_극장 가격 수정 이동");
+		return "manager/manager_benfits_list_edit";
 	}
 
 }

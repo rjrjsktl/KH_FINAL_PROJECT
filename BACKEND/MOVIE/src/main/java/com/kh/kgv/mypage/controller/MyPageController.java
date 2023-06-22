@@ -27,6 +27,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.kgv.customer.model.vo.Review;
 import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.mypage.model.service.MyPageService;
 
 @Controller
@@ -39,12 +40,16 @@ public class MyPageController {
 	@Autowired
 	private MyPageService service;
 	
+	@Autowired
+	private ManagerService managerService;
+	
 	// 마이페이지 첫번째 화면
 	// 로그인o -> 로그인page, 로그인x -> myPage
 	@GetMapping("/myPgMain")
 	public String myPgMain(HttpServletRequest req
 //						, HttpServletResponse resp
 						, RedirectAttributes ra
+						, Model model
 						) throws IOException {
 		
 		logger.info("1. 마이페이지 버튼 누름");
@@ -65,6 +70,12 @@ public class MyPageController {
 	           
 	        path = "redirect:/user/login"; 
 		}
+		
+		// 메인 이벤트 목록 가지고 오기 - 7개
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = managerService.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
+		
 		ra.addFlashAttribute("message", message);
 		
 		return path;
@@ -74,23 +85,45 @@ public class MyPageController {
 	// ===========================================================================================
 	// 사이드바 페이지 이동 영역
 	@GetMapping("/myHome")
-	public String myHome() {
+	public String myHome(Model model) {
+		// 메인 이벤트 목록 가지고 오기 - 7개
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = managerService.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
+				
 		return "myPage/myPage_home";
 	}
 	
 	@GetMapping("/myMtm")
-	public String myMtm() {
+	public String myMtm(Model model) {
+		// 메인 이벤트 목록 가지고 오기 - 7개
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = managerService.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
+				
 		return "myPage/myPage_myMtmList";
 	}
 	
 	@GetMapping("/myLostItem")
-	public String myLostItem() {
+	public String myLostItem(Model model) {
 		logger.info("LostList페이지 들어옴");
+		
+		// 메인 이벤트 목록 가지고 오기 - 7개
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = managerService.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
+				
 		return "myPage/myPage_myLostList";
 	}
 	
 	@GetMapping("/info")
-	public String info() {
+	public String info(Model model) {
+		
+		// 메인 이벤트 목록 가지고 오기 - 7개
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = managerService.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
+				
 		return "myPage/myPage_info";
 	}
 	
@@ -110,24 +143,47 @@ public class MyPageController {
 		List<Review> myReviewList = service.myReviewList(userNo);
 
 		model.addAttribute("myReviewList", myReviewList);
-		
+
+		// 메인 이벤트 목록 가지고 오기 - 7개
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = managerService.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
+				
 		logger.info("myReviewList::::" + myReviewList);
 		
 		return "myPage/myPage_myReview";
 	}
 	
 	@GetMapping("/myMovie")
-	public String myMovie() {
+	public String myMovie(Model model) {
+		
+		// 메인 이벤트 목록 가지고 오기 - 7개
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = managerService.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
+				
 		return "myPage/myPage_myMovie";
 	}
 	
 	@GetMapping("/changePw")
-	public String changePw() {
+	public String changePw(Model model) {
+		
+		// 메인 이벤트 목록 가지고 오기 - 7개
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = managerService.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
+				
 		return "myPage/myPage_changePw";
 	}
 	
 	@GetMapping("/secession")
-	public String secession() {
+	public String secession(Model model) {
+		
+		// 메인 이벤트 목록 가지고 오기 - 7개
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = managerService.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
+				
 		return "myPage/myPage_secession";
 	}
 	

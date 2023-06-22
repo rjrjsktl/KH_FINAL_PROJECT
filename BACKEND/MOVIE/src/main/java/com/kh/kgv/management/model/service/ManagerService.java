@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.ui.Model;
 
 import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.management.model.vo.CinemaPrice;
@@ -22,6 +23,9 @@ public interface ManagerService {
 
 	// 관리자 메인 공지사항 목록 조회
 	List<Notice> getAllNotice();
+	
+	// 관리자 메인 1 : 1 문의 조회
+	List<Mtm> getMainMTMList();
 
 	// 회원 목록 조회
 	Map<String, Object> selectAll(int cp);
@@ -136,11 +140,20 @@ public interface ManagerService {
 
 	// 관리자_극장 가격 수정
 	int EditCinemaPrice(CinemaPrice cp);
+	
+	// 관리자_혜택 목록 조회
+	Map<String, Object> getBenefitsList(int cp);
+
+	
 
 	// 관리자_배너 수정 이동
 	Map<String, Object> getEditBannerList(banner banner);
 
 	// 관리자_배너 수정
 	int editBanner(banner banner);
+
+	// 관리자_1:1 문의 목록
+	Map<String, Object> selectMTMList(int cp);
+
 
 }

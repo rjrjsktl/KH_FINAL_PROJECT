@@ -93,6 +93,16 @@
 											</div>
 										</li>
 									</a>
+									<a href="${contextPath}/manager/play_end">
+										<li>
+											<div class="inner_align">
+												<div class="inner_Left_Icon">
+													<i class="fa-solid fa-play fa-2xs"></i>
+												</div>
+												<span>끝난 상영시간 목록</span>
+											</div>
+										</li>
+									</a>
 									<a href="${contextPath}/manager/play_add">
 										<li>
 											<div class="inner_align">
