@@ -169,7 +169,9 @@ public interface ManagerService {
 	int updateBenefitsST(Benefits bene);
 
 	// 스토어 수정 중복검사
-	int NameDupChecks(String storeName);
+	int NameDupChecks(String storeName, String originName);
+
+	Store getStoreInfo(int storeNo);
 
 
 }

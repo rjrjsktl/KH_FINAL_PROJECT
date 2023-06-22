@@ -24,13 +24,13 @@
   	</select>
   	
   		<!-- 스토어 수정 중복검사 -->
-	<select id="NameDupChecks" parameterType="string" resultType="_int">
+<!--	<select id="NameDupChecks" parameterType="map" resultType="_int">
   SELECT COUNT(*) FROM STORE
-		WHERE STORE_NAME = #{storeName}
+		WHERE STORE_NAME = #{storeName} AND STORE_NAME != #{originName}
     
     
 	</select>
-	
+	-->
 	<!-- 이벤트 등록 -->
 	<insert id="addStore" parameterType="store">
 	INSERT INTO STORE 
@@ -68,6 +68,12 @@
 	
 	<!-- 스토어 수정 페이지 이동 후 값 불러오기 -->
 	<select id="getEditStoreList" resultMap="store_rm">
+		SELECT * FROM STORE
+		WHERE STORE_NO = #{storeNo}
+	</select>
+	
+	<!-- 스토어 수정 페이지 이동 후 값 불러오기 -->
+	<select id="getEditStoreList" resultMap="store_rm" parameterType="_int">
 		SELECT * FROM STORE
 		WHERE STORE_NO = #{storeNo}
 	</select>

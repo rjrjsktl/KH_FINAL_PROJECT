@@ -432,12 +432,17 @@ public class ManagerDAO {
 		return sqlSession.update("managerMapper.updateBenefitsST", bene);
 	}
 
-	public int NameDupChecks(String storeName) {
+	public int NameDupChecks(Map<String, Object> condition) {
 		
 		
 		
 		
-		return sqlSession.selectOne("storeMapper.NameDupChecks", storeName );
+		return sqlSession.selectOne("storeMapper.NameDupChecks", condition );
+	}
+
+	public Store getStoreInfo(int storeNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("storeMapper.getStoreInfo", storeNo);
 	}
 
 
