@@ -25,11 +25,12 @@
   	
   		<!-- 스토어 수정 중복검사 -->
 	<select id="NameDupChecks" parameterType="string" resultType="_int">
-  SELECT COUNT(*) FROM STORE
+  		SELECT COUNT(*) FROM STORE
 		WHERE STORE_NAME = #{storeName}
     
     
 	</select>
+	
 	
 	<!-- 이벤트 등록 -->
 	<insert id="addStore" parameterType="store">
@@ -71,6 +72,8 @@
 		SELECT * FROM STORE
 		WHERE STORE_NO = #{storeNo}
 	</select>
+	
+	
 	
 	<!-- 스토어 수정 -->
 	<update id="StoreEdit" parameterType="store">

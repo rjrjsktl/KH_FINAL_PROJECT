@@ -550,14 +550,13 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 	// 스토어 수정 중복검사
-			@Override
-			public int NameDupChecks(String storeName) {
-				
-				
-				
-				return dao.NameDupChecks(storeName);
-			}
+		@Override
+		public int NameDupChecks(String storeName) {
 			
+			
+			return dao.NameDupChecks(storeName);
+		}
+				
 			
 	// 관리자_혜택 수정 페이지
 	@Override

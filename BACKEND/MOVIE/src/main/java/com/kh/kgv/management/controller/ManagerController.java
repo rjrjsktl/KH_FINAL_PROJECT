@@ -962,17 +962,17 @@ public class ManagerController {
 	}
 
 	// 스토어 수정 이름 중복 검사
-	@ResponseBody
-	@GetMapping("/store_list/edit/{storeNo}/store_edit/NameDupChecks")
-	public int NameDupChecks(String storeName, @PathVariable("storeNo") int storeNo, Store store) {
-		System.out.println(storeName);
-//		String originName = service.getEditStoreList(store).get;
-		int result = service.NameDupChecks(storeName);
+		@ResponseBody
+		@GetMapping("/store_list/edit/{storeNo}/store_edit/NameDupChecks")
+		public int NameDupChecks(String storeName, @PathVariable("storeNo") int storeNo, Store store) {
+			System.out.println(storeName);
+//			String originName = service.getStoreInfo(storeNo).getStoreName();
+			int result = service.NameDupChecks(storeName);
 
-		System.out.println(result);
-		return result;
+			System.out.println(result);
+			return result;
 
-	}
+		}
 
 	// 스토어 수정 이미지 업로드
 	@PostMapping("/store_list/edit/{storeNo}/store_edit/uploadImageFile")
@@ -1144,7 +1144,7 @@ public class ManagerController {
 		return "manager/manager_banner_list";
 	}
 	// ===================================================
-	// ===================================================
+		// ===================================================
 
 	// 관리자_배너 등록 이동
 	@GetMapping("/banner_add")
