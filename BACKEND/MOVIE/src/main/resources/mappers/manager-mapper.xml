@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="managerMapper">
 
 	<resultMap type="user" id="user_rm">
@@ -23,8 +23,8 @@
 		<result property="userManagerSt" column="USER_MANAGERST" />
 		<result property="userBlock" column="USER_BLOCK" />
 	</resultMap>
-	
-		<resultMap type="cinemaPrice" id="cinemaprice_rm">
+
+	<resultMap type="cinemaPrice" id="cinemaprice_rm">
 		<id property="priceNo" column="PRICE_NO" />
 		<result property="screenStyle" column="SCREEN_STYLE" />
 		<result property="priceDay" column="PRICE_DAY" />
@@ -34,7 +34,7 @@
 		<result property="priceElder" column="PRICE_ELDER" />
 		<result property="priceSpecial" column="PRICE_SPECIAL" />
 		<result property="priceCouple" column="PRICE_COUPLE" />
-		</resultMap>
+	</resultMap>
 
 
 	<resultMap type="movie" id="movie_rm">
@@ -101,16 +101,16 @@
 		<result property="bannerSt" column="BANNER_ST" />
 		<result property="bannerUrl" column="BANNER_URL" />
 	</resultMap>
-	
+
 	<resultMap type="benefits" id="benefits_rm">
-		<id property="benefitsNo" 			column="BENEFITS_NO" />
-		<result property="benefitsTitle" 	column="BENEFITS_TITLE" />
-		<result property="benefitsContent" 	column="BENEFITS_CONTENT" />
-		<result property="benefitsStart" 	column="BENEFITS_START" />
-		<result property="benefitsEnd" 		column="BENEFITS_END" />
-		<result property="benefitsStatus" 	column="BENEFITS_STATUS" />
-		<result property="benefitsReg" 		column="BENEFITS_REG" />
-		<result property="benefitsImg" 		column="BENEFITS_IMG" />
+		<id property="benefitsNo" column="BENEFITS_NO" />
+		<result property="benefitsTitle" column="BENEFITS_TITLE" />
+		<result property="benefitsContent" column="BENEFITS_CONTENT" />
+		<result property="benefitsStart" column="BENEFITS_START" />
+		<result property="benefitsEnd" column="BENEFITS_END" />
+		<result property="benefitsStatus" column="BENEFITS_STATUS" />
+		<result property="benefitsReg" column="BENEFITS_REG" />
+		<result property="benefitsImg" column="BENEFITS_IMG" />
 	</resultMap>
 
 
@@ -125,7 +125,7 @@
 		SELECT * FROM USERS
 		ORDER BY USER_NO DESC
 		)
-		WHERE ROWNUM <![CDATA[ <= ]]>
+		WHERE ROWNUM 		<![CDATA[ <= ]]>
 		6
 	</select>
 
@@ -138,18 +138,17 @@
 		SELECT * FROM NOTICE
 		ORDER BY NOTICE_NO DESC
 		)
-		WHERE ROWNUM <![CDATA[ <= ]]>
+		WHERE ROWNUM 		<![CDATA[ <= ]]>
 		6
 	</select>
 
 	<!-- 관리자 메인 일일 접속자 수 조회 -->
-	<select id="getDailyEnter" resultMap="daily_rm"
-		parameterType="we">
+	<select id="getDailyEnter" resultMap="daily_rm" parameterType="we">
 		SELECT TO_CHAR(DE_DATE, 'YYYY-MM-DD') AS "DE_DATESTR", COUNT(DE_NO) AS
 		"DE_COUNT"
 		FROM DAILY_ENTER
-		WHERE DE_DATE <![CDATA[ >= ]]>
-		TO_DATE(#{lastWeek}, 'YYYY-MM-DD') AND DE_DATE <![CDATA[ < ]]>TO_DATE(#{today},
+		WHERE DE_DATE 		<![CDATA[ >= ]]>
+		TO_DATE(#{lastWeek}, 'YYYY-MM-DD') AND DE_DATE 		<![CDATA[ < ]]>TO_DATE(#{today},
 		'YYYY-MM-DD')
 		GROUP BY TO_CHAR(DE_DATE, 'YYYY-MM-DD')
 		ORDER BY TO_CHAR(DE_DATE, 'YYYY-MM-DD')
@@ -382,7 +381,7 @@
 		WHERE EVENT_STATUS = 'Y'
 		ORDER BY EVENT_NO DESC
 		)
-		WHERE ROWNUM <![CDATA[ <= ]]>
+		WHERE ROWNUM 		<![CDATA[ <= ]]>
 		7
 	</select>
 
@@ -419,10 +418,10 @@
 		SET BANNER_ST = #{bannerSt}
 		WHERE BANNER_NO = #{bannerNo}
 	</update>
-	
+
 	<!-- 혜택 등록 -->
 	<insert id="addBenefits" parameterType="benefits">
-		INSERT INTO EVENT
+		INSERT INTO BENEFITS
 		VALUES (
 		SEQ_BENEFITS_NO.NEXTVAL
 		, #{benefitsTitle}
@@ -434,8 +433,8 @@
 		,#{benefitsImg}
 		)
 	</insert>
-	
-		<!--관리자_배너 목록 이동시 배너 수 조회 -->
+
+	<!--관리자_배너 목록 이동시 배너 수 조회 -->
 	<select id="checkPrice" resultType="boolean">
 		SELECT 
 		*
@@ -445,8 +444,8 @@
 		 AND PRICE_DAY = #{priceDay}
 		 AND  PRICE_TIME = #{priceTime}
 	</select>
-	
-		<!-- 관리자_극장 가격 등록 -->
+
+	<!-- 관리자_극장 가격 등록 -->
 	<insert id="addCinemaPrice" parameterType="cinemaPrice">
 		INSERT INTO PRICE
 		VALUES (
@@ -461,21 +460,35 @@
 		, #{priceCouple}
 		)
 	</insert>
-	
-		<!-- 관리자_배너 수정 이동 -->
+
+
+	<!-- 관리자_배너 수정 이동 -->
 	<select id="getEditBannerList" resultType="HashMap">
 		SELECT * FROM BANNER
 		WHERE BANNER_NO = #{bannerNo}
 	</select>
-	
-			<!-- 배너 수정 -->
-		<update id="editBanner" parameterType="banner">
+
+	<!-- 배너 수정 -->
+	<update id="editBanner" parameterType="banner">
 		UPDATE BANNER SET
 		BANNER_TITLE = #{bannerTitle}
 		, BANNER_IMG = #{bannerImg}
 		, BANNER_URL = #{bannerUrl}
 		WHERE BANNER_NO = #{bannerNo}
 	</update>
-	
+
+	<!-- 혜택 수 조회 -->
+	<select id="getBenefitsCount" resultType="_int">
+		SELECT COUNT(BENEFITS_NO) FROM BENEFITS
+	</select>
+
+	<!-- 혜택 리스트 조회 -->
+	<select id="benefitsList" resultMap="benefits_rm">
+		SELECT * FROM BENEFITS
+		ORDER BY BENEFITS_NO DESC
+	</select>
+
+
+
 
 </mapper>
