@@ -225,3 +225,29 @@ h2 {
     background-color: rgb(251, 251, 251);
     color: rgb(21, 21, 21);
 }
+
+
+.btn_wraper {
+	display:flex;
+	justify-content:right;
+}
+
+.btn_wraper button{
+	margin-left:15px;
+	margin-top:30px;
+		width:105px;
+	height:41px;
+	background-color:rgb(49,49,49);
+	outline:none;
+	border:none;
+}
+
+.btn_wraper button:hover{
+	background-color: rgb(255, 196, 0);
+	color:black;
+	cursor:pointer;
+}
+
+a.hover {
+   color:black;
+}
