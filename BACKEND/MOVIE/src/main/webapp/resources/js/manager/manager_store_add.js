@@ -135,51 +135,106 @@ $(document).ready(function () {
     $('.bottom_Submit').on("click", function (e) {
 
         console.log('저장버튼이 눌림.');
+        // if (!$("#storeCategory").val()) {
+        //     alert('선택되지 않았습니다.');
+        //     storeCategory.focus();
+        //     e.preventDefault();
+        //     storeCategory = false;
+        // }
+        // else if (!$("#storeName").val()) {
+        //     alert('상품 이름이 입력되지 않았습니다.');
+        //     storeName.focus();
+        //     e.preventDefault();
+        //     storeName = false;
+
+        // } else if (nameCheck === false) {
+        //     alert('상품 이름이 중복되었습니다.');
+        //     storeName.focus();
+        //     e.preventDefault();
+        //     nameCheck = false;
+        // }
+        // else if (!$("#storeDesc").val()) {
+        //     alert('상품 설명이 입력되지 않았습니다.');
+        //     storeDesc.focus();
+        //     e.preventDefault();
+        //     storeDesc = false;
+        // }
+
+
+        // else if (!$("#storePrice").val()) {
+        //     alert('상영 가격이 입력되지 않았습니다.');
+        //     storePrice.focus();
+        //     e.preventDefault();
+        //     storePrice = false;
+        // }
+        // else if (!$("#storeStock").val()) {
+        //     alert('제한개수가 입력되지 않았습니다.');
+        //     storeStock.focus();
+        //     e.preventDefault();
+        //     storeStock = false;
+        // }
+        // else if (!$("#storeImage").val()) {
+        //     alert('이미지가 입력되지 않았습니다.');
+        //     storeImage.focus();
+        //     e.preventDefault();
+        //     storeImage = false;
+        // }
+        // else if (!$("#storeImageBig").val()) {
+        //     alert('빅 이미지가 입력되지 않았습니다.');
+        //     storeImageBig.focus();
+        //     e.preventDefault();
+        //     storeImageBig = false;
+        // };
+
+
         if (!$("#storeCategory").val()) {
             alert('선택되지 않았습니다.');
-            storeCategory.focus();
+            $("#storeCategory").focus();
             e.preventDefault();
-            storeCategory = false;
+            return;
         }
-        else if (!$("#storeName").val() && nameCheck == false) {
+        else if (!$("#storeName").val()) {
             alert('상품 이름이 입력되지 않았습니다.');
-            storeName.focus();
+            $("#storeName").focus();
             e.preventDefault();
-            storeName = false;
-
+            return;
+        }
+        else if (nameCheck === false) {
+            alert('상품 이름이 중복되었습니다.');
+            $("#storeName").focus();
+            e.preventDefault();
+            return;
         }
         else if (!$("#storeDesc").val()) {
             alert('상품 설명이 입력되지 않았습니다.');
-            storeDesc.focus();
+            $("#storeDesc").focus();
             e.preventDefault();
-            storeDesc = false;
+            return;
         }
-
-
         else if (!$("#storePrice").val()) {
             alert('상영 가격이 입력되지 않았습니다.');
-            storePrice.focus();
+            $("#storePrice").focus();
             e.preventDefault();
-            storePrice = false;
+            return;
         }
         else if (!$("#storeStock").val()) {
-            alert('제한개수가 입력되지 않았습니다.');
-            storeStock.focus();
+            alert('제한 개수가 입력되지 않았습니다.');
+            $("#storeStock").focus();
             e.preventDefault();
-            storeStock = false;
+            return;
         }
         else if (!$("#storeImage").val()) {
             alert('이미지가 입력되지 않았습니다.');
-            storeImage.focus();
+            $("#storeImage").focus();
             e.preventDefault();
-            storeImage = false;
+            return;
         }
         else if (!$("#storeImageBig").val()) {
             alert('빅 이미지가 입력되지 않았습니다.');
-            storeImageBig.focus();
+            $("#storeImageBig").focus();
             e.preventDefault();
-            storeImageBig = false;
-        };
+            return;
+        }
 
 
         $.ajax({
@@ -203,7 +258,7 @@ $(document).ready(function () {
                     window.location.href = url;
                 } else {
                     alert("스토어 물품 등록 실패");
-                    window.location.reload();
+
                 }
             },
 

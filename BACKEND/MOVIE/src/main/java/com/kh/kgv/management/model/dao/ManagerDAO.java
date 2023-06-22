@@ -1,5 +1,6 @@
 package com.kh.kgv.management.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -424,6 +425,14 @@ public class ManagerDAO {
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 
 		return sqlSession.selectList("managerMapper.getAllLostList", null, rowBounds);
+	}
+
+	public int NameDupChecks(String storeName) {
+		
+		
+		
+		
+		return sqlSession.selectOne("storeMapper.NameDupChecks", storeName );
 	}
 
 
