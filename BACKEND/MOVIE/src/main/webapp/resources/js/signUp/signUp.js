@@ -653,33 +653,6 @@ const cBtn = document.getElementById("cBtn");
 
 
 
-
-
-
-
-// cNumber.addEventListener("input", function(){
-//     // 입력이 되지 않은 경우
-
-//     if (cNumber.value.length == 0) {
-
-//         checkObj.sendEmailcheck = false;
-
-
-
-
-//     }else{
-
-
-//     }
-
-
-
-// });
-
-
-
-
-
 cBtn.addEventListener("click", function () {
 
     console.log(checkObj.sendEmail);

@@ -557,6 +557,8 @@ public class ManagerServiceImpl implements ManagerService {
 				
 				return dao.NameDupChecks(storeName);
 			}
+			
+			
 	// 관리자_혜택 수정 페이지
 	@Override
 	public Map<String, Object> getEditBenefitsList(Benefits bene) {
