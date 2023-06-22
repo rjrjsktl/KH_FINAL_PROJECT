@@ -17,7 +17,9 @@ $(document).ready(function () {
         var data = new FormData();
         data.append("file", file);
         $.ajax({
+
             url: '/movie/manager/banner_list/edit/' + bannerNo.val() + '/uploadImageFile',
+
             type: "POST",
             data: data,
             cache: false,
@@ -39,7 +41,7 @@ $(document).ready(function () {
     // ===============================================================================
 
     const submitBtn = $('.bottom_Submit');
-    const eventTitle = $('.enter_Title > input');
+    const benefitsTitle = $('.enter_Title > input');
     const enterUrl = $('.enter_url > input');
     const bannerNo = $('.bannerNo');
     const hiddenImg = $('.hiddenImg');
@@ -66,32 +68,36 @@ $(document).ready(function () {
 
 
         e.preventDefault();
-        console.log("제목 : " + eventTitle.val());
+        console.log("제목 : " + benefitsTitle.val());
         console.log("URL : " + enterUrl.val());
         console.log("이미지 : " + imageUrl1);
         console.log("숨겨진 이미지 URL : " + hiddenImg.val());
         console.log("배너 번호 : " + bannerNo.val());
 
-        if (!eventTitle.val()) {
+        if (!benefitsTitle.val()) {
             alert('제목이 입력되지 않았습니다.');
-            eventTitle.focus();
+            benefitsTitle.focus();
             e.preventDefault();
             return false;
         };
 
         $.ajax({
+
             url: "/movie/manager/banner_list/edit/" + bannerNo.val() + "/edit",
             data: {
                 title: eventTitle.val()
                 , url: enterUrl.val()
                 , movieImg1: imageUrl1
                 , bannerNo: bannerNo.val()
+
             },
             type: "POST",
             success: function (result) {
                 if (result > 0) {
+
                     alert("배너 수정 성공");
                     let url = "/movie/manager/banner_list";
+
                     window.location.href = url;
                 } else {
                     alert("배너 수정 실패");

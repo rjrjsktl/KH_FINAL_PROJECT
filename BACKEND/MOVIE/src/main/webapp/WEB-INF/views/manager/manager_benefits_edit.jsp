@@ -31,7 +31,7 @@
 							rel="stylesheet">
 						<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_event_add.css">
+						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_benefits_add.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 					</head>
@@ -91,7 +91,7 @@
 												</div>
 												<div class="table_bottom">
 													<button type="button" class="bottom_Submit">저장</button>
-													<a href="${contextPath}/manager/event_list"
+													<a href="${contextPath}/manager/benefits_list"
 														class="bottom_Cancel">취소</a>
 												</div>
 											</div>
@@ -103,7 +103,7 @@
 
 						</main>
 
-						<script src="${contextPath}/resources/js/manager/manager_event_edit.js"></script>
+						<script src="${contextPath}/resources/js/manager/manager_benefits_edit.js"></script>
 						<script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
 						<script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
 					</body>

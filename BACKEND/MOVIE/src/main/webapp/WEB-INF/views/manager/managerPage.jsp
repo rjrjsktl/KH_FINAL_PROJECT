@@ -166,51 +166,21 @@
 														<table class="tableWrapper">
 															<th class="boardNum">번호</th>
 															<th class="boardTItle">제목</th>
-															<th class="boardWriter">작성자</th>
-															<th class="boardDate">작성일</th>
-															<th class="boardWatch">답변여부</th>
-															<tr>
-																<td>06</td>
-																<td>문의 1</td>
-																<td>회원1</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>N</td>
-															</tr>
-															<tr>
-																<td>05</td>
-																<td>문의 2</td>
-																<td>회원2</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>N</td>
-															</tr>
-															<tr>
-																<td>04</td>
-																<td>문의 3</td>
-																<td>회원3</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>N</td>
-															</tr>
-															<tr>
-																<td>03</td>
-																<td>나문희</td>
-																<td>회원4</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>Y</td>
-															</tr>
-															<tr>
-																<td>02</td>
-																<td>민무늬</td>
-																<td>회원5</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>Y</td>
-															</tr>
-															<tr>
-																<td>01</td>
-																<td>호랑나비</td>
-																<td>회원6</td>
-																<td>2023.05.26 11:20:21</td>
-																<td>Y</td>
-															</tr>
+															<th class="boardWriter">작성일</th>
+															<th class="boardDate">답변여부</th>
+															<th class="boardWatch">답변일</th>
+															<c:forEach var="mtm" items="${getMTMList}"
+																varStatus="status">
+																<tr>
+																	<td>${status.count}</td>
+																	<td><a
+																			href="${contextPath}/helpDesk/mtm_detail/${mtm['mtmNo']}">
+																			${mtm.mtmTitle}</a></td>
+																	<td>${mtm.mtmRegdate}</td>
+																	<td>${mtm.mtmRepSt}</td>
+																	<td>${mtm.mtmRepDate}</td>
+																</tr>
+															</c:forEach>
 														</table>
 													</div>
 												</div>
