@@ -165,5 +165,8 @@ public interface ManagerService {
 	// 관리자_분실물 목록 조회
 	Map<String, Object> selectLostList(int cp);
 
+	// 스토어 수정 중복검사
+	int NameDupChecks(String storeName);
+
 
 }
