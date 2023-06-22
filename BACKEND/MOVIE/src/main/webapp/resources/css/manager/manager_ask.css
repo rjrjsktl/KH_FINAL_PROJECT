@@ -124,14 +124,36 @@
     cursor: pointer;
     margin: 0 10px;
     border-radius: 5px;
-}
-
-.page_Nation div:hover {
-    background-color: #eee;
+    background-color: #f0efef;
 }
 
 .selected_Cp {
     border-radius: 5px;
     font-weight: bold;
-    background-color: #ddd;
+    background-color: #eee;
+    border: 2px solid black;
+}
+
+.page_Nation div:hover {
+    background-color: #ccc;
+}
+
+.page_Nation a {
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    line-height: 50px;
+    width: 50px;
+    height: 50px;
+    color: black;
+}
+
+.textReduce {
+    width: 300px;
+    display: block;
+    line-height: 63px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
 }
