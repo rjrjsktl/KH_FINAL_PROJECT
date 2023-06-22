@@ -54,8 +54,8 @@
 								<span>${lostdetail.lostTitle}</span>
 							</div>
 							<div>
-								<span><span>${lostdetail.lostWriter}</span> <span>|</span> <span>${lostdetail.lostDate}
-								</span></span>
+								<span><span>${lostdetail.lostWriter}</span> <span>|</span>
+									<span>${lostdetail.lostDate} </span></span>
 							</div>
 							<div class="contentText-wrap">${lostdetail.lostContent}</div>
 						</div>
@@ -98,10 +98,12 @@
 
 					<div class="btn_wraper">
 
-
-						<button id="deleteLost" data-lostno="${lostdetail.lostNo}">
-							<a>삭제</a>
-						</button>
+						<c:if
+							test="${not empty loginUser.userNo and loginUser.userManagerSt == 'Y' or loginUser.userNo == lostdetail.userNo}">
+							<button id="deleteLost" data-lostno="${lostdetail.lostNo}">
+								<a>삭제</a>
+							</button>
+						</c:if>
 
 						<button class="goback">
 							<a href="${contextPath}/helpDesk/lost_List">목록으로</a>

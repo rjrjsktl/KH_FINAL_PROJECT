@@ -14,4 +14,10 @@ public class Screen {
     private String screenStyle;
     private int screenSeat;
     private String screenDetail;
+    private int screenRow;
+    private int screenCol;
+    private String screenAisle;
+    private String screenSpace;
+    private String screenSweet;
+    private String screenImpaired;
 }

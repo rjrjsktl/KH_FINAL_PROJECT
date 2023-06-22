@@ -26,17 +26,25 @@ public class MyPageServiceImpl implements MyPageService {
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
 	
+//	/** review카드 불러오기 serviceimpl
+//	 *
+//	 */
+//	@Override
+//	public List<Review> myReviewList(int userNo) {
+//		
+//		List<Review> myReviewList = dao.myReviewList(userNo);
+//		
+//		return myReviewList;
+//	}
+
 	/** review카드 불러오기 serviceimpl
 	 *
 	 */
 	@Override
-	public List<Review> myReviewList(int userNo) {
-		
-		List<Review> myReviewList = dao.myReviewList(userNo);
-		
-		return myReviewList;
+	public List<Review> loadReviewCards(Map<String, Object> paramMap) {
+		return dao.loadReviewCards(paramMap);
 	}
-
+	
 //	/** review카드 5개 씩불러오기 serviceimpl
 //	 *
 //	 */
@@ -47,7 +55,6 @@ public class MyPageServiceImpl implements MyPageService {
 //		
 //		return myReviewList;
 //	}
-
 
 	/** 회원 비번번호 변경
 	 *
