@@ -1397,5 +1397,37 @@ public class ManagerController {
 		int result = service.editBenefits(updatebene);
 		return result;
 		}
+	
+	// ===================================================
+	// ===================================================
+
+	// 혜택 상태 업데이트
+	@ResponseBody
+	@PostMapping("/benefits_ST")
+	public int changeBenefitsSt(
+			@RequestParam("EST") String est
+			, @RequestParam("benefitsNo") int benefitsNo
+			, Benefits bene) {
+		System.out.println("AJAX로 가지고 온 ST의 값은 : " + est);
+		System.out.println("AJAX로 가지고 온 userId의 값은 : " + benefitsNo);
+
+		bene.setBenefitsStatus(est);
+		bene.setBenefitsNo(benefitsNo);
+
+		int result = service.updateBenefitsST(bene);
+
+		if (result > 0) {
+			System.out.println("이벤트 상태 변경 완료");
+			result = 1;
+
+		} else {
+			System.out.println("이벤트 상태 변경 실패");
+			result = 0;
+		}
+		return result;
+	}
+	
+	
+	
 
 }
