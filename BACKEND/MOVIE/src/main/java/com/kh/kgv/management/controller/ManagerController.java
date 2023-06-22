@@ -1292,7 +1292,7 @@ public class ManagerController {
 	// ===================================================
 
 	// 관리자_혜택 등록 이동
-	@GetMapping("/event_list/edit/{eventNo}")
+	@GetMapping("/event_list/edit/{eventNotest}")
 	public String moveBenefitsEdit(Model model,
 			CinemaPrice price,
 			@PathVariable("priceNo") int priceNo) {
