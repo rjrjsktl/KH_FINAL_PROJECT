@@ -1097,10 +1097,20 @@ public class ManagerController {
 
 	// 관리자_분실물 목록 이동
 	@GetMapping("/lost_list")
-	public String moveLostList() {
-		System.out.println("관리자_분실물 목록 이동");
-		return "manager/manager_lost_list";
-	}
+	public String moveLostList(
+				Model model
+				, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+		
+			Map<String, Object> getLostList = null;
+
+			// 회원 리스트 얻어오기
+			getLostList = service.selectLostList(cp);
+
+			model.addAttribute("getLostList", getLostList);
+			
+			System.out.println("관리자_분실물 목록 이동");
+			return "manager/manager_lost";
+		}
 
 	// ===================================================
 	// ===================================================
