@@ -104,7 +104,7 @@
 		USER_ADDR = #{userAddr}
 		WHERE USER_NO = ${userNo}
 	</update>
-	
+	<!-- 리뷰카드 부르기 기본형식 -->
 	<select id="myReviewList" resultMap="jr_rm">
 		SELECT 
 	 		r.REV_CONTENT
@@ -117,6 +117,21 @@
 		INNER JOIN MOVIE m ON r.MOVIE_NO = m.MOVIE_NO
 			WHERE USER_NO = ${userNo}
 			AND REV_ST = 'N'
+	</select>
+	
+	<select id="loadReviewCards" resultMap="jr_rm">
+		SELECT 
+	 		r.REV_CONTENT
+	 		, m.MOVIE_NO
+	 		, m.MOVIE_TITLE
+	 		, m.MOVIE_IMG1
+	 		, TO_CHAR(REV_DATE, 'YYYY-MM-DD') AS REV_DATE
+	 		, TO_CHAR(REV_DATE, 'HH24:MI') AS REV_TIME
+		FROM REVIEW r
+		INNER JOIN MOVIE m ON r.MOVIE_NO = m.MOVIE_NO
+			WHERE USER_NO = ${userNo}
+			AND REV_ST = 'N'
+			FETCH FIRST ${cardsPerLoad} ROWS ONLY
 	</select>
 	
 	<!-- 
