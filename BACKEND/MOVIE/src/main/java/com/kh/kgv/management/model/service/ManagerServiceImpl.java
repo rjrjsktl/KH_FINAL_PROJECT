@@ -582,6 +582,12 @@ public class ManagerServiceImpl implements ManagerService {
 
 		return lostslists;
 	}
+	
+	// 관리자_혜택 상태 업데이트
+	@Override
+	public int updateBenefitsST(Benefits bene) {
+		return dao.updateBenefitsST(bene);
+	}
 
 	
 

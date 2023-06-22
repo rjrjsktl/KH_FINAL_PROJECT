@@ -555,7 +555,7 @@
 			BENEFITS_CONTENT = #{benefitsContent},
 			BENEFITS_START = #{benefitsStart},
 			BENEFITS_END = #{benefitsEnd}
-		WHERE EVENT_NO = #{benefitsNo}
+		WHERE BENEFITS_NO = #{benefitsNo}
 	</update>
 	
 	
@@ -612,6 +612,13 @@
 		INNER JOIN USERS u ON l.USER_NO = u.USER_NO
 		ORDER BY l.LOST_DATE DESC
 	</select>
+	
+	<!-- 관리자_혜택 상태 업데이트 -->
+	<update id="updateBenefitsST" parameterType="benefits">
+		UPDATE BENEFITS
+		SET BENEFITS_ST = #{benefitsSt}
+		WHERE BENEFITS_NO = #{benefitsNo}
+	</update>
 	
 	
 	
