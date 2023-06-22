@@ -155,5 +155,8 @@ public interface ManagerService {
 	// 관리자_1:1 문의 목록
 	Map<String, Object> selectMTMList(int cp);
 
+	// 스토어 수정 중복검사
+	int NameDupChecks(String storeName);
+
 
 }

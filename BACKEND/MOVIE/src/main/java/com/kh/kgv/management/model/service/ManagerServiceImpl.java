@@ -382,13 +382,13 @@ public class ManagerServiceImpl implements ManagerService {
 	// 스토어
 	@Override
 	public Map<String, Object> getStoreMap(int cp) {
-		// 영화관 수 조회
+		//  스토어 수 조회
 		int storeCount = dao.getStoreCount();
 
-		// 조회한 영화관 수를 pagination 에 담기
+		// 조회한 스토어 수를 pagination 에 담기
 		Pagination pagination = new Pagination(cp, storeCount);
 
-		// 영화관 리스트 조회
+		// 스토어 리스트 조회
 		List<Store> storeList = dao.getStoreList(pagination);
 
 		Map<String, Object> storeMap = new HashMap<String, Object>();
@@ -547,6 +547,16 @@ public class ManagerServiceImpl implements ManagerService {
 
 		return mtmlists;
 	}
+	
+	// 스토어 수정 중복검사
+			@Override
+			public int NameDupChecks(String storeName) {
+				
+				
+				
+				return dao.NameDupChecks(storeName);
+				
+			}
 
 	
 

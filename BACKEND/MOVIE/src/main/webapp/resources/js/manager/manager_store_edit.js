@@ -4,11 +4,12 @@ $(document).ready(function () {
 
 
 
+    const storeNo = $('#storeNo');
 
 
+    let storeCategory = $('#storeCategory');
 
-    // var storeCategory = '${editStore.storeCategory}';
-    // console.log("Value received from the database: " + storeCategory);
+    console.log("Value received from the database: " + storeCategory.val());
 
 
 
@@ -143,7 +144,13 @@ $(document).ready(function () {
                     if (result == 1) {
                         $("#storeNameMessage").text("중복!");
                         nameCheck = false;
-                    } else {
+                    } else if (result == 2) {
+                        $("#storeNameMessage").text("현재NO의이름이라 유효합니다.");
+                        nameCheck = true;
+                    }
+
+                    else {
+
                         $("#storeNameMessage").text("유효!");
                         nameCheck = true;
                     }
@@ -169,49 +176,54 @@ $(document).ready(function () {
         console.log('저장버튼이 눌림.');
         if (!$("#storeCategory").val()) {
             alert('선택되지 않았습니다.');
-            storeCategory.focus();
+            $("#storeCategory").focus();
             e.preventDefault();
-            storeCategory = false;
+            return;
         }
-        else if (!$("#storeName").val() && nameCheck == false) {
+        else if (!$("#storeName").val()) {
             alert('상품 이름이 입력되지 않았습니다.');
-            storeName.focus();
+            $("#storeName").focus();
             e.preventDefault();
-            storeName = false;
-
+            return;
         }
+        else if (nameCheck === false) {
+            alert('상품 이름이 중복되었습니다.');
+            $("#storeName").focus();
+            e.preventDefault();
+            return;
+        }
+
+
         else if (!$("#storeDesc").val()) {
             alert('상품 설명이 입력되지 않았습니다.');
-            storeDesc.focus();
+            $("#storeDesc").focus();
             e.preventDefault();
-            storeDesc = false;
+            return;
         }
-
-
         else if (!$("#storePrice").val()) {
             alert('상영 가격이 입력되지 않았습니다.');
-            storePrice.focus();
+            $("#storePrice").focus();
             e.preventDefault();
-            storePrice = false;
+            return;
         }
         else if (!$("#storeStock").val()) {
-            alert('제한개수가 입력되지 않았습니다.');
-            storeStock.focus();
+            alert('제한 개수가 입력되지 않았습니다.');
+            $("#storeStock").focus();
             e.preventDefault();
-            storeStock = false;
+            return;
         }
         else if (!$("#storeImage").val()) {
             alert('이미지가 입력되지 않았습니다.');
-            storeImage.focus();
+            $("#storeImage").focus();
             e.preventDefault();
-            storeImage = false;
+            return;
         }
         else if (!$("#storeImageBig").val()) {
             alert('빅 이미지가 입력되지 않았습니다.');
-            storeImageBig.focus();
+            $("#storeImageBig").focus();
             e.preventDefault();
-            storeImageBig = false;
-        };
+            return;
+        }
 
 
         $.ajax({
@@ -239,7 +251,7 @@ $(document).ready(function () {
                     storeImagePreview.attr('src', imageUrl2);
                 } else {
                     alert("스토어 물품 수정 등록 실패");
-                    window.location.reload();
+
                 }
             },
 
