@@ -78,10 +78,10 @@
                                     </div>
                                 </div>
                                 <div class="myPage-info-addr-frame">
-                                    <input type="text" name="updateAddr" id="address" value="${addr[1]}">
+                                    <input type="text" name="updateAddr" id="address" value="${addr[1]}" readonly> 
                                 </div>
                                 <div class="myPage-info-addr-frame">
-                                    <input type="text" name="updateAddr" id="detailAddress" value="${addr[2]}">
+                                    <input type="text" name="updateAddr" id="detailAddress" value="${addr[2]}" readonly>
                                 </div>
 
                                 <div class="update-btn-area">
@@ -91,24 +91,30 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- event-wrap -->
-                <jsp:include page="/WEB-INF/views/myPage/myPage_randomMovie.jsp" />
-
             </section>
         </main>
     </div>
     
+    <!-- event-wrap -->
+    <jsp:include page="/WEB-INF/views/myPage/myPage_randomMovie.jsp" />
+    
     <!-- footer -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
-
+<!-- 
     <div id="myModal" class="modal">
         <div class="modal-content">
             <div class="close-button">&times;</div>
             <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
         </div>
     </div>
-
+ -->
+	<%-- 다음 주소 API --%>
+    <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:11;-webkit-overflow-scrolling:touch;">
+        <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+    </div>
+    
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    
     <script src="${contextPath}/resources/js/common/header.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_swiper.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_main.js"></script>
