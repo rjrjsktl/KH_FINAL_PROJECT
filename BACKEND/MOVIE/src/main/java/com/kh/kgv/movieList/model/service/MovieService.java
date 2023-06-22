@@ -14,4 +14,7 @@ public interface MovieService {
 
 	// 관리자 페이지 상영 조회
 	Map<String, Object> managerMovieList(int cp);
+	
+	// 관리자 상영 종료된 목록 조회
+	Map<String, Object> managerMovieListEnd(int cp);
 }
