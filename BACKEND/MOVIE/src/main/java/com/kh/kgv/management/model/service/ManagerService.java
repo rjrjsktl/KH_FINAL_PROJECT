@@ -162,5 +162,8 @@ public interface ManagerService {
 	// 관리자_혜택 수정 등록
 	int editBenefits(Benefits updatebene);
 
+	// 관리자_분실물 목록 조회
+	Map<String, Object> selectLostList(int cp);
+
 
 }

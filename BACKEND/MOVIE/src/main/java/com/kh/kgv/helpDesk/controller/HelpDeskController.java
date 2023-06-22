@@ -448,9 +448,12 @@ public class HelpDeskController {
 		User loginUser = (User)session.getAttribute("loginUser");
 
 		int userNo = 0;
+		String userNick = null;
 
 		if(loginUser != null) {
 			userNo = loginUser.getUserNo();
+			userNick = loginUser.getUserNick();
+
 		}
 
 		LostPackage lost = new LostPackage();
@@ -465,6 +468,7 @@ public class HelpDeskController {
 		lost.setLostLocation(area);
 		lost.setLostContent(details);
 		lost.setLostDate(date);
+		lost.setLostWriter(userNick);
 
 		services.addLost(lost);  
 

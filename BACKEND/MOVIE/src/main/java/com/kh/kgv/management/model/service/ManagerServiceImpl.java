@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 
 import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.helpDesk.model.vo.LostPackage;
 import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
@@ -560,6 +561,26 @@ public class ManagerServiceImpl implements ManagerService {
 		int result = dao.editBenefits(updatebene);
 		System.out.println("serviceImpl result:::::" + result);
 		return result;
+	}
+
+	// 관리자_분실물 목록 
+	@Override
+	public Map<String, Object> selectLostList(int cp) {
+		
+		// 분실물 목록 수 조회
+		int lostCount = dao.getLostCount();
+
+		// 조회한 문의 수를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, lostCount);
+
+		// 영화관 리스트 조회
+		List<LostPackage> getLostList = dao.getAllLostList(pagination);
+
+		Map<String, Object> lostslists = new HashMap<String, Object>();
+		lostslists.put("pagination", pagination);
+		lostslists.put("getLostList", getLostList);
+
+		return lostslists;
 	}
 
 	

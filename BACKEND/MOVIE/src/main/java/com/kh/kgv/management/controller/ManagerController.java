@@ -10,6 +10,8 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.text.StringEscapeUtils;
@@ -64,7 +66,17 @@ public class ManagerController {
 
 	// 관리자_메인페이지 이동
 	@GetMapping("/main")
-	public String moveMain(Model model) {
+	public String moveMain(
+			Model model
+			, HttpSession session
+			) {
+		
+		User loginUser = (User)session.getAttribute("loginUser");
+		
+		String url = "";
+		String st = loginUser.getUserManagerSt(); // 관리자 상태
+		
+		if(loginUser != null && st !=("N")) {
 
 		// 관리자 메인 신규 회원 목록 조회
 		List<User> getUser = null;
@@ -90,7 +102,14 @@ public class ManagerController {
 		model.addAttribute("getMovieList", getMovieList);
 
 		System.out.println("관리자_메인페이지 이동");
-		return "manager/managerPage";
+		 url =  "manager/managerPage";
+		
+		} else {
+			System.out.println("관리자 권한 없음");
+			url = "redirect:/movie";
+		}
+		
+		return url;
 	}
 
 	// ===================================================
@@ -1098,10 +1117,20 @@ public class ManagerController {
 
 	// 관리자_분실물 목록 이동
 	@GetMapping("/lost_list")
-	public String moveLostList() {
-		System.out.println("관리자_분실물 목록 이동");
-		return "manager/manager_lost_list";
-	}
+	public String moveLostList(
+				Model model
+				, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+		
+			Map<String, Object> getLostList = null;
+
+			// 회원 리스트 얻어오기
+			getLostList = service.selectLostList(cp);
+
+			model.addAttribute("getLostList", getLostList);
+			
+			System.out.println("관리자_분실물 목록 이동");
+			return "manager/manager_lost";
+		}
 
 	// ===================================================
 	// ===================================================
