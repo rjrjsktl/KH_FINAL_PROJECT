@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_aSide.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_myLostItemList.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_randomMovie.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_randomEvent.css">
 
 </head>
 
@@ -59,51 +59,81 @@
                                 </div>
 
                                 <div class="table-wrap">
-                                    <table>
+                                <table>
 
-                                        <thead>
-                                            <th>번호</th>
-                                            <th>내용</th>
-                                            <th>등록일</th>
-                                            <th>조회수</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="row">
-                                                <td>1</td>
-                                                <th><a href="">내용123</a><span>...[0]</span></th>
-                                                <td>2023.01.01</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr class="row">
-                                                <td>2</td>
-                                                <th><a href="">내용123</a><span>...[1]</span></th>
-                                                <td>2023.01.01</td>
-                                                <td>23</td>
-                                            </tr>
-                                            <tr class="row">
-                                                <td>3</td>
-                                                <th><a href="">내용123</a><span>...[1]</span></th>
-                                                <td>2023.01.01</td>
-                                                <td>456</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div>
-                                        <button>게시물 등록</button>
-                                    </div>
-                                    <!-- 10개씩 -->
-                                    <ul class="pagination">
-                                        <li><a href="#">&lt;&lt;</a></li>
-                                        <li><a href="#">&lt;</a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#">&gt;</a></li>
-                                        <li><a href="#">&gt;&gt;</a></li>
-                                    </ul>
+                                   <thead>
+										<th>영화관</th>
+										<th>내용</th>
+										<th>등록일</th>
+										<th>조회수</th>
+									</thead>
+                                    <tbody>
+                                      <c:choose>
+											<c:when test="${empty lostList.lostLists}">
+												<tr class=row>
+													<td colspan="3">게시글이 존재하지 않습니다.</td>
+												</tr>
+											</c:when>
+											<c:otherwise>
+												<c:forEach var="lostList"
+													items="${lostList.lostLists}" varStatus="loop">
+													<c:if test="${loop.index < 10}">
+														<tr class="row">
+															<td>${lostList.lostLocation}</td>
+															<td><a href="${contextPath}/helpDesk/lost_detail/${lostList.lostNo}" style="color:white">${lostList.lostTitle}</a></td>
+															<td>${lostList.lostDate}</td>
+															<td>${lostList.lostView}</td>
+														</tr>
+													</c:if>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
+
+
+
+                                    </tbody>
+
+                                </table>
+
+                                <div>
+                                    <button><a href="${contextPath}/helpDesk/lost_form/${lostNo}">게시물 등록</a></button>
                                 </div>
+                                <!-- 10개씩 -->
+                               	<div class="page_Nation">
+								<c:set var="url" value="?cp=" />
+								<c:set var="pagination" value="${lostList['pagination']}" />
+								<c:set var="currentPage" value="${pagination.currentPage}"
+									scope="request" />
+								<div>
+									<a href="${url}1">&lt;&lt;</a>
+								</div>
+								<div>
+									<a href="${url}${pagination.prevPage}">&lt;</a>
+								</div>
+								<c:forEach var="i" begin="${pagination.startPage}"
+									end="${pagination.endPage}" step="1">
+									<c:choose>
+										<c:when test="${i == currentPage}">
+											<div>
+												<a class="selected_Cp">${i}</a>
+											</div>
+										</c:when>
+										<c:otherwise>
+											<div>
+												<a href="${url}${i}">${i}</a>
+											</div>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<div>
+									<a href="${url}${pagination.nextPage}">&gt;</a>
+								</div>
+								<div>
+									<a href="${url}${pagination.maxPage}">&gt;&gt;</a>
+								</div>
+							</div>
+
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -114,7 +144,7 @@
     </div>
     
     <!-- event-wrap -->
-    <jsp:include page="/WEB-INF/views/myPage/myPage_randomMovie.jsp" />
+    <jsp:include page="/WEB-INF/views/myPage/myPage_randomEvent.jsp" />
     
     <!-- footer -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
@@ -128,7 +158,7 @@
 
     <script src="${contextPath}/resources/js/common/header.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_myLostItem.js"></script>
-    <script src="${contextPath}/resources/js/myPage/myPage_randomMovie.js"></script>
+    <script src="${contextPath}/resources/js/myPage/myPage_randomEvent.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_swiper.js"></script>
 
 </body>
