@@ -88,7 +88,7 @@ $(document).ready(function () {
         var data = new FormData();
         data.append("file", file);
         $.ajax({
-            url: '(충돌방지용태그)event_add/uploadImage',
+            url: 'benefits_add/uploadImage',
             type: "POST",
             data: data,
             cache: false,
@@ -167,20 +167,20 @@ $(document).ready(function () {
     // ===============================================================================
 
     const submitBtn = $('.bottom_Submit');
-    const eventTitle = $('.enter_Title > input');
+    const benefitsTitle = $('.enter_Title > input');
     const textArea = $('#summernote');
 
     submitBtn.on('click', (e) => {
         e.preventDefault();
-        console.log("제목 : " + eventTitle.val());
+        console.log("제목 : " + benefitsTitle.val());
         console.log("혜택 시작일 : " + startDate.val());
         console.log("혜택 종료일 : " + endDate.val());
         console.log("본문 내용 : " + textArea.val());
         console.log("이미지 : " + imageUrl1);
 
-        if (!eventTitle.val()) {
+        if (!benefitsTitle.val()) {
             alert('제목이 입력되지 않았습니다.');
-            eventTitle.focus();
+            benefitsTitle.focus();
             e.preventDefault();
             return false;
         };
@@ -215,7 +215,7 @@ $(document).ready(function () {
         $.ajax({
             url: "benefits_add/write_Event",
             data: {
-                "title": eventTitle.val()
+                "title": benefitsTitle.val()
                 , "start": startDate.val()
                 , "end": endDate.val()
                 , "content": textArea.val()

@@ -47,7 +47,7 @@
 
 						<h2>분실물 문의</h2>
 
-					
+
 
 						<div class="notice-contents">
 							<div>
@@ -57,35 +57,61 @@
 								<span><span>${userNick}</span> <span>|</span> <span>${lostdetail.lostDate}
 								</span></span>
 							</div>
-							<div class="contentText-wrap">${lostdetail.lostContent} </div>
+							<div class="contentText-wrap">${lostdetail.lostContent}</div>
 						</div>
+					</div>
 
-						<div class="movie-reply" style="display:none">
+					<c:if test="${lostdetail.lostRepSt == 'Y'}">
 
-							<div class="replywritewrap">
-								<span>분실물 작성</span>
-
-								<div>
-									<form action="" class="replywrite">
-										<textarea name="" id="" cols="30" rows="3"></textarea>
-										<div class="replyBtn">문의 작성</div>
-									</form>
-								</div>
+						<div class="reply">
+							<div class="reply-info">
+								<p>${lostdetail.lostWriter}님답변드립니다.</p>
+								<span class="reply-writer-info"><span>${lostdetail.lostRepWriter}</span><span>|</span><span>${lostdetail.lostRepDate}</span></span>
+							</div>
+							<div>
+								<div class="reply-content">${lostdetail.lostRepContent}</div>
 							</div>
 						</div>
 
+						<c:if
+							test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y'}">
+							<button class="reply_delete" data-lostno="${lostdetail.lostNo}"
+								id="reply_deleteBtn">
+								<a>답변 삭제하기</a>
+							</button>
+						</c:if>
+					</c:if>
+
+
+					<c:if
+						test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y' && lostdetail.lostRepSt == 'N'}">
+
+						<div class="reply_wrap btn_wraper">
+							<textarea id="contentTextarea"></textarea>
+							<button data-lostno="${lostdetail.lostNo}" id="reply_writeBtn">
+								<a>등록하기</a>
+							</button>
+						</div>
+
+					</c:if>
+
+
+					<div class="btn_wraper">
+
+
+						<button id="deleteLost" data-lostno="${lostdetail.lostNo}">
+							<a>삭제</a>
+						</button>
+
+						<button class="goback">
+							<a href="${contextPath}/helpDesk/lost_List">목록으로</a>
+						</button>
+
 					</div>
 
-					<div class="btn_wraper" >
-						
-						<button id="deleteLost" data-mtmno="${mTmdetail.mtmNo}"><a>삭제</a></button>
-						<button class="goback"><a href="${contextPath}/helpDesk/lost_List">목록으로</a></button>
-						
-					</div>
-					
 				</div>
-				
-		
+
+
 
 			</section>
 		</main>
@@ -94,9 +120,8 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 
-	<script src="${contextPath}/resources/js/common/replys.js"></script>
-	<script src="${contextPath}/resources/js/helpDesk/lost.js"></script>
-	
+	<script src="${contextPath}/resources/js/helpDesk/lost_form.js"></script>
+
 </body>
 
 </html>

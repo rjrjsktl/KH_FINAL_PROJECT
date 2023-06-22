@@ -12,10 +12,12 @@ import org.springframework.ui.Model;
 
 import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.items.model.vo.TimeTable;
 import com.kh.kgv.management.model.dao.ManagerDAO;
+import com.kh.kgv.management.model.vo.Benefits;
 import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
@@ -50,6 +52,15 @@ public class ManagerServiceImpl implements ManagerService {
 		List<Notice> getNotice = dao.getAllNotice();
 		return getNotice;
 	}
+	
+
+	// 관리자 메인 1 : 1 문의 조회
+	@Override
+	public List<Mtm> getMainMTMList() {
+		List<Mtm> getMTMList = dao.getMainMTMList();
+		return getMTMList;
+	}
+	
 
 	// 관리자 메인 일일 접속자 수 조회
 	@Override
@@ -485,6 +496,26 @@ public class ManagerServiceImpl implements ManagerService {
 	public int EditCinemaPrice(CinemaPrice cp) {
 		return dao.EditCinemaPrice(cp);
 	}
+	
+	// 관리자_혜택 목록 조회
+	@Override
+	public Map<String, Object> getBenefitsList(int cp) {
+		// 혜택 수 조회
+		int benefitsCount = dao.getBenefitsCount();
+
+		// 조회한 혜택 수를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, benefitsCount);
+
+		// 혜택 리스트 조회
+		List<Benefits> benefitsList = dao.getBenefitsList(pagination);
+		
+		Map<String, Object> getBenefitsList = new HashMap<String, Object>();
+		getBenefitsList.put("pagination", pagination);
+		getBenefitsList.put("benefitsList", benefitsList);
+		
+		return getBenefitsList;
+		
+	}
 
 	// 관리자_배너 수정 이동
 	@Override
@@ -497,5 +528,26 @@ public class ManagerServiceImpl implements ManagerService {
 	public int editBanner(banner banner) {
 		return dao.editBanner(banner);
 	}
+
+	// 관리자_1:1 문의 목록
+	@Override
+	public Map<String, Object> selectMTMList(int cp) {
+		// 1:1 문의 목록 수 조회
+		int mtmCount = dao.getMTMCount();
+
+		// 조회한 문의 수를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, mtmCount);
+
+		// 영화관 리스트 조회
+		List<Mtm> getMTMList = dao.getAllMTMList(pagination);
+
+		Map<String, Object> mtmlists = new HashMap<String, Object>();
+		mtmlists.put("pagination", pagination);
+		mtmlists.put("getMTMList", getMTMList);
+
+		return mtmlists;
+	}
+
+	
 
 }

@@ -60,126 +60,62 @@
 													<tr>
 														<th>번호</th>
 														<th>문의 회원 아이디</th>
+														<th>문의 종류</th>
 														<th>문의 제목</th>
 														<th>문의 내용</th>
 														<th>문의 일자</th>
+														<th>답변상태</th>
 														<th>답변 일자</th>
 														<th>담당자</th>
-														<th>답변상태</th>
 													</tr>
-													<tr>
-														<td>1</td>
-														<td>cropruch@naver.com</td>
-														<td>문의 제목1</td>
-														<td>무니는 호구마가 먹고싶어요</td>
-														<td>2023.05.27 14:51:52</td>
-														<td>-</td>
-														<td>담당자1</td>
-														<td>미답변</td>
-
-													</tr>
-													<tr>
-														<td>2</td>
-														<td>cropruch@naver.com</td>
-														<td>문의 제목2</td>
-														<td>무니는 호구마가 먹고싶어요</td>
-														<td>2023.05.27 14:51:52</td>
-														<td>-</td>
-														<td>담당자1</td>
-														<td>미답변</td>
-													</tr>
-													<tr>
-														<td>3</td>
-														<td>cropruch@naver.com</td>
-														<td>문의 제목3</td>
-														<td>무니는 호구마가 먹고싶어요</td>
-														<td>2023.05.27 14:51:52</td>
-														<td>2023.05.27 16:34:05</td>
-														<td>담당자1</td>
-														<td>답변완료</td>
-													</tr>
-													<tr>
-														<td>4</td>
-														<td>cropruch@naver.com</td>
-														<td>문의 제목4</td>
-														<td>무니는 호구마가 먹고싶어요</td>
-														<td>2023.05.27 14:51:52</td>
-														<td>2023.05.27 16:34:05</td>
-														<td>담당자1</td>
-														<td>답변완료</td>
-													</tr>
-													<tr>
-														<td>5</td>
-														<td>cropruch@naver.com</td>
-														<td>문의 제목5</td>
-														<td>무니는 호구마가 먹고싶어요</td>
-														<td>2023.05.27 14:51:52</td>
-														<td>2023.05.27 16:34:05</td>
-														<td>담당자1</td>
-														<td>답변완료</td>
-													</tr>
-													<tr>
-														<td>6</td>
-														<td>cropruch@naver.com</td>
-														<td>문의 제목6</td>
-														<td>무니는 호구마가 먹고싶어요</td>
-														<td>2023.05.27 14:51:52</td>
-														<td>2023.05.27 16:34:05</td>
-														<td>담당자1</td>
-														<td>답변완료</td>
-													</tr>
-													<tr>
-														<td>7</td>
-														<td>cropruch@naver.com</td>
-														<td>문의 제목7</td>
-														<td>무니는 호구마가 먹고싶어요</td>
-														<td>2023.05.27 14:51:52</td>
-														<td>2023.05.27 16:34:05</td>
-														<td>담당자1</td>
-														<td>답변완료</td>
-													</tr>
-													<tr>
-														<td>8</td>
-														<td>cropruch@naver.com</td>
-														<td>문의 제목8</td>
-														<td>무니는 호구마가 먹고싶어요</td>
-														<td>2023.05.27 14:51:52</td>
-														<td>2023.05.27 16:34:05</td>
-														<td>담당자1</td>
-														<td>답변완료</td>
-													</tr>
-													<tr>
-														<td>9</td>
-														<td>cropruch@naver.com</td>
-														<td>문의 제목9</td>
-														<td>무니는 호구마가 먹고싶어요</td>
-														<td>2023.05.27 14:51:52</td>
-														<td>2023.05.27 16:34:05</td>
-														<td>담당자1</td>
-														<td>선택안함</td>
-													</tr>
-													<tr>
-														<td>10</td>
-														<td>cropruch@naver.com</td>
-														<td>문의 제목10</td>
-														<td>무니는 호구마가 먹고싶어요</td>
-														<td>2023.05.27 14:51:52</td>
-														<td>2023.05.27 16:34:05</td>
-														<td>담당자1</td>
-														<td>답변완료</td>
-													</tr>
-
+													<c:forEach var="mtmList" items="${getMTMList['getMTMList']}">
+														<tr>
+															<td>${mtmList.mtm.mtmNo}</td>
+															<td>${mtmList.user.userEmail}</td>
+															<td>${mtmList.mtm.mtmType}</td>
+															<td><a
+																	href="${contextPath}/helpDesk/mtm_detail/${mtmList.mtm.mtmNo}">${mtmList.mtm.mtmTitle}</a>
+															</td>
+															<td>${mtmList.mtm.mtmContent}</td>
+															<td>${mtmList.mtm.mtmRegdate}</td>
+															<td>${mtmList.mtm.mtmRepSt}</td>
+															<td>${mtmList.mtm.mtmRepDate}</td>
+															<td>${mtmList.mtm.mtmRepWriter}</td>
+														</tr>
+													</c:forEach>
 												</table>
 												<div class="page_Nation">
-													<div>&lt;</div>
-													<div class="selected_Cp">1</div>
-													<div>2</div>
-													<div>3</div>
-													<div>4</div>
-													<div>5</div>
-													<div>6</div>
-													<div>7</div>
-													<div>&gt;</div>
+													<c:set var="url" value="?cp=" />
+													<c:set var="pagination" value="${getMTMList['pagination']}" />
+													<c:set var="currentPage" value="${pagination.currentPage}"
+														scope="request" />
+													<div>
+														<a href="${url}1">&lt;&lt;</a>
+													</div>
+													<div>
+														<a href="${url}${pagination.prevPage}">&lt;</a>
+													</div>
+													<c:forEach var="i" begin="${pagination.startPage}"
+														end="${pagination.endPage}" step="1">
+														<c:choose>
+															<c:when test="${i == currentPage}">
+																<div>
+																	<a class="selected_Cp">${i}</a>
+																</div>
+															</c:when>
+															<c:otherwise>
+																<div>
+																	<a href="${url}${i}">${i}</a>
+																</div>
+															</c:otherwise>
+														</c:choose>
+													</c:forEach>
+													<div>
+														<a href="${url}${pagination.nextPage}">&gt;</a>
+													</div>
+													<div>
+														<a href="${url}${pagination.maxPage}">&gt;&gt;</a>
+													</div>
 												</div>
 											</div>
 										</div>

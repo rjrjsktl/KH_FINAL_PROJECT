@@ -21,118 +21,160 @@ import com.kh.kgv.management.model.vo.Notice;
 
 @Repository
 public class HelpDeskDAO {
-	
+
 	private Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	
+
+	// 현재번호의 공지사항
+	public Notice selectNoticeDetail(int noticeNo) {
+		return sqlSession.selectOne("managerMapper.noticeDetail", noticeNo);
+	}
+
+	// 이전번호의 공지사항
+	public Notice findPrevNoticeNo(int prevNoticeNo) {
+		return sqlSession.selectOne("managerMapper.noticePrevNo", prevNoticeNo);
+	}
+
+	// 다음번호의 공지사항
+	public Notice findNextNoticeNo(int nextNoticeNo) {
+		return sqlSession.selectOne("managerMapper.noticeNextNo", nextNoticeNo);
+	}
+
+	// 1:1문의 작성 후 이동할 MTMNO조회	
+	public int selectMtmNo(Mtm mtm) {
+		return sqlSession.selectOne("mtmMapper.selectMtmNo", mtm);
+	}
+
+	// 1:1문의 갯수 카운트 ( insert를 위한 카운트 )
 	public int getMtmListCount() {
 		return sqlSession.selectOne("mtmMapper.getMtmCount");
 	}
-	
+
+	// 1:1문의 본인/권한자가 접근하기위한 갯수카운트
 	public int getMtmListCount(int userNo, int userManagerStAsInt) {
 		Map<String, Object> params = new HashMap<>();
 		params.put("userNo", userNo);
 		params.put("userManagerSt", userManagerStAsInt);
 		System.out.println("현재 접속중인 유저 넘버는 =====================%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+userNo);
 		System.out.println("현재 카운트가능한 갯수권한은 =====================%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+userManagerStAsInt);
-
 		return sqlSession.selectOne("mtmMapper.getUserMtmCount", params);
 	}
-	
 
-	public Notice selectNoticeDetail(int noticeNo) {
-		return sqlSession.selectOne("managerMapper.noticeDetail", noticeNo);
-	}
-
-
-	public Notice findPrevNoticeNo(int prevNoticeNo) {
-		return sqlSession.selectOne("managerMapper.noticePrevNo", prevNoticeNo);
-	}
-
-
-	public Notice findNextNoticeNo(int nextNoticeNo) {
-		return sqlSession.selectOne("managerMapper.noticeNextNo", nextNoticeNo);
-	}
-
-
+	// 1:1문의 리스트 출력	
 	public List<Mtm> getMtmList(MtmPagenation pagination, int userNo, int userManagerStAsInt) {
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
-		
-	    Map<String, Object> params = new HashMap<>();
-	    params.put("userNo", userNo);
-	    params.put("userManagerSt", userManagerStAsInt);
-	    
+		Map<String, Object> params = new HashMap<>();
+		params.put("userNo", userNo);
+		params.put("userManagerSt", userManagerStAsInt);
 		return sqlSession.selectList("mtmMapper.userMtmList", params , rowBounds);
 	}
 
-
+	// 1:1문의 세부사항
 	public Mtm selectmTmDetail(int mtmNo) {
 		return sqlSession.selectOne("mtmMapper.mtmDetail", mtmNo);
 	}
 
-	
-
-	public int getLostListCount() {
-		return sqlSession.selectOne("lostMapper.getLostCount");
-	}
-	
-
-	public List<Mtm> lostLists(LostPagenation pagination, int userNo) {
-		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
-		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
-		
-	    Map<String, Object> params = new HashMap<>();
-	    params.put("userNo", userNo);
-		
-		return sqlSession.selectList("lostMapper.userLostList", params , rowBounds);
-	}
-
-
-	public LostPackage selectLostDetail(int lostNo) {
-		System.out.println(lostNo+"DAO");
-		return sqlSession.selectOne("lostMapper.lostdetail",lostNo);
-
-	}
-
-
+	// 1:1문의 insert
 	public int addmTm(Mtm mtm) {
-		
 		return sqlSession.insert("mtmMapper.addmTm", mtm);
-		
 	}
-
-	public int addLost(LostPackage lost) {
-		return sqlSession.insert("lostMapper.addLost", lost);
-	}
-
-	public int getLostListCount(int userNo) {
-		return sqlSession.selectOne("lostMapper.getUserLostCount", userNo);
-	}
-
-	public int selectMtmNo(Mtm mtm) {
-		return sqlSession.selectOne("mtmMapper.selectMtmNo", mtm);
-	}
-
-	public int selectLostNo(LostPackage lost) {
-		return sqlSession.selectOne("lostMapper.selectLostNo", lost);
-	}
-
+	
+	// 1:1문의 게시물 삭제
 	public int deleteBoard(int mtmNo) {
 		return sqlSession.update("mtmMapper.deleteBoard", mtmNo);
 	}
 
+	// 1:1문의 댓글 삭제
+	public int replyDelete(int mtmNo) {
+		return sqlSession.update("mtmMapper.replyDelete", mtmNo);
+	}
 
-
-
-
+	// 1:1문의 댓글 등록
+	public int replyWrite(int mtmNo, String content, String managerNick) {
+		Map<String, Object> params = new HashMap<>();
+		params.put("mtmNo", mtmNo);
+		params.put("content", content);
+		params.put("managerNick", managerNick);
+		return sqlSession.update("mtmMapper.replyWrite", params);
+	}
 
 
 	
+	// 분실물 문의 글 작성 후 자신의 번호로 이동하기 위한 LostNo조회
+	public int selectLostNo(LostPackage lost) {
+		return sqlSession.selectOne("lostMapper.selectLostNo", lost);
+	}
 	
+	// 분실물문의 갯수 카운트 ( insert를 위한 카운트 )
+	public int getLostListCount() {
+		return sqlSession.selectOne("lostMapper.getLostCount");
+	}
+	
+	// 분실물문의 본인/권한자가 접근하기위한 갯수카운트
+	public int getLostListCount(int userNo, int userManagerStAsInt) {
+		Map<String, Object> params = new HashMap<>();
+		params.put("userNo", userNo);
+		params.put("userManagerSt", userManagerStAsInt);
+		return sqlSession.selectOne("lostMapper.getUserLostCount", params);
+	}
+
+	// 분실물 리스트 출력
+	public List<Mtm> lostLists(LostPagenation pagination, int userNo, int userManagerStAsInt) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		Map<String, Object> params = new HashMap<>();
+		params.put("userNo", userNo);
+		params.put("userManagerSt", userManagerStAsInt);
+		return sqlSession.selectList("lostMapper.userLostList", params , rowBounds);
+	}
+
+	// 분실물 세부사항 조회
+	public LostPackage selectLostDetail(int lostNo) {
+		return sqlSession.selectOne("lostMapper.lostdetail",lostNo);
+	}
+
+	// 분실물 삽입
+	public int addLost(LostPackage lost) {
+		return sqlSession.insert("lostMapper.addLost", lost);
+	}
+
+	// 분실물 게시물 삭제
+	public int deleteLost(int mtmNo) {
+		return sqlSession.update("lostMapper.deleteLost", mtmNo);
+	}
+
+	// 분실물 게시물 답변삭제
+	public int replyLostDelete(int lostNo) {
+		return sqlSession.update("lostMapper.replyLostDelete", lostNo);
+	}
+
+	// 분실물 게시물 답변 작성
+	public int replyLostWrite(int lostNo, String content, String managerNick) {
+		Map<String, Object> params = new HashMap<>();
+		params.put("lostNo", lostNo);
+		params.put("content", content);
+		params.put("managerNick", managerNick);
+		return sqlSession.update("lostMapper.replyLostWrite", params);
+	}
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

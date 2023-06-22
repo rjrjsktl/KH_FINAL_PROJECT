@@ -31,7 +31,7 @@
 							rel="stylesheet">
 						<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_event_add.css">
+						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_benefits_add.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 					</head>
@@ -99,7 +99,7 @@
 
 						</main>
 
-						<script src="${contextPath}/resources/js/manager/manager_event_add.js"></script>
+						<script src="${contextPath}/resources/js/manager/manager_benefits_add.js"></script>
 						<script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
 						<script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
 					</body>

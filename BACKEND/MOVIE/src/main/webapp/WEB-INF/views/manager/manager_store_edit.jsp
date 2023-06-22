@@ -59,12 +59,16 @@
                                                         <div id="store_sub">
                                                             <input type="hidden" id="storeNo"
                                                                 value="${editStore.storeNo}">
+                                                            <input type="hidden" id="hiddenImg"
+                                                                value="${editStore.storeImage}" />
+                                                            <input type="hidden" id="hiddenImg"
+                                                                value="${editStore.storeImageBig}" />
 
                                                             <span>카테고리</span>
                                                             <div>
                                                                 <select id="storeCategory" name="storeCategory"
                                                                     class="storeCategory" aria-label="성별">
-                                                                    <option value="" selected="">
+                                                                    <option id="selectCategory" value="" selected="">
                                                                         ${editStore.storeCategory}</option>
                                                                     <option value="음료">음료</option>
                                                                     <option value="팝콘">팝콘</option>
@@ -119,7 +123,8 @@
                                                                         id="storeImage">
                                                                 </div>
                                                                 <div>
-                                                                    <img src="${editStore.storeImage}">
+                                                                    <img id="storeImagePreview"
+                                                                        src="${editStore.storeImage}">
                                                                 </div>
                                                             </div>
 
@@ -130,7 +135,8 @@
                                                                         id="storeImageBig">
                                                                 </div>
                                                                 <div>
-                                                                    <img src="${editStore.storeImageBig}">
+                                                                    <img id="storeImageBigPreview"
+                                                                        src="${editStore.storeImageBig}">
                                                                 </div>
                                                             </div>
 

@@ -20,5 +20,10 @@ public class LostPackage {
 	private String lostContent;
 	private String lostWriter;
 	private int lostView;
+	private String lostSt;
+	private String lostRepWriter;
+	private String lostRepSt;
+	private String lostRepContent;
+	private String lostRepDate;
 
 }

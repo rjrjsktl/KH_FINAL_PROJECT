@@ -49,7 +49,6 @@
     display: flex;
     flex-direction: column;
     margin: 30px 30px;
-
 }
 
 .table_Title {
@@ -106,6 +105,18 @@
 
 .table_main tr:nth-child(2n) {
     background-color: #dbdbdb;
+}
+
+.table_main td a {
+    width: 25px;
+    height: 25px;
+    color: black;
+    text-decoration: none;
+}
+
+.table_main td button i {
+    padding-top: 4px;
+    padding-right: 2px;
 }
 
 .page_Nation {
