@@ -203,6 +203,7 @@ tbody{
 
 .check-area > p {
 	font-size:1.5rem;
+	text-align:center;
 }
 
 .check-area>div:nth-child(2){

@@ -205,7 +205,6 @@ public class HelpDeskImpl implements HelpDeskService {
 	}
 
 
-
 	@Override
 	public int selectmtmPw(int mtmNo) {
 		return dao.selectmtmPw(mtmNo);
@@ -215,6 +214,56 @@ public class HelpDeskImpl implements HelpDeskService {
 	public int selectUserNo(int mtmNo) {
 		return dao.selectUserNo(mtmNo);
 	}
+
+	@Override
+    public String checkPasswordAccess(int mtmNo, User loginUser) {
+        int userNo = 0;
+        String userManagerSt = null;
+
+        if(loginUser != null ) {
+            userNo = loginUser.getUserNo();
+            userManagerSt = loginUser.getUserManagerSt();
+        }
+        else {
+            userManagerSt = "N";
+        }
+        
+        
+
+        int mtmPw = selectmtmPw(mtmNo);
+        int mtmUserNo = selectUserNo(mtmNo);
+
+        // 비회원이 비밀번호가 입력되어있는 게시물에 접근할 경우
+        // >>>>>>> 로그인페이지로 이동시킨다.
+        if ( userNo == 0 && mtmPw != 0 ) {
+            return "redirect:/user/login";
+        } 
+
+        // 로그인은 되어있는데 회원레벨이 관리자일 경우
+        // 또는 게시물의 비밀번호가 0일 경우
+        // 바로  보내버린다.
+        if (userManagerSt.equals("Y") || mtmPw == 0) {
+            return "redirect:/helpDesk/mtm_detail/" + mtmNo;
+        } 
+
+        // 로그인은 되어있는데 세션의 회원번호가 테이블의 userNo와 같을경우
+        // >> 바로 보내버린다.
+        if (userNo == mtmUserNo ) {
+            return "redirect:/helpDesk/mtm_detail/" + mtmNo;
+        }
+
+        // 로그인은 되어있는데 회원레벨이 일반고객일 경우
+        // 비밀번호 입력창으로 보내버린다.
+        if (userManagerSt.equals("N") && userNo != 0) {
+            return "helpDesk/checkPw";
+        }
+        
+       
+        
+        
+
+        return null;
+    }
 
 
 
