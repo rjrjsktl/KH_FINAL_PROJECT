@@ -89,11 +89,11 @@
 														<textarea id="summernote"
 															name="editordata">${editEvent['EVENT_CONTENT']}</textarea>
 													</form>
-												</div>
-												<div class="table_bottom">
-													<button type="button" class="bottom_Submit">저장</button>
-													<a href="${contextPath}/manager/event_list"
-														class="bottom_Cancel">취소</a>
+													<div class="table_bottom">
+														<button type="button" class="bottom_Submit">저장</button>
+														<a href="${contextPath}/manager/event_list"
+															class="bottom_Cancel">취소</a>
+													</div>
 												</div>
 											</div>
 										</div>

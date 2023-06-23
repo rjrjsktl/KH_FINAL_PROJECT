@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_aSide.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_myMtmDetail.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_randomMovie.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_randomEvent.css">
 
 </head>
 
@@ -123,7 +123,7 @@
 
     <script src="${contextPath}/resources/js/common/header.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_myMtm.js"></script>
-    <script src="${contextPath}/resources/js/myPage/myPage_randomMovie.js"></script>
+    <script src="${contextPath}/resources/js/myPage/myPage_randomEvent.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_swiper.js"></script>
 </body>
 

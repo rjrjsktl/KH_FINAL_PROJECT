@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Play;
+import com.kh.kgv.items.model.vo.TimeCheck;
 import com.kh.kgv.management.model.service.ManagePlayService;
 import com.kh.kgv.management.model.vo.Cinema;
 
@@ -120,6 +121,16 @@ public class ManagePlayController {
 		
 		List<Play> playList = null;
 		
+		TimeCheck tc = new TimeCheck();
+		tc.setAreaIndex(areaIndex);
+		tc.setCinemaIndex(cinemaIndex);
+		tc.setScreenIndex(screenIndex);
+		tc.setMovieIndex(movieIndex);
+		tc.setTimeIndex(timeIndex);
+		tc.setStartDate(startDate);
+		tc.setEndDate(endDate);
+
+		
 		areaName = areaArray[Integer.parseInt(areaIndex)];
 	    cinemaList = service.getAreaCinemaList(areaName);
 	    cinemaName = cinemaList.get(Integer.parseInt(cinemaIndex)).getCinemaName();
@@ -132,6 +143,9 @@ public class ManagePlayController {
 	    startTime = Integer.parseInt(timeIndex) * 30;
 	    endTime = startTime + Integer.parseInt(runTime);
 	    
+	    tc.setStartTime(startTime);
+	    tc.setEndTime(endTime);
+	    
 	    playList = service.playTimeCheck(cinemaName, screenName, startTime, endTime, startDate, endDate);
 	    
 	    System.out.println(areaName + " " + cinemaName + " " + screenName + "관");
@@ -139,6 +153,10 @@ public class ManagePlayController {
 	    
 	    if(playList.size() == 0) {
 	    	System.out.println("겹치는 것 없어요.");
+	    }
+	    if(playList.size() != 0) {
+	    	playList = service.getDupTime(tc);
+	    	System.out.println("중복될 때 가지고온 playList : " + playList);
 	    }
 		
 		return playList;

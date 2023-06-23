@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Play;
+import com.kh.kgv.items.model.vo.TimeCheck;
 import com.kh.kgv.items.model.vo.TimeTable;
 import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.Screen;
@@ -58,6 +59,11 @@ public class ManagePlayDAO {
 	
 	public int enrollPlay(Play play) {
 		return sqlSession.insert("playMapper.enrollPlay", play);
+	}
+
+	// 일자 중복 시, 해당하는 영화의 상영목록 중에서 가장 빠른 시작일과 가장 늦은 종료일을 가지고 돌아가기.
+	public List<Play> getDupTime(TimeCheck tc) {
+		return sqlSession.selectList("playMapper.getDupTime", tc);
 	}
 
 

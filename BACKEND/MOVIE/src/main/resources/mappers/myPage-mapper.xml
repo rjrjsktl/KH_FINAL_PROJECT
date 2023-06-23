@@ -119,6 +119,27 @@
 			AND REV_ST = 'N'
 	</select>
 	
+	
+	<select id="loadReviewCards" resultMap="jr_rm">
+		SELECT 
+    		*
+		FROM (
+    		SELECT
+        		r.REV_CONTENT,
+        		m.MOVIE_NO,
+        		m.MOVIE_TITLE,
+        		m.MOVIE_IMG1,
+        		TO_CHAR(r.REV_DATE, 'YYYY-MM-DD') AS REV_DATE,
+        		TO_CHAR(r.REV_DATE, 'HH24:MI') AS REV_TIME,
+        		ROW_NUMBER() OVER (ORDER BY r.REV_NO DESC) AS row_num
+    		FROM REVIEW r
+    		INNER JOIN MOVIE m ON r.MOVIE_NO = m.MOVIE_NO
+    		WHERE r.USER_NO = ${userNo} AND r.REV_ST = 'N'
+		) sub
+		WHERE sub.row_num BETWEEN ${startRow} AND ${endRow}
+	</select>
+	
+	<!-- 
 	<select id="loadReviewCards" resultMap="jr_rm">
 		SELECT 
 	 		r.REV_CONTENT
@@ -133,7 +154,8 @@
 			AND REV_ST = 'N'
 			FETCH FIRST ${cardsPerLoad} ROWS ONLY
 	</select>
-	
+	 -->
+	 
 	<!-- 
 	<select id="getReviewListInRange" resultMap="jr_rm">
 		SELECT 
