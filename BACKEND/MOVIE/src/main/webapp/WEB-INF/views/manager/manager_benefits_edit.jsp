@@ -85,6 +85,9 @@
 																</div>
 															</div>
 														</div>
+														<div class="imgInput">
+															<input type="file" class="movie_image1" name="file">
+														</div>
 													</div>
 													<form method="post">
 														<textarea id="summernote"

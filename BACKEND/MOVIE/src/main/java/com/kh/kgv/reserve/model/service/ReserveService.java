@@ -23,4 +23,6 @@ public interface ReserveService {
 
 	JoinPlay getUserPlay(int playNo);
 
+	int getPriceNo(String screenStyle, String priceDay, String priceTime);
+
 }

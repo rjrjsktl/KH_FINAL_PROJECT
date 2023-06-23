@@ -48,6 +48,10 @@ public class ReserveDAO {
 		return sqlSession.selectOne("playMapper.getUserPlay", playNo);
 	}
 
+	public int getPriceNo(Map<String, Object> condition) {
+		return sqlSession.selectOne("cinemaMapper.getPriceNo", condition);
+	}
+
 
 
 

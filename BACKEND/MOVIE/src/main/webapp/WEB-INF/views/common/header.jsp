@@ -118,10 +118,10 @@
                   <li><a href="">당첨자 발표</a></li>
                </ul></li>
 
-            <li class="navBar"><a href="#">혜택</a>
+            <li class="navBar"><a href="${contextPath}/benefitsList/benefits_detail_List">혜택</a>
                <ul class="menuBar" style="display: none">
-                  <li><a href="">멤버쉽</a></li>
-                  <li><a href="">제휴/할인</a></li>
+                  <li><a href="${contextPath}/benefitsList/benefits_detail_List">진행중인 혜택</a></li>
+                  <li><a href="${contextPath}/benefitsList/benefits_end_List">진행중이였었던것이였던 혜택</a></li>
                </ul></li>
             <li class="navBar"><a href="${contextPath}/store/storeMain">스토어</a></li>
 

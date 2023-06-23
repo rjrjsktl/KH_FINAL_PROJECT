@@ -156,6 +156,15 @@ public class HelpDeskDAO {
 		return sqlSession.update("lostMapper.replyLostWrite", params);
 	}
 
+	public int selectmtmPw(int mtmNo) {
+		return sqlSession.selectOne("mtmMapper.selectmtmPw", mtmNo);
+	}
+
+	public int selectUserNo(int mtmNo) {
+		return sqlSession.selectOne("mtmMapper.selectUserNo", mtmNo);
+
+	}
+
 	
 
 
