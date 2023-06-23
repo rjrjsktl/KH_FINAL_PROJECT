@@ -93,7 +93,9 @@
 		TO_CHAR(MTM_REGDATE, 'YYYY.MM.DD') AS
 		MTM_REGDATE,
 		MTM_COUNT,
-		MTM_TYPE
+		MTM_TYPE,
+		MTM_PW,
+		MTM_TBL.USER_NO
 		FROM
 		MTM_TBL
 		INNER JOIN
@@ -140,8 +142,7 @@
 		, DEFAULT
 		, DEFAULT
 		, DEFAULT
-		, DEFAULT
-		<!-- 게시물 비밀번호 -->
+		, #{mtmPw}<!-- 게시물 비밀번호 -->
 		)
 
 	</insert>
