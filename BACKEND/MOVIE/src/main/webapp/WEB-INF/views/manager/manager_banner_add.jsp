@@ -71,10 +71,10 @@
 														<span>등록 할 이미지는 아래와 같습니다.</span>
 														<img id="imgSize" src="" />
 													</div>
-												</div>
-												<div class="table_bottom">
-													<button class="bottom_Submit">저장</button>
-													<button class="bottom_Cancel">취소</button>
+													<div class="table_bottom">
+														<button class="bottom_Submit">저장</button>
+														<button class="bottom_Cancel">취소</button>
+													</div>
 												</div>
 											</div>
 										</div>
