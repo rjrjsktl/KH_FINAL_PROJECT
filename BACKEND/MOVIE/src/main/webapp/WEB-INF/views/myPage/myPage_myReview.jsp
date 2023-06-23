@@ -26,7 +26,7 @@
                         <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
                         <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_aSide.css">
                         <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_myReview.css">
-                        <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_randomMovie.css">
+                        <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_randomEvent.css">
 
                     </head>
 
@@ -107,7 +107,7 @@
                         </div>
 
                         <!-- event-wrap -->
-                        <jsp:include page="/WEB-INF/views/myPage/myPage_randomMovie.jsp" />
+                        <jsp:include page="/WEB-INF/views/myPage/myPage_randomEvent.jsp" />
 
                         <!-- footer -->
                         <jsp:include page="/WEB-INF/views/common/footer.jsp" />
@@ -122,7 +122,7 @@
                         <script src="${contextPath}/resources/js/common/header.js"></script>
                         <script src="${contextPath}/resources/js/myPage/myPage_myReview.js"></script>
                         <script src="${contextPath}/resources/js/myPage/myPage_swiper.js"></script>
-                        <script src="${contextPath}/resources/js/myPage/myPage_randomMovie.js"></script>
+                        <script src="${contextPath}/resources/js/myPage/myPage_randomEvent.js"></script>
                     </body>
 
                     </html>

@@ -168,5 +168,10 @@ public interface ManagerService {
 	// 관리자_혜택 상태 업데이트
 	int updateBenefitsST(Benefits bene);
 
+	// 스토어 수정 중복검사
+	int NameDupChecks(String storeName);
+
+	
+
 
 }

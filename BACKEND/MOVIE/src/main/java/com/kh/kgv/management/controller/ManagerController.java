@@ -66,50 +66,43 @@ public class ManagerController {
 
 	// 관리자_메인페이지 이동
 	@GetMapping("/main")
-	public String moveMain(
-			Model model
-			, HttpSession session
-			) {
-		
-		User loginUser = (User)session.getAttribute("loginUser");
-		
-		String url = "";
-		String st = loginUser.getUserManagerSt(); // 관리자 상태
-		
-		if(loginUser != null && st !=("N")) {
+	public String moveMain(Model model, HttpSession session) {
+	    String url = "";
+	    User loginUser = (User) session.getAttribute("loginUser");
 
-		// 관리자 메인 신규 회원 목록 조회
-		List<User> getUser = null;
-		getUser = service.getAllUser();
+	    if (loginUser == null) {
+	        System.out.println("로그인되지 않음");
+	        url = "redirect:/";
+	    } else {
+	        String st = loginUser.getUserManagerSt(); // 관리자 상태
+	        
+	        if (!st.equals("N")) {
+	            // 관리자 메인 신규 회원 목록 조회
+	            List<User> getUser = service.getAllUser();
 
-		// 관리자 메인 공지사항 목록 조회
-		List<Notice> getNotice = null;
-		getNotice = service.getAllNotice();
-		
-		// 관리자 메인 1 : 1 문의 조회
-		List<Mtm> getMTMList = null;
-		getMTMList = service.getMainMTMList();
-		
-		// 관리자 메인 상영중인 영화
-		Map<String, Object> getMovieList = null;
-		getMovieList = movieService.mainMovieList();
-		
+	            // 관리자 메인 공지사항 목록 조회
+	            List<Notice> getNotice = service.getAllNotice();
 
-		
-		model.addAttribute("getUser", getUser);
-		model.addAttribute("getNotice", getNotice);
-		model.addAttribute("getMTMList", getMTMList);
-		model.addAttribute("getMovieList", getMovieList);
+	            // 관리자 메인 1 : 1 문의 조회
+	            List<Mtm> getMTMList = service.getMainMTMList();
 
-		System.out.println("관리자_메인페이지 이동");
-		 url =  "manager/managerPage";
-		
-		} else {
-			System.out.println("관리자 권한 없음");
-			url = "redirect:/movie";
-		}
-		
-		return url;
+	            // 관리자 메인 상영중인 영화
+	            Map<String, Object> getMovieList = movieService.mainMovieList();
+
+	            model.addAttribute("getUser", getUser);
+	            model.addAttribute("getNotice", getNotice);
+	            model.addAttribute("getMTMList", getMTMList);
+	            model.addAttribute("getMovieList", getMovieList);
+
+	            System.out.println("관리자_메인페이지 이동");
+	            url = "manager/managerPage";
+	        } else {
+	            System.out.println("관리자 권한 없음");
+	            url = "redirect:/";
+	        }
+	    }
+
+	    return url;
 	}
 
 	// ===================================================
@@ -969,16 +962,17 @@ public class ManagerController {
 	}
 
 	// 스토어 수정 이름 중복 검사
-	@ResponseBody
-	@GetMapping("/store_list/edit/{storeNo}/store_edit/NameDupChecks")
-	public int NameDupChecks(String storeName) {
-		System.out.println(storeName);
-		int result = services.NameDupCheck(storeName);
+		@ResponseBody
+		@GetMapping("/store_list/edit/{storeNo}/store_edit/NameDupChecks")
+		public int NameDupChecks(String storeName, @PathVariable("storeNo") int storeNo, Store store) {
+			System.out.println(storeName);
+//			String originName = service.getStoreInfo(storeNo).getStoreName();
+			int result = service.NameDupChecks(storeName);
 
-		System.out.println(result);
-		return result;
+			System.out.println(result);
+			return result;
 
-	}
+		}
 
 	// 스토어 수정 이미지 업로드
 	@PostMapping("/store_list/edit/{storeNo}/store_edit/uploadImageFile")
@@ -1150,7 +1144,7 @@ public class ManagerController {
 		return "manager/manager_banner_list";
 	}
 	// ===================================================
-	// ===================================================
+		// ===================================================
 
 	// 관리자_배너 등록 이동
 	@GetMapping("/banner_add")

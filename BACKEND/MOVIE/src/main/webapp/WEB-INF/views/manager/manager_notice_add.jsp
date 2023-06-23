@@ -67,10 +67,10 @@
 													<form method="post">
 														<textarea id="summernote" name="editordata"></textarea>
 													</form>
-												</div>
-												<div class="table_bottom">
-													<button class="bottom_Submit">저장</button>
-													<button class="bottom_Cancel">취소</button>
+													<div class="table_bottom">
+														<button class="bottom_Submit">저장</button>
+														<button class="bottom_Cancel">취소</button>
+													</div>
 												</div>
 											</div>
 										</div>

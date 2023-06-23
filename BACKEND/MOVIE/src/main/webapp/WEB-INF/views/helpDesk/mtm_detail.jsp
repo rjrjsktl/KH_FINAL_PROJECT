@@ -61,25 +61,25 @@
 						</div>
 					</div>
 
-					<c:if
-						test="${mTmdetail.mtmRepSt == 'Y'}">
+					<c:if test="${mTmdetail.mtmRepSt == 'Y'}">
 
 						<div class="reply">
 							<div class="reply-info">
-								<p>${mTmdetail.mtmWriter}님 답변드립니다.</p>
+								<p>${mTmdetail.mtmWriter}님답변드립니다.</p>
 								<span class="reply-writer-info"><span>${mTmdetail.mtmRepWriter}</span><span>|</span><span>${mTmdetail.mtmRepDate}</span></span>
 							</div>
 							<div>
-								<div class="reply-content">
-									${mTmdetail.mtmRepContent}
-								</div>
+								<div class="reply-content">${mTmdetail.mtmRepContent}</div>
 							</div>
 						</div>
-						
-					<c:if
-						test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y'}">
-						<button class="reply_delete" data-mtmno="${mTmdetail.mtmNo}" id="reply_deleteBtn"><a>답변 삭제하기</a></button>
-					</c:if>
+
+						<c:if
+							test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y'}">
+							<button class="reply_delete" data-mtmno="${mTmdetail.mtmNo}"
+								id="reply_deleteBtn">
+								<a>답변 삭제하기</a>
+							</button>
+						</c:if>
 					</c:if>
 
 					<c:if
@@ -87,14 +87,24 @@
 
 						<div class="reply_wrap btn_wraper">
 							<textarea id="contentTextarea"></textarea>
-							<button data-mtmno="${mTmdetail.mtmNo}" id="reply_writeBtn"><a>등록하기</a></button>
+							<button data-mtmno="${mTmdetail.mtmNo}" id="reply_writeBtn">
+								<a>등록하기</a>
+							</button>
 						</div>
 
 					</c:if>
+
 					<div class="btn_wraper">
-						<button id="deleteMtm" data-mtmno="${mTmdetail.mtmNo}">
-							<a>삭제</a>
-						</button>
+						<c:if
+							test="${not empty loginUser.userNo and loginUser.userManagerSt == 'Y' or loginUser.userNo == mTmdetail.userNo}">
+
+
+							<button id="deleteMtm" data-mtmno="${mTmdetail.mtmNo}">
+								<a>삭제</a>
+							</button>
+
+						</c:if>
+
 						<button class="goback">
 							<a href="${contextPath}/helpDesk/mTm_List">목록으로</a>
 						</button>

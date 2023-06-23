@@ -6,18 +6,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.kgv.items.model.vo.Movie;
-import com.kh.kgv.items.model.vo.Play;
 import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.JoinPlay;
-import com.kh.kgv.management.model.vo.Screen;
 import com.kh.kgv.reserve.model.service.ReserveService;
 
 @Controller
@@ -36,7 +38,7 @@ public class ReserveController {
 	
 
 	@GetMapping("/choicePlay")
-	public String enterReserve(Model model) {
+	public String enterChoicePlay(Model model) {
 		reserveMap = new HashMap<>(); 
 		movieList = service.getPlayingMovieList();
 		thumbList = service.getPlayingThumbList();
@@ -128,35 +130,53 @@ public class ReserveController {
 	
 	@GetMapping("/selectPlay")
 	@ResponseBody
-	public List<JoinPlay> selectPlay(String areaIndex, String cinemaIndex, String dateIndex, 
-			                         String movieIndex, String playIndex ) {
+	public int selectPlay(HttpServletRequest req, String playNo) {
+		int result = 0;
 		
 		try {
-			String areaName = areaArray[Integer.parseInt(areaIndex)];
-			cinemaList = service.getAreaCinemaList(areaName);
-			int cinemaNo = cinemaList.get(Integer.parseInt(cinemaIndex)).getCinemaNo();
-			int movieNo;
-			
-			LocalDateTime now = LocalDateTime.now();
-			LocalDateTime date = now.plusDays(Integer.parseInt(dateIndex));
-			String strDate = date.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-			
-			if(movieIndex.equals("-1")) {
-				
-			} else {
-				
-				
-			}
-			
-		} catch(ArrayIndexOutOfBoundsException e) {
-			System.out.println("배열 범위 이외의 숫자입니다.");
-		} catch(NumberFormatException e) {
-			System.out.println("잘못된 인덱스입니다.");
+			HttpSession session = req.getSession();
+			session.setAttribute("playNo", playNo);
+		    System.out.println(playNo);
+			result = 1;		
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
-		return joinPlayList;
+		
+		return result;
+	}
+	
+	// 추후 PostMapping으로 변경함
+	
+	@GetMapping("/choiceTicket")
+	public String enterChoiceTicket(HttpServletRequest req, Model model) {
+		
+		try {
+			HttpSession session = req.getSession();
+			int playNo = Integer.parseInt( (String) session.getAttribute("playNo"));
+			JoinPlay userPlay = service.getUserPlay(playNo);
+			model.addAttribute("userPlay", userPlay);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "reserve/choiceTicket";
 	}
 	
 	
-	
+	@GetMapping("/loadPlay")
+	@ResponseBody
+	public JoinPlay LoadPlay(HttpServletRequest req) {
+		JoinPlay userPlay = null;
+		
+		try {
+			HttpSession session = req.getSession();
+			int playNo = Integer.parseInt( (String) session.getAttribute("playNo"));
+			userPlay = service.getUserPlay(playNo);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return userPlay;
+	}
 	
 }

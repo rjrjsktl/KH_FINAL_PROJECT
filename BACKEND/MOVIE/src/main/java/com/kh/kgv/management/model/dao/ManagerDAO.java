@@ -1,5 +1,6 @@
 package com.kh.kgv.management.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -430,7 +431,14 @@ public class ManagerDAO {
 	public int updateBenefitsST(Benefits bene) {
 		return sqlSession.update("managerMapper.updateBenefitsST", bene);
 	}
+	
+	
+	public int NameDupChecks(String storeName) {
+		
+	
+		return sqlSession.selectOne("storeMapper.NameDupChecks", storeName );
+	}
 
-
+	
 
 }

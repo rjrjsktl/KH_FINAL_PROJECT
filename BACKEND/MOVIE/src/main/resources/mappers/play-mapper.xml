@@ -50,6 +50,12 @@
 		<result property="screenStyle"          column="SCREEN_STYLE" />
 		<result property="screenSeat"           column="SCREEN_SEAT" />
 		<result property="screenDetail"         column="SCREEN_DETAIL" />
+		<result property="screenRow"         column="SCREEN_ROW" />
+		<result property="screenCol"         column="SCREEN_COL" />
+		<result property="screenAisle"         column="SCREEN_AISLE" />
+		<result property="screenSpace"         column="SCREEN_SPACE" />
+		<result property="screenSweet"         column="SCREEN_SWEET" />
+		<result property="screenImpaired"         column="SCREEN_IMPAIRED" />
 	</resultMap>
 	
 	<resultMap type="cinema" id="cinema_rm">
@@ -58,6 +64,17 @@
 		<result property="cinemaArea"           column="CINEMA_AREA" />
 		<result property="cinemaRegion"         column="CINEMA_REGION" />
 		<result property="cinemaScreen"         column="CINEMA_SCREEN" />
+	</resultMap>
+	
+		<resultMap type="tc" id="tc_rm">
+		<result property="areaIndex"           column="TC_AREA" />
+		<result property="cinemaIndex"           column="TC_CINEMA" />
+		<result property="screenIndex"         column="TC_SCREEN" />
+		<result property="timeIndex"         column="TC_TIME" />
+		<result property="startDate"         column="TC_STARTDATE" />
+		<result property="endDate"         column="TC_ENDDATE" />
+		<result property="startTime"         column="TC_STARTTIME" />
+		<result property="endTime"         column="TC_ENDTIME" />
 	</resultMap>
 	
 	<resultMap type="jp" id="jp_rm">
@@ -135,5 +152,58 @@
               AND m.MOVIE_NO = #{movieNo}
 	]]>
 	</select>
+	
+	
+	<select id="getUserPlay" parameterType="_int" resultMap="jp_rm">
+	    SELECT *
+	    FROM PLAY p
+        INNER JOIN SCREEN s ON p.SCREEN_NO  = s.SCREEN_NO 
+        INNER JOIN CINEMA c ON s.CINEMA_NAME = c.CINEMA_NAME
+        INNER JOIN MOVIE m ON p.MOVIE_NO = m.MOVIE_NO
+        WHERE p.PLAY_NO = #{playNo}
+	
+	</select>
+	
+	<!-- 시간이 중복될 때 값을 담아서 화면에 떤져주기 -->
+	<select id="getDupTime" parameterType="play" resultMap="play_rm">
+SELECT
+<!--영화 타이틀 -->
+    (m.MOVIE_TITLE) AS PLAY_UPLOADER
+<!--  영화 시작일 / 오늘 기준으로 가장 빠른 시작 시간(YYYY-MM-DD) -->
+    , (
+        SELECT TO_CHAR(MIN(p.PLAY_START), 'YYYY-MM-DD')
+        FROM PLAY p
+        WHERE m.MOVIE_NO = p.MOVIE_NO
+        AND m.MOVIE_NO = #{movieIndex}
+        AND p.PLAY_START > SYSDATE
+    ) AS PLAY_START
+<!--영화 시작일 / 오늘 기준으로 가장 빠른 시작 시간(HH24:MI) -->
+    , (
+        SELECT TO_CHAR(MIN(p.PLAY_START), 'HH24:MI')
+        FROM PLAY p
+        WHERE m.MOVIE_NO = p.MOVIE_NO
+        AND m.MOVIE_NO = #{movieIndex}
+        AND p.PLAY_START > SYSDATE
+    ) AS PLAY_BOOKSEAT
+<!--영화 종료일 / 오늘 기준으로 가장 늦은 시작 시간(YYYY-MM-DD) -->
+    , (
+        SELECT TO_CHAR(MAX(p.PLAY_START), 'YYYY-MM-DD')
+        FROM PLAY p
+        WHERE m.MOVIE_NO = p.MOVIE_NO
+        AND m.MOVIE_NO = #{movieIndex}
+        AND p.PLAY_START > SYSDATE
+    ) AS PLAY_END
+<!-- 영화 종료일 / 오늘 기준으로 가장 늦은 시작 시간(HH24:MI) -->
+    , (
+        SELECT TO_CHAR(MAX(p.PLAY_START), 'HH24:MI')
+        FROM PLAY p
+        WHERE m.MOVIE_NO = p.MOVIE_NO
+        AND m.MOVIE_NO = #{movieIndex}
+        AND p.PLAY_START > SYSDATE
+    ) AS PLAY_REGDATE
+FROM MOVIE m
+WHERE m.MOVIE_NO = #{movieIndex}
+		</select>
+	
 	
 </mapper>
