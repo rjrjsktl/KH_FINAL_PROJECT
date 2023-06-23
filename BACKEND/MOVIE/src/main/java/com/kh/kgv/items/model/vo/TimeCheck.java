@@ -12,8 +12,9 @@ public class TimeCheck {
 
 	private String areaIndex;
 	private String cinemaIndex;
-	private String screenIndex;
-	private String movieIndex;
+	private int screenIndex;
+	private int movieIndex;
+	private int screenNo;
 	private String timeIndex;
 	private String startDate;
 	private String endDate;
