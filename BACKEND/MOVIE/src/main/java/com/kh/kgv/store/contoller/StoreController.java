@@ -61,6 +61,8 @@ public class StoreController {
 		
 		model.addAttribute("storeDetail", getStoreDetail);
 		
+		
+		
 		return "store/store_detail";
 	}
 	
