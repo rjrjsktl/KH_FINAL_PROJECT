@@ -28,7 +28,7 @@
 	
     <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_aSide.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_myLostItemList.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_myLostList.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_randomEvent.css">
 
 </head>
@@ -55,7 +55,7 @@
                                 </div>
 
                                 <div class="search-area">
-                                    <p>내 분실물 게시글 총<span style="color:red">1</span><span>/</span><span>3</span>건</p>
+                                    <p>내 분실물 게시글 총<span value="${lostCount}">0</span>건</p>
                                 </div>
 
                                 <div class="table-wrap">
@@ -157,9 +157,10 @@
     </div>
 
     <script src="${contextPath}/resources/js/common/header.js"></script>
-    <script src="${contextPath}/resources/js/myPage/myPage_myLostItem.js"></script>
-    <script src="${contextPath}/resources/js/myPage/myPage_randomEvent.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_swiper.js"></script>
+    <script src="${contextPath}/resources/js/myPage/myPage_myLostList.js"></script>
+    <script src="${contextPath}/resources/js/myPage/myPage_randomEvent.js"></script>
+    
 
 </body>
 

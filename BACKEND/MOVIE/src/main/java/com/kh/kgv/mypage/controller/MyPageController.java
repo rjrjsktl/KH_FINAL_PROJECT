@@ -29,6 +29,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.kgv.customer.model.vo.Review;
 import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.mypage.model.service.MyPageService;
 
@@ -98,7 +99,22 @@ public class MyPageController {
 	}
 	
 	@GetMapping("/myMtm")
-	public String myMtm(Model model) {
+	public String myMtm(@RequestParam(value = "cp", required = false, defaultValue="1" ) int cp
+						, @ModelAttribute("loginUser") User loginUser
+						, @RequestParam Map<String, Object> paramMap
+						, Model model
+						){
+		
+		logger.info("1대1 문의 리스트 뿌리자잇");
+		
+		paramMap.put("userNo", loginUser.getUserNo());
+		paramMap.put("cp", cp);
+//		int userNo = loginUser.getUserNo();
+
+		Map<String, Object> mtmUserList = service.mtmList(paramMap);
+		
+		model.addAttribute("mtmUserList", mtmUserList);
+		logger.info("Controll.mtmUserList:::::" + mtmUserList);
 		
 		// 메인 이벤트 목록 가지고 오기 - 7개
 		Map<String, Object> getEvnetList = null;

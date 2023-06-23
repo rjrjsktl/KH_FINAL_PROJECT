@@ -50,7 +50,6 @@
 .aslide-list>li>a {
     font-size: 1.1rem;
     font-weight: bold;
-    color: rgb(73, 73, 73);
 }
 
 .aslide-list>li>a:hover {
@@ -72,12 +71,6 @@
     width: 82%;
 } */
 
-h2 {
-    font-size: 1.8rem;
-    padding: 0 0 30px 10px;
-    border-bottom: 3px solid rgb(255, 196, 0);
-    margin-bottom: 50px;
-}
 
 /* 검색 회색영역 */
 .cont-search-wrap {
