@@ -195,11 +195,7 @@ public class ManagerServiceImpl implements ManagerService {
 	 */
 	@Override
 	public int MovieEdit(Movie updateMovie) {
-
-		System.out.println("==============영화등록 serviceimpl");
-
 		int result = dao.MovieEdit(updateMovie);
-		System.out.println("serviceImpl result:::::" + result);
 		return result;
 	}
 

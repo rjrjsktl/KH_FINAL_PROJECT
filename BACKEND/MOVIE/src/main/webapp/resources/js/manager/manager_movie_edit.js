@@ -402,12 +402,84 @@ $(document).ready(function () {
     let movie_image = $('.movie_image');
 
     let movie_story = $('.movie_story');
+    const hiddenImg1 = $('.hiddenImg1');
+    const hiddenImg2 = $('.hiddenImg2');
+    const hiddenImg3 = $('.hiddenImg3');
+    const hiddenImg4 = $('.hiddenImg4');
+    const hiddenImg5 = $('.hiddenImg5');
+    const hiddenImg6 = $('.hiddenImg6');
 
 
     // level_Arr
     // genre_Arr
 
     confirmBtn.on('click', (e) => {
+        e.preventDefault();
+        // 이미지 변경이 없을 경우
+        // 이미지를 변경 할 경우
+        // 기존 로직을 그대로 사용한다.
+        // 이미지 삭제는 고려하지 않음. 반드시 이미지는 들어가야 함.
+
+        // 메인 이미지
+        if ($('.movie_image1').val() == "") {
+
+            console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image1').val());
+            imageUrl1 = hiddenImg1.val();
+
+            console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl1);
+
+        }
+
+        // 추가 이미지 1
+        if ($('.movie_image2').val() == "") {
+
+            console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image2').val());
+            imageUrl2 = hiddenImg2.val();
+
+            console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl2);
+
+        }
+
+        // 추가 이미지 2
+        if ($('.movie_image3').val() == "") {
+
+            console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image3').val());
+            imageUrl3 = hiddenImg3.val();
+
+            console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl3);
+
+        }
+
+        // 추가 이미지 3
+        if ($('.movie_image4').val() == "") {
+
+            console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image4').val());
+            imageUrl4 = hiddenImg4.val();
+
+            console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl4);
+
+        }
+
+        // 추가 이미지 4
+        if ($('.movie_image5').val() == "") {
+
+            console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image5').val());
+            imageUrl5 = hiddenImg5.val();
+
+            console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl5);
+
+        }
+
+        // 추가 이미지 5
+        if ($('.movie_image6').val() == "") {
+
+            console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image6').val());
+            imageUrl6 = hiddenImg6.val();
+
+            console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl6);
+
+        }
+
         if (!movie_title.val()) {
             alert('제목이 입력되지 않았습니다.');
             movie_title.focus();
@@ -446,55 +518,21 @@ $(document).ready(function () {
         };
         if (level_Arr.length == 0) {
             alert('관람 등급이 선택되지 않았습니다.');
-            level_slide.toggle();
             e.preventDefault();
+            level_slide.toggle();
+            // window.location.reload();
             return false;
         };
         if (genre_Arr.length == 0) {
             alert('장르가 선택되지 않았습니다.');
             Genre_Items.toggle();
+            // window.location.reload();
             e.preventDefault();
             return false;
         };
         if (!$('.movie_story').val()) {
             alert('줄거리를 입력하지 않았습니다.');
             movie_story.focus();
-            e.preventDefault();
-            return false;
-        };
-        if (!$('.movie_image1').val()) {
-            alert('메인 이미지를 등록하지 않았습니다.');
-            imageUrl1.focus();
-            e.preventDefault();
-            return false;
-        };
-        if (imageUrl2 == "") {
-            alert('추가 이미지1 을 등록하지 않았습니다.');
-            imageUrl2.focus();
-            e.preventDefault();
-            return false;
-        };
-        if (imageUrl3 == "") {
-            alert('추가 이미지2 를 등록하지 않았습니다.');
-            imageUrl2.focus();
-            e.preventDefault();
-            return false;
-        };
-        if (imageUrl4 == "") {
-            alert('추가 이미지3 을 등록하지 않았습니다.');
-            imageUrl2.focus();
-            e.preventDefault();
-            return false;
-        };
-        if (imageUrl5 == "") {
-            alert('추가 이미지4 를 등록하지 않았습니다.');
-            imageUrl2.focus();
-            e.preventDefault();
-            return false;
-        };
-        if (imageUrl6 == "") {
-            alert('추가 이미지5 를 등록하지 않았습니다.');
-            imageUrl2.focus();
             e.preventDefault();
             return false;
         };
