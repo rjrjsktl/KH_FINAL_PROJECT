@@ -30,7 +30,10 @@ public interface HelpDeskService {
 	int replyLostDelete(int lostNo);
 	int replyLostWrite(int lostNo, String content, String managerNick);
 	
-//	int checkPw(int mtmNo);
+	// 게시물 비밀번호 관련
+	int selectmtmPw(int mtmNo);
+	int selectUserNo(int mtmNo);
+	
 
 
 
