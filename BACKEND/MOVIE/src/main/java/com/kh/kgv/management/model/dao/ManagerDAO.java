@@ -438,6 +438,8 @@ public class ManagerDAO {
 	
 		return sqlSession.selectOne("storeMapper.NameDupChecks", storeName );
 	}
+	
+	
 
 	
 
