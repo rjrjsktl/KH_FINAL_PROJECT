@@ -9,6 +9,8 @@ let specialCount = 0;
 let seatArray = [];
 let countArray = [];
 let choiceArray = [];
+let totalSeatArray = [];
+let ageArray = [0, 0, 0, 0];
 
 let priceArray = [Number(adultPrice), Number(youthPrice), Number(seniorPrice), Number(specialPrice)];
 let totalPrice = 0;
@@ -43,42 +45,19 @@ $.ajax({
 function screenSection(userPlay) {
     console.log(userPlay);
     
-    updateScreen();
-    updateRunTime();
-    
-    // [배열] 각 줄마다 몇 개의 좌석이 있는지??
-    rowArr = Array.from({length: maxRow}, () => maxColumn);
-    
+    updateScreen(userPlay);
+    updateRunTime(userPlay);
     decideWidth();
     
     for (let k = 1; k <= maxRow; k++) {
-
-      row = document.createElement('div');
-      eng = document.createElement('div');
-      row.appendChild(eng);
-      document.querySelector('#seat_area').appendChild(row);
-
-      for (let i = 1; i <= maxColumn; i++) {
-
-        seat = document.createElement('a');
-        seat.href = "#none";
-
-        $(seat).addClass('seat');
-        $(seat).attr("data-row", k);
-        $(seat).attr("data-column", i);
-        $(seat).attr("data-code", null);
-
-        document.querySelector(`#seat_area > div:nth-child(${k})`).appendChild(seat);
-
-      }
-      
-      for (let k = 1; k <= maxRow; k++) {
-        $(`#seat_area > div:nth-child(${k}) > div:first-child`).text(alphabet[k - 1]);
-      }
+      $(`#seat_area > div:nth-child(${k}) > div:first-child`).text(alphabet[k - 1]);
     }
     
-    changeRoom();
+    /*
     
+    changeRoom();
+    updateSpecialSeat();
+    */
 
 }
 
@@ -86,7 +65,7 @@ function screenSection(userPlay) {
 
 // 상영관 정보 업데이트
 
-function updateScreen() {
+function updateScreen(userPlay) {
     maxRow = userPlay.screen.screenRow;
     maxColumn = userPlay.screen.screenCol;
     aisle = JSON.parse(userPlay.screen.screenAisle);
@@ -94,12 +73,14 @@ function updateScreen() {
     selectedSeatArray = [];
     sweetSeatArray = JSON.parse(userPlay.screen.screenSweet);
     impairedSeatArray = JSON.parse(userPlay.screen.screenImpaired); 
+    
+    rowArr = Array.from({length: maxRow}, () => maxColumn);
 }
 
 
 // 영화 시간 업데이트
 
-function updateRunTime() {
+function updateRunTime(userPlay) {
     let up_start = new Date(userPlay.play.playStart);
     let up_end = new Date(userPlay.play.playEnd);
     $('#movie_detail').find('#up_year').html(up_start.getFullYear() + "년");
@@ -120,6 +101,7 @@ function updateRunTime() {
     $('#movie_detail').find('#end_minute').html(String(up_end.getMinutes()).padStart(2, "0") + "분");
 }
 
+
 // 스크린과 좌석 영역의 전체 길이 설정
 
 function decideWidth() {
@@ -135,6 +117,10 @@ function decideWidth() {
 }
 
 
+function createBasicRoom() {
+    
+}
+
 function changeRoom() {
 
     for (let r = 1; r <= maxRow; r++) {
@@ -144,101 +130,67 @@ function changeRoom() {
     for (let key in space) {
       space[key].forEach(v => plusSpace(key, v));
     }
-  }
-
-
-
-  function plusAisle(r, c) {
-    $(`#seat_area > div:nth-child(${r}) > a:nth-of-type(${c})`).addClass('aisle');
-  }
-
-
-
-  function plusSpace(r, c) {
-    $(`#seat_area > div:nth-child(${r}) > a:not('.aisle'):nth-of-type(${c})`).addClass('space');
-  }
-
-
-// 모든 좌석에 하이퍼링크 부여
-
-let s1 = `<a href="#none"><span>`;
-let s2 = `</span></a>`;
-
-for(let k=1; k<=maxRow; k++){
-  for(let i=1; i<=maxColumn; i++){
-    let seat = document.createElement('a');
-    seat.href = "#none";
-    document.querySelector(`#seat_area > div:nth-child(${k})`).appendChild(seat);
-  }
-}
-
-
-// 통로와 공간은 보이지 않으며, 선택되지 않는다.
-// 번호를 셀 때 통로는 제외되나 공간은 포함된다.
-
-// 1-F1) 통로 만들기 
-
-function createAisle(i, k) {
-  $(`#seat_area > div:nth-child(${i}) > a:nth-of-type(${k})`).addClass('aisle');
-  rowArr[i-1] -= 1;
-}
-
-for(let r=1; r<=maxRow; r++) {
-  aisle.forEach(c => createAisle(r, c));
-}
-
-
-// 1-F2) 공간 만들기
-
-function createSpace(i, k) {
-  $(`#seat_area > div:nth-child(${i}) > a:nth-of-type(${k})`).addClass('space');
-}
-
-for(let i=0; i<space.length; i++) {
-  space[i][0].forEach(r => {
-    space[i][1].forEach(c => createSpace(r, c));
-  });
-}
-
-
-
-// 좌석 번호
-
-for(let k=1; k<=maxRow; k++) {
-  $(`#seat_area > div:nth-child(${k}) > div:first-child`).text(alphabet[k-1]);
-}
-
-for(let k=1; k<=maxRow; k++) {
-  let i=1;
-  let j=1;
-  let seat; 
-  let num;
-  while(i <= rowArr[k-1]){
-    seat = $(`#seat_area > div:nth-child(${k}) > a:nth-of-type(${j})`);
-    if(!seat.hasClass('aisle')){
-      num = document.createElement("span");
-      num.innerText = i++;
-      $(seat).append(num);
-      $(seat).attr('data-seat', alphabet[k-1]+(i-1));
+    
+    
+    for(let k=1; k<=maxRow; k++) {
+      let i=1;
+      let j=1;
+      let seat; 
+      let num;
+      
+      while(i <= rowArr[k-1]){
+        seat = $(`#seat_area > div:nth-child(${k}) > a:nth-of-type(${j})`);
+        if(!seat.hasClass('aisle')){
+          num = document.createElement("span");
+          num.innerText = i++;
+          if(!seat.hasClass('space')) {
+            $(seat).on("click", function() {
+              clickSeat()
+            });
+            $(seat).append(num);
+            totalSeatArray.push(alphabet[k-1]+(i-1));
+            $(seat).attr('data-seat', alphabet[k-1]+(i-1));
+          }
+        }
+        j++;
+      }
     }
-    j++;
-  }
+
+}
+
+
+
+function plusAisle(r, c) {
+    $(`#seat_area > div:nth-child(${r}) > a:nth-of-type(${c})`).removeClass('seat');
+    $(`#seat_area > div:nth-child(${r}) > a:nth-of-type(${c})`).addClass('aisle');
+}
+
+function plusSpace(r, c) {
+    $(`#seat_area > div:nth-child(${r}) > a:not('.aisle'):nth-of-type(${c})`).removeClass('seat');
+    $(`#seat_area > div:nth-child(${r}) > a:not('.aisle'):nth-of-type(${c})`).addClass('space');
+}
+
+
+
+function updateSpecialSeat() {
+
+  selectedSeatArray.forEach(item => {
+    $(`#seat_area > div > a[data-seat=${item}]`).addClass('selected');
+  });
+
+  impairedSeatArray.forEach(item => {
+    $(`#seat_area > div > a[data-seat=${item}]`).addClass('impared');
+  });
+
+  sweetSeatArray.forEach(item => {
+    $(`#seat_area > div > a[data-seat=${item}]`).addClass('sweet');
+  });
+
 }
 
 
 
 
-selectedSeatArray.forEach(item => {
-  $(`#seat_area > div > a[data-seat=${item}]`).addClass('selected');
-});
-
-impairedSeatArray.forEach(item => {
-  $(`#seat_area > div > a[data-seat=${item}]`).addClass('impared');
-});
-
-sweetSeatArray.forEach(item => {
-  $(`#seat_area > div > a[data-seat=${item}]`).addClass('sweet');
-});
 
 
 
@@ -248,14 +200,17 @@ sweetSeatArray.forEach(item => {
 // 2-E1) 플러스 버튼을 클릭하면??
 
 $('.plus_btn').click(function(){
-  let count = $(this).prev();
 
+  let ageIndex = $(this).closest("li").index();
+  let count = ageArray[ageIndex];
+  
   if(totalCount < 8) {
     // 총합이 8 미만이라면
     // 해당 버튼 왼쪽의 숫자가 증가함
     // 총합이 증가함
     // 일련의 함수들이 작동함
-    count.text(Number(count.text()) + 1);
+    $(this).prev().text(count + 1);
+    ageArray[ageIndex] = count + 1;
     totalCount++;
     updateCount();
     updateSeatSection();
@@ -270,13 +225,15 @@ $('.plus_btn').click(function(){
 // 2-E2) 마이너스 버튼을 클릭하면??
 
 $('.minus_btn').click(function(){
-  let count = $(this).next();
+  let ageIndex = $(this).closest("li").index();
+  let count = ageArray[ageIndex];
 
-  if(Number(count.text()) > 0) {
+  if(count > 0) {
     // 해당 버튼 오른쪽의 숫자가 0보다 크다면
     // 그 숫자가 감소하며, 총합도 감소함
     // 일련의 함수들이 작동함
-    count.text(Number(count.text()) - 1);
+    $(this).next().text(count - 1);
+    ageArray[ageIndex] = count - 1;
     totalCount--;
     updateCount();
     updateSeatSection();
@@ -291,10 +248,10 @@ $('.minus_btn').click(function(){
 function updateCount() {
   // 연령별 선택인원이 다시 변경됨
   // 선택 중인 좌석들이 모두 없어짐
-  adultCount = $('#adult_count').text();
-  youthCount = $('#youth_count').text();
-  seniorCount = $('#senior_count').text();
-  specialCount = $('#special_count').text();
+  adultCount = ageArray[0];
+  youthCount = ageArray[1];
+  seniorCount = ageArray[2];
+  specialCount = ageArray[3];
 
   $('#seat_area > div > a').removeClass("selecting");
   choiceCount = 0;
@@ -302,14 +259,11 @@ function updateCount() {
 }
 
 
-
-
-
 // 좌석 선택
 
 let selectableSeat = $('#seat_area > div > a:not(.selected, .aisle, .space)');
 
-$(selectableSeat).on("click", function(){
+function clickSeat() {
   if((totalCount > choiceCount) && !($(this).hasClass("selecting"))) {
     $(this).addClass("selecting");
     choiceCount++;
@@ -324,7 +278,7 @@ $(selectableSeat).on("click", function(){
     updateSeatSection();
     updatePriceSection()
   }
-});
+}
 
 
 // [함수] 좌석번호 정렬

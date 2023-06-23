@@ -26,7 +26,7 @@
   		<!-- 스토어 수정 중복검사 -->
 	<select id="NameDupChecks" parameterType="string" resultType="_int">
   		SELECT COUNT(*) FROM STORE
-		WHERE STORE_NAME = #{storeName}
+		WHERE STORE_NAME = #{storeName} AND STORE_NAME != #{originName}
     
     
 	</select>

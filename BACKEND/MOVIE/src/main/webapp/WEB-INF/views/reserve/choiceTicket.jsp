@@ -70,7 +70,16 @@
                   <div>
                       <div id="screen_area">screen</div>
                       
-                      <div id="seat_area"></div>
+                      <div id="seat_area">
+                        <c:forEach var="i" begin="1" end="${userPlay.screen.screenRow}">
+                          <div>
+                            <div></div>
+                            <c:forEach var="i" begin="1" end="${userPlay.screen.screenCol}">
+                              <a href="#none" class="seat"></a>
+                            </c:forEach>
+                          </div>
+                        </c:forEach>
+                      </div>
                   </div>
                   <div>
                       <div>
