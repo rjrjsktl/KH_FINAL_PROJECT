@@ -66,5 +66,15 @@ public class ManagePlayDAO {
 		return sqlSession.selectList("playMapper.getDupTime", tc);
 	}
 
+	// 상영 등록 성공 시, 영화 테이블 누적 상영횟수 추가
+	public int addPlayCount(int movieNo) {
+		return sqlSession.update("playMapper.addPlayCount", movieNo);
+	}
+
+	// screenName + cinemaName 으로 screenNo 구해오기
+	public int screenNo(TimeCheck tc) {
+		return sqlSession.selectOne("playMapper.getScreenNo", tc);
+	}
+
 
 }

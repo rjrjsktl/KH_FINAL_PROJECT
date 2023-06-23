@@ -1,6 +1,9 @@
 package com.kh.kgv.management.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.kh.kgv.common.Util;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Play;
 import com.kh.kgv.items.model.vo.TimeCheck;
@@ -65,7 +69,6 @@ public class ManagePlayController {
 		try {
 			
 			playList = timeCheck(areaIndex, cinemaIndex, screenIndex, movieIndex, timeIndex, startDate, endDate);
-
 		} catch(ArrayIndexOutOfBoundsException e) {
 			System.out.println("배열 범위 이외의 숫자입니다.");
 		} catch(NumberFormatException e) {
@@ -79,7 +82,7 @@ public class ManagePlayController {
 	
 	@PostMapping("/enroll")
 	public String enrollPlay(String areaIndex, String cinemaIndex, String screenIndex, 
-                             String movieIndex, String timeIndex, String startDate, String endDate) {
+                             String movieIndex, String timeIndex, String startDate, String endDate, HttpServletResponse response) {
 		
         List<Play> playList = null;
         String url = "redirect:/";
@@ -106,11 +109,17 @@ public class ManagePlayController {
 		    int result = service.enrollPlay(cinemaName, screenName, movieNo, startTime, endTime, startDate, endDate);
 		    
 		    if(result > 0) {
-		    	url = "redirect:/manager/main";
+ 		try {
+
+			Util.alert(response, "상영 시간 등록 성공!");
+			url = "redirect:/manager/play_list";
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		    }
 		    
 		}
-		
+	
 		return url;
 	}
 	
@@ -123,17 +132,32 @@ public class ManagePlayController {
 		
 		TimeCheck tc = new TimeCheck();
 		tc.setAreaIndex(areaIndex);
-		tc.setCinemaIndex(cinemaIndex);
-		tc.setScreenIndex(screenIndex);
-		tc.setMovieIndex(movieIndex);
 		tc.setTimeIndex(timeIndex);
 		tc.setStartDate(startDate);
 		tc.setEndDate(endDate);
-
 		
-		areaName = areaArray[Integer.parseInt(areaIndex)];
+
+		// 영화 이름 구하기
+	    movieList = service.getPlayingMovieList();
+	    movieNo = movieList.get(Integer.parseInt(movieIndex)).getMovieNo();
+		tc.setMovieIndex(movieNo);
+		
+		// 스크린 이름 구하기
+		 screenName = Integer.parseInt(screenIndex) + 1;
+		tc.setScreenIndex(screenName);
+		
+		// 상영관 이름 구하기
 	    cinemaList = service.getAreaCinemaList(areaName);
 	    cinemaName = cinemaList.get(Integer.parseInt(cinemaIndex)).getCinemaName();
+		tc.setCinemaIndex(cinemaName);
+		
+		// 위에서 구한 screenName + cinemaName 으로 screenNo 구해오기
+		int getScreenNo = service.screenNo(tc);
+		
+		System.out.println("=============================================== 구해온 getScreenNo 의 값은 : " + getScreenNo);
+		tc.setScreenNo(getScreenNo);
+		
+		areaName = areaArray[Integer.parseInt(areaIndex)];
 	    screenName = Integer.parseInt(screenIndex) + 1;
 	    
 	    // 시작시각과 종료시각은 00시 정각을 기준으로 몇 분 이상 지났는지 계산합니다.
@@ -156,6 +180,7 @@ public class ManagePlayController {
 	    }
 	    if(playList.size() != 0) {
 	    	playList = service.getDupTime(tc);
+	    	System.out.println(tc + "tc 확인해보기 ==============================");
 	    	System.out.println("중복될 때 가지고온 playList : " + playList);
 	    }
 		
