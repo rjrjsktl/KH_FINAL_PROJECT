@@ -55,55 +55,85 @@
                                 </div>
 
                                 <div class="search-area">
-                                    <p>내 1:1문의 게시글 총<span style="color:red">1</span><span>/</span><span>3</span>건</p>
+                                    <p>내 1:1문의 게시글 총<span value="${userMtmListCount}">0</span>건</p>
                                 </div>
 
                                 <div class="table-wrap">
                                     <table>
-
+    
                                         <thead>
-                                            <th>번호</th>
+                                            <th>문의 종류</th>
                                             <th>내용</th>
                                             <th>등록일</th>
                                             <th>조회수</th>
                                         </thead>
                                         <tbody>
-                                            <tr class="row">
-                                                <td>1</td>
-                                                <th><a href="">내용123</a><span>...[0]</span></th>
-                                                <td>2023.01.01</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr class="row">
-                                                <td>2</td>
-                                                <th><a href="">내용123</a><span>...[1]</span></th>
-                                                <td>2023.01.01</td>
-                                                <td>23</td>
-                                            </tr>
-                                            <tr class="row">
-                                                <td>3</td>
-                                                <th><a href="">내용123</a><span>...[1]</span></th>
-                                                <td>2023.01.01</td>
-                                                <td>456</td>
-                                            </tr>
+    
+                                            <c:choose>
+                                                <c:when test="${empty mtmList.mtmLists}">
+                                                    <tr class="row">
+                                                        <td colspan="3">게시글이 존재하지 않습니다.</td>
+                                                    </tr>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <c:forEach var="userMtmList" items="${mtmList.mtmLists}"
+                                                        varStatus="loop">
+                                                        <c:if test="${loop.index < 10}">
+                                                            <tr class="row">
+                                                                <td class="countRow">${userMtmList.mtmType}</td>
+                                                                <td><a href="${contextPath}/helpDesk/checkPw"
+                                                                    id="mtmList_pass"> ${userMtmList.mtmTitle} </a></td>
+                                                                <td>${userMtmList.mtmRegdate}</td>
+                                                                <td>${userMtmList.mtmCount}</td>
+                                                            </tr>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </c:otherwise>
+                                            </c:choose>
+    
                                         </tbody>
+    
                                     </table>
+    
                                     <div>
-                                        <button>게시물 등록</button>
+                                        <button>
+                                            <a href="${contextPath}/helpDesk/mTm_form/${mtmNo}">게시물 등록</a>
+                                        </button>
                                     </div>
                                     <!-- 10개씩 -->
-                                    <ul class="pagination">
-                                        <li><a href="#">&lt;&lt;</a></li>
-                                        <li><a href="#">&lt;</a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#">&gt;</a></li>
-                                        <li><a href="#">&gt;&gt;</a></li>
-                                    </ul>
-
+                                    <div class="page_Nation">
+                                        <c:set var="url" value="?cp=" />
+                                        <c:set var="pagination" value="${mtmList['pagination']}" />
+                                        <c:set var="currentPage" value="${pagination.currentPage}"
+                                            scope="request" />
+                                        <div>
+                                            <a href="${url}1">&lt;&lt;</a>
+                                        </div>
+                                        <div>
+                                            <a href="${url}${pagination.prevPage}">&lt;</a>
+                                        </div>
+                                        <c:forEach var="i" begin="${pagination.startPage}"
+                                            end="${pagination.endPage}" step="1">
+                                            <c:choose>
+                                                <c:when test="${i == currentPage}">
+                                                    <div>
+                                                        <a class="selected_Cp">${i}</a>
+                                                    </div>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <div>
+                                                        <a href="${url}${i}">${i}</a>
+                                                    </div>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:forEach>
+                                        <div>
+                                            <a href="${url}${pagination.nextPage}">&gt;</a>
+                                        </div>
+                                        <div>
+                                            <a href="${url}${pagination.maxPage}">&gt;&gt;</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +141,6 @@
                 </div>
             </section>
         </main>
-
     </div>
     
     <!-- event-wrap -->
@@ -128,9 +157,14 @@
     </div>
 
     <script src="${contextPath}/resources/js/common/header.js"></script>
+    <script src="${contextPath}/resources/js/myPage/myPage_swiper.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_myMtm.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_randomEvent.js"></script>
-    <script src="${contextPath}/resources/js/myPage/myPage_swiper.js"></script>
+    
+    <script>
+        const testmtm = "${mtmUserList}";
+        console.log(testmtm + "+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    </script>
 
 
 </body>
