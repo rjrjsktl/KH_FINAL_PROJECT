@@ -136,12 +136,6 @@
 
     </div>
 
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <div class="close-button">&times;</div>
-            <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
-        </div>
-    </div>
  	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 

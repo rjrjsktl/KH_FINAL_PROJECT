@@ -74,7 +74,6 @@
 															<td>
 																<a
 																	href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}">${store['storeName']}</a>
-
 															</td>
 															<td>${store['storeDesc']}</td>
 															<td>${store['storeStock']}</td>

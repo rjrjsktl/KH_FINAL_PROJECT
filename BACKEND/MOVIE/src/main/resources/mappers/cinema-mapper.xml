@@ -133,4 +133,11 @@
 		WHERE PRICE_NO = #{priceNo}
 	</update>
 	
+	<select id="getPriceNo" parameterType="Map" resultType="_int">
+	    SELECT PRICE_NO FROM PRICE
+	    WHERE SCREEN_STYLE = #{screenStyle} AND PRICE_DAY = #{priceDay} AND PRICE_TIME = #{priceTime}
+	</select> 
+	
+	
+	
 </mapper>

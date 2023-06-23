@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${eventDetail['eventTitle']}</title>
+<title>${benefitsDetail['benefitsTitle']}</title>
 <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
 <link rel="stylesheet" href="${contextPath}/resources/css/movieList/event_introduce.css">
 <script src="https://kit.fontawesome.com/dc6e43e0ad.js"	crossorigin="anonymous"></script>
@@ -32,24 +32,24 @@
 			<div id="info_Section">
 				<div id="items">
 					<div id="titleArea">
-						<span>${eventDetail['eventTitle']}</span>
+						<span>${benefitsDetail['benefitsTitle']}</span>
 					</div>
 					<table id="dateArea">
 						<tr id="regDate">
 							<th>등록일&nbsp;&nbsp;&nbsp;|</th>
-							<td>${eventDetail['eventReg']}</td>
+							<td>${benefitsDetail['benefitsReg']}</td>
 						</tr>
 						<tr id="event_time">
 							<th>이벤트 기간&nbsp;&nbsp;&nbsp;|</th>
-							<td>${eventDetail['eventStart']} &nbsp;~&nbsp;
-								${eventDetail['eventEnd']}</td>
+							<td>${benefitsDetail['benefitsStart']} &nbsp;~&nbsp;
+								${benefitsDetail['benefitsEnd']}</td>
 						</tr>
 					</table>
 				</div>
 			</div>
 
 			<div id="content_Section">
-				<c:out value="${eventDetail['eventContent']}" escapeXml="false" />
+				<c:out value="${benefitsDetail['benefitsContent']}" escapeXml="false" />
 			</div>
 
 			<input id="returnBtn" type="button" onclick="goBack()" value="목록으로">
@@ -65,7 +65,14 @@
 
 
 	<script src="${contextPath}/resources/js/main/header.js"></script>
-	<script src="${contextPath}/resources/js/introduce/event_introduce.js"></script>
+	<%-- <script src="${contextPath}/resources/js/introduce/event_introduce.js"></script> --%>
+	<script>
+		function goBack() {
+			history.back();
+		}
+	</script>
+	
+
 	</div>
 </body>
 

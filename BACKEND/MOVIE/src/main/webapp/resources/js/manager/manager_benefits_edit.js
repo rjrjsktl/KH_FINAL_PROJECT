@@ -43,7 +43,7 @@ $(document).ready(function () {
         var data = new FormData();
         data.append("file", file);
         $.ajax({
-            url: "/movie/manager/benefits_list/edit/" + benefitsNo.val() + "/edit_Benefits/uploadImageFile",
+            url: "/movie/manager/benefits_list/edit/" + benefitsNo.val() + "/uploadImageFile",
             type: "POST",
             enctype: 'multipart/form-data',
             data: data,

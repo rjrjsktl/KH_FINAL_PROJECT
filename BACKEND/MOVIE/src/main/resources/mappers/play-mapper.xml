@@ -70,6 +70,8 @@
 		<result property="areaIndex"           column="TC_AREA" />
 		<result property="cinemaIndex"           column="TC_CINEMA" />
 		<result property="screenIndex"         column="TC_SCREEN" />
+		<result property="movieIndex"         column="TC_MOVIE" />
+		<result property="screenNo"         column="TC_SCREENNO" />
 		<result property="timeIndex"         column="TC_TIME" />
 		<result property="startDate"         column="TC_STARTDATE" />
 		<result property="endDate"         column="TC_ENDDATE" />
@@ -167,43 +169,59 @@
 	<!-- 시간이 중복될 때 값을 담아서 화면에 떤져주기 -->
 	<select id="getDupTime" parameterType="play" resultMap="play_rm">
 SELECT
-<!--영화 타이틀 -->
-    (m.MOVIE_TITLE) AS PLAY_UPLOADER
-<!--  영화 시작일 / 오늘 기준으로 가장 빠른 시작 시간(YYYY-MM-DD) -->
+    <!-- 상영 스크린 번호(SCREEN_NAME) -->
+    (s.SCREEN_NAME) AS PLAY_UPLOADER
+    <!-- 영화 시작일 / 오늘 기준으로 가장 빠른 시작 시간(YYYY-MM-DD) -->
     , (
         SELECT TO_CHAR(MIN(p.PLAY_START), 'YYYY-MM-DD')
         FROM PLAY p
-        WHERE m.MOVIE_NO = p.MOVIE_NO
-        AND m.MOVIE_NO = #{movieIndex}
+        WHERE s.SCREEN_NO = p.SCREEN_NO
+        AND s.SCREEN_NO = #{screenNo}
         AND p.PLAY_START > SYSDATE
     ) AS PLAY_START
-<!--영화 시작일 / 오늘 기준으로 가장 빠른 시작 시간(HH24:MI) -->
+    <!-- 영화 시작일 / 오늘 기준으로 가장 빠른 시작 시간(HH24:MI) -->
     , (
         SELECT TO_CHAR(MIN(p.PLAY_START), 'HH24:MI')
         FROM PLAY p
-        WHERE m.MOVIE_NO = p.MOVIE_NO
-        AND m.MOVIE_NO = #{movieIndex}
+        WHERE s.SCREEN_NO = p.SCREEN_NO
+        AND s.SCREEN_NO = #{screenNo}
         AND p.PLAY_START > SYSDATE
     ) AS PLAY_BOOKSEAT
-<!--영화 종료일 / 오늘 기준으로 가장 늦은 시작 시간(YYYY-MM-DD) -->
+    <!-- 영화 종료일 / 오늘 기준으로 가장 늦은 시작 시간(YYYY-MM-DD) -->
     , (
         SELECT TO_CHAR(MAX(p.PLAY_START), 'YYYY-MM-DD')
         FROM PLAY p
-        WHERE m.MOVIE_NO = p.MOVIE_NO
-        AND m.MOVIE_NO = #{movieIndex}
+        WHERE s.SCREEN_NO = p.SCREEN_NO
+        AND s.SCREEN_NO = #{screenNo}
         AND p.PLAY_START > SYSDATE
     ) AS PLAY_END
-<!-- 영화 종료일 / 오늘 기준으로 가장 늦은 시작 시간(HH24:MI) -->
+   <!-- 영화 종료일 / 오늘 기준으로 가장 늦은 시작 시간(HH24:MI) -->
     , (
         SELECT TO_CHAR(MAX(p.PLAY_START), 'HH24:MI')
         FROM PLAY p
-        WHERE m.MOVIE_NO = p.MOVIE_NO
-        AND m.MOVIE_NO = #{movieIndex}
+        WHERE s.SCREEN_NO = p.SCREEN_NO
+        AND s.SCREEN_NO = #{screenNo}
         AND p.PLAY_START > SYSDATE
     ) AS PLAY_REGDATE
-FROM MOVIE m
-WHERE m.MOVIE_NO = #{movieIndex}
+FROM SCREEN s
+WHERE s.SCREEN_NO = #{screenNo}
 		</select>
+		
+		
+		<update id="addPlayCount" parameterType = "movie">
+		UPDATE MOVIE 
+		SET MOVIE_PLAYED = MOVIE_PLAYED + 1
+		WHERE MOVIE_NO = #{movieNo}
+		</update>
+		
+<!--  screenName + cinemaName 으로 screenNo 구해오기 -->
+	<select id="getScreenNo" resultType="int">
+    SELECT s.SCREEN_NO
+    FROM SCREEN s
+    INNER JOIN CINEMA c ON s.CINEMA_NAME = c.CINEMA_NAME
+    WHERE c.CINEMA_NAME = #{cinemaIndex}
+    AND s.SCREEN_NAME = #{screenIndex}
+</select>
 	
 	
 </mapper>

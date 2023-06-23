@@ -241,7 +241,8 @@ header>nav {
 
 
 .menuBar>li>a:hover {
-    color: #FCFCFC;
+    color: rgb(255, 196, 0);
+    font-weight:bold;
 }
 
 
@@ -264,7 +265,7 @@ header>nav {
 .dummy {
     width: 100vw;
     height: 135px;
-    background-color: rgba(21, 21, 21, 0.7);
+    background-color: rgba(21, 21, 21, 0.9);
     position: absolute;
     top: 49px;
     right: 0;
