@@ -3,6 +3,7 @@ package com.kh.kgv.mypage.model.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.kgv.customer.model.vo.Review;
+import com.kh.kgv.helpDesk.model.vo.Mtm;
+import com.kh.kgv.management.model.vo.Pagination;
 import com.kh.kgv.mypage.controller.MyPageController;
 
 @Repository
@@ -70,6 +73,25 @@ public class MyPageDAO {
 	public List<Review> loadReviewCards(Map<String, Object> paramMap) {
 		logger.info("review:::dao 실행");
 		return sqlSession.selectList("myPageMapper.loadReviewCards", paramMap);
+	}
+
+	/** usermtmlist count 조회
+	 * @param userNo
+	 * @return
+	 */
+	public int getUserMtmCount(int userNo) {
+		return sqlSession.selectOne("myPageMapper.getUserMtmCount", userNo);
+	}
+
+	/** usermtmlist 목록 불러오기
+	 * @param pagination
+	 * @return
+	 */
+	public List<Mtm> getmtmlist(Pagination pagination, int userNo) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+		return sqlSession.selectList("myPageMapper.getmtmlist", userNo, rowBounds);
 	}
 
 //	/** 리뷰 5개씩 불러오기 DAO

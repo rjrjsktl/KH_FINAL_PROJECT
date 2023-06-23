@@ -551,10 +551,10 @@ public class ManagerServiceImpl implements ManagerService {
 
 	// 스토어 수정 중복검사
 		@Override
-		public int NameDupChecks(String storeName) {
+		public int NameDupChecks(String storeName ,String originName) {
 			
 			
-			return dao.NameDupChecks(storeName);
+			return dao.NameDupChecks(storeName ,originName );
 		}
 				
 			
@@ -597,7 +597,11 @@ public class ManagerServiceImpl implements ManagerService {
 	public int updateBenefitsST(Benefits bene) {
 		return dao.updateBenefitsST(bene);
 	}
-	
-	
+
+	// 스토어 수정 중복 검사
+	@Override
+	public Store getStoreInfo(int storeNo) {
+		return dao.getStoreInfo(storeNo);
+	}
 
 }
