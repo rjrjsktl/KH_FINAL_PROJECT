@@ -155,10 +155,19 @@ public class HelpDeskController {
 			){
 		Mtm mTmdetail = services.selectmTmDetail(mtmNo);
 		User loginUser = (User)session.getAttribute("loginUser");
+		
+		int userNo = 0;
+
+		if(loginUser != null) {
+			userNo = loginUser.getUserNo();
+		}
+
 		System.out.println("=========================================================================" + mTmdetail);
 		String unescapedContent = StringEscapeUtils.unescapeHtml4(mTmdetail.getMtmContent());
 		mTmdetail.setMtmContent(unescapedContent);
 		model.addAttribute("mTmdetail", mTmdetail);
+		mTmdetail.setUserNo(userNo);
+
 
 		return "helpDesk/mtm_detail";
 	}
@@ -583,9 +592,10 @@ public class HelpDeskController {
 
 
 
-	@GetMapping("/checkPw")
+	@GetMapping("/checkPw/{mtmNo}")
 	public String checkPw (
 			@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
+			@PathVariable("mtmNo") int mtmNo,
 			Model model,
 			RedirectAttributes ra,
 			@RequestHeader ("referer") String referer,
@@ -598,37 +608,144 @@ public class HelpDeskController {
 		int userNo = 0;
 		String userManagerSt = null;
 
-		
+
 		if(loginUser != null ) {
-			loginUser.getUserNo();
+			userNo = loginUser.getUserNo();
 			userManagerSt = loginUser.getUserManagerSt();
 		}
-		
-		
-		if ( userManagerSt.equals("Y")) {
-			path = "helpDesk/checkPw";
-		}
-		
 		else {
-			path = "redirect:/user/login";
+			userManagerSt = "N";
 		}
-		
 
+		int mtmPw = 0;
+
+		mtmPw = services.selectmtmPw(mtmNo);
 		
+		int mtmUserNo = services.selectUserNo(mtmNo);
+
+		System.out.println("현재 접속중인 유저넘버는?"+userNo);
+		System.out.println("현재 접속하려고하는 게시물의 비밀번호는?"+mtmPw);
+		System.out.println("현재 접속하려고하는 게시물의 유저 번호는?"+mtmUserNo);
+		System.out.println("현재 접속하려고하는 유저는 관리자인가요? "+userManagerSt);
+
+
+
+		// 비회원이 비밀번호가 입력되어있는 게시물에 접근할 경우
+		// >>>>>>> 로그인페이지로 이동시킨다.
+		if ( userNo == 0 && mtmPw != 0 ) {
+			path = "redirect:/user/login";
+		} 
+
+		// 로그인은 되어있는데 회원레벨이 관리자일 경우
+		// 또는 게시물의 비밀번호가 0일 경우
+		// 바로  보내버린다.
+		if (userManagerSt.equals("Y") || mtmPw == 0) {
+			path = "redirect:/helpDesk/mtm_detail/" + mtmNo;
+		} 
+		
+		// 로그인은 되어있는데 세션의 회원번호가 테이블의 userNo와 같을경우
+		// >> 바로 보내버린다.
+		
+		else if (userNo == mtmUserNo ) {
+			path = "redirect:/helpDesk/mtm_detail/" + mtmNo;
+		}
+
+		// 로그인은 되어있는데 회원레벨이 일반고객일 경우
+		// 비밀번호 입력창으로 보내버린다.
+		else if (userManagerSt.equals("N") && userNo != 0) {
+			path = "helpDesk/checkPw";
+		} 
+
+		System.out.println(path);
+
 		return path;
 	}
 
 
-
-
-
-
-
-
-
-
-
-
+	@ResponseBody
+	@PostMapping("/checkPw/{mtmNo}")
+	public int comparePw (
+			@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
+			@PathVariable("mtmNo") int mtmNo,
+			@RequestParam("password") int password,
+			Model model,
+			RedirectAttributes ra,
+			HttpSession session
+			) {
+		
+		
+		System.out.println("현재 접속하려고하는 게시물의 비밀번호는?");
+		System.out.println(password);
+		
+		int mtmPw = 0;
+		mtmPw = services.selectmtmPw(mtmNo);
+//		DB에있는 mtmPw의 값을 저장
+		
+	
+		int result = 0;
+	
+	    if(mtmPw == password) {
+	    	result = 1;
+	    
+	    } else {
+	    	result = 0;
+	    }
+	    
+	    System.out.println(result+1);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    System.out.println(result);
+	    
+	    
+	    return result;
+		
+	}
 
 
 }
