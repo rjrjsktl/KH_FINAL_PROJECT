@@ -433,6 +433,7 @@ public class ManagerDAO {
 	}
 	
 	
+	// 스토어 중복 검사
 	public int NameDupChecks(String storeName, String originName) {
 		
 		Map<String, Object> nameChecks = new HashMap<String, Object>();
@@ -443,7 +444,7 @@ public class ManagerDAO {
 	
 		return sqlSession.selectOne("storeMapper.NameDupChecks", nameChecks );
 	}
-
+	// 스토어 중복 검사
 	public Store getStoreInfo(int storeNo) {
 		return sqlSession.selectOne("storeMapper.getEditStoreList", storeNo);
 	}

@@ -1,8 +1,11 @@
 
-let totalCount = 0;
+
+
+const storeNo = $('#storeNo');
+let totalCount = 1;
 let totalPrice = Number($('#totalPrice').text());
 let price = Number($('.price').text());
-
+let storeName = $(".storeName").text().trim();
 
 $("#price").text(numberWithCommas(price));
 $("#totalPrice").text(numberWithCommas(totalPrice));
@@ -10,12 +13,9 @@ $("#totalPrice").text(numberWithCommas(totalPrice));
 
 $('.btn_plus').click(function () {
     let count = $(this).prev();
-    console.log(totalPrice);
 
 
-
-
-    if (totalCount < 4) {
+    if (totalCount < 5) {
 
         count.text(Number(count.text()) + 1);
 
@@ -26,6 +26,7 @@ $('.btn_plus').click(function () {
         $('#totalPrice').text(numberWithCommas(totalPrice));
 
         console.log(totalCount);
+        console.log(totalPrice);
 
 
 
@@ -92,5 +93,45 @@ $(".btn-toggle-2").on("click", function () {
         content.css("display", "none");
 
     }
+})
+
+$('.storeBuy_btn').on("click", function (e) {
+
+
+
+    $.ajax({
+        url: "/storeMain/store_detail/" + storeNo.val() + "/storeOrder",
+        data: {
+
+            "storeName": storeName
+            , "totalPrice": totalPrice
+            , "totalCount": totalCount
+
+
+
+        },
+        type: "POST",
+        success: function (result) {
+            if (result > 0) {
+                alert("스토어 물품 구매 성공");
+
+                let url = "/storeMain/store_detail/{storeNo}";
+                window.location.href = url;
+            } else {
+                alert("스토어 물품 구매 실패");
+
+            }
+        },
+
+        error: function () {
+            console.log("에러 발생으로 인해 등록 실패");
+        }
+    });
+
+    console.log("상품 : " + storeName);
+
+    console.log("상품 총 가격 : " + totalPrice);
+    console.log("상품 개수 : " + totalCount);
+
 })
 
