@@ -41,7 +41,7 @@ $(document).ready(function () {
     // ===============================================================================
 
     const submitBtn = $('.bottom_Submit');
-    const benefitsTitle = $('.enter_Title > input');
+    const eventTitle = $('.enter_Title > input');
     const enterUrl = $('.enter_url > input');
     const bannerNo = $('.bannerNo');
     const hiddenImg = $('.hiddenImg');
@@ -49,14 +49,12 @@ $(document).ready(function () {
     submitBtn.on('click', (e) => {
 
         // 이미지 변경이 없을 경우
-        if (movie_image1.val() == "") {
+        if ($('.movie_image1').val() == "") {
 
-            console.log("이미지 변경 X 시 기존 값 : " + movie_image1.val());
-            movie_image1 = hiddenImg.val();
+            console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image1').val());
+            imageUrl1 = hiddenImg1.val();
 
-            imageUrl1 = movie_image1
-
-            console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + movie_image1);
+            console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl1);
 
         }
         // 이미지를 변경 할 경우
@@ -68,15 +66,15 @@ $(document).ready(function () {
 
 
         e.preventDefault();
-        console.log("제목 : " + benefitsTitle.val());
+        console.log("제목 : " + eventTitle.val());
         console.log("URL : " + enterUrl.val());
         console.log("이미지 : " + imageUrl1);
         console.log("숨겨진 이미지 URL : " + hiddenImg.val());
         console.log("배너 번호 : " + bannerNo.val());
 
-        if (!benefitsTitle.val()) {
+        if (!eventTitle.val()) {
             alert('제목이 입력되지 않았습니다.');
-            benefitsTitle.focus();
+            eventTitle.focus();
             e.preventDefault();
             return false;
         };
