@@ -34,6 +34,8 @@
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_benefits_add.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
+						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_nav.css">
+
 					</head>
 
 					<body>
@@ -85,10 +87,10 @@
 													<form method="post">
 														<textarea id="summernote" name="editordata"></textarea>
 													</form>
-												</div>
-												<div class="table_bottom">
-													<button class="bottom_Submit">저장</button>
-													<button class="bottom_Cancel">취소</button>
+													<div class="table_bottom">
+														<button class="bottom_Submit">저장</button>
+														<button class="bottom_Cancel">취소</button>
+													</div>
 												</div>
 											</div>
 										</div>

@@ -1,6 +1,7 @@
 package com.kh.kgv.mypage.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -86,6 +88,7 @@ public class MyPageController {
 	// 사이드바 페이지 이동 영역
 	@GetMapping("/myHome")
 	public String myHome(Model model) {
+		
 		// 메인 이벤트 목록 가지고 오기 - 7개
 		Map<String, Object> getEvnetList = null;
 		getEvnetList = managerService.mainEventList();
@@ -96,6 +99,7 @@ public class MyPageController {
 	
 	@GetMapping("/myMtm")
 	public String myMtm(Model model) {
+		
 		// 메인 이벤트 목록 가지고 오기 - 7개
 		Map<String, Object> getEvnetList = null;
 		getEvnetList = managerService.mainEventList();
@@ -135,21 +139,24 @@ public class MyPageController {
 							, RedirectAttributes ra) {
 		
 		logger.info("review페이지 시작");
+		
 		logger.info("loginUserNo:::::" + loginUser.getUserNo() );
-		// 로그인된 회원의 번호를 paramMap 추가
 		
-		int userNo = loginUser.getUserNo();
-		
-		List<Review> myReviewList = service.myReviewList(userNo);
-
-		model.addAttribute("myReviewList", myReviewList);
+//		logger.info("loginUserNo:::::" + loginUser.getUserNo() );
+//		// 로그인된 회원의 번호를 paramMap 추가
+//		
+//		int userNo = loginUser.getUserNo();
+//		
+//		List<Review> myReviewList = service.myReviewList(userNo);
+//
+//		model.addAttribute("myReviewList", myReviewList);
+//
+//		logger.info("myReviewList::::" + myReviewList);
 
 		// 메인 이벤트 목록 가지고 오기 - 7개
 		Map<String, Object> getEvnetList = null;
 		getEvnetList = managerService.mainEventList();
 		model.addAttribute("getEvnetList", getEvnetList);
-				
-		logger.info("myReviewList::::" + myReviewList);
 		
 		return "myPage/myPage_myReview";
 	}
@@ -302,6 +309,30 @@ public class MyPageController {
 		ra.addFlashAttribute("message", message);
 		
 		return "redirect:" + path;
+	}
+	
+	// Java 서버 예시 (Spring Framework)
+	@PostMapping("/loadReviewCards")
+	@ResponseBody
+	public List<Review> loadReviewCards(@RequestParam int startRow
+									, @RequestParam int endRow
+									, @ModelAttribute("loginUser") User loginUser
+									, @RequestParam Map<String, Object> paramMap
+									, Model model
+														) {
+		logger.info("reviewCards시작됨?");
+		
+		
+		int userNo = loginUser.getUserNo();
+		paramMap.put("userNo", userNo);
+	    paramMap.put("startRow", startRow);
+	    paramMap.put("endRow", endRow);
+	    
+	    List<Review> myReviewList = service.loadReviewCards(paramMap); // 데이터베이스에서 추가 데이터 조회
+
+	    model.addAttribute("myReviewList", myReviewList);
+	    logger.info("myReviewList", myReviewList);
+	    return myReviewList;
 	}
 	
 //	@PostMapping("myReview/addReview")

@@ -34,6 +34,8 @@
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_benefits_add.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
+						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_nav.css">
+
 					</head>
 
 					<body>
@@ -58,10 +60,10 @@
 												<div class="table_main">
 													<div class="enter_Title">
 														<input type="text" placeholder="제목을 입력하세요."
-															value="${editEvent['EVENT_TITLE']}">
+															value="${editBenefits['BENEFITS_TITLE']}">
 													</div>
-													<input type="hidden" id="eventNo"
-														value="${editEvent['EVENT_NO']}" />
+													<input type="hidden" id="benefitsNo"
+														value="${editBenefits['BENEFITS_NO']}" />
 													<div class="calendarArea">
 														<div id="play_start">
 															<span>혜택 시작일</span>
@@ -69,7 +71,7 @@
 																<div>
 																	<input class="start_date" type="date"
 																		onfocus="this.showPicker()"
-																		value="${editEvent['EVENT_START']}" />
+																		value="${editBenefits['BENEFITS_START']}" />
 																</div>
 															</div>
 														</div>
@@ -79,20 +81,20 @@
 																<div>
 																	<input class="end_date" type="date"
 																		onfocus="this.showPicker()"
-																		value="${editEvent['EVENT_END']}" />
+																		value="${editBenefits['BENEFITS_END']}" />
 																</div>
 															</div>
 														</div>
 													</div>
 													<form method="post">
 														<textarea id="summernote"
-															name="editordata">${editEvent['EVENT_CONTENT']}</textarea>
+															name="editordata">${editBenefits['BENEFITS_CONTENT']}</textarea>
 													</form>
-												</div>
-												<div class="table_bottom">
-													<button type="button" class="bottom_Submit">저장</button>
-													<a href="${contextPath}/manager/benefits_list"
-														class="bottom_Cancel">취소</a>
+													<div class="table_bottom">
+														<button type="button" class="bottom_Submit">저장</button>
+														<a href="${contextPath}/manager/benefits_list"
+															class="bottom_Cancel">취소</a>
+													</div>
 												</div>
 											</div>
 										</div>

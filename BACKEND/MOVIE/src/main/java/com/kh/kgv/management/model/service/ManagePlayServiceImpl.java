@@ -4,8 +4,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Play;
+import com.kh.kgv.items.model.vo.TimeCheck;
 import com.kh.kgv.items.model.vo.TimeTable;
 import com.kh.kgv.management.model.dao.ManagePlayDAO;
 import com.kh.kgv.management.model.vo.Cinema;
@@ -141,6 +144,15 @@ public class ManagePlayServiceImpl implements ManagePlayService {
 		
 		return dateTimeList;
 	}
+	
+	// 일자 중복 시, 해당하는 영화의 상영목록 중에서 가장 빠른 시작일과 가장 늦은 종료일을 가지고 돌아가기.
+	@Override
+	public List<Play> getDupTime(TimeCheck tc) {
+		
+		return dao.getDupTime(tc);
+	}
+	
+	
 	
 
 }

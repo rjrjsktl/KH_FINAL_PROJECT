@@ -10,7 +10,7 @@
                 <meta charset="UTF-8">
                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>스토어 상세 -KGV</title>
+                <title>스토어 상세 </title>
                 <link rel="stylesheet" href="${contextPath}/resources/css/store/store_detail.css">
                 <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
                 <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>

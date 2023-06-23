@@ -214,7 +214,7 @@
                           <div><span id="movie_name"></span></div>
                       </div>
                       <div id="play_date"><span id="up_year"></span> <span id="up_month"></span> 
-                                          <span id="up_date"></span> <span id="up_day"></div>
+                                          <span id="up_date"></span> <span id="up_day"></span></div>
                       <div id="play_time"><span id="start_hour"></span> <span id="start_minute"></span>  
                                           <span id="end_hour"></span> <span id="end_minute"></span></div>
                   </div>
@@ -227,9 +227,8 @@
                
               </div>
                   
-              <div><a href="#none" id="next_stage">좌석 선택</a></div>
-              <form action="moveNext" method="post" id="moveNextForm">
-			  </form>
+              <div><a href="choiceTicket" id="next_stage">좌석 선택</a></div>
+			 
           </section>
         </main>
 
@@ -238,7 +237,9 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
     
     
+    
 
-</body>
+  </body>
+    
 
 </html>

@@ -383,13 +383,13 @@ public class ManagerServiceImpl implements ManagerService {
 	// 스토어
 	@Override
 	public Map<String, Object> getStoreMap(int cp) {
-		// 영화관 수 조회
+		//  스토어 수 조회
 		int storeCount = dao.getStoreCount();
 
-		// 조회한 영화관 수를 pagination 에 담기
+		// 조회한 스토어 수를 pagination 에 담기
 		Pagination pagination = new Pagination(cp, storeCount);
 
-		// 영화관 리스트 조회
+		// 스토어 리스트 조회
 		List<Store> storeList = dao.getStoreList(pagination);
 
 		Map<String, Object> storeMap = new HashMap<String, Object>();
@@ -549,6 +549,29 @@ public class ManagerServiceImpl implements ManagerService {
 		return mtmlists;
 	}
 
+	// 스토어 수정 중복검사
+		@Override
+		public int NameDupChecks(String storeName ,String originName) {
+			
+			
+			return dao.NameDupChecks(storeName ,originName );
+		}
+				
+			
+	// 관리자_혜택 수정 페이지
+	@Override
+	public Map<String, Object> getEditBenefitsList(Benefits bene) {
+		return dao.getEditBenefitsList(bene);
+	}
+
+	// 관리자_혜택 수정 등록
+	@Override
+	public int editBenefits(Benefits updatebene) {
+		int result = dao.editBenefits(updatebene);
+		System.out.println("serviceImpl result:::::" + result);
+		return result;
+	}
+
 	// 관리자_분실물 목록 
 	@Override
 	public Map<String, Object> selectLostList(int cp) {
@@ -568,7 +591,16 @@ public class ManagerServiceImpl implements ManagerService {
 
 		return lostslists;
 	}
-
 	
+	// 관리자_혜택 상태 업데이트
+	@Override
+	public int updateBenefitsST(Benefits bene) {
+		return dao.updateBenefitsST(bene);
+	}
+
+	@Override
+	public Store getStoreInfo(int storeNo) {
+		return dao.getStoreInfo(storeNo);
+	}
 
 }

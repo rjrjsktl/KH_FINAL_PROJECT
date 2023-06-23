@@ -38,6 +38,7 @@ import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.management.model.service.ManageStoreService;
 import com.kh.kgv.management.model.service.ManagerService;
+import com.kh.kgv.management.model.vo.Benefits;
 import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
@@ -65,50 +66,43 @@ public class ManagerController {
 
 	// 관리자_메인페이지 이동
 	@GetMapping("/main")
-	public String moveMain(
-			Model model
-			, HttpSession session
-			) {
-		
-		User loginUser = (User)session.getAttribute("loginUser");
-		
-		String url = "";
-		String st = loginUser.getUserManagerSt(); // 관리자 상태
-		
-		if(loginUser != null && st !=("N")) {
+	public String moveMain(Model model, HttpSession session) {
+	    String url = "";
+	    User loginUser = (User) session.getAttribute("loginUser");
 
-		// 관리자 메인 신규 회원 목록 조회
-		List<User> getUser = null;
-		getUser = service.getAllUser();
+	    if (loginUser == null) {
+	        System.out.println("로그인되지 않음");
+	        url = "redirect:/";
+	    } else {
+	        String st = loginUser.getUserManagerSt(); // 관리자 상태
+	        
+	        if (!st.equals("N")) {
+	            // 관리자 메인 신규 회원 목록 조회
+	            List<User> getUser = service.getAllUser();
 
-		// 관리자 메인 공지사항 목록 조회
-		List<Notice> getNotice = null;
-		getNotice = service.getAllNotice();
-		
-		// 관리자 메인 1 : 1 문의 조회
-		List<Mtm> getMTMList = null;
-		getMTMList = service.getMainMTMList();
-		
-		// 관리자 메인 상영중인 영화
-		Map<String, Object> getMovieList = null;
-		getMovieList = movieService.mainMovieList();
-		
+	            // 관리자 메인 공지사항 목록 조회
+	            List<Notice> getNotice = service.getAllNotice();
 
-		
-		model.addAttribute("getUser", getUser);
-		model.addAttribute("getNotice", getNotice);
-		model.addAttribute("getMTMList", getMTMList);
-		model.addAttribute("getMovieList", getMovieList);
+	            // 관리자 메인 1 : 1 문의 조회
+	            List<Mtm> getMTMList = service.getMainMTMList();
 
-		System.out.println("관리자_메인페이지 이동");
-		 url =  "manager/managerPage";
-		
-		} else {
-			System.out.println("관리자 권한 없음");
-			url = "redirect:/movie";
-		}
-		
-		return url;
+	            // 관리자 메인 상영중인 영화
+	            Map<String, Object> getMovieList = movieService.mainMovieList();
+
+	            model.addAttribute("getUser", getUser);
+	            model.addAttribute("getNotice", getNotice);
+	            model.addAttribute("getMTMList", getMTMList);
+	            model.addAttribute("getMovieList", getMovieList);
+
+	            System.out.println("관리자_메인페이지 이동");
+	            url = "manager/managerPage";
+	        } else {
+	            System.out.println("관리자 권한 없음");
+	            url = "redirect:/";
+	        }
+	    }
+
+	    return url;
 	}
 
 	// ===================================================
@@ -968,16 +962,17 @@ public class ManagerController {
 	}
 
 	// 스토어 수정 이름 중복 검사
-	@ResponseBody
-	@GetMapping("/store_list/edit/{storeNo}/store_edit/NameDupChecks")
-	public int NameDupChecks(String storeName) {
-		System.out.println(storeName);
-		int result = services.NameDupCheck(storeName);
+		@ResponseBody
+		@GetMapping("/store_list/edit/{storeNo}/store_edit/NameDupChecks")
+		public int NameDupChecks(String storeName, @PathVariable("storeNo") int storeNo, Store store) {
+			System.out.println(storeName);
+			String originName = service.getStoreInfo(storeNo).getStoreName();
+			int result = service.NameDupChecks(storeName,originName);
 
-		System.out.println(result);
-		return result;
+			System.out.println(result);
+			return result;
 
-	}
+		}
 
 	// 스토어 수정 이미지 업로드
 	@PostMapping("/store_list/edit/{storeNo}/store_edit/uploadImageFile")
@@ -1149,7 +1144,7 @@ public class ManagerController {
 		return "manager/manager_banner_list";
 	}
 	// ===================================================
-	// ===================================================
+		// ===================================================
 
 	// 관리자_배너 등록 이동
 	@GetMapping("/banner_add")
@@ -1354,22 +1349,79 @@ public class ManagerController {
 	// ===================================================
 	// ===================================================
 
-	// 관리자_혜택 등록 이동
-	@GetMapping("/event_list/edit/{eventNotest}")
+	// 관리자_혜택 수정페이지 이동
+	@GetMapping("/benefits_list/edit/{benefitsNo}")
 	public String moveBenefitsEdit(Model model,
-			CinemaPrice price,
-			@PathVariable("priceNo") int priceNo) {
+								   Benefits bene,
+								   @PathVariable("benefitsNo") int benfitsNo) {
 
-		Map<String, Object> editPrice = null;
+		Map<String, Object> editBenefits = null;
 
-		price.setPriceNo(priceNo);
+		bene.setBenefitsNo(benfitsNo);
 
-		editPrice = service.getEditPriceList(price);
-		System.out.println("DAO에서 가지고 온 editEvent : " + editPrice);
-		model.addAttribute("editPrice", editPrice);
+		editBenefits = service.getEditBenefitsList(bene);
+		
+		System.out.println("DAO에서 가지고 온 editEvent : " + editBenefits);
+		model.addAttribute("editBenefits", editBenefits);
 
-		System.out.println("관리자_극장 가격 수정 이동");
-		return "manager/manager_benfits_list_edit";
+		System.out.println("관리자_혜택 수정페이지 이동");
+		return "manager/manager_benefits_edit";
+		
 	}
+	
+	// ===================================================
+	// ===================================================
+
+	// 관리자_혜택 수정 등록
+	@PostMapping("/benefits_list/edit/{benefitsNo}/edit_Benefits")
+	@ResponseBody
+	public int editBenefits(@RequestParam("no") int no,
+							@RequestParam("title") String title,
+							@RequestParam("start") String start,
+							@RequestParam("end") String end,
+							@RequestParam("content") String content) {
+		Benefits updatebene = new Benefits();
+		updatebene.setBenefitsNo(no);
+		updatebene.setBenefitsTitle(title);
+		updatebene.setBenefitsStart(start);
+		updatebene.setBenefitsEnd(end);
+		updatebene.setBenefitsContent(content);
+		
+		System.out.println("혜택 수정에서 가지고 온 값들 =================================" + updatebene);
+		int result = service.editBenefits(updatebene);
+		return result;
+		}
+	
+	// ===================================================
+	// ===================================================
+
+	// 혜택 상태 업데이트
+	@ResponseBody
+	@PostMapping("/benefits_ST")
+	public int changeBenefitsSt(
+			@RequestParam("EST") String est
+			, @RequestParam("benefitsNo") int benefitsNo
+			, Benefits bene) {
+		System.out.println("AJAX로 가지고 온 ST의 값은 : " + est);
+		System.out.println("AJAX로 가지고 온 userId의 값은 : " + benefitsNo);
+
+		bene.setBenefitsStatus(est);
+		bene.setBenefitsNo(benefitsNo);
+
+		int result = service.updateBenefitsST(bene);
+
+		if (result > 0) {
+			System.out.println("이벤트 상태 변경 완료");
+			result = 1;
+
+		} else {
+			System.out.println("이벤트 상태 변경 실패");
+			result = 0;
+		}
+		return result;
+	}
+	
+	
+	
 
 }

@@ -77,12 +77,7 @@
 															<td>${movie.screen.screenStyle}</td>
 															<td>${movie.play.playStart}</td>
 															<td>${movie.play.playEnd}</td>
-															<td><button class="editBtn">
-																	<i class="fa-sharp fa-solid fa-pen-to-square"></i>
-																</button></td>
-															<td><button class="delBtn">
-																	<i class="fa-sharp fa-solid fa-xmark"></i>
-																</button></td>
+
 														</tr>
 													</c:forEach>
 

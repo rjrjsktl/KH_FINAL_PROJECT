@@ -1,8 +1,8 @@
 $(document).ready(function () {
-    const eventSt = $('.Is_On');
+    const benefitsSt = $('.Is_On');
     const checkBtn = $('td > .checkBtn');
 
-    eventSt.on('change', (e) => {
+    benefitsSt.on('change', (e) => {
         let clickTarget = $(e.currentTarget).val();
         console.log("가져온 아이디는 : " + $(e.currentTarget).data('id'));
         console.log("clickTarget : " + clickTarget);
@@ -14,7 +14,7 @@ $(document).ready(function () {
                 url: "benefits_ST",
                 data: {
                     "EST": $(e.currentTarget).val()
-                    , "eventNo": $(e.currentTarget).data('id')
+                    , "benefitsNo": $(e.currentTarget).data('id')
                 },
                 type: "POST",
                 success: function (result) {
@@ -42,7 +42,7 @@ $(document).ready(function () {
                 url: "benefits_ST",
                 data: {
                     "EST": $(e.currentTarget).val()
-                    , "eventNo": $(e.currentTarget).data('id')
+                    , "benefitsNo": $(e.currentTarget).data('id')
                 },
                 type: "POST",
                 success: function (result) {
