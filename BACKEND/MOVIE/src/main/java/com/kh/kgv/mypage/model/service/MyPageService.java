@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.kh.kgv.customer.model.vo.Review;
 import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.helpDesk.model.vo.Mtm;
 
 public interface MyPageService {
 
@@ -22,6 +23,9 @@ public interface MyPageService {
 
 	// review카드 불러오기
 	List<Review> loadReviewCards(Map<String, Object> paramMap);
+
+	// mtmList불러오기
+	Map<String, Object> mtmList(Map<String, Object> paramMap);
 	
 //	// review카드 5개씩 불러오기
 //	List<Review> getReviewListInRange(Map<String, Object> paramMap);

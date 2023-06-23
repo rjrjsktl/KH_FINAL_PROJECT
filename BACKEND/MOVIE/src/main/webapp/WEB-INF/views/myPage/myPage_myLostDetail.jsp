@@ -26,8 +26,8 @@
 	
     <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/mypage/myPage_aSide.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/mypage/myPage_myLostItemDetail.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_randomMovie.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/mypage/myPage_myLostDetail.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage_randomEvent.css">
 
 </head>
 
@@ -106,8 +106,8 @@
     </div>
 
     <script src="${contextPath}/resources/js/common/header.js"></script>
-    <script src="${contextPath}/resources/js/myPage/myPage_myLostItem.js"></script>
-    <script src="${contextPath}/resources/js/myPage/myPage_randomMovie.js"></script>
+    <script src="${contextPath}/resources/js/myPage/myPage_myLostList.js"></script>
+    <script src="${contextPath}/resources/js/myPage/myPage_randomEvent.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_swiper.js"></script>
 </body>
 

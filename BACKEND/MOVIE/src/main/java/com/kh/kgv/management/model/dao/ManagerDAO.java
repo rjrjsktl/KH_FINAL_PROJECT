@@ -433,11 +433,23 @@ public class ManagerDAO {
 	}
 	
 	
-	public int NameDupChecks(String storeName) {
+	// 스토어 중복 검사
+	public int NameDupChecks(String storeName, String originName) {
+		
+		Map<String, Object> nameChecks = new HashMap<String, Object>();
+		nameChecks.put("storeName", storeName);
+		nameChecks.put("originName", originName);
+
 		
 	
-		return sqlSession.selectOne("storeMapper.NameDupChecks", storeName );
+		return sqlSession.selectOne("storeMapper.NameDupChecks", nameChecks );
 	}
+	// 스토어 중복 검사
+	public Store getStoreInfo(int storeNo) {
+		return sqlSession.selectOne("storeMapper.getEditStoreList", storeNo);
+	}
+	
+	
 
 	
 

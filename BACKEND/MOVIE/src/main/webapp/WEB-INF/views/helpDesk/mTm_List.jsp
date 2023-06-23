@@ -78,8 +78,12 @@
 													<c:if test="${loop.index < 10}">
 														<tr class="row">
 															<td class="countRow">${userMtmList.mtmType}</td>
-															<td><a href="${contextPath}/helpDesk/checkPw"
+
+															<td><a
+																href="${contextPath}/helpDesk/checkPw/${userMtmList.mtmNo}"
 																id="mtmList_pass"> ${userMtmList.mtmTitle} </a></td>
+
+
 															<td>${userMtmList.mtmRegdate}</td>
 															<td>${userMtmList.mtmCount}</td>
 														</tr>

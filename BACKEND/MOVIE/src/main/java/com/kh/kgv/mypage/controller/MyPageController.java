@@ -29,6 +29,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.kgv.customer.model.vo.Review;
 import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.mypage.model.service.MyPageService;
 
@@ -98,7 +99,22 @@ public class MyPageController {
 	}
 	
 	@GetMapping("/myMtm")
-	public String myMtm(Model model) {
+	public String myMtm(@RequestParam(value = "cp", required = false, defaultValue="1" ) int cp
+						, @ModelAttribute("loginUser") User loginUser
+						, @RequestParam Map<String, Object> paramMap
+						, Model model
+						){
+		
+		logger.info("1대1 문의 리스트 뿌리자잇");
+		
+		paramMap.put("userNo", loginUser.getUserNo());
+		paramMap.put("cp", cp);
+//		int userNo = loginUser.getUserNo();
+
+		Map<String, Object> mtmUserList = service.mtmList(paramMap);
+		
+		model.addAttribute("mtmUserList", mtmUserList);
+		logger.info("Controll.mtmUserList:::::" + mtmUserList);
 		
 		// 메인 이벤트 목록 가지고 오기 - 7개
 		Map<String, Object> getEvnetList = null;
@@ -139,6 +155,9 @@ public class MyPageController {
 							, RedirectAttributes ra) {
 		
 		logger.info("review페이지 시작");
+		
+		logger.info("loginUserNo:::::" + loginUser.getUserNo() );
+		
 //		logger.info("loginUserNo:::::" + loginUser.getUserNo() );
 //		// 로그인된 회원의 번호를 paramMap 추가
 //		
@@ -311,17 +330,19 @@ public class MyPageController {
 	// Java 서버 예시 (Spring Framework)
 	@PostMapping("/loadReviewCards")
 	@ResponseBody
-	public List<Review> loadReviewCards(@RequestParam int loadedCards
-									, @RequestParam int cardsPerLoad
+	public List<Review> loadReviewCards(@RequestParam int startRow
+									, @RequestParam int endRow
 									, @ModelAttribute("loginUser") User loginUser
 									, @RequestParam Map<String, Object> paramMap
 									, Model model
 														) {
 		logger.info("reviewCards시작됨?");
+		
+		
 		int userNo = loginUser.getUserNo();
 		paramMap.put("userNo", userNo);
-	    paramMap.put("loadedCards", loadedCards);
-	    paramMap.put("cardsPerLoad", cardsPerLoad);
+	    paramMap.put("startRow", startRow);
+	    paramMap.put("endRow", endRow);
 	    
 	    List<Review> myReviewList = service.loadReviewCards(paramMap); // 데이터베이스에서 추가 데이터 조회
 
@@ -329,8 +350,6 @@ public class MyPageController {
 	    logger.info("myReviewList", myReviewList);
 	    return myReviewList;
 	}
-
-	
 	
 //	@PostMapping("myReview/addReview")
 //	@ResponseBody

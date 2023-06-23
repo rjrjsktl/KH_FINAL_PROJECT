@@ -68,12 +68,52 @@
 		<result property="revFixed" column="REV_FIXED" />
 	</resultMap>
 	
+	<resultMap type="mtm" id="mtm_rm">
+		<id property="mtmNo" column="MTM_NO" />
+		<result property="mtmTitle" column="MTM_TITLE" />
+		<result property="mtmContent" column="MTM_CONTENT" />
+		<result property="mtmSt" column="MTM_ST" />
+		<result property="mtmType" column="MTM_TYPE" />
+		<result property="userNo" column="USER_NO" />
+		<result property="mtmImage" column="MTM_IMAGE" />
+		<result property="mtmRegdate" column="MTM_REGDATE" />
+		<result property="mtmCount" column="MTM_COUNT" />
+		<result property="mtmWriter" column="MTM_WRITER" />
+		<result property="mtmRepWriter" column="MTM_REPWRITER" />
+		<result property="mtmRepSt" column="MTM_REPST" />
+		<result property="mtmRepContent" column="MTM_REPCONTENT" />
+		<result property="mtmRepDate" column="MTM_REPDATE" />
+	</resultMap>
+	
+	<resultMap type="losts" id="lost_rm">
+		<id property="lostNo" column="LOST_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="lostTitle" column="LOST_TITLE" />
+		<result property="lostItem" column="LOST_ITEM" />
+		<result property="lostLocation" column="LOST_LOCATION" />
+		<result property="lostDate" column="LOST_DATE" />
+		<result property="lostFile" column="LOST_FILE" />
+		<result property="lostContent" column="LOST_CONTENT" />
+		<result property="lostWriter" column="LOST_WRITER" />
+		<result property="lostView" column="LOST_VIEW" />
+		<result property="lostSt" column="LOST_ST" />
+		<result property="lostRepWriter" column="LOST_REPWRITER" />
+		<result property="lostRepSt" column="LOST_REPST" />
+		<result property="lostRepContent" column="LOST_REPCONTENT" />
+		<result property="lostRepDate" column="LOST_REPDATE" />
+	</resultMap>
+	
 	<resultMap type="jr" id="jr_rm">
 		<collection property="review" resultMap="review_rm" />
 		<collection property="movie" resultMap="movie_rm" />
 		<collection property="user" resultMap="user_rm" />
 	</resultMap>
 	
+	<resultMap type="jcs" id="jcs_rm">
+		<collection property="user" resultMap="user_rm" />
+		<collection property="losts" resultMap="lost_rm" />
+		<collection property="mtm" resultMap="mtm_rm" />
+	</resultMap>
 		
 	<!-- 현재 로그인한 회원의 암호화된 비밀번호 조회 -->
 	<!-- 현재 로그인한 회원의 암호화된 비밀번호 조회 -->
@@ -119,6 +159,63 @@
 			AND REV_ST = 'N'
 	</select>
 	
+	
+	<select id="loadReviewCards" resultMap="jr_rm">
+		SELECT 
+    		*
+		FROM (
+    		SELECT
+        		r.REV_CONTENT,
+        		m.MOVIE_NO,
+        		m.MOVIE_TITLE,
+        		m.MOVIE_IMG1,
+        		TO_CHAR(r.REV_DATE, 'YYYY-MM-DD') AS REV_DATE,
+        		TO_CHAR(r.REV_DATE, 'HH24:MI') AS REV_TIME,
+        		ROW_NUMBER() OVER (ORDER BY r.REV_NO DESC) AS row_num
+    		FROM REVIEW r
+    		INNER JOIN MOVIE m ON r.MOVIE_NO = m.MOVIE_NO
+    		WHERE r.USER_NO = ${userNo} AND r.REV_ST = 'N'
+		) sub
+		WHERE sub.row_num BETWEEN ${startRow} AND ${endRow}
+	</select>
+	
+	<!-- usermtmlist count 조회 sql -->
+	<select id="getUserMtmCount" resultType="_int">
+		SELECT
+			COUNT(MTM_NO)
+		FROM MTM_TBL
+		WHERE USER_NO = ${userNo}
+		AND MTM_ST = 'N'
+	</select>
+	
+	<!-- usermtmlist 1:1 문의 목록 조회 -->
+	<select id="getmtmlist" resultMap="jcs_rm">
+		SELECT 
+		m.MTM_NO
+		, m.MTM_TITLE
+		, m.MTM_CONTENT
+		, u.USER_EMAIL
+		, m.MTM_TYPE
+		, m.MTM_ST
+		, m.MTM_COUNT
+		, TO_CHAR(m.MTM_REGDATE, 'YYYY-MM-DD HH24:MI') AS MTM_REGDATE
+		, m.MTM_WRITER
+		, m.MTM_REPWRITER
+		, m.MTM_REPST
+		, m.MTM_REPCONTENT
+		, TO_CHAR(m.MTM_REPDATE, 'YYYY-MM-DD HH24:MI') AS MTM_REPDATE
+		FROM MTM_TBL m
+		INNER JOIN USERS u ON m.USER_NO = u.USER_NO
+		WHERE u.USER_NO = ${userNo}
+		AND m.MTM_ST = 'N'
+		ORDER BY m.MTM_REGDATE DESC
+	</select>
+	
+	
+	
+	
+	
+	<!-- 
 	<select id="loadReviewCards" resultMap="jr_rm">
 		SELECT 
 	 		r.REV_CONTENT
@@ -133,7 +230,8 @@
 			AND REV_ST = 'N'
 			FETCH FIRST ${cardsPerLoad} ROWS ONLY
 	</select>
-	
+	 -->
+	 
 	<!-- 
 	<select id="getReviewListInRange" resultMap="jr_rm">
 		SELECT 

@@ -104,7 +104,6 @@
                                                             </div>
                                                         </div>
 
-
                                                         <div id="store_sub">
                                                             <span>이미지</span>
                                                             <div>
@@ -120,23 +119,8 @@
                                                             </div>
                                                         </div>
 
-
-
-
-
-
-
-
-
-
-
-
                                                     </div>
-
-
                                                 </form>
-
-
 
                                                 <div class="table_bottom">
                                                     <button class="bottom_Submit">저장</button>
