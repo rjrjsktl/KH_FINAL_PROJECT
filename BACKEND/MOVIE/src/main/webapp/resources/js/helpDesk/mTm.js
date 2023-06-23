@@ -74,7 +74,7 @@ $(document).ready(function(){
                 data: {contentTextarea: content},
                 success: function(response) {
                 var url = `/movie/helpDesk/mtm_detail/${mtmNo}`;
-        location.href = url;
+        		location.href = url;
                 },
                 error: function(error) {
                     console.error(error);

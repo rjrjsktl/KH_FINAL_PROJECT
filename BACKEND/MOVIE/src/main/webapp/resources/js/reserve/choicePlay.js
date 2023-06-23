@@ -169,7 +169,7 @@ let strPlayDay;
 
 $('.swiper-slide.date').on("click", function(){
   dateIndex = $(this).index();
-  today = new Date();
+  playDay = new Date();
   playDay.setDate(today.getDate() + dateIndex);
   
   strPlayDay = (playDay.getMonth()+1) + "월 " + playDay.getDate() + "일 " + weeks[playDay.getDay()] + "요일";

@@ -23,4 +23,5 @@ public class Mtm {
 	private String mtmRepSt;
 	private String mtmRepContent;
 	private String mtmRepDate;
+	private int mtmPw;
 }

@@ -27,6 +27,7 @@
                     <main>
                         <div>
                             <span>스토어</span>
+                            <input type="hidden" id="storeNo" value="${storeDetail.storeNo}">
                         </div>
 
 
@@ -56,7 +57,7 @@
                           </thead> -->
                                     <tbody>
                                         <tr>
-                                            <th scope="row" colspan="2">
+                                            <th scope="row" colspan="2" class="storeName">
                                                 ${storeDetail.storeName}
                                             </th>
                                         </tr>
@@ -98,7 +99,7 @@
 
                                 <div>
 
-                                    <a><button>구매하기</button></a>
+                                    <button class="storeBuy_btn">구매하기</button>
                                 </div>
                             </div>
                         </div>

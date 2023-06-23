@@ -2,7 +2,7 @@
 main>section {
     width: 1040px;
     margin: 0 auto;
-    padding: 50px 30px 30px 30px;
+    padding: 50px 30px 70px 30px;
     display: flex;
     justify-content: space-between !important;
     flex-wrap: wrap;
@@ -10,9 +10,8 @@ main>section {
 
 h2 {
     font-size: 1.8rem;
-    padding: 0 0 30px 10px;
-    border-bottom: 3px solid rgb(255, 196, 0);
-    margin-bottom: 0;
+    margin-bottom: 5px;
+    padding-left: 10px;
 }
 
 .aslide-list>li:nth-child(5)>a {
@@ -42,7 +41,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 60px;
+    height: 80px;
     padding: 25px 0;
 }
 
@@ -94,29 +93,25 @@ table {
 }
 
 thead * {
-    padding:10px;   border-bottom: 2px solid rgb(73, 73, 73);
+    padding:10px;   
+    border-bottom: 2px solid rgb(73, 73, 73);
 }
 
 
 thead th:nth-child(1) {
-    width: 10%;
+    width: 25%;
     height:50px;
 }
 
 thead th:nth-child(2) {
-    text-align: left;
-    width: 60%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    width: 45%;
 }
 
 thead th:nth-child(3) {
     width: 15%;
 }
-
 thead th:nth-child(4) {
-    width: 10%;
+    width: 15%;
 }
 
 tbody{
@@ -143,30 +138,28 @@ tbody{
     color:rgb(251, 251, 251);
 }
 
-.pagination {
-
+.page_Nation {
     display: flex;
     margin: 0;
     padding: 0;
     justify-content: center;    padding-top:30px;
   }
 
-  .pagination li a {
-    color: white;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-  }
-  
-  .pagination li.active {
-    background-color: yellow;
-  }
-  
-  .pagination li a:hover:not(.active) {
-    background-color: yellow;
-    color:black;
+  .page_Nation div{
+    width:30px; height:30px;
+    border:1px solid rgba(73, 73, 73, 0.4);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
   }
 
+  .page_Nation div a {
+    width:100%;
+    height:100%;
+    line-height: 28px;
+  }
+  
   .block {
     display: block;
   }
