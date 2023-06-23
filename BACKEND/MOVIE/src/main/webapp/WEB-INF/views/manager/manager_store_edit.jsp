@@ -13,8 +13,6 @@
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
                         <title>스토어 물품 수정</title>
 
-
-
                         <!-- fontawesome -->
                         <link rel="stylesheet"
                             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
@@ -68,12 +66,6 @@
                                                             <div>
                                                                 <select id="storeCategory" name="storeCategory"
                                                                     class="storeCategory" aria-label="성별">
-                                                                    <!-- <option value="" selected="">
-                                                                        ${editStore.storeCategory}</option>
-                                                                    <option value="음료">음료</option>
-                                                                    <option value="팝콘">팝콘</option>
-                                                                    <option value="티켓">티켓</option>
-                                                                    <option value="스낵">스낵</option> -->
                                                                     <option ${editStore.storeCategory=='음료' ? 'selected'
                                                                         : '' }>음료</option>
                                                                     <option ${editStore.storeCategory=='팝콘' ? 'selected'
@@ -86,7 +78,6 @@
                                                             </div>
                                                         </div>
 
-
                                                         <div id="store_sub">
                                                             <span>상품 이름</span>
                                                             <div id="store_Name">
@@ -94,7 +85,6 @@
                                                                     id="storeName" value="${editStore.storeName}">
                                                                 <p id="storeNameMessage">메시지</p>
                                                             </div>
-
                                                         </div>
 
                                                         <div id="store_sub">
@@ -104,6 +94,7 @@
                                                                     id="storeDesc" value="${editStore.storeDesc}">
                                                             </div>
                                                         </div>
+
                                                         <div id="store_sub">
                                                             <span>상품 가격</span>
                                                             <div>
@@ -120,16 +111,17 @@
                                                             </div>
                                                         </div>
 
-
-
-
                                                         <div id="store_sub_image">
                                                             <div>
-                                                                <div><span>이미지</span></div>
+                                                                <div>
+                                                                    <span>이미지</span>
+                                                                </div>
+
                                                                 <div>
                                                                     <input type="file" class="storeImage"
                                                                         id="storeImage">
                                                                 </div>
+
                                                                 <div>
                                                                     <img id="storeImagePreview"
                                                                         src="${editStore.storeImage}">
@@ -137,38 +129,23 @@
                                                             </div>
 
                                                             <div>
-                                                                <div><span>빅이미지</span></div>
+                                                                <div>
+                                                                    <span>빅이미지</span>
+                                                                </div>
+
                                                                 <div>
                                                                     <input type="file" class="storeImageBig"
                                                                         id="storeImageBig">
                                                                 </div>
+
                                                                 <div>
                                                                     <img id="storeImageBigPreview"
                                                                         src="${editStore.storeImageBig}">
                                                                 </div>
                                                             </div>
-
-
                                                         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
                                                     </div>
-
-
                                                 </form>
-
-
 
                                                 <div class="table_bottom">
                                                     <button class="bottom_Submit">저장</button>

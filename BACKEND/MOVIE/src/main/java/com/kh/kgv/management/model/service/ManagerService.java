@@ -170,7 +170,8 @@ public interface ManagerService {
 
 	// 스토어 수정 중복검사
 	int NameDupChecks(String storeName, String originName);
-
+	
+	// 스토어 수정 중복검사
 	Store getStoreInfo(int storeNo);
 
 	
