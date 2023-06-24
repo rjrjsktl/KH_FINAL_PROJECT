@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import com.kh.kgv.customer.model.vo.Review;
 import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.helpDesk.model.vo.Mtm;
+import com.kh.kgv.management.model.vo.Pagination;
 import com.kh.kgv.mypage.controller.MyPageController;
 import com.kh.kgv.mypage.model.dao.MyPageDAO;
 
@@ -113,6 +115,39 @@ public class MyPageServiceImpl implements MyPageService {
 		logger.info("뜬다 updateInfo.service 페이지 들어왔다");
 		return dao.updateInfo(paramMap);
 	}
+
+//==================================================1대1
+	/** 1대1 문의 리스트 불러오기
+	 *
+	 */
+	@Override
+	public Map<String, Object> mtmList(Map<String, Object> paramMap) {
+
+		int userNo = (int) paramMap.get("userNo");
+		int cp = (int) paramMap.get("cp");
+		
+		logger.info("DAO.userNo::::" + userNo);
+		logger.info("DAO.cp::::" + cp);
+		
+		int userMtmCount = dao.getUserMtmCount(userNo);
+		
+		logger.info("ServiceImpl.userMtmCount::::" + userMtmCount);
+		
+		Pagination pagination = new Pagination(cp, userMtmCount);
+		
+		List<Mtm> mtmList = dao.getmtmlist(pagination, userNo);
+		
+		Map<String, Object> mtmUserList = new HashMap<String, Object>();
+
+		
+		mtmUserList.put("userMtmCount", userMtmCount);
+		mtmUserList.put("pagination", pagination);
+		mtmUserList.put("mtmList", mtmList);
+		
+		return mtmUserList;
+	}
+
+	
 	
 	
 }

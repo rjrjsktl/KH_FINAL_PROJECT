@@ -11,7 +11,6 @@ import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Play;
 import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.JoinPlay;
-import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.management.model.vo.Screen;
 import com.kh.kgv.reserve.model.dao.ReserveDAO;
 
@@ -67,6 +66,16 @@ public class ReserveServiceImpl implements ReserveService {
 	@Override
 	public JoinPlay getUserPlay(int playNo) {
 		return dao.getUserPlay(playNo);
+	}
+
+	@Override
+	public int getPriceNo(String screenStyle, String priceDay, String priceTime) {
+		Map<String, Object> condition = new HashMap<>();
+		condition.put("screenStyle", screenStyle);
+		condition.put("priceDay", priceDay);
+		condition.put("priceTime", priceTime);
+		int priceNo = dao.getPriceNo(condition);
+		return priceNo;
 	}
 
 

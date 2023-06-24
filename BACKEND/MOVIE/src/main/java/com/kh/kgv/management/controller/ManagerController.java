@@ -1394,7 +1394,50 @@ public class ManagerController {
 	
 	// ===================================================
 	// ===================================================
+	
+	
+	// 혜택 수정 이미지 업데이트
+	@PostMapping("/benefits_list/edit/{benefitsNo}/uploadImageFile")
+	@ResponseBody
+	public String benefitsEditImageFile(@RequestParam("file") MultipartFile[] multipartFiles,
+										HttpServletRequest request ) {
+		System.out.println("수정 이미지 업데이트 중...");
+		
+		JsonArray jsonArray = new JsonArray();
 
+		String webPath = "/resources/images/benefits_img/";
+		String fileRoot = request.getServletContext().getRealPath(webPath);
+
+		for (MultipartFile multipartFile : multipartFiles) {
+			JsonObject jsonObject = new JsonObject();
+
+			String originalFileName = multipartFile.getOriginalFilename();
+			String savedFileName = Util.fileRename(originalFileName);
+
+			File targetFile = new File(fileRoot + savedFileName);
+			try {
+				InputStream fileStream = multipartFile.getInputStream();
+				FileUtils.copyInputStreamToFile(fileStream, targetFile);
+				jsonObject.addProperty("", request.getContextPath() + webPath + savedFileName);
+
+			} catch (IOException e) {
+				FileUtils.deleteQuietly(targetFile);
+				jsonObject.addProperty("responseCode", "error");
+				e.printStackTrace();
+			}
+
+			jsonArray.add(jsonObject);
+		}
+
+		String jsonResult = jsonArray.toString();
+		System.out.println("이미지: " + jsonResult);
+		return jsonResult;
+	}
+	
+	// ===================================================
+	// ===================================================
+	
+	
 	// 혜택 상태 업데이트
 	@ResponseBody
 	@PostMapping("/benefits_ST")

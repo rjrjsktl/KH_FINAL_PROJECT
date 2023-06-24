@@ -545,7 +545,18 @@ $(document).ready(function () {
     // 상영시간 유효성 검사
     function timeCheck() {
         if (screen_Arr.length && movie_Arr.length && time_Arr.length && endDate.val()) {
-
+            console.log('상영 지역 : ' + area_Arr);
+            console.log('상영 지역 인덱스 : ' + areaIndex);
+            console.log('상영 영화관 : ' + cinema_Arr);
+            console.log('상영 영화관 인덱스 : ' + cinemaIndex);
+            console.log('상영 스크린 : ' + screen_Arr);
+            console.log('상영 스크린 인덱스 : ' + screenIndex);
+            console.log('상영 영화 : ' + movie_Arr);
+            console.log('상영 영화 인덱스 : ' + movieIndex);
+            console.log('상영 시간 : ' + time_Arr);
+            console.log('상영 시간 인덱스 : ' + timeIndex);
+            console.log('상영 시작일 : ' + startDate.val());
+            console.log('상영 종료일 : ' + endDate.val());
             $.ajax({
                 url: "play_add/playTimeCheck",
                 data: { areaIndex, cinemaIndex, screenIndex, movieIndex, timeIndex, "startDate": startDate.val(), "endDate": endDate.val() },
@@ -558,8 +569,11 @@ $(document).ready(function () {
                         let playData = result[0];
 
                         console.log(result);
-                        // 정상적인 방법은 아니지만 일단 값은 다 가지고 오니까 패스 ㅋㅋ
-                        alert(playData.playUploader + "는 " + playData.playStart + " ~ " + playData.playEnd + " " + playData.playBookSeat + "부터 " + playData.playRegDate + "까지 등록되어 있습니다.");
+                        alert(playData.playUploader + " 관의 선택하신 상영 시간은 다른 시간과 겹칩니다.\n"
+                            + "가장 빠른 상영일 : " + playData.playStart + " " + playData.playBookSeat + "\n"
+                            + "가장 늦은 상영일 : " + playData.playEnd + " " + playData.playRegDate + "\n"
+                            + "등록된 기간 : " + playData.playStart + " ~ " + playData.playEnd
+                        );
 
                         // if (!$(playData.startDate)) {
 
@@ -571,7 +585,8 @@ $(document).ready(function () {
                         // }
                     } else {
                         enrollCheck = true;
-                        alert("해당하는 상영 정보가 없습니다.");
+                        alert("해당하는 상영 정보가 없습니다. \n"
+                            + "등록 가능 합니다.");
                     }
                 },
 
@@ -592,10 +607,15 @@ $(document).ready(function () {
 
     submitBtn.on('click', () => {
         console.log('상영 지역 : ' + area_Arr);
+        console.log('상영 지역 인덱스 : ' + areaIndex);
         console.log('상영 영화관 : ' + cinema_Arr);
+        console.log('상영 영화관 인덱스 : ' + cinemaIndex);
         console.log('상영 스크린 : ' + screen_Arr);
+        console.log('상영 스크린 인덱스 : ' + screenIndex);
         console.log('상영 영화 : ' + movie_Arr);
+        console.log('상영 영화 인덱스 : ' + movieIndex);
         console.log('상영 시간 : ' + time_Arr);
+        console.log('상영 시간 인덱스 : ' + timeIndex);
         console.log('상영 시작일 : ' + startDate.val());
         console.log('상영 종료일 : ' + endDate.val());
 
