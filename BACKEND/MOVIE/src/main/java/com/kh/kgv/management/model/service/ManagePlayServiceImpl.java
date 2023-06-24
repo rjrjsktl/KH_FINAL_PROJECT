@@ -109,6 +109,17 @@ public class ManagePlayServiceImpl implements ManagePlayService {
 			
 			enrollCount += dao.enrollPlay(play);
 			
+			
+ 			// 상영 등록 성공 시, 영화 테이블 누적 상영횟수 추가
+ 			int PlayCountAdd = dao.addPlayCount(movieNo); 
+ 			
+ 			if(PlayCountAdd > 0) {
+ 				System.out.println("상영횟수 추가 완료!!!!");
+ 			} else {
+ 				System.out.println("상영횟수 추가 실패!!!!");
+ 			}
+			
+			
 		}
 		
 		
@@ -151,6 +162,13 @@ public class ManagePlayServiceImpl implements ManagePlayService {
 		
 		return dao.getDupTime(tc);
 	}
+
+	// screenName + cinemaName 으로 screenNo 구해오기
+	@Override
+	public int screenNo(TimeCheck tc) {
+		return dao.screenNo(tc);
+	}
+
 	
 	
 	

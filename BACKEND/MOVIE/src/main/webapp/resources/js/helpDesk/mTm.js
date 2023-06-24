@@ -1,10 +1,11 @@
-
 $(document).ready(function () {
   $('#submitButton').click(function () {
     var title = $('#titleInput').val();
     var inquiry = $('#inquirySelect').val();
     var content = $('#contentTextarea').val();
     var userNo = $('#userNo').val();
+        var open = $('#checkbox1').is(':checked') ? 0 : 1111;
+    
 
     $.ajax({
       type: 'POST',
@@ -13,7 +14,9 @@ $(document).ready(function () {
         "titleInput": title,
         "inquirySelect": inquiry,
         "contentTextarea": content,
-        "userNo": userNo
+        "userNo": userNo,
+                "open": open
+        
       },
       success: function (response) {
         var mtmNo = response.mtmNo; // mtmNo 값을 가져옵니다.
@@ -74,7 +77,7 @@ $(document).ready(function(){
                 data: {contentTextarea: content},
                 success: function(response) {
                 var url = `/movie/helpDesk/mtm_detail/${mtmNo}`;
-        location.href = url;
+        		location.href = url;
                 },
                 error: function(error) {
                     console.error(error);

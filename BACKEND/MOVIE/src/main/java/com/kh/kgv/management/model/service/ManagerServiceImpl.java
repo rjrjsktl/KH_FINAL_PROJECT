@@ -135,21 +135,7 @@ public class ManagerServiceImpl implements ManagerService {
 		return dao.mgenreList();
 	}
 
-	/**
-	 * movielist 호출 서비스
-	 *
-	 */
-	// @Override
-	// public List<Movie> movieList(Movie movie) {
-	// System.out.println("===== movieList 호출 service");
-	//
-	// return dao.movieList(movie);
-	// }
-
-	/**
-	 * movieList 호출 서비스
-	 * coMovielist 호출 서비스 페이지네이션
-	 */
+	// 영화 목록 조회
 	@Override
 	public Map<String, Object> movieList(int cp) {
 
@@ -209,11 +195,7 @@ public class ManagerServiceImpl implements ManagerService {
 	 */
 	@Override
 	public int MovieEdit(Movie updateMovie) {
-
-		System.out.println("==============영화등록 serviceimpl");
-
 		int result = dao.MovieEdit(updateMovie);
-		System.out.println("serviceImpl result:::::" + result);
 		return result;
 	}
 
@@ -597,6 +579,7 @@ public class ManagerServiceImpl implements ManagerService {
 	public int updateBenefitsST(Benefits bene) {
 		return dao.updateBenefitsST(bene);
 	}
+
 	// 스토어 수정 중복 검사
 	@Override
 	public Store getStoreInfo(int storeNo) {

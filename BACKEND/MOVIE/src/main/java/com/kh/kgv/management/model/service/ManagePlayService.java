@@ -23,6 +23,9 @@ public interface ManagePlayService {
 	// 일자 중복 시, 해당하는 영화의 상영목록 중에서 가장 빠른 시작일과 가장 늦은 종료일을 가지고 돌아가기.
 	List<Play> getDupTime(TimeCheck tc);
 
+	// screenName + cinemaName 으로 screenNo 구해오기
+	int screenNo(TimeCheck tc);
+
 	
 	
 

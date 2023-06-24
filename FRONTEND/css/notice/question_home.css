@@ -174,3 +174,45 @@ border-bottom:1px solid rgb(73 73 73);
   .none {
     display: none;
   }
+
+  
+.check-area{
+	display:flex;
+	justify-content:center;
+	flex-direction:column;
+	padding-top:20%;
+	align-items:center;
+	width:500px;
+	height:500px;
+	margin:0 auto;
+    text-decoration: none;
+    justify-content: space-around;
+	text-align:left;
+}
+    
+#pw-checker{
+	text-align: left;
+}
+
+.check-area > p {
+	font-size:1.5rem;
+}
+
+.check-area>div:nth-child(2){
+	width:100%;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	padding-top:20px;
+	}
+
+#checkPw-input{
+	color:black;
+	width:45%;
+	height:40px;
+	padding-left:5px;
+}
+
+
+

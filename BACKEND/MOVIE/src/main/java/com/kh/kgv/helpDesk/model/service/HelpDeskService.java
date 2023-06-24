@@ -2,6 +2,7 @@ package com.kh.kgv.helpDesk.model.service;
 
 import java.util.Map;
 
+import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.helpDesk.model.vo.LostPackage;
 import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.management.model.vo.Notice;
@@ -30,7 +31,11 @@ public interface HelpDeskService {
 	int replyLostDelete(int lostNo);
 	int replyLostWrite(int lostNo, String content, String managerNick);
 	
-//	int checkPw(int mtmNo);
+	// 게시물 비밀번호 관련
+	int selectmtmPw(int mtmNo);
+	int selectUserNo(int mtmNo);
+	String checkPasswordAccess(int mtmNo, User loginUser);
+	
 
 
 

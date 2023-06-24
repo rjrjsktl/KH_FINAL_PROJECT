@@ -76,7 +76,7 @@
 															</td>
 															<td>${lostList.losts.lostContent}</td>
 															<td>${lostList.losts.lostDate}</td>
-															<td>${lostList.losts.lostSt}</td>
+															<td>${lostList.losts.lostRepSt}</td>
 															<c:choose>
 																<c:when test="${not empty lostList.losts.lostRepDate}">
 																	<td>${lostList.losts.lostRepDate}</td>

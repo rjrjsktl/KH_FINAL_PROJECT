@@ -17,7 +17,7 @@
 		<result property="mtmRepSt" column="MTM_REPST" />
 		<result property="mtmRepContent" column="MTM_REPCONTENT" />
 		<result property="mtmRepDate" column="MTM_REPDATE" />
-
+		<result property="mtmPw" column="MTM_PW"/>
 
 	</resultMap>
 
@@ -75,7 +75,7 @@
 				ORDER BY MTM_TBL.MTM_NO DESC
 			</when>
 			<otherwise>
-				MTM_TBL.USER_NO = 0 AND MTM_TBL.MTM_ST = 'N'
+				MTM_TBL.USER_NO = 0 AND MTM_TBL.MTM_ST = 'N' ORDER BY MTM_TBL.MTM_NO DESC
 			</otherwise>
 		</choose>
 	</select>
@@ -83,7 +83,7 @@
 		<!-- 고객센터 전용 count -->
 	<select id="getUserMtmCount-all" resultType="_int">
 	SELECT COUNT(MTM_NO)
-		FROM MTM_TBL
+		FROM MTM_TBL WHERE MTM_ST = 'N'
 	</select>
 		<!-- 고객센터 전용 select -->
 	<select id="userMtmList-all" resultMap="mtm_rm">
@@ -93,27 +93,33 @@
 		TO_CHAR(MTM_REGDATE, 'YYYY.MM.DD') AS
 		MTM_REGDATE,
 		MTM_COUNT,
-		MTM_TYPE
+		MTM_TYPE,
+		MTM_PW,
+		MTM_TBL.USER_NO
 		FROM
 		MTM_TBL
 		INNER JOIN
 		USERS ON
 		MTM_TBL.USER_NO = USERS.USER_NO
+		WHERE MTM_ST = 'N'
+		ORDER BY MTM_TBL.MTM_NO DESC
 	</select>	
 
 	<select id="mtmDetail" resultMap="mtm_rm">
 		SELECT
 		MTM_NO
 		, MTM_TITLE
-		,
-		MTM_CONTENT
+		, MTM_CONTENT
+		, MTM_ST
+		, MTM_TYPE
+		, USER_NO
 		, TO_CHAR(MTM_REGDATE, 'YYYY.MM.DD') AS MTM_REGDATE
-		,
-		MTM_WRITER
+		, MTM_WRITER
 		, MTM_REPST
 		, MTM_REPWRITER
 		, MTM_REPCONTENT
 		,TO_CHAR(MTM_REPDATE, 'YYYY.MM.DD HH24:MM') AS MTM_REPDATE
+		, MTM_PW
 		FROM MTM_TBL
 		WHERE MTM_NO = #{mtmNo}
 	</select>
@@ -136,6 +142,7 @@
 		, DEFAULT
 		, DEFAULT
 		, DEFAULT
+		, #{mtmPw}<!-- 게시물 비밀번호 -->
 		)
 
 	</insert>
@@ -167,7 +174,18 @@
 		MTM_REPDATE = DEFAULT
 		WHERE MTM_NO = #{mtmNo}
 	</update>
+	
+	<select id="selectmtmPw" resultType="_int">
+		SELECT MTM_PW
+		FROM MTM_TBL
+		WHERE MTM_NO = #{mtmNo}
+	</select>
 
+<select id="selectUserNo" resultType="_int">
+		SELECT USER_NO
+		FROM MTM_TBL
+		WHERE MTM_NO = #{mtmNo}
+	</select>
 
 
 

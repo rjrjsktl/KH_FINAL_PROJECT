@@ -53,11 +53,8 @@ function screenSection(userPlay) {
       $(`#seat_area > div:nth-child(${k}) > div:first-child`).text(alphabet[k - 1]);
     }
     
-    /*
-    
     changeRoom();
     updateSpecialSeat();
-    */
 
 }
 
@@ -117,9 +114,7 @@ function decideWidth() {
 }
 
 
-function createBasicRoom() {
-    
-}
+
 
 function changeRoom() {
 
@@ -144,9 +139,6 @@ function changeRoom() {
           num = document.createElement("span");
           num.innerText = i++;
           if(!seat.hasClass('space')) {
-            $(seat).on("click", function() {
-              clickSeat()
-            });
             $(seat).append(num);
             totalSeatArray.push(alphabet[k-1]+(i-1));
             $(seat).attr('data-seat', alphabet[k-1]+(i-1));
@@ -262,19 +254,45 @@ function updateCount() {
 // 좌석 선택
 
 let selectableSeat = $('#seat_area > div > a:not(.selected, .aisle, .space)');
-
-function clickSeat() {
-  if((totalCount > choiceCount) && !($(this).hasClass("selecting"))) {
+let seatNo;
+$(selectableSeat).on("click", function(e) {
+  seatNo = alphabet[$(this).closest("div").index()] + ($(this).prevAll(".seat, .space").length+1);
+  
+  if($(this).hasClass("selecting")) {
+    console.log($(this).hasClass("selecting"));
+    $(this).removeClass("selecting");
+    choiceCount--;    
+    seatArray = seatArray.filter((element) => element !== seatNo);
+    updateSeatSection();
+    updatePriceSection()
+  }
+  
+  else if((totalCount > choiceCount) && !($(e.target).hasClass("selecting"))) {
     $(this).addClass("selecting");
     choiceCount++;
-    seatArray.push($(this).data('seat'));
+    seatArray.push(seatNo);
     seatArray.sort((a,b) => sortSeat(a, b));
     updateSeatSection();
     updatePriceSection();
-  } else if($(this).hasClass("selecting")) {
-    $(this).removeClass("selecting");
+  } 
+  
+  
+
+})
+
+function clickSeat(e) {
+  if((totalCount > choiceCount) && !($(e.target).hasClass("selecting"))) {
+
+    $(e.target).addClass("selecting");
+    choiceCount++;
+    seatArray.push($(e.target).attr('data-seat'));
+    seatArray.sort((a,b) => sortSeat(a, b));
+    updateSeatSection();
+    updatePriceSection();
+  } else if($(e.target).hasClass("selecting")) {
+    $(e.target).removeClass("selecting");
     choiceCount--;
-    seatArray = seatArray.filter((element) => element !== $(this).data('seat'));
+    seatArray = seatArray.filter((element) => element !== $(e.target).attr('data-seat'));
     updateSeatSection();
     updatePriceSection()
   }

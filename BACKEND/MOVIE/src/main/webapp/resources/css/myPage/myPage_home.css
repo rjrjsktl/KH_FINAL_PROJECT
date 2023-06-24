@@ -8,6 +8,13 @@ main>section {
     flex-wrap: wrap;
 }
 
+h2 {
+    font-size: 1.8rem;
+    padding: 0 0 30px 10px;
+    border-bottom: 3px solid rgb(255, 196, 0);
+    margin-bottom: 50px;
+}
+
 .new-wrap {
     width: 100%;
     display: flex;

@@ -448,6 +448,8 @@ public class ManagerDAO {
 	public Store getStoreInfo(int storeNo) {
 		return sqlSession.selectOne("storeMapper.getEditStoreList", storeNo);
 	}
+	
+	
 
 	
 

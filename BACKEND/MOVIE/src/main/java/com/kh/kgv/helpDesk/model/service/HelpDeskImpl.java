@@ -66,13 +66,13 @@ public class HelpDeskImpl implements HelpDeskService {
 				userManagerStAsInt = 0;
 			}
 		}
-		
+
 		int mtmlistCount = dao.getMtmListCount(userNo, userManagerStAsInt);
 		System.out.println("MTM 리스트 카운트 조회-[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[["+mtmlistCount);
 		System.out.println("1:1문의 리스트 관리자권한 조회-[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[["+userManagerStAsInt);
 		MtmPagenation pagination = new MtmPagenation(cp, mtmlistCount);
 		List<Mtm> mtmLists = dao.getMtmList(pagination, userNo, userManagerStAsInt);
-		
+
 		Map<String, Object> getMtmList = new HashMap<String, Object>();
 		getMtmList.put("pagination", pagination);
 		getMtmList.put("mtmLists", mtmLists);
@@ -85,10 +85,10 @@ public class HelpDeskImpl implements HelpDeskService {
 	}
 
 
-	
+
 	@Override
 	public Map<String, Object> getLostList(int cp, int userNo, String userManagerSt) {
-		
+
 		int userManagerStAsInt = 0;
 		if(userManagerSt != null) {
 			if(userManagerSt.equals("Y")) {
@@ -99,21 +99,21 @@ public class HelpDeskImpl implements HelpDeskService {
 		}
 
 		int lostlistCount = dao.getLostListCount(userNo, userManagerStAsInt);
-		
+
 		LostPagenation pagination = new LostPagenation(cp, lostlistCount);
-	
+
 		System.out.println(lostlistCount+"====================================================================");
 
 		List<Mtm> lostLists = dao.lostLists(pagination, userNo, userManagerStAsInt);
 		Map<String, Object> getMtmList = new HashMap<String, Object>();
 		getMtmList.put("pagination", pagination);
 		getMtmList.put("lostLists", lostLists);
-		
-		
+
+
 
 		return getMtmList;
 	}
-	
+
 
 
 	@Override
@@ -151,12 +151,12 @@ public class HelpDeskImpl implements HelpDeskService {
 	public int deleteBoard(int mtmNo) {
 		return dao.deleteBoard(mtmNo);
 	}
-	
+
 	@Override
 	public int replyDelete(int mtmNo) {
 		return dao.replyDelete(mtmNo);
 	}
-	
+
 	@Override
 	public int replyWrite(int mtmNo, String content,  String managerNick) {
 		return  dao.replyWrite(mtmNo, content, managerNick);
@@ -174,7 +174,7 @@ public class HelpDeskImpl implements HelpDeskService {
 		}
 		return dao.getMtmListCount(userNo, userManagerStAsInt);
 	}
-	
+
 	@Override
 	public int getLostListCount(int userNo, String userManagerSt) {
 		int userManagerStAsInt = 0;
@@ -203,6 +203,67 @@ public class HelpDeskImpl implements HelpDeskService {
 	public int replyLostWrite(int lostNo, String content, String managerNick) {
 		return  dao.replyLostWrite(lostNo, content, managerNick);
 	}
+
+
+	@Override
+	public int selectmtmPw(int mtmNo) {
+		return dao.selectmtmPw(mtmNo);
+	}
+
+	@Override
+	public int selectUserNo(int mtmNo) {
+		return dao.selectUserNo(mtmNo);
+	}
+
+	@Override
+    public String checkPasswordAccess(int mtmNo, User loginUser) {
+        int userNo = 0;
+        String userManagerSt = null;
+
+        if(loginUser != null ) {
+            userNo = loginUser.getUserNo();
+            userManagerSt = loginUser.getUserManagerSt();
+        }
+        else {
+            userManagerSt = "N";
+        }
+        
+        
+
+        int mtmPw = selectmtmPw(mtmNo);
+        int mtmUserNo = selectUserNo(mtmNo);
+
+        // 비회원이 비밀번호가 입력되어있는 게시물에 접근할 경우
+        // >>>>>>> 로그인페이지로 이동시킨다.
+        if ( userNo == 0 && mtmPw != 0 ) {
+            return "redirect:/user/login";
+        } 
+
+        // 로그인은 되어있는데 회원레벨이 관리자일 경우
+        // 또는 게시물의 비밀번호가 0일 경우
+        // 바로  보내버린다.
+        if (userManagerSt.equals("Y") || mtmPw == 0) {
+            return "redirect:/helpDesk/mtm_detail/" + mtmNo;
+        } 
+
+        // 로그인은 되어있는데 세션의 회원번호가 테이블의 userNo와 같을경우
+        // >> 바로 보내버린다.
+        if (userNo == mtmUserNo ) {
+            return "redirect:/helpDesk/mtm_detail/" + mtmNo;
+        }
+
+        // 로그인은 되어있는데 회원레벨이 일반고객일 경우
+        // 비밀번호 입력창으로 보내버린다.
+        if (userManagerSt.equals("N") && userNo != 0) {
+            return "helpDesk/checkPw";
+        }
+        
+       
+        
+        
+
+        return null;
+    }
 
 
 

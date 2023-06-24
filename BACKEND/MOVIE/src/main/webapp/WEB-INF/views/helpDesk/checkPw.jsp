@@ -28,6 +28,9 @@
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
 
+<script src="${contextPath}/resources/js/helpDesk/mtmcheck.js"></script>
+
+
 
 
 </head>
@@ -40,20 +43,37 @@
 			<section>
 
 				<jsp:include page="/WEB-INF/views/common/noticeAside.jsp" />
-				
+
 				<div class="container">
-				
-					<div>
-						<p>글 비밀번호를 입력해주세요!</p>
-						<input type="password"  />
+
+					<div class="check-area">
+						<p>본인이 작성한 글만<br>볼 수 있습니다.</p>
+						<div>
+							<input type="text" id="checkPw-input" style="display:none;" />
+							<p id="pw-checker"></p>
+						</div>
+
+						<div class="btn_wraper">
+
+
+							<button class="goback">
+								<a href="${contextPath}/helpDesk/mTm_List">확인</a>
+							</button>
+
+
+						</div>
 					</div>
-					
-				
+
+
 				</div>
 			</section>
 		</main>
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+
+
+
 
 </body>
 
