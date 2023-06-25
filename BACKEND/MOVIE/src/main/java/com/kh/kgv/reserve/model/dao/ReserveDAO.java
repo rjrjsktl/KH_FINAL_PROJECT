@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.management.model.vo.Screen;
 
@@ -52,7 +53,9 @@ public class ReserveDAO {
 		return sqlSession.selectOne("cinemaMapper.getPriceNo", condition);
 	}
 
-
+	public CinemaPrice getPriceModel(int priceNo) {
+		return sqlSession.selectOne("cinemaMapper.getPriceModel", priceNo);
+	}
 
 
 }

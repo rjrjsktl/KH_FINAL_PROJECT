@@ -53,9 +53,6 @@ public class LoginController {
 	@GetMapping("/login")
 	public String enterLogin() { 
 
-
-
-
 		return "login/login";
 	}
 

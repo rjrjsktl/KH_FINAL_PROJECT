@@ -1,6 +1,6 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- -->
+
 
 <!-- 최신화 종료 건들일없음 -->
 
@@ -57,7 +57,7 @@
 
 
 							<button class="goback">
-								<a href="${contextPath}/helpDesk/mTm_List/?cp=${param.cp}">확인</a>
+								<a href="${contextPath}/helpDesk/lost_List/?cp=${param.cp}">확인</a>
 							</button>
 
 
