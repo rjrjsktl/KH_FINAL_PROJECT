@@ -77,13 +77,30 @@
 													varStatus="loop">
 													<c:if test="${loop.index < 10}">
 														<tr class="row">
-															<td class="countRow">${userMtmList.mtmType}</td>
-
-															<td><a
-																href="${contextPath}/helpDesk/checkPw/${userMtmList.mtmNo}"
-																id="mtmList_pass"> ${userMtmList.mtmTitle} </a></td>
-
-
+															<c:choose>
+																<c:when test="${userMtmList.mtmPw eq 0}">
+																	<td class="countRow">${userMtmList.mtmType}</td>
+																	<td><a
+																		href="${contextPath}/helpDesk/checkPw/${userMtmList.mtmNo}"
+																		id="mtmList_pass">${userMtmList.mtmTitle}</a></td>
+																</c:when>
+																<c:when
+																	test="${userMtmList.mtmPw eq 1111 and loginUser.userManagerSt eq 'Y'
+																	or userMtmList.userNo == loginUser.userNo
+																	}">
+																	<td class="countRow">${userMtmList.mtmType}</td>
+																	<td><a
+																		href="${contextPath}/helpDesk/checkPw/${userMtmList.mtmNo}"
+																		id="mtmList_pass">${userMtmList.mtmTitle}</a></td>
+																</c:when>
+																<c:otherwise>
+																	<td class="countRow">${userMtmList.mtmType}</td>
+																	<td><a
+																		href="${contextPath}/helpDesk/checkPw/${userMtmList.mtmNo}"
+																		id="mtmList_pass" class="qlrhdro">비공개
+																			글입니다.</a></td>
+																</c:otherwise>
+															</c:choose>
 															<td>${userMtmList.mtmRegdate}</td>
 															<td>${userMtmList.mtmCount}</td>
 														</tr>

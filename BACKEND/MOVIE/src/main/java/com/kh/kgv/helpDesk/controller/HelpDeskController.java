@@ -113,7 +113,7 @@ public class HelpDeskController {
 		return "helpDesk/notice_detail";
 	}
 
-	// 1:1문의 리스트 출력-------------------------------------------------
+	// 1:1 문의 리스트 출력-------------------------------------------------
 	@RequestMapping("/mTm_List")
 	public String mtmList(
 			Model model,
@@ -145,8 +145,7 @@ public class HelpDeskController {
 		return "helpDesk/mTm_List";
 	}
 
-
-	//1:1문의사항 비밀번호 Get맵핑
+	//1:1 문의사항 비밀번호 Get맵핑
 	@GetMapping("/checkPw/{mtmNo}")
 	public String checkPw (
 			@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
@@ -167,8 +166,7 @@ public class HelpDeskController {
 		return path;
 	}
 
-
-	// 1:1문의사항 비밀번호 Post맵핑
+	// 1:1 문의사항 비밀번호 Post맵핑
 	@ResponseBody
 	@PostMapping("/checkPw/{mtmNo}")
 	public int comparePw (
@@ -201,6 +199,7 @@ public class HelpDeskController {
 
 	}
 
+	// 1:1 문의사항 세부정보 확인
 	@RequestMapping("/mtm_detail/{mtmNo}")
 	public String mtmdetail(
 			Model model,
@@ -240,7 +239,6 @@ public class HelpDeskController {
 			Model model,
 			HttpSession session,
 			HttpServletRequest req, HttpServletResponse resp
-
 			) {
 
 		User loginUser = (User)session.getAttribute("loginUser");
@@ -256,16 +254,12 @@ public class HelpDeskController {
 		if ( userNo > 0) {
 			path = "helpDesk/mTm_form";
 		} else {
-			String referer = req.getHeader("Referer"); // 이전 페이지의 URL을 가져옵니다.
-			session.setAttribute("prevPage", referer); // 이전 페이지의 URL을 세션에 저장합니다.
+			String referer = req.getHeader("Referer"); 
+			session.setAttribute("prevPage", referer); 
 
-			logger.debug("referer은~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+referer);
 			path ="redirect:/user/login";
 
 		}
-
-		System.out.println("userNo"+userNo+"-----------------------------------------------------------------------");
-
 
 		model.addAttribute("userNo", userNo);
 		return path; 
@@ -277,6 +271,7 @@ public class HelpDeskController {
 			@RequestParam("titleInput") String title, 
 			@RequestParam("contentTextarea") String content,
 			@RequestParam("inquirySelect") String inquiry,
+			@RequestParam("open") int open, 
 			HttpSession session) {
 
 		User loginUser = (User)session.getAttribute("loginUser");
@@ -300,18 +295,19 @@ public class HelpDeskController {
 		mtm.setMtmType(inquiry);
 		mtm.setUserNo(userNo);
 		mtm.setMtmWriter(userNick);
+		mtm.setMtmPw(open);  
+		
+		System.out.println(open);
 
+		 
+		 
 		services.addmTm(mtm);  
 
 		int mtmNo = services.selectMtmNo(mtm);
 
 		Map<String, Object> response = new HashMap<>();
 
-
 		response.put("mtmNo", mtmNo);
-
-		System.out.println("mtmNo------------------------------------------------" + mtmNo);
-
 
 		return ResponseEntity.ok(response);
 	}
