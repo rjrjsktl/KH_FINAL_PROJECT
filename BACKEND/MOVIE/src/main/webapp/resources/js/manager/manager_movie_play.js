@@ -569,9 +569,11 @@ $(document).ready(function () {
                         let playData = result[0];
 
                         console.log(result);
-                        // 정상적인 방법은 아니지만 일단 값은 다 가지고 오니까 패스 ㅋㅋ
-                        alert("해당 " + playData.playUploader + " 관은 " + playData.playStart + " " + playData.playBookSeat + "부터, " + playData.playEnd + playData.playRegDate + "까지 매일 해당되는 시간에 등록되어 있습니다.");
-                        // 4관은, 23.06.23  ~ 23.06.25 10:00시부터 15:00시까지 영화가 등록되어 있습니다. 
+                        alert(playData.playUploader + " 관의 선택하신 상영 시간은 다른 시간과 겹칩니다.\n"
+                            + "가장 빠른 상영일 : " + playData.playStart + " " + playData.playBookSeat + "\n"
+                            + "가장 늦은 상영일 : " + playData.playEnd + " " + playData.playRegDate + "\n"
+                            + "등록된 기간 : " + playData.playStart + " ~ " + playData.playEnd
+                        );
 
                         // if (!$(playData.startDate)) {
 
@@ -583,7 +585,8 @@ $(document).ready(function () {
                         // }
                     } else {
                         enrollCheck = true;
-                        alert("해당하는 상영 정보가 없습니다.");
+                        alert("해당하는 상영 정보가 없습니다. \n"
+                            + "등록 가능 합니다.");
                     }
                 },
 

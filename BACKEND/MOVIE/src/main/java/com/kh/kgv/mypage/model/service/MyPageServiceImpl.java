@@ -139,6 +139,8 @@ public class MyPageServiceImpl implements MyPageService {
 		
 		Map<String, Object> mtmUserList = new HashMap<String, Object>();
 
+		
+		mtmUserList.put("userMtmCount", userMtmCount);
 		mtmUserList.put("pagination", pagination);
 		mtmUserList.put("mtmList", mtmList);
 		
