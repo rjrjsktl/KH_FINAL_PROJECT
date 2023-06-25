@@ -152,26 +152,32 @@
                     <div>
                       성인
                       <div>
-                        <span id="adult_price"></span>원 &times; <span id="adult_pick"></span>
+                        <span class="age_price" id="adult_price"></span>원 &times; <span class="age_pick" id="adult_pick"></span>
                       </div>
                     </div>
                     <div>
                       청소년
                       <div>
-                        <span id="youth_price"></span>원 &times; <span id="youth_pick"></span>
+                        <span class="age_price" id="youth_price"></span>원 &times; <span class="age_pick" id="youth_pick"></span>
                       </div>
                     </div> 
                     <div>
                       경로
                       <div>
-                        <span id="senior_price"></span>원 &times; <span id="senior_pick"></span>
+                        <span class="age_price" id="senior_price"></span>원 &times; <span class="age_pick" id="senior_pick"></span>
                       </div>
                     </div>
                     <div>
                       우대
                       <div>
-                        <span id="special_price"></span>원 &times; <span id="special_pick"></span>
+                        <span class="age_price" id="special_price"></span>원 &times; <span class="age_pick" id="special_pick"></span>
                       </div> 
+                    </div>
+                    <div>
+                      스위트석
+                      <div>
+                        <span class="age_price" id="sweet_price"></span>원 &times; <span class="age_pick" id="sweet_pick"></span>
+                      </div>
                     </div>
                     <div>
                       합계

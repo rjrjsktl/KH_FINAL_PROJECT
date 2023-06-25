@@ -5,6 +5,7 @@ let adultCount = 0;
 let youthCount = 0;
 let seniorCount = 0;
 let specialCount = 0;
+let sweetCount = 0;
 
 let seatArray = [];
 let countArray = [];
@@ -35,14 +36,33 @@ $.ajax({
   data: {},
   type: "GET",
   success: function(userPlay) {
-    screenSection(userPlay);
+    updateScreenSection(userPlay);
   },
   error: function () {
     console.log("페이지 로딩 중 에러 발생");
   }
 });
 
-function screenSection(userPlay) {
+function updatePriceAjax() {
+  $.ajax({
+	url: "updatePrice",
+	data: {"partialCountArray":JSON.stringify(partialCountArray)} ,
+	type: "POST",
+	success: function(priceMap) {
+	  for(let i=0; i<= priceMap.countArray.length; i++) {
+	    $("#price_calc > div").eq(i).find(".age_price").html(priceMap.priceArray.at(i));
+	    $("#price_calc > div").eq(i).find(".age_pick").html(priceMap.countArray.at(i));
+	  }
+	  $("#total_price").html(priceMap.totalPrice);
+	  console.log(priceMap);
+	},
+	error: function () {
+	  console.log("페이지 로딩 중 에러 발생");
+	}
+  });
+}
+
+function updateScreenSection(userPlay) {
     console.log(userPlay);
     
     updateScreen(userPlay);
@@ -264,7 +284,7 @@ $(selectableSeat).on("click", function(e) {
     choiceCount--;    
     seatArray = seatArray.filter((element) => element !== seatNo);
     updateSeatSection();
-    updatePriceSection()
+    updatePriceSection();
   }
   
   else if((totalCount > choiceCount) && !($(e.target).hasClass("selecting"))) {
@@ -275,8 +295,6 @@ $(selectableSeat).on("click", function(e) {
     updateSeatSection();
     updatePriceSection();
   } 
-  
-  
 
 })
 
@@ -354,6 +372,7 @@ function updateCountArray() {
   for(let i=0; i<specialCount; i++) {
     countArray.push(3);
   }
+  
 }
 
 
@@ -369,29 +388,19 @@ for(let i=0; i<priceArray.length; i++) {
 }
 
 function updatePriceSection() {
+  
   $("#price_calc > div").css('display', 'none');
   totalPrice = 0;
 
   partialCountArray = countArray.slice(0, choiceCount);
   countSet = new Set(partialCountArray);
 
-  for(let i=0; i<4; i++){
-    elementCount = partialCountArray.filter(element => Number(i) === element).length;
-    $(`#price_calc > div:nth-child(${i+1}) > div > span:last-child`).text(elementCount);
-  }
-
   countSet.forEach(i => {
     $(`#price_calc > div:nth-child(${i+1})`).css('display', 'flex');
   });
-
-  // 합계
-
-  for(let i=0; i<choiceCount; i++) {
-    totalPrice += priceArray[countArray[i]];
-  }
-
-  $(`#price_calc > div:last-child > div > span:last-child`).text(totalPrice);
-
+  
+  updatePriceAjax();
+  
   if(choiceCount > 0) {
     $("#price_calc > div:last-child").css('display', 'flex');
   } else {
