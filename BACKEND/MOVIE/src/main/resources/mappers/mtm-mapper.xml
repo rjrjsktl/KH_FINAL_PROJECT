@@ -83,7 +83,7 @@
 		<!-- 고객센터 전용 count -->
 	<select id="getUserMtmCount-all" resultType="_int">
 	SELECT COUNT(MTM_NO)
-		FROM MTM_TBL
+		FROM MTM_TBL WHERE MTM_ST = 'N'
 	</select>
 		<!-- 고객센터 전용 select -->
 	<select id="userMtmList-all" resultMap="mtm_rm">
@@ -93,12 +93,15 @@
 		TO_CHAR(MTM_REGDATE, 'YYYY.MM.DD') AS
 		MTM_REGDATE,
 		MTM_COUNT,
-		MTM_TYPE
+		MTM_TYPE,
+		MTM_PW,
+		MTM_TBL.USER_NO
 		FROM
 		MTM_TBL
 		INNER JOIN
 		USERS ON
 		MTM_TBL.USER_NO = USERS.USER_NO
+		WHERE MTM_ST = 'N'
 		ORDER BY MTM_TBL.MTM_NO DESC
 	</select>	
 
@@ -139,8 +142,7 @@
 		, DEFAULT
 		, DEFAULT
 		, DEFAULT
-		, DEFAULT
-		<!-- 게시물 비밀번호 -->
+		, #{mtmPw}<!-- 게시물 비밀번호 -->
 		)
 
 	</insert>

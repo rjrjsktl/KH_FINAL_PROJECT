@@ -43,13 +43,13 @@ gotoDetail.on('click', function() {
         
         
         if ( result > 0 ) {
-        
-        	 var url = `/movie/helpDesk/mtm_detail/` + mtmNo;
+        	 alert("본인이 작성한 글만 봅시다 네?")
+        	 var url = `/movie/`;
         	 location.href = url;
         
         }else{
-           	alert("실패ㅗ");
-        	 var url = `/movie/helpDesk/checkPw/` + mtmNo;
+            alert("본인이 작성한 글만 봅시다 네?")
+        	 var url = `/movie/`;
         	 location.href = url;
         }
         
