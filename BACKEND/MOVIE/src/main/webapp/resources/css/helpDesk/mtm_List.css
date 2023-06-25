@@ -262,3 +262,7 @@ a.hover {
 	color: red;
 	text-decoration: none;
 }
+
+.replyComplete{
+	color: #FFC400;
+}

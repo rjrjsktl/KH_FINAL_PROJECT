@@ -1,6 +1,6 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- -->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +27,7 @@
 	href="${contextPath}/resources/css/helpDesk/lost_form.css">
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/common/notice_Aside.css">
+	<script src="${contextPath}/resources/js/helpDesk/lost_form.js"></script>
 
 
 </head>
@@ -74,6 +75,15 @@
 									<td><input id="lostFile" type="file" multiple
 										class="align_File"></td>
 								</tr>
+								<tr class="label_box">
+									<th>공개여부</th>
+									<td class="label_box "><label for="checkbox1" class=""> <input
+											type="hidden" name="open" value=1111> <input
+											type="checkbox" id="checkbox1" name="open" value=0>
+									</label>
+									<span id="openStatus">비공개 상태입니다.</span> 
+									</td>
+								</tr>
 							
 							</table>
 						</div>
@@ -86,7 +96,7 @@
 
 						<div class="btn_Container">
 							<button id="registLost">작성하기</button>
-							<button>취소하기</button>
+							<button><a href="${contextPath}/helpDesk/lost_List">돌아가기</a></button>
 						</div>
 
 					</div>
@@ -101,7 +111,6 @@
 
 
 
-	<script src="${contextPath}/resources/js/helpDesk/lost_form.js"></script>
 </body>
 
 </html>

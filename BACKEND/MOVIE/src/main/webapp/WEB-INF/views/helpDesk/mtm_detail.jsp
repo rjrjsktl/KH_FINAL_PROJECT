@@ -100,13 +100,14 @@
 
 
 							<button id="deleteMtm" data-mtmno="${mTmdetail.mtmNo}">
+							<input type="hidden" id="cp" value="${cp}">
 								<a>삭제</a>
 							</button>
 
 						</c:if>
 
 						<button class="goback">
-							<a href="${contextPath}/helpDesk/mTm_List">목록으로</a>
+							<a href="${contextPath}/helpDesk/mTm_List?cp=${param.cp}">목록으로</a>
 						</button>
 
 					</div>
