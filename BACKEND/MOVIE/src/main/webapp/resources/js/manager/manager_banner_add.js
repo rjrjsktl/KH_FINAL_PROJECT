@@ -2,14 +2,38 @@ $(document).ready(function () {
 
     let movie_image1 = $('.movie_image1');
 
+
     movie_image1.on('change', function (e) {
+
         console.log(e.target.files); // 파일 목록 출력
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
+
+
+            // if (!checkExtension(e.target.files[i].name, e.target.files[i].size)) {
+            //     movie_image1.val('');
+            //     return false;
+            // }
             uploadImageFile1(e.target.files[i]); // 파일 전달
+
+
         }
     });
+
+    // let regex = new RegExp("(.*?\.(png|jpg|gif|jpeg)$)");
+    // let maxSize = 5000000; // 5MB 제한
+
+    // function checkExtension(fileName, fileSize) {
+    //     if (fileSize >= maxSize) {
+    //         alert("파일 사이즈 초과");
+    //         return false;
+    //     }
+    //     if (!regex.test(fileName)) {
+    //         alert("해당 종류 파일은 업로드 안됨.\n PNG, JPG, GIF, JPEG 만 가능합니다.");
+    //         return false;
+    //     }
+    // };
 
     let imageUrl1;
 
@@ -62,33 +86,34 @@ $(document).ready(function () {
             return false;
         };
 
-        $.ajax({
-            url: "banner_add/insert",
-            data: {
-                "title": eventTitle.val()
-                , "url": enterUrl.val()
-                , "movieImg1": imageUrl1
-            },
-            type: "POST",
-            success: function (result) {
-                if (result > 0) {
-                    alert("이벤트 등록 성공");
-                    let url = "/movie/manager/banner_list";
-                    window.location.href = url;
-                } else {
-                    alert("이벤트 등록 실패");
-                    window.location.reload();
-                }
-            },
+        // $.ajax({
+        //     url: "banner_add/insert",
+        //     data: {
+        //         "title": eventTitle.val()
+        //         , "url": enterUrl.val()
+        //         , "movieImg1": imageUrl1
+        //     },
+        //     type: "POST",
+        //     success: function (result) {
+        //         if (result > 0) {
+        //             alert("이벤트 등록 성공");
+        //             let url = "/movie/manager/banner_list";
+        //             window.location.href = url;
+        //         } else {
+        //             alert("이벤트 등록 실패");
+        //             window.location.reload();
+        //         }
+        //     },
 
-            error: function () {
-                console.log("에러 발생으로 인해 등록 실패");
-            }
-        });
+        //     error: function () {
+        //         console.log("에러 발생으로 인해 등록 실패");
+        //     }
+        // });
     });
 
 
 });
+
 
 
 function readURL(input) {
@@ -110,4 +135,4 @@ function readURL(input) {
         $('#imgSize')[0].src = "";
 
     }
-}
+};

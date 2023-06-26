@@ -861,34 +861,41 @@ public class HelpDeskController {
 			Model model,
 			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
 			) {
-		
+
 		int questNum = 0;
-		
+
 		int qescount = services.getcountquestNum(questNum);
+
+		Map<String, Object>questList = null;
+
+		questList = services.getQuestList(cp,questNum);
+
 		model.addAttribute("qescount",qescount);
+		model.addAttribute("questList", questList);
+
+
+
+		System.out.println(model);
 
 		return "helpDesk/question_home";
 	}
 
+
 	@PostMapping("/question_home")
 	@ResponseBody
-	public int postQuestion(
-			Model model,
-			@RequestParam("questNum") int questNum
-			) {
-		
-		System.out.println(questNum);
-		
-		
-		int qescount = services.getcountquestNum(questNum);
-//		String qestitle = services.getTitle(questNum);
+	public Map<String, Object> postQuestion(
+	        Model model,
+	        @RequestParam("questNum") int questNum,
+	        @RequestParam(value = "cp", required = false, defaultValue="1") int cp
+	        ) {
 
-		model.addAttribute("qescount",qescount);
-		
-		System.out.println(qescount);
-		
-		System.out.println(model);
-		
-		return qescount;
+	    int qescount = services.getcountquestNum(questNum);
+	    Map<String, Object> questList = services.getQuestList(cp,questNum);
+
+	    Map<String, Object> response = new HashMap<>();
+	    response.put("qescount", qescount);
+	    response.put("questList", questList);
+
+	    return response;
 	}
 }

@@ -1353,11 +1353,11 @@ public class ManagerController {
 	@GetMapping("/benefits_list/edit/{benefitsNo}")
 	public String moveBenefitsEdit(Model model,
 								   Benefits bene,
-								   @PathVariable("benefitsNo") int benfitsNo) {
+								   @PathVariable("benefitsNo") int benefitsNo) {
 
 		Map<String, Object> editBenefits = null;
 
-		bene.setBenefitsNo(benfitsNo);
+		bene.setBenefitsNo(benefitsNo);
 
 		editBenefits = service.getEditBenefitsList(bene);
 		
@@ -1464,7 +1464,23 @@ public class ManagerController {
 		return result;
 	}
 	
-	
+	// 관리자_혜택 삭제
+	@GetMapping("/benefits_list/delete/{benefitsNo}")
+	public String deleteBenefits(Model model,
+								   Benefits bene,
+								   @PathVariable("benefitsNo") int benefitsNo) {
+
+		int deleteBenefits;
+
+		deleteBenefits = service.deleteBenefits(benefitsNo);
+		
+		System.out.println("해치웠나?");
+		
+
+		System.out.println("관리자_혜택 수정페이지 이동");
+		return "redirect:/";
+		
+	}
 	
 
 }

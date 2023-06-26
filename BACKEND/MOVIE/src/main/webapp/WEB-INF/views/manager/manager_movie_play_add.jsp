@@ -147,8 +147,8 @@
 													</div>
 												</div>
 
-												<!-- <form action="play_add/enroll" method="post" id="playAddForm">
-												</form> -->
+												<form action="play_add/enroll" method="post" id="playAddForm">
+												</form>
 
 
 											</div>
