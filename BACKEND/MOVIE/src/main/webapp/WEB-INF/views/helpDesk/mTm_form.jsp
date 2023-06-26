@@ -69,7 +69,10 @@
 								</tr>
 								<tr>
 									<th>첨부파일</th>
-									<td><input type="file" multiple class="align_File"></td>
+									<td><input type="file" id="fileInput" multiple class="align_File" name="file" onchange="readURL(this);"></td>
+									
+									
+						
 								</tr>
 								<tr class="label_box">
 									<th>공개여부</th>
