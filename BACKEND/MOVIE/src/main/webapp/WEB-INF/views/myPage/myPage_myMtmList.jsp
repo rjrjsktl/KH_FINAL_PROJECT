@@ -101,7 +101,7 @@
 															<tr class="row">
 																<td class="countRow">${mtmUserList.mtm.mtmType}</td>
 																<td><a href="${contextPath}/myPage/myMtmDetail/${mtmUserList.mtm.mtmNo}"
-																	id="mtmList_pass" style="color:white"> ${mtmUserList.mtm.mtmTitle} </a>
+																	id="mtmList_pass"> ${mtmUserList.mtm.mtmTitle} </a>
 																	<c:if
 																		test="${mtmUserList.mtm.mtmRepSt == 'Y'}"><span class="replyComplete">.... [ 답변완료 ]</span>
 																	</c:if>

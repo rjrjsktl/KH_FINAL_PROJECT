@@ -99,5 +99,20 @@ $(document).ready(function() {
   loadReviewCards();
 });
 
+$(document).ready(function(){
+    const deleteReview = $("#deleteReview"); 
+
+        deleteReview.on('click', function(){
+      
+            let lostNo = $(this).data('revno');
+            
+            let url = `/movie/myPage/deleteReview/${revNo}`;
+
+            if( confirm("정말로 삭제 하시겠습니까?") ){
+                window.location.href = url; // get방식으로 url에 요청
+            }
+        });
+});
+
     
      
