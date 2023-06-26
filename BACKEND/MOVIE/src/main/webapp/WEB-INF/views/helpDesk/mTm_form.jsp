@@ -71,6 +71,13 @@
 									<th>첨부파일</th>
 									<td><input type="file" multiple class="align_File"></td>
 								</tr>
+								<tr class="label_box">
+									<th>공개여부</th>
+									<td class="label_box"><label for="checkbox1"> <input
+											type="hidden" name="open" value=1111> <input
+											type="checkbox" id="checkbox1" name="open" value=0>
+									</label></td>
+								</tr>
 							</table>
 						</div>
 						<div id="writeForm">
@@ -79,10 +86,14 @@
 						</div>
 
 						<div class="btn_wraper">
-							<button id="submitButton"><a>작성하기</a></button>
-							<button><a href="${contextPath}/helpDesk/mTm_List">돌아가기</a></button>
+							<button id="submitButton">
+								<a>작성하기</a>
+							</button>
+							<button>
+								<a href="${contextPath}/helpDesk/mTm_List">돌아가기</a>
+							</button>
 						</div>
-		
+
 					</div>
 
 				</div>

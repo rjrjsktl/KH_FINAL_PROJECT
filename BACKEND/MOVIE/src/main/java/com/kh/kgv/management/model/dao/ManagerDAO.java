@@ -448,6 +448,12 @@ public class ManagerDAO {
 	public Store getStoreInfo(int storeNo) {
 		return sqlSession.selectOne("storeMapper.getEditStoreList", storeNo);
 	}
+
+	public int updateNoticeView(int noticeNo) {
+		return sqlSession.update("managerMapper.updateNoticeView", noticeNo);
+
+	}
+
 	
 	// 관리자_혜택 삭제
 	public int deleteBenefits(int benefitsNo) {

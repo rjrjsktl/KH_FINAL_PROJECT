@@ -55,93 +55,106 @@
                                 </div>
 
                                 <div class="search-area">
-                                    <p>내 분실물 게시글 총<span value="${lostCount}">0</span>건</p>
-                                </div>
-
-                                <div class="table-wrap">
-                                <table>
-
-                                   <thead>
-										<th>영화관</th>
-										<th>내용</th>
-										<th>등록일</th>
-										<th>조회수</th>
-									</thead>
-                                    <tbody>
-                                      <c:choose>
-											<c:when test="${empty lostList.lostLists}">
-												<tr class=row>
-													<td colspan="3">게시글이 존재하지 않습니다.</td>
-												</tr>
+                                    <p>내 분실물 게시글 총<c:choose>
+											<c:when test="${not empty lostUserList.userLostCount}">
+												<span>${lostUserList.userLostCount}</span>
 											</c:when>
 											<c:otherwise>
-												<c:forEach var="lostList"
-													items="${lostList.lostLists}" varStatus="loop">
-													<c:if test="${loop.index < 10}">
-														<tr class="row">
-															<td>${lostList.lostLocation}</td>
-															<td><a href="${contextPath}/helpDesk/lost_detail/${lostList.lostNo}" style="color:white">${lostList.lostTitle}</a></td>
-															<td>${lostList.lostDate}</td>
-															<td>${lostList.lostView}</td>
-														</tr>
-													</c:if>
-												</c:forEach>
+												<span>0</span>
 											</c:otherwise>
 										</c:choose>
-
-
-
-                                    </tbody>
-
-                                </table>
-
-                                <div>
-                                    <button><a href="${contextPath}/helpDesk/lost_form/${lostNo}">게시물 등록</a></button>
-                                </div>
-                                <!-- 10개씩 -->
-                               	<div class="page_Nation">
-								<c:set var="url" value="?cp=" />
-								<c:set var="pagination" value="${lostList['pagination']}" />
-								<c:set var="currentPage" value="${pagination.currentPage}"
-									scope="request" />
-								<div>
-									<a href="${url}1">&lt;&lt;</a>
+										건
+									</p>
 								</div>
-								<div>
-									<a href="${url}${pagination.prevPage}">&lt;</a>
-								</div>
-								<c:forEach var="i" begin="${pagination.startPage}"
-									end="${pagination.endPage}" step="1">
-									<c:choose>
-										<c:when test="${i == currentPage}">
-											<div>
-												<a class="selected_Cp">${i}</a>
-											</div>
-										</c:when>
-										<c:otherwise>
-											<div>
-												<a href="${url}${i}">${i}</a>
-											</div>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-								<div>
-									<a href="${url}${pagination.nextPage}">&gt;</a>
-								</div>
-								<div>
-									<a href="${url}${pagination.maxPage}">&gt;&gt;</a>
+
+								<div class="table-wrap">
+									<table>
+
+										<thead>
+											<th>문의 종류</th>
+											<th>내용</th>
+											<th>등록일</th>
+											<th>조회수</th>
+										</thead>
+										<tbody>
+
+											<c:choose>
+												<c:when test="${empty lostUserList.lostList}">
+													<tr class="row">
+														<td colspan="3">게시글이 존재하지 않습니다.</td>
+													</tr>
+												</c:when>
+												<c:otherwise>
+													<c:forEach var="lostUserList" items="${lostUserList.lostList}"
+														varStatus="loop">
+														<c:if test="${loop.index < 10}">
+															<tr class="row">
+																<td class="countRow">${lostUserList.losts.lostLocation}</td>
+																<td><a href="${contextPath}/myPage/myLostDetail/${lostUserList.losts.lostNo}?cp=${param.cp}"
+																	id="mtmList_pass" style="color:white"> ${lostUserList.losts.lostTitle} </a>
+																	<c:if
+																		test="${lostUserList.losts.lostRepSt == 'Y'}"><span class="replyComplete">.... [ 답변완료 ]</span>
+																	</c:if>	
+																</td>
+																<td>${lostUserList.losts.lostRepDate}</td>
+																<td>${lostUserList.losts.lostView}</td>
+															</tr>
+														</c:if>
+													</c:forEach>
+												</c:otherwise>
+											</c:choose>
+
+										</tbody>
+
+									</table>
+
+									<div>
+										<button>
+											<a href="${contextPath}/helpDesk/lost_List">고객센터 가기</a>
+										</button>
+									</div>
+									<!-- 10개씩 -->
+									<div class="page_Nation">
+										<c:set var="url" value="?cp=" />
+										<c:set var="pagination" value="${lostUserList['pagination']}" />
+										<c:set var="currentPage" value="${pagination.currentPage}"
+											scope="request" />
+										<div>
+											<a href="${url}1">&lt;&lt;</a>
+										</div>
+										<div>
+											<a href="${url}${pagination.prevPage}">&lt;</a>
+										</div>
+										<c:forEach var="i" begin="${pagination.startPage}"
+											end="${pagination.endPage}" step="1">
+											<c:choose>
+												<c:when test="${i == currentPage}">
+													<div>
+														<a class="selected_Cp">${i}</a>
+													</div>
+												</c:when>
+												<c:otherwise>
+													<div>
+														<a href="${url}${i}">${i}</a>
+													</div>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+										<div>
+											<a href="${url}${pagination.nextPage}">&gt;</a>
+										</div>
+										<div>
+											<a href="${url}${pagination.maxPage}">&gt;&gt;</a>
+										</div>
+									</div>
 								</div>
 							</div>
-
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-    </div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
     
     <!-- event-wrap -->
     <jsp:include page="/WEB-INF/views/myPage/myPage_randomEvent.jsp" />
@@ -149,18 +162,23 @@
     <!-- footer -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <div class="close-button">&times;</div>
-            <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
-        </div>
-    </div>
 
     <script src="${contextPath}/resources/js/common/header.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_swiper.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_myLostList.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_randomEvent.js"></script>
     
+	<script>
+	
+		
+		const param = "${param.cp}";
+		console.log(param
+				+ "+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
+		const userLostCount = "${lostUserList.pagination.listCount}";
+		console.log(userLostCount
+				+ "+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+	</script>
 
 </body>
 

@@ -139,10 +139,43 @@ public class MyPageServiceImpl implements MyPageService {
 		
 		Map<String, Object> mtmUserList = new HashMap<String, Object>();
 
+		
+		mtmUserList.put("userMtmCount", userMtmCount);
 		mtmUserList.put("pagination", pagination);
 		mtmUserList.put("mtmList", mtmList);
 		
 		return mtmUserList;
+	}
+	
+	//================================================== 분실물
+		/** 분실물 문의 리스트 불러오기
+		 *
+		 */
+	@Override
+	public Map<String, Object> lostList(Map<String, Object> paramMap) {
+
+		int userNo = (int) paramMap.get("userNo");
+		int cp = (int) paramMap.get("cp");
+		
+		logger.info("DAO.userNo::::" + userNo);
+		logger.info("DAO.cp::::" + cp);
+		
+		int userLostCount = dao.getUserLostCount(userNo);
+		
+		logger.info("ServiceImpl.userMtmCount::::" + userLostCount);
+		
+		Pagination pagination = new Pagination(cp, userLostCount);
+		
+		List<Mtm> lostList = dao.getlostlist(pagination, userNo);
+		
+		Map<String, Object> lostUserList = new HashMap<String, Object>();
+
+		
+		lostUserList.put("userLostCount", userLostCount);
+		lostUserList.put("pagination", pagination);
+		lostUserList.put("lostList", lostList);
+		
+		return lostUserList;
 	}
 
 	

@@ -195,11 +195,7 @@ public class ManagerServiceImpl implements ManagerService {
 	 */
 	@Override
 	public int MovieEdit(Movie updateMovie) {
-
-		System.out.println("==============영화등록 serviceimpl");
-
 		int result = dao.MovieEdit(updateMovie);
-		System.out.println("serviceImpl result:::::" + result);
 		return result;
 	}
 
@@ -590,12 +586,18 @@ public class ManagerServiceImpl implements ManagerService {
 		return dao.getStoreInfo(storeNo);
 	}
 
+
 	// 관리자_혜택 삭제
 	@Override
 	public int deleteBenefits(int benefitsNo) {
 		return dao.deleteBenefits(benefitsNo);
 	}
-	
-	
+
+	// 공지사항 조회수 증가
+	@Override
+	public int updateNoticeView(int noticeNo) {
+		return dao.updateNoticeView(noticeNo);
+	}
+
 
 }
