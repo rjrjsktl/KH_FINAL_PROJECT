@@ -9,19 +9,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>공지 세부</title>
-
-    <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
-
-    <!-- jQuery 라이브러리 추가(CDN) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-    <script src="/ckeditor5/build/ckeditor.js"></script>
-
+    <title>전체영화</title>
+    <link rel="stylesheet" href="../../css/store/store_payment.css">
     <link rel="stylesheet" href="../../css/common/outline.css">
-    <link rel="stylesheet" href="../../css/notice/mtm_detail.css">
-    <link rel="stylesheet" href="../../css/notice/notice_Aside.css">
+    <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -118,84 +109,109 @@
                         </form>
                     </div>
 
-             
+                </div>
+
+            </nav>
+        </header>
+
+
+        <main>
+
+
+            <div id="wrapper">
+
+
+
+
+
+
+
+
+                <div>
+                    <div class="pay_wrapper">
+                        <div>
+                            <h4>상품정보</h4>
+                        </div>
+
+                        <div>
+                            <div>
+                                <div>
+                                    <img src="../../images/store_img/플레인핫도그.jpg">
+                                </div>
+
+                            </div>
+
+                            <div>
+                                <div>
+                                    <div class="tit">
+
+                                        <h4>콜라 M</h4>
+
+
+                                    </div>
+                                    <div class="quantity">
+                                        <h4>수량</h4>
+                                        <h4><span>5</span></h4>
+                                        <h4>개</h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <h4>결제수단</h4>
+                        </div>
+                        <div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <h4>결제하기</h4>
+                        </div>
+                        <div class="payment">
+
+                            <div>
+
+                            </div>
+
+                            <div>
+                                <div>
+                                    <h4>상품금액</h4><span class="price" id="price">2800</span><em>원</em>
+                                </div>
+
+                                <div>
+                                    결제금액<span id="totalPrice">2800</span><em>원</em>
+                                </div>
+                                <div>
+
+                                    <button>결제하기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
 
                 </div>
 
 
 
-
-            </nav>
-        </header>
-
-        <main>
-            <section>
-
-                <aside>
-                    <div class="aside-ul-wrap">
-                        <ul class="aslide-list">
-                            <li>
-                                <a href="notice_home.html">
-                                    <h1>고객센터</h1>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="notice.html">공지사항</a>
-                            </li>
-                            <li>
-                                <a href="#">1:1 문의</a>
-                            </li>
-                            <li>
-                                <a href="question_homel.html">자주찾는 질문</a>
-                            </li>
-                            <li>
-                                <a href="find-my-item.html">분실문 문의</a>
-                            </li>
-                            <li>
-                                <a href="#">이용약관</a>
-                            </li>
-                            <li>
-                                <a href="#">개인정보처리</a>
-                            </li>
-                            <li>
-                                <a href="#"> 편성 기준
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </aside>
-                <div class="container">
-                    <div class="content-wrap">
-
-                        <h2>1:1 문의</h2>
-
-                        <div class="notice-contents">
-                            <div> <span>1:1 문의 제목</span></div>
-                            <div><span>[등록자]<span></span> <span>|</span> <span>[날짜] </span></span></div>
-                            <div>
-                                [1:1문의내용]
-                            </div>
-                        </div>
-
-                        <div class="reply_wrap">
-							<textarea></textarea> <button>등록하기</button>
-						</div>
-
-
-                        </div>
-
-                    </div>
-
-                    <div>
-                        <button>목록으로</button>
-                    </div>
-
-            </section>
+            </div>
         </main>
-
-        <button class="reply_delete"><a>삭제하기</a></button>
-
     </div>
+    <!-- 모달 -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="close-button">&times;</div>
+            <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
+        </div>
+    </div>
+
+
     <footer>
 
         <section>
@@ -209,7 +225,6 @@
                     <li><a href="#">개인정보처리방침</a></li><span>|</span>
                     <li><a href="#">편성기준</a></li>
                 </ul>
-
             </div>
 
             <div>
@@ -234,7 +249,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="../../js/common/header.js"></script>
-    <script src="../../js/common/replys.js"></script>
+    <script src="../../js/store/storeMain.js"></script>
 </body>
 
 </html>

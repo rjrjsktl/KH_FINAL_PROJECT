@@ -95,32 +95,27 @@ $(".btn-toggle-2").on("click", function () {
     }
 })
 
-$('.storeBuy_btn').on("click", function (e) {
+
+
+$('.storeBuy_btn').on("click", function () {
 
 
 
     $.ajax({
-        url: "/storeMain/store_detail/" + storeNo.val() + "/storeOrder",
+        url: "/movie/store/storeMain/store_detail/" + storeNo.val() + "/getStorePayment",
         data: {
 
-            "storeName": storeName
-            , "totalPrice": totalPrice
+
+            "totalPrice": totalPrice
             , "totalCount": totalCount
 
 
 
         },
         type: "POST",
-        success: function (result) {
-            if (result > 0) {
-                alert("스토어 물품 구매 성공");
 
-                let url = "/storeMain/store_detail/{storeNo}";
-                window.location.href = url;
-            } else {
-                alert("스토어 물품 구매 실패");
+        success: function () {
 
-            }
         },
 
         error: function () {

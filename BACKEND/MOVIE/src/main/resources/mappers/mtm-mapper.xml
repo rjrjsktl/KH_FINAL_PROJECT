@@ -17,13 +17,10 @@
 		<result property="mtmRepSt" column="MTM_REPST" />
 		<result property="mtmRepContent" column="MTM_REPCONTENT" />
 		<result property="mtmRepDate" column="MTM_REPDATE" />
-		<result property="mtmPw" column="MTM_PW"/>
-
+		<result property="mtmPw" column="MTM_PW" />
 	</resultMap>
 
-
-	<!-- 조건식을 추가해야합니다. 1. 로그인 한 유저가 일반유저일 경우 2. 로그인 한 유저가 관리자일 경우 -->
-
+	<!-- 표시할 mtmCount 조회 -->
 	<select id="getUserMtmCount" resultType="_int">
 		SELECT COUNT(MTM_NO)
 		FROM MTM_TBL
@@ -41,16 +38,14 @@
 			</otherwise>
 		</choose>
 	</select>
-	
 
-
+	<!-- 작성후 이동할 mtmNo 조회 -->
 	<select id="selectMtmNo" resultType="_int">
 		SELECT MAX(MTM_NO) AS
 		maxMtmNo FROM MTM_TBL WHERE USER_NO = ${userNo}
 	</select>
 
-
-
+	<!-- mtmList 조회 -->
 	<select id="userMtmList" resultMap="mtm_rm">
 		SELECT
 		MTM_NO,
@@ -75,17 +70,18 @@
 				ORDER BY MTM_TBL.MTM_NO DESC
 			</when>
 			<otherwise>
-				MTM_TBL.USER_NO = 0 AND MTM_TBL.MTM_ST = 'N' ORDER BY MTM_TBL.MTM_NO DESC
+				MTM_TBL.USER_NO = 0 AND MTM_TBL.MTM_ST = 'N' ORDER BY
+				MTM_TBL.MTM_NO DESC
 			</otherwise>
 		</choose>
 	</select>
-	
-		<!-- 고객센터 전용 count -->
+
+	<!-- 고객센터 전용 count -->
 	<select id="getUserMtmCount-all" resultType="_int">
-	SELECT COUNT(MTM_NO)
+		SELECT COUNT(MTM_NO)
 		FROM MTM_TBL WHERE MTM_ST = 'N'
 	</select>
-		<!-- 고객센터 전용 select -->
+	<!-- 고객센터 전용 select -->
 	<select id="userMtmList-all" resultMap="mtm_rm">
 		SELECT
 		MTM_NO,
@@ -95,33 +91,40 @@
 		MTM_COUNT,
 		MTM_TYPE,
 		MTM_PW,
+		MTM_REPST,
 		MTM_TBL.USER_NO
 		FROM
 		MTM_TBL
 		INNER JOIN
 		USERS ON
-		MTM_TBL.USER_NO = USERS.USER_NO
+		MTM_TBL.USER_NO =
+		USERS.USER_NO
 		WHERE MTM_ST = 'N'
 		ORDER BY MTM_TBL.MTM_NO DESC
-	</select>	
+	</select>
 
 	<select id="mtmDetail" resultMap="mtm_rm">
 		SELECT
 		MTM_NO
 		, MTM_TITLE
-		, MTM_CONTENT
+		,
+		MTM_CONTENT
 		, MTM_ST
 		, MTM_TYPE
 		, USER_NO
-		, TO_CHAR(MTM_REGDATE, 'YYYY.MM.DD') AS MTM_REGDATE
+		, TO_CHAR(MTM_REGDATE,
+		'YYYY.MM.DD') AS MTM_REGDATE
 		, MTM_WRITER
 		, MTM_REPST
 		, MTM_REPWRITER
-		, MTM_REPCONTENT
-		,TO_CHAR(MTM_REPDATE, 'YYYY.MM.DD HH24:MM') AS MTM_REPDATE
+		,
+		MTM_REPCONTENT
+		,TO_CHAR(MTM_REPDATE, 'YYYY.MM.DD HH24:MM') AS
+		MTM_REPDATE
 		, MTM_PW
 		FROM MTM_TBL
 		WHERE MTM_NO = #{mtmNo}
+		AND MTM_ST = 'N'
 	</select>
 
 	<insert id="addmTm" parameterType="mtm">
@@ -129,7 +132,8 @@
 		VALUES (
 		SEQ_MTM_NO.NEXTVAL
 		, #{mtmTitle}
-		, #{mtmContent}
+		,
+		#{mtmContent}
 		, NULL
 		, #{userNo}
 		,
@@ -137,7 +141,8 @@
 		, DEFAULT
 		, DEFAULT
 		, DEFAULT
-		, #{mtmWriter}
+		,
+		#{mtmWriter}
 		, DEFAULT
 		, DEFAULT
 		, DEFAULT
@@ -174,19 +179,26 @@
 		MTM_REPDATE = DEFAULT
 		WHERE MTM_NO = #{mtmNo}
 	</update>
-	
+
 	<select id="selectmtmPw" resultType="_int">
 		SELECT MTM_PW
 		FROM MTM_TBL
 		WHERE MTM_NO = #{mtmNo}
 	</select>
 
-<select id="selectUserNo" resultType="_int">
+	<select id="selectUserNo" resultType="_int">
 		SELECT USER_NO
 		FROM MTM_TBL
 		WHERE MTM_NO = #{mtmNo}
 	</select>
 
+	<!-- 1:1문의 조회수 증가 -->
+	<update id="updateReadCount">
+		UPDATE MTM_TBL
+		SET
+		MTM_COUNT = MTM_COUNT+1
+		WHERE MTM_NO = #{mtmNo}
+	</update>
 
 
 </mapper>

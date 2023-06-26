@@ -18,15 +18,10 @@
 		<result property="lostRepSt" column="LOST_REPST" />
 		<result property="lostRepContent" column="LOST_REPCONTENT" />
 		<result property="lostRepDate" column="LOST_REPDATE" />
+		<result property="lostPw" column="LOST_PW" />
 	</resultMap>
-
-
-
-	<!-- 작성 후 이동할 LostNo조회 -->
-	<select id="selectLostNo" resultType="_int">
-		SELECT MAX(LOST_NO) AS
-		maxLostNo FROM LOST_PACKAGE WHERE USER_NO = ${userNo}
-	</select>
+	
+	
 
 	<!-- 표시할 LostCount 조회 -->
 	<select id="getUserLostCount" resultType="_int">
@@ -46,6 +41,12 @@
 				LOST_PACKAGE.USER_NO = 0 AND LOST_PACKAGE.LOST_ST = 'N'
 			</otherwise>
 		</choose>
+	</select>
+
+	<!-- 작성 후 이동할 LostNo조회 -->
+	<select id="selectLostNo" resultType="_int">
+		SELECT MAX(LOST_NO) AS
+		maxLostNo FROM LOST_PACKAGE WHERE USER_NO = ${userNo}
 	</select>
 
 	<!-- LostList 조회 -->
@@ -75,27 +76,56 @@
 		</choose>
 	</select>
 
+	<!-- Lost 고객센터 전용 count -->
+	<select id="getUserLostCount-all" resultType="_int">
+		SELECT COUNT(LOST_NO)
+		FROM LOST_PACKAGE WHERE LOST_ST = 'N'
+	</select>
+	
+	<!-- Lost 고객센터 전용 Listselect -->
+	<select id="userLostList-all" resultMap="lost_rm">
+		SELECT
+		LOST_NO,
+			LOST_LOCATION,
+		LOST_TITLE,
+		LOST_DATE,
+		LOST_VIEW,
+		LOST_ITEM,
+		LOST_REPST,
+		LOST_PW,
+		LOST_PACKAGE.USER_NO
+		FROM
+		LOST_PACKAGE
+		INNER JOIN
+		USERS ON
+		LOST_PACKAGE.USER_NO =
+		USERS.USER_NO
+		WHERE LOST_ST = 'N'
+		ORDER BY LOST_PACKAGE.LOST_NO DESC
+	</select>
+
 	<!-- Lost 세부사항 조회 -->
 	<select id="lostdetail" resultMap="lost_rm">
 		SELECT
 		LOST_NO
 		, LOST_TITLE
-		,
-		LOST_CONTENT,
-		LOST_WRITER
+		, LOST_CONTENT
+		, LOST_ST
+		, LOST_ITEM
+		, USER_NO
 		, LOST_DATE
 		, LOST_WRITER
-		, LOST_REPWRITER
 		, LOST_REPST
-		,
-		LOST_REPCONTENT
+		, LOST_REPWRITER
+		, LOST_REPCONTENT
 		, LOST_REPDATE
+		, LOST_PW
 		FROM LOST_PACKAGE
 		WHERE LOST_NO =
-		#{lostNo}
+		#{lostNo}AND LOST_ST = 'N'
+		AND LOST_ST = 'N'
 	</select>
-
-
+	
 	<!-- Lost insert문 -->
 	<insert id="addLost" parameterType="losts">
 		INSERT INTO
@@ -116,6 +146,7 @@
 		, DEFAULT
 		, DEFAULT
 		, DEFAULT
+		, #{lostPw}
 		)
 	</insert>
 
@@ -127,6 +158,7 @@
 		${lostNo}
 	</update>
 
+	<!-- Lost댓글삭제 -->
 	<update id="replyLostDelete">
 		UPDATE LOST_PACKAGE SET
 		LOST_REPST = 'N'
@@ -135,7 +167,7 @@
 		${lostNo}
 	</update>
 
-
+	<!-- Lost댓글작성 -->
 	<update id="replyLostWrite">
 		UPDATE LOST_PACKAGE
 		SET
@@ -145,5 +177,28 @@
 		LOST_REPDATE = DEFAULT
 		WHERE LOST_NO = #{lostNo}
 	</update>
+
+	<!-- 분실물 무결성조회용 비밀번호조회 -->
+	<select id="selectmtmLostPw" resultType="_int">
+		SELECT LOST_PW
+		FROM LOST_PACKAGE
+		WHERE LOST_NO = #{lostNo}
+	</select>
+
+	<!-- 분실물 무결성조회용 유저넘버조회 -->
+	<select id="selectLostUserNo" resultType="_int">
+		SELECT USER_NO
+		FROM LOST_PACKAGE
+		WHERE LOST_NO = #{lostNo}
+	</select>
+
+	<!-- 분실물 조회 카운트 증가 -->
+	<update id="updateLostReadCount">
+		UPDATE LOST_PACKAGE
+		SET
+		LOST_VIEW = LOST_VIEW+1
+		WHERE LOST_NO = #{lostNo}
+	</update>
+
 
 </mapper>

@@ -90,9 +90,13 @@
 														<c:if test="${loop.index < 10}">
 															<tr class="row">
 																<td class="countRow">${lostUserList.losts.lostLocation}</td>
-																<td><a href="${lostUserList}/helpDesk/checkPw"
-																	id="mtmList_pass" style="color:white"> ${lostUserList.losts.mtmTitle} </a></td>
-																<td>${lostUserList.losts.lostDate}</td>
+																<td><a href="${contextPath}/myPage/myLostDetail/${lostUserList.losts.lostNo}?cp=${param.cp}"
+																	id="mtmList_pass" style="color:white"> ${lostUserList.losts.lostTitle} </a>
+																	<c:if
+																		test="${lostUserList.losts.lostRepSt == 'Y'}"><span class="replyComplete">.... [ 답변완료 ]</span>
+																	</c:if>	
+																</td>
+																<td>${lostUserList.losts.lostRepDate}</td>
 																<td>${lostUserList.losts.lostView}</td>
 															</tr>
 														</c:if>
@@ -158,18 +162,23 @@
     <!-- footer -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <div class="close-button">&times;</div>
-            <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
-        </div>
-    </div>
 
     <script src="${contextPath}/resources/js/common/header.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_swiper.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_myLostList.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_randomEvent.js"></script>
     
+	<script>
+	
+		
+		const param = "${param.cp}";
+		console.log(param
+				+ "+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
+		const userLostCount = "${lostUserList.pagination.listCount}";
+		console.log(userLostCount
+				+ "+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+	</script>
 
 </body>
 

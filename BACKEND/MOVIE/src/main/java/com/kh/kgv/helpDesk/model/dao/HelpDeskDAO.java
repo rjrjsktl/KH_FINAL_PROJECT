@@ -2,6 +2,7 @@ package com.kh.kgv.helpDesk.model.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale.Category;
 import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
@@ -16,13 +17,13 @@ import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.helpDesk.model.vo.LostPackage;
 import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.helpDesk.model.vo.MtmPagenation;
+import com.kh.kgv.helpDesk.model.vo.QuestPagenation;
 import com.kh.kgv.login.controller.LoginController;
 import com.kh.kgv.management.model.vo.Notice;
 
 @Repository
 public class HelpDeskDAO {
 
-	private Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 
 	@Autowired
@@ -43,11 +44,12 @@ public class HelpDeskDAO {
 		return sqlSession.selectOne("managerMapper.noticeNextNo", nextNoticeNo);
 	}
 
+	
+	
 	// 1:1문의 작성 후 이동할 MTMNO조회	
 	public int selectMtmNo(Mtm mtm) {
 		return sqlSession.selectOne("mtmMapper.selectMtmNo", mtm);
 	}
-
 
 	// 1:1문의 본인/권한자가 접근하기위한 갯수카운트
 	public int getMtmListCount(int userNo, int userManagerStAsInt) {
@@ -96,15 +98,31 @@ public class HelpDeskDAO {
 		params.put("managerNick", managerNick);
 		return sqlSession.update("mtmMapper.replyWrite", params);
 	}
+	
+	// 1:1문의 맵핑 무결성조회용 Pw조회
+	public int selectmtmPw(int mtmNo) {
+		return sqlSession.selectOne("mtmMapper.selectmtmPw", mtmNo);
+	}
+
+	// 1:1문의 맵핑 무결성조회용 mtmNo조회
+	public int selectUserNo(int mtmNo) {
+		return sqlSession.selectOne("mtmMapper.selectUserNo", mtmNo);
+
+	}
+
+	// 1:1문의 리드카운트 증가
+	public int updateReadCount(int mtmNo) {
+		return sqlSession.update("mtmMapper.updateReadCount", mtmNo);
+	}
 
 
 	
-	// 분실물 문의 글 작성 후 자신의 번호로 이동하기 위한 LostNo조회
+	// 분실물문의 작성 후 이동할 lostNo조회	
 	public int selectLostNo(LostPackage lost) {
 		return sqlSession.selectOne("lostMapper.selectLostNo", lost);
 	}
 	
-	// 분실물문의 갯수 카운트 ( insert를 위한 카운트 )
+	// 분실물문의 본인/권한자가 접근하기위한 갯수카운트
 	public int getLostListCount() {
 		return sqlSession.selectOne("lostMapper.getLostCount");
 	}
@@ -114,40 +132,40 @@ public class HelpDeskDAO {
 		Map<String, Object> params = new HashMap<>();
 		params.put("userNo", userNo);
 		params.put("userManagerSt", userManagerStAsInt);
-		return sqlSession.selectOne("lostMapper.getUserLostCount", params);
+		return sqlSession.selectOne("lostMapper.getUserLostCount-all", params);
 	}
-
-	// 분실물 리스트 출력
+	
+	// 분실물문의 리스트 출력
 	public List<Mtm> lostLists(LostPagenation pagination, int userNo, int userManagerStAsInt) {
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		Map<String, Object> params = new HashMap<>();
 		params.put("userNo", userNo);
 		params.put("userManagerSt", userManagerStAsInt);
-		return sqlSession.selectList("lostMapper.userLostList", params , rowBounds);
+		return sqlSession.selectList("lostMapper.userLostList-all", params , rowBounds);
 	}
-
-	// 분실물 세부사항 조회
+	
+	// 분실물문의 세부사항
 	public LostPackage selectLostDetail(int lostNo) {
 		return sqlSession.selectOne("lostMapper.lostdetail",lostNo);
 	}
 
-	// 분실물 삽입
+	// 분실물문의 insert
 	public int addLost(LostPackage lost) {
 		return sqlSession.insert("lostMapper.addLost", lost);
 	}
 
-	// 분실물 게시물 삭제
-	public int deleteLost(int mtmNo) {
-		return sqlSession.update("lostMapper.deleteLost", mtmNo);
+	// 분실물문의 게시물 삭제
+	public int deleteLost(int lostNo) {
+		return sqlSession.update("lostMapper.deleteLost", lostNo);
 	}
 
-	// 분실물 게시물 답변삭제
+	// 분실물문의 댓글 삭제
 	public int replyLostDelete(int lostNo) {
 		return sqlSession.update("lostMapper.replyLostDelete", lostNo);
 	}
 
-	// 분실물 게시물 답변 작성
+	// 분실물문의 댓글 등록
 	public int replyLostWrite(int lostNo, String content, String managerNick) {
 		Map<String, Object> params = new HashMap<>();
 		params.put("lostNo", lostNo);
@@ -156,15 +174,42 @@ public class HelpDeskDAO {
 		return sqlSession.update("lostMapper.replyLostWrite", params);
 	}
 
-	public int selectmtmPw(int mtmNo) {
-		return sqlSession.selectOne("mtmMapper.selectmtmPw", mtmNo);
+	// 분실물문의 맵핑 무결성조회용 Pw조회
+	public int selectmtmLostPw(int lostNo) {
+		return sqlSession.selectOne("lostMapper.selectmtmLostPw", lostNo);
+	}
+	
+	// 분실물문의 리드카운트 증가
+		public int updateLostReadCount (int lostNo) {
+			return sqlSession.update("lostMapper.updateLostReadCount", lostNo);
+			
+		}
+
+
+	// 분실물문의 맵핑 무결성조회용 lostNo조회
+	public int selectLostUserNo(int lostNo) {
+		return sqlSession.selectOne("lostMapper.selectLostUserNo", lostNo);
 	}
 
-	public int selectUserNo(int mtmNo) {
-		return sqlSession.selectOne("mtmMapper.selectUserNo", mtmNo);
 
+	public int getcountquestNum(int questNum) {
+		return sqlSession.selectOne("questMapper.getcountquestNum", questNum);
 	}
 
+	public List<Mtm> getQuestList(QuestPagenation pagination, int questNum) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("questMapper.getcountquestLIST", questNum , rowBounds);
+	}
+
+	
+
+
+	
+	
+	
 	
 
 
