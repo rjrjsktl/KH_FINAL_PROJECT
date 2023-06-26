@@ -25,5 +25,6 @@ public class LostPackage {
 	private String lostRepSt;
 	private String lostRepContent;
 	private String lostRepDate;
+	private int lostPw;
 
 }

@@ -1,8 +1,6 @@
 package com.kh.kgv.reserve.controller;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -16,11 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.reserve.model.service.ReserveService;
 
@@ -37,6 +37,7 @@ public class ReserveController {
 	private List<Movie> thumbList = null;
 	private List<JoinPlay> joinPlayList = null;
 	private Map<String, Object> reserveMap = null;
+	private Map<String, Object> priceMap = null; 
 	
 
 	@GetMapping("/choicePlay")
@@ -73,24 +74,17 @@ public class ReserveController {
 	
 	@GetMapping("/playList")
 	@ResponseBody
-	public List<JoinPlay> getTotalPlayList(String areaIndex, String cinemaIndex, String dateIndex ) {
+	public List<JoinPlay> getTotalPlayList(String areaIndex, String cinemaIndex, String dateIndex ) throws Exception {
 		
 		try {
 			String areaName = areaArray[Integer.parseInt(areaIndex)];
-			cinemaList = service.getAreaCinemaList(areaName);
-			int cinemaNo = cinemaList.get(Integer.parseInt(cinemaIndex)).getCinemaNo();
-			
-			LocalDateTime now = LocalDateTime.now();
-			LocalDateTime date = now.plusDays(Integer.parseInt(dateIndex));
-			String strDate = date.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-			
-			joinPlayList = service.getTotalPlayList(cinemaNo, strDate);
-			
+			joinPlayList = service.getTotalPlayList(areaName, cinemaIndex, dateIndex);
 		} catch(ArrayIndexOutOfBoundsException e) {
 			System.out.println("배열 범위 이외의 숫자입니다.");
 		} catch(NumberFormatException e) {
 			System.out.println("잘못된 인덱스입니다.");
 		}
+		
 		return joinPlayList;
 	}
 	
@@ -102,32 +96,15 @@ public class ReserveController {
 		
 		try {
 			String areaName = areaArray[Integer.parseInt(areaIndex)];
-			cinemaList = service.getAreaCinemaList(areaName);
-			int cinemaNo = cinemaList.get(Integer.parseInt(cinemaIndex)).getCinemaNo();
-			int movieNo;
-			
-			LocalDateTime now = LocalDateTime.now();
-			LocalDateTime date = now.plusDays(Integer.parseInt(dateIndex));
-			String strDate = date.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-			
-			if(movieOptionIndex.equals("0")) {
-				movieList = service.getPlayingMovieList();
-				movieNo = movieList.get(Integer.parseInt(movieIndex)).getMovieNo();
-				joinPlayList = service.getMoviePlayList(cinemaNo, strDate, movieNo);
-			} else if(movieOptionIndex.equals("1")) {
-				thumbList = service.getPlayingThumbList();
-				movieNo = thumbList.get(Integer.parseInt(movieIndex)).getMovieNo();
-				joinPlayList = service.getMoviePlayList(cinemaNo, strDate, movieNo);
-			}
-			
+			joinPlayList = service.getMoviePlayList(areaName, cinemaIndex, dateIndex, movieOptionIndex, movieIndex);
 		} catch(ArrayIndexOutOfBoundsException e) {
 			System.out.println("배열 범위 이외의 숫자입니다.");
 		} catch(NumberFormatException e) {
 			System.out.println("잘못된 인덱스입니다.");
 		}
+		
 		return joinPlayList;
 	}
-	
 	
 	
 	@GetMapping("/selectPlay")
@@ -146,6 +123,7 @@ public class ReserveController {
 		
 		return result;
 	}
+	
 	
 	// 추후 PostMapping으로 변경함
 	
@@ -167,38 +145,16 @@ public class ReserveController {
 	
 	@GetMapping("/loadPlay")
 	@ResponseBody
-	public JoinPlay LoadPlay(HttpServletRequest req) {
+	public JoinPlay LoadPlay(HttpServletRequest req) throws Exception {
 		JoinPlay userPlay = null;
-		String priceDay = null;
-		String priceTime = null;
-		String screenStyle = null;
-		
+
 		try {
 			HttpSession session = req.getSession();
 			int playNo = Integer.parseInt( (String) session.getAttribute("playNo"));
 			userPlay = service.getUserPlay(playNo);
-
-			screenStyle = userPlay.getScreen().getScreenStyle();
-
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			Date startDate = formatter.parse(userPlay.getPlay().getPlayStart());
-			Calendar cal = Calendar.getInstance() ;
-			cal.setTime(startDate);
 			
-			if(cal.get(Calendar.DAY_OF_WEEK) >=1 && cal.get(Calendar.DAY_OF_WEEK) <=4) {
-				priceDay = "평일";
-			} else {
-				priceDay = "주말";
-			}
-			
-			if(cal.get(Calendar.HOUR) > 12) {
-				priceTime = "오전";
-			} else {
-				priceTime = "오후";
-			}
-			
-			System.out.println(priceDay + " " + priceTime);
-			int priceNo = service.getPriceNo(screenStyle, priceDay, priceTime);
+			int priceNo = service.getPriceNo(playNo);
+			session.setAttribute("priceNo", priceNo);
 			System.out.println(priceNo);
 
 		} catch(Exception e) {
@@ -206,6 +162,24 @@ public class ReserveController {
 		}
 		
 		return userPlay;
+	}
+	
+	
+	@PostMapping("/updatePrice")
+	@ResponseBody
+	public Map<String, Object> updatePrice(HttpServletRequest req, String partialCountArray) throws Exception {
+		
+		try {
+			HttpSession session = req.getSession();
+			int priceNo = (int) session.getAttribute("priceNo");
+			partialCountArray = partialCountArray.replaceAll("[^0-9]", "");
+			
+			priceMap = service.getPriceMap(priceNo, partialCountArray);
+		} catch(Exception e) {
+			e.printStackTrace();
+		} 
+		
+		return priceMap;
 	}
 	
 }

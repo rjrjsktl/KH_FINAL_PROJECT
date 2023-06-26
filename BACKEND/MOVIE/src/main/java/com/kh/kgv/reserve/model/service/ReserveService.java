@@ -1,9 +1,11 @@
 package com.kh.kgv.reserve.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.vo.Cinema;
+import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.management.model.vo.Screen;
 
@@ -14,15 +16,20 @@ public interface ReserveService {
 	List<Movie> getPlayingMovieList();
 
 	List<Movie> getPlayingThumbList();
+	
+	List<JoinPlay> getTotalPlayList(String areaName, String cinemaIndex, String dateIndex);
 
-	List<JoinPlay> getTotalPlayList(int cinemaNo, String strDate);
-
+	List<JoinPlay> getMoviePlayList(String areaName, String cinemaIndex, String dateIndex, String movieOptionIndex, String movieIndex);
+	
 	List<Screen> getScreenList(String cinemaName);
-
-	List<JoinPlay> getMoviePlayList(int cinemaNo, String strDate, int movieNo);
 
 	JoinPlay getUserPlay(int playNo);
 
-	int getPriceNo(String screenStyle, String priceDay, String priceTime);
+	CinemaPrice getPriceModel(int priceNo);
+
+	int getPriceNo(int playNo);
+
+	Map<String, Object> getPriceMap(int priceNo, String partialCountArray);
+
 
 }
