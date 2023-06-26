@@ -455,6 +455,11 @@ public class ManagerDAO {
 	}
 
 	
+	// 관리자_혜택 삭제
+	public int deleteBenefits(int benefitsNo) {
+		return sqlSession.delete("managerMapper.deleteBenefits",benefitsNo);
+	}
+
 	
 
 	
