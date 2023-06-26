@@ -16,7 +16,12 @@
 		<result property="screenName" column="SCREEN_NAME" />
 		<result property="screenStyle" column="SCREEN_STYLE" />
 		<result property="screenSeat" column="SCREEN_SEAT" />
-		<result property="screenDetail" column="SCREEN_DETAIL" />
+		<result property="screenRow" column="SCREEN_ROW" />
+		<result property="screenCol" column="SCREEN_COL" />
+		<result property="screenAisle" column="SCREEN_AISLE" />
+		<result property="screenSpace" column="SCREEN_SPACE" />
+		<result property="screenSweet" column="SCREEN_SWEET" />
+		<result property="screenImpaired" column="SCREEN_IMPAIRED" />
 	</resultMap>
 
 	<resultMap type="cinemaPrice" id="cinemaprice_rm">
@@ -44,8 +49,8 @@
 
 	<insert id="enrollScreen" parameterType="screen">
 		INSERT INTO SCREEN
-		VALUES(SEQ_SCREEN_NO.NEXTVAL, #{cinemaName}, #{screenName}, #{screenStyle}, #{screenSeat},
-		#{screenDetail})
+		VALUES(SEQ_SCREEN_NO.NEXTVAL, #{cinemaName}, #{screenName}, #{screenStyle}, #{screenSeat}, 
+		           #{screenRow}, #{screenCol}, #{screenAisle}, #{screenSpace}, #{screenSweet}, #{screenImpaired})
 	</insert>
 
 

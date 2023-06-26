@@ -9,7 +9,7 @@ $(document).ready(function () {
     aisle: [],
     space: {},
     sweet: [],
-    impared: []
+    impaired: []
   }));
   
 
@@ -135,7 +135,7 @@ $(document).ready(function () {
     tempRoom.aisle = [];
     tempRoom.space = {};
     tempRoom.sweet = [];
-    tempRoom.impared = [];
+    tempRoom.impaired = [];
 
     createBasicRoom(tempRoom.maxRow, tempRoom.maxColumn);
     decorateSeat();
@@ -694,8 +694,8 @@ $(document).ready(function () {
             tempRoom.sweet.push($(s).data('code'));
           }
 
-          if ($(s).hasClass("impared")) {
-            tempRoom.impared = tempRoom.impared.filter(function (data) {
+          if ($(s).hasClass("impaired")) {
+            tempRoom.impaired = tempRoom.impaired.filter(function (data) {
               return data != $(s).data('code');
             });
           }
@@ -746,7 +746,7 @@ $(document).ready(function () {
     tempRoom.aisle = [];
     tempRoom.space = {};
     tempRoom.sweet = [];
-    tempRoom.impared = {};
+    tempRoom.impaired = {};
 
     createBasicRoom(tempRoom.maxRow, tempRoom.maxColumn);
     decorateSeat();
