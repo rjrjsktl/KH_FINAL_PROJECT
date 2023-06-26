@@ -124,6 +124,7 @@
 		, MTM_PW
 		FROM MTM_TBL
 		WHERE MTM_NO = #{mtmNo}
+		AND MTM_ST = 'N'
 	</select>
 
 	<insert id="addmTm" parameterType="mtm">

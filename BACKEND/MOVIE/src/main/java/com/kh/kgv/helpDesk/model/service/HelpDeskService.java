@@ -1,5 +1,7 @@
 package com.kh.kgv.helpDesk.model.service;
 
+import java.util.List;
+import java.util.Locale.Category;
 import java.util.Map;
 
 import com.kh.kgv.customer.model.vo.User;
@@ -45,8 +47,11 @@ public interface HelpDeskService {
 	// 조회수 관련
 	int updateReadCount(int mtmNo);
 	int updateLostReadCount(int lostNo);
-
+	int getcountquestNum(int questNum);
 	
+	
+	
+
 
 
 
