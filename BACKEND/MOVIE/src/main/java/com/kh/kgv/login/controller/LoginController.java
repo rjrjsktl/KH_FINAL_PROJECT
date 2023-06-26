@@ -79,7 +79,7 @@ public class LoginController {
 		String path = null;
 
 		String prevPage = (String) session.getAttribute("prevPage");
-	    String mainPage = "http://localhost:8080/movie/";
+	    String mainPage = "/";
 	
 	    
 	    if (prevPage == null) {

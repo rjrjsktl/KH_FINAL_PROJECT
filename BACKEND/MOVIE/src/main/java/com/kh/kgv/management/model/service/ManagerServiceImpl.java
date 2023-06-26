@@ -586,11 +586,18 @@ public class ManagerServiceImpl implements ManagerService {
 		return dao.getStoreInfo(storeNo);
 	}
 
+
+	// 관리자_혜택 삭제
+	@Override
+	public int deleteBenefits(int benefitsNo) {
+		return dao.deleteBenefits(benefitsNo);
+	}
+
 	// 공지사항 조회수 증가
 	@Override
 	public int updateNoticeView(int noticeNo) {
 		return dao.updateNoticeView(noticeNo);
-
 	}
+
 
 }
