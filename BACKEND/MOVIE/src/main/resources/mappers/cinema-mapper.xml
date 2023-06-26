@@ -138,6 +138,11 @@
 	    WHERE SCREEN_STYLE = #{screenStyle} AND PRICE_DAY = #{priceDay} AND PRICE_TIME = #{priceTime}
 	</select> 
 	
+	<select id="getPriceModel" parameterType="_int" resultMap="cinemaprice_rm">
+	    SELECT * FROM PRICE
+	    WHERE PRICE_NO = #{priceNo}
+	</select>
+	
 	
 	
 </mapper>

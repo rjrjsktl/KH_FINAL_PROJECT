@@ -1,5 +1,6 @@
 package com.kh.kgv.store.contoller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,9 +12,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -54,6 +58,7 @@ public class StoreController {
 		return "store/storeMain";
 	}
 	
+	
 	@RequestMapping("/storeMain/store_detail/{storeNo}")
 	public String getStoreDetail(Model model,
 			 @PathVariable("storeNo") int storeNo
@@ -74,15 +79,82 @@ public class StoreController {
 		return "store/store_detail";
 	}
 	
+	
 	@ResponseBody
-	@PostMapping("/storeMain/store_detail/{storeNo}/storeOrder")
-	public String storeOrder ( @PathVariable("storeNo") int storeNo ,
-			String storeName , int totalPrice , int totalCount
-			,HttpServletResponse response ) throws Exception{
-			
-		logger.debug(" storeName : " + storeName);
+	@PostMapping("/storeMain/store_detail/{storeNo}/getStorePayment")
+	public String getStorePayment (
+			Model model,
+			@RequestParam("totalPrice") int totalPrice
+			,@RequestParam("totalCount") int totalCount,
+			@PathVariable("storeNo") int storeNo,
+			Store store )  {
+		
 		logger.debug(" totalPrice : " + totalPrice);
 		logger.debug(" totalCount : " + totalCount);
+		
+		
+//		Map<String, Object> paramMap = new HashMap<>();
+//		paramMap.put("totalPrice", totalPrice);
+//		paramMap.put("totalCount", totalCount);
+	    
+	   int result = service.getStorePayment(totalPrice,totalCount);
+		
+		
+//		model.addAttribute("totalPrice", totalPrice);
+//		model.addAttribute("totalCount", totalCount);
+	
+		
+//		store.setStoreTotalCount(totalCount);
+//		store.setStoreTotalPrice(totalPrice);
+//		
+//		//가격 인트형
+//		// 갯수 인트형
+//		int getTotalPrice = service.getTotalPrice(totalPrice);
+//		int getTotalCount = service.getTotalCount(totalCount);
+//		
+//		
+//		
+//		logger.debug(" getTotalPrice : " + getTotalPrice);
+//		logger.debug(" getTotalCount : " + getTotalCount);
+
+		
+		
+		// 각각 서비스단 으로 보냄 ex sevice.sendValue1
+		// 상동							서비스.샌드밸류2
+		
+		
+		
+		
+
+
+		
+	//	return "redirect:/storePayment";
+		return "store/store_payment";
+		//return "redirect:/storeMain/store_detail/store_payment/" + storeNo;
+		
+	}
+	
+	
+
+		
+	@RequestMapping("/storeMain/store_detail/store_payment/{storeNo}")
+	public String storePayment ( 
+			@PathVariable("storeNo") int storeNo 			
+			,Store store
+			,Model model
+			,HttpServletResponse response ) throws Exception{
+
+	
+		
+		logger.debug(" store : " + store);
+		Store getStore = service.getStoreDetail(store);
+		
+		
+		model.addAttribute("storeDetail", getStore);
+		
+		
+		
+		
 		
 		User  loginUser = (User) SessionUtil.getSession().getAttribute("loginUser");
 		
@@ -94,10 +166,10 @@ public class StoreController {
 				
 			}
 		
-		return  "store/store_detail";
+		return  "store/store_payment";
 	}
 	
-	
+
 	
 
 	
