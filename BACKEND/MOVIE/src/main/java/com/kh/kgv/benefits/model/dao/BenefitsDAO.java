@@ -21,9 +21,16 @@ public class BenefitsDAO {
 	private Logger logger = LoggerFactory.getLogger(BenefitsDAO.class);
 	
 	// 진행중인 헤택 리스트 불러오기
-	public List<Benefits> selectBenefitsList() {
-		return sqlSession.selectList("managerMapper.selectBenefitsList");
+	public List<Benefits> getBenefitsList() {
+		return sqlSession.selectList("managerMapper.getBenefitsList");
 	}
+	
+	// 혜택 리스트 > 상세 페이지
+	public Benefits selectOneBenefits(Benefits bene) {
+		return sqlSession.selectOne("managerMapper.selectOneBenefits",bene);
+	}
+
+	
 	
 	
 }

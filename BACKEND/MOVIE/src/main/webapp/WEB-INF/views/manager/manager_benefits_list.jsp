@@ -100,12 +100,16 @@
 																</c:otherwise>
 															</c:choose>
 
-															<td><a href="${contextPath}/manager/benefits_list/edit/${getBenefits['benefitsNo']}"
-																	class="editEvent"><i
-																		class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+															<td>
+																<a href="${contextPath}/manager/benefits_list/edit/${getBenefits['benefitsNo']}" class="editEvent">
+																	<i class="fa-sharp fa-solid fa-pen-to-square"></i>
+																</a>
 															</td>
-															<td><a class="deleteEvent"><i
-																		class="fa-sharp fa-solid fa-xmark"></i></a></td>
+															<td>
+																<a href="${contextPath}/manager/benefits_list/delete/${getBenefits['benefitsNo']}" class="deleteEvent" onclick="checkDelete()">
+																	<i class="fa-sharp fa-solid fa-xmark"></i>
+																</a>
+															</td>
 														</tr>
 													</c:forEach>
 
@@ -155,6 +159,13 @@
 						<script src="${contextPath}/resources/js/manager/manager_benefits_list.js"></script>
 						<script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
 						<script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
+						<script>
+							function checkDelete(){
+								if(!window.confirm("정말 삭제하시겠습니까 ?")){
+									return=false;
+								}
+							}
+						</script>
 					</body>
 
 					</html>

@@ -21,5 +21,14 @@ public class HelpDeskExceptionHandler {
 	        modelAndView.setViewName("/helpDesk/error");  // Your custom error page
 	        return modelAndView;
 	    }
+	  
+	  @ExceptionHandler(NullPointerException.class)
+	  public ModelAndView handleNullPointerException(NullPointerException ex, HttpServletRequest request) {
+	      ModelAndView modelAndView = new ModelAndView();
+	      modelAndView.addObject("exception", ex);
+	      modelAndView.addObject("url", request.getRequestURL());
+	      modelAndView.setViewName("/helpDesk/error");  // 사용자 정의 오류 페이지
+	      return modelAndView;
+	  }
 
 }

@@ -34,17 +34,27 @@ public class StoreServiceImpl implements StoreService {
 		return dao.getStoreDetail(store);
 	}
 
-//	@Override
-//	public Map<String, Object> getStoreDetail() {
-//		 List<Store> storeList = dao.getStoreList();
-//
-//		    Map<String, Object> storeMap = new HashMap<>();
-//
-//		    if (!storeList.isEmpty()) {
-//		        Store singleStore = storeList.get(0);
-//		        storeMap.put("storeDetail", singleStore);
-//		    }
-//
-//		    return storeMap;
-//	}
+	@Override
+	public int getStorePayment(int totalPrice, int totalCount) {
+		return dao.getStorePayment(totalPrice,totalCount);
+	}
+
+	
+	
+	
+
+
+	
+	
+	
+//	서비스샌드밸류1 (샌드밸류1){
+	
+	// 인트 리절트 = 0
+	
+	//리절트는 = 샌드벨류1 
+	
+//	/리턴 리절트
+//}
+	
+	
 }

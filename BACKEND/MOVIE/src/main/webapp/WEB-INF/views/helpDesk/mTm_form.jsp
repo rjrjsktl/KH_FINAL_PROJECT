@@ -69,14 +69,19 @@
 								</tr>
 								<tr>
 									<th>첨부파일</th>
-									<td><input type="file" multiple class="align_File"></td>
+									<td><input type="file" id="fileInput" multiple class="align_File" name="file" onchange="readURL(this);"></td>
+									
+									
+						
 								</tr>
 								<tr class="label_box">
 									<th>공개여부</th>
 									<td class="label_box"><label for="checkbox1"> <input
 											type="hidden" name="open" value=1111> <input
 											type="checkbox" id="checkbox1" name="open" value=0>
-									</label></td>
+									</label>
+									<span id="openStatus">비공개 상태입니다.</span> 
+									</td>
 								</tr>
 							</table>
 						</div>

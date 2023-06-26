@@ -83,10 +83,17 @@ function updateScreenSection(userPlay) {
 // 상영관 정보 업데이트
 
 function updateScreen(userPlay) {
+    console.log(userPlay.screen);
     maxRow = userPlay.screen.screenRow;
     maxColumn = userPlay.screen.screenCol;
     aisle = JSON.parse(userPlay.screen.screenAisle);
-    space = JSON.parse(userPlay.screen.screenSpace);
+    try {
+      space = JSON.parse(userPlay.screen.screenSpace);
+      console.log(userPlay.screen.screenSpace);
+    } catch(err) {
+      // space = JSON.parse(userPlay.screen.screenSpace);
+    }
+    
     selectedSeatArray = [];
     sweetSeatArray = JSON.parse(userPlay.screen.screenSweet);
     impairedSeatArray = JSON.parse(userPlay.screen.screenImpaired); 
@@ -132,7 +139,6 @@ function decideWidth() {
     $('#seat_area').css('width', `calc(${rowWidth}px)`);
 
 }
-
 
 
 
@@ -202,11 +208,6 @@ function updateSpecialSeat() {
 
 
 
-
-
-
-
-
 // 2. 인원 선택
 
 // 2-E1) 플러스 버튼을 클릭하면??
@@ -273,48 +274,31 @@ function updateCount() {
 
 // 좌석 선택
 
-let selectableSeat = $('#seat_area > div > a:not(.selected, .aisle, .space)');
 let seatNo;
-$(selectableSeat).on("click", function(e) {
-  seatNo = alphabet[$(this).closest("div").index()] + ($(this).prevAll(".seat, .space").length+1);
-  
-  if($(this).hasClass("selecting")) {
-    console.log($(this).hasClass("selecting"));
-    $(this).removeClass("selecting");
-    choiceCount--;    
-    seatArray = seatArray.filter((element) => element !== seatNo);
-    updateSeatSection();
-    updatePriceSection();
-  }
-  
-  else if((totalCount > choiceCount) && !($(e.target).hasClass("selecting"))) {
-    $(this).addClass("selecting");
-    choiceCount++;
-    seatArray.push(seatNo);
-    seatArray.sort((a,b) => sortSeat(a, b));
-    updateSeatSection();
-    updatePriceSection();
-  } 
 
+$('.seat').on("click", function(e) {
+  if(!$(this).hasClass('aisle') && !$(this).hasClass('space')) {
+    seatNo = alphabet[$(this).closest("div").index()] + ($(this).prevAll(".seat, .space").length+1);
+  
+    if($(this).hasClass("selecting")) {
+      console.log($(this).hasClass("selecting"));
+      $(this).removeClass("selecting");
+      choiceCount--;    
+      seatArray = seatArray.filter((element) => element !== seatNo);
+      updateSeatSection();
+      updatePriceSection();
+    }
+  
+    else if((totalCount > choiceCount) && !($(e.target).hasClass("selecting"))) {
+      $(this).addClass("selecting");
+      choiceCount++;
+      seatArray.push(seatNo);
+      seatArray.sort((a,b) => sortSeat(a, b));
+      updateSeatSection();
+      updatePriceSection();
+    } 
+  }
 })
-
-function clickSeat(e) {
-  if((totalCount > choiceCount) && !($(e.target).hasClass("selecting"))) {
-
-    $(e.target).addClass("selecting");
-    choiceCount++;
-    seatArray.push($(e.target).attr('data-seat'));
-    seatArray.sort((a,b) => sortSeat(a, b));
-    updateSeatSection();
-    updatePriceSection();
-  } else if($(e.target).hasClass("selecting")) {
-    $(e.target).removeClass("selecting");
-    choiceCount--;
-    seatArray = seatArray.filter((element) => element !== $(e.target).attr('data-seat'));
-    updateSeatSection();
-    updatePriceSection()
-  }
-}
 
 
 // [함수] 좌석번호 정렬
