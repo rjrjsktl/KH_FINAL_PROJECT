@@ -76,7 +76,9 @@
 									<td class="label_box"><label for="checkbox1"> <input
 											type="hidden" name="open" value=1111> <input
 											type="checkbox" id="checkbox1" name="open" value=0>
-									</label></td>
+									</label>
+									<span id="openStatus">비공개 상태입니다.</span> 
+									</td>
 								</tr>
 							</table>
 						</div>

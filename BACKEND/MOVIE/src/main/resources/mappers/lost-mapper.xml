@@ -122,7 +122,8 @@
 		, LOST_PW
 		FROM LOST_PACKAGE
 		WHERE LOST_NO =
-		#{lostNo}
+		#{lostNo}AND LOST_ST = 'N'
+		AND LOST_ST = 'N'
 	</select>
 	
 	<!-- Lost insert문 -->

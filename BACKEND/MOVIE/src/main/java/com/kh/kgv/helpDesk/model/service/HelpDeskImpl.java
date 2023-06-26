@@ -2,6 +2,7 @@ package com.kh.kgv.helpDesk.model.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale.Category;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import com.kh.kgv.helpDesk.model.vo.LostPagenation;
 import com.kh.kgv.helpDesk.model.vo.LostPackage;
 import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.helpDesk.model.vo.MtmPagenation;
+import com.kh.kgv.helpDesk.model.vo.QuestPagenation;
 import com.kh.kgv.management.model.dao.ManagerDAO;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Pagination;
@@ -333,6 +335,18 @@ public class HelpDeskImpl implements HelpDeskService {
 		}
 		return null;
 	}
+
+
+	@Override
+	public int getcountquestNum(int questNum) {
+		
+		return dao.getcountquestNum(questNum);
+	}
+
+	
+
+
+	
 
 	
 
