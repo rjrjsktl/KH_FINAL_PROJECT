@@ -100,8 +100,12 @@
 														<c:if test="${loop.index < 10}">
 															<tr class="row">
 																<td class="countRow">${mtmUserList.mtm.mtmType}</td>
-																<td><a href="${contextPath}/helpDesk/checkPw"
-																	id="mtmList_pass" style="color:white"> ${mtmUserList.mtm.mtmTitle} </a></td>
+																<td><a href="${contextPath}/myPage/myMtmDetail/${mtmUserList.mtm.mtmNo}"
+																	id="mtmList_pass" style="color:white"> ${mtmUserList.mtm.mtmTitle} </a>
+																	<c:if
+																		test="${mtmUserList.mtm.mtmRepSt == 'Y'}"><span class="replyComplete">.... [ 답변완료 ]</span>
+																	</c:if>
+																</td>
 																<td>${mtmUserList.mtm.mtmRegdate}</td>
 																<td>${mtmUserList.mtm.mtmCount}</td>
 															</tr>
@@ -185,10 +189,6 @@
 	
 		const mtmUserListmtmList = "${mtmUserList.mtmList}";
 		console.log(mtmUserListmtmList
-				+ "+++++++++++++++++++++++++++++++++++++++++++++++++++++");
-
-		const mtmUserListpagination = "${mtmUserList.pagination}";
-		console.log(mtmUserList.pagination
 				+ "+++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
 		const userMtmCount = "${mtmUserList.pagination.listCount}";

@@ -94,6 +94,26 @@ public class MyPageDAO {
 		return sqlSession.selectList("myPageMapper.getmtmlist", userNo, rowBounds);
 	}
 
+	/** userlostlist count 불러오기
+	 * @param userNo
+	 * @return
+	 */
+	public int getUserLostCount(int userNo) {
+		return sqlSession.selectOne("myPageMapper.getUserLostCount", userNo);
+	}
+
+	public List<Mtm> getlostlist(Pagination pagination, int userNo) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+		return sqlSession.selectList("myPageMapper.getlostlist", userNo, rowBounds);
+	}
+	
+	/** userlostlist 목록 불러오기
+	 * @param userNo
+	 * @return
+	 */
+
 //	/** 리뷰 5개씩 불러오기 DAO
 //	 * @param userNo
 //	 * @param startMovie
