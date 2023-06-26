@@ -1,5 +1,8 @@
 package com.kh.kgv.management.controller;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.kh.kgv.management.model.service.ManageCinemaService;
 import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.Screen;
@@ -52,7 +57,30 @@ public class ManageCinemaController {
 			screen.setScreenName(i);
 			screen.setScreenStyle(screenStyle[i]);
 			screen.setScreenSeat(Integer.parseInt(screenSeat[i]));
-			screen.setScreenDetail(screenDetail[i].replace("&quot;", "\""));
+
+			screenDetail[i] = screenDetail[i].replace("&quot;", "");
+			
+			String row = screenDetail[i].split(",maxColumn:")[0].replace("{maxRow:", "");
+			screen.setScreenRow(Integer.parseInt(row));
+			screenDetail[i] = screenDetail[i].split(",maxColumn:")[1];
+	
+			String col = screenDetail[i].split(",aisle:")[0];
+			screen.setScreenCol(Integer.parseInt(col));
+			screenDetail[i] = screenDetail[i].split(",aisle:")[1];
+			
+			String aisle = screenDetail[i].split(",space:")[0];
+			screen.setScreenAisle(aisle);
+			screenDetail[i] = screenDetail[i].split(",space:")[1];
+			
+			String space = screenDetail[i].split(",sweet:")[0];
+			screen.setScreenSpace(space);
+			screenDetail[i] = screenDetail[i].split(",sweet:")[1];
+			
+			String sweet = screenDetail[i].split(",impaired:")[0];
+			screen.setScreenSweet(sweet);
+			screenDetail[i] = screenDetail[i].split(",impaired:")[1];
+			
+			screen.setScreenImpaired(screenDetail[i].replace("}", ""));
 
 			screenResult += service.enrollScreen(screen);
 		}

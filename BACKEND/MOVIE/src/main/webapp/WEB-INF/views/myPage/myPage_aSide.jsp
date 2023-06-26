@@ -20,10 +20,10 @@
                     <a href="${contextPath}/myPage/myMovie">내가 본 영화</a>
                 </li>
                 <li>
-                    <a href="${contextPath}/myPage/myMtm">내 문의 내역</a>
+                    <a href="${contextPath}/myPage/myMtmList">내 문의 내역</a>
                 </li>
                 <li>
-                    <a href="${contextPath}/myPage/myLostItem">내 분실물 내역</a>
+                    <a href="${contextPath}/myPage/myLostList">내 분실물 내역</a>
                 </li>
                 <li>
                     <a href="${contextPath}/myPage/info">개인정보 수정</a>
