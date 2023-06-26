@@ -177,6 +177,9 @@ public interface ManagerService {
 	// 공지사항 count_view update
 	int updateNoticeView(int noticeNo);
 
+
+
+
 	
 
 	

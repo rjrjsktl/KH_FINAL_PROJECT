@@ -1,10 +1,34 @@
+
 $(document).ready(function () {
+
+	   // 체크박스의 초기 상태 설정
+    var isChecked = $('#checkbox1').is(':checked');
+    updateOpenStatus(isChecked);
+
+    // 체크박스의 상태가 변경될 때마다 메시지를 업데이트
+    $('#checkbox1').change(function() {
+        isChecked = $(this).is(':checked');
+        updateOpenStatus(isChecked);
+    });
+
+    function updateOpenStatus(isChecked) {
+        if (isChecked) {
+            $('#openStatus').text('공개 글 입니다.');
+            
+        } else {
+            $('#openStatus').text('비공개 글 입니다.');
+        }
+    }
+
+
   $('#submitButton').click(function (e) {
     var title = $('#titleInput').val();
     var inquiry = $('#inquirySelect').val();
     var content = $('#contentTextarea').val();
     var userNo = $('#userNo').val();
     var open = $('#checkbox1').is(':checked') ? 0 : 1111;
+    
+  
     
     // Check the inputs
     if (!title) {

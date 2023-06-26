@@ -2,6 +2,7 @@ package com.kh.kgv.helpDesk.model.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale.Category;
 import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
@@ -16,6 +17,7 @@ import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.helpDesk.model.vo.LostPackage;
 import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.helpDesk.model.vo.MtmPagenation;
+import com.kh.kgv.helpDesk.model.vo.QuestPagenation;
 import com.kh.kgv.login.controller.LoginController;
 import com.kh.kgv.management.model.vo.Notice;
 
@@ -189,6 +191,15 @@ public class HelpDeskDAO {
 		return sqlSession.selectOne("lostMapper.selectLostUserNo", lostNo);
 	}
 
+
+	public int getcountquestNum(int questNum) {
+		return sqlSession.selectOne("questMapper.getcountquestNum", questNum);
+	}
+
+	
+
+
+	
 	
 	
 	
