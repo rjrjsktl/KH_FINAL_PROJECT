@@ -24,7 +24,8 @@
                                 <span>강남상영관 : 서울특별시 강남구 테헤란로14길 6 남도빌딩 2F, D Class
                                 </span>
                                 <span>
-                                    Copyright © 2023-2023 Channel_KGV All Right Reserved
+                                    Copyright © 2023-2023 Channel_KGV All Right Reserved / "This is a non-commercial
+                                    purpose website project."
                                 </span>
                             </div>
 
