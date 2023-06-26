@@ -78,10 +78,30 @@
 									<span>전체</span><span class="counts">${qescount}</span>건
 								</p>
 
+								<ul class="cNumber" id="questListContainer">
+									<c:forEach var="quest" items="${questList.questList}"
+										varStatus="loop">
+										<c:if test="${loop.index < 10}">
+											<li>
+												<div class="qList">
+													<p>${quest.questType}</p>
+													<p>
+														<span><strong>Q</strong> ${quest.questTitle}</span> <span><i
+															class="fa-solid fa-chevron-down"></i></span>
+													</p>
+												</div>
+												<ul class="qList_detail none">
+													<li>${quest.questContent}</li>
+												</ul>
+											</li>
+										</c:if>
+									</c:forEach>
+								</ul>
+
 								<!-- 10개씩 -->
 								<div class="page_Nation">
 									<c:set var="url" value="?cp=" />
-									<c:set var="pagination" value="${lostList['pagination']}" />
+									<c:set var="pagination" value="${questList['pagination']}" />
 									<c:set var="currentPage" value="${pagination.currentPage}"
 										scope="request" />
 									<div>

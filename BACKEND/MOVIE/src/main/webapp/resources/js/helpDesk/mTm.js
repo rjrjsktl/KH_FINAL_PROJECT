@@ -19,6 +19,15 @@ $(document).ready(function () {
             $('#openStatus').text('비공개 글 입니다.');
         }
     }
+    
+$(document).ready(function() {
+    $('#fileInput').on('change', function() {
+        if (this.files && this.files[0]) {
+            var file = this.files[0];
+            $('#contentTextarea').val(file.name);
+        }
+    });
+});
 
 
   $('#submitButton').click(function (e) {
