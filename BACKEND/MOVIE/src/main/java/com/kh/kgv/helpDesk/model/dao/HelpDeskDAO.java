@@ -196,6 +196,14 @@ public class HelpDeskDAO {
 		return sqlSession.selectOne("questMapper.getcountquestNum", questNum);
 	}
 
+	public List<Mtm> getQuestList(QuestPagenation pagination, int questNum) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("questMapper.getcountquestLIST", questNum , rowBounds);
+	}
+
 	
 
 

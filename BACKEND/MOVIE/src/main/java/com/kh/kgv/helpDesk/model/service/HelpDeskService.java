@@ -47,7 +47,12 @@ public interface HelpDeskService {
 	// 조회수 관련
 	int updateReadCount(int mtmNo);
 	int updateLostReadCount(int lostNo);
+	
+	
+	// 음....
 	int getcountquestNum(int questNum);
+
+	Map<String, Object> getQuestList(int cp, int questNum);
 	
 	
 	

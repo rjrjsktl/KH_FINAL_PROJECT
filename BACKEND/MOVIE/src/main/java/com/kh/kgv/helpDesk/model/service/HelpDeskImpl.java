@@ -343,6 +343,25 @@ public class HelpDeskImpl implements HelpDeskService {
 		return dao.getcountquestNum(questNum);
 	}
 
+	@Override
+	public Map<String, Object> getQuestList(int cp, int questNum) {
+	
+		int questCount = dao.getcountquestNum(questNum);
+		QuestPagenation pagination = new QuestPagenation(cp, questCount);
+		
+		List<Mtm> questList = dao.getQuestList(pagination, questNum);
+
+		Map<String, Object> getQuestList = new HashMap<String, Object>();
+		getQuestList.put("pagination", pagination);
+		getQuestList.put("questList", questList);
+		
+		
+		
+		return getQuestList;
+	}
+
+
+
 	
 
 
