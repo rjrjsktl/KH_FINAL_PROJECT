@@ -448,6 +448,12 @@ public class ManagerDAO {
 	public Store getStoreInfo(int storeNo) {
 		return sqlSession.selectOne("storeMapper.getEditStoreList", storeNo);
 	}
+
+	public int updateNoticeView(int noticeNo) {
+		return sqlSession.update("managerMapper.updateNoticeView", noticeNo);
+
+	}
+
 	
 	
 

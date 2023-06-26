@@ -174,6 +174,12 @@ public interface ManagerService {
 	// 스토어 수정 중복검사
 	Store getStoreInfo(int storeNo);
 
+	// 공지사항 count_view update
+	int updateNoticeView(int noticeNo);
+
+
+
+
 	
 
 	

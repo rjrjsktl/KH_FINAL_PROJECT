@@ -586,4 +586,11 @@ public class ManagerServiceImpl implements ManagerService {
 		return dao.getStoreInfo(storeNo);
 	}
 
+	// 공지사항 조회수 증가
+	@Override
+	public int updateNoticeView(int noticeNo) {
+		return dao.updateNoticeView(noticeNo);
+
+	}
+
 }

@@ -1,5 +1,7 @@
 package com.kh.kgv.helpDesk.model.service;
 
+import java.util.List;
+import java.util.Locale.Category;
 import java.util.Map;
 
 import com.kh.kgv.customer.model.vo.User;
@@ -13,6 +15,7 @@ public interface HelpDeskService {
 	Notice getPreviousNotice(int noticeNo);
 	Notice getNextNotice(int noticeNo);
 	
+	// MTM 1:1문의
 	int selectMtmNo(Mtm mtm);
 	Map<String, Object> getMtmList(int cp, int userNo, String userManagerSt);
 	Mtm selectmTmDetail(int mtmNo);
@@ -22,6 +25,7 @@ public interface HelpDeskService {
 	int replyDelete(int mtmNo);
 	int replyWrite(int mtmNo, String content, String managerNick);
 
+	// Lost_Item 분실물 문의
 	int selectLostNo(LostPackage lost);
 	Map<String, Object> getLostList(int cp, int userNo, String userManagerSt);
 	LostPackage selectLostDetail(int lostNo);
@@ -34,8 +38,25 @@ public interface HelpDeskService {
 	// 게시물 비밀번호 관련
 	int selectmtmPw(int mtmNo);
 	int selectUserNo(int mtmNo);
-	String checkPasswordAccess(int mtmNo, User loginUser);
+	String checkPasswordAccess(int mtmNo, User loginUser, int cp);
+	int selectmtmLostPw(int lostNo);
+	int selectLostUserNo(int lostNo);
+	String checkLostPasswordAccess(int lostNo, User loginUser, int cp);
+
 	
+	// 조회수 관련
+	int updateReadCount(int mtmNo);
+	int updateLostReadCount(int lostNo);
+	
+	
+	// 음....
+	int getcountquestNum(int questNum);
+
+	Map<String, Object> getQuestList(int cp, int questNum);
+	
+	
+	
+
 
 
 

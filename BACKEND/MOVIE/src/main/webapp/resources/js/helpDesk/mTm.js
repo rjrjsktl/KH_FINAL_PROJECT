@@ -1,11 +1,60 @@
+
 $(document).ready(function () {
-  $('#submitButton').click(function () {
+
+	   // 체크박스의 초기 상태 설정
+    var isChecked = $('#checkbox1').is(':checked');
+    updateOpenStatus(isChecked);
+
+    // 체크박스의 상태가 변경될 때마다 메시지를 업데이트
+    $('#checkbox1').change(function() {
+        isChecked = $(this).is(':checked');
+        updateOpenStatus(isChecked);
+    });
+
+    function updateOpenStatus(isChecked) {
+        if (isChecked) {
+            $('#openStatus').text('공개 글 입니다.');
+            
+        } else {
+            $('#openStatus').text('비공개 글 입니다.');
+        }
+    }
+    
+$(document).ready(function() {
+    $('#fileInput').on('change', function() {
+        if (this.files && this.files[0]) {
+            var file = this.files[0];
+            $('#contentTextarea').val(file.name);
+        }
+    });
+});
+
+
+  $('#submitButton').click(function (e) {
     var title = $('#titleInput').val();
     var inquiry = $('#inquirySelect').val();
     var content = $('#contentTextarea').val();
     var userNo = $('#userNo').val();
-        var open = $('#checkbox1').is(':checked') ? 0 : 1111;
+    var open = $('#checkbox1').is(':checked') ? 0 : 1111;
     
+  
+    
+    // Check the inputs
+    if (!title) {
+      alert("제목을 입력해주세요");
+      e.preventDefault(); // Prevent the form from submitting
+      return;
+    }
+    if (!inquiry || inquiry === "문의 내용을 선택해주세요.") {
+      alert("문의종류를 선택해주세요");
+      e.preventDefault(); // Prevent the form from submitting
+      return;
+    }
+    if (!content) {
+      alert("내용을 입력해주세요");
+      e.preventDefault(); // Prevent the form from submitting
+      return;
+    }
 
     $.ajax({
       type: 'POST',
@@ -15,8 +64,7 @@ $(document).ready(function () {
         "inquirySelect": inquiry,
         "contentTextarea": content,
         "userNo": userNo,
-                "open": open
-        
+        "open": open
       },
       success: function (response) {
         var mtmNo = response.mtmNo; // mtmNo 값을 가져옵니다.
@@ -34,17 +82,17 @@ $(document).ready(function () {
 $(document).ready(function(){
     const deleteMtm = $("#deleteMtm"); 
 
-        deleteMtm.on('click', function(){
-      
-            let mtmNo = $(this).data('mtmno');
-            let url = `/movie/helpDesk/deleteMtm/${mtmNo}`;
+    deleteMtm.on('click', function(){
+  
+        let mtmNo = $(this).data('mtmno');
+    let cp = $("#cp").val(); // HTML에서 'cp' 값 가져오기
+        let url = `/movie/helpDesk/deleteMtm/${mtmNo}?cp=`+cp; // URL에 'cp' 파라미터 값을 추가합니다.
 
-            if( confirm("정말로 삭제 하시겠습니까?") ){
-                window.location.href = url; // get방식으로 url에 요청
-            }
-        });
+        if( confirm("정말로 삭제 하시겠습니까?") ){
+            window.location.href = url;
+        }
+    });
 });
-
 
 
 $(document).ready(function(){
