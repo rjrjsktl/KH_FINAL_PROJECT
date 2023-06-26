@@ -1,5 +1,6 @@
 package com.kh.kgv.store.contoller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -85,37 +86,74 @@ public class StoreController {
 			Model model,
 			@RequestParam("totalPrice") int totalPrice
 			,@RequestParam("totalCount") int totalCount,
-			@PathVariable("storeNo") int storeNo ) {
+			@PathVariable("storeNo") int storeNo,
+			Store store )  {
 		
 		logger.debug(" totalPrice : " + totalPrice);
 		logger.debug(" totalCount : " + totalCount);
-		model.addAttribute("totalCount", totalCount);
+		
+		
+//		Map<String, Object> paramMap = new HashMap<>();
+//		paramMap.put("totalPrice", totalPrice);
+//		paramMap.put("totalCount", totalCount);
+	    
+	   int result = service.getStorePayment(totalPrice,totalCount);
+		
+		
+//		model.addAttribute("totalPrice", totalPrice);
+//		model.addAttribute("totalCount", totalCount);
+	
+		
+//		store.setStoreTotalCount(totalCount);
+//		store.setStoreTotalPrice(totalPrice);
+//		
+//		//가격 인트형
+//		// 갯수 인트형
+//		int getTotalPrice = service.getTotalPrice(totalPrice);
+//		int getTotalCount = service.getTotalCount(totalCount);
+//		
+//		
+//		
+//		logger.debug(" getTotalPrice : " + getTotalPrice);
+//		logger.debug(" getTotalCount : " + getTotalCount);
+
+		
+		
+		// 각각 서비스단 으로 보냄 ex sevice.sendValue1
+		// 상동							서비스.샌드밸류2
+		
+		
+		
+		
+
 
 		
 	//	return "redirect:/storePayment";
 		return "store/store_payment";
-//		return "redirect:/storeMain/store_detail/store_payment/" + storeNo;
+		//return "redirect:/storeMain/store_detail/store_payment/" + storeNo;
 		
 	}
 	
 	
-	
+
 		
 	@RequestMapping("/storeMain/store_detail/store_payment/{storeNo}")
 	public String storePayment ( 
-			@PathVariable("storeNo") int storeNo 
+			@PathVariable("storeNo") int storeNo 			
 			,Store store
 			,Model model
-			
 			,HttpServletResponse response ) throws Exception{
-			
-//		logger.debug(" storeName : " + storeName);
-//		logger.debug(" totalPrice : " + totalPrice);
-//		logger.debug(" totalCount : " + totalCount);
+
+	
 		
+		logger.debug(" store : " + store);
 		Store getStore = service.getStoreDetail(store);
 		
+		
 		model.addAttribute("storeDetail", getStore);
+		
+		
+		
 		
 		
 		User  loginUser = (User) SessionUtil.getSession().getAttribute("loginUser");
@@ -131,7 +169,7 @@ public class StoreController {
 		return  "store/store_payment";
 	}
 	
-	
+
 	
 
 	
