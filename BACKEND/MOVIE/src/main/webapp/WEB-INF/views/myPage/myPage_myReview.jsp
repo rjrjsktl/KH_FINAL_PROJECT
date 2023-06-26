@@ -68,8 +68,8 @@
                                                                 <div>
                                                                     <div>
                                                                         <div>${review.movie.movieTitle}</div>
-                                                                        <a id="deleteReview" data-revno="${review.review.revNo}"><i
-                                                                                class="fa-regular fa-circle-xmark"></i></a>
+                                                                        <a class="delete-review-btn" data-revno="${review.review.revNo}">
+                                                                        <i class="fa-regular fa-circle-xmark"></i></a>
                                                                     </div>
                                                                     <div>
                                                                         <ul>
