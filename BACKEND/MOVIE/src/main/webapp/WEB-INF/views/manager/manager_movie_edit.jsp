@@ -120,6 +120,10 @@
 																<input type="file" class="movie_image6" name="file">
 															</div>
 														</div>
+														<div id="movie_sub">
+															<span></span>
+															<div id="ifNoPhoto">선택하지 않으면 기존 이미지가 적용됩니다.</div>
+														</div>
 														<div id="level">
 															<span>관람 등급</span>
 															<div class="relative">
@@ -139,9 +143,7 @@
 															<span>장르</span>
 															<div class="relative">
 																<div class="movie_Genre">
-																	<div class="added">
 
-																	</div>
 																</div>
 																<div class="Genre_Items">
 																	<div class="movie_genre_slide">
@@ -165,6 +167,19 @@
 												<div class="table_bottom">
 													<button type="submit" class="bottom_Submit">저장</button>
 													<button class="bottom_Cancel">취소</button>
+													<!-- 숨겨진 이미지 -->
+													<input type="hidden" class="hiddenImg1"
+														value="${editMovie.movieImg1}" />
+													<input type="hidden" class="hiddenImg2"
+														value="${editMovie.movieImg2}" />
+													<input type="hidden" class="hiddenImg3"
+														value="${editMovie.movieImg3}" />
+													<input type="hidden" class="hiddenImg4"
+														value="${editMovie.movieImg4}" />
+													<input type="hidden" class="hiddenImg5"
+														value="${editMovie.movieImg5}" />
+													<input type="hidden" class="hiddenImg6"
+														value="${editMovie.movieImg6}" />
 												</div>
 											</div>
 										</div>

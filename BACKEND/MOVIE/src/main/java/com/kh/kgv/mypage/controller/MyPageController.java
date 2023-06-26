@@ -1,6 +1,7 @@
 package com.kh.kgv.mypage.controller;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.text.StringEscapeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,8 +32,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.kgv.customer.model.vo.Review;
 import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.helpDesk.model.service.HelpDeskService;
+import com.kh.kgv.helpDesk.model.vo.LostPackage;
 import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.management.model.service.ManagerService;
+import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.mypage.model.service.MyPageService;
 
 @Controller
@@ -45,6 +51,9 @@ public class MyPageController {
 	
 	@Autowired
 	private ManagerService managerService;
+	
+	@Autowired
+	private HelpDeskService helpService;
 	
 	// 마이페이지 첫번째 화면
 	// 로그인o -> 로그인page, 로그인x -> myPage
@@ -125,8 +134,24 @@ public class MyPageController {
 	}
 	
 	@GetMapping("/myLostItem")
-	public String myLostItem(Model model) {
+	public String myLostItem(@RequestParam(value = "cp", required = false, defaultValue="1" ) int cp
+							, @ModelAttribute("loginUser") User loginUser
+							, @RequestParam Map<String, Object> paramMap
+							, Model model
+							) {
+		
 		logger.info("LostList페이지 들어옴");
+		
+		logger.info("분실물 문의 리스트 뿌리자잇");
+		
+		paramMap.put("userNo", loginUser.getUserNo());
+		paramMap.put("cp", cp);
+//		int userNo = loginUser.getUserNo();
+
+		Map<String, Object> lostUserList = service.lostList(paramMap);
+		
+		model.addAttribute("lostUserList", lostUserList);
+		logger.info("Controll.lostUserList:::::" + lostUserList);
 		
 		// 메인 이벤트 목록 가지고 오기 - 7개
 		Map<String, Object> getEvnetList = null;
@@ -135,6 +160,101 @@ public class MyPageController {
 				
 		return "myPage/myPage_myLostList";
 	}
+	
+	// 고객센터 세부사항 진입 문제는 userNo이 없어서 카운트증가가 안되는데 어떻게하지..
+		@RequestMapping("/myLostDetail/{lostNo}")
+		public String noticedetail(
+									Model model
+									, @ModelAttribute("loginUser") User loginUser
+									, @PathVariable("lostNo") int lostNo
+									, HttpSession session
+									, HttpServletRequest req, HttpServletResponse resp
+									, @RequestParam(value = "cp", required = false, defaultValue="1") int cp
+				) {
+			
+			logger.info("들어오냐 잃어버린 디테일");
+//
+//			User loginUser = (User)session.getAttribute("loginUser");
+//
+//			
+//
+			int userNo = loginUser.getUserNo();
+//
+//			String checkResult = null;
+//			
+			if(loginUser != null ) {
+				userNo = loginUser.getUserNo();
+//				
+////				checkResult = helpService.checkLostPasswordAccess(lostNo, loginUser, cp);
+////				if (("redirect:/helpDesk/lost_detail/" + lostNo + "?cp=" + cp).equals(checkResult)) {
+////					return checkResult;
+////				} 
+			}
+//			checkResult = "redirect:/myPage/myLostDetail/" + lostNo;
+//			
+//			logger.info(checkResult);
+//			
+			LostPackage lostdetail = helpService.selectLostDetail(lostNo);
+
+			if( lostdetail != null ) { 
+				if( lostdetail.getUserNo() != userNo ) {
+
+					Cookie cookie = null;
+
+					Cookie[] cArr = req.getCookies();
+
+					if(cArr != null && cArr.length > 0) {
+
+						for(Cookie c : cArr) {
+							if(c.getName().equals("readLostdNo")) {
+								cookie = c;
+							}
+						}
+					}
+
+					int result = 0;
+
+					if ( cookie == null ) { 
+						cookie = new Cookie("readLostdNo", lostNo+"");
+						result = helpService.updateLostReadCount(lostNo);
+
+					} else { 
+
+						String[] temp = cookie.getValue().split("/");
+
+
+						List<String> list = Arrays.asList(temp);
+
+						if( list.indexOf(lostNo+"") == -1 ) { 
+
+							cookie.setValue( cookie.getValue() + "/" + lostNo );
+							result = helpService.updateLostReadCount(lostNo); 
+
+						}
+					}
+
+
+					if (result > 0) {
+						lostdetail.setLostView(lostdetail.getLostView() + 1);
+
+						cookie.setPath(req.getContextPath());
+						cookie.setMaxAge(60 * 60 * 1);
+						resp.addCookie(cookie);
+
+					}
+				}
+			}
+
+
+
+			System.out.println("=========================================================================" + lostdetail);
+			String unescapedContent = StringEscapeUtils.unescapeHtml4(lostdetail.getLostContent());
+			lostdetail.setLostContent(unescapedContent);
+			model.addAttribute("lostdetail", lostdetail);
+			model.addAttribute("cp", cp);
+			logger.info("lostDetail 다 돌았냐?");
+			return "myPage/myPage_myLostDetail";
+		}
 	
 	@GetMapping("/info")
 	public String info(Model model) {

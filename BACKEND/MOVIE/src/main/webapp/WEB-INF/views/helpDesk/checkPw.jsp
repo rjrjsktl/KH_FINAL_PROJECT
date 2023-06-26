@@ -47,9 +47,9 @@
 				<div class="container">
 
 					<div class="check-area">
-						<p>비밀번호를 입력하세요</p>
+						<p>본인이 작성한 글만<br>볼 수 있습니다.</p>
 						<div>
-							<input type="text" id="checkPw-input" />
+							<input type="text" id="checkPw-input" style="display:none;" />
 							<p id="pw-checker"></p>
 						</div>
 
@@ -57,13 +57,8 @@
 
 
 							<button class="goback">
-								<a href="${contextPath}/helpDesk/mtm_detail/${mtmNo}">뒤로가기</a>
+								<a href="${contextPath}/helpDesk/mTm_List/?cp=${param.cp}">확인</a>
 							</button>
-
-							<button id="gotoDetail" data-mtmno="${mtmNo}">
-								<a>확인</a>
-							</button>
-
 
 
 						</div>

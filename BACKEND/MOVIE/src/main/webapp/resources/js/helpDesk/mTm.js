@@ -1,10 +1,27 @@
-
 $(document).ready(function () {
-  $('#submitButton').click(function () {
+  $('#submitButton').click(function (e) {
     var title = $('#titleInput').val();
     var inquiry = $('#inquirySelect').val();
     var content = $('#contentTextarea').val();
     var userNo = $('#userNo').val();
+    var open = $('#checkbox1').is(':checked') ? 0 : 1111;
+    
+    // Check the inputs
+    if (!title) {
+      alert("제목을 입력해주세요");
+      e.preventDefault(); // Prevent the form from submitting
+      return;
+    }
+    if (!inquiry || inquiry === "문의 내용을 선택해주세요.") {
+      alert("문의종류를 선택해주세요");
+      e.preventDefault(); // Prevent the form from submitting
+      return;
+    }
+    if (!content) {
+      alert("내용을 입력해주세요");
+      e.preventDefault(); // Prevent the form from submitting
+      return;
+    }
 
     $.ajax({
       type: 'POST',
@@ -13,7 +30,8 @@ $(document).ready(function () {
         "titleInput": title,
         "inquirySelect": inquiry,
         "contentTextarea": content,
-        "userNo": userNo
+        "userNo": userNo,
+        "open": open
       },
       success: function (response) {
         var mtmNo = response.mtmNo; // mtmNo 값을 가져옵니다.
@@ -31,17 +49,17 @@ $(document).ready(function () {
 $(document).ready(function(){
     const deleteMtm = $("#deleteMtm"); 
 
-        deleteMtm.on('click', function(){
-      
-            let mtmNo = $(this).data('mtmno');
-            let url = `/movie/helpDesk/deleteMtm/${mtmNo}`;
+    deleteMtm.on('click', function(){
+  
+        let mtmNo = $(this).data('mtmno');
+    let cp = $("#cp").val(); // HTML에서 'cp' 값 가져오기
+        let url = `/movie/helpDesk/deleteMtm/${mtmNo}?cp=`+cp; // URL에 'cp' 파라미터 값을 추가합니다.
 
-            if( confirm("정말로 삭제 하시겠습니까?") ){
-                window.location.href = url; // get방식으로 url에 요청
-            }
-        });
+        if( confirm("정말로 삭제 하시겠습니까?") ){
+            window.location.href = url;
+        }
+    });
 });
-
 
 
 $(document).ready(function(){
