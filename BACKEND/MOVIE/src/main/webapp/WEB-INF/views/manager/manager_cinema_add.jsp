@@ -119,12 +119,15 @@
                                                                             </div>
                                                                         </div>
                                                                         <div style="display:none">
-                                                                            <input type="text" class="screenStyle"
-                                                                                name="screenStyle">
-                                                                            <input type="text" class="screenSeat"
-                                                                                name="screenSeat">
-                                                                            <input type="text" class="screenDetail"
-                                                                                name="screenDetail">
+                                                                            <input type="text" class="screenStyle" name="screenStyle">
+                                                                            <input type="text" class="screenSeat" name="screenSeat">
+                                                                            <input type="text" class="screenDetail" name="screenDetail">
+                                                                            <input type="text" class="screenRow" name="screenRow">
+                                                                            <input type="text" class="screenCol" name="screenCol">
+                                                                            <input type="text" class="screenSpace" name="screenSpace">
+                                                                            <input type="text" class="screenAisle" name="screenAisle">
+                                                                            <input type="text" class="screenSweet" name="screenSweet">
+                                                                            <input type="text" class="screenImpaired" name="screenImpaired">
                                                                         </div>
                                                                     </div>
 
@@ -146,9 +149,9 @@
                                                                             <option>일반관</option>
                                                                             <option>KMAX</option>
                                                                             <option>DOLBY</option>
-                                                                            <option>DISH & WINE</option>
-                                                                            <option>WITH A PUPPY</option>
-                                                                            <option>KIDS</option>
+                                                                            <option>CHEF & CINE</option>
+                                                                            <option>PUPPY & ME</option>
+                                                                            <option>YES KIDS</option>
                                                                         </select>
                                                                     </div>
 

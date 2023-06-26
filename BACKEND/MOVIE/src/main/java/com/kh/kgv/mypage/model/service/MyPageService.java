@@ -24,8 +24,14 @@ public interface MyPageService {
 	// review카드 불러오기
 	List<Review> loadReviewCards(Map<String, Object> paramMap);
 
-	// mtmList불러오기
+	// mtmList 불러오기
 	Map<String, Object> mtmList(Map<String, Object> paramMap);
+
+	// lostList 불러오기
+	Map<String, Object> lostList(Map<String, Object> paramMap);
+
+	// 리뷰 카드 삭제
+	int reviewDelete(int revNo);
 	
 //	// review카드 5개씩 불러오기
 //	List<Review> getReviewListInRange(Map<String, Object> paramMap);

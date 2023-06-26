@@ -94,15 +94,32 @@ public class MyPageDAO {
 		return sqlSession.selectList("myPageMapper.getmtmlist", userNo, rowBounds);
 	}
 
-//	/** 리뷰 5개씩 불러오기 DAO
-//	 * @param userNo
-//	 * @param startMovie
-//	 * @param endMovie
-//	 * @return
-//	 */
-//	public List<Review> getReviewListInRange(Map<String, Object> paramMap) {
-//		logger.info("review::dao 실행 ㄱㄱㄱ");
-//		return sqlSession.selectList("myPageMapper.getReviewListInRange", paramMap);
-//	}
+	/** userlostlist count 불러오기
+	 * @param userNo
+	 * @return
+	 */
+	public int getUserLostCount(int userNo) {
+		return sqlSession.selectOne("myPageMapper.getUserLostCount", userNo);
+	}
 
+	/** 일어버린 물건 리스트 불러오기 and 페이지네이션
+	 * @param pagination
+	 * @param userNo
+	 * @return
+	 */
+	public List<Mtm> getlostlist(Pagination pagination, int userNo) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+		return sqlSession.selectList("myPageMapper.getlostlist", userNo, rowBounds);
+	}
+
+	/** 리뷰 카드 삭제!
+	 * @param revNo
+	 * @return
+	 */
+	public int reviewDelete(int revNo) {
+		return sqlSession.update("myPageMapper.reviewDelete", revNo);
+	}
+	
 }

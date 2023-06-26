@@ -1,8 +1,10 @@
 package com.kh.kgv.helpDesk.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale.Category;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -31,6 +33,7 @@ import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.helpDesk.model.service.HelpDeskService;
 import com.kh.kgv.helpDesk.model.vo.LostPackage;
 import com.kh.kgv.helpDesk.model.vo.Mtm;
+import com.kh.kgv.helpDesk.model.vo.Quest;
 import com.kh.kgv.login.controller.LoginController;
 import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.management.model.vo.Notice;
@@ -261,6 +264,10 @@ public class HelpDeskController {
 
 		Mtm mTmdetail = services.selectmTmDetail(mtmNo);
 
+		if (mTmdetail == null) {
+			return "helpDesk/error";
+		}
+
 		int userNo = 0;
 
 		if(loginUser != null ) {
@@ -321,9 +328,13 @@ public class HelpDeskController {
 		String unescapedContent = StringEscapeUtils.unescapeHtml4(mTmdetail.getMtmContent());
 		mTmdetail.setMtmContent(unescapedContent);
 
+
+
 		model.addAttribute("mTmdetail", mTmdetail);
 		mTmdetail.setUserNo(userNo);
 		model.addAttribute("cp", cp);
+
+
 
 		return "helpDesk/mtm_detail";
 	}
@@ -601,6 +612,10 @@ public class HelpDeskController {
 
 		LostPackage lostdetail = services.selectLostDetail(lostNo);
 
+		if (lostdetail == null) {
+			return "helpDesk/error";
+		}
+
 		int userNo = 0;
 
 		if(loginUser != null ) {
@@ -841,12 +856,46 @@ public class HelpDeskController {
 	}
 
 
-
-	@RequestMapping("/question_home")
+	@GetMapping("/question_home")
 	public String question(
-			Model model
-			){
+			Model model,
+			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+			) {
+
+		int questNum = 0;
+
+		int qescount = services.getcountquestNum(questNum);
+
+		Map<String, Object>questList = null;
+
+		questList = services.getQuestList(cp,questNum);
+
+		model.addAttribute("qescount",qescount);
+		model.addAttribute("questList", questList);
+
+
+
+		System.out.println(model);
+
 		return "helpDesk/question_home";
 	}
 
+
+	@PostMapping("/question_home")
+	@ResponseBody
+	public Map<String, Object> postQuestion(
+	        Model model,
+	        @RequestParam("questNum") int questNum,
+	        @RequestParam(value = "cp", required = false, defaultValue="1") int cp
+	        ) {
+
+	    int qescount = services.getcountquestNum(questNum);
+	    Map<String, Object> questList = services.getQuestList(cp,questNum);
+
+	    Map<String, Object> response = new HashMap<>();
+	    response.put("qescount", qescount);
+	    response.put("questList", questList);
+
+	    return response;
+	}
 }

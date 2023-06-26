@@ -50,7 +50,7 @@
 
 							<div class="search-area">
 								<p>
-									분실물 게시글 총<span>${lostCount}</span>건
+									분실물 게시글 총<span>${count}</span>건
 								</p>
 							</div>
 

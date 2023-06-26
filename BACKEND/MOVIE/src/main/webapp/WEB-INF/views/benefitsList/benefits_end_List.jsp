@@ -12,7 +12,7 @@
 						<meta http-equiv="X-UA-Compatible" content="IE=edge">
 						<meta name="viewport" content="width=device-width, initial-scale=1.0">
 						<title>지난 혜택 목록</title>
-						<link rel="stylesheet" href="${contextPath}/resources/css/movieList/eventList.css">
+						<link rel="stylesheet" href="${contextPath}/resources/css/benefitsList/benefitsList.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
 
 						<!-- fontawesome -->
@@ -46,18 +46,18 @@
 													<li>
 														<div>
 															<input type="hidden" class="benefitsNo"
-																value="${benfits['benefitsNo']}" />
+																value="${benefits['benefitsNo']}" />
 															<span class="wordOuter"></span>
 															<a
-																href="${contextPath}/benefitsList/detail_List/introduce/${benefits['benefitsNo']}">
-																<img src="${benfits['benefitsImg']}" class="target1"></a>
+																href="${contextPath}/benefitsList/benefits_end_List/introduce/${benefits['benefitsNo']}">
+																<img src="${benefits['benefitsImg']}" class="target1"></a>
 														</div>
 
 														<div>
 															<a class="target1"
-																href="${contextPath}/benefitsList/detail_List/introduce/${benefits['benefitsNo']}">
+																href="${contextPath}/benefitsList/benefits_end_List/introduce/${benefits['benefitsNo']}">
 																<span
-																	class="benefitsTitle">${benfits['benefitsTitle']}</span></a>
+																	class="benefitsTitle">${benefits['benefitsTitle']}</span></a>
 															<div>
 																<p>
 																	기간&nbsp;:&nbsp;<span>${benefits['benefitsStart']}&nbsp;~&nbsp;
