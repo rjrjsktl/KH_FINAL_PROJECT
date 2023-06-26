@@ -34,27 +34,9 @@ public class StoreServiceImpl implements StoreService {
 		return dao.getStoreDetail(store);
 	}
 
-	@Override
-	public int getStorePayment(int totalPrice, int totalCount) {
-		return dao.getStorePayment(totalPrice,totalCount);
-	}
-
-	
-	
-	
 
 
-	
-	
-	
-//	서비스샌드밸류1 (샌드밸류1){
-	
-	// 인트 리절트 = 0
-	
-	//리절트는 = 샌드벨류1 
-	
-//	/리턴 리절트
-//}
+
 	
 	
 }
