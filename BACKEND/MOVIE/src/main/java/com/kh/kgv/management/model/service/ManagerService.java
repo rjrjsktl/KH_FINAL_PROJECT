@@ -173,9 +173,11 @@ public interface ManagerService {
 	
 	// 스토어 수정 중복검사
 	Store getStoreInfo(int storeNo);
-
 	
-
+	// 관리자_혜택 삭제
+	int deleteBenefits(int benefitsNo);
+	
+	
 	
 
 

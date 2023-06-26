@@ -590,4 +590,12 @@ public class ManagerServiceImpl implements ManagerService {
 		return dao.getStoreInfo(storeNo);
 	}
 
+	// 관리자_혜택 삭제
+	@Override
+	public int deleteBenefits(int benefitsNo) {
+		return dao.deleteBenefits(benefitsNo);
+	}
+	
+	
+
 }

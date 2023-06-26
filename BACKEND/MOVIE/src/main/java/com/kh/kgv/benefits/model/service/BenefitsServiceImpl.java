@@ -25,13 +25,20 @@ public class BenefitsServiceImpl implements BenefitsService{
 	@Override
 	public Map<String, Object> getBenefitsList() {
 		
-		List<Benefits> BenefitsList = dao.selectBenefitsList();
+		List<Benefits> BenefitsList = dao.getBenefitsList();
 		
 		Map<String, Object> getBenefitsList = new HashMap<String, Object>();
 		getBenefitsList.put("getBenefitsList", BenefitsList);
 		
 		
 		return getBenefitsList;
+	}
+	
+	// 혜택 리스트 > 상세 페이지
+	@Override
+	public Benefits selectOneBenefits(Benefits bene) {
+
+		return dao.selectOneBenefits(bene);
 	}
 
 	
