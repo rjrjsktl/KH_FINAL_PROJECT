@@ -172,6 +172,8 @@ public class ManagerServiceImpl implements ManagerService {
 			cleanedMovie.setMovieCast(movie.getMovieCast());
 			cleanedMovie.setMovieRegdate(movie.getMovieRegdate());
 			cleanedMovie.setMovieSt(movie.getMovieSt());
+    		cleanedMovie.setMoviePlayed(movie.getMoviePlayed());
+    		cleanedMovie.setMovieWatched(movie.getMovieWatched());
 
 			cleanedList.add(cleanedMovie);
 		}
