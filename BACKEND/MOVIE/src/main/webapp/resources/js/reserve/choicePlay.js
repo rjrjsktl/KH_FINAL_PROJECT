@@ -9,6 +9,8 @@ let playIndex = -1;
 
 let areaCinemaList = [];
 let movieNumList = [];
+let titleRankList = [];
+let rateRankList = [];
 let userPlayList;
 
 let originPlay = $("#origin_play").clone(true);
@@ -27,11 +29,17 @@ $('#total_play').empty();
 // [ajax] 페이지가 로딩되면 서울 지역의 극장을 극장 리스트에 저장함.
 
 $.ajax({
-  url: "cinemaList",
+  url: "initialMap",
   data: {"areaIndex": areaIndex},
   type: "GET",
-  success: function(cinemaList) {
-    areaCinemaList = cinemaList;
+  success: function(initialMap) {
+    areaCinemaList = initialMap.cinemaList;
+    titleRankList = initialMap.titleRankList;
+    rateRankList = initialMap.rateRankList;
+    
+    console.log(areaCinemaList);
+    console.log(titleRankList);
+    console.log(rateRankList);
   },
   error: function () {
     console.log("페이지 로딩 중 에러 발생");
@@ -88,7 +96,7 @@ function updateGreatPlayAjax() {
 
 function selectAreaAjax() {
   $.ajax({
-    url: "cinemaList",
+    url: "initialMap",
     data: {"areaIndex": areaIndex},
     type: "GET",
     success: function(cinemaList) {

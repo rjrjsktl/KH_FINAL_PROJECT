@@ -321,12 +321,12 @@ main > section:first-child > div:last-child {
   width: 100%;
   height: calc(400px/3);
   color: white;
-  padding-left: 4%;
+  padding-left: 3%;
 }
 
 main > section:first-child > div:last-child > div {
   height: 100px;
-  margin-right: 4%;
+  margin-right: calc(4% - 0.5px);
 }
 
 /* 썸네일 + 영화 정보 */
@@ -334,14 +334,14 @@ main > section:first-child > div:last-child > div {
 main > section:first-child > div:last-child > div:first-child {
   border-right: 1px solid white;
   display: flex;
-  width: calc(100%/3);
+  width: 33.75%;
 }
 
 
 /* 썸네일 */
 
 main > section:first-child > div:last-child > div:first-child > #movie_thumb {
-  width: 61.4px;
+  width: 65px;
   height: 98px;
   border: 1px solid white;
   margin-right: 6%;
@@ -374,15 +374,17 @@ main > section:first-child > div:last-child > div:first-child > #movie_detail {
 /* 연령 */
 
 #movie_detail > div:first-child > div:first-child {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 25px;
   height: 25px;
-  font-size: 12px;
+  line-height: 19.5px;
+  text-align: center;
   border: 1px solid transparent;
   border-radius: 3px;
   margin-right: 10px;
+}
+
+#movie_detail > div:first-child > div:first-child > * {
+  font-size: 16px;
 }
 
 .age00 {
@@ -427,7 +429,7 @@ main > section:first-child > div:last-child > div:first-child > #movie_detail {
 /* 상영관 + 좌석 */
 
 main > section:first-child > div:last-child > div:nth-child(2) {
-  width: 17.5%;
+  width: 21%;
   border-right: 1px solid white;
   padding-top: 8px;
 }
@@ -477,10 +479,9 @@ main > section:first-child > div:last-child > div:last-child {
   top: 0;
   right: 0;
 
-  width: 18%;
+  width: 15%;
   height: 100%;
   background-color: crimson;
-  font-size: 22px;
 
   margin-right: 0;
   border-left: 1px solid white;
@@ -488,4 +489,5 @@ main > section:first-child > div:last-child > div:last-child {
 
 main > section:first-child > div:last-child > div:last-child > a {
   color: white;
+  font-size: 21px;
 }
