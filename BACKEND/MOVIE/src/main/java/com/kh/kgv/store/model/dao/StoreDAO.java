@@ -24,13 +24,6 @@ public class StoreDAO {
 		return sqlSession.selectOne("storeMapper.getStoreDetail", store);
 	}
 
-	public int getStorePayment(int totalPrice, int totalCount) {
-		
-		 Map<String, Object> params = new HashMap<>();
-		    params.put("totalPrice", totalPrice);
-		    params.put("totalCount", totalCount);
-		return sqlSession.insert("signupMapper.insertCertification", params);
-	}
 
 	
 
