@@ -56,25 +56,6 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.updateInfo", paramMap);
 	}
 
-//	/** 리뷰 불러오기 DAO
-//	 * @param userNo
-//	 * @return
-//	 */
-//	public List<Review> myReviewList(int userNo) {
-//		logger.info("review::dao 실행 ㄱㄱㄱ");
-//		return sqlSession.selectList("myPageMapper.myReviewList", userNo);
-//	}
-
-	/** 리뷰 불러오기 DAO
-	 * @param loadedCards
-	 * @param cardsPerLoad
-	 * @return
-	 */
-	public List<Review> loadReviewCards(Map<String, Object> paramMap) {
-		logger.info("review:::dao 실행");
-		return sqlSession.selectList("myPageMapper.loadReviewCards", paramMap);
-	}
-
 	/** usermtmlist count 조회
 	 * @param userNo
 	 * @return
@@ -102,27 +83,34 @@ public class MyPageDAO {
 		return sqlSession.selectOne("myPageMapper.getUserLostCount", userNo);
 	}
 
+	/** 일어버린 물건 리스트 불러오기 and 페이지네이션
+	 * @param pagination
+	 * @param userNo
+	 * @return
+	 */
 	public List<Mtm> getlostlist(Pagination pagination, int userNo) {
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 
 		return sqlSession.selectList("myPageMapper.getlostlist", userNo, rowBounds);
 	}
-	
-	/** userlostlist 목록 불러오기
-	 * @param userNo
+
+	/** 리뷰 불러오기 DAO
+	 * @param loadedCards
+	 * @param cardsPerLoad
 	 * @return
 	 */
-
-//	/** 리뷰 5개씩 불러오기 DAO
-//	 * @param userNo
-//	 * @param startMovie
-//	 * @param endMovie
-//	 * @return
-//	 */
-//	public List<Review> getReviewListInRange(Map<String, Object> paramMap) {
-//		logger.info("review::dao 실행 ㄱㄱㄱ");
-//		return sqlSession.selectList("myPageMapper.getReviewListInRange", paramMap);
-//	}
-
+	public List<Review> loadReviewCards(Map<String, Object> paramMap) {
+		logger.info("review:::dao 실행");
+		return sqlSession.selectList("myPageMapper.loadReviewCards", paramMap);
+	}
+	
+	/** 리뷰 카드 삭제!
+	 * @param revNo
+	 * @return
+	 */
+	public int reviewDelete(int revNo) {
+		return sqlSession.update("myPageMapper.reviewDelete", revNo);
+	}
+	
 }

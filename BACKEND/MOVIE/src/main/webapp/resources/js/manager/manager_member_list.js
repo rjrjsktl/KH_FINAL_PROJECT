@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // 관리자 권한 부여 설정
-    const checkBtn = $('td > .checkBtn');
+    const checkBtn = $('.checkBtn');
     const manager = $('.Is_Manager');
     const block = $('.Is_Blocked');
 
@@ -139,5 +139,29 @@ $(document).ready(function () {
         }
 
     });
+
+
+    // 검색 기능
+    const search = $('#selectBox');
+    const searchContent = $('.searchContent');
+    search.on('change', (e) => {
+        console.log($(e.currentTarget).val());
+        searchContent.val("");
+    });
+
+    checkBtn.on('click', (e) => {
+        checking();
+    });
+
+    searchContent.on('keypress', (e) => {
+        if (e.keyCode === 13) {
+            checking();
+        }
+    });
+
+    function checking() {
+        console.log(search.val());
+        console.log(searchContent.val());
+    }
 
 });

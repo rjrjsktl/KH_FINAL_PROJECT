@@ -34,17 +34,9 @@ public class StoreServiceImpl implements StoreService {
 		return dao.getStoreDetail(store);
 	}
 
-//	@Override
-//	public Map<String, Object> getStoreDetail() {
-//		 List<Store> storeList = dao.getStoreList();
-//
-//		    Map<String, Object> storeMap = new HashMap<>();
-//
-//		    if (!storeList.isEmpty()) {
-//		        Store singleStore = storeList.get(0);
-//		        storeMap.put("storeDetail", singleStore);
-//		    }
-//
-//		    return storeMap;
-//	}
+
+
+
+	
+	
 }

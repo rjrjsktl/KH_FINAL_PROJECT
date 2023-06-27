@@ -71,7 +71,7 @@
 									<table>
 
 										<thead>
-											<th>문의 종류</th>
+											<th>극장</th>
 											<th>내용</th>
 											<th>등록일</th>
 											<th>조회수</th>
@@ -91,7 +91,7 @@
 															<tr class="row">
 																<td class="countRow">${lostUserList.losts.lostLocation}</td>
 																<td><a href="${contextPath}/myPage/myLostDetail/${lostUserList.losts.lostNo}?cp=${param.cp}"
-																	id="mtmList_pass" style="color:white"> ${lostUserList.losts.lostTitle} </a>
+																	id="mtmList_pass"> ${lostUserList.losts.lostTitle} </a>
 																	<c:if
 																		test="${lostUserList.losts.lostRepSt == 'Y'}"><span class="replyComplete">.... [ 답변완료 ]</span>
 																	</c:if>	
@@ -165,7 +165,7 @@
 
     <script src="${contextPath}/resources/js/common/header.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_swiper.js"></script>
-    <script src="${contextPath}/resources/js/myPage/myPage_myLostList.js"></script>
+    <script src="${contextPath}/resources/js/myPage/myPage_myLost.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_randomEvent.js"></script>
     
 	<script>

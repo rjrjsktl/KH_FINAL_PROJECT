@@ -1,6 +1,8 @@
 package com.kh.kgv.store.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class StoreDAO {
 	public Store getStoreDetail(Store store) {
 		return sqlSession.selectOne("storeMapper.getStoreDetail", store);
 	}
+
+
+	
 
 	
 

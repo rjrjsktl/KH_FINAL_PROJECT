@@ -3,17 +3,28 @@
 <mapper namespace="storeMapper">
 	
 	<resultMap type="store" id="store_rm">
+		
 		<id property="storeNo" column="STORE_NO"/>
 		<result property="storeCategory" 			column="STORE_CATEGORY"/>
 		<result property="storeName" 				column="STORE_NAME"/>
 		<result property="storePrice" 				column="STORE_PRICE"/>
 		<result property="storeImage" 				column="STORE_IMAGE"/>
-		<result property="storeDesc" 					column="STORE_DESC"/>
-		<result property="storeStock" 			column="STORE_STOCK"/>
+		<result property="storeDesc" 				column="STORE_DESC"/>
+		<result property="storeStock" 				column="STORE_STOCK"/>
 		<result property="storeImageBig" 			column="STORE_IMAGE_BIG"/>
 		
 	</resultMap>
+	
+	<resultMap type="storeOrder" id="storeOrder_rm">
 		
+		<id property="orderNo" column="ORDER_NO"/>
+		<result property="orderDetailNo" 			column="ORDER_DETAIL_NO"/>
+		<result property="orderCount" 				column="ORDER_COUNT"/>
+		<result property="orderPrice" 				column="ORDER_PRICE"/>
+		<result property="orderDate" 				column="ORDER_DATE"/>
+		<result property="otderStatus" 				column="ORDER_STATUS"/>
+		
+	</resultMap>	
 	
 	
 	<!-- 상품 이름 중복 검사 -->

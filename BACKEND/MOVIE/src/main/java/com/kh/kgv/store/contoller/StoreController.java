@@ -1,10 +1,12 @@
 package com.kh.kgv.store.contoller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -85,37 +87,51 @@ public class StoreController {
 			Model model,
 			@RequestParam("totalPrice") int totalPrice
 			,@RequestParam("totalCount") int totalCount,
-			@PathVariable("storeNo") int storeNo ) {
+			@PathVariable("storeNo") int storeNo,
+			Store store
+			,HttpServletRequest request)  {
 		
+		  HttpSession session = request.getSession();
+		
+		
+		  session.setAttribute("totalPrice", totalPrice);
+		    session.setAttribute("totalCount", totalCount);
+		    
+		    
 		logger.debug(" totalPrice : " + totalPrice);
 		logger.debug(" totalCount : " + totalCount);
-		model.addAttribute("totalCount", totalCount);
-
 		
-	//	return "redirect:/storePayment";
 		return "store/store_payment";
-//		return "redirect:/storeMain/store_detail/store_payment/" + storeNo;
+	
 		
 	}
 	
 	
-	
-		
+
+	@GetMapping("/login") 	
 	@RequestMapping("/storeMain/store_detail/store_payment/{storeNo}")
 	public String storePayment ( 
-			@PathVariable("storeNo") int storeNo 
+			@PathVariable("storeNo") int storeNo 			
 			,Store store
 			,Model model
-			
-			,HttpServletResponse response ) throws Exception{
-			
-//		logger.debug(" storeName : " + storeName);
-//		logger.debug(" totalPrice : " + totalPrice);
-//		logger.debug(" totalCount : " + totalCount);
+			,HttpServletResponse response
+			,HttpServletRequest request
+			,HttpSession session) throws Exception{
+
+		int totalPrice = (int) session.getAttribute("totalPrice");
+	    int totalCount = (int) session.getAttribute("totalCount");
+	    
+	    logger.debug(" totalPrice************** : " + totalPrice);
+	    logger.debug(" totalCount*************** : " + totalCount);
 		
+		logger.debug(" store : " + store);
 		Store getStore = service.getStoreDetail(store);
 		
+		
 		model.addAttribute("storeDetail", getStore);
+		model.addAttribute("totalPrice", totalPrice);
+		model.addAttribute("totalCount", totalCount);
+		
 		
 		
 		User  loginUser = (User) SessionUtil.getSession().getAttribute("loginUser");
@@ -124,14 +140,14 @@ public class StoreController {
 			
 			Util.alertAndBackPage(response, "로그인을 하셔야 합니다.");
 					
-				return null;
-				
+			 
+			return null;
 			}
 		
 		return  "store/store_payment";
 	}
 	
-	
+
 	
 
 	
