@@ -21,21 +21,11 @@
 						integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 						crossorigin="anonymous"></script>
 
-					<!-- Summernote-->
-					<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
-						rel="stylesheet" />
-					<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-					<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-						rel="stylesheet">
-					<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
 					<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
 					<link rel="stylesheet" href="${contextPath}/resources/css/helpDesk/notice_ask_form.css">
 					<link rel="stylesheet" href="${contextPath}/resources/css/common/notice_Aside.css">
-
-
-
 
 
 				</head>
@@ -98,10 +88,6 @@
 											<textarea class="inner_Textarea" id="contentTextarea"
 												name="editordata"></textarea>
 										</div>
-
-										<form method="post">
-											<textarea id="summernote" name="editordata"></textarea>
-										</form>
 
 										<div class="addfileList"></div>
 

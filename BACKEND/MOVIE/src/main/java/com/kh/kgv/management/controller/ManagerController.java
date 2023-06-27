@@ -1478,7 +1478,7 @@ public class ManagerController {
 		
 
 		System.out.println("관리자_혜택 수정페이지 이동");
-		return "redirect:/";
+		return "redirect:/manager/manager_benefits_list";
 		
 	}
 	

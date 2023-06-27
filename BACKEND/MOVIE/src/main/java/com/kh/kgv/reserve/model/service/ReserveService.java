@@ -31,5 +31,7 @@ public interface ReserveService {
 
 	Map<String, Object> getPriceMap(int priceNo, String partialCountArray);
 
+	Map<String, Object> getInitialMap(String areaName);
+
 
 }

@@ -17,7 +17,7 @@
                         <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
                         <link rel="stylesheet" href="${contextPath}/resources/css/store/store_payment.css">
                         <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
-
+                        <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
                     </head>
 
                     <body>
@@ -110,8 +110,8 @@
                                                         </span><em>원</em>
                                                     </div>
                                                     <div>
+                                                        <button onclick="requestPay()">결제하기</button>
 
-                                                        <button>결제하기</button>
                                                     </div>
                                                 </div>
                                             </div>
