@@ -199,7 +199,7 @@
 						</main>
 
 
-						<script src="${contextPath}/resources/js/manager/manager_member_list.js"></script>
+						<script src="${contextPath}/resources/js/manager/manager_member_search.js"></script>
 						<script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
 						<script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
 					</body>
