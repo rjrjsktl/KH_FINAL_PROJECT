@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -181,6 +182,32 @@ public class ReserveServiceImpl implements ReserveService {
 		priceMap.put("totalPrice", totalPrice);
 		
 		return priceMap;
+	}
+
+	@Override
+	public Map<String, Object> getInitialMap(String areaName) {
+		Map<String, Object> initialMap = new HashMap<>();
+		
+		cinemaList = dao.getAreaCinemaList(areaName);
+		
+		List<Integer> titleRankList = new ArrayList<>();
+		List<Integer> rateRankList = new ArrayList<>();
+		
+		movieList = dao.getPlayingMovieList();
+		thumbList = dao.getPlayingThumbList();
+		
+		for(Movie movie : movieList) {
+			titleRankList.add(movie.getMovieNo());
+		}
+		
+		for(Movie movie : thumbList) {
+			rateRankList.add(movie.getMovieNo());
+		}
+		
+		initialMap.put("cinemaList", cinemaList);
+		initialMap.put("titleRankList", titleRankList);
+		initialMap.put("rateRankList", rateRankList);
+		return initialMap;
 	}
 
 }
