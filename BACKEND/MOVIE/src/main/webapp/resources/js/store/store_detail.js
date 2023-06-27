@@ -104,13 +104,8 @@ $('.storeBuy_btn').on("click", function () {
     $.ajax({
         url: "/movie/store/storeMain/store_detail/" + storeNo.val() + "/getStorePayment",
         data: {
-
-
             "totalPrice": totalPrice
             , "totalCount": totalCount
-
-
-
         },
         type: "POST",
 

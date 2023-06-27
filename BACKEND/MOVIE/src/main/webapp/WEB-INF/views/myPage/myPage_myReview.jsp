@@ -68,8 +68,8 @@
                                                                 <div>
                                                                     <div>
                                                                         <div>${review.movie.movieTitle}</div>
-                                                                        <a class="i-dlt-btn" href="#"><i
-                                                                                class="fa-regular fa-circle-xmark"></i></a>
+                                                                        <a class="delete-review-btn" data-revno="${review.review.revNo}">
+                                                                        <i class="fa-regular fa-circle-xmark"></i></a>
                                                                     </div>
                                                                     <div>
                                                                         <ul>
@@ -112,12 +112,6 @@
                         <!-- footer -->
                         <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-                        <div id="myModal" class="modal">
-                            <div class="modal-content">
-                                <div class="close-button">&times;</div>
-                                <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
-                            </div>
-                        </div>
 
                         <script src="${contextPath}/resources/js/common/header.js"></script>
                         <script src="${contextPath}/resources/js/myPage/myPage_myReview.js"></script>

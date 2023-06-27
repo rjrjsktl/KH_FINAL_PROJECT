@@ -10,6 +10,11 @@ public interface StoreService {
 
 	Store getStoreDetail(Store store);
 
+
+
+	
+
+
 	
 	
 

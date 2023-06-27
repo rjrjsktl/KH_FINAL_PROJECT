@@ -179,6 +179,15 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	
+	/** 리뷰 카드 삭제
+	 *
+	 */
+	@Override
+	public int reviewDelete(int revNo) {
+		return dao.reviewDelete(revNo);
+	}
+
+	
 	
 	
 }

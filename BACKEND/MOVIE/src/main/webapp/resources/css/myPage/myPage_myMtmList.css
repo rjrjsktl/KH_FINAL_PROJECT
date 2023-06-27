@@ -58,7 +58,6 @@ h2 {
     width: 40%;
     height: 100%;
     display: flex;
-
     padding: 0 10px;
 
 }
@@ -143,11 +142,13 @@ tbody{
     display: flex;
     margin: 0;
     padding: 0;
-    justify-content: center;    padding-top:30px;
+    justify-content: center;    
+    padding-top:30px;
   }
 
   .page_Nation div{
-    width:30px; height:30px;
+    width:30px; 
+    height:30px;
     border:1px solid rgba(73, 73, 73, 0.4);
     display: flex;
     justify-content: center;
@@ -187,4 +188,86 @@ tbody{
 .table-wrap> div:nth-child(2) > button:hover{
     background-color: white;
     color: black;
+}
+
+
+.check-area {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	width: 300px;
+	height: 300px;
+	margin: 0 auto;
+	border: 2px solid rgb(255, 196, 0);
+	border-radius: 10px;
+	margin-top: 70px;
+}
+
+.check-area>p {
+	font-size: 1.5rem;
+	text-align: center;
+}
+
+.check-area>div:nth-child(2) {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding-top: 20px;
+}
+
+#checkPw-input {
+	color: black;
+	width: 80%;
+	height: 40px;
+	padding-left: 5px;
+}
+
+#pw-checker {
+	margin-top: 5px;
+	color: red;
+}
+
+.btn_wraper {
+	display: flex;
+	justify-content: space-around;
+}
+
+.btn_wraper button {
+	margin-top: 20px;
+	width: 105px;
+	height: 35px;
+	background-color: rgb(49, 49, 49);
+	outline: none;
+	border: none;
+}
+
+.btn_wraper button:nth-child(1) {
+	margin-right: 10px;
+}
+
+.btn_wraper button:hover {
+	background-color: rgb(255, 196, 0);
+	color: black;
+	cursor: pointer;
+}
+
+a.hover {
+	color: black;
+}
+
+.qlrhdro {
+	color: red;
+	text-decoration: none;
+}
+
+.qlrhdro:hover {
+	color: red;
+	text-decoration: none;
+}
+
+.replyComplete{
+	color: #FFC400;
 }

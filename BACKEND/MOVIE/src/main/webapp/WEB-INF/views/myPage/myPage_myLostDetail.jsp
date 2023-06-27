@@ -13,7 +13,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>내 분실물 문의 내용</title>
+<title>내 분실물 문의</title>
 
 <script src="https://kit.fontawesome.com/dc6e43e0ad.js"
 	crossorigin="anonymous"></script>
@@ -55,7 +55,7 @@
 					<div class="container">
 						<div class="content-wrap">
 
-							<h2>내 분실물 문의 내용</h2>
+							<h2>내 분실물 문의</h2>
 
 							<div class="notice-contents">
 								<div>
@@ -80,6 +80,13 @@
 									<div class="reply-content">${lostdetail.lostRepContent}</div>
 								</div>
 							</div>
+							<c:if
+								test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y'}">
+								<button class="reply_delete" data-lostno="${lostdetail.lostNo}"
+									id="reply_deleteBtn">
+									<a>답변 삭제하기</a>
+								</button>
+							</c:if>
 						</c:if>
 
 						<div class="btn_wraper">
@@ -88,18 +95,15 @@
 								<button id="deleteLost" data-lostno="${lostdetail.lostNo}">
 									<input type="hidden" id="cp" value="${cp}"> <a>삭제</a>
 								</button>
-								<button id="deleteLost" data-lostno="${lostdetail.lostNo}">
-									<input type="hidden" id="cp" value="${cp}"> <a>수정</a>
-								</button>
 							</c:if>
 
 							<button class="goback">
-								<a href="${contextPath}/helpDesk/lost_List?cp=${param.cp}">목록으로</a>
+								<a href="${contextPath}/myPage/myLostList?cp=${param.cp}">목록으로</a>
 							</button>
 
 						</div>
-
 					</div>
+				</div>
 			</section>
 		</main>
 
@@ -108,16 +112,8 @@
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-	<div id="myModal" class="modal">
-		<div class="modal-content">
-			<div class="close-button">&times;</div>
-			<iframe src="../login/login.html" frameborder="0" width="500px"
-				height="500px"></iframe>
-		</div>
-	</div>
-
 	<script src="${contextPath}/resources/js/common/header.js"></script>
-	<script src="${contextPath}/resources/js/myPage/myPage_myLostList.js"></script>
+	<script src="${contextPath}/resources/js/myPage/myPage_myLost.js"></script>
 	<script src="${contextPath}/resources/js/myPage/myPage_randomEvent.js"></script>
 	<script src="${contextPath}/resources/js/myPage/myPage_swiper.js"></script>
 </body>

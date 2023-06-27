@@ -2,14 +2,39 @@ $(document).ready(function () {
 
     let movie_image1 = $('.movie_image1');
 
+
     movie_image1.on('change', function (e) {
+
         console.log(e.target.files); // 파일 목록 출력
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
+
+
+            if (!checkExtension(e.target.files[i].name, e.target.files[i].size)) {
+                movie_image1.val('');
+                return false;
+            }
             uploadImageFile1(e.target.files[i]); // 파일 전달
+
+
         }
     });
+
+    let regex = new RegExp("(.*?\.(png|jpg|gif|jpeg)$)");
+    let maxSize = 5000000; // 5MB 제한
+
+    function checkExtension(fileName, fileSize) {
+        if (fileSize >= maxSize) {
+            alert("파일 사이즈 초과");
+            return false;
+        }
+        if (!regex.test(fileName)) {
+            alert("해당 종류 파일은 업로드 안됨.\n PNG, JPG, GIF, JPEG 만 가능합니다.");
+            return false;
+        }
+        return true;
+    };
 
     let imageUrl1;
 
@@ -91,6 +116,7 @@ $(document).ready(function () {
 });
 
 
+
 function readURL(input) {
 
     if (input.files && input.files[0]) {
@@ -110,4 +136,4 @@ function readURL(input) {
         $('#imgSize')[0].src = "";
 
     }
-}
+};
