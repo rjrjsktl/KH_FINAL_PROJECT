@@ -178,6 +178,9 @@ public interface ManagerService {
 	// 공지사항 count_view update
 	int updateNoticeView(int noticeNo);
 
+
+
+
 	
 	// 관리자_혜택 삭제
 	int deleteBenefits(int benefitsNo);

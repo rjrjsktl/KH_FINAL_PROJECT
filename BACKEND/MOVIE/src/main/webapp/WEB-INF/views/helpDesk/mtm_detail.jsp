@@ -57,7 +57,9 @@
 								<span><span>${mTmdetail.mtmWriter}</span> <span>|</span>
 									<span>${mTmdetail.mtmRegdate} </span></span>
 							</div>
-							<div class="contentText-wrap">${mTmdetail.mtmContent}</div>
+							<div class="contentText-wrap">
+								<c:out value="${mTmdetail.mtmContent}" escapeXml="true"/>
+							</div>
 						</div>
 					</div>
 
@@ -68,9 +70,9 @@
 								<p>${mTmdetail.mtmWriter}님답변드립니다.</p>
 								<span class="reply-writer-info"><span>${mTmdetail.mtmRepWriter}</span><span>|</span><span>${mTmdetail.mtmRepDate}</span></span>
 							</div>
-							<div>
-								<div class="reply-content">${mTmdetail.mtmRepContent}</div>
-							</div>
+						<div>
+							<div class="reply-content"><c:out value="${mTmdetail.mtmRepContent}" escapeXml="false"/></div>
+						</div>
 						</div>
 
 						<c:if

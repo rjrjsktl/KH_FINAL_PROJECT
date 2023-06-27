@@ -634,7 +634,7 @@ $(document).ready(function () {
                 $("#playAddForm").append(el);
             }
 
-            // $("#playAddForm").submit();
+            $("#playAddForm").submit();
 
 
         }
