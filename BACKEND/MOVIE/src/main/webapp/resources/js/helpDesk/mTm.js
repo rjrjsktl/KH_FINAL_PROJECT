@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
   let fileInput = $("#fileInput");
 
   fileInput.on("change", function (e) {
@@ -6,15 +7,17 @@ $(document).ready(function () {
 
     // 파일 업로드(다중업로드를 위해 반복문 사용)
     for (var i = 0; i < e.target.files.length; i++) {
+
+
       if (!checkExtension(e.target.files[i].name, e.target.files[i].size)) {
-        fileInput.val("");
+        movie_image1.val('');
         return false;
       }
       uploadImageFile1(e.target.files[i]); // 파일 전달
     }
   });
 
-  let regex = new RegExp("(.*?.(png|jpg|gif|jpeg)$)");
+  let regex = new RegExp("(.*?\.(png|jpg|gif|jpeg)$)");
   let maxSize = 5000000; // 5MB 제한
 
   function checkExtension(fileName, fileSize) {
@@ -23,13 +26,11 @@ $(document).ready(function () {
       return false;
     }
     if (!regex.test(fileName)) {
-      alert(
-        "해당 종류 파일은 업로드 안됨.\n PNG, JPG, GIF, JPEG 만 가능합니다."
-      );
+      alert("해당 종류 파일은 업로드 안됨.\n PNG, JPG, GIF, JPEG 만 가능합니다.");
       return false;
     }
     return true;
-  }
+  };
 
   let imageUrl1;
 
@@ -37,7 +38,7 @@ $(document).ready(function () {
     var data = new FormData();
     data.append("file", file);
     $.ajax({
-      url: "/movie/helpDesk/mTm_form/uploadImage",
+      url: 'uploadImage',
       type: "POST",
       data: data,
       cache: false,
@@ -45,14 +46,13 @@ $(document).ready(function () {
       processData: false,
       success: function (data1) {
         console.log("성공 후 반환 메시지11", data1);
-        let jsonArray = JSON.parse(data1); // JSON 문자열을 파싱하여 배열로 변환
-        let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
-        imageUrl1 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
+        let jsonObject = JSON.parse(data1); // JSON 문자열을 파싱하여 객체로 변환
+        imageUrl1 = jsonObject.url; // "url" 키에 해당하는 이미지 URL 선택
         console.log("이미지 URL:", imageUrl1);
       },
       error: function (e) {
         console.log(e);
-      },
+      }
     });
   }
 
@@ -133,62 +133,50 @@ $(document).ready(function () {
   });
 
   $("#submitButton").click(function (e) {
-    var title = $("#titleInput").val();
-    var inquiry = $("#inquirySelect").val();
-    var content = $("#contentTextarea").val();
-    var userNo = $("#userNo").val();
-    var open = $("#checkbox1").is(":checked") ? 0 : 1111;
 
-    // Check the inputs
-    if (!title) {
-      alert("제목을 입력해주세요");
-      e.preventDefault(); // Prevent the form from submitting
-      return;
-    }
-    if (!inquiry || inquiry === "문의 내용을 선택해주세요.") {
-      alert("문의종류를 선택해주세요");
-      e.preventDefault(); // Prevent the form from submitting
-      return;
-    }
-    if (!content) {
-      alert("내용을 입력해주세요");
-      e.preventDefault(); // Prevent the form from submitting
-      return;
-    }
+    console.log("이미지 : " + imageUrl1);
+    // var title = $("#titleInput").val();
+    // var inquiry = $("#inquirySelect").val();
+    // var content = $("#contentTextarea").val();
+    // var userNo = $("#userNo").val();
+    // var open = $("#checkbox1").is(":checked") ? 0 : 1111;
 
-    $.ajax({
-      type: "POST",
-      url: "/movie/helpDesk/mTm_form",
-      data: {
-        titleInput: title,
-        inquirySelect: inquiry,
-        contentTextarea: content,
-        userNo: userNo,
-        open: open,
-      },
-      success: function (response) {
-        var mtmNo = response.mtmNo; // mtmNo 값을 가져옵니다.
-        alert("작성성공");
-        var url = `/movie/helpDesk/mtm_detail/${mtmNo}`;
-        location.href = url;
-      },
-      error: function (xhr, status, error) {
-        alert("오류 발생");
-      },
-    });
+    // // Check the inputs
+    // if (!title) {
+    //   alert("제목을 입력해주세요");
+    //   e.preventDefault(); // Prevent the form from submitting
+    //   return;
+    // }
+    // if (!inquiry || inquiry === "문의 내용을 선택해주세요.") {
+    //   alert("문의종류를 선택해주세요");
+    //   e.preventDefault(); // Prevent the form from submitting
+    //   return;
+    // }
+    // if (!content) {
+    //   alert("내용을 입력해주세요");
+    //   e.preventDefault(); // Prevent the form from submitting
+    //   return;
+    // }
+
+    // $.ajax({
+    //   type: "POST",
+    //   url: "/movie/helpDesk/mTm_form",
+    //   data: {
+    //     titleInput: title,
+    //     inquirySelect: inquiry,
+    //     contentTextarea: content,
+    //     userNo: userNo,
+    //     open: open,
+    //   },
+    //   success: function (response) {
+    //     var mtmNo = response.mtmNo; // mtmNo 값을 가져옵니다.
+    //     alert("작성성공");
+    //     var url = `/movie/helpDesk/mtm_detail/${mtmNo}`;
+    //     location.href = url;
+    //   },
+    //   error: function (xhr, status, error) {
+    //     alert("오류 발생");
+    //   },
+    // });
   });
 });
-
-function readURL(input) {
-  if (input.files && input.files[0]) {
-    const reader = new FileReader();
-
-    reader.onload = function (e) {
-      $("#imgSize")[0].src = e.target.result;
-    };
-
-    reader.readAsDataURL(input.files[0]);
-  } else {
-    $("#imgSize")[0].src = "";
-  }
-}
