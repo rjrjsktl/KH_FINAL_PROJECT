@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.kh.kgv.common.Util;
 import com.kh.kgv.items.model.vo.Movie;
-import com.kh.kgv.items.model.vo.Play;
-import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.management.model.vo.Pagination;
 import com.kh.kgv.movieList.model.dao.MovieDAO;
@@ -50,6 +48,8 @@ public class MovieServiceImpl implements MovieService{
 	    		cleanedMovie.setMovieCast(movie.getMovieCast());
 	    		cleanedMovie.setMovieRegdate(movie.getMovieRegdate());
 	    		cleanedMovie.setMovieSt(movie.getMovieSt());
+	    		cleanedMovie.setMoviePlayed(movie.getMoviePlayed());
+	    		cleanedMovie.setMovieWatched(movie.getMovieWatched());
 	        
 	    		cleanedList.add(cleanedMovie);
 	    	}
@@ -59,7 +59,7 @@ public class MovieServiceImpl implements MovieService{
 		return getMovieList;
 	}
 
-	// 메인 상영중인 영화 목록 가지고 오기 - 7개
+	// 메인 상영중인 영화 목록 가지고 오기 - 6개
 	@Override
 	public Map<String, Object> mainMovieList() {
 		List<Movie> movielist = dao.mainMovieList();
@@ -86,6 +86,8 @@ public class MovieServiceImpl implements MovieService{
 	    		cleanedMovie.setMovieCast(movie.getMovieCast());
 	    		cleanedMovie.setMovieRegdate(movie.getMovieRegdate());
 	    		cleanedMovie.setMovieSt(movie.getMovieSt());
+	    		cleanedMovie.setMoviePlayed(movie.getMoviePlayed());
+	    		cleanedMovie.setMovieWatched(movie.getMovieWatched());
 	        
 	    		cleanedList.add(cleanedMovie);
 	    	}
