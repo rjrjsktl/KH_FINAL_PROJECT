@@ -640,7 +640,7 @@
 
 	<update id="deleteBenefits">
 		DELETE FROM BENEFITS
-		WHERE BENEFITS_NO = #{benefitsNo};
+		WHERE BENEFITS_NO = #{benefitsNo}
 	</update>
 
 	<update id="updateNoticeView">

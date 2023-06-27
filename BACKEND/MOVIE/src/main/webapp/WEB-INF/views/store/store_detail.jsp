@@ -99,7 +99,7 @@
                                         <div>
 
                                             <a
-                                                href="${contextPath}/store/storeMain/store_detail/store_payment/${storeDetail.storeNo}"><button
+                                                href="${contextPath}/store/storeMain/store_detail/store_payment/${storeNo}"><button
                                                     type="submit" class="storeBuy_btn">구매하기</button></a>
                                         </div>
                                     </div>

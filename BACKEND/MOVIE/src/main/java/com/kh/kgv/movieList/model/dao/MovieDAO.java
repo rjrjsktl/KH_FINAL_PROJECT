@@ -28,7 +28,7 @@ public class MovieDAO {
 		return sqlSession.selectList("movieMapper.getMovieList", null);
 	}
 	
-	// 메인 상영중인 영화 목록 가지고 오기 - 7개
+	// 메인 상영중인 영화 목록 가지고 오기 - 6개
 	public List<Movie> mainMovieList() {
 		
 		return sqlSession.selectList("movieMapper.mainMovieList", null);

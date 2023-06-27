@@ -161,6 +161,8 @@
 						<script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
 						<script>
 							function checkDelete(){
+								console.log("삭제를 시작해볼까?");
+								
 								if(!window.confirm("정말 삭제하시겠습니까 ?")){
 									return=false;
 								}
