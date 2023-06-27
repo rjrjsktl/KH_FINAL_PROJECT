@@ -1,23 +1,55 @@
 $(document).ready(function () {
-
   let fileInput = $("#fileInput");
+
+  $("#fileInput").on("change", function () {
+    if (this.files && this.files[0]) {
+      // Clear the previous image
+      $(".addfileList").empty();
+
+      var file = this.files[0];
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        // 이미지를 브라우저에 표시합니다.
+        // Add the delete button (x) to the image
+        $(".addfileList").append(
+          '<div class="upimgList">' +
+            '<span class="deleteImage">X</span>' +
+            '<img src="' +
+            e.target.result +
+            '">' +
+            "</div>"
+        );
+      };
+
+      // 이미지 파일을 읽습니다.
+      reader.readAsDataURL(file);
+    }
+  });
+
+  // Add a click event handler to the delete button
+  // This must be on `$(document)` and not on the button itself because the button is dynamically added
+  $(document).on("click", ".deleteImage", function () {
+    // Remove the parent div (which includes the image)
+    $(this).parent().remove();
+    // Also, clear the file input field
+    $("#fileInput").val("");
+  });
 
   fileInput.on("change", function (e) {
     console.log(e.target.files); // 파일 목록 출력
 
     // 파일 업로드(다중업로드를 위해 반복문 사용)
     for (var i = 0; i < e.target.files.length; i++) {
-
-
       if (!checkExtension(e.target.files[i].name, e.target.files[i].size)) {
-        movie_image1.val('');
+        movie_image1.val("");
         return false;
       }
       uploadImageFile1(e.target.files[i]); // 파일 전달
     }
   });
 
-  let regex = new RegExp("(.*?\.(png|jpg|gif|jpeg)$)");
+  let regex = new RegExp("(.*?.(png|jpg|gif|jpeg)$)");
   let maxSize = 5000000; // 5MB 제한
 
   function checkExtension(fileName, fileSize) {
@@ -26,11 +58,13 @@ $(document).ready(function () {
       return false;
     }
     if (!regex.test(fileName)) {
-      alert("해당 종류 파일은 업로드 안됨.\n PNG, JPG, GIF, JPEG 만 가능합니다.");
+      alert(
+        "해당 종류 파일은 업로드 안됨.\n PNG, JPG, GIF, JPEG 만 가능합니다."
+      );
       return false;
     }
     return true;
-  };
+  }
 
   let imageUrl1;
 
@@ -38,7 +72,7 @@ $(document).ready(function () {
     var data = new FormData();
     data.append("file", file);
     $.ajax({
-      url: 'uploadImage',
+      url: "uploadImage",
       type: "POST",
       data: data,
       cache: false,
@@ -52,10 +86,9 @@ $(document).ready(function () {
       },
       error: function (e) {
         console.log(e);
-      }
+      },
     });
   }
-
 
   $(".btn_wraper button").hover(
     function () {
@@ -134,7 +167,6 @@ $(document).ready(function () {
   });
 
   $("#submitButton").click(function (e) {
-
     console.log("이미지 : " + imageUrl1);
     // var title = $("#titleInput").val();
     // var inquiry = $("#inquirySelect").val();

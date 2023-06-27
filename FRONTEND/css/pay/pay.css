@@ -1,0 +1,73 @@
+main>section>div {
+    margin: 10px;
+
+    width: 100%;
+    height: 1150px;
+
+    border: 1px solid red;
+
+    display: flex;
+
+    justify-content: center;    
+}
+
+main>section>div>div {
+    padding: 50px 20px 20px 20px;
+
+    width: 60%;
+    height: 80%;
+    
+    border: 1px solid red;
+}
+
+/* 타이틀 영역 */
+main>section>div>div>:nth-child(1) {
+    padding: 0 0 26px 0;
+    font-size: 2rem;
+
+    border-bottom: 1px solid rgb(255, 255, 255);
+}
+
+/* 예매 내역 span */
+main>section>div>div>:nth-child(1)>span {
+    font-size: 2rem;
+}
+
+/* 할인&혜택 영역 */
+main>section>div>div>:nth-child(2) {
+    padding: 20px 0 20px 0;
+
+    border-bottom: 1px solid rgb(255, 255, 255);
+}
+
+/* 결제 api 전 단계 영역 */
+main>section>div>div>:nth-child(3) {
+    width: 100%;
+    height: 300px;
+    
+    border: 1px solid blue;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+.pay_box {
+    display: flex;
+    flex-direction: row;
+}
+
+.pay_box>:nth-child(2) {
+    visibility: hidden
+}
+.pay_box>:nth-child(4) {
+    visibility: hidden    
+}
+
+.pay_box>div{
+    
+    font-size: 1.5rem;
+    margin: 0 10px 0 10px;
+}
