@@ -10,7 +10,7 @@ public interface StoreService {
 
 	Store getStoreDetail(Store store);
 
-	int getStorePayment(int totalPrice, int totalCount);
+
 
 	
 

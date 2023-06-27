@@ -7,8 +7,6 @@ public interface ManageCinemaService {
 
 	int cinemaDupCheck(String cinemaName);
 
-	int enrollCinema(Cinema cinema);
-
-	int enrollScreen(Screen screen);
+	String enrollCinema(String cinemaName, String[] cinemaAddr, String[] screenStyle, String[] screenSeat, String[] screenDetail);
 
 }

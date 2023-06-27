@@ -21,4 +21,5 @@ public class Review {
 	private String revDate;
 	private String revTime;
 	private String revFixed;
+	private int totalRow;
 }

@@ -57,7 +57,7 @@
 	</resultMap>
 	
 	<resultMap type="review" id="review_rm">
-		<id property="reviewNo" column="REVIEW_NO" />
+		<id property="revNo" column="REV_NO" />
 		<result property="movieNo" column="MOVIE_NO" />
 		<result property="userNo" column="USER_NO" />
 		<result property="revContent" column="REV_CONTENT" />
@@ -66,6 +66,7 @@
 		<result property="revDate" column="REV_DATE" />
 		<result property="revTime" column="REV_TIME" />
 		<result property="revFixed" column="REV_FIXED" />
+		<result property="totalRow" column="totalRow" />
 	</resultMap>
 	
 	<resultMap type="mtm" id="mtm_rm">
@@ -145,6 +146,7 @@
 		WHERE USER_NO = ${userNo}
 	</update>
 	<!-- 리뷰카드 부르기 기본형식 -->
+	<!-- 
 	<select id="myReviewList" resultMap="jr_rm">
 		SELECT 
 	 		r.REV_CONTENT
@@ -158,27 +160,63 @@
 			WHERE USER_NO = ${userNo}
 			AND REV_ST = 'N'
 	</select>
+	 -->
 	
-	
+	<!-- 리뷰카드 부르기 -->
+	<!-- 
 	<select id="loadReviewCards" resultMap="jr_rm">
 		SELECT 
     		*
 		FROM (
-    		SELECT
+			SELECT
+        	REV_NO,
+        	REV_CONTENT,
+        	MOVIE_NO,
+        	MOVIE_TITLE,
+        	MOVIE_IMG1,
+        	REV_DATE,
+        	REV_TIME,
+        	COUNT(*) OVER () AS totalRow,
+        	ROW_NUMBER() OVER (ORDER BY REV_NO DESC) AS row_num
+    		FROM (
+    			SELECT
+    				r.REV_NO,
+        			r.REV_CONTENT,
+        			m.MOVIE_NO,
+        			m.MOVIE_TITLE,
+        			m.MOVIE_IMG1,
+        			TO_CHAR(r.REV_DATE, 'YYYY-MM-DD') AS REV_DATE,
+        			TO_CHAR(r.REV_DATE, 'HH24:MI') AS REV_TIME
+    			FROM REVIEW r
+    			INNER JOIN MOVIE m ON r.MOVIE_NO = m.MOVIE_NO
+    			WHERE r.USER_NO = ${userNo} AND r.REV_ST = 'N'
+    		)
+		)
+		WHERE row_num BETWEEN ${startRow} AND ${endRow}
+	</select>
+	 -->
+	 <!-- 리뷰카드 부르기 -->
+	<select id="loadReviewCards" resultMap="jr_rm">
+		SELECT 
+    		*
+		FROM (
+			SELECT
+        		r.REV_NO,
         		r.REV_CONTENT,
         		m.MOVIE_NO,
         		m.MOVIE_TITLE,
         		m.MOVIE_IMG1,
         		TO_CHAR(r.REV_DATE, 'YYYY-MM-DD') AS REV_DATE,
         		TO_CHAR(r.REV_DATE, 'HH24:MI') AS REV_TIME,
-        		ROW_NUMBER() OVER (ORDER BY r.REV_NO DESC) AS row_num
+        		ROW_NUMBER() OVER (ORDER BY REV_NO DESC) AS row_num,
+        		COUNT(*) OVER () AS totalRow
     		FROM REVIEW r
     		INNER JOIN MOVIE m ON r.MOVIE_NO = m.MOVIE_NO
     		WHERE r.USER_NO = ${userNo} AND r.REV_ST = 'N'
-		) sub
-		WHERE sub.row_num BETWEEN ${startRow} AND ${endRow}
+		) sum
+		WHERE sum.row_num BETWEEN ${startRow} AND ${endRow}
 	</select>
-	
+	 
 	<!-- usermtmlist count 조회 sql -->
 	<select id="getUserMtmCount" resultType="_int">
 		SELECT

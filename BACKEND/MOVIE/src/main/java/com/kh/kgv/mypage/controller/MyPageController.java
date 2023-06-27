@@ -563,8 +563,9 @@ public class MyPageController {
 	// Java 서버 예시 (Spring Framework)
 	@PostMapping("/loadReviewCards")
 	@ResponseBody
-	public List<Review> loadReviewCards(@RequestParam int startRow, @RequestParam int endRow,
-			@ModelAttribute("loginUser") User loginUser, @RequestParam Map<String, Object> paramMap, Model model) {
+	public List<Review> loadReviewCards(@RequestParam int startRow
+										, @RequestParam int endRow
+										, @ModelAttribute("loginUser") User loginUser, @RequestParam Map<String, Object> paramMap, Model model) {
 		logger.info("reviewCards시작됨?");
 
 		int userNo = loginUser.getUserNo();
@@ -588,6 +589,7 @@ public class MyPageController {
 								, @RequestHeader ("referer") String referer
 								) {
 		logger.info("리뷰 삭제 드가자");
+		logger.info("revNo:::::::::::" + revNo);
 		
 		String path = null;
 		String message = null;
@@ -595,7 +597,7 @@ public class MyPageController {
 		int result = service.reviewDelete(revNo);
 		
 		if(result > 0) {
-			path = "myReview";
+			path = "myPage/myReview";
 			message = "리뷰를 삭제했습니다.";
 		} else {
 			path = "referer";
