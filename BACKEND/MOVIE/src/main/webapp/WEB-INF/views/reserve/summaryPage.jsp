@@ -10,7 +10,7 @@
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>예매선택 페이지</title>
+            <title>결제 확인 페이지</title>
             <link rel="stylesheet" href="${contextPath}/resources/css/reserve/choiceTicket.css">
             <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
@@ -196,7 +196,7 @@
                         </div>
                       </div>
                     </div>
-                    <div><a id="summary" href="#none">결제하기</a></div>
+                    <div><a href="#none">결제하기</a></div>
                   </div>
 
 

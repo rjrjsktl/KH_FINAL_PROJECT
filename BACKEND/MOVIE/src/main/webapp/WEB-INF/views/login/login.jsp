@@ -19,7 +19,7 @@
 						<script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
 						<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-								<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+						<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 							integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 							crossorigin="anonymous"></script>
 
@@ -99,7 +99,7 @@
 											<span>|</span>
 											<li><a href="findEmail">아이디 찾기</a></li>
 											<span>|</span>
-											<li><a href="signUp_sns">회원가입</a></li>
+											<li><a href="/movie/signUp/signUp_sns">회원가입</a></li>
 											<span>|</span>
 											<li><a href="paymentBtn">결제</a></li>
 										</ul>

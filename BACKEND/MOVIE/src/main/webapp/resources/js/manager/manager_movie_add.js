@@ -8,6 +8,12 @@ $(document).ready(function () {
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
+
+            if (!checkExtension(e.target.files[i].name, e.target.files[i].size)) {
+                movie_image1.val('');
+                return false;
+            }
+
             uploadImageFile1(e.target.files[i]); // 파일 전달
         }
     });
@@ -47,6 +53,12 @@ $(document).ready(function () {
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
+
+            if (!checkExtension(e.target.files[i].name, e.target.files[i].size)) {
+                movie_image1.val('');
+                return false;
+            }
+
             uploadImageFile2(e.target.files[i]); // 파일 전달
         }
     });
@@ -83,6 +95,12 @@ $(document).ready(function () {
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
+
+            if (!checkExtension(e.target.files[i].name, e.target.files[i].size)) {
+                movie_image1.val('');
+                return false;
+            }
+
             uploadImageFile3(e.target.files[i]); // 파일 전달
         }
     });
@@ -119,6 +137,12 @@ $(document).ready(function () {
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
+
+            if (!checkExtension(e.target.files[i].name, e.target.files[i].size)) {
+                movie_image1.val('');
+                return false;
+            }
+
             uploadImageFile4(e.target.files[i]); // 파일 전달
         }
     });
@@ -155,6 +179,11 @@ $(document).ready(function () {
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
+
+            if (!checkExtension(e.target.files[i].name, e.target.files[i].size)) {
+                movie_image1.val('');
+                return false;
+            }
             uploadImageFile5(e.target.files[i]); // 파일 전달
         }
     });
@@ -191,6 +220,12 @@ $(document).ready(function () {
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
+
+            if (!checkExtension(e.target.files[i].name, e.target.files[i].size)) {
+                movie_image1.val('');
+                return false;
+            }
+
             uploadImageFile6(e.target.files[i]); // 파일 전달
         }
     });
@@ -219,6 +254,22 @@ $(document).ready(function () {
             }
         });
     }
+
+
+    let regex = new RegExp("(.*?\.(png|jpg|gif|jpeg)$)");
+    let maxSize = 5000000; // 5MB 제한
+
+    function checkExtension(fileName, fileSize) {
+        if (fileSize >= maxSize) {
+            alert("파일 사이즈 초과");
+            return false;
+        }
+        if (!regex.test(fileName)) {
+            alert("해당 종류 파일은 업로드 안됨.\n PNG, JPG, GIF, JPEG 만 가능합니다.");
+            return false;
+        }
+        return true;
+    };
 
 
 
