@@ -1,61 +1,5 @@
 $(document).ready(function () {
-  let fileInput = $("#fileInput");
-
-  fileInput.on("change", function (e) {
-    console.log(e.target.files); // 파일 목록 출력
-
-    // 파일 업로드(다중업로드를 위해 반복문 사용)
-    for (var i = 0; i < e.target.files.length; i++) {
-      if (!checkExtension(e.target.files[i].name, e.target.files[i].size)) {
-        fileInput.val("");
-        return false;
-      }
-      uploadImageFile1(e.target.files[i]); // 파일 전달
-    }
-  });
-
-  let regex = new RegExp("(.*?.(png|jpg|gif|jpeg)$)");
-  let maxSize = 5000000; // 5MB 제한
-
-  function checkExtension(fileName, fileSize) {
-    if (fileSize >= maxSize) {
-      alert("파일 사이즈 초과");
-      return false;
-    }
-    if (!regex.test(fileName)) {
-      alert(
-        "해당 종류 파일은 업로드 안됨.\n PNG, JPG, GIF, JPEG 만 가능합니다."
-      );
-      return false;
-    }
-    return true;
-  }
-
-  let imageUrl1;
-
-  function uploadImageFile1(file) {
-    var data = new FormData();
-    data.append("file", file);
-    $.ajax({
-      url: "/movie/helpDesk/mTm_form/uploadImage",
-      type: "POST",
-      data: data,
-      cache: false,
-      contentType: false,
-      processData: false,
-      success: function (data1) {
-        console.log("성공 후 반환 메시지11", data1);
-        let jsonArray = JSON.parse(data1); // JSON 문자열을 파싱하여 배열로 변환
-        let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
-        imageUrl1 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
-        console.log("이미지 URL:", imageUrl1);
-      },
-      error: function (e) {
-        console.log(e);
-      },
-    });
-  }
-
+  
   $(".btn_wraper button").hover(
     function () {
       $(this).find("a").addClass("hover");
@@ -179,16 +123,4 @@ $(document).ready(function () {
   });
 });
 
-function readURL(input) {
-  if (input.files && input.files[0]) {
-    const reader = new FileReader();
 
-    reader.onload = function (e) {
-      $("#imgSize")[0].src = e.target.result;
-    };
-
-    reader.readAsDataURL(input.files[0]);
-  } else {
-    $("#imgSize")[0].src = "";
-  }
-}
