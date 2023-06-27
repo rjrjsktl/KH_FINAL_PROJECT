@@ -56,25 +56,6 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.updateInfo", paramMap);
 	}
 
-//	/** 리뷰 불러오기 DAO
-//	 * @param userNo
-//	 * @return
-//	 */
-//	public List<Review> myReviewList(int userNo) {
-//		logger.info("review::dao 실행 ㄱㄱㄱ");
-//		return sqlSession.selectList("myPageMapper.myReviewList", userNo);
-//	}
-
-	/** 리뷰 불러오기 DAO
-	 * @param loadedCards
-	 * @param cardsPerLoad
-	 * @return
-	 */
-	public List<Review> loadReviewCards(Map<String, Object> paramMap) {
-		logger.info("review:::dao 실행");
-		return sqlSession.selectList("myPageMapper.loadReviewCards", paramMap);
-	}
-
 	/** usermtmlist count 조회
 	 * @param userNo
 	 * @return
@@ -114,6 +95,16 @@ public class MyPageDAO {
 		return sqlSession.selectList("myPageMapper.getlostlist", userNo, rowBounds);
 	}
 
+	/** 리뷰 불러오기 DAO
+	 * @param loadedCards
+	 * @param cardsPerLoad
+	 * @return
+	 */
+	public List<Review> loadReviewCards(Map<String, Object> paramMap) {
+		logger.info("review:::dao 실행");
+		return sqlSession.selectList("myPageMapper.loadReviewCards", paramMap);
+	}
+	
 	/** 리뷰 카드 삭제!
 	 * @param revNo
 	 * @return
