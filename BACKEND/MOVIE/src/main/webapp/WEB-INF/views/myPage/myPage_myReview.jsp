@@ -68,8 +68,8 @@
                                                                 <div>
                                                                     <div>
                                                                         <div>${review.movie.movieTitle}</div>
-                                                                        <a id="deleteReview" data-revno="${review.review.revNo}"><i
-                                                                                class="fa-regular fa-circle-xmark"></i></a>
+                                                                        <a class="delete-review-btn" data-revno="${review.review.revNo}">
+                                                                        <i class="fa-regular fa-circle-xmark"></i></a>
                                                                     </div>
                                                                     <div>
                                                                         <ul>
@@ -88,7 +88,7 @@
                                                                         <textarea>${review.review.revContent}</textarea>
                                                                     </div>
                                                                     <div>
-                                                                        <button id="updatereview-btn">내 리뷰 수정</button>
+                                                                        <button id="updatereview-btn">내 리뷰 수정//별점보여주기로 바꿔?</button>
                                                                     </div>
 
                                                                 </div>

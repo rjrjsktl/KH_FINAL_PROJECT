@@ -65,7 +65,7 @@
                                                         <div class="quantity">
                                                             <h4>수량</h4>
                                                             <h4>
-                                                                <span>5</span>
+                                                                <span>${totalCount}</span>
                                                                 <p>
 
 
@@ -99,12 +99,15 @@
 
                                                 <div>
                                                     <div>
-                                                        <h4>상품금액</h4><span class="price"
-                                                            id="price">2800</span><em>원</em>
+                                                        <h4>상품금액</h4><span class="price" id="price"></span>
+                                                        <fmt:formatNumber value="${totalPrice}" pattern="#,###" />
+                                                        </span><em>원</em>
                                                     </div>
 
                                                     <div>
-                                                        결제금액<span id="totalPrice">2800</span><em>원</em>
+                                                        결제금액<span id="totalPrice">
+                                                            <fmt:formatNumber value="${totalPrice}" pattern="#,###" />
+                                                        </span><em>원</em>
                                                     </div>
                                                     <div>
 

@@ -3,7 +3,7 @@ $(document).ready(function() {
   console.log("review 영역으로 들어옴");
   var cardsPerLoad = 5; // 한 번에 보여줄 카드의 개수
   var currentPage = 1; // 처음 짜를 5개 페이징
-  var $cards = $('.more-load li.myreview'); // 카드 요소들을 선택합니다.
+  var $cards = $('.myreview'); // 카드 요소들을 선택합니다.
   
   console.log("5개 보여주기");
   // ajax 후 처음에는 5개의 카드만 보이도록 설정
@@ -26,8 +26,10 @@ $(document).ready(function() {
         if (response.length > 0) {
           response.forEach(function(review) {
             var cardData = review;
+           
             // var contextPath = "${contextPath}";
             console.log("${cardData.movie.movieNo}::::" + cardData.movie.movieNo);
+            console.log("${cardData.review.totalRow}::::앞:::" + cardData.review.totalRow);
             // 카드를 생성하고 데이터를 채워서 화면에 추가하는 코드 작성
             var cardHTML = `
               <li class="myreview">
@@ -40,7 +42,7 @@ $(document).ready(function() {
                   <div>
                     <div>
                       <div>${cardData.movie.movieTitle}</div>
-                      <a class="i-dlt-btn" href="#">
+                      <a class="delete-review-btn" data-revno="${cardData.review.revNo}">
                         <i class="fa-regular fa-circle-xmark"></i>
                       </a>
                     </div>
@@ -65,17 +67,31 @@ $(document).ready(function() {
               </li>
             `;
             $('.more-load').append(cardHTML); // 생성한 카드를 추가
-          });
+          
+          console.log("response.review.totalRow:::뒤:::" + cardData.review.totalRow);
+          console.log("response.length:::" + response.length);
+          
+          var resulttotalRow = cardData.review.totalRow;
+          console.log("resulttotalRow::::::" + resulttotalRow);
+          // 5보다 작은 값을 불러올 경우 더보기 숨김
           if (response.length < cardsPerLoad) {
             $('#list-more-btn').hide();
-          }
-          else {
+          // 전체 쿼리 수가 5의 배수라면 더보기 숨김
+          } else if (response.length ===  resulttotalRow){
+            $('#list-more-btn').hide();
+          // 넘어오는 카드가 0 ~ 5일 경우에는 다숨기고 나머지 경우는 더보기 보임
+          } else {
             $('#list-more-btn').show();
           }
+          });
+          $cards = $('.myreview');
+          console.log("$cards.length:::" + $cards.length);
           // // 모든 카드가 로드되었을 경우에는 내 리뷰 더 보기 버튼을 숨김
           // if (response.length < cardsPerLoad) {
           //   $('#list-more-btn').hide();
           // }
+        } else {
+          $('#list-more-btn').hide();
         }
       },
       error: function() {
@@ -84,34 +100,25 @@ $(document).ready(function() {
     });
   
   }
-  // $cards.hide().slice(0, cardsPerLoad).show();
-
   $('#list-more-btn').on('click', function() {
     console.log("더보기 버튼 누름");
     // 다음으로 보일 카드 개수만큼 선택하여 보이도록 설정
     currentPage++;
     loadReviewCards();
   });
-  // 카드가 없을 경우에는 내 리뷰 더 보기 버튼을 숨깁니다.
-  if ($cards.length <= 0) {
-    $('#list-more-btn').hide();
-  }
+
   loadReviewCards();
-});
-
-$(document).ready(function(){
-    const deleteReview = $("#deleteReview"); 
-
-        deleteReview.on('click', function(){
-      
-            let lostNo = $(this).data('revno');
-            
-            let url = `/movie/myPage/deleteReview/${revNo}`;
-
-            if( confirm("정말로 삭제 하시겠습니까?") ){
-                window.location.href = url; // get방식으로 url에 요청
-            }
-        });
+  
+  // 삭제 버튼 구현
+  $('.more-load').on('click', '.delete-review-btn', function() {
+  	window.console.log("삭제 버튼 누름");
+    let revNo = $(this).data('revno');
+    let url = `/movie/myPage/deleteReview/${revNo}`;
+	window.console.log("revNo:::" + revNo);
+    if (confirm("정말로 삭제 하시겠습니까?")) {
+      window.location.href = url; // get방식으로 url에 요청
+    }
+  });
 });
 
     
