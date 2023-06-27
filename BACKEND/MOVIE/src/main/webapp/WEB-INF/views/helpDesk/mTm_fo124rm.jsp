@@ -12,23 +12,16 @@
 					<meta http-equiv="X-UA-Compatible" content="IE=edge">
 					<meta name="viewport" content="width=device-width, initial-scale=1.0">
 					<title>1 : 1 문의 작성</title>
-
 					<script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
-
 
 					<!-- jQuery 라이브러리 추가(CDN) -->
 					<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 						integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 						crossorigin="anonymous"></script>
-
-
-
-					<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
+					
 					<link rel="stylesheet" href="${contextPath}/resources/css/helpDesk/notice_ask_form.css">
 					<link rel="stylesheet" href="${contextPath}/resources/css/common/notice_Aside.css">
-
-
-
+					<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
 
 
 				</head>
@@ -65,7 +58,7 @@
 															<option value="나문희">나문희</option>
 														</select></td>
 												</tr>
-												<tr>
+												<!-- <tr>
 													<th>첨부파일</th>
 													<td>
 
@@ -74,8 +67,7 @@
 															name="file">
 													</td>
 
-
-												</tr>
+												</tr> -->
 												<tr class="label_box">
 													<th>공개여부</th>
 													<td class="label_box"><label for="checkbox1"> <input type="hidden"
@@ -86,11 +78,18 @@
 											</table>
 										</div>
 
-										<div id="writeForm">
+										<div id="writeForm" class="yui3-cssreset">
 											<div class="inner_Textarea_Title">내용</div>
-											<textarea class="inner_Textarea" id="contentTextarea"
-												name="editordata"></textarea>
+											<!-- <textarea class="inner_Textarea" id="contentTextarea"
+												name="editordata"></textarea> -->
+
+											<form method="post">
+												<textarea id="summernote" name="editordata"
+													class="inner_Textarea"></textarea>
+											</form>
 										</div>
+
+
 
 										<div class="addfileList"></div>
 
