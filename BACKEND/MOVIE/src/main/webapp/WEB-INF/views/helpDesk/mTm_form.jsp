@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-		<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-			<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-			
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +31,7 @@
 	href="${contextPath}/resources/css/helpDesk/notice_ask_form.css">
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/common/notice_Aside.css">
-	
+
 
 <script src="${contextPath}/resources/js/helpDesk/mTm.js"></script>
 
@@ -72,10 +73,16 @@
 								<tr>
 									<th>첨부파일</th>
 									<td>
-									
-								
-									<input type="file" id="fileInput" class="align_File" name="file" onchange="readURL(this);"></td>
-								
+
+
+										<form action="/movie/helpDesk/mTm_form/uploadImage"
+											method="post" enctype="multipart/form-data">
+											<input type="file" id="fileInput" class="align_File"
+												name="file"> <button type="submit">전송전송</button>
+										</form>
+
+									</td>
+
 
 								</tr>
 								<tr class="label_box">
@@ -87,10 +94,11 @@
 								</tr>
 							</table>
 						</div>
-						
+
 						<div id="writeForm">
 							<div class="inner_Textarea_Title">내용</div>
-							<textarea class="inner_Textarea" id="contentTextarea" name="editordata"></textarea>
+							<textarea class="inner_Textarea" id="contentTextarea"
+								name="editordata"></textarea>
 						</div>
 
 						<div class="addfileList"></div>

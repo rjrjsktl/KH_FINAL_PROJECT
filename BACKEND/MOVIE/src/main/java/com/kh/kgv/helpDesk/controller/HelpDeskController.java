@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -49,6 +50,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.text.StringEscapeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 
 
 @Controller
@@ -430,38 +432,30 @@ public class HelpDeskController {
 	@PostMapping("/mTm_form/uploadImage")
 	@ResponseBody
 	public String uploadImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request) {
-		JsonObject jsonObject = new JsonObject();
+	    JsonObject jsonObject = new JsonObject();
 
-		// String fileRoot = "C:\\Users\\cropr\\Desktop\\test"; // 외부경로로 저장을 희망할때.
+	    String webPath = "/resources/images/helpDesk/";
 
-		// 내부경로로 저장
-		String webPath = "/resources/images/fileupload/";
+	    String fileRoot = request.getServletContext().getRealPath(webPath);
 
-		String fileRoot = request.getServletContext().getRealPath(webPath);
+	    String originalFileName = multipartFile.getOriginalFilename();
+	    String savedFileName = Util.fileRename(originalFileName);
 
-		String originalFileName = multipartFile.getOriginalFilename();
-		// String extension =
-		// originalFileName.substring(originalFileName.lastIndexOf("."));
-		String savedFileName = Util.fileRename(originalFileName);
+	    File targetFile = new File(fileRoot + savedFileName);
+	    try {
+	        InputStream fileStream = multipartFile.getInputStream();
+	        FileUtils.copyInputStreamToFile(fileStream, targetFile); // 파일 저장
+	        jsonObject.addProperty("url", request.getContextPath() + webPath + savedFileName);
+	        jsonObject.addProperty("responseCode", "success");
 
-		File targetFile = new File(fileRoot + savedFileName);
-		try {
-			InputStream fileStream = multipartFile.getInputStream();
-			FileUtils.copyInputStreamToFile(fileStream, targetFile); // 파일 저장
-			jsonObject.addProperty("url", request.getContextPath() + webPath + savedFileName); // contextroot +
-																								// resources + 저장할 내부
-																								// 폴더명
-			jsonObject.addProperty("responseCode", "success");
-
-		} catch (IOException e) {
-			FileUtils.deleteQuietly(targetFile); // 저장된 파일 삭제
-			jsonObject.addProperty("responseCode", "error");
-			e.printStackTrace();
-		}
-		String a = jsonObject.toString();
-		System.out.println("================================================= 이미지 는?? : : " + a);
-		return a;
-
+	    } catch (IOException e) {
+	        FileUtils.deleteQuietly(targetFile); // 저장된 파일 삭제
+	        jsonObject.addProperty("responseCode", "error");
+	        e.printStackTrace();
+	    }
+	    String a = jsonObject.toString();
+	    System.out.println("================================================= 이미지 는?? : : " + a);
+	    return a;
 	}
 	
 
