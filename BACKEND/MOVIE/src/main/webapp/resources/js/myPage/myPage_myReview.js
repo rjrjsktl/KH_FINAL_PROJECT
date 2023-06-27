@@ -1,10 +1,10 @@
 // 더보기 js
-$(document).ready(function() {
+$(document).ready(function () {
   console.log("review 영역으로 들어옴");
   var cardsPerLoad = 5; // 한 번에 보여줄 카드의 개수
   var currentPage = 1; // 처음 짜를 5개 페이징
   var $cards = $('.more-load li.myreview'); // 카드 요소들을 선택합니다.
-  
+
   console.log("5개 보여주기");
   // ajax 후 처음에는 5개의 카드만 보이도록 설정
   function loadReviewCards() {
@@ -15,16 +15,17 @@ $(document).ready(function() {
     $.ajax({
       url: 'loadReviewCards', // 서버 엔드포인트 주소
       method: 'POST',
-      data: { startRow: startRow
-            , endRow: endRow
-            }, // 로드된 카드의 개수와 한 번에 로드할 카드의 개수를 전달
-      success: function(response) {
+      data: {
+        startRow: startRow
+        , endRow: endRow
+      }, // 로드된 카드의 개수와 한 번에 로드할 카드의 개수를 전달
+      success: function (response) {
         // 서버로부터 받은 데이터(response)를 처리하여 화면에 추가합니다.
         console.log(response);
         console.log(response[1]);
         console.log(response[2]);
         if (response.length > 0) {
-          response.forEach(function(review) {
+          response.forEach(function (review) {
             var cardData = review;
             // var contextPath = "${contextPath}";
             console.log("${cardData.movie.movieNo}::::" + cardData.movie.movieNo);
@@ -78,15 +79,15 @@ $(document).ready(function() {
           // }
         }
       },
-      error: function() {
+      error: function () {
         console.log('데이터를 불러오는데 실패했습니다.');
       }
     });
-  
+
   }
   // $cards.hide().slice(0, cardsPerLoad).show();
 
-  $('#list-more-btn').on('click', function() {
+  $('#list-more-btn').on('click', function () {
     console.log("더보기 버튼 누름");
     // 다음으로 보일 카드 개수만큼 선택하여 보이도록 설정
     currentPage++;
@@ -99,20 +100,19 @@ $(document).ready(function() {
   loadReviewCards();
 });
 
-$(document).ready(function(){
-    const deleteReview = $("#deleteReview"); 
+$(document).ready(function () {
+  const deleteReview = $("#deleteReview");
 
-        deleteReview.on('click', function(){
-      
-            let lostNo = $(this).data('revno');
-            
-            let url = `/movie/myPage/deleteReview/${revNo}`;
+  deleteReview.on('click', function () {
 
-            if( confirm("정말로 삭제 하시겠습니까?") ){
-                window.location.href = url; // get방식으로 url에 요청
-            }
-        });
+    let lostNo = $(this).data('revno');
+
+    let url = `/movie/myPage/deleteReview/${revNo}`;
+
+    if (confirm("정말로 삭제 하시겠습니까?")) {
+      window.location.href = url; // get방식으로 url에 요청
+    }
+  });
 });
 
-    
-     
+

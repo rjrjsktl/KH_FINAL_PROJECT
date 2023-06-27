@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.vo.Cinema;
@@ -26,6 +27,7 @@ import com.kh.kgv.reserve.model.service.ReserveService;
 
 @Controller
 @RequestMapping("/reserve")
+@SessionAttributes({ "loginUser" })
 public class ReserveController {
 	
 	@Autowired
@@ -181,5 +183,8 @@ public class ReserveController {
 		
 		return priceMap;
 	}
+	
+	
+	
 	
 }
