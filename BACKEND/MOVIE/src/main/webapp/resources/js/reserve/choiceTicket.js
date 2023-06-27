@@ -87,13 +87,8 @@ function updateScreen(userPlay) {
     maxRow = userPlay.screen.screenRow;
     maxColumn = userPlay.screen.screenCol;
     aisle = JSON.parse(userPlay.screen.screenAisle);
-    try {
-      space = JSON.parse(userPlay.screen.screenSpace);
-      console.log(userPlay.screen.screenSpace);
-    } catch(err) {
-      // space = JSON.parse(userPlay.screen.screenSpace);
-    }
-    
+    space = JSON.parse(userPlay.screen.screenSpace);
+    console.log(space);
     selectedSeatArray = [];
     sweetSeatArray = JSON.parse(userPlay.screen.screenSweet);
     impairedSeatArray = JSON.parse(userPlay.screen.screenImpaired); 
