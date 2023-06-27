@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 <!DOCTYPE html>
@@ -21,13 +23,14 @@
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
 
+
+
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/common/outline.css">
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/helpDesk/notice_ask_form.css">
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/common/notice_Aside.css">
-
 
 
 <script src="${contextPath}/resources/js/helpDesk/mTm.js"></script>
@@ -69,26 +72,36 @@
 								</tr>
 								<tr>
 									<th>첨부파일</th>
-									<td><input type="file" id="fileInput" multiple class="align_File" name="file" onchange="readURL(this);"></td>
-									
-									
-						
+									<td>
+
+
+										<form action="/movie/helpDesk/mTm_form/uploadImage"
+											method="post" enctype="multipart/form-data">
+											<input type="file" id="fileInput" class="align_File"
+												name="file"> <button type="submit">전송전송</button>
+										</form>
+
+									</td>
+
+
 								</tr>
 								<tr class="label_box">
 									<th>공개여부</th>
 									<td class="label_box"><label for="checkbox1"> <input
 											type="hidden" name="open" value=1111> <input
 											type="checkbox" id="checkbox1" name="open" value=0>
-									</label>
-									<span id="openStatus">비공개 상태입니다.</span> 
-									</td>
+									</label> <span id="openStatus">비공개 상태입니다.</span></td>
 								</tr>
 							</table>
 						</div>
+
 						<div id="writeForm">
 							<div class="inner_Textarea_Title">내용</div>
-							<textarea class="inner_Textarea" id="contentTextarea"></textarea>
+							<textarea class="inner_Textarea" id="contentTextarea"
+								name="editordata"></textarea>
 						</div>
+
+						<div class="addfileList"></div>
 
 						<div class="btn_wraper">
 							<button id="submitButton">

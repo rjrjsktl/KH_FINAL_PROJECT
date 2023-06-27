@@ -1,5 +1,8 @@
 package com.kh.kgv.helpDesk.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -13,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -27,8 +31,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.helpDesk.model.service.HelpDeskService;
 import com.kh.kgv.helpDesk.model.vo.LostPackage;
@@ -37,9 +45,12 @@ import com.kh.kgv.helpDesk.model.vo.Quest;
 import com.kh.kgv.login.controller.LoginController;
 import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.management.model.vo.Notice;
+
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.text.StringEscapeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 
 
 @Controller
@@ -417,6 +428,36 @@ public class HelpDeskController {
 
 		return ResponseEntity.ok(response);
 	}
+	
+	@PostMapping("/mTm_form/uploadImage")
+	@ResponseBody
+	public String uploadImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request) {
+	    JsonObject jsonObject = new JsonObject();
+
+	    String webPath = "/resources/images/helpDesk/";
+
+	    String fileRoot = request.getServletContext().getRealPath(webPath);
+
+	    String originalFileName = multipartFile.getOriginalFilename();
+	    String savedFileName = Util.fileRename(originalFileName);
+
+	    File targetFile = new File(fileRoot + savedFileName);
+	    try {
+	        InputStream fileStream = multipartFile.getInputStream();
+	        FileUtils.copyInputStreamToFile(fileStream, targetFile); // 파일 저장
+	        jsonObject.addProperty("url", request.getContextPath() + webPath + savedFileName);
+	        jsonObject.addProperty("responseCode", "success");
+
+	    } catch (IOException e) {
+	        FileUtils.deleteQuietly(targetFile); // 저장된 파일 삭제
+	        jsonObject.addProperty("responseCode", "error");
+	        e.printStackTrace();
+	    }
+	    String a = jsonObject.toString();
+	    System.out.println("================================================= 이미지 는?? : : " + a);
+	    return a;
+	}
+	
 
 	// 1:1문의 게시물 삭제
 	@GetMapping("/deleteMtm/{mtmNo}")

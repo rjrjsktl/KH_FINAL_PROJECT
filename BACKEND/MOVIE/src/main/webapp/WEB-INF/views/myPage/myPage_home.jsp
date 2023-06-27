@@ -83,14 +83,14 @@
 
 								</div>
 								<div>
-									<a href="${contextPath}/myPage/myMtm"><img src="${contextPath}/resources/images/myPage/myPage03.png"
-										alt=""></a> <a href="${contextPath}/myPage/myMtm">
+									<a href="${contextPath}/myPage/myMtmList"><img src="${contextPath}/resources/images/myPage/myPage03.png"
+										alt=""></a> <a href="${contextPath}/myPage/myMtmList">
 										<p>내 문의 내역</p> <span>내 문의를 확인하세요!</span>
 									</a>
 								</div>
 								<div>
-									<a href="${contextPath}/myPage/myLostItem"><img src="${contextPath}/resources/images/myPage/myPage04.png"
-										alt=""></a> <a href="${contextPath}/myPage/myLostItem">
+									<a href="${contextPath}/myPage/myLostList"><img src="${contextPath}/resources/images/myPage/myPage04.png"
+										alt=""></a> <a href="${contextPath}/myPage/myLostList">
 										<p>내 분실물 문의 내역</p> <span>내 물건을 확인하세요!</span>
 									</a>
 

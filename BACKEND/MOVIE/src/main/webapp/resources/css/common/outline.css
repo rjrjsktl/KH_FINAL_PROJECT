@@ -108,7 +108,7 @@ header>section:nth-child(1) {
 .memberInfo_wrap>ul>li>a {
     display: flex;
     flex-direction: column;
-    padding-left: 30px;
+    padding: 0 15px;
 
 }
 
