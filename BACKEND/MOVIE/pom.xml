@@ -16,19 +16,27 @@
 		<org.aspectj-version>1.9.4</org.aspectj-version>
 		<org.slf4j-version>1.7.25</org.slf4j-version>
 	</properties>
-
+	
+	<!-- 아임포트 api 관련추가 -->
+	<repositories>
+		<repository>
+	    <id>jitpack.io</id>
+	    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 
 	<!-- dependencies : Maven 프로젝트는 외부 저장소와 의존 관계를 맺고 있어 프로젝트에 필요한 파일을(라이브러리) 
 		사용자가 직접 받을 필요 없이 해당 태그 내에 지정된 형식으로 작성하면 네트워크를 통해 외부 저장소에서 자동으로 얻어와 세팅함. -->
 	<dependencies>
-
+		
+		
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
 			<version>2.11.2</version>
 		</dependency>
 
-
+	
 		<!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4 -->
 
 		<dependency>
@@ -284,7 +292,13 @@
 			<version>5.3.14</version>
 		</dependency>
 
-
+		
+		<!-- 아임포트 api관련추가 -->
+		<dependency>
+	    	<groupId>com.github.iamport</groupId>
+	    	<artifactId>iamport-rest-client-java</artifactId>
+	    	<version>0.2.23</version>
+		</dependency>
 
 
 
@@ -346,7 +360,7 @@
 	<version>2.0.1</version>
 </dependency>
 
-
+	
 
 
 	</dependencies>
