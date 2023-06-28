@@ -158,22 +158,13 @@
                   <div>
                     <div class="swiper mySwiper">
                       <div class="swiper-wrapper">
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
+                        <c:forEach var="i" begin="1" end="15">
+                          <div class="swiper-slide">
+                            <div class="month"></div>
+                            <button class="date"></button>
+                            <div class="day"></div>
+                          </div>
+                        </c:forEach>
                       </div>
                       
                     </div>

@@ -185,11 +185,24 @@ var swiper = new Swiper(".mySwiper", {
 let date = new Date();
 let weeks = ['일', '월', '화', '수', '목', '금', '토'];
 
-$('.swiper-slide.date').each(function(index, item){
+$('.swiper-slide > .date').each(function(index, item){
   $(this).attr('data-month', date.getMonth()+1);  // 월
   $(this).attr('data-date', date.getDate());      // 일
   $(this).attr('data-day', weeks[date.getDay()]); // 요일
-  $(this).text(date.getDate());
+  
+  $(this).html(date.getDate());
+  
+  if(date.getDate() == 1 || $(this).parent().index() == 0) {
+    $(this).prev().html(date.getMonth()+1 + "월");
+  }
+  
+  if($(this).parent().index() == 0) {
+    $(this).next().html("오늘");
+  } else {
+    $(this).next().html(weeks[date.getDay()]);
+  }
+  
+  
 
   if(date.getDay() == 6 || date.getDay() == 0) {
     $(this).addClass("holiday");
@@ -206,8 +219,8 @@ let today = new Date();
 let playDay = new Date();
 let strPlayDay;
 
-$('.swiper-slide.date').on("click", function(){
-  dateIndex = $(this).index();
+$('.swiper-slide > .date').on("click", function(){
+  dateIndex = $(this).parent().index();
   playDay = new Date();
   playDay.setDate(today.getDate() + dateIndex);
   
