@@ -57,5 +57,9 @@ public class ReserveDAO {
 		return sqlSession.selectOne("cinemaMapper.getPriceModel", priceNo);
 	}
 
+	public List<Screen> getSpecialScreenList(String type) {
+		return sqlSession.selectList("cinemaMapper.getSpecialScreenList", type);
+	}
+
 
 }

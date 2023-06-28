@@ -24,6 +24,7 @@ import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.JoinPlay;
+import com.kh.kgv.management.model.vo.Screen;
 import com.kh.kgv.reserve.model.service.ReserveService;
 
 @Controller
@@ -35,7 +36,9 @@ public class ReserveController {
 	private ReserveService service;
 	
 	private String[] areaArray = {"서울", "경기", "충청", "전라", "경남", "경북", "강원", "제주"};
+	private String[] specialArray = {"KMAX", "DOLBY", "CHEF &amp; CINE", "PUPPY &amp; ME", "YES KIDS"};
 	private List<Cinema> cinemaList = null;
+	private List<Screen> specialScreenList = null;
 	private List<Movie> movieList = null;
 	private List<Movie> thumbList = null;
 	private List<JoinPlay> joinPlayList = null;
@@ -49,10 +52,12 @@ public class ReserveController {
 		movieList = service.getPlayingMovieList();
 		thumbList = service.getPlayingThumbList();
 		cinemaList = service.getAreaCinemaList("서울");
+		specialScreenList = service.getSpecialScreenList(specialArray[0]); 
 		
 		reserveMap.put("movieList", movieList);
 		reserveMap.put("thumbList", thumbList);
 		reserveMap.put("cinemaList", cinemaList);
+		reserveMap.put("specialScreenList", specialScreenList);
 		model.addAttribute("reserveMap", reserveMap);
 		
 		return "reserve/choicePlay";
@@ -89,6 +94,22 @@ public class ReserveController {
 		}
 		
 		return cinemaList;
+	}
+	
+	
+	@GetMapping("/specialScreenList")
+	@ResponseBody
+	public List<Screen> getSpecialScreenList(String typeIndex) {
+		try {
+			String type = specialArray[Integer.parseInt(typeIndex)];
+			specialScreenList = service.getSpecialScreenList(type);
+		} catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println("배열 범위 이외의 숫자입니다.");
+		} catch(NumberFormatException e) {
+			System.out.println("잘못된 인덱스입니다.");
+		}
+		
+		return specialScreenList;
 	}
 	
 	
