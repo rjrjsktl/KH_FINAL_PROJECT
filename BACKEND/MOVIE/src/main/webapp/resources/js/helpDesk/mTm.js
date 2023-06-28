@@ -27,12 +27,8 @@ $(document).ready(function () {
     }
   });
 
-  // Add a click event handler to the delete button
-  // This must be on `$(document)` and not on the button itself because the button is dynamically added
   $(document).on("click", ".deleteImage", function () {
-    // Remove the parent div (which includes the image)
     $(this).parent().remove();
-    // Also, clear the file input field
     $("#fileInput").val("");
   });
 
@@ -168,48 +164,71 @@ $(document).ready(function () {
 
   $("#submitButton").click(function (e) {
     console.log("이미지 : " + imageUrl1);
-    // var title = $("#titleInput").val();
-    // var inquiry = $("#inquirySelect").val();
-    // var content = $("#contentTextarea").val();
-    // var userNo = $("#userNo").val();
-    // var open = $("#checkbox1").is(":checked") ? 0 : 1111;
+    var title = $("#titleInput").val();
+    var inquiry = $("#inquirySelect").val();
+    var content = $("#contentTextarea").val();
+    var userNo = $("#userNo").val();
+    var open = $("#checkbox1").is(":checked") ? 0 : 1111;
 
-    // // Check the inputs
-    // if (!title) {
-    //   alert("제목을 입력해주세요");
-    //   e.preventDefault(); // Prevent the form from submitting
-    //   return;
-    // }
-    // if (!inquiry || inquiry === "문의 내용을 선택해주세요.") {
-    //   alert("문의종류를 선택해주세요");
-    //   e.preventDefault(); // Prevent the form from submitting
-    //   return;
-    // }
-    // if (!content) {
-    //   alert("내용을 입력해주세요");
-    //   e.preventDefault(); // Prevent the form from submitting
-    //   return;
-    // }
+    if (!title) {
+      alert("제목을 입력해주세요");
+      e.preventDefault(); // Prevent the form from submitting
+      return;
+    }
+    if (!inquiry || inquiry === "문의 내용을 선택해주세요.") {
+      alert("문의종류를 선택해주세요");
+      e.preventDefault(); // Prevent the form from submitting
+      return;
+    }
+    if (!content) {
+      alert("내용을 입력해주세요");
+      e.preventDefault(); // Prevent the form from submitting
+      return;
+    }
 
-    // $.ajax({
-    //   type: "POST",
-    //   url: "/movie/helpDesk/mTm_form",
-    //   data: {
-    //     titleInput: title,
-    //     inquirySelect: inquiry,
-    //     contentTextarea: content,
-    //     userNo: userNo,
-    //     open: open,
-    //   },
-    //   success: function (response) {
-    //     var mtmNo = response.mtmNo; // mtmNo 값을 가져옵니다.
-    //     alert("작성성공");
-    //     var url = `/movie/helpDesk/mtm_detail/${mtmNo}`;
-    //     location.href = url;
-    //   },
-    //   error: function (xhr, status, error) {
-    //     alert("오류 발생");
-    //   },
-    // });
+    $.ajax({
+      type: "POST",
+      url: "/movie/helpDesk/mTm_form",
+      data: {
+        titleInput: title,
+        inquirySelect: inquiry,
+        contentTextarea: content,
+        userNo: userNo,
+        open: open,
+        imageUrl1: imageUrl1,
+      },
+      success: function (response) {
+        var mtmNo = response.mtmNo;
+        alert("작성성공");
+        var url = `/movie/helpDesk/mtm_detail/${mtmNo}`;
+        location.href = url;
+      },
+      error: function (xhr, status, error) {
+        alert("오류 발생");
+      },
+    });
   });
 });
+
+function showImage(imgName) {
+  var img = new Image();
+  img.onload = function () {
+    var width = this.width;
+    var height = this.height;
+    var win = window.open(
+      "",
+      "Image",
+      "width=" + width + ",height=" + height + ",resizable=1"
+    );
+
+    win.document.write("<html><head><title>Image</title></head><body>");
+    win.document.write(
+      "<img src='" +
+        imgName +
+        "' style='position:absolute; left:0; top:0; width:100%; height:100%; cursor:pointer;' onclick='window.close();' />"
+    );
+    win.document.write("</body></html>");
+    win.document.close();
+  };
+  img.src = imgName;
+}

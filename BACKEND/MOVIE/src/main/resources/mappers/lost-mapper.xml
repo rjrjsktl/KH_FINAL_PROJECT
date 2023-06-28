@@ -115,6 +115,7 @@
 		, USER_NO
 		, LOST_DATE
 		, LOST_WRITER
+		, LOST_FILE
 		, LOST_REPST
 		, LOST_REPWRITER
 		, LOST_REPCONTENT
@@ -137,7 +138,7 @@
 		, #{lostItem}
 		, #{lostLocation}
 		, #{lostDate}
-		, DEFAULT
+		, #{lostFile}
 		, #{lostContent}
 		, #{lostWriter}
 		, DEFAULT

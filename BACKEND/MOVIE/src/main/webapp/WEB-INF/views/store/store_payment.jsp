@@ -17,7 +17,11 @@
                         <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
                         <link rel="stylesheet" href="${contextPath}/resources/css/store/store_payment.css">
                         <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
-                        <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+
+                        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+                        <!-- iamport.payment.js -->
+                        <script type="text/javascript"
+                            src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
                     </head>
 
                     <body>
@@ -133,12 +137,7 @@
                         <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 
-                        <div id="myModal" class="modal">
-                            <div class="modal-content">
-                                <div class="close-button">&times;</div>
-                                <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
-                            </div>
-                        </div>
+
                         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
                             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
                             crossorigin="anonymous"></script>
