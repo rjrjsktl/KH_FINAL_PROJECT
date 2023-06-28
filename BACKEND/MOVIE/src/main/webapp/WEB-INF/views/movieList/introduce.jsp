@@ -276,7 +276,7 @@
                                                 <div>
                                                     <form action="" class="replywrite">
 
-                                                        <textarea name="" id="" cols="30" rows="3"></textarea>
+                                                        <textarea name="" id="addRevContent" cols="30" rows="3"></textarea>
 
                                                         <c:choose>
                                                             <c:when test="${not empty loginUser.userNo}">
