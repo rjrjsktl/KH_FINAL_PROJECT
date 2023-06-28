@@ -18,7 +18,7 @@
       <div class="memberInfo_wrap">
 
          <%-- 로그인이 되어있지 않은 경우 --%>
-         <c:if test="${empty loginUser.userNo}">
+         <c:if test="${empty loginUser.userNo || loginUser2.userNo}">
             <ul>
                <div>
                   <img src="" alt="">
@@ -46,7 +46,7 @@
 
          <%-- 로그인이 되어있는 경우 --%>
          <%-- <c:if test="${!empty sessionScope.loginUser}"> --%>
-         <c:if test="${not empty loginUser.userNo}">
+         <c:if test="${not empty loginUser.userNo || loginUser2.userNo}">
             <ul>
                <div>
                   <img src="" alt="">

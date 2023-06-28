@@ -110,6 +110,23 @@ public class SignUpDAO {
 	public int telDupCheck(String userTel) {
 		return sqlSession.selectOne("signupMapper.telDupCheck",userTel);
 	}
+
+
+
+	public User findkakao(HashMap<String, Object> userInfo) {
+		
+		return sqlSession.selectOne("signupMapper.kakao",userInfo);
+
+	}
+
+
+
+	public void kakaoinsert(HashMap<String, Object> userInfo) {
+		   sqlSession.insert("signupMapper.kakaoinsert",userInfo);
+		      System.out.println("userInfo: "+userInfo);
+
+		
+	}
 	
 
 }
