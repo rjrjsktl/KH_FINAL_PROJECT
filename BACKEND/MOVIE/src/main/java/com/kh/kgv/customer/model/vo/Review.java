@@ -17,9 +17,8 @@ public class Review {
 	private int userNo;
 	private String revContent;
 	private String revSt;
-	private String revLike;
+	private int revLike;
 	private String revDate;
-	private String revTime;
 	private String revFixed;
-	private int totalRow;
+	private String userNick; 
 }

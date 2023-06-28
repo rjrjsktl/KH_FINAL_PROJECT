@@ -56,9 +56,6 @@
 											<li><a href="https://www.naver.com">용산점</a></li>
 											<li><a href="https://www.naver.com">잠실점</a></li>
 											<li><a href="https://www.naver.com">종로점</a></li>
-
-
-
 										</ul>
 									</div></li>
 
