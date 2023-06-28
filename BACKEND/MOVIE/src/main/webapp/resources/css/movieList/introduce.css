@@ -411,64 +411,46 @@ main>section:nth-child(3)>div>div:nth-child(3) {
 }
 
 .replyList {
-    padding: 0 30px;
+    padding: 30px;
 }
 
-
-.replyList>ul>li {
+.rvWrap{
     display: flex;
-    min-height: 100px;
-    padding: 20px 0 20px 50px;
-    position: relative;
-    flex-wrap: wrap;
-    border-bottom: 1px solid lightgray;
+    width:100%;
+    height:70px;
+    justify-content: space-between;
+    padding-bottom: 10px;
 }
 
-.replyList>ul>li>span:nth-child(1) {
-    width: 50px;
-    position: absolute;
-    left: 0px;
-    top: 20px;
-}
-
-.replyList>ul>li>div:nth-child(2) {
-    width: 100%;
-    flex-wrap: wrap;
+.rvWrap > div:nth-child(1){
+   
+    width:10%;
     display: flex;
-    padding-left: 5px;
+    justify-content: center;
     align-items: center;
-
+    font-size: 1.2rem;
 }
 
-.replyList>ul>li>div:nth-child(2) {
+.rvWrap > div:nth-child(2){
+    width:88%;
     display: flex;
-    justify-items: center;
-    align-items: center;
+    justify-content: center;
+    align-items: center;   
+    background-color: rgb(21, 21, 21);
+    border-radius: 10px;
 }
 
-.replyList>ul>li>div:nth-child(2)>span:nth-child(1) {
-    width: 90%;
+.review_content div:nth-child(1){
+    width:15%;  font-size: 1.2rem;
+    text-align: center;
 }
 
-.replyList>ul>li>div:nth-child(2)>span:nth-child(2) {
-    width: 10%;
+.review_content div:nth-child(2){
+    width:15%;  font-size: 1.2rem;     text-align: center;    
 }
 
-.replyList>ul>li>div:nth-child(2)>span:nth-child(3) {
-    width: 10%;
-    height: 19px;
-    line-height: 17px;
-}
-
-.replyList>ul>li>div:nth-child(2)>span:nth-child(4) {
-    width: 10%;
-
-}
-
-.replyList>ul>li>div:nth-child(3) {
-    width: 100%;
-    padding: 10px 5px 10px 5px;
-    font-size: 0.8rem;
+.review_content div:nth-child(3){
+    width:70%;  font-size: 1.2rem;    padding-left:30px;
 }
 
 .morePage {
@@ -477,9 +459,7 @@ main>section:nth-child(3)>div>div:nth-child(3) {
     text-align: center;
     cursor: pointer;
     line-height: 48px;
-    border-left: 1px solid lightgray;
-    border-right: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
+    border : 1px solid lightgray;
     display: flex;
     justify-content: center;
     margin: 0 auto;

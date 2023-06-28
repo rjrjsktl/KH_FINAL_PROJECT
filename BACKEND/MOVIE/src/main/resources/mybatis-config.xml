@@ -10,7 +10,6 @@
 
 		<typeAlias type="com.kh.kgv.customer.model.vo.User" alias="user"/>
 		<typeAlias type="com.kh.kgv.customer.model.vo.Like" alias="like"/>
-		<typeAlias type="com.kh.kgv.customer.model.vo.Review" alias="review"/>
 		<typeAlias type="com.kh.kgv.customer.model.vo.Book" alias="book"/>
 		<typeAlias type="com.kh.kgv.customer.model.vo.Sns" alias="sns"/>
 		<typeAlias type="com.kh.kgv.customer.model.vo.Email" alias="email"/>
@@ -45,12 +44,15 @@
 		
 		<typeAlias type="com.kh.kgv.management.model.vo.Cinema" alias="cinema"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.Screen" alias="screen"/>
+		
 		<typeAlias type="com.kh.kgv.helpDesk.model.vo.Mtm" alias="mtm"/>
 		<typeAlias type="com.kh.kgv.helpDesk.model.vo.LostPackage" alias="losts"/>
-
+		<typeAlias type="com.kh.kgv.helpDesk.model.vo.Quest" alias="quest"/>
+		<typeAlias type="com.kh.kgv.customer.model.vo.Review" alias="review"/>
+		
 		<typeAlias type="com.kh.kgv.store.model.vo.StoreOrder" alias="storeOrder"/>
 
-		<typeAlias type="com.kh.kgv.helpDesk.model.vo.Quest" alias="quest"/>
+		
 
 		
 	</typeAliases>
@@ -73,6 +75,7 @@
 		<mapper resource="/mappers/mtm-mapper.xml"/>
 		<mapper resource="/mappers/lost-mapper.xml"/>
 		<mapper resource="/mappers/quest-mapper.xml"/>
+		<mapper resource="/mappers/review-mapper.xml"/>
 	
 
 		

@@ -26,9 +26,10 @@ $(document).ready(function() {
         if (response.length > 0) {
           response.forEach(function(review) {
             var cardData = review;
+           
             // var contextPath = "${contextPath}";
             console.log("${cardData.movie.movieNo}::::" + cardData.movie.movieNo);
-            console.log("${cardData.review.totalRow}::::bbbbb" + cardData.review.totalRow);
+            console.log("${cardData.review.totalRow}::::앞:::" + cardData.review.totalRow);
             // 카드를 생성하고 데이터를 채워서 화면에 추가하는 코드 작성
             var cardHTML = `
               <li class="myreview">
@@ -66,17 +67,23 @@ $(document).ready(function() {
               </li>
             `;
             $('.more-load').append(cardHTML); // 생성한 카드를 추가
-          });
-          // const totalRow = ${cardData.review.totalRow};
-          console.log("response.review.totalRow:::aaaaaaaaa" + response.review.totalRow);
+          
+          console.log("response.review.totalRow:::뒤:::" + cardData.review.totalRow);
           console.log("response.length:::" + response.length);
-          if (response.length === cardsPerLoad && endRow < response.review.totalRow ) {
+          
+          var resulttotalRow = cardData.review.totalRow;
+          console.log("resulttotalRow::::::" + resulttotalRow);
+          // 5보다 작은 값을 불러올 경우 더보기 숨김
+          if (response.length < cardsPerLoad) {
+            $('#list-more-btn').hide();
+          // 전체 쿼리 수가 5의 배수라면 더보기 숨김
+          } else if (response.length ===  resulttotalRow){
+            $('#list-more-btn').hide();
+          // 넘어오는 카드가 0 ~ 5일 경우에는 다숨기고 나머지 경우는 더보기 보임
+          } else {
             $('#list-more-btn').show();
           }
-          else {
-            $('#list-more-btn').hide();
-          }
-          
+          });
           $cards = $('.myreview');
           console.log("$cards.length:::" + $cards.length);
           // // 모든 카드가 로드되었을 경우에는 내 리뷰 더 보기 버튼을 숨김
@@ -99,18 +106,12 @@ $(document).ready(function() {
     currentPage++;
     loadReviewCards();
   });
-  // 카드가 없을 경우에는 내 리뷰 더 보기 버튼을 숨깁니다.
-  // if ($cards.length <= 0) {
-  //   $('#list-more-btn').hide();
-  // } else {
-  //   $('#list-more-btn').show(); // 카드가 있을 경우에만 더보기 버튼을 표시합니다.
-  // }
 
   loadReviewCards();
   
   // 삭제 버튼 구현
   $('.more-load').on('click', '.delete-review-btn', function() {
-  	window.console.log("더보기 버튼 누름");
+  	window.console.log("삭제 버튼 누름");
     let revNo = $(this).data('revno');
     let url = `/movie/myPage/deleteReview/${revNo}`;
 	window.console.log("revNo:::" + revNo);

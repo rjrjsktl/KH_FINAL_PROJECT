@@ -88,15 +88,17 @@ public class StoreController {
 			@RequestParam("totalPrice") int totalPrice
 			,@RequestParam("totalCount") int totalCount,
 			@PathVariable("storeNo") int storeNo,
-			Store store
+			Store store,
+			 HttpSession session
 			,HttpServletRequest request)  {
 		
-		  HttpSession session = request.getSession();
+//		  HttpSession session = request.getSession();
 		
 		
 		  session.setAttribute("totalPrice", totalPrice);
-		    session.setAttribute("totalCount", totalCount);
+		  session.setAttribute("totalCount", totalCount);
 		    
+		  
 		    
 		logger.debug(" totalPrice : " + totalPrice);
 		logger.debug(" totalCount : " + totalCount);
@@ -108,15 +110,30 @@ public class StoreController {
 	
 	
 
-	@GetMapping("/login") 	
-	@RequestMapping("/storeMain/store_detail/store_payment/{storeNo}")
+	
+	@GetMapping("/storeMain/store_detail/store_payment/{storeNo}")
 	public String storePayment ( 
-			@PathVariable("storeNo") int storeNo 			
-			,Store store
+			Store store
 			,Model model
+			,@PathVariable("storeNo") int storeNo
 			,HttpServletResponse response
 			,HttpServletRequest request
 			,HttpSession session) throws Exception{
+		
+		User  loginUser = (User) SessionUtil.getSession().getAttribute("loginUser");
+		
+		if(loginUser == null ) {
+			Util.alertAndMovePage(response, "로그인을 하셔야 합니다.", "/movie/user/login");
+
+			
+			 
+			return "store/store_payment";
+		}
+		
+	
+		
+		
+		
 
 		int totalPrice = (int) session.getAttribute("totalPrice");
 	    int totalCount = (int) session.getAttribute("totalCount");
@@ -134,15 +151,7 @@ public class StoreController {
 		
 		
 		
-		User  loginUser = (User) SessionUtil.getSession().getAttribute("loginUser");
 		
-		if(loginUser == null ) {
-			
-			Util.alertAndBackPage(response, "로그인을 하셔야 합니다.");
-					
-			 
-			return null;
-			}
 		
 		return  "store/store_payment";
 	}
