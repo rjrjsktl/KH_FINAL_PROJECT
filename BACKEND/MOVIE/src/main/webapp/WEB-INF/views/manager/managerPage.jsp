@@ -39,7 +39,6 @@
 						<main>
 							<div class="main_Wrapper">
 								<div id="left_Nav_Container">
-									<div class="nav_Title">로고영역</div>
 									<jsp:include page="/WEB-INF/views/manager/manager_nav.jsp" />
 								</div>
 
@@ -200,8 +199,8 @@
 
 						</main>
 
-						<script src=" ${contextPath}/resources/js/manager/managerPage.js">
-						</script>
+						<script src=" ${contextPath}/resources/js/manager/managerPage.js"></script>
+						<!-- <script src=" ${contextPath}/resources/js/manager/apikey.js"></script> -->
 						<script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
 						<script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
 					</body>

@@ -10,17 +10,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Review {
+public class Review_BackUp {
 	// 후기 테이블
 	private int revNo;
 	private int movieNo;
 	private int userNo;
 	private String revContent;
 	private String revSt;
-	private int revLike;
+	private String revLike;
 	private String revDate;
 	private String revTime;
 	private String revFixed;
-	private String userNick; 
 	private int totalRow;
 }

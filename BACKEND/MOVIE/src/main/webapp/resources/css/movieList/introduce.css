@@ -737,3 +737,23 @@ main>section:nth-child(3)>div>div:nth-child(3) {
 img[src=""] {
     display: none;
 }
+
+.replyBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: lighter;
+    background-color: transparent;
+    border: 0.5px solid white;
+    cursor: pointer;
+    margin-left: 30px;
+    width: 120px;
+    height: 83px;
+}
+
+.replyBtn:hover {
+    background-color: rgb(251, 251, 251);
+    color: rgb(21, 21, 21);
+}

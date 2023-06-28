@@ -148,6 +148,10 @@
 	    WHERE PRICE_NO = #{priceNo}
 	</select>
 	
+	<select id="getSpecialScreenList" parameterType="string" resultMap="screen_rm">
+	    SELECT * FROM SCREEN
+	    WHERE SCREEN_STYLE = #{type}
+	</select>
 	
 	
 </mapper>
