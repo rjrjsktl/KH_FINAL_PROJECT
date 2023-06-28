@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -84,7 +85,8 @@ public class MovieListController {
 			, HttpSession session
 			, RedirectAttributes ra
 			, HttpServletResponse response
-			, @PathVariable("movieNo") int movieNo
+			, @PathVariable("movieNo") int movieNo,
+	         @RequestParam(value = "cp", required = false, defaultValue="1") int cp
 			) throws Exception {
 
 		List<String> mgradelist = services.mgradeList();
@@ -168,7 +170,7 @@ public class MovieListController {
 
 		Map<String, Object>reviewList = null;
 
-		reviewList = service.getReviewList(movieNo);
+		reviewList = service.getReviewList(movieNo, cp);
 
 
 		model.addAttribute("reviewCount",reviewCount);
@@ -206,6 +208,7 @@ public class MovieListController {
 
 		User loginUser = (User)session.getAttribute("loginUser");
 
+	
 
 		int userNo = 0;
 		String userNick = null;
@@ -216,6 +219,8 @@ public class MovieListController {
 		}
 
 		Review review = new Review();
+		
+		int revNo = review.getRevNo();
 
 		content = content.replaceAll("\n", "<br>");
 		content = content.replaceAll("\r\n", "<br>");
@@ -226,6 +231,7 @@ public class MovieListController {
 		review.setRevLike(revLike);
 		review.setMovieNo(movieNo);
 		review.setUserNick(userNick);
+		review.setRevNo(revNo);
 
 		int result = service.addReview(review);  
 
@@ -233,9 +239,34 @@ public class MovieListController {
 
 		return null;
 	}
+	
+	@ResponseBody
+	@RequestMapping("/detail_List/introduce/{movieNo}/{cp}")
+	public List<Review> getMoreReviews(
+	    @PathVariable("movieNo") int movieNo,
+	    @PathVariable("cp") int cp) throws Exception {
 
+	    Map<String, Object> reviewList = service.getReviewList(movieNo, cp);
+	    return (List<Review>) reviewList.get("reviewList");
+	}
+	
+	@ResponseBody
+	@PostMapping("/detail_List/introduce/deleteReview/{revNo}")
+	public String deleteReview(@PathVariable("revNo") int revNo) {
+		
+	    int result = service.deleteReview(revNo); // 해당 리뷰를 삭제
 
-
+	    String ns = null;
+	    
+	    if (result > 0) {
+	        return "redirect:/detail_List";
+	    } else {
+	        return "error";
+	    }
+	    
+	    
+	}
+	
 
 
 
