@@ -1,5 +1,6 @@
 package com.kh.kgv.movieList.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,29 +9,32 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.kgv.customer.model.vo.Review;
+import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Play;
 import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.management.model.vo.Pagination;
+import com.kh.kgv.movieList.model.vo.ReviewPagenation;
 
 @Repository
 public class MovieDAO {
 
-	
+
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	
-//	메인페이지 -> 영화 -> 상영중인영화 이동 시 영화 목록 조회
+
+	//	메인페이지 -> 영화 -> 상영중인영화 이동 시 영화 목록 조회
 	public List<Movie> movieList() {
-		
+
 		return sqlSession.selectList("movieMapper.getMovieList", null);
 	}
-	
+
 	// 메인 상영중인 영화 목록 가지고 오기 - 6개
 	public List<Movie> mainMovieList() {
-		
+
 		return sqlSession.selectList("movieMapper.mainMovieList", null);
 	}
 
@@ -41,11 +45,11 @@ public class MovieDAO {
 
 	// 관리자 페이지 상영 조회
 	public List<JoinPlay> getPlayList(Pagination pagination) {
-		
-	int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
-		
+
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
-		
+
 		return sqlSession.selectList("movieMapper.getPlayList", null, rowBounds);
 	}
 	// 관리자_상영영화 종료 목록 수 조회
@@ -55,11 +59,33 @@ public class MovieDAO {
 
 	// 관리자_상영영화 종료 목록 조회
 	public List<JoinPlay> getPlayEndList(Pagination pagination) {
-		
-	int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
-		
+
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
-		
+
 		return sqlSession.selectList("movieMapper.getPlayEndList", null, rowBounds);
 	}
+
+	public int getCountReviews(int movieNo) {
+		return sqlSession.selectOne("reviewMapper.getReviewCount", movieNo);
+	}
+
+	public List<Mtm> getReviewList( int movieNo) {
+		
+		Map<String, Object> params = new HashMap<>();
+		params.put("movieNo", movieNo);
+		
+		return sqlSession.selectList("reviewMapper.getReviewList-mvn", params );
+	}
+
+	public int addReview(Review review) {
+		return sqlSession.insert("reviewMapper.addReview", review);
+	}
+
+
+
+
+
+
 }

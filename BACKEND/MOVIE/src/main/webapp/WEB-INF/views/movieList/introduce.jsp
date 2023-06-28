@@ -275,11 +275,22 @@
                                                 </div>
                                                 <div>
                                                     <form action="" class="replywrite">
+
                                                         <textarea name="" id="" cols="30" rows="3"></textarea>
-                                                        <div class="replyBtn">관람평작성</div>
+
+                                                        <c:choose>
+                                                            <c:when test="${not empty loginUser.userNo}">
+                                                                <div class="replyBtn">관람평작성</div>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <div class="loginBtn">로그인</div>
+                                                            </c:otherwise>
+                                                        </c:choose>
+
                                                     </form>
                                                 </div>
                                             </div>
+
 
                                             <div class="replywrap">
                                                 <div>
@@ -303,107 +314,47 @@
 
                                             <div class="replyList">
 
-
                                                 <ul>
-                                                    <li class="review" style="display: none;"><span>
-                                                            <img src="" alt="이미지">
-                                                        </span>
-                                                        <div>
-                                                            <span>씨*럼</span>
-                                                            <span>2023.05.24</span>
-                                                            <span>★★★★★</span>
-                                                            <span>5</span>
-                                                        </div>
-                                                        <div>
-                                                            이제 다리안아픔 개꿀띠임 역시 현대의학 개좆지리누<br>
-                                                            ㅋㅋㄹㅃㅃ<br>
-                                                        </div>
-                                                    </li>
-                                                    <li class="review" style="display: none;"><span>
-                                                            <img src="" alt="이미지">
-                                                        </span>
-                                                        <div>
-                                                            <span>씨*럼</span>
-                                                            <span>2023.05.24</span>
-                                                            <span>★★★★★</span>
-                                                            <span>5</span>
-                                                        </div>
-                                                        <div>
-                                                            이제 다리안아픔 개꿀띠임 역시 현대의학 개좆지리누<br>
-                                                            ㅋㅋㄹㅃㅃ<br>
-                                                        </div>
-                                                    </li>
-                                                    <li class="review" style="display: none;"><span>
-                                                            <img src="" alt="이미지">
-                                                        </span>
-                                                        <div>
-                                                            <span>씨*럼</span>
-                                                            <span>2023.05.24</span>
-                                                            <span>★★★★★</span>
-                                                            <span>5</span>
-                                                        </div>
-                                                        <div>
-                                                            이제 다리안아픔 개꿀띠임 역시 현대의학 개좆지리누<br>
-                                                            ㅋㅋㄹㅃㅃ<br>
-                                                        </div>
-                                                    </li>
-                                                    <li class="review" style="display: none;"><span>
-                                                            <img src="" alt="이미지">
-                                                        </span>
-                                                        <div>
-                                                            <span>씨*럼</span>
-                                                            <span>2023.05.24</span>
-                                                            <span>★★★★★</span>
-                                                            <span>5</span>
-                                                        </div>
-                                                        <div>
-                                                            이제 다리안아픔 개꿀띠임 역시 현대의학 개좆지리누<br>
-                                                            ㅋㅋㄹㅃㅃ<br>
-                                                        </div>
-                                                    </li>
-                                                    <li class="review" style="display: none;"><span>
-                                                            <img src="" alt="이미지">
-                                                        </span>
-                                                        <div>
-                                                            <span>씨*럼</span>
-                                                            <span>2023.05.24</span>
-                                                            <span>★★★★★</span>
-                                                            <span>5</span>
-                                                        </div>
-                                                        <div>
-                                                            이제 다리안아픔 개꿀띠임 역시 현대의학 개좆지리누<br>
-                                                            ㅋㅋㄹㅃㅃ<br>
-                                                        </div>
-                                                    </li>
-                                                    <li class="review" style="display: none;"><span>
-                                                            <img src="" alt="이미지">
-                                                        </span>
-                                                        <div>
-                                                            <span>씨*럼</span>
-                                                            <span>2023.05.24</span>
-                                                            <span>★★★★★</span>
-                                                            <span>5</span>
-                                                        </div>
-                                                        <div>
-                                                            이제 다리안아픔 개꿀띠임 역시 현대의학 개좆지리누<br>
-                                                            ㅋㅋㄹㅃㅃ<br>
-                                                        </div>
-                                                    </li>
-
-
-
-                                                </ul>
+                                                    <c:choose>
+                                                        <c:when test="${empty reviewList.reviewList}">
+                                                            <li>
+                                                                <p>게시글이 존재하지 않습니다.</p>
+                                                            </li>
                                             </div>
-                                            <div class="morePage">더보기</div>
-
                                         </div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:forEach var="review" items="${reviewList.reviewList}">
+                                                <li class="review">
+                                                    <div class="rvWrap">
+                                                        <div class="user_info">
+                                                            <img src="" alt="">
+                                                            <p>${review.userNick}</p>
+                                                        </div>
+                                                        <div class="review_content">
+                                                            <div>관람평</div>
+                                                            <div>${review.revLike}</div>
+                                                            <div>${review.revContent}</div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </c:forEach>
+                                        </c:otherwise>
+                                        </c:choose>
 
+                                        </ul>
                                     </div>
-                                    </section>
-                                    <div id="btnContainer">
-                                        <input id="returnBtn" type="button" onclick="goBack()" value="목록으로">
-                                    </div>
-                            </main>
+                                    <div class="morePage">더보기</div>
+                                    <input type="hidden" id="movieNo" value="${movieNo}">
+                                    <input type="hidden" id="userNick" value="${userNick}">
+                                </div>
+
+                        </div>
+                        </section>
+                        <div id="btnContainer">
+                            <input id="returnBtn" type="button" onclick="goBack()" value="목록으로">
+                        </div>
+                        </main>
 
                         </div>
 
@@ -416,5 +367,6 @@
                         <script src="${contextPath}/resources/js/introduce/introduce.js"></script>
                         </div>
                     </body>
+
 
                     </html>

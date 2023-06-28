@@ -1,145 +1,149 @@
+const userNickElement = document.getElementById("userNick");
+const userNickValue = userNickElement.value;
+console.log(userNickValue);
+
 $(document).ready(function () {
-  var foldWrap = $('.fold_wrap');
-  let foldContent = $('.fold_content'); // 이걸로 영화 설명이 들어가는 칸 높이를 가져올 수 있음.
-  var moreBtn = $('.more_btn');
-  var isFolded = true; // 초기 상태는 접혀있음으로 설정
+  var foldWrap = $(".fold_wrap");
+  let foldContent = $(".fold_content");
+  var moreBtn = $(".more_btn");
+  var isFolded = true;
 
   moreBtn.click(function () {
     if (isFolded) {
       foldWrap.animate({ height: foldContent.height() }, 200);
-      foldWrap.css('overflow', 'visible');
-      moreBtn.html('접기');
-      isFolded = false; // 상태를 펼쳐진 상태로 업데이트
+      foldWrap.css("overflow", "visible");
+      moreBtn.html("접기");
+      isFolded = false;
     } else {
-      foldWrap.animate({ height: '60px' }, 200);
-      foldWrap.css('overflow', 'hidden');
-      moreBtn.html('더보기');
-      isFolded = true; // 상태를 접혀진 상태로 업데이트
+      foldWrap.animate({ height: "60px" }, 200);
+      foldWrap.css("overflow", "hidden");
+      moreBtn.html("더보기");
+      isFolded = true;
     }
-
   });
 
-  var swiper0 = new Swiper('.swiper-container.zeroOne', {
+  var swiper0 = new Swiper(".swiper-container.zeroOne", {
     slidesPerView: 1,
     spaceBetween: 30,
     navigation: {
-      nextEl: 'main section .swiper-button-next',
-      prevEl: 'main section .swiper-button-prev',
+      nextEl: "main section .swiper-button-next",
+      prevEl: "main section .swiper-button-prev",
     },
-    loop: true
+    loop: true,
   });
 
-
-  var swiper1 = new Swiper('.swiper-container.first', {
+  var swiper1 = new Swiper(".swiper-container.first", {
     slidesPerView: 3,
     spaceBetween: 30,
     navigation: {
-      nextEl: '.first .swiper-button-next',
-      prevEl: '.first .swiper-button-prev',
+      nextEl: ".first .swiper-button-next",
+      prevEl: ".first .swiper-button-prev",
     },
-    loop: true
-
+    loop: true,
   });
 
-  var swiper2 = new Swiper('.swiper-container.second', {
+  var swiper2 = new Swiper(".swiper-container.second", {
     slidesPerView: 1,
     spaceBetween: 30,
     navigation: {
-      nextEl: '.second .swiper-button-next',
-      prevEl: '.second .swiper-button-prev',
+      nextEl: ".second .swiper-button-next",
+      prevEl: ".second .swiper-button-prev",
     },
   });
-  $('.swiper-container.first .swiper-slide').each(function (index) {
+
+  $(".swiper-container.first .swiper-slide").each(function (index) {
     $(this).click(function () {
       swiper2.slideTo(index);
     });
   });
 
-
-
-  $('.info-btn').click(function () {
-    $('.movie-detail').show();
-    $('.movie-reply').hide();
-    $('.star-btn').css('background', 'none');
-    $('.star-btn').css('color', 'white');
-    $(this).css('background', '#d3d3d3');
-    $(this).css('color', 'black');
-
+  $(".info-btn").click(function () {
+    $(".movie-detail").show();
+    $(".movie-reply").hide();
+    $(".star-btn").css("background", "none");
+    $(".star-btn").css("color", "white");
+    $(this).css("background", "#d3d3d3");
+    $(this).css("color", "black");
   });
 
-  $('.star-btn').click(function () {
-    $('.movie-detail').hide();
-    $('.movie-reply').show();
-    $('.info-btn').css('background', 'none')
-    $('.info-btn').css('border', '1px solid #d3d3d3');
-    $('.info-btn').css('color', 'white');
-    $(this).css('background', '#d3d3d3');
-    $(this).css('color', 'black');
-
+  $(".star-btn").click(function () {
+    $(".movie-detail").hide();
+    $(".movie-reply").show();
+    $(".info-btn").css("background", "none");
+    $(".info-btn").css("border", "1px solid #d3d3d3");
+    $(".info-btn").css("color", "white");
+    $(this).css("background", "#d3d3d3");
+    $(this).css("color", "black");
   });
-
-
 
   $(".star_rating a").click(function () {
     $(this).parent().children("a").removeClass("on");
     $(this).addClass("on").prevAll("a").addClass("on");
-    // 'on' 클래스 개수 확인
     var numberOfOnClasses = $(this).parent().children("a.on").length;
     console.log(numberOfOnClasses);
     return false;
   });
 
-
   function addReview() {
-    const starRating = document.querySelectorAll('.star_rating .on').length;
+    const starRating = document.querySelectorAll(".star_rating .on").length;
+    const reviewText = document.querySelector(".replywrite textarea").value;
+    var movieNo = document.getElementById("movieNo").value;
 
-    const reviewText = document.querySelector('.replywrite textarea').value;
+    $.ajax({
+      url: "/movie/movieList/detail_List/introduce/" + movieNo,
+      type: "POST",
+      data: {
+        starRating: starRating,
+        reviewText: reviewText,
+      },
+      success: function (data) {
+        const li = document.createElement("li");
 
-    const li = document.createElement('li');
+        li.innerHTML = `
+              <div class="rvWrap">
+                  <div class="user_info">
+                      <img src="" alt="">
+                      <p>${userNickValue}</p>
+                  </div>
+                  <div class="review_content">
+                      <div>관람평</div>
+                      <div>${starRating}</div>
+                      <div>${reviewText}</div>
+                  </div>
+              </div>
+              `;
 
-    const filledStars = '★'.repeat(starRating);
-    const emptyStars = '☆'.repeat(5 - starRating);
+        const replyList = document.querySelector(".replyList ul");
+        replyList.prepend(li);
 
-    li.innerHTML =
-      `
-      <span><img src="" alt=""></span>
-      <div>
-        <span></span>
-        <span>2023.05.24</span>
-        <span>${filledStars}${emptyStars}</span>
-        <span>${starRating}</span>
-      </div>
-      <div>${reviewText}</div>
-    `;
-
-    const replyList = document.querySelector('.replyList ul');
-    replyList.prepend(li);
-
-    document.querySelector('.replywrite textarea').value = '';
+        document.querySelector(".replywrite textarea").value = "";
+      },
+      error: function (xhr, status, error) {
+        console.error(error);
+      },
+    });
   }
 
-  const replyBtn = document.querySelector('.replyBtn');
-  replyBtn.addEventListener('click', addReview);
+  const replyBtn = document.querySelector(".replyBtn");
+  replyBtn.addEventListener("click", addReview);
+
   var itemsToShow = 5;
 
-  $('.review').slice(0, itemsToShow).show();
+  $(".review").hide().slice(0, itemsToShow).show();
 
-  $('.morePage').on('click', function () {
-    itemsToShow++;
-    $('.review').slice(0, itemsToShow).slideDown();
+  $(".morePage").on("click", function () {
+    itemsToShow += 5;
+    $(".review").slice(0, itemsToShow).slideDown();
   });
-
 
   let imgs = document.querySelectorAll(".swiper-slide img");
 
-  imgs.forEach(item => {
-    if (item.getAttribute('src') === "") {
+  imgs.forEach((item) => {
+    if (item.getAttribute("src") === "") {
       item.parentNode.remove();
       item.parentElement.remove();
     }
   });
-
-
 });
 
 function goBack() {
