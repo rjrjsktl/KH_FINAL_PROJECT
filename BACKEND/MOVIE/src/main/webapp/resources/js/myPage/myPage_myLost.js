@@ -14,3 +14,26 @@ $(document).ready(function(){
         });
 });
 
+// 이미지 크게보기
+function showImage(imgName) {
+    var img = new Image();
+    img.onload = function () {
+      var width = this.width;
+      var height = this.height;
+      var win = window.open(
+        "",
+        "Image",
+        "width=" + width + ",height=" + height + ",resizable=1"
+      );
+  
+      win.document.write("<html><head><title>Image</title></head><body>");
+      win.document.write(
+        "<img src='" +
+          imgName +
+          "' style='position:absolute; left:0; top:0; width:100%; height:100%; cursor:pointer;' onclick='window.close();' />"
+      );
+      win.document.write("</body></html>");
+      win.document.close();
+    };
+    img.src = imgName;
+  }
