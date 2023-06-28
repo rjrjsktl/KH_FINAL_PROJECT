@@ -39,7 +39,10 @@
                   <div>
                     <p id="cinema_select">극장 선택</p>
                   </div>
-                  <div>Tab</div>
+                  <div>
+                      <div><a href="#none" id="cinema_option1" class="clicked">전체 극장</a></div>
+                      <div><a href="#none" id="cinema_option2">특별관</a></div>
+                  </div>
                   <div>
                       <div>
                           <ul id="area_list">
@@ -53,13 +56,22 @@
                               <li><a href="#none">제주</a></li>
                           </ul>
                           <ul id="special_list" style="display: none">
-                            
+                              <li><a href="#none" class="clicked">KMAX</a></li>
+                              <li><a href="#none">DOLBY</a></li>
+                              <li><a href="#none">CHEF & CINE</a></li>
+                              <li><a href="#none">PUPPY & ME</a></li>
+                              <li><a href="#none">YES KIDS</a></li>
                           </ul>
                       </div>
                       <div>
                           <ul id="cinema_list">
                             <c:forEach var="cinema" items="${reserveMap['cinemaList']}">
                               <li><a href="#none">${cinema['cinemaName']}</a></li>
+                            </c:forEach>
+                          </ul>
+                          <ul id="special_cinema_list" style="display: none">
+                            <c:forEach var="specialScreen" items="${reserveMap['specialScreenList']}">
+                              <li><a href="#none">${specialScreen['cinemaName']}</a></li>
                             </c:forEach>
                           </ul>
                       </div>
@@ -146,22 +158,13 @@
                   <div>
                     <div class="swiper mySwiper">
                       <div class="swiper-wrapper">
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
-                        <button class="swiper-slide date"></button>
+                        <c:forEach var="i" begin="1" end="15">
+                          <div class="swiper-slide">
+                            <div class="month"></div>
+                            <button class="date"></button>
+                            <div class="day"></div>
+                          </div>
+                        </c:forEach>
                       </div>
                       
                     </div>

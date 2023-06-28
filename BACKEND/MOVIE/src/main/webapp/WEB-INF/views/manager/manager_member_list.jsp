@@ -53,12 +53,12 @@
 													<span>회원목록</span>
 													<div class="search_Box">
 														<select id="selectBox">
-															<option value="userEmail">아이디</option>
-															<option value="userName">이름</option>
-															<option value="userNick">닉네임</option>
-															<option value="userTel">연락처</option>
-															<option value="userAddr">주소</option>
-															<option value="userBirth">생년월일</option>
+															<option value="USER_EMAIL">아이디</option>
+															<option value="USER_NAME">이름</option>
+															<option value="USER_NICKNAME">닉네임</option>
+															<option value="USER_TEL">연락처</option>
+															<option value="USER_ADDR">주소</option>
+															<option value="USER_BIRTH">생년월일</option>
 														</select>
 														<input class="searchContent" placeholder="검색" />
 														<button class="checkBtn" type="button">

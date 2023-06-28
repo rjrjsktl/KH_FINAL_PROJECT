@@ -71,6 +71,39 @@ main > section:first-child > div:first-child > div:nth-child(2) {
   border-bottom: 1px solid white;
 }
 
+/* 극장 선택 tab */
+
+main > section:first-child > div:first-child > div:nth-child(2) > div {
+  width: 50%;
+  height: 100%;
+}
+
+main > section:first-child > div:first-child > div:nth-child(2) > div:first-child {
+  border-right: 1px solid white;
+}
+
+main > section:first-child > div:first-child > div:nth-child(2) > div > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 17px;
+  color: #fcfcfc;
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+main > section:first-child > div:first-child > div:nth-child(2) > div > a.clicked {
+  background-color: #D92B36;
+  opacity: 1;
+}
+
+main > section:first-child > div:first-child > div:nth-child(2) > div > a:not(.clicked):hover {
+  color: #E9b630;
+  opacity: 1;
+}
+
 
 main > section:first-child > div:first-child > div:nth-child(3) {
   display: flex;
@@ -405,20 +438,48 @@ main > section:first-child > div:last-child > div:nth-child(2) {
 
 main > section:first-child > div:last-child > div:nth-child(2) > .swiper {
   width: 80%;
-  height: calc(200px / 3);
-  margin: calc(100px / 3) auto;
+  height: 100px;
 }
 
 main > section:first-child > div:last-child > div:nth-child(2) > .swiper .swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  height: 100px;
+}
+
+main > section:first-child > div:last-child > div:nth-child(2) > .swiper .swiper-slide > .month {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100px / 3);
+  height: 20px;
+  font-size: 13px;
   text-align: center;
-  font-size: 18px;
-  color: #888;
+}
+
+main > section:first-child > div:last-child > div:nth-child(2) > .swiper .swiper-slide > .date {
+  position: absolute;
+  top: 27.5px;
+  left: 0;
+  width: calc(100px / 3);
+  height: 45px;
+  text-align: center;
+  line-height: 36px;
+  font-size: 16px;
+  color: white;
   font-weight: 700;
-  border: none;
+  background-color: rgb(32, 32, 32);
+  border: 1px solid white;
   cursor: pointer;
+}
+
+main > section:first-child > div:last-child > div:nth-child(2) > .swiper .swiper-slide > .day {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: calc(100px / 3);
+  height: 20px;
+  font-size: 13px;
+  text-align: center;
 }
 
 
