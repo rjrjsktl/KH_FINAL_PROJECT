@@ -62,6 +62,24 @@ function updatePriceAjax() {
   });
 }
 
+
+function checkTicketAjax() {
+  $.ajax({
+	url: "checkTicket",
+	data: {"countArray":JSON.stringify(countArray), "seatArray":JSON.stringify(seatArray)},
+	type: "POST",
+	success: function(url) {
+	  if(url != 'fail') {
+	    location.href = url;
+	  }
+	},
+	error: function () {
+	  console.log("티켓 검사 중 에러 발생");
+	}
+  });
+
+}
+
 function updateScreenSection(userPlay) {
     console.log(userPlay);
     
@@ -77,6 +95,7 @@ function updateScreenSection(userPlay) {
     updateSpecialSeat();
 
 }
+
 
 // 1. 좌석 커스터마이징
 
@@ -392,5 +411,18 @@ function updatePriceSection() {
 function resetPriceSection() {
   $("#price_calc > div").css('display', 'none');
 }
+
+
+
+// 결제하기
+
+$("#summary").on("click", function() {
+  // 조건 1 : 인원의 합계만큼 좌석 선택 완료 && 1명 이상 선택
+  // countArray와 seatArray를 넘긴다.
+  if(totalCount == choiceCount && totalCount > 0) {
+    checkTicketAjax();
+  }
+  
+})
 
 

@@ -551,7 +551,6 @@ function updateResultSection(userPlay) {
     resultSection.find('#movie_grade').html('18');  
   }
 
-  
   let up_start = new Date(userPlay.play.playStart);
   let up_end = new Date(userPlay.play.playEnd);
   resultSection.find('#up_year').html(up_start.getFullYear() + "년");
@@ -573,10 +572,6 @@ function updateResultSection(userPlay) {
   resultSection.find('#play_cinema').html(userPlay.cinema.cinemaName);
   resultSection.find('#play_screen').html(userPlay.screen.screenName + "관");
   resultSection.find('#play_style').html("(" + userPlay.screen.screenStyle + ")");
-  
-  resultSection.find('#next_stage').on("click", function() {
-     
-  })
   
   $('main').append(resultSection);
 }
