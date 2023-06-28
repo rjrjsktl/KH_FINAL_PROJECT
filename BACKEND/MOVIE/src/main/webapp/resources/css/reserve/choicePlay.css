@@ -207,7 +207,11 @@ main > section:first-child > div:nth-child(2) > div:nth-child(3) > #movielist_te
   background-color: transparent;
   padding: 18px;
   padding-right: 12px;
-  opacity: 0.5;
+  opacity: 0.4;
+}
+
+main > section:first-child > div:nth-child(2) > div:nth-child(3) > #movielist_text > li > a.bright {
+  opacity: 1;
 }
 
 
@@ -275,7 +279,11 @@ main > section:first-child > div:nth-child(2) > div:nth-child(3) > #movielist_th
   background-color: transparent;
   padding: 18px;
   padding-right: 12px;
-  opacity: 0.5;
+  opacity: 0.4;
+}
+
+#movielist_thumb > li > a.bright {
+  opacity: 1;
 }
 
 /* 영화 리스트 (2) - 썸네일 */
