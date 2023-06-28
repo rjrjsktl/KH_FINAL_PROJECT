@@ -99,7 +99,7 @@
                                         <div>
 
                                             <a
-                                                href="${contextPath}/store/storeMain/store_detail/store_payment/${storeDetail.storeNo}"><button
+                                                href="${contextPath}/store/storeMain/store_detail/store_payment/${storeNo}"><button
                                                     type="submit" class="storeBuy_btn">구매하기</button></a>
                                         </div>
                                     </div>
@@ -153,23 +153,12 @@
 
                             </main>
                         </div>
-                        <!-- 모달 -->
-                        <div id="myModal" class="modal">
-                            <div class="modal-content">
-                                <div class="close-button">&times;</div>
-                                <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
-                            </div>
-                        </div>
+
 
                         <!-- footer -->
                         <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-                        <div id="myModal" class="modal">
-                            <div class="modal-content">
-                                <div class="close-button">&times;</div>
-                                <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
-                            </div>
-                        </div>
+
 
                         <script src="${contextPath}/resources/js/store/store_detail.js"></script>
                         <script src="${contextPath}/resources/js/common/header.js"></script>

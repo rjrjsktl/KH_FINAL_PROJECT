@@ -35,7 +35,6 @@
 
                             <div class="main_Wrapper">
                                 <div id="left_Nav_Container">
-                                    <div class="nav_Title">로고영역</div>
                                     <jsp:include page="/WEB-INF/views/manager/manager_nav.jsp" />
                                 </div>
 
@@ -119,15 +118,24 @@
                                                                             </div>
                                                                         </div>
                                                                         <div style="display:none">
-                                                                            <input type="text" class="screenStyle" name="screenStyle">
-                                                                            <input type="text" class="screenSeat" name="screenSeat">
-                                                                            <input type="text" class="screenDetail" name="screenDetail">
-                                                                            <input type="text" class="screenRow" name="screenRow">
-                                                                            <input type="text" class="screenCol" name="screenCol">
-                                                                            <input type="text" class="screenSpace" name="screenSpace">
-                                                                            <input type="text" class="screenAisle" name="screenAisle">
-                                                                            <input type="text" class="screenSweet" name="screenSweet">
-                                                                            <input type="text" class="screenImpaired" name="screenImpaired">
+                                                                            <input type="text" class="screenStyle"
+                                                                                name="screenStyle">
+                                                                            <input type="text" class="screenSeat"
+                                                                                name="screenSeat">
+                                                                            <input type="text" class="screenDetail"
+                                                                                name="screenDetail">
+                                                                            <input type="text" class="screenRow"
+                                                                                name="screenRow">
+                                                                            <input type="text" class="screenCol"
+                                                                                name="screenCol">
+                                                                            <input type="text" class="screenSpace"
+                                                                                name="screenSpace">
+                                                                            <input type="text" class="screenAisle"
+                                                                                name="screenAisle">
+                                                                            <input type="text" class="screenSweet"
+                                                                                name="screenSweet">
+                                                                            <input type="text" class="screenImpaired"
+                                                                                name="screenImpaired">
                                                                         </div>
                                                                     </div>
 

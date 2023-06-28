@@ -72,8 +72,8 @@
 								</tr>
 								<tr>
 									<th>첨부파일</th>
-									<td><input id="lostFile" type="file" multiple
-										class="align_File"></td>
+									<td><input type="file" id="fileInput" class="align_File"
+										name="file"></td>
 								</tr>
 								<tr class="label_box">
 									<th>공개여부</th>
@@ -88,11 +88,15 @@
 							</table>
 						</div>
 
+					
+
 						<div id="writeForm">
 							<div class="inner_Textarea_Title">상세 내용</div>
 							<textarea id="contentTextarea" class="inner_Textarea"
 								placeholder="잃어버리신 물건의 이름, 크기, 색상 등을 자세하게 설명해 주세요."></textarea>
 						</div>
+
+						<div class="addfileList" ></div>
 
 						<div class="btn_Container">
 							<button id="registLost">작성하기</button>

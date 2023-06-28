@@ -34,7 +34,6 @@
 
 							<div class="main_Wrapper">
 								<div id="left_Nav_Container">
-									<div class="nav_Title">로고영역</div>
 									<jsp:include page="/WEB-INF/views/manager/manager_nav.jsp" />
 								</div>
 
@@ -64,13 +63,15 @@
 														<th>수정</th>
 														<th>삭제</th>
 													</tr>
-													<c:forEach var="getBenefits" items="${getBenefitsList['benefitsList']}">
+													<c:forEach var="getBenefits"
+														items="${getBenefitsList['benefitsList']}">
 														<tr>
 															<td>${getBenefits['benefitsNo']}</td>
 
 															<td>
 																<c:choose>
-																	<c:when test="${getBenefits['benefitsStatus'] == 'Y'}">
+																	<c:when
+																		test="${getBenefits['benefitsStatus'] == 'Y'}">
 																		<a
 																			href="${contextPath}/benefitsList/detail_List/introduce/${getBenefits['benefitsNo']}">${getBenefits['benefitsTitle']}</a>
 																	</c:when>
@@ -101,12 +102,14 @@
 															</c:choose>
 
 															<td>
-																<a href="${contextPath}/manager/benefits_list/edit/${getBenefits['benefitsNo']}" class="editEvent">
+																<a href="${contextPath}/manager/benefits_list/edit/${getBenefits['benefitsNo']}"
+																	class="editEvent">
 																	<i class="fa-sharp fa-solid fa-pen-to-square"></i>
 																</a>
 															</td>
 															<td>
-																<a href="${contextPath}/manager/benefits_list/delete/${getBenefits['benefitsNo']}" class="deleteEvent" onclick="checkDelete()">
+																<a href="${contextPath}/manager/benefits_list/delete/${getBenefits['benefitsNo']}"
+																	class="deleteEvent" onclick="checkDelete()">
 																	<i class="fa-sharp fa-solid fa-xmark"></i>
 																</a>
 															</td>
@@ -160,9 +163,11 @@
 						<script src="${contextPath}/resources/js/manager/manager_inner_Header.js"></script>
 						<script src="${contextPath}/resources/js/manager/manager_nav.js"></script>
 						<script>
-							function checkDelete(){
-								if(!window.confirm("정말 삭제하시겠습니까 ?")){
-									return=false;
+							function checkDelete() {
+								console.log("삭제를 시작해볼까?");
+
+								if (!window.confirm("정말 삭제하시겠습니까 ?")) {
+									return false;
 								}
 							}
 						</script>

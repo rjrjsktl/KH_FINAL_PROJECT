@@ -3,6 +3,11 @@
 		<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 			<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 				<%@ page session="false" %>
+					<div class="nav_Title">
+						<a id="mainLogo" href="${contextPath}">
+							<img src="${contextPath}/resources/images/logo/logo.png" alt="logo">
+						</a>
+					</div>
 					<nav>
 						<ul class="nav_Slide">
 							<a class="title_move" href="${contextPath}/manager/main" value="">

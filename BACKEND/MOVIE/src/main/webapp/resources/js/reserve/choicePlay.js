@@ -6,9 +6,13 @@ let movieIndex = -1;
 let movieOptionIndex = 1;
 let playListIndex = -1;
 let playIndex = -1;
+let brightTitleIndex = -1;
+let brightThumbIndex = -1;
 
 let areaCinemaList = [];
 let movieNumList = [];
+let titleRankList = [];
+let rateRankList = [];
 let userPlayList;
 
 let originPlay = $("#origin_play").clone(true);
@@ -27,11 +31,17 @@ $('#total_play').empty();
 // [ajax] 페이지가 로딩되면 서울 지역의 극장을 극장 리스트에 저장함.
 
 $.ajax({
-  url: "cinemaList",
+  url: "initialMap",
   data: {"areaIndex": areaIndex},
   type: "GET",
-  success: function(cinemaList) {
-    areaCinemaList = cinemaList;
+  success: function(initialMap) {
+    areaCinemaList = initialMap.cinemaList;
+    titleRankList = initialMap.titleRankList;
+    rateRankList = initialMap.rateRankList;
+    
+    console.log(areaCinemaList);
+    console.log(titleRankList);
+    console.log(rateRankList);
   },
   error: function () {
     console.log("페이지 로딩 중 에러 발생");
@@ -94,7 +104,7 @@ function selectAreaAjax() {
     success: function(cinemaList) {
       areaCinemaList = cinemaList;
       $("#cinema_list").empty();
-      updateCinemaSection(cinemaList);
+      updateCinemaSection(areaCinemaList);
       if(prevAreaIndex == areaIndex) {
     	$('#cinema_list').children().eq(cinemaIndex).children().click();
   	  }
@@ -115,7 +125,7 @@ function selectPlayAjax() {
     data: {"playNo" : playNo},
     type: "GET",
     success: function(result) {
-      
+      console.log("상영 선택");
     },
     error: function () {
       console.log("에러 발생");
@@ -265,6 +275,9 @@ function updateTotalPlay(joinPlayList) {
     
     userPlayList = movieGroup;
     movieNumList = [];
+    
+    $('#movielist_text > li > a').removeClass("bright");
+    $('#movielist_thumb > li > a').removeClass("bright");
          
     // 영화번호 별로 상영 목록을 만듦.
     for(let i in movieGroup) {
@@ -274,6 +287,12 @@ function updateTotalPlay(joinPlayList) {
            
       playBundle = $('<div><ul class="playlist"></ul></div>');
       movieNumList.push(movieGroup[i][0]['movie'].movieNo);
+      
+      brightTitleIndex = titleRankList.indexOf(movieGroup[i][0]['movie'].movieNo);
+      brightThumbIndex = rateRankList.indexOf(movieGroup[i][0]['movie'].movieNo);
+      
+      $('#movielist_text > li > a').eq(brightTitleIndex).addClass('bright');
+      $('#movielist_thumb > li > a').eq(brightThumbIndex).addClass('bright');
       
       // 각 상영 별로 정보를 초기화함.
       for(let k in movieGroup[i]) {

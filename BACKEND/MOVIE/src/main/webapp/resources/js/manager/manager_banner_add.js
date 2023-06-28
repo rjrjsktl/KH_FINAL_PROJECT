@@ -115,8 +115,6 @@ $(document).ready(function () {
 
 });
 
-
-
 function readURL(input) {
 
     if (input.files && input.files[0]) {
@@ -137,3 +135,6 @@ function readURL(input) {
 
     }
 };
+
+
+

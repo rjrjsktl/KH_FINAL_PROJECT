@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.kgv.common.Util;
+import com.kh.kgv.customer.model.vo.Review;
+import com.kh.kgv.helpDesk.model.vo.Mtm;
+import com.kh.kgv.helpDesk.model.vo.QuestPagenation;
 import com.kh.kgv.items.model.vo.Movie;
-import com.kh.kgv.items.model.vo.Play;
-import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.management.model.vo.Pagination;
 import com.kh.kgv.movieList.model.dao.MovieDAO;
+import com.kh.kgv.movieList.model.vo.ReviewPagenation;
 
 @Service
 public class MovieServiceImpl implements MovieService{
@@ -50,6 +52,8 @@ public class MovieServiceImpl implements MovieService{
 	    		cleanedMovie.setMovieCast(movie.getMovieCast());
 	    		cleanedMovie.setMovieRegdate(movie.getMovieRegdate());
 	    		cleanedMovie.setMovieSt(movie.getMovieSt());
+	    		cleanedMovie.setMoviePlayed(movie.getMoviePlayed());
+	    		cleanedMovie.setMovieWatched(movie.getMovieWatched());
 	        
 	    		cleanedList.add(cleanedMovie);
 	    	}
@@ -59,7 +63,7 @@ public class MovieServiceImpl implements MovieService{
 		return getMovieList;
 	}
 
-	// 메인 상영중인 영화 목록 가지고 오기 - 7개
+	// 메인 상영중인 영화 목록 가지고 오기 - 6개
 	@Override
 	public Map<String, Object> mainMovieList() {
 		List<Movie> movielist = dao.mainMovieList();
@@ -86,6 +90,8 @@ public class MovieServiceImpl implements MovieService{
 	    		cleanedMovie.setMovieCast(movie.getMovieCast());
 	    		cleanedMovie.setMovieRegdate(movie.getMovieRegdate());
 	    		cleanedMovie.setMovieSt(movie.getMovieSt());
+	    		cleanedMovie.setMoviePlayed(movie.getMoviePlayed());
+	    		cleanedMovie.setMovieWatched(movie.getMovieWatched());
 	        
 	    		cleanedList.add(cleanedMovie);
 	    	}
@@ -132,6 +138,37 @@ public class MovieServiceImpl implements MovieService{
 				
 				return getMovieList;
 	}
+
+	@Override
+	public int getCountReviews(int movieNo) {
+		return dao.getCountReviews(movieNo);
+	}
+	
+
+
+	@Override
+	public Map<String, Object> getReviewList(int movieNo) {
+		
+		int countList = dao.getCountReviews(movieNo);
+		
+		List<Mtm> reviewList = dao.getReviewList( movieNo);
+
+		Map<String, Object> getReviewList = new HashMap<String, Object>();
+		getReviewList.put("reviewList", reviewList);
+		
+		
+		
+		return getReviewList;
+	}
+
+	@Override
+	public int addReview(Review review) {
+		return dao.addReview(review);
+	}
+
+
+
+	
 	
 	
 	

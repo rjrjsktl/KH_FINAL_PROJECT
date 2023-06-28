@@ -10,7 +10,7 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none"
+    user-select: none;
 
 }
 
@@ -66,9 +66,9 @@ header>section:nth-child(1) {
 }
 
 /* 이미지 사이즈 강제 안넘어가게설정하기*/
-.logo-section>div:nth-child(1)>a>img {
+/* .logo-section>div:nth-child(1)>a>img {
     flex: 1 1 0;
-}
+} */
 
 /* 헤드 첫번째섹션 khtheater */
 .logo-section>span {
@@ -76,6 +76,7 @@ header>section:nth-child(1) {
     align-items: flex-end;
     letter-spacing: 5px;
     font-weight: 300;
+    padding-left: 80px;
 }
 
 /* 광고, 멤버랩 */
@@ -242,7 +243,7 @@ header>nav {
 
 .menuBar>li>a:hover {
     color: rgb(255, 196, 0);
-    font-weight:bold;
+    font-weight: bold;
 }
 
 

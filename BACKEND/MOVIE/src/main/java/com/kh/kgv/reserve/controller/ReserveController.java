@@ -1,6 +1,7 @@
 package com.kh.kgv.reserve.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -57,6 +58,23 @@ public class ReserveController {
 		return "reserve/choicePlay";
 	}
 	
+	
+	@GetMapping("/initialMap")
+	@ResponseBody
+	public Map<String, Object> getInitialMap() {
+		Map<String, Object> initialMap = null;
+
+		try {
+			String areaName = areaArray[0];
+			initialMap = service.getInitialMap(areaName);	
+		} catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println("배열 범위 이외의 숫자입니다.");
+		} catch(NumberFormatException e) {
+			System.out.println("잘못된 인덱스입니다.");
+		}
+		
+		return initialMap;
+	}
 	
 	@GetMapping("/cinemaList")
 	@ResponseBody

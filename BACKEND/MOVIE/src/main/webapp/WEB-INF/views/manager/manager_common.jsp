@@ -29,9 +29,7 @@
 
         <div class="main_Wrapper">
             <div id="left_Nav_Container">
-                <div class="nav_Title">
-                    로고영역
-                </div>
+
                 <!-- NAV 영역 -->
                 <nav>
                     <ul class="nav_Slide">

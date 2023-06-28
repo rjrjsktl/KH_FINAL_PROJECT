@@ -19,7 +19,6 @@
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
 
-<script src="/ckeditor5/build/ckeditor.js"></script>
 
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/common/outline.css">
@@ -61,6 +60,10 @@
 								<c:out value="${mTmdetail.mtmContent}" escapeXml="true"/>
 							</div>
 						</div>
+					</div>
+
+					<div class="imageArea">
+						<img src="${mTmdetail.mtmImage}" onclick="showImage('${mTmdetail.mtmImage}')">
 					</div>
 
 					<c:if test="${mTmdetail.mtmRepSt == 'Y'}">
