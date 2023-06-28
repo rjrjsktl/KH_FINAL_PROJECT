@@ -210,4 +210,10 @@ public class ReserveServiceImpl implements ReserveService {
 		return initialMap;
 	}
 
+	@Override
+	public List<Screen> getSpecialScreenList(String type) {
+		List<Screen> specialCinemaList = dao.getSpecialScreenList(type);
+		return specialCinemaList;
+	}
+
 }
