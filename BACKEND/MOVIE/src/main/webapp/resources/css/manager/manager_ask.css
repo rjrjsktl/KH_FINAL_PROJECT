@@ -164,3 +164,16 @@
     white-space: nowrap;
 
 }
+
+.titleSize {
+    width: 200px;
+}
+
+.contentSize {
+    width: 200px;
+}
+
+.wordReduce {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

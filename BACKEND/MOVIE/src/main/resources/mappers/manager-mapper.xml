@@ -3,9 +3,7 @@
 <mapper namespace="managerMapper">
 
 	<resultMap type="user" id="user_rm">
-
 		<id property="userNo" column="USER_NO" />
-
 		<result property="userEmail" column="USER_EMAIL" />
 		<result property="userPw" column="USER_PW" />
 		<result property="userName" column="USER_NAME" />
@@ -715,34 +713,77 @@
 		NOTICE_NO = #{noticeNo}
 	</update>
 
-<select id="getSearchMemberCount" resultType="_int">
+	<!-- 관리자_혜택 삭제 -->
+	<select id="getSearchMemberCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM USERS
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'USER_EMAIL'">
+					USER_EMAIL LIKE '%' || #{searchContext} || '%'
+				</when>
+				<when test="searchType == 'USER_NAME'">
+					USER_NAME LIKE '%' || #{searchContext} || '%'
+				</when>
+				<when test="searchType == 'USER_NICKNAME'">
+					USER_NICKNAME LIKE '%' || #{searchContext} || '%'
+				</when>
+				<when test="searchType == 'USER_TEL'">
+					USER_TEL LIKE '%' || #{searchContext} || '%'
+				</when>
+				<when test="searchType == 'USER_ADDR'">
+					USER_ADDR LIKE '%' || #{searchContext} || '%'
+				</when>
+				<otherwise>
+					USER_BIRTH LIKE '%' || #{searchContext} || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
 
-  SELECT COUNT(*)
-  FROM USERS
-
-  <trim prefix="where"></trim>
-  <choose>
-  <when test="searchType = 'USER_EMAIL'">
-        USER_EMAIL LIKE '%' || #{searchContext} || '%'
-</when>
-  <when test="searchType = 'USER_NAME'">
-        USER_NAME LIKE '%' || #{searchContext} || '%'
-</when>
-  <when test="searchType = 'USER_NICKNAME'">
-        USER_NICKNAME LIKE '%' || #{searchContext} || '%'
-</when>
-  <when test="searchType = 'USER_TEL'">
-        USER_TEL LIKE '%' || #{searchContext} || '%'
-</when>
-  <when test="searchType = 'USER_ADDR'">
-        USER_ADDR LIKE '%' || #{searchContext} || '%'
-</when>
-  <otherwise>
-        USER_BIRTH LIKE '%' || #{searchContext} || '%'
-</otherwise>
-</choose>
-
-</select>
+	<!-- 검색 회원 리스트 조회 -->
+	<select id="selectSearchMemberList" resultMap="user_rm">
+		SELECT
+		USER_NO
+		, USER_EMAIL
+		, USER_NAME
+		, USER_NICKNAME
+		, USER_TEL
+		, USER_ADDR
+		, USER_BIRTH
+		, USER_GENDER
+		, USER_REGDATE
+		, USER_ST
+		, USER_IMG
+		, USER_POINT
+		, USER_SNS
+		, USER_DELETE
+		, USER_MANAGERST
+		, USER_BLOCK
+		FROM USERS
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'USER_EMAIL'">
+					USER_EMAIL LIKE '%' || #{searchContext} || '%'
+				</when>
+				<when test="searchType == 'USER_NAME'">
+					USER_NAME LIKE '%' || #{searchContext} || '%'
+				</when>
+				<when test="searchType == 'USER_NICKNAME'">
+					USER_NICKNAME LIKE '%' || #{searchContext} || '%'
+				</when>
+				<when test="searchType == 'USER_TEL'">
+					USER_TEL LIKE '%' || #{searchContext} || '%'
+				</when>
+				<when test="searchType == 'USER_ADDR'">
+					USER_ADDR LIKE '%' || #{searchContext} || '%'
+				</when>
+				<otherwise>
+					USER_BIRTH LIKE '%' || #{searchContext} || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
 
 
 

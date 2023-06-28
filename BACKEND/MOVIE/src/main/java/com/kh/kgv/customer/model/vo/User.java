@@ -30,3 +30,4 @@ public class User {
 	private String userManagerSt;
 	private String userBlock;
 }
+
