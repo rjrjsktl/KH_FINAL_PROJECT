@@ -38,7 +38,6 @@
 
                             <div class="main_Wrapper">
                                 <div id="left_Nav_Container">
-                                    <div class="nav_Title">로고영역</div>
                                     <jsp:include page="/WEB-INF/views/manager/manager_nav.jsp" />
                                 </div>
 

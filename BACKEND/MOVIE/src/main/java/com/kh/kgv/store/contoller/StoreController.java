@@ -125,15 +125,12 @@ public class StoreController {
 		if(loginUser == null ) {
 			Util.alertAndMovePage(response, "로그인을 하셔야 합니다.", "/movie/user/login");
 
-			if(loginUser == loginUser) {
-				Util.alertAndBackPage(response, "로그인에 성공 하셨습니다");
-				return "store/store_payment";
-			}
+			
 			 
 			return "store/store_payment";
 		}
 		
-		
+	
 		
 		
 		

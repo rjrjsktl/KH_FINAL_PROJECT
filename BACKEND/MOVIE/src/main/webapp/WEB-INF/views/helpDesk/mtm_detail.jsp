@@ -62,6 +62,10 @@
 						</div>
 					</div>
 
+					<div class="imageArea">
+						<img src="${mTmdetail.mtmImage}" onclick="showImage('${mTmdetail.mtmImage}')">
+					</div>
+
 					<c:if test="${mTmdetail.mtmRepSt == 'Y'}">
 
 						<div class="reply">
