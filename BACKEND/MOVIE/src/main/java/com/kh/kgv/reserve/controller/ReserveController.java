@@ -61,11 +61,11 @@ public class ReserveController {
 	
 	@GetMapping("/initialMap")
 	@ResponseBody
-	public Map<String, Object> getCinemaList(String areaIndex) {
+	public Map<String, Object> getInitialMap() {
 		Map<String, Object> initialMap = null;
 
 		try {
-			String areaName = areaArray[Integer.parseInt(areaIndex)];
+			String areaName = areaArray[0];
 			initialMap = service.getInitialMap(areaName);	
 		} catch(ArrayIndexOutOfBoundsException e) {
 			System.out.println("배열 범위 이외의 숫자입니다.");
@@ -74,6 +74,21 @@ public class ReserveController {
 		}
 		
 		return initialMap;
+	}
+	
+	@GetMapping("/cinemaList")
+	@ResponseBody
+	public List<Cinema> getCinemaList(String areaIndex) {
+		try {
+			String areaName = areaArray[Integer.parseInt(areaIndex)];
+			cinemaList = service.getAreaCinemaList(areaName);
+		} catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println("배열 범위 이외의 숫자입니다.");
+		} catch(NumberFormatException e) {
+			System.out.println("잘못된 인덱스입니다.");
+		}
+		
+		return cinemaList;
 	}
 	
 	

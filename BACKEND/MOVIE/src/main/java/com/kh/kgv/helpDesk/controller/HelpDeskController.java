@@ -389,6 +389,7 @@ public class HelpDeskController {
          @RequestParam("contentTextarea") String content,
          @RequestParam("inquirySelect") String inquiry,
          @RequestParam("open") int open, 
+         @RequestParam("imageUrl1") String imageUrl,
          HttpSession session) {
 
       User loginUser = (User)session.getAttribute("loginUser");
@@ -412,7 +413,8 @@ public class HelpDeskController {
       mtm.setMtmType(inquiry);
       mtm.setUserNo(userNo);
       mtm.setMtmWriter(userNick);
-      mtm.setMtmPw(open);  
+      mtm.setMtmPw(open);
+      mtm.setMtmImage(imageUrl);
 
       System.out.println(open);
 
@@ -428,6 +430,8 @@ public class HelpDeskController {
 
       return ResponseEntity.ok(response);
    }
+   
+   
    
    @PostMapping("/mTm_form/uploadImage")
    @ResponseBody
@@ -724,6 +728,35 @@ public class HelpDeskController {
       return "helpDesk/lost_detail";
 
    }
+   
+   @PostMapping("/lost_form/uploadLostImage")
+   @ResponseBody
+   public String uploadLostFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request) {
+       JsonObject jsonObject = new JsonObject();
+
+       String webPath = "/resources/images/helpDesk/";
+
+       String fileRoot = request.getServletContext().getRealPath(webPath);
+
+       String originalFileName = multipartFile.getOriginalFilename();
+       String savedFileName = Util.fileRename(originalFileName);
+
+       File targetFile = new File(fileRoot + savedFileName);
+       try {
+           InputStream fileStream = multipartFile.getInputStream();
+           FileUtils.copyInputStreamToFile(fileStream, targetFile); // 파일 저장
+           jsonObject.addProperty("url", request.getContextPath() + webPath + savedFileName);
+           jsonObject.addProperty("responseCode", "success");
+
+       } catch (IOException e) {
+           FileUtils.deleteQuietly(targetFile); // 저장된 파일 삭제
+           jsonObject.addProperty("responseCode", "error");
+           e.printStackTrace();
+       }
+       String a = jsonObject.toString();
+       System.out.println("================================================= 이미지 는?? : : " + a);
+       return a;
+   }
 
    // 잃어버린물건 삽입 Get
    @GetMapping("/lost_form")
@@ -767,6 +800,7 @@ public class HelpDeskController {
          @RequestParam("lostDate") String date, 
          @RequestParam("contentTextarea") String details,
          @RequestParam("open") int open,
+         @RequestParam("imageUrl1") String imageUrl,
          HttpSession session) {
 
       User loginUser = (User)session.getAttribute("loginUser");
@@ -794,6 +828,7 @@ public class HelpDeskController {
       lost.setLostDate(date);
       lost.setLostWriter(userNick);
       lost.setLostPw(open);
+      lost.setLostFile(imageUrl);
 
       services.addLost(lost);  
 

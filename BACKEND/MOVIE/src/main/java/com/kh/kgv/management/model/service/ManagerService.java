@@ -184,6 +184,7 @@ public interface ManagerService {
 	
 	// 관리자_혜택 삭제
 	int deleteBenefits(int benefitsNo);
+
 	
 	
 	

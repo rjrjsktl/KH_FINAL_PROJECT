@@ -150,6 +150,8 @@
                      const test = "${loginUser}";
                      console.log(test
                         + "+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
+              
                   </script>
 
                   <script src="${contextPath}/resources/js/main/header.js"></script>

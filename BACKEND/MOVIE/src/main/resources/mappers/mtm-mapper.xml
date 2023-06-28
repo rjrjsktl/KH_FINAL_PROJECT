@@ -107,8 +107,8 @@
 		SELECT
 		MTM_NO
 		, MTM_TITLE
-		,
-		MTM_CONTENT
+		, MTM_CONTENT
+		, MTM_IMAGE
 		, MTM_ST
 		, MTM_TYPE
 		, USER_NO
@@ -134,7 +134,7 @@
 		, #{mtmTitle}
 		,
 		#{mtmContent}
-		, NULL
+		, #{mtmImage}
 		, #{userNo}
 		,
 		#{mtmType}
@@ -151,11 +151,6 @@
 		)
 
 	</insert>
-
-
-
-
-
 
 	<update id="deleteBoard">
 		UPDATE MTM_TBL SET
