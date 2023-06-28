@@ -162,6 +162,26 @@ $(document).ready(function () {
     function checking() {
         console.log(search.val());
         console.log(searchContent.val());
+
+        $.ajax({
+            url: "member/Search_Member",
+            data: {
+                searchType: search.val()
+                , searchContent: searchContent.val()
+            },
+            type: "GET",
+            success: function (result) {
+                if (result > 0) {
+                    console.log("검색 데이터 전달 성공");
+                } else {
+                    console.log("검색 데이터 전달 실패");
+                }
+            },
+
+            error: function () {
+                console.log("에러로 인해 검색 데이터 전달 실패");
+            }
+        });
     }
 
 });
