@@ -60,6 +60,10 @@
 							<div class="contentText-wrap">${lostdetail.lostContent}</div>
 						</div>
 					</div>
+					
+					<div class="imageArea">
+						<img src="${lostdetail.lostFile}" onclick="showImage('${lostdetail.lostFile}')">
+					</div>
 
 					<c:if test="${lostdetail.lostRepSt == 'Y'}">
 
