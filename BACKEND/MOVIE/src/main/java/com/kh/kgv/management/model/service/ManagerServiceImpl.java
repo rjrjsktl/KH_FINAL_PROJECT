@@ -25,6 +25,7 @@ import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Pagination;
+import com.kh.kgv.management.model.vo.Search;
 import com.kh.kgv.management.model.vo.WeeklyEnter;
 import com.kh.kgv.management.model.vo.banner;
 
@@ -599,6 +600,27 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public int updateNoticeView(int noticeNo) {
 		return dao.updateNoticeView(noticeNo);
+	}
+
+	// 관리자 회원 검색 기능
+	@Override
+	public Map<String, Object> getMemberSearch(Search search, int cp) {
+		// 검색 회원 수 조회
+		int searchMemberCount = dao.getSearchMemberCount(search);
+		System.out.println("========================================searchMemberCount : " + searchMemberCount);
+
+		// 조회한 회원을 pagination 에 담기
+		Pagination pagination = new Pagination(cp, searchMemberCount);
+
+//		//  검색 회원 리스트 조회
+//		List<User> userList = dao.selectSearchMemberList(pagination, search);
+//
+//		Map<String, Object> getUserList = new HashMap<String, Object>();
+//		getUserList.put("pagination", pagination);
+//		getUserList.put("userList", userList);
+//
+//		System.out.println("=================================getUserList : " + getUserList);
+		return null;
 	}
 
 

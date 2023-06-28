@@ -18,7 +18,7 @@
                         <link rel="stylesheet" href="${contextPath}/resources/css/store/store_payment.css">
                         <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
-                        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+                        <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
                         <!-- iamport.payment.js -->
                         <script type="text/javascript"
                             src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
@@ -47,6 +47,8 @@
                                         <div class="pay_wrapper">
                                             <div>
                                                 <h4>상품정보</h4>
+                                                <input type="hidden" id="userEmail" value="${loginUser.userEmail}">
+                                                <input type="hidden" id="userName" value="${loginUser.userName}">
                                             </div>
 
                                             <div>
@@ -61,7 +63,8 @@
                                                     <div>
                                                         <div class="tit">
 
-                                                            <h4>${storeDetail.storeName}</h4>
+                                                            <h4><span id="storeName">${storeDetail.storeName}</span>
+                                                            </h4>
 
 
                                                         </div>
@@ -143,6 +146,7 @@
                             crossorigin="anonymous"></script>
                         <script src="${contextPath}/resources/js/store/store_payment.js"></script>
                         <script src="${contextPath}/resources/js/common/header.js"></script>
+                        <script src="${contextPath}/resources/js/manager/apikey.js"></script>
                     </body>
 
                     </html>
