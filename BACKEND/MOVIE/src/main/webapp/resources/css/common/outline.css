@@ -57,6 +57,7 @@ header>section:nth-child(1) {
 .logo-section>div:nth-child(1) {
     width: 117px;
     display: flex;
+    margin-right: 80px;
 }
 
 /* 로고에어리어 이미지 사이즈*/
@@ -76,7 +77,6 @@ header>section:nth-child(1) {
     align-items: flex-end;
     letter-spacing: 5px;
     font-weight: 300;
-    padding-left: 80px;
 }
 
 /* 광고, 멤버랩 */
