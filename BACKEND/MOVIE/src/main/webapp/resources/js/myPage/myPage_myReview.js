@@ -10,16 +10,16 @@ $(document).ready(function () {
   function showNewCards() {
     console.log("slide실행");
     console.log("itemsToShow::::::::::::  " + itemsToShow);
-    // var startIndex = itemsToShow - cardsPerLoad;
-    // var endIndex = itemsToShow;
-
+    var startIndex = 0;
+    var endIndex = itemsToShow;
+    console.log("startIndex::: " + startIndex);
+    console.log("endIndex::: " + endIndex);
     // 접속하자마자 슬라이드 이벤트 적용
     // let newCards = $('.myreview').slice(itemsToShow - cardsPerLoad, itemsToShow); 
-    let newCards = $('.myreview').slice(cardsPerLoad, itemsToShow);
+    // let newCards = $('.myreview').slice(cardsPerLoad, itemsToShow);
     // 불러온 값들을 우선 숨긴 다음에, 슬라이드 다운함.
-    newCards.hide().slideDown(300);
-
-    // $('.myreview').slice(startIndex, endIndex).slideDown(3000);
+    // newCards.hide().slideDown(300);
+    $('.myreview').hide().slice(startIndex, endIndex).slideDown();
   }
   function loadReviewCards() {
     var startRow = (currentPage - 1) * cardsPerLoad + 1;
@@ -123,6 +123,7 @@ $(document).ready(function () {
   $('#list-more-btn').on('click', function () {
     console.log("더보기 버튼 누름");
     // 다음으로 보일 카드 개수만큼 선택하여 보이도록 설정
+    $(".myreview").slice(0, itemsToShow).show();
     itemsToShow += 5;
     currentPage++;
     loadReviewCards();
