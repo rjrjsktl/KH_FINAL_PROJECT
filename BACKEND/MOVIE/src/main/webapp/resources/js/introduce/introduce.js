@@ -66,15 +66,19 @@ $(document).ready(function () {
     $(this).css("color", "black");
   });
 
-  $(".star-btn").click(function () {
-    $(".movie-detail").hide();
-    $(".movie-reply").show();
-    $(".info-btn").css("background", "none");
-    $(".info-btn").css("border", "1px solid #d3d3d3");
-    $(".info-btn").css("color", "white");
-    $(this).css("background", "#d3d3d3");
-    $(this).css("color", "black");
-  });
+  function updateData() {
+    $(".star-btn").click(function () {
+      $(".movie-detail").hide();
+      $(".movie-reply").show();
+      $(".info-btn").css("background", "none");
+      $(".info-btn").css("border", "1px solid #d3d3d3");
+      $(".info-btn").css("color", "white");
+      $(this).css("background", "#d3d3d3");
+      $(this).css("color", "black");
+    });
+  }
+
+  updateData();
 
   $(".star_rating a").click(function () {
     $(this).parent().children("a").removeClass("on");
@@ -88,6 +92,11 @@ $(document).ready(function () {
     const starRating = document.querySelectorAll(".star_rating .on").length;
     const reviewText = document.querySelector(".replywrite textarea").value;
     var movieNo = document.getElementById("movieNo").value;
+    var revNo = $(this).data("revno");
+    if (!reviewText) {
+      alert("리뷰를 입력해주세요");
+      return;
+    }
 
     $.ajax({
       url: "/movie/movieList/detail_List/introduce/" + movieNo,
@@ -96,34 +105,20 @@ $(document).ready(function () {
         starRating: starRating,
         reviewText: reviewText,
       },
-      success: function (data) {
-        const li = document.createElement("li");
-
-        li.innerHTML = `
-              <div class="rvWrap">
-                  <div class="user_info">
-                      <img src="" alt="">
-                      <p>${userNickValue}</p>
-                  </div>
-                  <div class="review_content">
-                      <div>관람평</div>
-                      <div>${starRating}</div>
-                      <div>${reviewText}</div>
-                      <div><button class="deleteReview" data-revno="${review.revNo}">Delete</button></div>
-                  </div>
-              </div>
-              `;
-
-        const replyList = document.querySelector(".replyList ul");
-        replyList.prepend(li);
-
-        document.querySelector(".replywrite textarea").value = "";
+      success: function (result) {
+        if (result > 0) {
+          alert("댓글이 등록되었습니다.");
+        }
       },
       error: function (xhr, status, error) {
         console.error(error);
       },
     });
   }
+
+  const replyBtn = $(".replyBtn");
+  replyBtn.on("click", addReview);
+
   var itemsToShow = 5;
   var cp = 1;
   $(".review").hide().slice(0, itemsToShow).show();
@@ -136,7 +131,21 @@ $(document).ready(function () {
       success: function (data) {
         data.forEach(function (review) {
           const li = $(document.createElement("li"));
+          var userNo = document.getElementById("userNo").value;
+          var userMst = document.getElementById("userMst").value;
+
+          console.log(userMst);
+          let deleteButton = "";
           li.addClass("review");
+          console.log("userNo:", userNo);
+          console.log("review.userNo:", review.userNo);
+
+          if (userNo == review.userNo || userMst == 'Y') {
+            deleteButton = `<div><button class="deleteReview" data-revno="${review.revNo}">Delete</button></div>`;
+          } else {
+            deleteButton = "<div></div>";
+          }
+
           li.html(`
                         <div class="rvWrap">
                             <div class="user_info">
@@ -147,6 +156,7 @@ $(document).ready(function () {
                                 <div>관람평</div>
                                 <div>${review.revLike}</div>
                                 <div>${review.revContent}</div>
+                                ${deleteButton}
                             </div>
                         </div>
                     `);
@@ -161,24 +171,23 @@ $(document).ready(function () {
       },
     });
   });
-  const replyBtn = document.querySelector(".replyBtn");
-  replyBtn.addEventListener("click", addReview);
-});
 
-$(".deleteReview").on("click", function () {
-  var revNo = $(this).data("revno");
-  $.ajax({
-    url: "/movie/movieList/detail_List/introduce/deleteReview/" + revNo,
-    type: "POST",
-    success: function (data) {
-      alert("댓글이 삭제되었습니다.");
-    },
-    error: function (xhr, status, error) {
-      alert("오류가 발생되었습니다.");
-    },
+  $(document).on("click", ".deleteReview", function () {
+    var movieNo = document.getElementById("movieNo").value;
+    var revNo = $(this).data("revno");
+    $.ajax({
+      url: "/movie/movieList/detail_List/introduce/deleteReview/" + revNo,
+      type: "POST",
+      success: function (data) {
+        alert("댓글이 삭제되었습니다.");
+        window.location.href = movieNo;
+      },
+      error: function (xhr, status, error) {
+        alert("오류가 발생되었습니다.");
+      },
+    });
   });
 });
-
 function goBack() {
   history.back();
 }

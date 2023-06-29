@@ -167,7 +167,7 @@ public class StoreController {
 
 	 private IamportClient api;
 	 
-	// 아임포트 결제		
+	// 아임포트 결제 검증	
 	 public StoreController() {
 		 	
 	        // REST API 키와 REST API secret 를 아래처럼 순서대로 입력한다.
@@ -185,5 +185,25 @@ public class StoreController {
 	        return api.paymentByImpUid(imp_uid);
 	    }
 	
-	
+	//결제성공 정보 받아오는 ajax
+	 	@ResponseBody
+		@PostMapping("/storeMain/store_detail/store_payment/{storeNo}/successPayment") 	
+	 	public String successPayment(
+	 			@RequestParam("orderPrice") int orderPrice
+				,@RequestParam("orderCount") int orderCount,
+				@RequestParam("storeNo") int storeNo
+				,@RequestParam("userNo") int userNo) {
+	 		
+	 		
+	 		System.out.println("ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ");
+	 		
+	 		logger.debug(" orderPrice################ : " + orderPrice);
+	 		logger.debug(" totalCount################ : " + orderCount);
+	 		logger.debug(" storeNo################ : " + storeNo);
+	 		logger.debug(" userNo################ : " + userNo);
+	 		return null;
+	 	}
+	 	
+	 	
+	 	
 }

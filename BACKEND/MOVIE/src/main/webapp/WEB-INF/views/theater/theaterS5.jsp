@@ -32,13 +32,15 @@
                 <div>
                     <!-- 백그라운드이미지로 처리 -->
                     <div>
-                           <ul>
-                            <li> <a href="${contextPath}/theater/theaterS"> KMAX </li>
-                            <li><a href="${contextPath}/theater/theaterS5">DOLBY</a> </li>
-                            <li><a href="${contextPath}/theater/theaterS3">DISH & WINE</a> </li>
-                            <li><a href="${contextPath}/theater/theaterS4">WITH A PUPPY</a> </li>
-                            <li><a href="${contextPath}/theater/theaterS2">KIDS</a> </li>
-                        </ul>
+                        <ul>
+                            <li><a href="${contextPath}/theater/theaterS"> KMAX </li>
+                                <li><a href="${contextPath}/theater/theaterS2">DOLBY</a></li>
+                                <li><a href="${contextPath}/theater/theaterS5">DISH &
+                                        WINE</a></li>
+                                <li><a href="${contextPath}/theater/theaterS3">WITH A
+                                        PUPPY</a></li>
+                                <li><a href="${contextPath}/theater/theaterS4">KIDS</a></li>
+            </ul>
                     </div>
                 </div>
 
@@ -51,9 +53,6 @@
                             <span>소중한 사람과 함께 하는 소중한 시간
                             </span>
                         </div>
-
-
-
                     </div>
                 </div>
 
@@ -117,8 +116,6 @@
                         </div>
                     </div>
                 </div>
-
-
 
                 <!-- 7-- -->
                 <div>
