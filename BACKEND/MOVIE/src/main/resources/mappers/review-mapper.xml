@@ -39,6 +39,7 @@
 		FROM
 		REVIEW
 		WHERE MOVIE_NO = #{movieNo}
+		AND REV_ST = 'N'
 		ORDER BY REV_NO DESC
 	</select>
 
@@ -55,6 +56,15 @@
 		,#{userNick}
 		)
 	</insert>
+	
+	<update id="deleteReview">
+	
+		UPDATE REVIEW SET
+		REV_ST = 'Y'
+		WHERE REV_NO = #{revNo}
+
+	</update>
+
 
 
 

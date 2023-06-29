@@ -24,8 +24,10 @@ public interface MovieService {
 	int getCountReviews(int movieNo);
 
 	// 리뷰리스트
-	Map<String, Object> getReviewList(int movieNo);
+	Map<String, Object> getReviewList(int movieNo, int cp);
 
 	int addReview(Review review);
+
+	int deleteReview(int revNo);
 
 }
