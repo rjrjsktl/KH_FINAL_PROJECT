@@ -72,7 +72,7 @@
                                     <label>주 소</label>
                                     <div>
                                         <input type="text" name="updateAddr" id="postcode" value="${addr[0]}"
-                                            maxlength="6">
+                                            maxlength="6" readonly>
                                         <button type="button" id="info-address-btn"
                                             onclick="return execDaumPostcode()">검색</button>
                                     </div>
@@ -81,7 +81,7 @@
                                     <input type="text" name="updateAddr" id="address" value="${addr[1]}" readonly> 
                                 </div>
                                 <div class="myPage-info-addr-frame">
-                                    <input type="text" name="updateAddr" id="detailAddress" value="${addr[2]}" readonly>
+                                    <input type="text" name="updateAddr" id="detailAddress" value="${addr[2]}">
                                 </div>
 
                                 <div class="update-btn-area">

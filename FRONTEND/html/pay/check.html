@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/pay/check.css">
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- jQuery 라이브러리 추가(CDN) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <main>
+        <section>
+            <div class="modal">
+                <div>
+                    <!-- 타이틀 -->
+                    <div class="box_1">
+                        <div>
+                            <span>KGV 관람권</span>
+                        </div>
+                    </div>
+                    <!-- 중간 -->
+                    <div class="box_2">
+
+                        <div class="box_2_1">
+                            <span>보유하신 관람권은 등록 후 사용하실 수 있습니다.</span>
+                            <span>사용할 관람권을 등록 또는 선택 해주세요.</span>
+                        </div>
+
+                        <div class="box_2_2">
+                            
+                                <div>
+                                    <span>관람권번호</span>
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="관람권번호 12자리 입력">
+                                </div>
+                                <div>
+                                    <button>관람권 등록</button>
+                                </div>
+                            
+                        </div>
+                        <div class="box_2_3">
+                            <table class="modalTable">
+                                <tr class="table_header">
+                                    <th>관람권</th>
+                                    <th>상태</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="box_2_4">
+                            <div>
+                                <span>
+                                    이용안내<br><br>
+                                    온라인에 등록된 관람권은 극장 매표소에서는 사용이 불가합니다<br>
+                                    등록된 관람권은 나의 KGV에서 확인하실 수 있습니다
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- 버튼 -->
+                    <div class="box_3">
+                        <div>
+                            <button>닫기</button>
+                            <button>적용</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script src="../../js/pay/check.js"></script>
+</body>
+
+</html>

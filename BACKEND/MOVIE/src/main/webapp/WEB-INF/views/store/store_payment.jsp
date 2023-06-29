@@ -49,6 +49,7 @@
                                                 <h4>상품정보</h4>
                                                 <input type="hidden" id="userEmail" value="${loginUser.userEmail}">
                                                 <input type="hidden" id="userName" value="${loginUser.userName}">
+                                                <input type="hidden" id="storeNo" value="${storeDetail.storeNo}">
                                             </div>
 
                                             <div>
