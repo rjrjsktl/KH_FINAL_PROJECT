@@ -17,6 +17,7 @@
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
                 <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js" charset="utf-8"></script>
+                <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 
         </head>
 
@@ -90,8 +91,7 @@
              </c:if>
              -->
 
-		 <script src="${contextPath}/resources/js/common/header.js"></script>
-         <script src="${contextPath}/resources/js/signUp/snsSign.js"></script>
+         <script src="${contextPath}/resources/js/manager/apikey.js"></script>
 
         </body>
 

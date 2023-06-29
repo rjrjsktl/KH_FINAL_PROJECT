@@ -147,23 +147,33 @@ public class MovieServiceImpl implements MovieService{
 
 
 	@Override
-	public Map<String, Object> getReviewList(int movieNo) {
+	public Map<String, Object> getReviewList(int movieNo, int cp) {
 		
 		int countList = dao.getCountReviews(movieNo);
-		
-		List<Mtm> reviewList = dao.getReviewList( movieNo);
+		ReviewPagenation pagination = new ReviewPagenation(cp, countList);
+
+		List<Mtm> reviewList = dao.getReviewList(pagination, movieNo);
 
 		Map<String, Object> getReviewList = new HashMap<String, Object>();
+		getReviewList.put("pagination", pagination);
 		getReviewList.put("reviewList", reviewList);
-		
+
 		
 		
 		return getReviewList;
+		
+		
+		
 	}
 
 	@Override
 	public int addReview(Review review) {
 		return dao.addReview(review);
+	}
+
+	@Override
+	public int deleteReview(int revNo) {
+		return dao.deleteReview(revNo);
 	}
 
 

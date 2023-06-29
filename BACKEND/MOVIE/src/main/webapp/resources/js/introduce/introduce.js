@@ -109,6 +109,7 @@ $(document).ready(function () {
                       <div>관람평</div>
                       <div>${starRating}</div>
                       <div>${reviewText}</div>
+                      <div><button class="deleteReview" data-revno="${review.revNo}">Delete</button></div>
                   </div>
               </div>
               `;
@@ -123,35 +124,58 @@ $(document).ready(function () {
       },
     });
   }
-  const addRevContent = document.getElementById("addRevContent");
-  const replyBtn = document.querySelector(".replyBtn");
-  replyBtn.addEventListener("click", function(){
-   if(addRevContent.value.trim().length == 0) {
-    alert("리뷰를 작성해 주세요.");
-    addRevContent.focus();
-   } else {
-    confirm("리뷰를 등록하시겠습니까?");
-    addReview();
-   }
-  });
-  
-
   var itemsToShow = 5;
-
+  var cp = 1;
   $(".review").hide().slice(0, itemsToShow).show();
-
   $(".morePage").on("click", function () {
-    itemsToShow += 5;
-    $(".review").slice(0, itemsToShow).slideDown();
+    cp += 1;
+    var movieNo = document.getElementById("movieNo").value;
+    $.ajax({
+      url: "/movie/movieList/detail_List/introduce/" + movieNo + "/" + cp,
+      type: "GET",
+      success: function (data) {
+        data.forEach(function (review) {
+          const li = $(document.createElement("li"));
+          li.addClass("review");
+          li.html(`
+                        <div class="rvWrap">
+                            <div class="user_info">
+                                <img src="" alt="">
+                                <p>${review.userNick}</p>
+                            </div>
+                            <div class="review_content">
+                                <div>관람평</div>
+                                <div>${review.revLike}</div>
+                                <div>${review.revContent}</div>
+                            </div>
+                        </div>
+                    `);
+          li.hide(); // initially hide the li
+          const replyList = $(".replyList ul");
+          replyList.append(li);
+          li.slideDown(); // animate to show the li
+        });
+      },
+      error: function (xhr, status, error) {
+        console.error(error);
+      },
+    });
   });
+  const replyBtn = document.querySelector(".replyBtn");
+  replyBtn.addEventListener("click", addReview);
+});
 
-  let imgs = document.querySelectorAll(".swiper-slide img");
-
-  imgs.forEach((item) => {
-    if (item.getAttribute("src") === "") {
-      item.parentNode.remove();
-      item.parentElement.remove();
-    }
+$(".deleteReview").on("click", function () {
+  var revNo = $(this).data("revno");
+  $.ajax({
+    url: "/movie/movieList/detail_List/introduce/deleteReview/" + revNo,
+    type: "POST",
+    success: function (data) {
+      alert("댓글이 삭제되었습니다.");
+    },
+    error: function (xhr, status, error) {
+      alert("오류가 발생되었습니다.");
+    },
   });
 });
 

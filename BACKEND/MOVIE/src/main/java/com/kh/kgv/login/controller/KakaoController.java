@@ -45,6 +45,10 @@ public class KakaoController {
 			) throws Exception {
 		System.out.println("#########" + code);
 		String access_Token = service.getAccessToken(code);
+		
+		
+		
+		
 		// 엑세스 토큰값은 정상적으로 받아와진다.
 		User loginUser = service.getUserInfo(access_Token);
 		System.out.println("###access_Token#### : " + access_Token);
@@ -68,7 +72,7 @@ public class KakaoController {
 	           if(access_Token != null && !"".equals(access_Token)){
 	        	   service.kakaoLogout(access_Token);
 	               session.removeAttribute("access_Token");
-	               session.removeAttribute("loginMember2");
+	               session.removeAttribute("loginMember");
 	               session.invalidate();
 	           }else{
 	               System.out.println("access_Token is null");
