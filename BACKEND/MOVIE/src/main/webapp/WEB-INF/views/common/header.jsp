@@ -144,9 +144,8 @@
                   </nav>
 
 
-
-
                   <script>
+
                      const test = "${loginUser}";
                      console.log(test
                         + "+++++++++++++++++++++++++++++++++++++++++++++++++++++");

@@ -71,16 +71,21 @@ public class MovieDAO {
 		return sqlSession.selectOne("reviewMapper.getReviewCount", movieNo);
 	}
 
-	public List<Mtm> getReviewList( int movieNo) {
+	public List<Mtm> getReviewList( ReviewPagenation pagination, int movieNo) {
 		
-		Map<String, Object> params = new HashMap<>();
-		params.put("movieNo", movieNo);
-		
-		return sqlSession.selectList("reviewMapper.getReviewList-mvn", params );
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+		return sqlSession.selectList("reviewMapper.getReviewList-mvn", movieNo, rowBounds );
 	}
 
 	public int addReview(Review review) {
 		return sqlSession.insert("reviewMapper.addReview", review);
+	}
+
+	public int deleteReview(int revNo) {
+		return sqlSession.update("reviewMapper.deleteReview", revNo);
 	}
 
 
