@@ -213,6 +213,9 @@ $(document).ready(function() {
     $(".myPage-info-frame").click(function(){
         $(this).find("input").focus();
     });
+    $(".myPage-info-addr-frame").click(function(){
+        $(this).find("input").focus();
+    });
 });
 
 

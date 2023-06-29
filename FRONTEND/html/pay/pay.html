@@ -2,122 +2,132 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  -->
 
- <!DOCTYPE html>
- <html lang="en">
- 
- <head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>예매선택 페이지</title>
+    <title>결제 페이지</title>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../css/pay/pay.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../css/common/outline.css">
- 
- </head>
- 
- <body>
+    <link rel="stylesheet" href="../../css/pay/pay.css">
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- jQuery 라이브러리 추가(CDN) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
     <div id="wrap">
-       <header>
-  
-         <section>
-             <div class="logo-section">
-                 <div>
-                     <a href="#"><img src="" alt="암거나박아요"></a>
-                 </div>
-                 <span>KHTHEATER</span>
-             </div>
- 
-             <div class="memberInfo_wrap">
-                 <ul>
- 
-                     <div>
-                         <img src="" alt="">
-                     </div>
- 
-                     <li>
-                         <a href="#">
-                             <span><img src="../../images/headerPng/test.png" alt=""></span>
-                             <span>로그인</span>
-                         </a>
-                     </li>
-                     <li>
-                         <a href="#">
-                             <span><img src="../../images/headerPng/test2.png" alt=""></span>
-                             <span>회원가입</span>
-                         </a>
-                     </li>
-                     <li>
-                         <a href="#">
-                             <span><img src="../../images/headerPng/test3.png" alt=""></span>
-                             <span>MY KGV</span>
-                         </a>
-                     </li>
-                     <li>
-                         <a href="#">
-                             <span><img src="../../images/headerPng/test5.png" alt=""></span>
-                             <span>고객센터</span>
-                         </a>
-                     </li>
- 
-                 </ul>
-             </div>
-         </section>
- 
-         <!-- nav bar-->
-         <nav>
-             <div>
-                 <ul>
-                     <li class="navBar"><a href="#">영화</a>
-                         <ul class="menuBar" style="display:none">
-                             <li><a href="">무비 차트</a></li>
-                         </ul>
-                     </li>
-                     <li class="navBar"><a href="#">상영관</a>
-                         <ul class="menuBar" style="display:none">
-                             <li><a href="">지역별</a></li>
-                             <li><a href="">특별관</a></li>
-                         </ul>
-                     </li>
-                     <li class="navBar"><a href="#">예매</a>
-                         <ul class="menuBar" style="display:none">
-                             <li><a href="">빠른 예매</a></li>
-                         </ul>
-                     </li>
- 
-                     <li class="navBar"><a href="#">이벤트</a>
-                         <ul class="menuBar" style="display:none">
-                             <li><a href="">진행중 이벤트</a></li>
-                             <li><a href="">지난 이벤트</a></li>
-                             <li><a href="">당첨자 발표</a></li>
-                         </ul>
-                     </li>
-                     <li class="navBar"><a href="#">스토어</a></li>
-                     <li class="navBar"><a href="#">혜택</a>
-                         <ul class="menuBar" style="display:none">
-                             <li><a href="">멤버쉽</a></li>
-                             <li><a href="">제휴/할인</a></li>
-                         </ul>
-                     </li>
-                 </ul>
-                 <div class="dummy" style="display:none"></div>
-                 <div>
-                     <form action="">
- 
-                         <input type="text" placeholder="아 영화 재밌는거 없나">
-                         <button><img src="../../images/headerPng/test6.png" alt=""></button>
-                     </form>
-                 </div>
- 
-             </div>
- 
-         </nav>
-     </header>
- 
- 
+        <header>
+
+            <section>
+                <div class="logo-section">
+                    <div>
+                        <a href="#"><img src="" alt="암거나박아요"></a>
+                    </div>
+                    <span>KHTHEATER</span>
+                </div>
+
+                <div class="memberInfo_wrap">
+                    <ul>
+
+                        <div>
+                            <img src="" alt="">
+                        </div>
+
+                        <li>
+                            <a href="#">
+                                <span><img src="../../images/headerPng/test.png" alt=""></span>
+                                <span>로그인</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span><img src="../../images/headerPng/test2.png" alt=""></span>
+                                <span>회원가입</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span><img src="../../images/headerPng/test3.png" alt=""></span>
+                                <span>MY KGV</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span><img src="../../images/headerPng/test5.png" alt=""></span>
+                                <span>고객센터</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </section>
+
+            <!-- nav bar-->
+            <nav>
+                <div>
+                    <ul>
+                        <li class="navBar"><a href="#">영화</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="">무비 차트</a></li>
+                            </ul>
+                        </li>
+                        <li class="navBar"><a href="#">상영관</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="">지역별</a></li>
+                                <li><a href="">특별관</a></li>
+                            </ul>
+                        </li>
+                        <li class="navBar"><a href="#">예매</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="">빠른 예매</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="navBar"><a href="#">이벤트</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="">진행중 이벤트</a></li>
+                                <li><a href="">지난 이벤트</a></li>
+                                <li><a href="">당첨자 발표</a></li>
+                            </ul>
+                        </li>
+                        <li class="navBar"><a href="#">스토어</a></li>
+                        <li class="navBar"><a href="#">혜택</a>
+                            <ul class="menuBar" style="display:none">
+                                <li><a href="">멤버쉽</a></li>
+                                <li><a href="">제휴/할인</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="dummy" style="display:none"></div>
+                    <div>
+                        <form action="">
+
+                            <input type="text" placeholder="아 영화 재밌는거 없나">
+                            <button><img src="../../images/headerPng/test6.png" alt=""></button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </nav>
+        </header>
+
+
         <!-- 예매 페이지  -->
- 
+
         <main>
             <section>
                 <div>
@@ -126,32 +136,33 @@
                         <div>
                             <span>예매 내역</span>
                         </div>
-                        
-                        
+
+
                         <!-- 할인&혜택 영역 -->
                         <div class="discount_step">
                             <ul>
-                                <li class="discount_step_li">
+                                <li class="discount_step_li slide">
                                     <div>
-                                        <i>이미지</i>
+                                        <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
                                     </div>
-                                    <span>할인/혜택 사용</span>
+                                    <span class="discount_step_li_name">할인/혜택 사용</span>
                                     <div>
-                                        <i>아랫방향 화살표</i>
+                                        <i class="fa-solid fa-caret-down"></i>
                                     </div>
                                 </li>
-                                <ul>
-                                    <li class="discount_step_li">
+
+                                <ul class="displayChoice slide_none">
+                                    <li class="discount_step_li modalClick">
                                         <div>
-                                            <i>이미지</i>
+                                            <i class="fa-solid fa-ticket"></i>
                                         </div>
-                                        <span>관람권 사용</span>    
+                                        <span>관람권 사용</span>
                                     </li>
                                     <li class="discount_step_li">
                                         <div>
-                                            <i>이미지</i>
+                                            <i class="fa-solid fa-crown"></i>
                                         </div>
-                                        <span>VIP 혜택</span>    
+                                        <span>VIP 혜택</span>
                                     </li>
                                 </ul>
                             </ul>
@@ -159,56 +170,109 @@
 
                         <!-- 결제 api 전 단계 영역-->
                         <div class="pay_step">
-                            <div class="pay_box">
-                                <!-- 직전페이지에서 받아온 금액 -->
-                                <div>
-                                    <span>예매 가격</span>
-                                </div>
+                            <table>
+                                <tr>
+                                    <th>예매가격</th>
+                                    <th></th>
+                                    <th>할인가격</th>
+                                    <th></th>
+                                    <th>최종결제가격</th>
+                                </tr>
+                                <tr>
+                                    <th>${play_price}</th>
+                                    <th class="minus">-</th>
+                                    <th>${price.price.teen}</th>
+                                    <th>=</th>
+                                    <th></th>
+                                </tr>
+                            </table>
+                        </div>
 
-                                <div> - </div>
-
-                                <!-- 할인&혜택으로 인해 discount 해줘야할 금액 -->
-                                <div>
-                                    <span>할인 가격</span>
-                                </div>
-
-                                <div> = </div>
-
-                                <!-- 결제 api 로 날리기전 최종 결제 금액 -->
-                                <div>
-                                    <span>최종 결제가격</span>
-                                </div>
-                            </div>
-
-                            <div class="pay_box_2">
-                                <!-- 직전페이지에서 받아온 금액 -->
-                                <div></div>
-    
-                                <div> - </div>
-    
-                                <!-- 할인&혜택으로 인해 discount 해줘야할 금액 -->
-                                <div></div>
-    
-                                <div> = </div>
-    
-                                <!-- 결제 api 로 날리기전 최종 결제 금액 -->
-                                <div></div>
+                        <!-- 결제하기 영역 -->
+                        <div>
+                            <div>
+                                <button class="payBtn">결제하기</button>
                             </div>
                         </div>
 
 
+
                     </div>
                 </div>
+
+
             </section>
+
+            <div class="modal areaModal">
+                <div class="box_1">
+                    <div>
+                        <span>KGV 관람권</span>
+                    </div>
+                </div>
+
+                <div>
+                    <!-- 타이틀 -->
+
+                    <!-- 중간 -->
+                    <div class="box_2">
+
+                        <div class="box_2_1">
+                            <span>보유하신 관람권은 등록 후 사용하실 수 있습니다.</span>
+                            <span>사용할 관람권을 등록 또는 선택 해주세요.</span>
+                        </div>
+
+                        <div class="box_2_2">
+
+                            <div>
+                                <span>관람권번호</span>
+                            </div>
+                            <div>
+                                <input type="text" placeholder="관람권번호 12자리 입력">
+                            </div>
+                            <div>
+                                <button >관람권 등록</button>
+                            </div>
+
+                        </div>
+                        <div class="box_2_3">
+                            <table>
+                                <tr class="table_header">
+                                    <th>관람권</th>
+                                    <th>상태</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="box_2_4">
+                            <div>
+                                <span>
+                                    이용안내<br><br>
+                                    온라인에 등록된 관람권은 극장 매표소에서는 사용이 불가합니다<br>
+                                    등록된 관람권은 나의 KGV에서 확인하실 수 있습니다
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- 버튼 -->
+                    <div class="box_3">
+                        <div>
+                            <button>닫기</button>
+                            <button>적용</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </main>
- 
-     </div>
-     <footer>
- 
+
+    </div>
+    <footer>
+
         <section>
- 
+
             <div>
- 
+
                 <ul>
                     <li><a href="#">회사소개</a></li><span>|</span>
                     <li><a href="#">조원소개</a></li><span>|</span>
@@ -216,9 +280,9 @@
                     <li><a href="#">개인정보처리방침</a></li><span>|</span>
                     <li><a href="#">편성기준</a></li>
                 </ul>
- 
+
             </div>
- 
+
             <div>
                 <span>Channel_KGV | 사업자등록번호: 110-372-404490(신한) </span>
                 <span>조장 : 김민수 | 조원 : 권지훈 / 김윤석 / 이도근 / 정지민 / 최영탁</span>
@@ -230,9 +294,11 @@
             </div>
 
         </section>
- 
+
     </footer>
-     
+
+    <script src="../../js/pay/pay.js"></script>
+
 </body>
- 
+
 </html>

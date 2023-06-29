@@ -127,8 +127,9 @@ public class ManagerController {
 	// ===================================================
 	
 	// 관리자 회원 검색 기능
+		@ResponseBody
 		@GetMapping("/member/Search_Member")
-	public String searchMember(
+	public Map<String, Object> searchMember(
 			Model model
 			, Search search
 			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
@@ -145,9 +146,7 @@ public class ManagerController {
 		
 		System.out.println("search ====================================" + search);
 		
-		model.addAttribute("getUserList", getUserList);
-		
-		return null;
+		return getUserList;
 	}
 	
 	
