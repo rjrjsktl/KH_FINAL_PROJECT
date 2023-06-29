@@ -1,7 +1,9 @@
 package com.kh.kgv.store.contoller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +31,10 @@ import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.management.model.service.ManagerService;
 
 import com.kh.kgv.store.model.service.StoreService;
+import com.siot.IamportRestClient.IamportClient;
+import com.siot.IamportRestClient.exception.IamportResponseException;
+import com.siot.IamportRestClient.response.IamportResponse;
+import com.siot.IamportRestClient.response.Payment;
 
 @Controller
 @RequestMapping("/store")
@@ -159,7 +165,25 @@ public class StoreController {
 	}
 	
 
+	 private IamportClient api;
+	 
+	// 아임포트 결제		
+	 public StoreController() {
+		 	
+	        // REST API 키와 REST API secret 를 아래처럼 순서대로 입력한다.
+	        this.api = new IamportClient("","");
+	    }
+	 
+	 	@ResponseBody
+	    @RequestMapping(value="/storeMain/store_detail/{storeNo}/getStorePayment/verifyIamport/{imp_uid}")
+	    public IamportResponse<Payment> paymentByImpUid(
+	            Model model
+	            , Locale locale
+	            , HttpSession session
+	            , @PathVariable(value= "imp_uid") String imp_uid) throws IamportResponseException, IOException
+	    {
+	        return api.paymentByImpUid(imp_uid);
+	    }
 	
-
 	
 }
