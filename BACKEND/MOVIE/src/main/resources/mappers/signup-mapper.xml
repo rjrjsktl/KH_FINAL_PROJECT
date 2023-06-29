@@ -140,14 +140,14 @@
 		#{nickname},
 		DEFAULT,
 		DEFAULT,
+		#{age_range},
+		#{gender},
 		DEFAULT,
 		DEFAULT,
 		DEFAULT,
 		DEFAULT,
 		DEFAULT,
-		DEFAULT,
-		DEFAULT,
-		DEFAULT,
+		NULL,
 		DEFAULT,
 		DEFAULT
 		)

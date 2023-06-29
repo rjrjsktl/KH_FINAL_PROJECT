@@ -260,7 +260,7 @@
 											</div>
 
 											<div>
-												<a href="#">FAQ</a> <a href="#">1:1문의</a> <a href="#">대관 / 단체
+												<a href="${contextPath}/helpDesk/mTm_List">FAQ</a> <a href="${contextPath}/helpDesk/mTm_List">1:1문의</a> <a href="#">대관 / 단체
 													문의</a>
 											</div>
 										</div>

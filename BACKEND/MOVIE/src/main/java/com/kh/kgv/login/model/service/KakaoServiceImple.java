@@ -52,7 +52,7 @@ public class KakaoServiceImple implements KakaoService {
 	         StringBuilder sb = new StringBuilder();
 	         sb.append("grant_type=authorization_code");
 	       
-	         sb.append("&client_id=174cc17a5c65ffeefd6d3cb7c0565e0e"); //본인이 발급받은 key
+	         sb.append("&client_id=2efba8f52b3a5151a0a8fdbfc437d7b2"); //본인이 발급받은 key
 	         sb.append("&redirect_uri=http://localhost:8080/movie/sign_Up/sns/kakao"); // 본인이 설정한 주소
 	            
 	         sb.append("&code=" + authorize_code);
@@ -132,12 +132,29 @@ public class KakaoServiceImple implements KakaoService {
 	         JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 
 	         String nickname = properties.getAsJsonObject().get("nickname").getAsString();
+	         
 	         String email = kakao_account.getAsJsonObject().get("email").getAsString();
+	         String age_range = kakao_account.getAsJsonObject().get("age_range").getAsString();
+	         String gender = kakao_account.getAsJsonObject().get("gender").getAsString();
+
+	         if ( gender.equals("female")) {
+	        	 gender = "W";
+	         }else {
+	        	 gender = "M";
+	         }
+	         
 
 	         userInfo.put("nickname", nickname);
 	         userInfo.put("email", email);
+	         userInfo.put("age_range", age_range);
+	         userInfo.put("gender", gender);
+	         
+	         
+
 	         System.out.println("nickname : "+nickname);
 	         System.out.println("email : "+email);
+	         System.out.println("age_range : "+age_range);
+	         System.out.println("gender : "+gender);
 	      } catch (IOException e) {
 	         e.printStackTrace();
 	      }

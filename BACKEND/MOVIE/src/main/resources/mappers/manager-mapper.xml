@@ -713,7 +713,7 @@
 		NOTICE_NO = #{noticeNo}
 	</update>
 
-	<!-- 관리자_혜택 삭제 -->
+	<!-- 검색 회원 리스트수 조회 -->
 	<select id="getSearchMemberCount" resultType="_int">
 		SELECT COUNT(*)
 		FROM USERS
