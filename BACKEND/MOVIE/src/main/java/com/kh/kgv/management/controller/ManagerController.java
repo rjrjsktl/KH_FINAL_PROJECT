@@ -43,6 +43,7 @@ import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
+import com.kh.kgv.management.model.vo.Search;
 import com.kh.kgv.management.model.vo.WeeklyEnter;
 import com.kh.kgv.management.model.vo.banner;
 import com.kh.kgv.movieList.model.service.MovieService;
@@ -121,6 +122,37 @@ public class ManagerController {
 		System.out.println("관리자_회원 리스트 이동");
 		return "manager/manager_member_list";
 	}
+	
+	// ===================================================
+	// ===================================================
+	
+	// 관리자 회원 검색 기능
+		@ResponseBody
+		@GetMapping("/member/Search_Member")
+	public Map<String, Object> searchMember(
+			Model model
+			, Search search
+			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+			, @RequestParam("searchType") String searchType
+			, @RequestParam("searchContent") String searchContent
+			) {
+		
+		Map<String, Object>getUserList = null;
+		
+		search.setSearchType(searchType);
+		search.setSearchContext(searchContent);
+		
+		getUserList = service.getMemberSearch(search, cp);
+		
+		System.out.println("search ====================================" + search);
+		
+		return getUserList;
+	}
+	
+	
+	
+	
+	
 
 	// ===================================================
 	// ===================================================

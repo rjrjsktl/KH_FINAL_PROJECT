@@ -1,6 +1,9 @@
 let areaIndex = 0;
 let prevAreaIndex = -1;
+let prevTypeIndex = -1;
 let cinemaIndex = -1;
+let roomIndex = -1;
+let typeIndex = -1;
 let dateIndex = 0;
 let movieIndex = -1;
 let movieOptionIndex = 1;
@@ -10,6 +13,7 @@ let brightTitleIndex = -1;
 let brightThumbIndex = -1;
 
 let areaCinemaList = [];
+let ssList = [];
 let movieNumList = [];
 let titleRankList = [];
 let rateRankList = [];
@@ -82,6 +86,8 @@ function updateGreatPlayAjax() {
     type: "GET",
     success: function(joinPlayList) {
       $("#total_play").empty();
+      $('#movielist_text > li > a').removeClass("bright");
+      $('#movielist_thumb > li > a').removeClass("bright");
       if(joinPlayList.length) {
         updateTotalPlay(joinPlayList);      
       }
@@ -115,6 +121,29 @@ function selectAreaAjax() {
   });
 
 }
+
+
+// [ajax] 특별관 타입을 선택함
+
+function selectStyleAjax() {
+  $.ajax({
+    url: "specialScreenList",
+    data: {"typeIndex": typeIndex},
+    type: "GET",
+    success: function(specialScreenList) {
+      ssList = specialScreenList;
+      console.log(ssList);
+      $("#special_cinema_list").empty();
+      updateSpecialCinemaSection(ssList);
+      if(prevTypeIndex == typeIndex) {
+    	$('#special_cinema_list').children().eq(roomIndex).children().click();
+  	  }
+    },
+    error: function () {
+      console.log("에러 발생");
+    }
+  });
+};
 
 
 // 상영을 선택함
@@ -156,11 +185,24 @@ var swiper = new Swiper(".mySwiper", {
 let date = new Date();
 let weeks = ['일', '월', '화', '수', '목', '금', '토'];
 
-$('.swiper-slide.date').each(function(index, item){
+$('.swiper-slide > .date').each(function(index, item){
   $(this).attr('data-month', date.getMonth()+1);  // 월
   $(this).attr('data-date', date.getDate());      // 일
   $(this).attr('data-day', weeks[date.getDay()]); // 요일
-  $(this).text(date.getDate());
+  
+  $(this).html(date.getDate());
+  
+  if(date.getDate() == 1 || $(this).parent().index() == 0) {
+    $(this).prev().html(date.getMonth()+1 + "월");
+  }
+  
+  if($(this).parent().index() == 0) {
+    $(this).next().html("오늘");
+  } else {
+    $(this).next().html(weeks[date.getDay()]);
+  }
+  
+  
 
   if(date.getDay() == 6 || date.getDay() == 0) {
     $(this).addClass("holiday");
@@ -177,8 +219,8 @@ let today = new Date();
 let playDay = new Date();
 let strPlayDay;
 
-$('.swiper-slide.date').on("click", function(){
-  dateIndex = $(this).index();
+$('.swiper-slide > .date').on("click", function(){
+  dateIndex = $(this).parent().index();
   playDay = new Date();
   playDay.setDate(today.getDate() + dateIndex);
   
@@ -235,6 +277,38 @@ function updateCinemaSection(cinemaList) {
 }
 
 
+function updateSpecialCinemaSection(ssList) {
+  for(let screen of ssList) {
+  
+    let screenLi = document.createElement("li");
+    let screenItem = document.createElement("a");
+        
+    $(screenItem).html(screen.cinemaName);
+    $(screenItem).attr("href", "#none");
+    $(screenItem).on("click", function(e) {
+       clickSpecialScreen(e);
+    });
+        
+    $(screenLi).append(screenItem);
+    $("#special_cinema_list").append(screenLi);
+  
+  }
+
+}
+
+
+// 특별관 유형 선택
+
+let screenType = $('#special_list > li');
+
+screenType.on("click", function(){
+  $(this).siblings().children().removeClass('clicked');
+  $(this).children().addClass('clicked');
+  typeIndex = $(this).index(); 
+  
+  selectStyleAjax();
+});
+
 
 // 극장 선택 
 // 사용자가 극장을 선택하여 인덱스로 접근하는데, 관리자가 극장을 추가하면...
@@ -248,6 +322,7 @@ function clickCinema(e) {
   prevAreaIndex = areaIndex;
   
   $("#cinema_select").html(areaCinemaList[cinemaIndex].cinemaName);
+  $("#movie_select").html("영화 선택");
   $('#cinema_list > li > a').removeClass("clicked");
   $(e.target).addClass("clicked");
   
@@ -258,6 +333,27 @@ function clickCinema(e) {
 $("#cinema_list > li > a").on("click", function(e){
   clickCinema(e);
 });
+
+
+function clickSpecialScreen(e) {
+
+  roomIndex = $(e.target).parent().index();
+  prevTypeIndex = typeIndex;
+  
+  let ssInfo = ssList[roomIndex].cinemaName + " (" + ssList[roomIndex].screenStyle + ")";
+  $("#cinema_select").html(ssInfo);
+  $("#movie_select").html("영화 선택");
+  $('#special_cinema_list > li > a').removeClass("clicked");
+  $(e.target).addClass("clicked");
+  
+  $('main > section:nth-child(2)').remove();
+  // updateGreatPlayAjax();
+}
+
+$("#cinema_list > li > a").on("click", function(e){
+  clickCinema(e);
+});
+
 
 
 // 상영 정보를 업데이트하는 함수
@@ -275,9 +371,6 @@ function updateTotalPlay(joinPlayList) {
     
     userPlayList = movieGroup;
     movieNumList = [];
-    
-    $('#movielist_text > li > a').removeClass("bright");
-    $('#movielist_thumb > li > a').removeClass("bright");
          
     // 영화번호 별로 상영 목록을 만듦.
     for(let i in movieGroup) {
@@ -347,6 +440,26 @@ function updateMoviePlay(joinPlayList) {
 
 }
 
+// 극장 리스트 버전 선택
+
+$('#cinema_option1').on("click", function() {
+  $('#cinema_option1').addClass('clicked');
+  $('#cinema_option2').removeClass('clicked');
+  $('#area_list').css('display', 'block');
+  $('#cinema_list').css('display', 'block');
+  $('#special_list').css('display', 'none');
+  $('#special_cinema_list').css('display', 'none');
+});
+
+$('#cinema_option2').on("click", function() {
+  $('#cinema_option1').removeClass('clicked');
+  $('#cinema_option2').addClass('clicked');
+  $('#area_list').css('display', 'none');
+  $('#cinema_list').css('display', 'none');
+  $('#special_list').css('display', 'block');
+  $('#special_cinema_list').css('display', 'block');
+
+});
 
 // 영화 리스트 버전 선택
 
@@ -438,7 +551,6 @@ function updateResultSection(userPlay) {
     resultSection.find('#movie_grade').html('18');  
   }
 
-  
   let up_start = new Date(userPlay.play.playStart);
   let up_end = new Date(userPlay.play.playEnd);
   resultSection.find('#up_year').html(up_start.getFullYear() + "년");
@@ -460,10 +572,6 @@ function updateResultSection(userPlay) {
   resultSection.find('#play_cinema').html(userPlay.cinema.cinemaName);
   resultSection.find('#play_screen').html(userPlay.screen.screenName + "관");
   resultSection.find('#play_style').html("(" + userPlay.screen.screenStyle + ")");
-  
-  resultSection.find('#next_stage').on("click", function() {
-     
-  })
   
   $('main').append(resultSection);
 }

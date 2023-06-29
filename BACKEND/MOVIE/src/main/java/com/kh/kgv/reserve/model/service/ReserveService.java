@@ -12,6 +12,8 @@ import com.kh.kgv.management.model.vo.Screen;
 public interface ReserveService {
 
 	List<Cinema> getAreaCinemaList(String areaName);
+	
+	List<Screen> getSpecialScreenList(String type);
 
 	List<Movie> getPlayingMovieList();
 

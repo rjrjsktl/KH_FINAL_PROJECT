@@ -131,6 +131,11 @@ public class MovieListController {
 
 		}	else if (loginUser != null  && getMg.contains("청소년")) {
 
+			if(loginUser.getUserBirth() == null ) {
+				Util.alertAndBackPage(response, "성인 인증이 필요합니다.");
+				
+				return null;
+			}
 			// 사용자 출생연도 가져오기 (앞 4자리만 가지고 옴)
 			int  userDate = Integer.parseInt(StringUtils.left(loginUser.getUserBirth(), 4));
 

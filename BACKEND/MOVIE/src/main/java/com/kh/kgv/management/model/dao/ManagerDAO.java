@@ -24,6 +24,7 @@ import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Pagination;
+import com.kh.kgv.management.model.vo.Search;
 import com.kh.kgv.management.model.vo.WeeklyEnter;
 import com.kh.kgv.management.model.vo.banner;
 import com.kh.kgv.mypage.controller.MyPageController;
@@ -460,8 +461,19 @@ public class ManagerDAO {
 		return sqlSession.delete("managerMapper.deleteBenefits",benefitsNo);
 	}
 
+	// 검색 회원 수 조회
+	public int getSearchMemberCount(Search search) {
+		return sqlSession.selectOne("managerMapper.getSearchMemberCount", search);
+	}
 	
+	//  검색 회원 리스트 조회
+	public List<User> selectSearchMemberList(Pagination pagination, Search search) {
 
-	
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+		return sqlSession.selectList("managerMapper.selectSearchMemberList", search, rowBounds);
+	}	
 
 }

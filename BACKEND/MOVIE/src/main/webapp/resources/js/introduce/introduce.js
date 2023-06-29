@@ -123,9 +123,18 @@ $(document).ready(function () {
       },
     });
   }
-
+  const addRevContent = document.getElementById("addRevContent");
   const replyBtn = document.querySelector(".replyBtn");
-  replyBtn.addEventListener("click", addReview);
+  replyBtn.addEventListener("click", function(){
+   if(addRevContent.value.trim().length == 0) {
+    alert("리뷰를 작성해 주세요.");
+    addRevContent.focus();
+   } else {
+    confirm("리뷰를 등록하시겠습니까?");
+    addReview();
+   }
+  });
+  
 
   var itemsToShow = 5;
 
