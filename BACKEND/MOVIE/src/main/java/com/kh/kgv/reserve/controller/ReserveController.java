@@ -1,9 +1,5 @@
 package com.kh.kgv.reserve.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,10 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.google.gson.Gson;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.vo.Cinema;
-import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.JoinPlay;
+import com.kh.kgv.management.model.vo.Screen;
 import com.kh.kgv.reserve.model.service.ReserveService;
 
 @Controller
@@ -35,7 +32,9 @@ public class ReserveController {
 	private ReserveService service;
 	
 	private String[] areaArray = {"서울", "경기", "충청", "전라", "경남", "경북", "강원", "제주"};
+	private String[] specialArray = {"KMAX", "DOLBY", "CHEF &amp; CINE", "PUPPY &amp; ME", "YES KIDS"};
 	private List<Cinema> cinemaList = null;
+	private List<Screen> specialScreenList = null;
 	private List<Movie> movieList = null;
 	private List<Movie> thumbList = null;
 	private List<JoinPlay> joinPlayList = null;
@@ -49,10 +48,12 @@ public class ReserveController {
 		movieList = service.getPlayingMovieList();
 		thumbList = service.getPlayingThumbList();
 		cinemaList = service.getAreaCinemaList("서울");
+		specialScreenList = service.getSpecialScreenList(specialArray[0]); 
 		
 		reserveMap.put("movieList", movieList);
 		reserveMap.put("thumbList", thumbList);
 		reserveMap.put("cinemaList", cinemaList);
+		reserveMap.put("specialScreenList", specialScreenList);
 		model.addAttribute("reserveMap", reserveMap);
 		
 		return "reserve/choicePlay";
@@ -89,6 +90,22 @@ public class ReserveController {
 		}
 		
 		return cinemaList;
+	}
+	
+	
+	@GetMapping("/specialScreenList")
+	@ResponseBody
+	public List<Screen> getSpecialScreenList(String typeIndex) {
+		try {
+			String type = specialArray[Integer.parseInt(typeIndex)];
+			specialScreenList = service.getSpecialScreenList(type);
+		} catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println("배열 범위 이외의 숫자입니다.");
+		} catch(NumberFormatException e) {
+			System.out.println("잘못된 인덱스입니다.");
+		}
+		
+		return specialScreenList;
 	}
 	
 	
@@ -203,6 +220,33 @@ public class ReserveController {
 	}
 	
 	
+	@PostMapping("/checkTicket")
+	@ResponseBody
+	public String checkTicket(HttpServletRequest req, String countArray, String seatArray) {
+		String condition = "1";
+		String url = "fail";
+		try {
+			HttpSession session = req.getSession();
+			int playNo = Integer.parseInt( (String) session.getAttribute("playNo"));
+			int priceNo = (int) session.getAttribute("priceNo");
+			
+			countArray = countArray.replaceAll("[^0-9]", "");
+
+			//seatArray = seatArray.replaceAll("&quot;", "");
+			System.out.println("checkTicket 전달");
+			System.out.println(countArray);
+			System.out.println(seatArray);
+
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		if(condition.equals("1")) {
+			url = "/movie";
+		}
+		return url;
+	}
 	
 	
 }

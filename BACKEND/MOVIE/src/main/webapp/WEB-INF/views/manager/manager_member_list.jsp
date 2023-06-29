@@ -53,12 +53,12 @@
 													<span>회원목록</span>
 													<div class="search_Box">
 														<select id="selectBox">
-															<option value="userEmail">아이디</option>
-															<option value="userName">이름</option>
-															<option value="userNick">닉네임</option>
-															<option value="userTel">연락처</option>
-															<option value="userAddr">주소</option>
-															<option value="userBirth">생년월일</option>
+															<option value="USER_EMAIL">아이디</option>
+															<option value="USER_NAME">이름</option>
+															<option value="USER_NICKNAME">닉네임</option>
+															<option value="USER_TEL">연락처</option>
+															<option value="USER_ADDR">주소</option>
+															<option value="USER_BIRTH">생년월일</option>
 														</select>
 														<input class="searchContent" placeholder="검색" />
 														<button class="checkBtn" type="button">
@@ -84,76 +84,78 @@
 														<th>관리자</th>
 														<th>이용제한</th>
 													</tr>
-													<c:forEach var="getUser" items="${getUserList['userList']}">
-														<tr>
-															<td>${getUser['userNo']}</td>
-															<td>${getUser['userEmail']}</td>
-															<td>${getUser['userName']}</td>
-															<td>${getUser['userNick']}</td>
-															<td>${getUser['userTel']}</td>
-															<c:choose>
-																<c:when test="${not empty getUser['userAddr']}">
-																	<td>${getUser['userAddr']}</td>
-																</c:when>
-																<c:otherwise>
-																	<td>미등록</td>
-																</c:otherwise>
-															</c:choose>
-															<c:choose>
-																<c:when test="${not empty getUser['userBirth']}">
-																	<td>${getUser['userBirth']}</td>
-																</c:when>
-																<c:otherwise>
-																	<td>미등록</td>
-																</c:otherwise>
-															</c:choose>
-															<td>${getUser['userGender']}</td>
-															<td>${getUser['userRegDate']}</td>
-															<c:choose>
-																<c:when test="${not empty getUser['userDelete']}">
-																	<td>${getUser['userDelete']}</td>
-																</c:when>
-																<c:otherwise>
-																	<td>-</td>
-																</c:otherwise>
-															</c:choose>
-															<td>${getUser['userSt']}</td>
-															<td>${getUser['userPoint']}</td>
-															<td>${getUser['userSns']}</td>
-															<c:choose>
-																<c:when test="${getUser['userManagerSt'] == 'N'}">
-																	<td><select class="Is_Manager"
-																			data-id="${getUser['userEmail']}">
-																			<option value="N" selected>N</option>
-																			<option value="Y">Y</option>
-																		</select></td>
-																</c:when>
-																<c:otherwise>
-																	<td><select class="Is_Manager"
-																			data-id="${getUser['userEmail']}">
-																			<option value="N">N</option>
-																			<option value="Y" selected>Y</option>
-																		</select></td>
-																</c:otherwise>
-															</c:choose>
-															<c:choose>
-																<c:when test="${getUser['userBlock'] == 'N'}">
-																	<td><select class="Is_Blocked"
-																			data-id="${getUser['userEmail']}">
-																			<option value="N" selected>N</option>
-																			<option value="Y">Y</option>
-																		</select></td>
-																</c:when>
-																<c:otherwise>
-																	<td><select class="Is_Blocked"
-																			data-id="${getUser['userEmail']}">
-																			<option value="N">N</option>
-																			<option value="Y" selected>Y</option>
-																		</select></td>
-																</c:otherwise>
-															</c:choose>
-														</tr>
-													</c:forEach>
+													<tbody id="userTableBody">
+														<c:forEach var="getUser" items="${getUserList['userList']}">
+															<tr>
+																<td>${getUser['userNo']}</td>
+																<td>${getUser['userEmail']}</td>
+																<td>${getUser['userName']}</td>
+																<td>${getUser['userNick']}</td>
+																<td>${getUser['userTel']}</td>
+																<c:choose>
+																	<c:when test="${not empty getUser['userAddr']}">
+																		<td>${getUser['userAddr']}</td>
+																	</c:when>
+																	<c:otherwise>
+																		<td>미등록</td>
+																	</c:otherwise>
+																</c:choose>
+																<c:choose>
+																	<c:when test="${not empty getUser['userBirth']}">
+																		<td>${getUser['userBirth']}</td>
+																	</c:when>
+																	<c:otherwise>
+																		<td>미등록</td>
+																	</c:otherwise>
+																</c:choose>
+																<td>${getUser['userGender']}</td>
+																<td>${getUser['userRegDate']}</td>
+																<c:choose>
+																	<c:when test="${not empty getUser['userDelete']}">
+																		<td>${getUser['userDelete']}</td>
+																	</c:when>
+																	<c:otherwise>
+																		<td>-</td>
+																	</c:otherwise>
+																</c:choose>
+																<td>${getUser['userSt']}</td>
+																<td>${getUser['userPoint']}</td>
+																<td>${getUser['userSns']}</td>
+																<c:choose>
+																	<c:when test="${getUser['userManagerSt'] == 'N'}">
+																		<td><select class="Is_Manager"
+																				data-id="${getUser['userEmail']}">
+																				<option value="N" selected>N</option>
+																				<option value="Y">Y</option>
+																			</select></td>
+																	</c:when>
+																	<c:otherwise>
+																		<td><select class="Is_Manager"
+																				data-id="${getUser['userEmail']}">
+																				<option value="N">N</option>
+																				<option value="Y" selected>Y</option>
+																			</select></td>
+																	</c:otherwise>
+																</c:choose>
+																<c:choose>
+																	<c:when test="${getUser['userBlock'] == 'N'}">
+																		<td><select class="Is_Blocked"
+																				data-id="${getUser['userEmail']}">
+																				<option value="N" selected>N</option>
+																				<option value="Y">Y</option>
+																			</select></td>
+																	</c:when>
+																	<c:otherwise>
+																		<td><select class="Is_Blocked"
+																				data-id="${getUser['userEmail']}">
+																				<option value="N">N</option>
+																				<option value="Y" selected>Y</option>
+																			</select></td>
+																	</c:otherwise>
+																</c:choose>
+															</tr>
+														</c:forEach>
+													</tbody>
 												</table>
 												<div class="page_Nation">
 													<c:set var="url" value="?cp=" />
