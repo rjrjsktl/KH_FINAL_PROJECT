@@ -116,8 +116,8 @@ $(document).ready(function () {
     });
   }
 
-  const replyBtn = document.querySelector(".replyBtn");
-  replyBtn.addEventListener("click", addReview);
+  const replyBtn = $(".replyBtn");
+  replyBtn.on("click", addReview);
 
   var itemsToShow = 5;
   var cp = 1;
@@ -140,7 +140,7 @@ $(document).ready(function () {
           console.log("userNo:", userNo);
           console.log("review.userNo:", review.userNo);
 
-          if (userNo == review.userNo) {
+          if (userNo == review.userNo || userMst == 'Y') {
             deleteButton = `<div><button class="deleteReview" data-revno="${review.revNo}">Delete</button></div>`;
           } else {
             deleteButton = "<div></div>";
