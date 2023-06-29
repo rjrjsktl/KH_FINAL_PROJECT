@@ -104,10 +104,59 @@
 		<result property="lostRepDate" column="LOST_REPDATE" />
 	</resultMap>
 	
+	<resultMap type="book" id="book_rm">
+		<id property="bookNo" column="BOOK_NO" />
+		<result property="playNo" column="PLAY_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="movieNo" column="MOVIE_NO" />
+		<result property="bookDt" column="BOOK_DT" />
+		<result property="bookAge" column="BOOK_AGE" />
+		<result property="bookSeat" column="BOOK_SEAT" />
+		<result property="bookPrice" column="BOOK_PRICE" />
+		<result property="bookSt" column="BOOK_ST" />
+		<result property="totalRow" column="totalRow" />
+	</resultMap>
+	
+	<resultMap type="screen" id="screen_rm">
+		<id property="screenNo" column="SCREEN_NO" />
+		<result property="cinemaName" column="CINEMA_NAME" />
+		<result property="screenName" column="SCREEN_NAME" />
+		<result property="screenStyle" column="SCREEN_STYLE" />
+		<result property="screenSeat" column="SCREEN_SEAT" />
+		<result property="screenDetail" column="SCREEN_DETAIL" />
+		<result property="screenRow" column="SCREEN_ROW" />
+		<result property="screenCol" column="SCREEN_COL" />
+		<result property="screenAisle" column="SCREEN_AISLE" />
+		<result property="screenSpace" column="SCREEN_SPACE" />
+		<result property="screenSweet" column="SCREEN_SWEET" />
+		<result property="screenImpaired" column="SCREEN_IMPAIRED" />
+	</resultMap>
+	
+	<resultMap type="play" id="play_rm">
+		<id property="playNo" column="PLAY_NO" />
+		<result property="movieNo" column="MOVIE_NO" />
+		<result property="screenNo" column="SCREEN_NO" />
+		<result property="playStart" column="PLAY_START" />
+		<result property="playEnd" column="PLAY_END" />
+		<result property="playRegDate" column="PLAY_REGDATE" />
+		<result property="playUploader" column="PLAY_UPLOADER" />
+		<result property="playBookCount" column="PLAY_BOOKCOUNT" />
+		<result property="playBookSeat" column="PLAY_BOOKSEAT" />
+		<result property="playDate" column="PLAY_DATE" />
+	</resultMap>
+	
 	<resultMap type="jr" id="jr_rm">
 		<collection property="review" resultMap="review_rm" />
 		<collection property="movie" resultMap="movie_rm" />
 		<collection property="user" resultMap="user_rm" />
+	</resultMap>
+	
+	<resultMap type="jm" id="jm_rm">
+		<collection property="book" resultMap="book_rm" />
+		<collection property="play" resultMap="play_rm" />
+		<collection property="movie" resultMap="movie_rm" />
+		<collection property="user" resultMap="user_rm" />
+		<collection property="screen" resultMap="screen_rm" />
 	</resultMap>
 	
 	<resultMap type="jcs" id="jcs_rm">
@@ -195,28 +244,7 @@
 		WHERE row_num BETWEEN ${startRow} AND ${endRow}
 	</select>
 	 -->
-	 <!-- 리뷰카드 부르기 -->
-	<select id="loadReviewCards" resultMap="jr_rm">
-		SELECT 
-    		*
-		FROM (
-			SELECT
-        		r.REV_NO,
-        		r.REV_CONTENT,
-        		m.MOVIE_NO,
-        		m.MOVIE_TITLE,
-        		m.MOVIE_IMG1,
-        		TO_CHAR(r.REV_DATE, 'YYYY-MM-DD') AS REV_DATE,
-        		TO_CHAR(r.REV_DATE, 'HH24:MI') AS REV_TIME,
-        		ROW_NUMBER() OVER (ORDER BY REV_NO DESC) AS row_num,
-        		COUNT(*) OVER () AS totalRow
-    		FROM REVIEW r
-    		INNER JOIN MOVIE m ON r.MOVIE_NO = m.MOVIE_NO
-    		WHERE r.USER_NO = ${userNo} AND r.REV_ST = 'N'
-		) sum
-		WHERE sum.row_num BETWEEN ${startRow} AND ${endRow}
-	</select>
-	 
+
 	<!-- usermtmlist count 조회 sql -->
 	<select id="getUserMtmCount" resultType="_int">
 		SELECT
@@ -271,13 +299,59 @@
 			ORDER BY LOST_NO DESC
 	</select>
 	
+	<!-- 리뷰카드 부르기 -->
+	<select id="loadReviewCards" resultMap="jr_rm">
+		SELECT 
+    		*
+		FROM (
+			SELECT
+        		r.REV_NO,
+        		r.REV_CONTENT,
+        		m.MOVIE_NO,
+        		m.MOVIE_TITLE,
+        		m.MOVIE_IMG1,
+        		TO_CHAR(r.REV_DATE, 'YYYY-MM-DD') AS REV_DATE,
+        		TO_CHAR(r.REV_DATE, 'HH24:MI') AS REV_TIME,
+        		ROW_NUMBER() OVER (ORDER BY REV_NO DESC) AS row_num,
+        		COUNT(*) OVER () AS totalRow
+    		FROM REVIEW r
+    		INNER JOIN MOVIE m ON r.MOVIE_NO = m.MOVIE_NO
+    		WHERE r.USER_NO = ${userNo} AND r.REV_ST = 'N'
+		) sum
+		WHERE sum.row_num BETWEEN ${startRow} AND ${endRow}
+	</select>
+	
 	<!-- 리뷰 카드 삭제 -->
 	<update id="reviewDelete">
 		UPDATE REVIEW SET
 		REV_ST = 'Y'
 		WHERE REV_NO = ${revNo}
 	</update>
-	
+	 
+	<!-- 리뷰카드 부르기 -->
+	<select id="loadMovieCards" resultMap="jm_rm">
+		SELECT 
+    		*
+		FROM (
+			SELECT
+        		b.BOOK_NO,
+        		r.REV_CONTENT,
+        		m.MOVIE_NO,
+        		m.MOVIE_TITLE,
+        		m.MOVIE_IMG1,
+        		TO_CHAR(p.PLAY_START, 'YYYY-MM-DD') AS PLAY_DATE,
+        		TO_CHAR(r.PLAY_START, 'HH24:MI') AS PLAY_START,
+        		TO_CHAR(r.PLAY_END, 'HH24:MI') AS PLAY_END,
+        		ROW_NUMBER() OVER (ORDER BY BOOK_NO DESC) AS row_num,
+        		COUNT(*) OVER () AS totalRow
+    		FROM BOOK b
+    		INNER JOIN MOVIE m ON b.MOVIE_NO = m.MOVIE_NO
+    		INNER JOIN PLAY p ON b.PLAY_NO = p.PLAY_NO
+    		INNER JOIN SCREEN s ON p.SCREEN_NO = s.SCREEN_NO
+    		WHERE b.USER_NO = ${userNo} AND b.BOOK_ST = 'Y'
+		) sum
+		WHERE sum.row_num BETWEEN ${startRow} AND ${endRow}
+	</select>
 	
   	
 </mapper>

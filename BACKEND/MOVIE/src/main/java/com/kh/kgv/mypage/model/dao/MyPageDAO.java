@@ -112,5 +112,14 @@ public class MyPageDAO {
 	public int reviewDelete(int revNo) {
 		return sqlSession.update("myPageMapper.reviewDelete", revNo);
 	}
+
+	/** 내 영화 카드 불러오기 DAO
+	 * @param paramMap
+	 * @return
+	 */
+	public List<Review> loadMovieCards(Map<String, Object> paramMap) {
+		logger.info("cards movie:::dao 실행");
+		return sqlSession.selectList("myPageMapper.loadMovieCards", paramMap);
+	}
 	
 }
