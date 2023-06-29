@@ -359,6 +359,7 @@
                                     </div>
                                     <div class="morePage">더보기</div>
                                     <input type="hidden" id="movieNo" value="${movieNo}">
+                                    <input type="hidden" id="userNo" value="${loginUser.userNo}">
                                     <input type="hidden" id="userNick" value="${userNick}">
                                 </div>
 
