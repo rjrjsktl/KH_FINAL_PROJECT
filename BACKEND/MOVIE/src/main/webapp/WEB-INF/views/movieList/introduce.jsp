@@ -337,7 +337,7 @@
                                                             <div>${review.revLike}</div>
                                                             <div>${review.revContent}</div>
                                                             <c:choose>
-                                                                <c:when test="${loginUser.userNo == review.userNo}">
+                                                                <c:when test="${loginUser.userNo == review.userNo || loginUser.userManagerSt == 'Y'}">
                                                                     <!-- loginUser.userNo와 review.userNo가 같을 때 삭제 버튼을 보여줍니다. -->
                                                                     <div>
                                                                         <button class="deleteReview" data-revno="${review.revNo}">Delete</button>
