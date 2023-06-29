@@ -240,8 +240,6 @@ public class MovieListController {
 
 		int result = service.addReview(review);  
 
-
-
 		return result;
 	}
 	
@@ -268,7 +266,6 @@ public class MovieListController {
 	    } else {
 	        return "error";
 	    }
-	    
 	    
 	}
 	
