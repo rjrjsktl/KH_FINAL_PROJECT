@@ -171,9 +171,93 @@ $(document).ready(function () {
             },
             type: "GET",
             success: function (result) {
-                if (result > 0) {
+                if (result != null) {
                     console.log("검색 데이터 전달 성공");
-                } else {
+                    console.log(result);
+
+                    let userTableBody = $('#userTableBody');
+                    userTableBody.empty();
+
+                    result.userList.forEach(function (user) {
+                        let row = $('<tr>');
+                        row.append('<td>' + user.userNo + '</td>');
+                        row.append('<td>' + user.userEmail + '</td>');
+                        row.append('<td>' + user.userName + '</td>');
+                        row.append('<td>' + user.userNick + '</td>');
+                        row.append('<td>' + user.userTel + '</td>');
+
+                        let userAddr = user.userAddr ? user.userAddr : '미등록';
+                        row.append('<td>' + userAddr + '</td>');
+
+                        let userBirth = user.userBirth ? user.userBirth : '미등록';
+                        row.append('<td>' + userBirth + '</td>');
+
+                        row.append('<td>' + user.userGender + '</td>');
+                        row.append('<td>' + user.userRegDate + '</td>');
+
+                        let userDelete = user.userDelete ? user.userDelete : '-';
+                        row.append('<td>' + userDelete + '</td>');
+
+                        row.append('<td>' + user.userSt + '</td>');
+                        row.append('<td>' + user.userPoint + '</td>');
+                        row.append('<td>' + user.userSns + '</td>');
+
+                        let userManagerSt = user.userManagerSt === 'Y' ? 'Y' : 'N';
+                        let managerSelectHtml = '<select class="Is_Manager" data-id="' + user.userEmail + '">' +
+                            '<option value="N"' + (userManagerSt === 'N' ? ' selected' : '') + '>N</option>' +
+                            '<option value="Y"' + (userManagerSt === 'Y' ? ' selected' : '') + '>Y</option>' +
+                            '</select>';
+                        row.append('<td>' + managerSelectHtml + '</td>');
+
+                        let userBlock = user.userBlock === 'Y' ? 'Y' : 'N';
+                        let blockSelectHtml = '<select class="Is_Block" data-id="' + user.userEmail + '">' +
+                            '<option value="N"' + (userBlock === 'N' ? ' selected' : '') + '>N</option>' +
+                            '<option value="Y"' + (userBlock === 'Y' ? ' selected' : '') + '>Y</option>' +
+                            '</select>';
+                        row.append('<td>' + blockSelectHtml + '</td>');
+
+                        userTableBody.append(row);
+                    });
+
+                    // Pagination 업데이트
+                    const pagination = result.pagination;
+                    const currentPage = pagination.currentPage;
+                    const startPage = pagination.startPage;
+                    const endPage = pagination.endPage;
+                    const maxPage = pagination.maxPage;
+                    const url = "?cp=";
+
+                    let paginationHtml = '';
+                    paginationHtml += '<div>';
+                    paginationHtml += '<a href="' + url + '1">&lt;&lt;</a>';
+                    paginationHtml += '</div>';
+                    paginationHtml += '<div>';
+                    paginationHtml += '<a href="' + url + pagination.prevPage + '">&lt;</a>';
+                    paginationHtml += '</div>';
+
+                    for (let i = startPage; i <= endPage; i++) {
+                        if (i === currentPage) {
+                            paginationHtml += '<div>';
+                            paginationHtml += '<a class="selected_Cp">' + i + '</a>';
+                            paginationHtml += '</div>';
+                        } else {
+                            paginationHtml += '<div>';
+                            paginationHtml += '<a href="' + url + i + '">' + i + '</a>';
+                            paginationHtml += '</div>';
+                        }
+                    }
+
+                    paginationHtml += '<div>';
+                    paginationHtml += '<a href="' + url + pagination.nextPage + '">&gt;</a>';
+                    paginationHtml += '</div>';
+                    paginationHtml += '<div>';
+                    paginationHtml += '<a href="' + url + pagination.maxPage + '">&gt;&gt;</a>';
+                    paginationHtml += '</div>';
+
+                    $('.page_Nation').html(paginationHtml);
+                }
+
+                else {
                     console.log("검색 데이터 전달 실패");
                 }
             },

@@ -60,8 +60,8 @@
 														<th>번호</th>
 														<th>문의 회원 아이디</th>
 														<th>문의 종류</th>
-														<th>문의 제목</th>
-														<th>문의 내용</th>
+														<th class="titleSize">문의 제목</th>
+														<th class="contentSize">문의 내용</th>
 														<th>문의 일자</th>
 														<th>답변상태</th>
 														<th>답변 일자</th>
@@ -75,7 +75,7 @@
 															<td><a
 																	href="${contextPath}/helpDesk/mtm_detail/${mtmList.mtm.mtmNo}">${mtmList.mtm.mtmTitle}</a>
 															</td>
-															<td>${mtmList.mtm.mtmContent}</td>
+															<td class="wordReduce">${mtmList.mtm.mtmContent}</td>
 															<td>${mtmList.mtm.mtmRegdate}</td>
 															<td>${mtmList.mtm.mtmRepSt}</td>
 															<c:choose>

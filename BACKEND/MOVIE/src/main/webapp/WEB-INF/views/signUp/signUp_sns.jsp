@@ -16,6 +16,9 @@
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
+                <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js" charset="utf-8"></script>
+                <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+
         </head>
 
         <body>
@@ -36,8 +39,11 @@
                                     <p>KGV 회원가입</p>
 
                                     <div>
+                                        
                                         <a href="signUp"><button>이메일 회원가입</button></a>
-                                        <a href="#"><button>카카오로 가입하기</button></a>
+                                        <a><button  onclick="loginWithKakao()" >카카오로 가입하기</button></a>
+                                        
+
                                         <a href="#"><button>네이버로 가입하기</button></a>
                                         <a href="#"><button>구글로 가입하기</button></a>
                                     </div>
@@ -85,7 +91,7 @@
              </c:if>
              -->
 
-		 <script src="${contextPath}/resources/js/common/header.js"></script>
+         <script src="${contextPath}/resources/js/manager/apikey.js"></script>
 
         </body>
 

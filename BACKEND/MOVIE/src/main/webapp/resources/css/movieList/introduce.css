@@ -440,17 +440,29 @@ main>section:nth-child(3)>div>div:nth-child(3) {
     border-radius: 10px;
 }
 
-.review_content div:nth-child(1){
+.review_content > div:nth-child(1){
     width:15%;  font-size: 1.2rem;
     text-align: center;
 }
 
-.review_content div:nth-child(2){
+.review_content > div:nth-child(2){
     width:15%;  font-size: 1.2rem;     text-align: center;    
 }
 
-.review_content div:nth-child(3){
-    width:70%;  font-size: 1.2rem;    padding-left:30px;
+.review_content > div:nth-child(3){
+    width:60%;  font-size: 1.2rem;    padding-left:30px;
+}
+
+.review_content > div:nth-child(4){
+    width:10%;
+}
+.review_content > div:nth-child(4) > button {
+    background-color: #151515;
+    outline: none;
+    padding:10px;
+    border-radius: 10px;
+    border:1px solid lightgray;
+    cursor: pointer;
 }
 
 .morePage {

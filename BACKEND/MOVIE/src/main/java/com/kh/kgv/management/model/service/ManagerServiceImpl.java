@@ -612,15 +612,15 @@ public class ManagerServiceImpl implements ManagerService {
 		// 조회한 회원을 pagination 에 담기
 		Pagination pagination = new Pagination(cp, searchMemberCount);
 
-//		//  검색 회원 리스트 조회
-//		List<User> userList = dao.selectSearchMemberList(pagination, search);
-//
-//		Map<String, Object> getUserList = new HashMap<String, Object>();
-//		getUserList.put("pagination", pagination);
-//		getUserList.put("userList", userList);
-//
-//		System.out.println("=================================getUserList : " + getUserList);
-		return null;
+		//  검색 회원 리스트 조회
+		List<User> userList = dao.selectSearchMemberList(pagination, search);
+
+		Map<String, Object> getUserList = new HashMap<String, Object>();
+		getUserList.put("pagination", pagination);
+		getUserList.put("userList", userList);
+
+		System.out.println("=================================getUserList : " + getUserList);
+		return getUserList;
 	}
 
 

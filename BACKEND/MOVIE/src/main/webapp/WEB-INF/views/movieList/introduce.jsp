@@ -276,7 +276,8 @@
                                                 <div>
                                                     <form action="" class="replywrite">
 
-                                                        <textarea name="" id="addRevContent" cols="30" rows="3"></textarea>
+                                                        <textarea name="" id="addRevContent" cols="30"
+                                                            rows="3"></textarea>
 
                                                         <c:choose>
                                                             <c:when test="${not empty loginUser.userNo}">
@@ -335,7 +336,19 @@
                                                             <div>관람평</div>
                                                             <div>${review.revLike}</div>
                                                             <div>${review.revContent}</div>
+                                                            <c:choose>
+                                                                <c:when test="${loginUser.userNo == review.userNo}">
+                                                                    <!-- loginUser.userNo와 review.userNo가 같을 때 삭제 버튼을 보여줍니다. -->
+                                                                    <div>
+                                                                        <button class="deleteReview" data-revno="${review.revNo}">Delete</button>
+                                                                    </div>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                  <div></div>
+                                                                </c:otherwise>
+                                                            </c:choose>
                                                         </div>
+
                                                     </div>
                                                 </li>
                                             </c:forEach>

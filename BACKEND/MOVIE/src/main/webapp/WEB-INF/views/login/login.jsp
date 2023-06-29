@@ -80,9 +80,11 @@
 
 											<!-- SNS 로그인 -->
 											<ul>
-												<li><a href="sns/kakao"><img
-															src="${contextPath}/resources/images/loginpage_images/KakaoTalk_btn_icon_square.png"
-															alt="카카오톡"></a></li>
+												<li>
+													<a><img src="${contextPath}/resources/images/loginpage_images/KakaoTalk_btn_icon_square.png"
+															alt="카카오톡"><button onclick="loginWithKakao()"></button></a>
+
+												</li>
 												<li><a href="sns/naver"><img
 															src="${contextPath}/resources/images/loginpage_images/naver_btn_icon_square.png"
 															alt="네이버"></a></li>
