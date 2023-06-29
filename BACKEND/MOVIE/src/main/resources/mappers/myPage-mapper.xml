@@ -328,20 +328,24 @@
 		WHERE REV_NO = ${revNo}
 	</update>
 	 
-	<!-- 리뷰카드 부르기 -->
+	<!-- 영화 카드 부르기 -->
 	<select id="loadMovieCards" resultMap="jm_rm">
 		SELECT 
     		*
 		FROM (
 			SELECT
         		b.BOOK_NO,
-        		r.REV_CONTENT,
+        		b.BOOK_SEAT,
+        		b.BOOK_AGE,
         		m.MOVIE_NO,
         		m.MOVIE_TITLE,
         		m.MOVIE_IMG1,
         		TO_CHAR(p.PLAY_START, 'YYYY-MM-DD') AS PLAY_DATE,
-        		TO_CHAR(r.PLAY_START, 'HH24:MI') AS PLAY_START,
-        		TO_CHAR(r.PLAY_END, 'HH24:MI') AS PLAY_END,
+        		TO_CHAR(p.PLAY_START, 'HH24:MI') AS PLAY_START,
+        		TO_CHAR(p.PLAY_END, 'HH24:MI') AS PLAY_END,
+        		s.CINEMA_NAME,
+        		s.SCREEN_STYLE,
+        		s.SCREEN_NAME,
         		ROW_NUMBER() OVER (ORDER BY BOOK_NO DESC) AS row_num,
         		COUNT(*) OVER () AS totalRow
     		FROM BOOK b
@@ -353,5 +357,11 @@
 		WHERE sum.row_num BETWEEN ${startRow} AND ${endRow}
 	</select>
 	
+	<!-- 영화 카드 삭제 -->
+	<update id="deleteBook">
+		UPDATE BOOK SET
+		BOOK_ST = 'N'
+		WHERE BOOK_NO = ${bookNo}
+	</update>
   	
 </mapper>
