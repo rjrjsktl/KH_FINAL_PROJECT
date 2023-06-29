@@ -202,7 +202,7 @@ public class MovieListController {
 
 	@ResponseBody
 	@PostMapping("/detail_List/introduce/{movieNo}")
-	public String addmTm(
+	public int addRv(
 			@RequestParam("starRating") int revLike, 
 			@RequestParam("reviewText") String content,
 			@PathVariable("movieNo") int movieNo,
@@ -242,7 +242,7 @@ public class MovieListController {
 
 
 
-		return null;
+		return result;
 	}
 	
 	@ResponseBody
