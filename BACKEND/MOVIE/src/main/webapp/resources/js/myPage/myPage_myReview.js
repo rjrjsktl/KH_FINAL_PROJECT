@@ -1,4 +1,3 @@
-// 더보기 js
 $(document).ready(function () {
   console.log("review 영역으로 들어옴");
   var cardsPerLoad = 5; // 한 번에 보여줄 카드의 개수
@@ -60,9 +59,6 @@ $(document).ready(function () {
                     <div>
                       <textarea>${cardData.review.revContent}</textarea>
                     </div>
-                    <div>
-                      <button id="updatereview-btn">내 리뷰 수정</button>
-                    </div>
                   </div>
                 </div>
               </li>
@@ -77,7 +73,7 @@ $(document).ready(function () {
             if (response.length < cardsPerLoad) {
               $('#list-more-btn').hide();
               // 전체 쿼리 수가 5의 배수라면 더보기 숨김
-            } else if (response.length === resulttotalRow) {
+            } else if (response.length === (resulttotalRow/currentPage)) {
               $('#list-more-btn').hide();
               // 넘어오는 카드가 0 ~ 5일 경우에는 다숨기고 나머지 경우는 더보기 보임
             } else {
@@ -89,6 +85,7 @@ $(document).ready(function () {
         }
         cards = $('.myreview');
         console.log("$cards.length:::" + cards.length);
+        console.log("currentPage:::" + currentPage);
         console.log("response.length:::" + response.length);
         console.log("showNewCards:::::::::::::::::" + (response.length));
         endIndex = (endReview += response.length);

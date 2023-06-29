@@ -47,6 +47,13 @@ public class MyPageServiceImpl implements MyPageService {
 		return dao.loadReviewCards(paramMap);
 	}
 	
+	/** 리뷰 카드 삭제
+	 *
+	 */
+	@Override
+	public int reviewDelete(int revNo) {
+		return dao.reviewDelete(revNo);
+	}
 //	/** review카드 5개 씩불러오기 serviceimpl
 //	 *
 //	 */
@@ -57,6 +64,14 @@ public class MyPageServiceImpl implements MyPageService {
 //		
 //		return myReviewList;
 //	}
+
+	/** movie카드 불러오기 serviceimpl
+	 *
+	 */
+	@Override
+	public List<Review> loadMovieCards(Map<String, Object> paramMap) {
+		return dao.loadMovieCards(paramMap);
+	}
 
 	/** 회원 비번번호 변경
 	 *
@@ -179,13 +194,7 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	
-	/** 리뷰 카드 삭제
-	 *
-	 */
-	@Override
-	public int reviewDelete(int revNo) {
-		return dao.reviewDelete(revNo);
-	}
+	
 
 	
 	

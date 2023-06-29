@@ -36,4 +36,5 @@ public interface ReserveService {
 	Map<String, Object> getInitialMap(String areaName);
 
 
+
 }
