@@ -13,10 +13,11 @@ public class Play {
 	private int playNo;
 	private int movieNo;
 	private int screenNo;
-	private String playStart;
-	private String playEnd;
+	private String playStart; // myPage 영화 시작 시간
+	private String playEnd;	  // myPage 영화 끝나는 시간
 	private String playRegDate;
 	private String playUploader;
 	private int playBookCount;
 	private String playBookSeat;
+	private String playDate; // myPage 영화 본 날짜
 }

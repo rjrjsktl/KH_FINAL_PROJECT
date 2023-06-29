@@ -33,12 +33,12 @@
 				<div>
 					<ul>
 						<li><a href="${contextPath}/theater/theaterS"> KMAX </li>
-						<li><a href="${contextPath}/theater/theaterS5">DOLBY</a></li>
-						<li><a href="${contextPath}/theater/theaterS3">DISH &
+						<li><a href="${contextPath}/theater/theaterS2">DOLBY</a></li>
+						<li><a href="${contextPath}/theater/theaterS5">DISH &
 								WINE</a></li>
-						<li><a href="${contextPath}/theater/theaterS4">WITH A
+						<li><a href="${contextPath}/theater/theaterS3">WITH A
 								PUPPY</a></li>
-						<li><a href="${contextPath}/theater/theaterS2">KIDS</a></li>
+						<li><a href="${contextPath}/theater/theaterS4">KIDS</a></li>
 					</ul>
 				</div>
 			</div>

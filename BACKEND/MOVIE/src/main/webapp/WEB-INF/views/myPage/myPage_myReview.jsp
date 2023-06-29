@@ -89,11 +89,6 @@
                                                                     <div>
                                                                         <textarea>${review.review.revContent}</textarea>
                                                                     </div>
-                                                                    <div>
-                                                                        <button id="updatereview-btn">내 리뷰 수정//별점보여주기로
-                                                                            바꿔?</button>
-                                                                    </div>
-
                                                                 </div>
                                                             </div>
                                                         </li>

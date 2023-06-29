@@ -1,8 +1,13 @@
 package com.kh.kgv.reserve.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -222,8 +227,8 @@ public class ReserveController {
 	
 	@PostMapping("/checkTicket")
 	@ResponseBody
-	public String checkTicket(HttpServletRequest req, String countArray, String seatArray) {
-		String condition = "1";
+	public String checkTicket(HttpServletRequest req, String countArray, String seatArray) throws Exception {
+		int condition = 0;
 		String url = "fail";
 		try {
 			HttpSession session = req.getSession();
@@ -231,18 +236,37 @@ public class ReserveController {
 			int priceNo = (int) session.getAttribute("priceNo");
 			
 			countArray = countArray.replaceAll("[^0-9]", "");
-
-			//seatArray = seatArray.replaceAll("&quot;", "");
-			System.out.println("checkTicket 전달");
-			System.out.println(countArray);
-			System.out.println(seatArray);
-
+			seatArray = seatArray.replaceAll("&quot", "");
 			
+			// 1. 좌석 수 = 인원 수 && 인원 > 0
+			// 2. 좌석이 제대로 체크된 것인지
+			// reserveMap = service.checkReserve(playNo, countArray, seatArray);
+			
+			priceMap = service.getPriceMap(priceNo, countArray);
+			int[] bookAge = (int[]) priceMap.get("countArray");
+			
+			Gson gson = new Gson();
+	        String[] gsonSeat = gson.fromJson(seatArray, String[].class);
+	        List<String> seatList = new ArrayList<>();
+	        // System.out.println(Arrays.toString(gsonSeat));
+	        
+	        for(String seat: gsonSeat) {
+	        	if(seat != null) seatList.add('"' + seat + '"');
+	        }
+	        
+	        String bookSeat = Arrays.deepToString(seatList.toArray());
+
+	        //condition = service.check
+	        
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		if(condition.equals("1")) {
+		// 유효성 검사가 통과되면 예매 테이블에 데이터 축적
+		// 1. PLAY_NO, USER_NO, BOOK_AGE(countArray), BOOK_SEAT(seatArray), BOOK_PRICE가 전달됨
+		// 2. 성공하면 숫자 1이 전달됨.
+		if(condition == 1) {
 			url = "/movie";
 		}
 		return url;

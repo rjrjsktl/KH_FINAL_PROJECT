@@ -348,33 +348,28 @@ public class MyPageController {
 		return "myPage/myPage_myLostDetail";
 	}
 
-
 	// 잃어버린물건 삭제
 	@GetMapping("/deleteLost/{lostNo}")
-	public String lostDelete(
-			@PathVariable("lostNo") int lostNo,
-			@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
-			Model model,
-			RedirectAttributes ra,
-			@RequestHeader ("referer") String referer
-			) {
+	public String lostDelete(@PathVariable("lostNo") int lostNo,
+			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp, Model model,
+			RedirectAttributes ra, @RequestHeader("referer") String referer) {
 
 		String path = null;
 		String message = null;
 
 		int result = helpService.deleteLost(lostNo);
 
-		if(result > 0 ) {
-			path = "myPage/myLostList"+"?cp="+cp;
+		if (result > 0) {
+			path = "myPage/myLostList" + "?cp=" + cp;
 			message = "글 삭제에 성공했다.";
 
-		}else {
-			path = "referer";  
+		} else {
+			path = "referer";
 		}
 
-		ra.addFlashAttribute("message",message);
+		ra.addFlashAttribute("message", message);
 
-		return "redirect:/" +path;
+		return "redirect:/" + path;
 	}
 
 	@GetMapping("/info")
@@ -455,8 +450,8 @@ public class MyPageController {
 
 	// 회원 정보 수정
 	@PostMapping("/info")
-	public String updateInfo(@ModelAttribute("loginUser") User loginUser, @RequestParam Map<String, Object> paramMap 
-											, String[] updateAddr, RedirectAttributes ra) {
+	public String updateInfo(@ModelAttribute("loginUser") User loginUser, @RequestParam Map<String, Object> paramMap,
+			String[] updateAddr, RedirectAttributes ra) {
 
 		logger.info("뜬다 updateInfo.info 페이지 들어왔다");
 
@@ -561,11 +556,11 @@ public class MyPageController {
 	}
 
 	// Java 서버 예시 (Spring Framework)
+	// review 카드 불러오기
 	@PostMapping("/loadReviewCards")
 	@ResponseBody
-	public List<Review> loadReviewCards(@RequestParam int startRow
-										, @RequestParam int endRow
-										, @ModelAttribute("loginUser") User loginUser, @RequestParam Map<String, Object> paramMap, Model model) {
+	public List<Review> loadReviewCards(@RequestParam int startRow, @RequestParam int endRow,
+			@ModelAttribute("loginUser") User loginUser, @RequestParam Map<String, Object> paramMap, Model model) {
 		logger.info("reviewCards시작됨?");
 
 		int userNo = loginUser.getUserNo();
@@ -582,31 +577,46 @@ public class MyPageController {
 
 	// 리뷰 카드 삭제
 	@GetMapping("/deleteReview/{revNo}")
-	public String reviewDelete( @PathVariable("revNo") int revNo
-								, HttpServletRequest req
-								, HttpServletResponse resp
-								, RedirectAttributes ra
-								, @RequestHeader ("referer") String referer
-								) {
+	public String reviewDelete(@PathVariable("revNo") int revNo, HttpServletRequest req, HttpServletResponse resp,
+			RedirectAttributes ra, @RequestHeader("referer") String referer) {
 		logger.info("리뷰 삭제 드가자");
 		logger.info("revNo:::::::::::" + revNo);
-		
+
 		String path = null;
 		String message = null;
-		
+
 		int result = service.reviewDelete(revNo);
-		
-		if(result > 0) {
+
+		if (result > 0) {
 			path = "myPage/myReview";
 			message = "리뷰를 삭제했습니다.";
 		} else {
 			path = "referer";
 			message = "삭제 중 오류발생.";
 		}
-		
+
 		ra.addFlashAttribute("message", message);
-		
+
 		return "redirect:/" + path;
 	}
-								
+
+	// Java 서버 예시 (Spring Framework)
+	// movie 카드
+	@PostMapping("/loadMovieCards")
+	@ResponseBody
+	public List<Review> loadMovieCards(@RequestParam int startRow, @RequestParam int endRow,
+			@ModelAttribute("loginUser") User loginUser, @RequestParam Map<String, Object> paramMap, Model model) {
+		logger.info("reviewCards시작됨?");
+
+		int userNo = loginUser.getUserNo();
+		paramMap.put("userNo", userNo);
+		paramMap.put("startRow", startRow);
+		paramMap.put("endRow", endRow);
+
+		List<Review> myMovieList = service.loadMovieCards(paramMap); // 데이터베이스에서 추가 데이터 조회
+
+		model.addAttribute("myMovieList", myMovieList);
+		logger.info("myMovieList", myMovieList);
+		return myMovieList;
+	}
 }

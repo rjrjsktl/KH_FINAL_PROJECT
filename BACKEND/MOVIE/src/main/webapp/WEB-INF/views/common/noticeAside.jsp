@@ -10,7 +10,7 @@
 <aside>
 	<div class="aside-ul-wrap">
 		<ul class="aslide-list">
-			<li><a href="${contextPath}/helpDesk/helpDesk_home"><h1>고객센터</h1></a></li>
+			<li><a href="${contextPath}/helpDesk/helpDesk_home">고객센터</a></li>
 			<li><a href="${contextPath}/helpDesk/notice_List">공지사항</a></li>
 			<li><a href="${contextPath}/helpDesk/mTm_List">1:1 문의</a></li>
 			<li><a href="${contextPath}/helpDesk/question_home">자주찾는 질문</a></li>
