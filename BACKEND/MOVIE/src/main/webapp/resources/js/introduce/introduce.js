@@ -93,6 +93,10 @@ $(document).ready(function () {
     const reviewText = document.querySelector(".replywrite textarea").value;
     var movieNo = document.getElementById("movieNo").value;
     var revNo = $(this).data("revno");
+    if (!reviewText) {
+      alert("리뷰를 입력해주세요");
+      return;
+    }
 
     $.ajax({
       url: "/movie/movieList/detail_List/introduce/" + movieNo,
@@ -104,7 +108,6 @@ $(document).ready(function () {
       success: function (result) {
         if (result > 0) {
           alert("댓글이 등록되었습니다.");
-          window.location.href = movieNo;
         }
       },
       error: function (xhr, status, error) {
@@ -112,6 +115,10 @@ $(document).ready(function () {
       },
     });
   }
+
+  const replyBtn = document.querySelector(".replyBtn");
+  replyBtn.addEventListener("click", addReview);
+
   var itemsToShow = 5;
   var cp = 1;
   $(".review").hide().slice(0, itemsToShow).show();
@@ -125,6 +132,9 @@ $(document).ready(function () {
         data.forEach(function (review) {
           const li = $(document.createElement("li"));
           var userNo = document.getElementById("userNo").value;
+          var userMst = document.getElementById("userMst").value;
+
+          console.log(userMst);
           let deleteButton = "";
           li.addClass("review");
           console.log("userNo:", userNo);
@@ -160,11 +170,9 @@ $(document).ready(function () {
         console.error(error);
       },
     });
-
-    const replyBtn = document.querySelector(".replyBtn");
-    replyBtn.addEventListener("click", addReview);
   });
-  $(".deleteReview").on("click", function () {
+
+  $(document).on("click", ".deleteReview", function () {
     var movieNo = document.getElementById("movieNo").value;
     var revNo = $(this).data("revno");
     $.ajax({
