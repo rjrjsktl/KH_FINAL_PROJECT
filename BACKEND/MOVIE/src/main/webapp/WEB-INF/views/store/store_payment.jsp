@@ -50,6 +50,7 @@
                                                 <input type="hidden" id="userEmail" value="${loginUser.userEmail}">
                                                 <input type="hidden" id="userName" value="${loginUser.userName}">
                                                 <input type="hidden" id="storeNo" value="${storeDetail.storeNo}">
+                                                <input type="hidden" id="userNo" value="${loginUser.userNo}">
                                             </div>
 
                                             <div>
@@ -73,7 +74,7 @@
                                                         <div class="quantity">
                                                             <h4>수량</h4>
                                                             <h4>
-                                                                <span>${totalCount}</span>
+                                                                <span id="totalCount">${totalCount}</span>
                                                                 <p>
 
 
