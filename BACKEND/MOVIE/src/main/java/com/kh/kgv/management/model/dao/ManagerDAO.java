@@ -468,11 +468,12 @@ public class ManagerDAO {
 	
 	//  검색 회원 리스트 조회
 	public List<User> selectSearchMemberList(Pagination pagination, Search search) {
-		return null;
-	}
 
-	
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
 
-	
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+		return sqlSession.selectList("managerMapper.selectSearchMemberList", search, rowBounds);
+	}	
 
 }

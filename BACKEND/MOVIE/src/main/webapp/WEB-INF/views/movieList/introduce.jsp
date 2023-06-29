@@ -121,13 +121,7 @@
                                                 </div>
                                                 <div>
                                                     <ul>
-                                                        <li>
-                                                            <p><i class="fa-regular fa-share-from-square"></i>
-                                                            </p>
-                                                        </li>
-                                                        <li>
-                                                            <p><i class="fa-regular fa-thumbs-up"></i></p>
-                                                        </li>
+
                                                         <li><a href="../reserve/reserve.html">예매하기</a></li>
                                                     </ul>
                                                 </div>
@@ -276,7 +270,8 @@
                                                 <div>
                                                     <form action="" class="replywrite">
 
-                                                        <textarea name="" id="addRevContent" cols="30" rows="3"></textarea>
+                                                        <textarea name="" id="addRevContent" cols="30"
+                                                            rows="3"></textarea>
 
                                                         <c:choose>
                                                             <c:when test="${not empty loginUser.userNo}">
@@ -295,20 +290,7 @@
                                             <div class="replywrap">
                                                 <div>
                                                     <p>관람객 관람평</p>
-                                                    <div>
 
-                                                        <ul>
-                                                            <li>
-                                                                <input type="radio" id="latest" name="choice">
-                                                                <label for="latest"><span>최신순</span></label>
-                                                            </li>
-                                                            <li>
-                                                                <input type="radio" id="popular" name="choice">
-                                                                <label for="popular"><span>따봉순</span></label>
-                                                            </li>
-                                                        </ul>
-
-                                                    </div>
                                                 </div>
                                             </div>
 
@@ -320,41 +302,60 @@
                                                             <li>
                                                                 <p>게시글이 존재하지 않습니다.</p>
                                                             </li>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <c:forEach var="review" items="${reviewList.reviewList}">
+                                                                <li class="review">
+                                                                    <div class="rvWrap">
+                                                                        <div class="user_info">
+                                                                            <img src="" alt="">
+                                                                            <p>${review.userNick}</p>
+                                                                        </div>
+                                                                        <div class="review_content">
+                                                                            <div>관람평</div>
+                                                                            <div>${review.revLike}</div>
+                                                                            <div>${review.revContent}</div>
+                                                                            <c:choose>
+                                                                                <c:when
+                                                                                    test="${loginUser.userNo == review.userNo || loginUser.userManagerSt == 'Y'}">
+                                                                                    <!-- loginUser.userNo와 review.userNo가 같을 때 삭제 버튼을 보여줍니다. -->
+                                                                                    <div>
+                                                                                        <button class="deleteReview"
+                                                                                            data-revno="${review.revNo}">Delete</button>
+                                                                                    </div>
+                                                                                </c:when>
+                                                                                <c:otherwise>
+                                                                                    <div></div>
+                                                                                </c:otherwise>
+                                                                            </c:choose>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </li>
+                                                            </c:forEach>
+                                                        </c:otherwise>
+                                                    </c:choose>
+
+                                                </ul>
+
+                                                <div class="morePage">더보기</div>
+                                                
                                             </div>
+
+                                            <input type="hidden" id="movieNo" value="${movieNo}">
+                                            <input type="hidden" id="userNo" value="${loginUser.userNo}">
+                                            <input type="hidden" id="userNick" value="${userNick}">
+                                            <input type="hidden" id="userMst" value="${loginUser.userManagerSt}">
                                         </div>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <c:forEach var="review" items="${reviewList.reviewList}">
-                                                <li class="review">
-                                                    <div class="rvWrap">
-                                                        <div class="user_info">
-                                                            <img src="" alt="">
-                                                            <p>${review.userNick}</p>
-                                                        </div>
-                                                        <div class="review_content">
-                                                            <div>관람평</div>
-                                                            <div>${review.revLike}</div>
-                                                            <div>${review.revContent}</div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </c:forEach>
-                                        </c:otherwise>
-                                        </c:choose>
 
-                                        </ul>
                                     </div>
-                                    <div class="morePage">더보기</div>
-                                    <input type="hidden" id="movieNo" value="${movieNo}">
-                                    <input type="hidden" id="userNick" value="${userNick}">
-                                </div>
+                                    </section>
 
-                        </div>
-                        </section>
-                        <div id="btnContainer">
-                            <input id="returnBtn" type="button" onclick="goBack()" value="목록으로">
-                        </div>
-                        </main>
+
+                                    <div id="btnContainer">
+                                        <input id="returnBtn" type="button" onclick="goBack()" value="목록으로">
+                                    </div>
+                            </main>
 
                         </div>
 

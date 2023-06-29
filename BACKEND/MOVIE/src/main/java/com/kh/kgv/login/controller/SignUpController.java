@@ -190,14 +190,7 @@ public class SignUpController {
 	         }
 	        
 	         String cnum = cNumber.toString();
-	         
-	         
-	        
- 			
-	 		
-	 			
-	 		
-	         
+
 	          int result = service.insertCertification(cnum,userEmail);
 	         
 	          

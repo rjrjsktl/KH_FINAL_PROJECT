@@ -118,7 +118,6 @@
                                  <li><a href="${contextPath}/eventList/detail_List">진행중
                                        이벤트</a></li>
                                  <li><a href="${contextPath}/eventList/end_List">지난 이벤트</a></li>
-                                 <li><a href="">당첨자 발표</a></li>
                               </ul>
                            </li>
 
@@ -144,14 +143,13 @@
                   </nav>
 
 
-
-
                   <script>
+
                      const test = "${loginUser}";
                      console.log(test
                         + "+++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
-              
+
                   </script>
 
                   <script src="${contextPath}/resources/js/main/header.js"></script>

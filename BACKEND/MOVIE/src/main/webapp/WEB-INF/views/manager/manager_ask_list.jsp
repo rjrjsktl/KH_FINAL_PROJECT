@@ -49,8 +49,16 @@
 												<div class="table_Title">
 													<span>1 : 1 문의 목록</span>
 													<div class="search_Box">
-														<input placeholder="검색" />
-														<button>
+														<select id="selectBox">
+															<option value="USER_EMAIL">아이디</option>
+															<option value="MTM_TYPE">문의 종류</option>
+															<option value="MTM_TITLE">문의 제목</option>
+															<option value="MTM_REGDATE">문의 일자</option>
+															<option value="MTM_REPDATE">답변 일자</option>
+															<option value="MTM_REPWRITER">담당자</option>
+														</select>
+														<input class="searchContent" placeholder="검색" />
+														<button class="checkBtn" type="button">
 															<i class="fa-solid fa-magnifying-glass fa-2xs"></i>
 														</button>
 													</div>
@@ -60,8 +68,8 @@
 														<th>번호</th>
 														<th>문의 회원 아이디</th>
 														<th>문의 종류</th>
-														<th>문의 제목</th>
-														<th>문의 내용</th>
+														<th class="titleSize">문의 제목</th>
+														<th class="contentSize">문의 내용</th>
 														<th>문의 일자</th>
 														<th>답변상태</th>
 														<th>답변 일자</th>
@@ -75,7 +83,7 @@
 															<td><a
 																	href="${contextPath}/helpDesk/mtm_detail/${mtmList.mtm.mtmNo}">${mtmList.mtm.mtmTitle}</a>
 															</td>
-															<td>${mtmList.mtm.mtmContent}</td>
+															<td class="wordReduce">${mtmList.mtm.mtmContent}</td>
 															<td>${mtmList.mtm.mtmRegdate}</td>
 															<td>${mtmList.mtm.mtmRepSt}</td>
 															<c:choose>
