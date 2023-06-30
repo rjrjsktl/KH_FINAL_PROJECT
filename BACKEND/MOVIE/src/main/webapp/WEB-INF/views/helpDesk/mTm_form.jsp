@@ -48,13 +48,15 @@
 											<table class="innerTable">
 												<tr class="tteesstt">
 													<th>제목</th>
-													<td><input type="text" id="titleInput" placeholder="제목을 입력해 주세요.">
+													<td><input type="text" id="titleInput" placeholder="제목을 입력해 주세요."
+															value="${mtm.mtmTitle}">
 													</td>
 												</tr>
 												<tr>
 													<th>문의종류</th>
 													<td><select id="inquirySelect">
-															<option disabled selected>문의 내용을 선택해주세요.</option>
+															<option disabled selected value="${mtm.mtmType}">문의 내용을
+																선택해주세요.</option>
 															<option value="영화문의">영화 문의</option>
 															<option value="이용문의">이용 문의</option>
 															<option value="결제문의">결제 문의</option>
@@ -67,8 +69,7 @@
 													<td>
 
 
-														<input type="file" id="fileInput" class="align_File"
-															name="file">
+														<input type="file" id="fileInput" class="align_File" name="file">
 													</td>
 
 
@@ -86,20 +87,44 @@
 										<div id="writeForm">
 											<div class="inner_Textarea_Title">내용</div>
 											<textarea class="inner_Textarea" id="contentTextarea"
-												name="editordata"></textarea>
+												name="editordata">${mtm.mtmContent}</textarea>
 										</div>
 
-										<div class="addfileList"></div>
+										<div class="addfileList">
+											<c:choose>
+												<c:when test="${not empty mtm.mtmImage}">
+													<div class="upimgList">
+														<span class="deleteImage">X</span>
+														<img src="${mtm.mtmImage}">
+													</div>
+												</c:when>
+												<c:otherwise>
+												</c:otherwise>
+											</c:choose>
+										</div>
+
+
 
 										<div class="btn_wraper">
-											<button id="submitButton">
-												<a>작성하기</a>
-											</button>
+
+											<c:choose>
+											<c:when test="${empty mtm.mtmNo}">
+												<button id="submitButton">
+													<a>작성하기</a>
+												</button>
+											</c:when>
+											<c:otherwise>
+												<button id="updateButton">
+													<a>수정하기</a>
+												</button>
+											</c:otherwise>
+											</c:choose>
+
 											<button>
 												<a href="${contextPath}/helpDesk/mTm_List">돌아가기</a>
 											</button>
 										</div>
-
+										<input type="hidden" id="mtmNo" value="${mtm.mtmNo}">
 									</div>
 
 								</div>

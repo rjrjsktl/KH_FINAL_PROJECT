@@ -145,7 +145,7 @@ $(document).ready(function () {
     var date = $("#lostDate").val();
     var details = $("#contentTextarea").val();
     var open = $("#checkbox1").is(":checked") ? 0 : 1111;
-
+    console.log(area);
     if (!title) {
       alert("제목을 입력해주세요");
       return;
@@ -190,6 +190,75 @@ $(document).ready(function () {
       },
     });
   });
+
+  // update
+  $("#updateButton").click(function (e) {
+    var lostNo = $("#lostNo").val();
+    var title = $("#titleInput").val();
+    var item = $("#lostItem").val();
+    var area = $("#lostArea").val();
+    var date = $("#lostDate").val();
+    var details = $("#contentTextarea").val();
+    var open = $("#checkbox1").is(":checked") ? 0 : 1111;
+
+    console.log(lostNo);
+    console.log(title);
+    console.log(item);
+    console.log(area);
+    console.log(date);
+    console.log(details);
+    console.log(open);
+
+    if (!$("#fileInput").val() && $(".upimgList img").length > 0) {
+      imageUrl1 = $(".upimgList img").attr("src");
+    }
+    console.log("hj");
+    console.log(imageUrl1);
+
+    if (!title) {
+      alert("제목을 입력해주세요");
+      return;
+    }
+    if (!item) {
+      alert("잃어버린 제품을 입력해주세요");
+      return;
+    }
+    if (!area) {
+      alert("잃어버린 극장을 입력해주세요");
+      return;
+    }
+    if (!date) {
+      alert("잃어버린 날짜를 선택해주세요");
+      return;
+    }
+    if (!details) {
+      alert("내용을 입력해주세요");
+      return;
+    }
+
+    $.ajax({
+      type: "POST",
+      url: "/movie/helpDesk/lost_form/" + lostNo,
+      data: {
+        titleInput: title,
+        lostItem: item,
+        lostArea: area,
+        lostDate: date,
+        contentTextarea: details,
+        open: open,
+        imageUrl1: imageUrl1,
+      },
+      success: function (response) {
+        var lostNo = response.lostNo;
+        alert("수정성공");
+        var url = `/movie/helpDesk/lost_detail/${lostNo}`;
+        location.href = url;
+      },
+      error: function (xhr, status, error) {
+        alert("오류 발생");
+      },
+    });
+  });
 });
 
 $(document).ready(function () {
@@ -205,6 +274,14 @@ $(document).ready(function () {
       window.location.href = url; // get방식으로 url에 요청
     }
   });
+});
+
+const updateLost = $("#updateLost");
+updateLost.on("click", function () {
+  let lostNo = $(this).data("lostno");
+  console.log(lostNo);
+  let url = `/movie/helpDesk/lost_form/` + lostNo;
+  window.location.href = url;
 });
 
 $(document).ready(function () {
