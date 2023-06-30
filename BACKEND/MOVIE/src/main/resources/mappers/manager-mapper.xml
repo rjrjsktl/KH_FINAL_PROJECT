@@ -777,7 +777,7 @@
 					UPPER(USER_ADDR) LIKE '%' || UPPER(#{searchContext})	|| '%'
 				</when>
 				<otherwise>
-					UPPER(USER_BIRTH LIKE) '%' || UPPER(#{searchContext}) ||	'%'
+					UPPER(USER_BIRTH) LIKE '%' || UPPER(#{searchContext}) ||	'%'
 				</otherwise>
 			</choose>
 		</trim>
@@ -806,25 +806,25 @@
 		, USER_BLOCK
 		FROM
 		USERS
-		<trim prefix="where">
+		<trim prefix="where" prefixOverrides="AND | OR">
 			<choose>
 				<when test="searchType == 'USER_EMAIL'">
-					UPPER(USER_EMAIL) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+					 UPPER(USER_EMAIL) LIKE '%' ||	UPPER(#{searchContext}) || '%'
 				</when>
 				<when test="searchType == 'USER_NAME'">
-					UPPER(USER_NAME) LIKE '%' || UPPER(#{searchContext}) || '%'
+					 UPPER(USER_NAME) LIKE '%' || UPPER(#{searchContext}) || '%'
 				</when>
 				<when test="searchType == 'USER_NICKNAME'">
-					UPPER(USER_NICKNAME) LIKE '%' || UPPER(#{searchContext}) || '%'
+					 UPPER(USER_NICKNAME) LIKE '%' || UPPER(#{searchContext}) || '%'
 				</when>
 				<when test="searchType == 'USER_TEL'">
-					UPPER(USER_TEL) LIKE '%' || UPPER(#{searchContext}) || '%'
+					 UPPER(USER_TEL) LIKE '%' || UPPER(#{searchContext}) || '%'
 				</when>
 				<when test="searchType == 'USER_ADDR'">
-					UPPER(USER_ADDR) LIKE '%' || UPPER(#{searchContext})	|| '%'
+					 UPPER(USER_ADDR) LIKE '%' || UPPER(#{searchContext})	|| '%'
 				</when>
 				<otherwise>
-					UPPER(USER_BIRTH LIKE) '%' || UPPER(#{searchContext}) ||'%'
+					 UPPER(USER_BIRTH) LIKE '%' || UPPER(#{searchContext}) || '%'
 				</otherwise>
 			</choose>
 		</trim>
@@ -891,33 +891,33 @@
 	</select>
 
 <!-- 검색한 분실물 수 조회 -->
-	<select id="getSearchLostCount" resultType="_int">
-		SELECT COUNT(*)
-		FROM LOST_PACKAGE l
-		INNER JOIN USERS u ON l.USER_NO = u.USER_NO
-		<trim prefix="where">
-			<choose>
-				<when test="searchType == 'USER_EMAIL'">
-					UPPER(u.USER_EMAIL) LIKE '%' ||	UPPER(#{searchContext}) || '%'
-				</when>
-				<when test="searchType == 'LOST_TITLE'">
-					UPPER(l.LOST_TITLE) LIKE '%' || UPPER(#{searchContext}) || '%'
-				</when>
-				<when test="searchType == 'LOST_ITEM'">
-					UPPER(l.LOST_ITEM) LIKE '%' || UPPER(#{searchContext}) || '%'
-				</when>
-				<when test="searchType == 'LOST_DATE'">
-					TO_CHAR(l.LOST_DATE, 'YYYY-MM-DD') = #{searchContext}
-				</when>
-				<when test="searchType == 'LOST_REPDATE'">
-					TO_CHAR(l.LOST_REPDATE, 'YYYY-MM-DD') = #{searchContext}
-				</when>
-				<otherwise>
-					UPPER(l.LOST_REPWRITER) LIKE '%' || UPPER(#{searchContext}) || '%'
-				</otherwise>
-			</choose>
-		</trim>
-	</select>
+<select id="getSearchLostCount" resultType="_int">
+    SELECT COUNT(*)
+    FROM LOST_PACKAGE l
+    INNER JOIN USERS u ON l.USER_NO = u.USER_NO
+    <trim prefix="where" prefixOverrides="AND |OR ">
+        <choose>
+            <when test="searchType == 'USER_EMAIL'">
+                AND UPPER(u.USER_EMAIL) LIKE '%' || UPPER(#{searchContext}) || '%'
+            </when>
+            <when test="searchType == 'LOST_TITLE'">
+                AND UPPER(l.LOST_TITLE) LIKE '%' || UPPER(#{searchContext}) || '%'
+            </when>
+            <when test="searchType == 'LOST_ITEM'">
+                AND UPPER(l.LOST_ITEM) LIKE '%' || UPPER(#{searchContext}) || '%'
+            </when>
+            <when test="searchType == 'LOST_DATE'">
+                AND l.LOST_DATE = #{searchContext}
+            </when>
+            <when test="searchType == 'LOST_REPDATE'">
+                AND TO_CHAR(l.LOST_REPDATE, 'YYYY-MM-DD') = #{searchContext}
+            </when>
+            <otherwise>
+                AND UPPER(l.LOST_REPWRITER) LIKE '%' || UPPER(#{searchContext}) || '%'
+            </otherwise>
+        </choose>
+    </trim>
+</select>
 	
 	
 	<!--  검색한 분실물 리스트 조회 -->
