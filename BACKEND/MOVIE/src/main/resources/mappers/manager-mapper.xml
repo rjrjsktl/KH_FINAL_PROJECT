@@ -720,22 +720,22 @@
 		<trim prefix="where">
 			<choose>
 				<when test="searchType == 'USER_EMAIL'">
-					USER_EMAIL LIKE '%' || #{searchContext} || '%'
+					UPPER(USER_EMAIL) LIKE '%' ||	UPPER(#{searchContext}) || '%'
 				</when>
 				<when test="searchType == 'USER_NAME'">
-					USER_NAME LIKE '%' || #{searchContext} || '%'
+					UPPER(USER_NAME) LIKE '%' || UPPER(#{searchContext})	|| '%'
 				</when>
 				<when test="searchType == 'USER_NICKNAME'">
-					USER_NICKNAME LIKE '%' || #{searchContext} || '%'
+					UPPER(USER_NICKNAME) LIKE '%' ||	UPPER(#{searchContext}) || '%'
 				</when>
 				<when test="searchType == 'USER_TEL'">
-					USER_TEL LIKE '%' || #{searchContext} || '%'
+					UPPER(USER_TEL) LIKE '%' || UPPER(#{searchContext})	|| '%'
 				</when>
 				<when test="searchType == 'USER_ADDR'">
-					USER_ADDR LIKE '%' || #{searchContext} || '%'
+					UPPER(USER_ADDR) LIKE '%' || UPPER(#{searchContext})	|| '%'
 				</when>
 				<otherwise>
-					USER_BIRTH LIKE '%' || #{searchContext} || '%'
+					UPPER(USER_BIRTH LIKE) '%' || UPPER(#{searchContext}) ||	'%'
 				</otherwise>
 			</choose>
 		</trim>
@@ -749,37 +749,100 @@
 		, USER_NAME
 		, USER_NICKNAME
 		, USER_TEL
-		, USER_ADDR
+		,
+		USER_ADDR
 		, USER_BIRTH
 		, USER_GENDER
 		, USER_REGDATE
 		, USER_ST
 		, USER_IMG
-		, USER_POINT
+		,
+		USER_POINT
 		, USER_SNS
 		, USER_DELETE
 		, USER_MANAGERST
 		, USER_BLOCK
-		FROM USERS
+		FROM
+		USERS
 		<trim prefix="where">
 			<choose>
 				<when test="searchType == 'USER_EMAIL'">
-					USER_EMAIL LIKE '%' || #{searchContext} || '%'
+					UPPER(USER_EMAIL) LIKE '%' ||	UPPER(#{searchContext}) || '%'
 				</when>
 				<when test="searchType == 'USER_NAME'">
-					USER_NAME LIKE '%' || #{searchContext} || '%'
+					UPPER(USER_NAME) LIKE '%' || UPPER(#{searchContext}) || '%'
 				</when>
 				<when test="searchType == 'USER_NICKNAME'">
-					USER_NICKNAME LIKE '%' || #{searchContext} || '%'
+					UPPER(USER_NICKNAME) LIKE '%' || UPPER(#{searchContext}) || '%'
 				</when>
 				<when test="searchType == 'USER_TEL'">
-					USER_TEL LIKE '%' || #{searchContext} || '%'
+					UPPER(USER_TEL) LIKE '%' || UPPER(#{searchContext}) || '%'
 				</when>
 				<when test="searchType == 'USER_ADDR'">
-					USER_ADDR LIKE '%' || #{searchContext} || '%'
+					UPPER(USER_ADDR) LIKE '%' || UPPER(#{searchContext})	|| '%'
 				</when>
 				<otherwise>
-					USER_BIRTH LIKE '%' || #{searchContext} || '%'
+					UPPER(USER_BIRTH LIKE) '%' || UPPER(#{searchContext}) ||'%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+	<!-- 검색한 1:1 문의 수 조회 -->
+	<select id="getSearchAskCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM MTM_TBL m
+		INNER JOIN USERS u ON m.USER_NO = u.USER_NO
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'USER_EMAIL'">
+					UPPER(u.USER_EMAIL) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'MTM_TYPE'">
+					UPPER(m.MTM_TYPE) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'MTM_TITLE'">
+					UPPER(m.MTM_TITLE) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'MTM_REGDATE'">
+					TO_CHAR(m.MTM_REGDATE, 'YYYY-MM-DD') = #{searchContext}
+				</when>
+				<when test="searchType == 'MTM_REPDATE'">
+					TO_CHAR(m.MTM_REPDATE, 'YYYY-MM-DD') = #{searchContext}
+				</when>
+				<otherwise>
+					UPPER(m.MTM_REPWRITER) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+	
+	
+	<!--  검색한 1:1 문의 리스트 조회 -->
+	<select id="selectSearchAskList" resultMap="jcs_rm">
+		SELECT m.*,
+        u.USER_EMAIL AS USER_EMAIL
+		FROM MTM_TBL m
+		INNER JOIN USERS u ON m.USER_NO = u.USER_NO
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'USER_EMAIL'">
+					UPPER(u.USER_EMAIL) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'MTM_TYPE'">
+					UPPER(m.MTM_TYPE) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'MTM_TITLE'">
+					UPPER(m.MTM_TITLE) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'MTM_REGDATE'">
+					TO_CHAR(m.MTM_REGDATE, 'YYYY-MM-DD') = #{searchContext}
+				</when>
+				<when test="searchType == 'MTM_REPDATE'">
+					TO_CHAR(m.MTM_REPDATE, 'YYYY-MM-DD') = #{searchContext}
+				</when>
+				<otherwise>
+					UPPER(m.MTM_REPWRITER) LIKE '%' || UPPER(#{searchContext}) || '%'
 				</otherwise>
 			</choose>
 		</trim>
