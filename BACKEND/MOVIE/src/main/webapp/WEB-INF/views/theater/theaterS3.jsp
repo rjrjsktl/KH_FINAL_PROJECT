@@ -147,10 +147,9 @@
 
                         <div class="stheater_wrap">
                             <ul>
-                                <li><a href="#">PUPPY <span>동대문</span></a></li>
-                                <li><a href="#">PUPPY <span>왕십리</span></a></li>
-                                <li><a href="#">PUPPY <span>하남</span></a></li>
-                                <li><a href="#">PUPPY <span>동성로</span></a></li>
+                                <c:forEach var="screen" items="${screenInfo}">
+                                    <li><a href="#">${screen.screenStyle} <span>${screen.cinemaName}</span></a></li>
+                                </c:forEach>
                             </ul>
                         </div>
 

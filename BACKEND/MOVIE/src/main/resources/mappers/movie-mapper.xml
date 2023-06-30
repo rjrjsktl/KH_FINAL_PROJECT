@@ -10,8 +10,8 @@
 		<result property="playEnd" column="PLAY_END" />
 		<result property="playRegDate" column="PLAY_REGDATE" />
 		<result property="playUploader" column="PLAY_UPLOADER" />
-		<result property="playBookCount"        column="PLAY_BOOKCOUNT"/>
-       <result property="playBookSeat"         column="PLAY_BOOKSEAT"/>
+		<result property="playBookCount" column="PLAY_BOOKCOUNT" />
+		<result property="playBookSeat" column="PLAY_BOOKSEAT" />
 	</resultMap>
 
 	<resultMap type="cinema" id="cinema_rm">
@@ -71,6 +71,13 @@
 		<collection property="tt" resultMap="tt_rm" />
 		<collection property="screen" resultMap="screen_rm" />
 	</resultMap>
+
+	<resultMap id="CinemaNameResult" type="screen">
+		<result property="cinemaName" column="CINEMA_NAME" />
+		<result property="screenStyle" column="SCREEN_STYLE" />
+		<result property="screenName" column="SCREEN_NAME" />
+	</resultMap>
+
 
 	<!-- 영화 등록 -->
 	<insert id="MovieAdd" parameterType="movie">
@@ -157,23 +164,31 @@
 		UPDATE MOVIE SET
 		MOVIE_RUNTIME = #{movieRuntime}
 		, MOVIE_TITLE = #{movieTitle}
-		, MOVIE_NATION = #{movieNation}
+		,
+		MOVIE_NATION = #{movieNation}
 		, MG_CONTENT = #{mgNo}
-		, MOVIE_CONTENT = #{movieContent}
+		, MOVIE_CONTENT =
+		#{movieContent}
 		, MOVIE_IMG1 = #{movieImg1}
 		, MOVIE_REGDATE = default
-		, MOVIE_UPLOADER = #{movieUploader}
+		,
+		MOVIE_UPLOADER = #{movieUploader}
 		, GENRE_NAME = #{genreName}
-		, MOVIE_DIRECTOR = #{movieDirector}
+		,
+		MOVIE_DIRECTOR = #{movieDirector}
 		, MOVIE_CAST = #{movieCast}
-		, MOVIE_OPEN = #{movieOpen}
+		,
+		MOVIE_OPEN = #{movieOpen}
 		, MOVIE_IMG2 = #{movieImg2}
-		, MOVIE_IMG3 = #{movieImg3}
+		, MOVIE_IMG3 =
+		#{movieImg3}
 		, MOVIE_IMG4 = #{movieImg4}
 		, MOVIE_IMG5 = #{movieImg5}
-		, MOVIE_IMG6 = #{movieImg6}
+		,
+		MOVIE_IMG6 = #{movieImg6}
 		, MOVIE_ST = default
-		WHERE MOVIE_NO = ${movieNo}
+		WHERE MOVIE_NO =
+		${movieNo}
 	</update>
 
 	<!-- 메인페이지 -> 영화 -> 상영중인 영화 이동 시 영화 목록 조회 -->
@@ -190,7 +205,8 @@
 		SELECT *
 		FROM MOVIE
 		WHERE MOVIE_ST = 'Y'
-		ORDER BY MOVIE_OPEN DESC
+		ORDER BY
+		MOVIE_OPEN DESC
 		)
 		WHERE
 		ROWNUM <![CDATA[ <= ]]>
@@ -199,57 +215,80 @@
 
 	<!-- 관리자_상영영화 수 조회 -->
 	<select id="getNowPlayCount" resultType="_int">
-		SELECT COUNT(PLAY_NO) FROM PLAY
+		SELECT COUNT(PLAY_NO)
+		FROM PLAY
 		WHERE PLAY_END > SYSDATE
 	</select>
 
 	<!-- 관리자_상영영화 목록 조회 -->
 	<select id="getPlayList" resultMap="jp_rm">
-		SELECT 
+		SELECT
 		p.PLAY_NO
-		 , m.MOVIE_TITLE
-		 , c.CINEMA_AREA
-		 , c.CINEMA_NAME
-		 , s.SCREEN_NAME, 
+		,
+		m.MOVIE_TITLE
+		, c.CINEMA_AREA
+		, c.CINEMA_NAME
+		, s.SCREEN_NAME,
 		TO_CHAR(p.PLAY_START, 'YYYY-MM-DD HH24:MI') AS PLAY_START
-		, TO_CHAR(p.PLAY_END, 'YYYY-MM-DD HH24:MI') AS PLAY_END
+		,
+		TO_CHAR(p.PLAY_END, 'YYYY-MM-DD
+		HH24:MI') AS PLAY_END
 		, s.SCREEN_STYLE
-		, m.MOVIE_NO
+		,
+		m.MOVIE_NO
 		FROM PLAY p
-		INNER JOIN SCREEN s ON p.SCREEN_NO = s.SCREEN_NO
-		INNER JOIN CINEMA c ON s.CINEMA_NAME = c.CINEMA_NAME
-		INNER JOIN MOVIE m ON p.MOVIE_NO = m.MOVIE_NO
+		INNER JOIN
+		SCREEN s ON p.SCREEN_NO = s.SCREEN_NO
+		INNER JOIN CINEMA c ON
+		s.CINEMA_NAME = c.CINEMA_NAME
+		INNER JOIN MOVIE m
+		ON p.MOVIE_NO =
+		m.MOVIE_NO
 		WHERE p.PLAY_END > SYSDATE
-		ORDER BY p.PLAY_START ASC
+		ORDER BY
+		p.PLAY_START ASC
 	</select>
-	
+
 	<!-- 관리자_상영영화 종료 목록 수 조회 -->
 	<select id="getEndPlayCount" resultType="_int">
 		SELECT COUNT(PLAY_NO) FROM PLAY
-		WHERE PLAY_END  <![CDATA[ < ]]> SYSDATE
+		WHERE PLAY_END  <![CDATA[ < ]]>
+		SYSDATE
 	</select>
-	
+
 	<!-- 관리자_상영영화 종료 목록 조회 -->
 	<select id="getPlayEndList" resultMap="jp_rm">
-		SELECT 
+		SELECT
 		p.PLAY_NO
-		 , m.MOVIE_TITLE
-		 , c.CINEMA_AREA
-		 , c.CINEMA_NAME
-		 , s.SCREEN_NAME, 
-		TO_CHAR(p.PLAY_START, 'YYYY-MM-DD HH24:MI') AS PLAY_START
-		, TO_CHAR(p.PLAY_END, 'YYYY-MM-DD HH24:MI') AS PLAY_END
-		, s.SCREEN_STYLE
+		, m.MOVIE_TITLE
+		, c.CINEMA_AREA
+		, c.CINEMA_NAME
+		,
+		s.SCREEN_NAME,
+		TO_CHAR(p.PLAY_START, 'YYYY-MM-DD HH24:MI') AS
+		PLAY_START
+		, TO_CHAR(p.PLAY_END, 'YYYY-MM-DD
+		HH24:MI') AS PLAY_END
+		,
+		s.SCREEN_STYLE
 		, m.MOVIE_NO
 		FROM PLAY p
-		INNER JOIN SCREEN s ON p.SCREEN_NO = s.SCREEN_NO
-		INNER JOIN CINEMA c ON s.CINEMA_NAME = c.CINEMA_NAME
-		INNER JOIN MOVIE m ON p.MOVIE_NO = m.MOVIE_NO
+		INNER JOIN
+		SCREEN s ON p.SCREEN_NO
+		= s.SCREEN_NO
+		INNER JOIN CINEMA c ON
+		s.CINEMA_NAME = c.CINEMA_NAME
+		INNER
+		JOIN MOVIE m ON p.MOVIE_NO =
+		m.MOVIE_NO
 		WHERE p.PLAY_END <![CDATA[ < ]]>SYSDATE
 		ORDER BY p.PLAY_START ASC
 	</select>
 
-
+	<select id="getScreenInfo" resultMap="CinemaNameResult">
+		SELECT * FROM SCREEN WHERE SCREEN_STYLE =
+		#{screenStyle}
+	</select>
 
 
 </mapper>
