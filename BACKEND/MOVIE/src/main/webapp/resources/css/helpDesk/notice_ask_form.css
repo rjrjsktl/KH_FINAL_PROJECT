@@ -253,6 +253,28 @@ a.hover {
 	display: flex;
 }
 
+
+.addfileList span{
+	position:absolute;
+	top:0;
+	right:10px;
+	width:20px;
+	height:20px;
+	background-color:white;
+	color:black;
+	border:1px solid black;
+	font-size:1rem;
+	text-align:center;
+	line-height:18px;
+}
+
+.addfileList img {
+	width: 100px;
+	height: 100px;
+	padding-right:10px;
+	
+}
+
 .upimgList {
 	position:relative;
 }
@@ -277,3 +299,6 @@ a.hover {
 	padding-right:10px;
 	
 }
+
+
+

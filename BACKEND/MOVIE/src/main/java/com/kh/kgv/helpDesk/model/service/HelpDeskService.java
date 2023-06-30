@@ -53,6 +53,13 @@ public interface HelpDeskService {
 	int getcountquestNum(int questNum);
 
 	Map<String, Object> getQuestList(int cp, int questNum);
+	Map<String, Object> cinemaList();
+	Mtm getforUpdateValue(int mtmNo);
+	int updatemTm(Mtm mtm);
+	LostPackage getforLostValue(int lostNo);
+	int updateLost(LostPackage lost);
+
+
 	
 	
 	
