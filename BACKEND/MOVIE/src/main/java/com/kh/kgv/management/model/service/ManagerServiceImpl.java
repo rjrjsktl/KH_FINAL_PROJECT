@@ -76,7 +76,6 @@ public class ManagerServiceImpl implements ManagerService {
 
 		// 회원 수 조회
 		int listCount = dao.getListCount();
-		System.out.println("========================================listCount : " + listCount);
 
 		// 조회한 회원을 pagination 에 담기
 		Pagination pagination = new Pagination(cp, listCount);
@@ -107,8 +106,6 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public int MovieAdd(Movie inputMovie) {
 
-		System.out.println("==============영화등록 serviceimpl");
-
 		int result = dao.MovieAdd(inputMovie);
 		System.out.println("serviceImpl result:" + result);
 		return result;
@@ -120,8 +117,6 @@ public class ManagerServiceImpl implements ManagerService {
 	 */
 	@Override
 	public List<String> mgradeList() {
-		System.out.println("===== Grade 호출 service");
-
 		return dao.mgradeList();
 	}
 
@@ -131,8 +126,6 @@ public class ManagerServiceImpl implements ManagerService {
 	 */
 	@Override
 	public List<String> mgenreList() {
-		System.out.println("===== Genre 호출 service");
-
 		return dao.mgenreList();
 	}
 
@@ -147,9 +140,7 @@ public class ManagerServiceImpl implements ManagerService {
 		Pagination pagination = new Pagination(cp, movielistCount);
 
 		// 공지사항 리스트 조회
-		System.out.println("===== movieList 호출 service");
 		List<Movie> movielist = dao.movieList(pagination);
-		System.out.println("movielist 값 :::::" + movielist);
 		// movielist에서 따온 값 가공하기
 		List<Movie> cleanedList = new ArrayList<>();
 		for (Movie movie : movielist) {
@@ -223,7 +214,6 @@ public class ManagerServiceImpl implements ManagerService {
 	// 이벤트 수정 조회
 	@Override
 	public Map<String, Object> getEditEventList(Event event) {
-
 		return dao.getEditEventList(event);
 	}
 
@@ -268,7 +258,6 @@ public class ManagerServiceImpl implements ManagerService {
 	// 공지사항 수정 조회
 	@Override
 	public Map<String, Object> getEditNoticeList(Notice notice) {
-
 		return dao.getEditNoticeList(notice);
 	}
 
@@ -607,7 +596,6 @@ public class ManagerServiceImpl implements ManagerService {
 	public Map<String, Object> getMemberSearch(Search search, int cp) {
 		// 검색 회원 수 조회
 		int searchMemberCount = dao.getSearchMemberCount(search);
-		System.out.println("========================================searchMemberCount : " + searchMemberCount);
 
 		// 조회한 회원을 pagination 에 담기
 		Pagination pagination = new Pagination(cp, searchMemberCount);
@@ -619,8 +607,29 @@ public class ManagerServiceImpl implements ManagerService {
 		getUserList.put("pagination", pagination);
 		getUserList.put("userList", userList);
 
-		System.out.println("=================================getUserList : " + getUserList);
 		return getUserList;
+	}
+	
+	// 관리자 1:1 문의 검색 기능
+	@Override
+	public Map<String, Object> getAskSearch(Search search, int cp) {
+		
+		// 검색한 1:1 문의 수 조회
+		int searchAskCount = dao.getSearchAskCount(search);
+		System.out.println("========================================searchAskCount : " + searchAskCount);
+
+		// 조회한 문의를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, searchAskCount);
+
+		// 검색한 1:1 문의 리스트 조회
+		List<Mtm> getMTMList = dao.selectSearchAskList(pagination, search);
+
+		Map<String, Object> getMTMLists = new HashMap<String, Object>();
+		getMTMLists.put("pagination", pagination);
+		getMTMLists.put("getMTMList", getMTMList);
+
+		System.out.println("=================================getMTMLists : " + getMTMLists);
+		return getMTMLists;
 	}
 
 
