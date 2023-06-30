@@ -23,7 +23,8 @@
 
 .aside-ul-wrap {
     width: 100%;
-
+    position: sticky;
+    top: 50px;
 }
 
 .aslide-list {
