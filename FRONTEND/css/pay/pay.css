@@ -4,7 +4,6 @@ main>:nth-child(1)>div {
     width: 100%;
     height: 600px;
 
-    border: 1px solid red;
 
     display: flex;
 
@@ -12,12 +11,13 @@ main>:nth-child(1)>div {
 }
 
 main>:nth-child(1)>div>div {
+    margin: 10px 0 0 0;
     padding: 50px 20px 20px 20px;
 
     width: 60%;
     height: 80%;
     
-    border: 1px solid red;
+    border: 1px solid rgb(255, 255, 255);
 }
 
 /* 타이틀 영역 */
@@ -26,6 +26,12 @@ main>:nth-child(1)>div>div>:nth-child(1) {
     font-size: 2rem;
 
     border-bottom: 1px solid rgb(255, 255, 255);
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: flex-end;
+    
 }
 
 /* 예매 내역 span */
@@ -156,7 +162,7 @@ main>:nth-child(1)>div>div>:nth-child(4)>div {
 .modal{
     background-color: rgb(0,0,0,0);
 
-    
+    top: 10%;
 }
 
 .modal>:nth-child(1) {
@@ -183,9 +189,19 @@ main>:nth-child(1)>div>div>:nth-child(4)>div {
     flex-direction: column;
     border: 0 1px 1px 1px solid blue;
 }
+
 .box_1{
     background-color: rgb(43, 42, 42);
 }
+
+.box_1>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
 .box_2_1 {
     margin: 20px 0;
     display: flex;
@@ -216,20 +232,37 @@ main>:nth-child(1)>div>div>:nth-child(4)>div {
     height: 30px;
 }
 
-.box_2_3 {
+.ticketTable {
+    overflow-y: hidden;
+    
     width: 100%;
-    height: 70px;
-    margin: 0 0 100px 0;
+    
+    border-collapse: collapse;
+    border: 1px solid white;
+}
+  
+.ticketTable td, .ticketTable th {
+    border: 1px solid white;
+    height: 40px;
+}
+
+.table_header th {
+    position: sticky;
+    top: 0;
+    background-color: rgb(71, 71, 71);
+}
+
+.box_2_3 {
+    overflow: auto;
+    width: 100%;
+    height: 172px;
+    margin: 0 0 10px 0;
     padding: 10px 0;
 
     border-top: 1px solid black;
 }
 
-.modalTable {
-    width: 100%;
-    height: 50px;
-    border-collapse: collapse;
-}
+
 
 .table_header {
     width: 100%;
@@ -237,6 +270,15 @@ main>:nth-child(1)>div>div>:nth-child(4)>div {
     background-color: rgb(71, 71, 71);
 }
 
+.table_header>:nth-child(1){
+    width: 70%;
+}
+.table_header>:nth-child(2){
+    width: 15%;
+}
+.table_header>:nth-child(3){
+    width: 15%;
+}
 
 
 .box_2_4 {
@@ -252,3 +294,15 @@ main>:nth-child(1)>div>div>:nth-child(4)>div {
     margin-top: 10px;
 }
 
+.box_3>div>button {
+    width: 70px;
+    height: 25px;
+}
+
+.exitBtn {
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
+}

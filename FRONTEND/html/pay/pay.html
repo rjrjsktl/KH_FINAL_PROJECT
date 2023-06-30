@@ -135,6 +135,9 @@
                         <!-- 타이틀 영역-->
                         <div>
                             <span>예매 내역</span>
+                            <div>
+                                <span>&nbsp; - 영화제목?</span>
+                            </div>
                         </div>
 
 
@@ -207,6 +210,9 @@
                 <div class="box_1">
                     <div>
                         <span>KGV 관람권</span>
+                        <div>
+                            <i class="fa-solid fa-square-xmark exitBtn"></i>
+                        </div>
                     </div>
                 </div>
 
@@ -227,19 +233,150 @@
                                 <span>관람권번호</span>
                             </div>
                             <div>
-                                <input type="text" placeholder="관람권번호 12자리 입력">
+                                <input type="text" name="ticketCode" placeholder="관람권번호 12자리 입력">
                             </div>
                             <div>
-                                <button >관람권 등록</button>
+                                <button id="movieTicket">관람권 등록</button>
                             </div>
 
                         </div>
                         <div class="box_2_3">
-                            <table>
+                            <table class="ticketTable">
                                 <tr class="table_header">
                                     <th>관람권</th>
                                     <th>상태</th>
+                                    <th>사용</th>
                                 </tr>
+                            
+                                <c:choose>
+                                    <c:when test="${Session.관람권}">
+                                        <tr>
+                                            <th>
+                                                ${관람권타이틀}
+                                            </th>
+                                            <th>
+                                                ${관람권상태}
+                                            </th>
+                                            <th>
+                                                <button>사용</button>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                ${관람권타이틀}
+                                            </th>
+                                            <th>
+                                                ${관람권상태}
+                                            </th>
+                                            <th>
+                                                <button>사용</button>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                ${관람권타이틀}
+                                            </th>
+                                            <th>
+                                                ${관람권상태}
+                                            </th>
+                                            <th>
+                                                <button>사용</button>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                ${관람권타이틀}
+                                            </th>
+                                            <th>
+                                                ${관람권상태}
+                                            </th>
+                                            <th>
+                                                <button>사용</button>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                ${관람권타이틀}
+                                            </th>
+                                            <th>
+                                                ${관람권상태}
+                                            </th>
+                                            <th>
+                                                <button>사용</button>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                ${관람권타이틀}
+                                            </th>
+                                            <th>
+                                                ${관람권상태}
+                                            </th>
+                                            <th>
+                                                <button>사용</button>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                ${관람권타이틀}
+                                            </th>
+                                            <th>
+                                                ${관람권상태}
+                                            </th>
+                                            <th>
+                                                <button>사용</button>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                ${관람권타이틀}
+                                            </th>
+                                            <th>
+                                                ${관람권상태}
+                                            </th>
+                                            <th>
+                                                <button>사용</button>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                ${관람권타이틀}
+                                            </th>
+                                            <th>
+                                                ${관람권상태}
+                                            </th>
+                                            <th>
+                                                <button>사용</button>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                ${관람권타이틀}
+                                            </th>
+                                            <th>
+                                                ${관람권상태}
+                                            </th>
+                                            <th>
+                                                <button>사용</button>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                ${관람권타이틀}
+                                            </th>
+                                            <th>
+                                                ${관람권상태}
+                                            </th>
+                                            <th>
+                                                <button>사용</button>
+                                            </th>
+                                        </tr>
+
+                                    </c:when>
+                                    <c:otherwise>
+                                        
+                                    </c:otherwise>
+                                </c:choose>
                             </table>
                         </div>
                         <div class="box_2_4">
@@ -257,7 +394,7 @@
                     <!-- 버튼 -->
                     <div class="box_3">
                         <div>
-                            <button>닫기</button>
+                            <button class="exitBtn">닫기</button>
                             <button>적용</button>
                         </div>
                     </div>
