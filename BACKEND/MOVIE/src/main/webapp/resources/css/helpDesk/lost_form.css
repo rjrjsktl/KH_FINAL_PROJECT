@@ -49,6 +49,7 @@ h2 {
 
 .notice-contents>div:nth-child(2) {
     padding: 10px 0 20px 0;
+
 }
 
 .notice-contents>div:nth-child(3) {
@@ -203,8 +204,25 @@ select {
 }
 
 /* 버튼 영역 간격 지정 */
-.btn_Container>button:nth-child(1) {
-    margin-right: 30px;
+.btn_wraper {
+	display: flex;
+	justify-content: right;
+}
+
+.btn_wraper button {
+	margin-left: 15px;
+	margin-top: 30px;
+	width: 105px;
+	height: 41px;
+	background-color: rgb(49, 49, 49);
+	outline: none;
+	border: none;
+}
+
+.btn_wraper button:hover {
+	background-color: rgb(255, 196, 0);
+	color: black;
+	cursor: pointer;
 }
 
 /* 첨부파일 버튼 디자인 적용 */

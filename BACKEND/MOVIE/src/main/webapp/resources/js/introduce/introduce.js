@@ -66,6 +66,8 @@ $(document).ready(function () {
     $(this).css("color", "black");
   });
 
+  updateData();
+
   function updateData() {
     $(".star-btn").click(function () {
       $(".movie-detail").hide();
@@ -78,7 +80,7 @@ $(document).ready(function () {
     });
   }
 
-  updateData();
+  
 
   $(".star_rating a").click(function () {
     $(this).parent().children("a").removeClass("on");

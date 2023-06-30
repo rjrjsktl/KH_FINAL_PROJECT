@@ -260,12 +260,15 @@
 											</div>
 
 											<div>
-												<a href="${contextPath}/helpDesk/mTm_List">FAQ</a> <a href="${contextPath}/helpDesk/mTm_List">1:1문의</a> <a href="#">대관 / 단체
+												<a href="${contextPath}/helpDesk/mTm_List">FAQ</a> <a
+													href="${contextPath}/helpDesk/mTm_List">1:1문의</a> <a href="#">대관 /
+													단체
 													문의</a>
 											</div>
 										</div>
 
-										<div>뭘 넣을지 몰라서 다 준비했어</div>
+										<div><img src="${contextPath}/resources/images/FINAL_LOGO.png" width="250px">
+										</div>
 
 									</div>
 

@@ -375,12 +375,67 @@ public class HelpDeskController {
 			session.setAttribute("prevPage", referer); 
 
 			path ="redirect:/user/login";
-
 		}
 
 		model.addAttribute("userNo", userNo);
 		return path; 
 	}
+
+	// 1:1 게시물 수정 Get
+	@GetMapping("/mTm_form/{mtmNo}")
+	public String getMtmForm(
+			@PathVariable("mtmNo") int mtmNo, 
+			Model model) {
+		Mtm mtm = services.getforUpdateValue(mtmNo);
+		model.addAttribute("mtm", mtm);
+		model.addAttribute("mtmNo", mtmNo);
+		return "helpDesk/mTm_form";
+	}
+
+	@PostMapping("/mTm_form/{mtmNo}")
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>> updatemTm(
+			@RequestParam("titleInput") String title, 
+			@RequestParam("contentTextarea") String content,
+			@RequestParam("inquirySelect") String inquiry,
+			@RequestParam("open") int open, 
+			@RequestParam(value = "imageUrl1", required = false) String imageUrl,
+			@PathVariable("mtmNo") int mtmNo,
+			HttpSession session) {
+
+
+		System.out.println(title);
+		System.out.println(content);
+		System.out.println(inquiry);
+		System.out.println(open);
+		System.out.println(imageUrl);
+		System.out.println(mtmNo);
+
+	
+		Mtm mtm = new Mtm();
+
+		content = content.replaceAll("\n", "<br>");
+		content = content.replaceAll("\r\n", "<br>");
+		content = content.replaceAll(" ", "&nbsp;");
+
+		mtm.setMtmNo(mtmNo);
+		mtm.setMtmTitle(title);
+		mtm.setMtmContent(content);
+		mtm.setMtmType(inquiry);
+		mtm.setMtmPw(open);
+		mtm.setMtmImage(imageUrl);
+
+
+		 services.updatemTm(mtm);
+
+			Map<String, Object> response = new HashMap<>();
+
+			response.put("mtmNo", mtmNo);
+
+
+				return ResponseEntity.ok(response);
+	}
+
 
 	// 1:1문의 게시물 삽입 Post
 	@PostMapping("/mTm_form")
@@ -402,8 +457,6 @@ public class HelpDeskController {
 			userNo = loginUser.getUserNo();
 			userNick = loginUser.getUserNick();
 		}
-
-
 
 		Mtm mtm = new Mtm();
 
@@ -721,13 +774,11 @@ public class HelpDeskController {
 		}
 
 
-
 		System.out.println("=========================================================================" + lostdetail);
 		String unescapedContent = StringEscapeUtils.unescapeHtml4(lostdetail.getLostContent());
 		lostdetail.setLostContent(unescapedContent);
 		model.addAttribute("lostdetail", lostdetail);
 		model.addAttribute("cp", cp);
-
 
 		return "helpDesk/lost_detail";
 
@@ -761,6 +812,68 @@ public class HelpDeskController {
 		System.out.println("================================================= 이미지 는?? : : " + a);
 		return a;
 	}
+	
+	// 잃어버린 게시물 수정 Get
+	@GetMapping("/lost_form/{lostNo}")
+	public String getLostForm(
+			@PathVariable("lostNo") int lostNo, 
+			Model model) {
+		System.out.println(lostNo);
+		LostPackage lost = services.getforLostValue(lostNo);
+		model.addAttribute("lost", lost);
+		model.addAttribute("lostNo", lostNo);
+		
+		Map<String, Object>cinemaList = null;
+
+		cinemaList = services.cinemaList();
+
+		model.addAttribute("cinemaList",cinemaList);
+		return "helpDesk/lost_form";
+	}
+	
+	// 잃어버린 게시물 수정 Post
+	@PostMapping("/lost_form/{lostNo}")
+	public ResponseEntity<Map<String, Object>> updateLost(
+			@RequestParam("titleInput") String title, 
+			@RequestParam("lostItem") String item, 
+			@RequestParam("lostArea") String area, 
+			@RequestParam("lostDate") String date, 
+			@RequestParam("contentTextarea") String details,
+			@RequestParam("open") int open,
+			@RequestParam(value = "imageUrl1", required = false) String imageUrl,
+			@PathVariable("lostNo") int lostNo,
+			HttpSession session) {
+
+
+
+		LostPackage lost = new LostPackage();
+
+		details = details.replaceAll("\n", "<br>");
+		details = details.replaceAll("\r\n", "<br>");
+		details = details.replaceAll(" ", "&nbsp;");
+
+		lost.setLostNo(lostNo);
+		lost.setLostTitle(title);
+		lost.setLostItem(item);
+		lost.setLostLocation(area);
+		lost.setLostContent(details);
+		lost.setLostDate(date);
+		lost.setLostPw(open);
+		lost.setLostFile(imageUrl);
+
+		services.updateLost(lost);  
+
+
+		Map<String, Object> response = new HashMap<>();
+		response.put("lostNo", lostNo);
+
+
+		return ResponseEntity.ok(response);
+		
+		
+	}
+	
+	
 
 	// 잃어버린물건 삽입 Get
 	@GetMapping("/lost_form")
@@ -778,7 +891,15 @@ public class HelpDeskController {
 		if(loginUser != null) {
 			userNo = loginUser.getUserNo();
 		}
+
+		Map<String, Object>cinemaList = null;
+
+		cinemaList = services.cinemaList();
+
 		model.addAttribute("userNo", userNo);
+		model.addAttribute("cinemaList",cinemaList);
+
+		System.out.println(model);
 
 		if ( userNo > 0) {
 			path = "helpDesk/lost_form";
@@ -794,6 +915,8 @@ public class HelpDeskController {
 
 		return path; 
 	}
+	
+
 
 	// 잃어버린물건 삽입 Post
 	@PostMapping("/lost_form")
@@ -815,7 +938,6 @@ public class HelpDeskController {
 		if(loginUser != null) {
 			userNo = loginUser.getUserNo();
 			userNick = loginUser.getUserNick();
-
 		}
 
 		LostPackage lost = new LostPackage();
@@ -824,7 +946,6 @@ public class HelpDeskController {
 		details = details.replaceAll("\r\n", "<br>");
 		details = details.replaceAll(" ", "&nbsp;");
 
-		
 		lost.setLostTitle(title);
 		lost.setUserNo(userNo);  
 		lost.setLostItem(item);
@@ -979,4 +1100,16 @@ public class HelpDeskController {
 
 		return response;
 	}
+
+	//영화관 목록 선택하기
+
+
+
+
+
+
+
+
+
+
 }

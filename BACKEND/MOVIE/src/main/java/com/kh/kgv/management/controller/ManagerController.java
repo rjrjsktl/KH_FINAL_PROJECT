@@ -148,11 +148,6 @@ public class ManagerController {
 		
 		return getUserList;
 	}
-	
-	
-	
-	
-	
 
 	// ===================================================
 	// ===================================================
@@ -248,6 +243,33 @@ public class ManagerController {
 		return "manager/manager_ask_list";
 	}
 
+	// ===================================================
+	// ===================================================
+	
+	// 관리자 1:1 문의 검색 기능
+			@ResponseBody
+			@GetMapping("/member/Search_Ask")
+		public Map<String, Object> searchAsk(
+				Model model
+				, Search search
+				, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+				, @RequestParam("searchType") String searchType
+				, @RequestParam("searchContent") String searchContent
+				) {
+			
+			Map<String, Object>getAskList = null;
+			
+			search.setSearchType(searchType);
+			search.setSearchContext(searchContent);
+			
+			getAskList = service.getAskSearch(search, cp);
+			
+			System.out.println("search ====================================" + search);
+			
+			return getAskList;
+		}
+	
+	
 	// ===================================================
 	// ===================================================
 

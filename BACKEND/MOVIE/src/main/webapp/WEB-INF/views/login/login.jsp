@@ -22,6 +22,8 @@
 						<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 							integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 							crossorigin="anonymous"></script>
+							<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js" charset="utf-8"></script>
+
 
 					</head>
 
@@ -79,19 +81,17 @@
 											</div>
 
 											<!-- SNS 로그인 -->
-											<ul>
-												<li>
-													<a><img src="${contextPath}/resources/images/loginpage_images/KakaoTalk_btn_icon_square.png"
-															alt="카카오톡"><button onclick="loginWithKakao()"></button></a>
+											<div class="kakaoLogin">
+													<a><button onclick="loginWithKakao()" >카카오로 로그인하기</button></a>
 
-												</li>
-												<li><a href="sns/naver"><img
+
+												</div>
+												<!-- <li><a href="sns/naver"><img
 															src="${contextPath}/resources/images/loginpage_images/naver_btn_icon_square.png"
 															alt="네이버"></a></li>
 												<li><a href="sns/google"><img
 															src="${contextPath}/resources/images/loginpage_images/google_btn_icon_square.png"
-															alt="구글"></a></li>
-											</ul>
+															alt="구글"></a></li> -->
 
 										</div>
 
@@ -117,6 +117,8 @@
 
 
 						<script src="${contextPath}/resources/js/login/login.js"></script>
+						<script src="${contextPath}/resources/js/manager/apikey.js"></script>
+
 					</body>
 
 					</html>

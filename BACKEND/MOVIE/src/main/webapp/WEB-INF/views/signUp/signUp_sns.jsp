@@ -43,9 +43,9 @@
                                         <a href="signUp"><button>이메일 회원가입</button></a>
                                         <a><button  onclick="loginWithKakao()" >카카오로 가입하기</button></a>
                                         
-
+<!-- 
                                         <a href="#"><button>네이버로 가입하기</button></a>
-                                        <a href="#"><button>구글로 가입하기</button></a>
+                                        <a href="#"><button>구글로 가입하기</button></a> -->
                                     </div>
                                 </div>
 

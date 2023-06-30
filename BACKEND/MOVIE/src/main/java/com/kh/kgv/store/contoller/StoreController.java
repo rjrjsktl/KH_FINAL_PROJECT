@@ -175,7 +175,7 @@ public class StoreController {
 	    }
 	 
 	 	@ResponseBody
-	    @RequestMapping(value="/storeMain/store_detail/{storeNo}/getStorePayment/verifyIamport/{imp_uid}")
+	    @RequestMapping(value="/storeMain/store_detail/store_payment/{storeNo}/verifyIamport/{imp_uid}")
 	    public IamportResponse<Payment> paymentByImpUid(
 	            Model model
 	            , Locale locale
@@ -188,11 +188,14 @@ public class StoreController {
 	//결제성공 정보 받아오는 ajax
 	 	@ResponseBody
 		@PostMapping("/storeMain/store_detail/store_payment/{storeNo}/successPayment") 	
+	 	
 	 	public String successPayment(
 	 			@RequestParam("orderPrice") int orderPrice
 				,@RequestParam("orderCount") int orderCount,
 				@RequestParam("storeNo") int storeNo
-				,@RequestParam("userNo") int userNo) {
+				,@RequestParam("userNo") int userNo
+				,@RequestParam("userEmail") String userEmail
+				,@RequestParam("orderDetailNo") String orderDetailNo) {
 	 		
 	 		
 	 		System.out.println("ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ");
@@ -201,6 +204,15 @@ public class StoreController {
 	 		logger.debug(" totalCount################ : " + orderCount);
 	 		logger.debug(" storeNo################ : " + storeNo);
 	 		logger.debug(" userNo################ : " + userNo);
+	 		logger.debug(" userEmail################ : " + userEmail);
+	 		logger.debug(" orderDetailNo################ : " + orderDetailNo);
+	 		
+	 		
+//	 		String orderDetailNo = "odt_" + System.currentTimeMillis();
+//	 		
+//	 		System.out.println(orderDetailNo);
+	 		
+	 		
 	 		return null;
 	 	}
 	 	
