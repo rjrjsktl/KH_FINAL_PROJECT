@@ -216,4 +216,33 @@ public class ReserveServiceImpl implements ReserveService {
 		return specialCinemaList;
 	}
 
+	@Override
+	public int checkTicket(int playNo, int[] bookAge, List<String> seatList) {
+		int ageCount = 0;
+		
+		for(int age : bookAge) {
+			ageCount += age;
+		}
+		
+		// 제대로 인원 선택을 했는지 check함.
+		if(ageCount != seatList.size() || seatList.size() == 0) {
+			return -1;
+		}
+		
+		return 1;
+	}
+
+	@Override
+	public int buyTicket(int playNo, int userNo, String bookAge, String bookSeat, int bookPrice) {
+		Map<String, Object> ticketMap = new HashMap<>();
+		ticketMap.put("playNo", playNo);
+		ticketMap.put("userNo", userNo);
+		ticketMap.put("bookAge", bookAge);
+		ticketMap.put("bookSeat", bookSeat);
+		ticketMap.put("bookPrice", bookPrice);
+		int result = dao.buyTicket(ticketMap);
+		
+		return result;
+	}
+
 }

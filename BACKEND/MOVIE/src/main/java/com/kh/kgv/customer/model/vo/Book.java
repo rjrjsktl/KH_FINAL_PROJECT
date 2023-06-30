@@ -16,8 +16,8 @@ public class Book {
 	private int userNo;
 	private int movieNo;
 	private String bookDt;
-	private int bookAge;
-	private int bookSeat;
+	private String bookAge;
+	private String bookSeat;
 	private int bookPrice;
 	private String bookSt;
 	private int totalRow;

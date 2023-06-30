@@ -184,6 +184,9 @@ public interface ManagerService {
 	// 관리자 회원 검색 기능
 	Map<String, Object> getMemberSearch(Search search, int cp);
 
+	// 관리자 1:1 문의 검색 기능
+	Map<String, Object> getAskSearch(Search search, int cp);
+
 	
 	
 	

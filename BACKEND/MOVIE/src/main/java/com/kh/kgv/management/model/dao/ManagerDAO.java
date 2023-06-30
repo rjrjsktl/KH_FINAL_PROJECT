@@ -474,6 +474,20 @@ public class ManagerDAO {
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 
 		return sqlSession.selectList("managerMapper.selectSearchMemberList", search, rowBounds);
+	}
+	
+	// 검색한 1:1 문의 수 조회
+	public int getSearchAskCount(Search search) {
+		return sqlSession.selectOne("managerMapper.getSearchAskCount", search);
+	}
+
+	// 검색한 1:1 문의 리스트 조회
+	public List<Mtm> selectSearchAskList(Pagination pagination, Search search) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+		return sqlSession.selectList("managerMapper.selectSearchAskList", search, rowBounds);
 	}	
 
 }

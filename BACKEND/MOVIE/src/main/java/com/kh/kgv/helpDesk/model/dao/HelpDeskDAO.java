@@ -19,6 +19,7 @@ import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.helpDesk.model.vo.MtmPagenation;
 import com.kh.kgv.helpDesk.model.vo.QuestPagenation;
 import com.kh.kgv.login.controller.LoginController;
+import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.Notice;
 
 @Repository
@@ -79,6 +80,8 @@ public class HelpDeskDAO {
 	public int addmTm(Mtm mtm) {
 		return sqlSession.insert("mtmMapper.addmTm", mtm);
 	}
+	
+
 	
 	// 1:1문의 게시물 삭제
 	public int deleteBoard(int mtmNo) {
@@ -204,6 +207,33 @@ public class HelpDeskDAO {
 		return sqlSession.selectList("questMapper.getcountquestLIST", questNum , rowBounds);
 	}
 
+	public List<Cinema> cinemaList() {
+		
+		return sqlSession.selectList("cinemaMapper.getCinemaList");
+
+	}
+
+	public int updatemTm(Mtm mtm) {
+		return sqlSession.update("mtmMapper.updatemTm", mtm);
+	}
+
+	public int updateLost(LostPackage lost) {
+		return sqlSession.update("lostMapper.updateLost", lost);
+	}
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+	
 	
 
 

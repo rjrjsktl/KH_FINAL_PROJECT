@@ -584,9 +584,6 @@ main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(3)>a {
 /* 우측랩퍼 */
 main>section:nth-child(5)>div>div:nth-child(2) {
     width: 30%;
-    border: 1px solid rgb(68 214 44);
-    border-radius: 10px;
-
 }
 
 .uLine {
