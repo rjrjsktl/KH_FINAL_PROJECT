@@ -15,7 +15,7 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         
     <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/pay/.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/pay/pay.css">
     
 
     <!-- fontawesome -->
@@ -168,10 +168,10 @@
                                             <c:when test="">
                                                 <tr>
                                                     <th>
-                                                        "${관람권타이틀}""
+                                                        "관람권타이틀""
                                                     </th>
                                                     <th>
-                                                        "${관람권상태}"
+                                                        "관람권상태"
                                                     </th>
                                                     <th>
                                                         <button>사용</button>

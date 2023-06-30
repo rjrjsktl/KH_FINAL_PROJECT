@@ -269,7 +269,7 @@ public class ReserveController {
 	        if(condition == 0) {
 	        	int result = service.buyTicket(playNo, userNo, bookAge, bookSeat, bookPrice);
 	        	System.out.println(result);
-				url = "movie/pay/pay";
+				url = "/movie/pay/pay";
 			}
 
 		} catch(Exception e) {
@@ -283,6 +283,7 @@ public class ReserveController {
 		return url;
 	}
 	
+	/*
 	// 결제페이지로 이동하기
 	@GetMapping("/movie/pay/pay")
 	@ResponseBody
@@ -292,7 +293,7 @@ public class ReserveController {
 		return "pay/pay";
 	}
 	
-	
+	*/
 	
 	
 	
