@@ -619,4 +619,27 @@ public class MyPageController {
 		logger.info("myMovieList", myMovieList);
 		return myMovieList;
 	}
+	
+	// 무비 카드 삭제
+	@GetMapping("/deleteBook/{bookNo}")
+	public String deleteBook(@PathVariable("bookNo") int bookNo, HttpServletRequest req, HttpServletResponse resp,
+			RedirectAttributes ra, @RequestHeader("referer") String referer) {
+		logger.info("리뷰 삭제 드가자");
+		logger.info("bookNo:::::::::::" + bookNo);
+		
+		String path = null;
+		String message = null;
+			int result = service.deleteBook(bookNo);
+			if (result > 0) {
+			path = "myPage/myMovie";
+			message = "영화를 삭제했습니다.";
+		} else {
+			path = "referer";
+			message = "삭제 중 오류발생.";
+		}
+
+		ra.addFlashAttribute("message", message);
+
+		return "redirect:/" + path;
+	}
 }

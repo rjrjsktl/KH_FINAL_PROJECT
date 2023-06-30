@@ -121,5 +121,13 @@ public class MyPageDAO {
 		logger.info("cards movie:::dao 실행");
 		return sqlSession.selectList("myPageMapper.loadMovieCards", paramMap);
 	}
+
+	/** 내 영화 카드 삭제 DAO
+	 * @param bookNo
+	 * @return
+	 */
+	public int deleteBook(int bookNo) {
+		return sqlSession.update("myPageMapper.deleteBook", bookNo);
+	}
 	
 }
