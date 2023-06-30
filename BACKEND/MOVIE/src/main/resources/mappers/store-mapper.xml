@@ -17,14 +17,29 @@
 	
 	<resultMap type="storeOrder" id="storeOrder_rm">
 		
-		<id property="orderNo" column="ORDER_NO"/>
+		<id property="sorderNo" column="S_ORDER_NO"/>
 		<result property="orderDetailNo" 			column="ORDER_DETAIL_NO"/>
 		<result property="orderCount" 				column="ORDER_COUNT"/>
 		<result property="orderPrice" 				column="ORDER_PRICE"/>
 		<result property="orderDate" 				column="ORDER_DATE"/>
-		<result property="otderStatus" 				column="ORDER_STATUS"/>
-		
+		<result property="orderSt" 				column="ORDER_ST"/>
+		<result property="orderDelete" 				column="ORDER_DELETE"/>
+		<result property="userEmail" 				column="USER_EMAIL"/>
+		<result property="userName" 				column="USER_NAME"/>
+		<result property="storeName" 				column="STORE_NAME"/>
+		<result property="storeNo" 					column="STORE_NO"/>
 	</resultMap>	
+	
+	
+	<resultMap type="storeCoupon" id="storeCoupon_rm">
+		
+		<id property="scouponNo" column="S_COUPON_NO"/>
+		<result property="sorderNo" 				column="S_ORDER_NO"/>
+		<result property="couponDetailNo" 			column="COUPON_DETAIL_NO"/>
+		<result property="couponSt" 			column="COUPON_ST"/>
+	</resultMap>	
+	
+	
 	
 	
 	<!-- 상품 이름 중복 검사 -->
@@ -102,7 +117,45 @@
         	
 	</update>
 
-	
 
+	<!-- 결제 성공후 정보 저장 -->
+	<insert id="successPayment" parameterType="storeOrder" useGeneratedKeys="true" keyProperty="sorderNo">
+    <selectKey keyProperty="sorderNo" resultType="int" order="AFTER">
+        SELECT SEQ_S_ORDER_NO.CURRVAL FROM DUAL
+    </selectKey>
+    
+    INSERT INTO STORE_ORDER
+    VALUES (
+        SEQ_S_ORDER_NO.NEXTVAL
+        , #{orderDetailNo}
+        , #{orderCount}
+        , #{orderPrice}
+        , DEFAULT
+        , DEFAULT
+        , NULL
+        , #{userEmail}
+        , #{userName}
+        , #{storeName}
+        , #{storeNo}
+    )
+</insert>
+
+	
+	
+	
+	<!-- 쿠폰정보 등록 -->
+	<insert id="insertStoreCoupon" parameterType="storeCoupon">
+	INSERT INTO STORE_COUPON
+    	VALUES (
+    		SEQ_S_COUPON_NO.NEXTVAL
+        	, #{sorderNo}
+        	, #{couponDetailNo}
+        	,DEFAULT
+        	
+        	)
+	</insert>
+	
+	
+	
 	
 </mapper>
