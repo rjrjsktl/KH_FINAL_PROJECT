@@ -16,6 +16,7 @@ import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.helpDesk.model.vo.MtmPagenation;
 import com.kh.kgv.helpDesk.model.vo.QuestPagenation;
 import com.kh.kgv.management.model.dao.ManagerDAO;
+import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Pagination;
 
@@ -360,10 +361,44 @@ public class HelpDeskImpl implements HelpDeskService {
 		return getQuestList;
 	}
 
+	@Override
+	public Map<String, Object> cinemaList() {
+		
+		List<Cinema> cinemaList = dao.cinemaList();
+		
+		Map<String, Object> getcinemaList = new HashMap<String, Object>();
+		
+		getcinemaList.put("cinemaList", cinemaList);
+		
+		return getcinemaList;
+	}
+
+	@Override
+	public Mtm getforUpdateValue(int mtmNo) {
+		return dao.selectmTmDetail(mtmNo);
+	}
+
+	@Override
+	public int updatemTm(Mtm mtm) {
+		return dao.updatemTm(mtm);
+	}
+
+	@Override
+	public LostPackage getforLostValue(int lostNo) {
+		return dao.selectLostDetail(lostNo);
+	}
+
+	@Override
+	public int updateLost(LostPackage lost) {
+		return dao.updateLost(lost);
+
+	}
+
+
+
 
 
 	
-
 
 	
 

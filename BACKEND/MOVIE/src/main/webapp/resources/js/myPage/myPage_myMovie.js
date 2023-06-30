@@ -26,13 +26,34 @@ $(document).ready(function () {
           if (response.length > 0) {
             response.forEach(function (movie) {
               var cardData = movie;
-  
+              // 1,4,7,10,13
+              var SumNumAge = parseInt(cardData.book.bookAge[1]) + parseInt(cardData.book.bookAge[4]) + parseInt(cardData.book.bookAge[7]) + parseInt(cardData.book.bookAge[10]) + parseInt(cardData.book.bookAge[13]);
+              console.log("SumNumAge:::::" + SumNumAge);
+              console.log("${cardData.book.bookAge[0]}:::::" + cardData.book.bookAge[0]);
+              console.log("${cardData.book.bookAge[1]}:::::" + cardData.book.bookAge[1]);
+              console.log("${cardData.book.bookAge[2]}:::::" + cardData.book.bookAge[2]);
+              console.log("${cardData.book.bookAge[3]}:::::" + cardData.book.bookAge[3]);
+              console.log("${cardData.book.bookAge[4]}:::::" + cardData.book.bookAge[4]);
+              console.log("${cardData.book.bookAge[5]}:::::" + cardData.book.bookAge[5]);
+              console.log("${cardData.book.bookAge[6]}:::::" + cardData.book.bookAge[6]);
+              console.log("${cardData.book.bookAge[7]}:::::" + cardData.book.bookAge[7]);
+              console.log("${cardData.book.bookAge[8]}:::::" + cardData.book.bookAge[8]);
+              console.log("${cardData.book.bookAge[9]}:::::" + cardData.book.bookAge[9]);
+              console.log("${cardData.book.bookAge[10]}:::::" + cardData.book.bookAge[10]);
+              console.log("${cardData.book.bookAge[11]}:::::" + cardData.book.bookAge[11]);
+              console.log("${cardData.book.bookAge[12]}:::::" + cardData.book.bookAge[12]);
+              console.log("${cardData.book.bookAge[13]}:::::" + cardData.book.bookAge[13]);
+              console.log("${cardData.book.bookAge[14]}:::::" + cardData.book.bookAge[14]);
               // var contextPath = "${contextPath}";
+              console.log("${cardData.book.bookNo}::::" + cardData.book.bookNo);
               console.log("${cardData.movie.movieNo}::::" + cardData.movie.movieNo);
+              console.log("${cardData.play.cinemaName}::::앞:::" + cardData.screen.cinemaName);
+              console.log("${cardData.play.screenStyle}::::앞:::" + cardData.screen.screenStyle);
+              console.log("${cardData.play.screenName}::::앞:::" + cardData.screen.screenName);
               console.log("${cardData.book.totalRow}::::앞:::" + cardData.book.totalRow);
               // 카드를 생성하고 데이터를 채워서 화면에 추가하는 코드 작성
               var cardHTML = `
-                <li class="myreview">
+                <li class="mymovie">
                   <div>
                     <div>
                       <a href="/movie/movieList/detail_List/introduce/${cardData.movie.movieNo}">
@@ -42,7 +63,7 @@ $(document).ready(function () {
                     <div>
                       <div>
                         <div>${cardData.movie.movieTitle}</div>
-                        <a class="delete-movie-btn" data-revno="${cardData.book.bookNo}">
+                        <a class="delete-movie-btn" data-bookno="${cardData.book.bookNo}">
                             <i class="fa-regular fa-circle-xmark"></i>
                         </a>
                       </div>
@@ -51,17 +72,17 @@ $(document).ready(function () {
                             <li>관람 날짜 :</li>
                             <li>관람 시간 :</li>
                             <li>관람 인원 :</li>
-                            <li>상영관 :</li>
+                            <li>상 영 관 :</li>
                         </ul>
                         <ul>
-                            <li>${cardData.play.playDate}</li>
-                            <li>${cardData.play.playStart} ~ ${cardData.play.playEnd}</li>
-                            <li>총인원 [성인, 청소년, 노인, 우대, 커플] 순서로 넣기</li>
-                            <li>KGV ${cardData.cinema.cinemaName} / ${cardData.cinema.screenStyle} (${cardData.cinema.screenName})</li>
+                            <li> ${cardData.play.playDate}</li>
+                            <li> ${cardData.play.playStart} ~ ${cardData.play.playEnd}</li>
+                            <li> ${SumNumAge}명</li>
+                            <li>KGV ${cardData.screen.cinemaName} / ${cardData.screen.screenStyle} ( ${cardData.screen.screenName} 관 )</li>
                         </ul>
                       </div>
                       <div>
-                            <button id="goreview-btn">리뷰 작성</button>
+                            <button id="goreview-btn" onclick="updateData()" data-movieno="${cardData.movie.movieNo}">리뷰 작성 하러가기</button>
                       </div>
                     </div>
                   </div>
@@ -124,7 +145,7 @@ $(document).ready(function () {
       // let newCards = $('.myreview').slice(itemsToShow - cardsPerLoad, itemsToShow); 
       // let newCards = $('.myreview').slice(startslide, result);
       // 불러온 값들을 우선 숨긴 다음에, 슬라이드 다운함.
-      $('.myreview').slice(startslide, result).hide().slideDown(100);
+      $('.mymovie').slice(startslide, result).hide().slideDown(100);
       
       // console.log("slideDown:::::::::::::::::::::::::::::::" + result);
       // $('.myreview').slice(0, result).slideDown();
@@ -133,13 +154,21 @@ $(document).ready(function () {
     // 삭제 버튼 구현
     $('.more-load').on('click', '.delete-movie-btn', function () {
       window.console.log("삭제 버튼 누름");
-      let revNo = $(this).data('bookno');
+      let bookNo = $(this).data('bookno');
       let url = `/movie/myPage/deleteBook/${bookNo}`;
       window.console.log("bookNo:::" + bookNo);
       if (confirm("정말로 삭제 하시겠습니까?")) {
         window.location.href = url; // get방식으로 url에 요청
       }
-  
+    });
+
+    // 리뷰 남기러 가기
+    $('.more-load').on('click', '#goreview-btn', function () {
+      window.console.log("리뷰 남기러 가기 버튼 누름");
+      let movieNo = $(this).data('movieno');
+      window.console.log("movieNo:::" + movieNo);
+      window.location.href = "/movie/movieList/detail_List/introduce/" + movieNo;
+      
     });
   });
   

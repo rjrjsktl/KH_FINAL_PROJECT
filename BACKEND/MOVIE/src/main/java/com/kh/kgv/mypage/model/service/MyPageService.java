@@ -35,6 +35,9 @@ public interface MyPageService {
 
 	// movie카드 불러오기
 	List<Review> loadMovieCards(Map<String, Object> paramMap);
+
+	// movie카드 삭제
+	int deleteBook(int bookNo);
 	
 //	// review카드 5개씩 불러오기
 //	List<Review> getReviewListInRange(Map<String, Object> paramMap);

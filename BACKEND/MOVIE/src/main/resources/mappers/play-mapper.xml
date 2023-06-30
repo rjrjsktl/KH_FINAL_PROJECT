@@ -65,7 +65,7 @@
 		<result property="cinemaScreen"         column="CINEMA_SCREEN" />
 	</resultMap>
 	
-		<resultMap type="tc" id="tc_rm">
+	<resultMap type="tc" id="tc_rm">
 		<result property="areaIndex"           column="TC_AREA" />
 		<result property="cinemaIndex"           column="TC_CINEMA" />
 		<result property="screenIndex"         column="TC_SCREEN" />
@@ -84,6 +84,18 @@
 		<collection property="movie" resultMap="movie_rm" />
 		<collection property="tt" resultMap="tt_rm" />
 		<collection property="screen" resultMap="screen_rm" />
+	</resultMap>
+	
+	<resultMap type="book" id="book_rm">
+	    <id property="bookNo"                 column="BOOK_NO" />
+	    <result property="playNo"             column="PLAY_NO" />
+	    <result property="userNo"             column="USER_NO" />
+	    <result property="movieNo"           column="MOVIE_NO" />
+	    <result property="bookDt"             column="BOOK_DT" />
+	    <result property="bookAge"           column="BOOK_AGE" />
+	    <result property="bookSeat"          column="BOOK_SEAT" />
+	    <result property="bookPrice"         column="BOOK_PRICE" />
+	    <result property="bookSt"             column="BOOK_ST" />
 	</resultMap>
 	
 	
@@ -221,6 +233,13 @@ WHERE s.SCREEN_NO = #{screenNo}
     WHERE c.CINEMA_NAME = #{cinemaIndex}
     AND s.SCREEN_NAME = #{screenIndex}
 </select>
+
+
+    <insert id="buyTicket" parameterType="Map">
+        INSERT INTO BOOK
+        VALUES(SEQ_BOOK_NO.NEXTVAL, #{playNo}, #{userNo}, ( SELECT MOVIE_NO FROM PLAY WHERE PLAY_NO = #{playNo}), 
+                   DEFAULT, #{bookAge}, #{bookSeat}, #{bookPrice}, 'N')
+    </insert>
 	
 	
 </mapper>

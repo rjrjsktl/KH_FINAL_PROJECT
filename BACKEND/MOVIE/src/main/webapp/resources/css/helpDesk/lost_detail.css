@@ -53,8 +53,8 @@ h2 {
 .notice-contents>div:nth-child(2) {
     padding: 10px 0 10px 0;
       height:30%;
-      display:flex;
-      justify-content:right;
+	  display: flex;
+	  justify-content: space-between;
 }
 
 
