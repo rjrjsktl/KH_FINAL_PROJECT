@@ -51,7 +51,7 @@ function requestPay() {
             $.ajax({
 
                 type: "POST",
-                url: "/movie/store/storeMain/store_detail/" + storeNo + "/getStorePayment/verifyIamport/" + rsp.imp_uid
+                url: "/movie/store/storeMain/store_detail/store_payment/" + storeNo + "/verifyIamport/" + rsp.imp_uid
             }).done(function (data) {
 
                 console.log(data);
@@ -60,20 +60,25 @@ function requestPay() {
                     alert("결제 및 결제검증완료");
 
                     //결제 성공 시 비즈니스 로직
-
+                    orderDetailNo = 'odn_' + new Date().getTime();
+                    console.log(orderDetailNo);
 
                     $.ajax({
-                        url: "/movie/store/storeMain/store_detail/" + storeNo + "/successPayment",
+                        url: "/movie/store/storeMain/store_detail/store_payment/" + storeNo + "/successPayment",
                         data: {
                             "orderPrice": totalPrice
                             , "orderCount": totalCount
                             , "storeNo": storeNo
                             , "userNo": userNo
+                            , "userEmail": userEmail
+                            , "orderDetailNo": orderDetailNo
                         },
                         type: "POST",
 
                         success: function () {
                             console.log("결제성공 정보 등록 성공");
+                            // let url = "/movie/store/storeMain";
+                            // window.location.href = url;
                         },
 
                         error: function () {
