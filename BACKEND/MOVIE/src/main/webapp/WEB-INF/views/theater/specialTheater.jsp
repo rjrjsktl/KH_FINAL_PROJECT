@@ -34,7 +34,7 @@
                 </div>
                 <div class="special">
                     <div class="theater1"><img src="${contextPath}/resources/images/teater_special/imax_04.jpg" alt="">
-                        <a href="${contextPath}/theater/theaterS">
+                            <a href="${contextPath}/theater/specialTheater/1">
                             <div class="theater1-1">
                                 <span>KMAX</span><br>
                                 <p class="infoSpan">궁극의 몰입감</p>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="second-wrap">
                         <div class="theater2"><img src="${contextPath}/resources/images/teater_special/specialtheater_cdc_00.jpg" alt="">
-                            <a href="${contextPath}/theater/theaterS5">
+                            <a href="${contextPath}/theater/specialTheater/5">
                                 <div class="theater2-1">
                                     <span>Cine & Wine</span><br>
                                     <p class="infoSpan">쉐프가 있는 영화관</p>
@@ -52,7 +52,7 @@
                             </a>
                         </div>
                         <div class="theater3"> <img src="${contextPath}/resources/images/teater_special/style_625d608c1cb71.jpg" alt="">
-                            <a href="${contextPath}/theater/theaterS3">
+                            <a href="${contextPath}/theater/specialTheater/3">
                                 <div class="theater3-1">
                                     <span>With a Puppy</span><br>
                                     <p class="infoSpan">반려동물 동반 멀티플렉스</p>
@@ -64,14 +64,14 @@
 
                     <div>
                         <div class="theater4"><img src="${contextPath}/resources/images/teater_special/Featured-1068x580-1-2.png" alt="">
-                            <a href="${contextPath}/theater/theaterS4">
+                            <a href="${contextPath}/theater/specialTheater/4">
                                 <div class="theater4-1"><span>CINE KIDS</span><br>
                                     <p class="infoSpan">키즈 전용 상영관</p>
                                 </div>
                             </a>
                         </div>
                         <div class="theater5"> <img src="${contextPath}/resources/images/teater_special/B.jpg" alt="">
-                            <a href="${contextPath}/theater/theaterS2">
+                            <a href="${contextPath}/theater/specialTheater/2">
                                 <div class="theater5-1"><span>DOLBY ATMOS</span><br>
                                     <p class="infoSpan">차세대 몰입형 사운드</p>
                                 </div>

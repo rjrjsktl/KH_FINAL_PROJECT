@@ -61,5 +61,9 @@ public class ReserveDAO {
 		return sqlSession.selectList("cinemaMapper.getSpecialScreenList", type);
 	}
 
+	public int buyTicket(Map<String, Object> ticketMap) {
+		return sqlSession.insert("playMapper.buyTicket", ticketMap);
+	}
+
 
 }

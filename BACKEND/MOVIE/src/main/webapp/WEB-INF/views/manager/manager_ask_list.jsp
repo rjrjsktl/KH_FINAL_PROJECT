@@ -75,35 +75,38 @@
 														<th>답변 일자</th>
 														<th>담당자</th>
 													</tr>
-													<c:forEach var="mtmList" items="${getMTMList['getMTMList']}">
-														<tr>
-															<td>${mtmList.mtm.mtmNo}</td>
-															<td>${mtmList.user.userEmail}</td>
-															<td>${mtmList.mtm.mtmType}</td>
-															<td><a
-																	href="${contextPath}/helpDesk/mtm_detail/${mtmList.mtm.mtmNo}">${mtmList.mtm.mtmTitle}</a>
-															</td>
-															<td class="wordReduce">${mtmList.mtm.mtmContent}</td>
-															<td>${mtmList.mtm.mtmRegdate}</td>
-															<td>${mtmList.mtm.mtmRepSt}</td>
-															<c:choose>
-																<c:when test="${not empty mtmList.mtm.mtmRepDate}">
-																	<td>${mtmList.mtm.mtmRepDate}</td>
-																</c:when>
-																<c:otherwise>
-																	<td>-</td>
-																</c:otherwise>
-															</c:choose>
-															<c:choose>
-																<c:when test="${not empty mtmList.mtm.mtmRepWriter}">
-																	<td>${mtmList.mtm.mtmRepWriter}</td>
-																</c:when>
-																<c:otherwise>
-																	<td>-</td>
-																</c:otherwise>
-															</c:choose>
-														</tr>
-													</c:forEach>
+													<tbody id="userTableBody">
+														<c:forEach var="mtmList" items="${getMTMList['getMTMList']}">
+															<tr>
+																<td>${mtmList.mtm.mtmNo}</td>
+																<td>${mtmList.user.userEmail}</td>
+																<td>${mtmList.mtm.mtmType}</td>
+																<td><a
+																		href="${contextPath}/helpDesk/mtm_detail/${mtmList.mtm.mtmNo}">${mtmList.mtm.mtmTitle}</a>
+																</td>
+																<td class="wordReduce">${mtmList.mtm.mtmContent}</td>
+																<td>${mtmList.mtm.mtmRegdate}</td>
+																<td>${mtmList.mtm.mtmRepSt}</td>
+																<c:choose>
+																	<c:when test="${not empty mtmList.mtm.mtmRepDate}">
+																		<td>${mtmList.mtm.mtmRepDate}</td>
+																	</c:when>
+																	<c:otherwise>
+																		<td>-</td>
+																	</c:otherwise>
+																</c:choose>
+																<c:choose>
+																	<c:when
+																		test="${not empty mtmList.mtm.mtmRepWriter}">
+																		<td>${mtmList.mtm.mtmRepWriter}</td>
+																	</c:when>
+																	<c:otherwise>
+																		<td>-</td>
+																	</c:otherwise>
+																</c:choose>
+															</tr>
+														</c:forEach>
+													</tbody>
 												</table>
 												<div class="page_Nation">
 													<c:set var="url" value="?cp=" />

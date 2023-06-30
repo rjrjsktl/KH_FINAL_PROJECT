@@ -126,6 +126,16 @@
 		WHERE MTM_NO = #{mtmNo}
 		AND MTM_ST = 'N'
 	</select>
+	
+	<update id="updatemTm" parameterType="mtm">
+	UPDATE MTM_TBL SET
+	MTM_TITLE = #{mtmTitle},
+	MTM_CONTENT = #{mtmContent},
+	MTM_TYPE=#{mtmType},
+	MTM_IMAGE=#{mtmImage},
+	MTM_PW=#{mtmPw}
+	WHERE MTM_NO=#{mtmNo}
+	</update>
 
 	<insert id="addmTm" parameterType="mtm">
 		INSERT INTO MTM_TBL
@@ -157,6 +167,9 @@
 		MTM_ST = 'Y'
 		WHERE MTM_NO = ${mtmNo}
 	</update>
+	
+	
+	
 
 	<update id="replyDelete">
 		UPDATE MTM_TBL SET

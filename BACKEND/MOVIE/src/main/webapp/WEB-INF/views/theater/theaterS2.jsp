@@ -131,17 +131,12 @@
                     <p>KMAX 상영관</p>
 
                     <div class="stheater_wrap">
-                        <ul>
-                            <li><a href="#">DOLBY<span>건대</span></a></li>
-                            <li><a href="#">DOLBY<span>신촌</span></a></li>
-                            <li><a href="#">DOLBY<span>상암</span></a></li>
-                            <li><a href="#">DOLBY<span>성남</span></a></li>
-                            <li><a href="#">DOLBY<span>서면</span></a></li>
-                            <li><a href="#">DOLBY<span>충남</span></a></li>
-                            <li><a href="#">DOLBY<span>광주</span></a></li>
-
-                        </ul>
-                    </div>
+						<ul>
+							<c:forEach var="screen" items="${screenInfo}">
+								<li><a href="#">${screen.screenStyle} <span>${screen.cinemaName}</span></a></li>
+							</c:forEach>
+						</ul>
+					</div>
 
                 </div>
             </div>
