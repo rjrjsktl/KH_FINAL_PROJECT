@@ -32,13 +32,13 @@
 				<!-- 백그라운드이미지로 처리 -->
 				<div>
 					<ul>
-						<li><a href="${contextPath}/theater/theaterS"> KMAX </li>
-						<li><a href="${contextPath}/theater/theaterS2">DOLBY</a></li>
-						<li><a href="${contextPath}/theater/theaterS5">DISH &
+						<li> <a href="${contextPath}/theater/specialTheater/KMAX"> KMAX </li>
+						<li><a href="${contextPath}/theater/specialTheater/DOLBY">DOLBY</a></li>
+						<li><a href="${contextPath}/theater/specialTheater/CHEF">DISH &
 								WINE</a></li>
-						<li><a href="${contextPath}/theater/theaterS3">WITH A
+						<li> <a href="${contextPath}/theater/specialTheater/PUPPY">WITH A
 								PUPPY</a></li>
-						<li><a href="${contextPath}/theater/theaterS4">KIDS</a></li>
+						<li> <a href="${contextPath}/theater/specialTheater/KIDS">KIDS</a></li>
 					</ul>
 				</div>
 			</div>
@@ -137,18 +137,14 @@
 			<div>
 				<div>
 					<p>KMAX 상영관</p>
-
 					<div class="stheater_wrap">
 						<ul>
-							<li><a href="#">KMAX <span>용산</span></a></li>
-							<li><a href="#">KMAX <span>하남</span></a></li>
-							<li><a href="#">KMAX <span>은행</span></a></li>
-							<li><a href="#">KMAX <span>대구</span></a></li>
-							<li><a href="#">KMAX <span>센텀</span></a></li>
-
+							<c:forEach var="screen" items="${screenInfo}">
+								<li><a href="#">${screen.screenStyle} <span>${screen.cinemaName}</span></a></li>
+							</c:forEach>
 						</ul>
 					</div>
-
+					
 				</div>
 			</div>
 

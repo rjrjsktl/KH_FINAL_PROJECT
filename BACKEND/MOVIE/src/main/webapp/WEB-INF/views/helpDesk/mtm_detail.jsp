@@ -6,26 +6,21 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>공지 세부</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>공지 세부</title>
 
-<script src="https://kit.fontawesome.com/dc6e43e0ad.js"
-	crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
-<!-- jQuery 라이브러리 추가(CDN) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-	crossorigin="anonymous"></script>
+	<!-- jQuery 라이브러리 추가(CDN) -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
-<link rel="stylesheet"
-	href="${contextPath}/resources/css/common/outline.css">
-<link rel="stylesheet"
-	href="${contextPath}/resources/css/helpDesk/mtm_detail.css">
-<link rel="stylesheet"
-	href="${contextPath}/resources/css/common/notice_Aside.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/helpDesk/mtm_detail.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/common/notice_Aside.css">
 
 
 
@@ -57,7 +52,7 @@
 									<span>${mTmdetail.mtmRegdate} </span></span>
 							</div>
 							<div class="contentText-wrap">
-								<c:out value="${mTmdetail.mtmContent}" escapeXml="true"/>
+								<c:out value="${mTmdetail.mtmContent}" escapeXml="true" />
 							</div>
 						</div>
 					</div>
@@ -71,17 +66,18 @@
 						<div class="reply">
 							<div class="reply-info">
 								<p>${mTmdetail.mtmWriter}님답변드립니다.</p>
-								<span class="reply-writer-info"><span>${mTmdetail.mtmRepWriter}</span><span>|</span><span>${mTmdetail.mtmRepDate}</span></span>
+								<span
+									class="reply-writer-info"><span>${mTmdetail.mtmRepWriter}</span><span>|</span><span>${mTmdetail.mtmRepDate}</span></span>
 							</div>
-						<div>
-							<div class="reply-content"><c:out value="${mTmdetail.mtmRepContent}" escapeXml="false"/></div>
-						</div>
+							<div>
+								<div class="reply-content">
+									<c:out value="${mTmdetail.mtmRepContent}" escapeXml="false" />
+								</div>
+							</div>
 						</div>
 
-						<c:if
-							test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y'}">
-							<button class="reply_delete" data-mtmno="${mTmdetail.mtmNo}"
-								id="reply_deleteBtn">
+						<c:if test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y'}">
+							<button class="reply_delete" data-mtmno="${mTmdetail.mtmNo}" id="reply_deleteBtn">
 								<a>답변 삭제하기</a>
 							</button>
 						</c:if>
@@ -100,15 +96,21 @@
 					</c:if>
 
 					<div class="btn_wraper">
+
 						<c:if
 							test="${not empty loginUser.userNo and loginUser.userManagerSt == 'Y' or loginUser.userNo == mTmdetail.userNo}">
+							<button id="updateMtm" data-mtmno="${mTmdetail.mtmNo}">
+								<input type="hidden" id="cp" value="${cp}">
+								<a>수정</a>
+							</button>
+						</c:if>
 
-
+						<c:if
+							test="${not empty loginUser.userNo and loginUser.userManagerSt == 'Y' or loginUser.userNo == mTmdetail.userNo}">
 							<button id="deleteMtm" data-mtmno="${mTmdetail.mtmNo}">
-							<input type="hidden" id="cp" value="${cp}">
+								<input type="hidden" id="cp" value="${cp}">
 								<a>삭제</a>
 							</button>
-
 						</c:if>
 
 						<button class="goback">

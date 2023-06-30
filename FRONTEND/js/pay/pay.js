@@ -27,6 +27,10 @@ function toggleClass(element, className) {
     }
 }
 
+
+
+///////////////////////////////////////////////////////////////////
+
 // 모달 
 $(document).ready(function() {
   // modalClick 클래스 클릭 이벤트 처리
@@ -35,12 +39,10 @@ $(document).ready(function() {
   });
 
   // 모달 내부의 닫기 버튼 클릭 이벤트 처리
-  $(".modal button").click(function() {
+  $(".exitBtn").click(function() {
     $(".modal").hide(); // 모달 숨기기
   });
 });
-
-///////////////////////////////////////////////////////////////////
 var box1 = document.querySelector('.box_1');
 var modal = document.querySelector('.modal');
 var isDragging = false;
@@ -72,3 +74,37 @@ box1.addEventListener('mouseenter', function() {
 box1.addEventListener('mouseleave', function() {
   document.body.style.cursor = 'default';
 });
+
+///////////////////////////////////////////////////////////////////
+
+// ajax
+
+const movieTicket = document.getElementById("movieTicket");
+
+movieTicket.addEventListener("click",function(){
+  console.log("관람권을 찾으러 가보자");
+
+  $.ajax({
+    url: "selectTicket",
+    data: {
+      "DB에있는관람권코드번호": ticketCode.vlaue,
+    },
+    type: "POST",
+    success: function (result) {
+      if (result > 0) {
+        console.log("입력한 관람권코드가 유효합니다");
+        
+      } else {
+        console.log("관람권코드가 잘못되었거나 찾을 수 없습니다");
+        alert("코드를 올바르지않거나 찾을 수 없습니다");
+      }
+    },
+
+    error: function () {
+        console.log("관람권을 찾으러 가기 실패했습니다");
+    }
+});
+
+});
+// selectTicket이 ajax를 통해 관람권을 찾고 찾고나면 
+// 세션에 등록해준다

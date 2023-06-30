@@ -108,14 +108,12 @@
                          <p>KIDS 상영관</p>
  
                          <div class="stheater_wrap">
-                             <ul>
-                                 <li><a href="#">KIDS <span>동탄</span></a></li>
-                                 <li><a href="#">KIDS <span>세종</span></a></li>
-                                 <li><a href="#">KIDS <span>송도</span></a></li>
-                                 <li><a href="#">KIDS <span>노원</span></a></li>
-                                 <li><a href="#">KIDS <span>안산</span></a></li>
-                             </ul>
-                         </div>
+                            <ul>
+                                <c:forEach var="screen" items="${screenInfo}">
+                                    <li><a href="#">${screen.screenStyle} <span>${screen.cinemaName}</span></a></li>
+                                </c:forEach>
+                            </ul>
+                        </div>
  
                      </div>
                  </div>

@@ -1,16 +1,20 @@
 package com.kh.kgv.theater.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kh.kgv.management.model.service.ManagerService;
+import com.kh.kgv.theater.model.service.TheaterService;
+import com.kh.kgv.theater.model.vo.Screen;
 
 
 @Controller
@@ -21,6 +25,8 @@ public class TheaterController {
 	@Autowired
 	private ManagerService service;
 
+	@Autowired
+	private TheaterService services;
 
 	@GetMapping("/normalTheater")
 	public String normarTheater(	Model model
@@ -30,7 +36,7 @@ public class TheaterController {
 
 		// 회원 리스트 얻어오기
 		getNoticeList = service.noticeList(cp);
-		
+
 		model.addAttribute("getNoticeList", getNoticeList);
 
 		System.out.println("관리자_공지사항 목록 이동");
@@ -44,29 +50,48 @@ public class TheaterController {
 	}
 
 
-	@RequestMapping("/theaterS")
-	public String specialS() {
-		return "theater/theaterS";
-	}
+	//	Map<String, Object>cinemaList = null;
+	//	cinemaList = services.cinemaList();
 
-	@RequestMapping("/theaterS2")
-	public String specialS2() {
-		return "theater/theaterS2";
-	}
+	@RequestMapping("/specialTheater/{theaterID}")
+	public String specialTheater(
+			Model model,
+			@PathVariable("theaterID") int theaterID
+			) {
 
-	@RequestMapping("/theaterS3")
-	public String specialS3() {
-		return "theater/theaterS3";
-	}
+		String special = null;
+		if( theaterID ==1 ) {
+			special = "KMAX";
+		}else if(theaterID==2) {
+			special = "DOLBY";
+		}else if (theaterID==3) {
+			special = "PUPPY &amp; ME";
+		}else if(theaterID==4) {
+			special = "YES KIDS";
+		}else {
+			special = "CHEF &amp; CINE";
+		}
+		
+		List<Screen> screenInfo =  services.getScreenInfo(special);
+		model.addAttribute("screenInfo", screenInfo);
+		
 
-	@RequestMapping("/theaterS4")
-	public String specialS4() {
-		return "theater/theaterS4";
-	}
+		switch (theaterID) {
+		case 1:
+			return "theater/theaterS1";
+		case 2:
+			return "theater/theaterS2";
+		case 3:
+			return "theater/theaterS3";
+		case 4:
+			return "theater/theaterS4";
+		case 5:
+			return "theater/theaterS5";
+		default:
+			return "error"; // 이 부분은 올바르지 않은 theaterID가 전달됐을 때를 대비한 에러 페이지로 리다이렉트입니다. 적절한 에러 페이지를 설정하세요.
+		}
 
-	@RequestMapping("/theaterS5")
-	public String specialS5() {
-		return "theater/theaterS5";
+
 	}
 
 

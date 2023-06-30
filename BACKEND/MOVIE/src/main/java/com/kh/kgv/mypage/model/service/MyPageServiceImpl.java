@@ -73,6 +73,14 @@ public class MyPageServiceImpl implements MyPageService {
 		return dao.loadMovieCards(paramMap);
 	}
 
+	/** movie카드 삭제
+	 *
+	 */
+	@Override
+	public int deleteBook(int bookNo) {
+		return dao.deleteBook(bookNo);
+	}
+
 	/** 회원 비번번호 변경
 	 *
 	 */

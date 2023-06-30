@@ -10,7 +10,6 @@ let sweetCount = 0;
 let seatArray = [];
 let countArray = [];
 let choiceArray = [];
-let totalSeatArray = [];
 let ageArray = [0, 0, 0, 0];
 
 let priceArray = [Number(adultPrice), Number(youthPrice), Number(seniorPrice), Number(specialPrice)];
@@ -180,7 +179,6 @@ function changeRoom() {
           num.innerText = i++;
           if(!seat.hasClass('space')) {
             $(seat).append(num);
-            totalSeatArray.push(alphabet[k-1]+(i-1));
             $(seat).attr('data-seat', alphabet[k-1]+(i-1));
           }
         }

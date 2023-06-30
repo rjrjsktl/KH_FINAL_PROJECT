@@ -52,23 +52,43 @@
 								<tr>
 									<th>제목</th>
 									<td><input id="titleInput" type="text"
-										placeholder=" 제목을 입력해 주세요."></td>
+										placeholder=" 제목을 입력해 주세요." value="${lost.lostTitle}"></td>
 								</tr>
 								<tr>
 									<th>물품</th>
 									<td><input id="lostItem" type="text"
-										placeholder=" 잃어버린 물품에 대해 입력해 주세요."></td>
+										placeholder=" 잃어버린 물품에 대해 입력해 주세요." value="${lost.lostItem}"></td>
 								</tr>
 								<tr>
 									<th>위치</th>
-									<td><input id="lostArea" type="text"
-										placeholder=" 상세한 위치를 입력해 주세요."></td>
+										<td><select id="lostArea">
+											<option disabled selected>분실한 극장을 선택해주세요</option>
+											
+											<c:choose>
+											<c:when test="${empty cinemaList.cinemaList}">
+												<tr>
+													<th colspan="3">영화관이 존재하지 않습니다.</th>
+												</tr>
+											</c:when>
+											<c:otherwise>
+												<c:forEach var="cinemaList"	items="${cinemaList.cinemaList}">
+
+												<option value="[${cinemaList.cinemaArea}]${cinemaList.cinemaName}점">[${cinemaList.cinemaArea}]${cinemaList.cinemaName}점</option>
+													
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
+
+
+
+
+										</select></td>
 								</tr>
 								<tr>
 									<th>날짜</th>
 									<td><input id="lostDate" type="date"
 										placeholder=" 잃어버린 날짜를 입력해 주세요." class="dateBtn"
-										onfocus="this.showPicker()"></td>
+										onfocus="this.showPicker()" value="${lost.lostDate}"></td>
 								</tr>
 								<tr>
 									<th>첨부파일</th>
@@ -93,16 +113,39 @@
 						<div id="writeForm">
 							<div class="inner_Textarea_Title">상세 내용</div>
 							<textarea id="contentTextarea" class="inner_Textarea"
-								placeholder="잃어버리신 물건의 이름, 크기, 색상 등을 자세하게 설명해 주세요."></textarea>
+								placeholder="잃어버리신 물건의 이름, 크기, 색상 등을 자세하게 설명해 주세요.">${lost.lostContent}</textarea>
 						</div>
 
-						<div class="addfileList" ></div>
+						<div class="addfileList">
+							<c:choose>
+								<c:when test="${not empty lost.lostFile}">
+									<div class="upimgList">
+										<span class="deleteImage">X</span>
+										<img src="${lost.lostFile}">
+									</div>
+								</c:when>
+								<c:otherwise>
+								</c:otherwise>
+							</c:choose>
+						</div>
 
-						<div class="btn_Container">
-							<button id="registLost">작성하기</button>
+
+						<div class="btn_wraper">
+							<c:choose>
+										<c:when test="${empty lost.lostNo}">
+											<button id="registLost">
+												<a>작성하기</a>
+											</button>
+										</c:when>
+										<c:otherwise>
+											<button id="updateButton">
+												<a>수정하기</a>
+											</button>
+										</c:otherwise>
+									</c:choose>
 							<button><a href="${contextPath}/helpDesk/lost_List">돌아가기</a></button>
 						</div>
-
+						<input type="hidden" id="lostNo" value="${lost.lostNo}">
 					</div>
 
 				</div>

@@ -20,8 +20,8 @@
 		<result property="lostRepDate" column="LOST_REPDATE" />
 		<result property="lostPw" column="LOST_PW" />
 	</resultMap>
-	
-	
+
+
 
 	<!-- 표시할 LostCount 조회 -->
 	<select id="getUserLostCount" resultType="_int">
@@ -78,15 +78,16 @@
 
 	<!-- Lost 고객센터 전용 count -->
 	<select id="getUserLostCount-all" resultType="_int">
-		SELECT COUNT(LOST_NO)
+		SELECT
+		COUNT(LOST_NO)
 		FROM LOST_PACKAGE WHERE LOST_ST = 'N'
 	</select>
-	
+
 	<!-- Lost 고객센터 전용 Listselect -->
 	<select id="userLostList-all" resultMap="lost_rm">
 		SELECT
 		LOST_NO,
-			LOST_LOCATION,
+		LOST_LOCATION,
 		LOST_TITLE,
 		LOST_DATE,
 		LOST_VIEW,
@@ -101,7 +102,8 @@
 		LOST_PACKAGE.USER_NO =
 		USERS.USER_NO
 		WHERE LOST_ST = 'N'
-		ORDER BY LOST_PACKAGE.LOST_NO DESC
+		ORDER BY
+		LOST_PACKAGE.LOST_NO DESC
 	</select>
 
 	<!-- Lost 세부사항 조회 -->
@@ -109,24 +111,29 @@
 		SELECT
 		LOST_NO
 		, LOST_TITLE
-		, LOST_CONTENT
+		,
+		LOST_CONTENT
 		, LOST_ST
+		, LOST_LOCATION
 		, LOST_ITEM
 		, USER_NO
 		, LOST_DATE
-		, LOST_WRITER
+		,
+		LOST_WRITER
 		, LOST_FILE
 		, LOST_REPST
 		, LOST_REPWRITER
 		, LOST_REPCONTENT
-		, LOST_REPDATE
+		,
+		LOST_REPDATE
 		, LOST_PW
 		FROM LOST_PACKAGE
 		WHERE LOST_NO =
-		#{lostNo}AND LOST_ST = 'N'
+		#{lostNo}AND
+		LOST_ST = 'N'
 		AND LOST_ST = 'N'
 	</select>
-	
+
 	<!-- Lost insert문 -->
 	<insert id="addLost" parameterType="losts">
 		INSERT INTO
@@ -136,18 +143,21 @@
 		, #{userNo}
 		, #{lostTitle}
 		, #{lostItem}
-		, #{lostLocation}
+		,
+		#{lostLocation}
 		, #{lostDate}
 		, #{lostFile}
 		, #{lostContent}
-		, #{lostWriter}
+		,
+		#{lostWriter}
 		, DEFAULT
 		, DEFAULT
 		, DEFAULT
 		, DEFAULT
 		, DEFAULT
 		, DEFAULT
-		, #{lostPw}
+		,
+		#{lostPw}
 		)
 	</insert>
 
@@ -175,21 +185,24 @@
 		LOST_REPCONTENT = #{content},
 		LOST_REPWRITER = #{managerNick},
 		LOST_REPST = 'Y',
-		LOST_REPDATE = DEFAULT
+		LOST_REPDATE =
+		DEFAULT
 		WHERE LOST_NO = #{lostNo}
 	</update>
 
 	<!-- 분실물 무결성조회용 비밀번호조회 -->
 	<select id="selectmtmLostPw" resultType="_int">
 		SELECT LOST_PW
-		FROM LOST_PACKAGE
+		FROM
+		LOST_PACKAGE
 		WHERE LOST_NO = #{lostNo}
 	</select>
 
 	<!-- 분실물 무결성조회용 유저넘버조회 -->
 	<select id="selectLostUserNo" resultType="_int">
 		SELECT USER_NO
-		FROM LOST_PACKAGE
+		FROM
+		LOST_PACKAGE
 		WHERE LOST_NO = #{lostNo}
 	</select>
 
@@ -198,7 +211,19 @@
 		UPDATE LOST_PACKAGE
 		SET
 		LOST_VIEW = LOST_VIEW+1
-		WHERE LOST_NO = #{lostNo}
+		WHERE
+		LOST_NO = #{lostNo}
+	</update>
+
+	<update id="updateLost" parameterType="losts">
+		UPDATE LOST_PACKAGE SET
+		LOST_TITLE = #{lostTitle}
+		, LOST_ITEM = #{lostItem}
+		, LOST_LOCATION = #{lostLocation}
+		, LOST_DATE = #{lostDate}
+		, LOST_FILE = #{lostFile}
+		, LOST_CONTENT = #{lostContent}
+		WHERE LOST_NO=#{lostNo}
 	</update>
 
 
