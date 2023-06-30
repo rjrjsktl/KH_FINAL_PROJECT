@@ -23,6 +23,7 @@
 		<result property="screenSweet" column="SCREEN_SWEET" />
 		<result property="screenImpaired" column="SCREEN_IMPAIRED" />
 	</resultMap>
+	
 
 	<resultMap type="cinemaPrice" id="cinemaprice_rm">
 		<id property="priceNo" column="PRICE_NO" />
@@ -41,7 +42,8 @@
 
 	<insert id="enrollCinema" parameterType="cinema">
 		INSERT INTO CINEMA
-		VALUES(SEQ_CINEMA_NO.NEXTVAL, #{cinemaName}, #{cinemaArea}, #{cinemaRegion}, #{cinemaScreen})
+		VALUES(SEQ_CINEMA_NO.NEXTVAL, #{cinemaName}, #{cinemaArea},
+		#{cinemaRegion}, #{cinemaScreen})
 	</insert>
 
 
@@ -49,8 +51,10 @@
 
 	<insert id="enrollScreen" parameterType="screen">
 		INSERT INTO SCREEN
-		VALUES(SEQ_SCREEN_NO.NEXTVAL, #{cinemaName}, #{screenName}, #{screenStyle}, #{screenSeat}, 
-		           #{screenRow}, #{screenCol}, #{screenAisle}, #{screenSpace}, #{screenSweet}, #{screenImpaired})
+		VALUES(SEQ_SCREEN_NO.NEXTVAL, #{cinemaName}, #{screenName},
+		#{screenStyle}, #{screenSeat},
+		#{screenRow}, #{screenCol}, #{screenAisle}, #{screenSpace}, #{screenSweet},
+		#{screenImpaired})
 	</insert>
 
 
@@ -59,14 +63,16 @@
 	<select id="cinemaDupCheck" parameterType="string"
 		resultType="_int">
 		SELECT COUNT(*) FROM CINEMA
-		WHERE CINEMA_NAME = #{cinemaName}
+		WHERE CINEMA_NAME =
+		#{cinemaName}
 	</select>
 
 
 	<!-- 영화관 갯수 조회 -->
 
 	<select id="getCinemaCount" resultType="_int">
-		SELECT COUNT(*) FROM CINEMA
+		SELECT COUNT(*) FROM
+		CINEMA
 	</select>
 
 
@@ -74,7 +80,8 @@
 
 	<select id="getCinemaList" resultMap="cinema_rm">
 		SELECT * FROM CINEMA
-		ORDER BY CINEMA_NO ASC
+		ORDER
+		BY CINEMA_NO ASC
 	</select>
 
 
@@ -84,7 +91,8 @@
 		resultMap="cinema_rm">
 		SELECT * FROM CINEMA
 		WHERE CINEMA_AREA = #{areaName}
-		ORDER BY CINEMA_NAME ASC
+		ORDER BY
+		CINEMA_NAME ASC
 	</select>
 
 
@@ -93,7 +101,8 @@
 	<select id="getScreenNo" parameterType="screen"
 		resultType="_int">
 		SELECT SCREEN_NO FROM SCREEN
-		WHERE CINEMA_NAME = #{cinemaName} AND SCREEN_NAME = #{screenName}
+		WHERE CINEMA_NAME =
+		#{cinemaName} AND SCREEN_NAME = #{screenName}
 	</select>
 
 	<!-- 스크린 리스트 조회 -->
@@ -108,50 +117,58 @@
 	<!-- 극장 가격 갯수 조회 -->
 
 	<select id="getCinemaPriceCount" resultType="_int">
-		SELECT COUNT(*) FROM PRICE
+		SELECT COUNT(*) FROM
+		PRICE
 	</select>
-	
-		<!--  극장 가격 리스트 조회 -->
+
+	<!-- 극장 가격 리스트 조회 -->
 
 	<select id="getCinemaPriceList" resultMap="cinemaprice_rm">
 		SELECT * FROM PRICE
 		ORDER BY PRICE_NO ASC
 	</select>
-	
-		<!--  극장 가격 리스트 수정 조회 -->
-		
-		<select id="getEditPriceList" resultType="HashMap">
+
+	<!-- 극장 가격 리스트 수정 조회 -->
+
+	<select id="getEditPriceList" resultType="HashMap">
 		SELECT * FROM PRICE
 		WHERE PRICE_NO = #{priceNo}
 	</select>
-	
-		<update id="EditCinemaPrice" parameterType="cinemaPrice">
+
+	<update id="EditCinemaPrice" parameterType="cinemaPrice">
 		UPDATE PRICE SET
 		SCREEN_STYLE = #{screenStyle}
 		, PRICE_DAY = #{priceDay}
-		, PRICE_TIME = #{priceTime}
+		, PRICE_TIME =
+		#{priceTime}
 		, PRICE_TEEN = #{priceTeen}
 		, PRICE_NORMAL = #{priceNormal}
 		, PRICE_ELDER = #{priceElder}
 		, PRICE_SPECIAL = #{priceSpecial}
-		, PRICE_COUPLE = #{priceCouple}
+		,
+		PRICE_COUPLE = #{priceCouple}
 		WHERE PRICE_NO = #{priceNo}
 	</update>
-	
+
 	<select id="getPriceNo" parameterType="Map" resultType="_int">
-	    SELECT PRICE_NO FROM PRICE
-	    WHERE SCREEN_STYLE = #{screenStyle} AND PRICE_DAY = #{priceDay} AND PRICE_TIME = #{priceTime}
-	</select> 
-	
-	<select id="getPriceModel" parameterType="_int" resultMap="cinemaprice_rm">
-	    SELECT * FROM PRICE
-	    WHERE PRICE_NO = #{priceNo}
+		SELECT PRICE_NO FROM PRICE
+		WHERE SCREEN_STYLE = #{screenStyle} AND PRICE_DAY = #{priceDay} AND
+		PRICE_TIME = #{priceTime}
 	</select>
-	
-	<select id="getSpecialScreenList" parameterType="string" resultMap="screen_rm">
-	    SELECT * FROM SCREEN
-	    WHERE SCREEN_STYLE = #{type}
+
+	<select id="getPriceModel" parameterType="_int"
+		resultMap="cinemaprice_rm">
+		SELECT * FROM PRICE
+		WHERE PRICE_NO = #{priceNo}
 	</select>
-	
-	
+
+	<select id="getSpecialScreenList" parameterType="string"
+		resultMap="screen_rm">
+		SELECT * FROM SCREEN
+		WHERE SCREEN_STYLE = #{type}
+	</select>
+
+
+
+
 </mapper>
