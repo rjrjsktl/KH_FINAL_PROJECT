@@ -49,8 +49,16 @@
 												<div class="table_Title">
 													<span>분실물 문의 목록</span>
 													<div class="search_Box">
-														<input placeholder="검색" />
-														<button>
+														<select id="selectBox">
+															<option value="USER_EMAIL">아이디</option>
+															<option value="LOST_TITLE">문의 제목</option>
+															<option value="LOST_ITEM">분실물</option>
+															<option value="LOST_DATE">문의 일자</option>
+															<option value="LOST_REPDATE">답변 일자</option>
+															<option value="LOST_REPWRITER">담당자</option>
+														</select>
+														<input class="searchContent" placeholder="검색" />
+														<button class="checkBtn" type="button">
 															<i class="fa-solid fa-magnifying-glass fa-2xs"></i>
 														</button>
 													</div>
@@ -61,40 +69,45 @@
 														<th>문의 회원 아이디</th>
 														<th>제목</th>
 														<th>내용</th>
+														<th>분실물</th>
 														<th>문의 일자</th>
 														<th>답변 상태</th>
 														<th>답변 일자</th>
 														<th>담당자</th>
 													</tr>
-													<c:forEach var="lostList" items="${getLostList['getLostList']}">
-														<tr>
-															<td>${lostList.losts.lostNo}</td>
-															<td>${lostList.user.userEmail}</td>
-															<td><a
-																	href="${contextPath}/helpDesk/lost_detail/${lostList.losts.lostNo}">${lostList.losts.lostTitle}</a>
-															</td>
-															<td>${lostList.losts.lostContent}</td>
-															<td>${lostList.losts.lostDate}</td>
-															<td>${lostList.losts.lostRepSt}</td>
-															<c:choose>
-																<c:when test="${not empty lostList.losts.lostRepDate}">
-																	<td>${lostList.losts.lostRepDate}</td>
-																</c:when>
-																<c:otherwise>
-																	<td>-</td>
-																</c:otherwise>
-															</c:choose>
-															<c:choose>
-																<c:when
-																	test="${not empty lostList.losts.lostRepWriter}">
-																	<td>${lostList.losts.lostRepWriter}</td>
-																</c:when>
-																<c:otherwise>
-																	<td>-</td>
-																</c:otherwise>
-															</c:choose>
-														</tr>
-													</c:forEach>
+													<tbody id="userTableBody">
+														<c:forEach var="lostList" items="${getLostList['getLostList']}">
+															<tr>
+																<td>${lostList.losts.lostNo}</td>
+																<td>${lostList.user.userEmail}</td>
+																<td><a
+																		href="${contextPath}/helpDesk/lost_detail/${lostList.losts.lostNo}">${lostList.losts.lostTitle}</a>
+																</td>
+																<td>${lostList.losts.lostContent}</td>
+																<td>${lostList.losts.lostItem}</td>
+																<td>${lostList.losts.lostDate}</td>
+																<td>${lostList.losts.lostRepSt}</td>
+																<c:choose>
+																	<c:when
+																		test="${not empty lostList.losts.lostRepDate}">
+																		<td>${lostList.losts.lostRepDate}</td>
+																	</c:when>
+																	<c:otherwise>
+																		<td>-</td>
+																	</c:otherwise>
+																</c:choose>
+																<c:choose>
+																	<c:when
+																		test="${not empty lostList.losts.lostRepWriter}">
+																		<td>${lostList.losts.lostRepWriter}</td>
+																	</c:when>
+																	<c:otherwise>
+																		<td>-</td>
+																	</c:otherwise>
+																</c:choose>
+															</tr>
+														</c:forEach>
+													</tbody>
 												</table>
 												<div class="page_Nation">
 													<c:set var="url" value="?cp=" />

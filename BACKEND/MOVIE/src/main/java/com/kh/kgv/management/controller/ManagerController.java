@@ -3,14 +3,10 @@ package com.kh.kgv.management.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
@@ -61,9 +57,6 @@ public class ManagerController {
 
 	@Autowired
 	private MovieService movieService;
-
-	@Autowired
-	private ManageStoreService services;
 
 	// 관리자_메인페이지 이동
 	@GetMapping("/main")
@@ -331,16 +324,39 @@ public class ManagerController {
 
 		// 페이지네이션 10개씩 자르기
 		Map<String, Object> getMovieList = null;
-		logger.info("1. 페이지네이션 시작 cp들어간다잇");
 		getMovieList = service.movieList(cp);
 
 		model.addAttribute("getMovieList", getMovieList);
-		logger.info("end: 마지막에 들어오는 getMovieList값::::" + getMovieList);
 
 		System.out.println("관리자_영화 목록 이동");
 		return "manager/manager_movie_list";
 	}
-
+	// ===================================================
+	// ===================================================
+	
+	// 관리자 영화 검색 기능
+	@ResponseBody
+	@GetMapping("/member/Search_Movie")
+public Map<String, Object> searchMovie(
+		Model model
+		, Search search
+		, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+		, @RequestParam("searchType") String searchType
+		, @RequestParam("searchContent") String searchContent
+		) {
+	
+	Map<String, Object>getMovieList = null;
+	
+	search.setSearchType(searchType);
+	search.setSearchContext(searchContent);
+	
+	getMovieList = service.getMovieSearch(search, cp);
+	
+	System.out.println("search ====================================" + search);
+	
+	return getMovieList;
+}
+		
 	// ===================================================
 	// ===================================================
 
@@ -348,8 +364,6 @@ public class ManagerController {
 	@ResponseBody
 	@PostMapping("/Movie_ST")
 	public int changeMovieSt(@RequestParam("MST") String mst, @RequestParam("movieNo") int movieNo, Movie movie) {
-		System.out.println("AJAX로 가지고 온 ST의 값은 : " + mst);
-		System.out.println("AJAX로 가지고 온 Movie의 값은 : " + movieNo);
 
 		movie.setMovieSt(mst);
 		movie.setMovieNo(movieNo);
@@ -357,11 +371,9 @@ public class ManagerController {
 		int result = service.updateMovieST(movie);
 
 		if (result > 0) {
-			System.out.println("영화 상영 상태 변경 완료");
 			result = 1;
 
 		} else {
-			System.out.println("영화 상영 상태 변경 실패");
 			result = 0;
 		}
 		return result;
@@ -375,12 +387,10 @@ public class ManagerController {
 	@GetMapping("/movie_list/edit/{movieNo}")
 	public String editMovie(Model model, Movie movie, @PathVariable("movieNo") int movieNo) {
 		List<String> mgradelist = service.mgradeList();
-		System.out.println("mgradelist 값 :::::" + mgradelist);
 
 		model.addAttribute("mgradelist", mgradelist);
 		// movie genre 값 얻어오기
 		List<String> mgenrelist = service.mgenreList();
-		System.out.println("mgenrelist 값 :::::" + mgenrelist);
 
 		model.addAttribute("mgenrelist", mgenrelist);
 
@@ -410,7 +420,6 @@ public class ManagerController {
 	@ResponseBody
 	@PostMapping("/movie_list/edit/{movieNo}/movie_edit")
 	public int MovieEdit(Movie updateMovie, @PathVariable("movieNo") int movieNo) {
-		logger.info("영화 수정 기능 수행");
 
 		logger.info("updateMovie" + updateMovie);
 
@@ -593,6 +602,57 @@ public class ManagerController {
 		System.out.println("관리자_상영시간 목록 이동");
 		return "manager/manager_movie_play_list";
 	}
+	// ===================================================
+	// ===================================================
+	
+	// 관리자 상영중인 영화 검색
+	@ResponseBody
+	@GetMapping("/member/Search_Play")
+public Map<String, Object> searchPlay(
+		Model model
+		, Search search
+		, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+		, @RequestParam("searchType") String searchType
+		, @RequestParam("searchContent") String searchContent
+		) {
+	
+	Map<String, Object>getPlayList = null;
+	
+	search.setSearchType(searchType);
+	search.setSearchContext(searchContent);
+	
+	getPlayList = service.getPlaySearch(search, cp);
+	
+	System.out.println("search ====================================" + search);
+	
+	return getPlayList;
+}
+	// ===================================================
+	// ===================================================
+	
+	// 관리자 상영이 끝난 영화 검색
+	@ResponseBody
+	@GetMapping("/member/Search_PlayEnd")
+	public Map<String, Object> searchPlayEnd(
+			Model model
+			, Search search
+			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+			, @RequestParam("searchType") String searchType
+			, @RequestParam("searchContent") String searchContent
+			) {
+		
+		Map<String, Object>getPlayList = null;
+		
+		search.setSearchType(searchType);
+		search.setSearchContext(searchContent);
+		
+		getPlayList = service.getPlayEndSearch(search, cp);
+		
+		System.out.println("search ====================================" + search);
+		
+		return getPlayList;
+	}
+	
 	// ===================================================
 	// ===================================================
 	
@@ -1075,16 +1135,6 @@ public class ManagerController {
 	// ===================================================
 	// ===================================================
 
-	// 테스트 페이지 이동
-	@GetMapping("/manager_testPage")
-	public String moveTest() {
-		System.out.println("테스트 페이지 이동");
-		return "manager/manager_testPage";
-	}
-
-	// ===================================================
-	// ===================================================
-
 	// 영화 등록 이미지 업로드
 	@PostMapping("/movie_add/uploadImageFile")
 	@ResponseBody
@@ -1180,6 +1230,32 @@ public class ManagerController {
 			return "manager/manager_lost";
 		}
 
+	// ===================================================
+	// ===================================================
+	
+	// 관리자 분실물 검색 기능
+	@ResponseBody
+	@GetMapping("/member/Search_Lost")
+public Map<String, Object> searcLost(
+		Model model
+		, Search search
+		, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+		, @RequestParam("searchType") String searchType
+		, @RequestParam("searchContent") String searchContent
+		) {
+	
+	Map<String, Object>getLostList = null;
+	
+	search.setSearchType(searchType);
+	search.setSearchContext(searchContent);
+	
+	getLostList = service.getLostSearch(search, cp);
+	
+	System.out.println("search ====================================" + search);
+	
+	return getLostList;
+}
+	
 	// ===================================================
 	// ===================================================
 

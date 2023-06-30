@@ -188,6 +188,18 @@ public interface ManagerService {
 	// 관리자 1:1 문의 검색 기능
 	Map<String, Object> getAskSearch(Search search, int cp);
 
+	// 관리자 분실물 검색 기능
+	Map<String, Object> getLostSearch(Search search, int cp);
+
+	// 관리자 영화 검색 기능
+	Map<String, Object> getMovieSearch(Search search, int cp);
+
+	// 관리자 상영중인 영화 검색
+	Map<String, Object> getPlaySearch(Search search, int cp);
+
+	// 관리자 상영이 끝난 영화 검색
+	Map<String, Object> getPlayEndSearch(Search search, int cp);
+
 
 	
 	

@@ -100,10 +100,11 @@
 }
 
 .table_main td {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    padding: 0 10px;
 }
 
-.table_main tr:nth-child(2n) {
+#userTableBody tr:nth-child(2n + 1) {
     background-color: #dbdbdb;
 }
 
