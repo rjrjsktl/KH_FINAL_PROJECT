@@ -223,11 +223,28 @@ public class ManagerController {
 	@GetMapping("/ask_list")
 	public String moveAskList(
 			Model model
-			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+			, Search search
+			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+			, @RequestParam(value ="searchType", required = false, defaultValue = "") String searchType
+			, @RequestParam(value ="searchContent", required = false, defaultValue = "") String searchContent
+			) {
 		Map<String, Object> getMTMList = null;
 
+
 		// 회원 리스트 얻어오기
-		getMTMList = service.selectMTMList(cp);
+		System.out.println("1번======================================");
+		if(!searchType.isEmpty() && !searchContent.isEmpty()) {
+			System.out.println("2번======================================");
+			search.setSearchType(searchType);
+			search.setSearchContext(searchContent);
+			
+		getMTMList = service.getAskSearch(search, cp);
+		} else {
+			System.out.println("3번======================================");
+			// 회원 리스트 얻어오기
+			getMTMList = service.selectMTMList(cp);	
+		}
+
 
 		model.addAttribute("getMTMList", getMTMList);
 		
@@ -239,28 +256,28 @@ public class ManagerController {
 	// ===================================================
 	// ===================================================
 	
-	// 관리자 1:1 문의 검색 기능
-			@ResponseBody
-			@GetMapping("/member/Search_Ask")
-		public Map<String, Object> searchAsk(
-				Model model
-				, Search search
-				, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
-				, @RequestParam("searchType") String searchType
-				, @RequestParam("searchContent") String searchContent
-				) {
-			
-			Map<String, Object>getAskList = null;
-			
-			search.setSearchType(searchType);
-			search.setSearchContext(searchContent);
-			
-			getAskList = service.getAskSearch(search, cp);
-			
-			System.out.println("search ====================================" + search);
-			
-			return getAskList;
-		}
+//	// 관리자 1:1 문의 검색 기능
+//			@ResponseBody
+//			@GetMapping("/member/Search_Ask")
+//		public Map<String, Object> searchAsk(
+//				Model model
+//				, Search search
+//				, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+//				, @RequestParam("searchType") String searchType
+//				, @RequestParam("searchContent") String searchContent
+//				) {
+//			
+//			Map<String, Object>getAskList = null;
+//			
+//			search.setSearchType(searchType);
+//			search.setSearchContext(searchContent);
+//			
+//			getAskList = service.getAskSearch(search, cp);
+//			
+//			System.out.println("search ====================================" + search);
+//			
+//			return getAskList;
+//		}
 	
 	
 	// ===================================================
