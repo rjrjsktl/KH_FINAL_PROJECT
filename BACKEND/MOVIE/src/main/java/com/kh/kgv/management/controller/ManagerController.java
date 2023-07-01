@@ -102,44 +102,34 @@ public class ManagerController {
 	// ===================================================
 	// ===================================================
 
-	// 관리자_회원 리스트 이동
+	// 관리자_회원 리스트 이동 및 검색기능
 	@GetMapping("/member")
-	public String moveMember(Model model, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+	public String moveMember(
+			Model model
+			, Search search
+			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+			, @RequestParam(value ="searchType", required = false, defaultValue = "") String searchType
+			, @RequestParam(value ="searchContent", required = false, defaultValue = "") String searchContent
+			)
+	{
 		Map<String, Object> getUserList = null;
 
 		// 회원 리스트 얻어오기
-		getUserList = service.selectAll(cp);
-
+		if(!searchType.isEmpty() && !searchContent.isEmpty()) {
+			// 검색기능
+			search.setSearchType(searchType);
+			search.setSearchContext(searchContent);
+			
+			getUserList = service.getMemberSearch(search, cp);
+			
+		} else {
+			getUserList = service.selectAll(cp);
+		}
 		model.addAttribute("getUserList", getUserList);
 
 		System.out.println("관리자_회원 리스트 이동");
 		return "manager/manager_member_list";
-	}
-	
-	// ===================================================
-	// ===================================================
-	
-	// 관리자 회원 검색 기능
-		@ResponseBody
-		@GetMapping("/member/Search_Member")
-	public Map<String, Object> searchMember(
-			Model model
-			, Search search
-			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
-			, @RequestParam("searchType") String searchType
-			, @RequestParam("searchContent") String searchContent
-			) {
-		
-		Map<String, Object>getUserList = null;
-		
-		search.setSearchType(searchType);
-		search.setSearchContext(searchContent);
-		
-		getUserList = service.getMemberSearch(search, cp);
-		
-		System.out.println("search ====================================" + search);
-		
-		return getUserList;
+
 	}
 
 	// ===================================================
@@ -219,7 +209,7 @@ public class ManagerController {
 	// ===================================================
 	// ===================================================
 
-	// 관리자_1:1 문의 목록 이동
+	// 관리자_1:1 문의 목록 이동 및 검색기능
 	@GetMapping("/ask_list")
 	public String moveAskList(
 			Model model
@@ -232,15 +222,13 @@ public class ManagerController {
 
 
 		// 회원 리스트 얻어오기
-		System.out.println("1번======================================");
 		if(!searchType.isEmpty() && !searchContent.isEmpty()) {
-			System.out.println("2번======================================");
+			// 검색기능
 			search.setSearchType(searchType);
 			search.setSearchContext(searchContent);
 			
 		getMTMList = service.getAskSearch(search, cp);
 		} else {
-			System.out.println("3번======================================");
 			// 회원 리스트 얻어오기
 			getMTMList = service.selectMTMList(cp);	
 		}
@@ -252,32 +240,6 @@ public class ManagerController {
 		System.out.println("관리자_1:1 문의 목록 이동");
 		return "manager/manager_ask_list";
 	}
-
-	// ===================================================
-	// ===================================================
-	
-//	// 관리자 1:1 문의 검색 기능
-//			@ResponseBody
-//			@GetMapping("/member/Search_Ask")
-//		public Map<String, Object> searchAsk(
-//				Model model
-//				, Search search
-//				, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
-//				, @RequestParam("searchType") String searchType
-//				, @RequestParam("searchContent") String searchContent
-//				) {
-//			
-//			Map<String, Object>getAskList = null;
-//			
-//			search.setSearchType(searchType);
-//			search.setSearchContext(searchContent);
-//			
-//			getAskList = service.getAskSearch(search, cp);
-//			
-//			System.out.println("search ====================================" + search);
-//			
-//			return getAskList;
-//		}
 	
 	
 	// ===================================================
@@ -335,44 +297,33 @@ public class ManagerController {
 	// ===================================================
 	// ===================================================
 
-	// 관리자_영화 목록 이동
+	// 관리자_영화 목록 이동 및 검색기능
 	@GetMapping("/movie_list")
-	public String moveMovieList(Model model, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+	public String moveMovieList(
+			Model model
+			, Search search
+			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+			, @RequestParam(value="searchType", required=false, defaultValue="" ) String searchType
+			, @RequestParam(value="searchContent", required=false, defaultValue="") String searchContent
+			) {
 
 		// 페이지네이션 10개씩 자르기
 		Map<String, Object> getMovieList = null;
+		
+		if(!searchType.isEmpty() && !searchContent.isEmpty()) {
+			// 검색기능
+			search.setSearchType(searchType);
+			search.setSearchContext(searchContent);
+			
+			getMovieList = service.getMovieSearch(search, cp);
+		} else {
 		getMovieList = service.movieList(cp);
-
+		}
 		model.addAttribute("getMovieList", getMovieList);
 
 		System.out.println("관리자_영화 목록 이동");
 		return "manager/manager_movie_list";
 	}
-	// ===================================================
-	// ===================================================
-	
-	// 관리자 영화 검색 기능
-	@ResponseBody
-	@GetMapping("/member/Search_Movie")
-public Map<String, Object> searchMovie(
-		Model model
-		, Search search
-		, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
-		, @RequestParam("searchType") String searchType
-		, @RequestParam("searchContent") String searchContent
-		) {
-	
-	Map<String, Object>getMovieList = null;
-	
-	search.setSearchType(searchType);
-	search.setSearchContext(searchContent);
-	
-	getMovieList = service.getMovieSearch(search, cp);
-	
-	System.out.println("search ====================================" + search);
-	
-	return getMovieList;
-}
 		
 	// ===================================================
 	// ===================================================
@@ -460,13 +411,27 @@ public Map<String, Object> searchMovie(
 	// ===================================================
 	// ===================================================
 
-	// 관리자_극장 목록 이동
+	// 관리자_극장 목록 이동 및 검색기능
 	@GetMapping("/manager_cinema_list")
-	public String moveCinemaList(Model model,
-			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+	public String moveCinemaList(
+			Model model
+			, Search search
+			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+			, @RequestParam(value="searchType", required=false, defaultValue="") String searchType
+			, @RequestParam(value="searchContent", required=false, defaultValue="") String searchContent
+			) {
 
 		Map<String, Object> cinemaMap = null;
+		
+		if(!searchType.isEmpty() && !searchContent.isEmpty()) {
+		// 검색기능	
+					search.setSearchType(searchType);
+					search.setSearchContext(searchContent);
+					cinemaMap = service.getSearchCinemaList(search, cp);
+					
+		} else {
 		cinemaMap = service.getCinemaMap(cp);
+		}
 		model.addAttribute("cinemaMap", cinemaMap);
 
 		System.out.println("관리자_극장 목록 이동");
@@ -476,13 +441,26 @@ public Map<String, Object> searchMovie(
 	// ===================================================
 	// ===================================================
 
-	// 관리자_극장 가격 목록 이동
+	// 관리자_극장 가격 목록 이동  및 검색기능
 	@GetMapping("/manager_cinemaPrice_list")
-	public String moveCinemaPriceList(Model model,
-			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+	public String moveCinemaPriceList(
+			Model model
+			, Search search
+			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+			, @RequestParam(value="searchType", required=false, defaultValue="") String searchType
+			, @RequestParam(value="searchContent", required=false, defaultValue="") String searchContent
+			) {
 
 		Map<String, Object> cinemaPriceMap = null;
+		
+		if(!searchType.isEmpty() && !searchContent.isEmpty()) {
+			// 검색기능	
+			search.setSearchType(searchType);
+			search.setSearchContext(searchContent);
+			cinemaPriceMap = service.getSearchCinemaPrice(search, cp);
+		} else {
 		cinemaPriceMap = service.getCinemaPriceMap(cp);
+		}
 		model.addAttribute("cinemaMap", cinemaPriceMap);
 
 		System.out.println("관리자_가격 목록 이동");
@@ -607,79 +585,56 @@ public Map<String, Object> searchMovie(
 	// ===================================================
 	// ===================================================
 
-	// 관리자_상영영화 목록 이동
+	// 관리자_상영영화 목록 이동 및 검색기능
 	@GetMapping("/play_list")
 	public String movePlayList(
-			Model model, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+			Model model
+			, Search search
+			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+			, @RequestParam(value="searchType", required=false, defaultValue="") String searchType
+			, @RequestParam(value="searchContent", required=false, defaultValue="") String searchContent
+			) {
 		Map<String, Object> getMovieList = null;
-		getMovieList = movieService.managerMovieList(cp);
-
+		
+		if(!searchType.isEmpty() && !searchContent.isEmpty()) {
+			// 검색기능
+			search.setSearchType(searchType);
+			search.setSearchContext(searchContent);
+			
+			getMovieList = service.getPlaySearch(search, cp);
+			} else {
+			getMovieList = movieService.managerMovieList(cp);
+		}
 		model.addAttribute("getMovieList", getMovieList);
 
 		System.out.println("관리자_상영시간 목록 이동");
 		return "manager/manager_movie_play_list";
 	}
+	
 	// ===================================================
 	// ===================================================
 	
-	// 관리자 상영중인 영화 검색
-	@ResponseBody
-	@GetMapping("/member/Search_Play")
-public Map<String, Object> searchPlay(
-		Model model
-		, Search search
-		, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
-		, @RequestParam("searchType") String searchType
-		, @RequestParam("searchContent") String searchContent
-		) {
-	
-	Map<String, Object>getPlayList = null;
-	
-	search.setSearchType(searchType);
-	search.setSearchContext(searchContent);
-	
-	getPlayList = service.getPlaySearch(search, cp);
-	
-	System.out.println("search ====================================" + search);
-	
-	return getPlayList;
-}
-	// ===================================================
-	// ===================================================
-	
-	// 관리자 상영이 끝난 영화 검색
-	@ResponseBody
-	@GetMapping("/member/Search_PlayEnd")
-	public Map<String, Object> searchPlayEnd(
+	// 관리자_상영영화 종료 목록 이동 및 검색기능
+	@GetMapping("/play_end")
+	public String movePlayEndList(
 			Model model
 			, Search search
 			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
-			, @RequestParam("searchType") String searchType
-			, @RequestParam("searchContent") String searchContent
+			, @RequestParam(value="searchType", required=false, defaultValue="") String searchType
+			, @RequestParam(value="searchContent", required=false, defaultValue="") String searchContent
 			) {
 		
-		Map<String, Object>getPlayList = null;
-		
-		search.setSearchType(searchType);
-		search.setSearchContext(searchContent);
-		
-		getPlayList = service.getPlayEndSearch(search, cp);
-		
-		System.out.println("search ====================================" + search);
-		
-		return getPlayList;
-	}
-	
-	// ===================================================
-	// ===================================================
-	
-	// 관리자_상영영화 종료 목록 이동
-	@GetMapping("/play_end")
-	public String movePlayEndList(
-			Model model, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
 		Map<String, Object> getMovieList = null;
-		getMovieList = movieService.managerMovieListEnd(cp);
+		if(!searchType.isEmpty() && !searchContent.isEmpty()) {
+			// 검색기능
+			search.setSearchType(searchType);
+			search.setSearchContext(searchContent);
+			
+			getMovieList = service.getPlayEndSearch(search, cp);
+		} else {
 		
+		getMovieList = movieService.managerMovieListEnd(cp);
+	}
 		model.addAttribute("getMovieList", getMovieList);
 		
 		System.out.println("관리자_상영시간 목록 이동");
@@ -704,15 +659,28 @@ public Map<String, Object> searchPlay(
 	// ===================================================
 	// ===================================================
 
-	// 관리자_이벤트 목록 이동
+	// 관리자_이벤트 목록 이동 및 검색기능
 	@GetMapping("/event_list")
-	public String moveEventList(Model model, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+	public String moveEventList(
+			Model model
+			, Search search
+			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+			, @RequestParam(value="searchType", required=false, defaultValue="") String searchType
+			, @RequestParam(value="searchContent", required=false, defaultValue="") String searchContent
+			) {
 
 		Map<String, Object> getEventList = null;
+		if(!searchType.isEmpty() && !searchContent.isEmpty()) {
+			//검색 기능
+			search.setSearchType(searchType);
+			search.setSearchContext(searchContent);
+			
+			getEventList = service.searchEventList(cp, search);
+			
+		}else {
 
-		// 이벤트 리스트 얻어오기
 		getEventList = service.eventList(cp);
-
+		}
 		model.addAttribute("getEventList", getEventList);
 
 		System.out.println("관리자_이벤트 목록 이동");
@@ -841,16 +809,29 @@ public Map<String, Object> searchPlay(
 	// ===================================================
 	// ===================================================
 
-	// 관리자_공지사항 목록 이동
+	// 관리자_공지사항 목록 이동 및 검색기능
 	@GetMapping("/notice_list")
-	public String moveNoticeList(Model model,
-			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+	public String moveNoticeList(
+			Model model
+			, Search search
+			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+			, @RequestParam(value="searchType", required=false, defaultValue="") String searchType
+			, @RequestParam(value="searchContent", required=false, defaultValue="") String searchContent
+			) {
 
 		Map<String, Object> getNoticeList = null;
-
-		// 회원 리스트 얻어오기
+		
+		if(!searchType.isEmpty() && !searchContent.isEmpty()) {
+			// 검색기능
+			search.setSearchType(searchType);
+			search.setSearchContext(searchContent);
+			getNoticeList = service.searchNoticeList(cp, search);
+			
+		} else {
+			
 		getNoticeList = service.noticeList(cp);
-
+		
+		}
 		model.addAttribute("getNoticeList", getNoticeList);
 
 		System.out.println("관리자_공지사항 목록 이동");
@@ -1230,17 +1211,28 @@ public Map<String, Object> searchPlay(
 	// ===================================================
 	// ===================================================
 
-	// 관리자_분실물 목록 이동
+	// 관리자_분실물 목록 이동 및 검색기능
 	@GetMapping("/lost_list")
 	public String moveLostList(
 				Model model
-				, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+				,Search search
+				, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+				, @RequestParam(value = "searchType", required=false, defaultValue="") String searchType
+				, @RequestParam(value = "searchContent", required=false, defaultValue="") String searchContent
+			) {
 		
 			Map<String, Object> getLostList = null;
 
-			// 회원 리스트 얻어오기
-			getLostList = service.selectLostList(cp);
 
+			if(!searchType.isEmpty() && !searchContent.isEmpty()) {
+				// 검색 기능
+				search.setSearchType(searchType);
+				search.setSearchContext(searchContent);
+				
+				getLostList = service.getLostSearch(search, cp);
+			} else {
+			getLostList = service.selectLostList(cp);
+			}
 			model.addAttribute("getLostList", getLostList);
 			
 			System.out.println("관리자_분실물 목록 이동");
@@ -1250,39 +1242,28 @@ public Map<String, Object> searchPlay(
 	// ===================================================
 	// ===================================================
 	
-	// 관리자 분실물 검색 기능
-	@ResponseBody
-	@GetMapping("/member/Search_Lost")
-public Map<String, Object> searcLost(
-		Model model
-		, Search search
-		, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
-		, @RequestParam("searchType") String searchType
-		, @RequestParam("searchContent") String searchContent
-		) {
-	
-	Map<String, Object>getLostList = null;
-	
-	search.setSearchType(searchType);
-	search.setSearchContext(searchContent);
-	
-	getLostList = service.getLostSearch(search, cp);
-	
-	System.out.println("search ====================================" + search);
-	
-	return getLostList;
-}
-	
-	// ===================================================
-	// ===================================================
-
-	// 관리자_배너 목록 이동
+	// 관리자_배너 목록 이동 및 검색기능
 	@GetMapping("/banner_list")
 	public String moveBannerList(
-			Model model, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
-
+			Model model
+			,Search search
+			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+			, @RequestParam(value = "searchType", required=false, defaultValue="") String searchType
+			, @RequestParam(value = "searchContent", required=false, defaultValue="") String searchContent
+		) {
+		
 		Map<String, Object> getBannerList = null;
-		getBannerList = service.getBannerList(cp);
+		if(!searchType.isEmpty() && !searchContent.isEmpty()) {
+			
+			// 검색 기능
+			search.setSearchType(searchType);
+			search.setSearchContext(searchContent);
+			getBannerList = service.getSearchBannerList(cp, search);
+			
+			} else {
+				
+			getBannerList = service.getBannerList(cp);
+			}
 
 		model.addAttribute("getBannerList", getBannerList);
 

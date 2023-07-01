@@ -19,15 +19,11 @@
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
 						<!-- fontawesome -->
-						<link rel="stylesheet"
-							href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-							integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-							crossorigin="anonymous" referrerpolicy="no-referrer" />
+						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+							integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 						<!-- jQuery 라이브러리 추가(CDN) -->
-						<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-							integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-							crossorigin="anonymous"></script>
+						<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 					</head>
 
 					<body>
@@ -48,8 +44,8 @@
 											<div class="table_Wrapper">
 												<div class="table_Title">
 													<span>분실물 문의 목록</span>
-													<div class="search_Box">
-														<select id="selectBox">
+													<form class="search_Box">
+														<select id="selectBox" name="searchType">
 															<option value="USER_EMAIL">아이디</option>
 															<option value="LOST_TITLE">문의 제목</option>
 															<option value="LOST_ITEM">분실물</option>
@@ -57,11 +53,11 @@
 															<option value="LOST_REPDATE">답변 일자</option>
 															<option value="LOST_REPWRITER">담당자</option>
 														</select>
-														<input class="searchContent" placeholder="검색" />
-														<button class="checkBtn" type="button">
+														<input class="searchContent" placeholder="검색" name="searchContent" />
+														<button class="checkBtn" type="submit">
 															<i class="fa-solid fa-magnifying-glass fa-2xs"></i>
 														</button>
-													</div>
+													</form>
 												</div>
 												<table class="table_main">
 													<tr>
@@ -75,53 +71,46 @@
 														<th>답변 일자</th>
 														<th>담당자</th>
 													</tr>
-													<tbody id="userTableBody">
-														<c:forEach var="lostList" items="${getLostList['getLostList']}">
-															<tr>
-																<td>${lostList.losts.lostNo}</td>
-																<td>${lostList.user.userEmail}</td>
-																<td><a
-																		href="${contextPath}/helpDesk/lost_detail/${lostList.losts.lostNo}">${lostList.losts.lostTitle}</a>
-																</td>
-																<td>${lostList.losts.lostContent}</td>
-																<td>${lostList.losts.lostItem}</td>
-																<td>${lostList.losts.lostDate}</td>
-																<td>${lostList.losts.lostRepSt}</td>
-																<c:choose>
-																	<c:when
-																		test="${not empty lostList.losts.lostRepDate}">
-																		<td>${lostList.losts.lostRepDate}</td>
-																	</c:when>
-																	<c:otherwise>
-																		<td>-</td>
-																	</c:otherwise>
-																</c:choose>
-																<c:choose>
-																	<c:when
-																		test="${not empty lostList.losts.lostRepWriter}">
-																		<td>${lostList.losts.lostRepWriter}</td>
-																	</c:when>
-																	<c:otherwise>
-																		<td>-</td>
-																	</c:otherwise>
-																</c:choose>
-															</tr>
-														</c:forEach>
-													</tbody>
+													<c:forEach var="lostList" items="${getLostList['getLostList']}">
+														<tr>
+															<td>${lostList.losts.lostNo}</td>
+															<td>${lostList.user.userEmail}</td>
+															<td><a href="${contextPath}/helpDesk/lost_detail/${lostList.losts.lostNo}">${lostList.losts.lostTitle}</a>
+															</td>
+															<td>${lostList.losts.lostContent}</td>
+															<td>${lostList.losts.lostItem}</td>
+															<td>${lostList.losts.lostDate}</td>
+															<td>${lostList.losts.lostRepSt}</td>
+															<c:choose>
+																<c:when test="${not empty lostList.losts.lostRepDate}">
+																	<td>${lostList.losts.lostRepDate}</td>
+																</c:when>
+																<c:otherwise>
+																	<td>-</td>
+																</c:otherwise>
+															</c:choose>
+															<c:choose>
+																<c:when test="${not empty lostList.losts.lostRepWriter}">
+																	<td>${lostList.losts.lostRepWriter}</td>
+																</c:when>
+																<c:otherwise>
+																	<td>-</td>
+																</c:otherwise>
+															</c:choose>
+														</tr>
+													</c:forEach>
 												</table>
 												<div class="page_Nation">
-													<c:set var="url" value="?cp=" />
+													<c:set var="url" value="?searchType=${param.searchType}&searchContent=${param.searchContent}&cp=" />
 													<c:set var="pagination" value="${getLostList['pagination']}" />
-													<c:set var="currentPage" value="${pagination.currentPage}"
-														scope="request" />
+													<c:set var="currentPage" value="${pagination.currentPage}" scope="request" />
 													<div>
 														<a href="${url}1">&lt;&lt;</a>
 													</div>
 													<div>
 														<a href="${url}${pagination.prevPage}">&lt;</a>
 													</div>
-													<c:forEach var="i" begin="${pagination.startPage}"
-														end="${pagination.endPage}" step="1">
+													<c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
 														<c:choose>
 															<c:when test="${i == currentPage}">
 																<div>
