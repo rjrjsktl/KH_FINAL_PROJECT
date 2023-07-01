@@ -618,6 +618,22 @@ public class ManagerDAO {
 
 		return sqlSession.selectList("managerMapper.searchNoticeList", search, rowBounds);
 	}
+	
+	// 공지사항 검색 갯수 조회
+	public int getNTCSearchListCount(String keyword) {
+		
+		return sqlSession.selectOne("managerMapper.getNTCSearchListCount", keyword);
+		
+	}
+
+	// 공지사항 검색 리스트
+	public List<Notice> getSearchNTCList(Pagination pagination, String keyword) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+		return sqlSession.selectList("managerMapper.getNTCSearchList", keyword, rowBounds);
+	}
 
 
 }

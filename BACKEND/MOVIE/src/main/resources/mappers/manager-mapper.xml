@@ -1341,6 +1341,26 @@
 			</choose>
 		</trim>
 	</select>
+	
+	
+		<select id="getNTCSearchListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM NOTICE
+		WHERE
+		UPPER(NOTICE_TITLE) LIKE '%' ||	UPPER(#{keyword}) || '%'
+		</select>
+	
+		<select id="getNTCSearchList" resultMap="notice_rm">
+		SELECT
+		NOTICE_NO,
+		NOTICE_TITLE
+		, TO_CHAR(NOTICE_REGDATE, 'YYYY.MM.DD') AS NOTICE_REGDATE,
+		NOTICE_VIEW
+		FROM NOTICE
+		WHERE
+		UPPER(NOTICE_TITLE) LIKE '%' ||	UPPER(#{keyword}) || '%'
+		ORDER BY NOTICE_NO DESC
+		</select>
 
 
 </mapper>
