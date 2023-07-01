@@ -87,7 +87,7 @@
                                                     </ul>
                                                 </div>
                                                 <div>
-                                                    <button id="goreview-btn">리뷰 남기러 가볼까옹~</button>
+                                                    <button id="goreview-btn" data-bookno="${cardData.book.bookNo}">리뷰 남기러 가볼까옹~</button>
                                                 </div>
 
                                             </div>
@@ -123,12 +123,8 @@
                     <c:remove var="message" scope="session" />
                 </c:if>
                 -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <div class="close-button">&times;</div>
-            <iframe src="../login/login.html" frameborder="0" width="500px" height="500px"></iframe>
-        </div>
-    </div>
+    
+
 
     <script src="${contextPath}/resources/js/common/header.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_myMovie.js"></script>

@@ -47,8 +47,16 @@
 												<div class="table_Title">
 													<span>상영영화 목록</span>
 													<div class="search_Box">
-														<input placeholder="검색" />
-														<button>
+														<select id="selectBox">
+															<option value="MOVIE_TITLE">영화 제목</option>
+															<option value="CINEMA_AREA">상영 지역</option>
+															<option value="CINEMA_NAME">상영 영화관</option>
+															<option value="SCREEN_STYLE">스크린 종류</option>
+															<option value="PLAY_START">상영 시작일</option>
+															<option value="PLAY_END">상영 종료일</option>
+														</select>
+														<input class="searchContent" placeholder="검색" />
+														<button class="checkBtn" type="button">
 															<i class="fa-solid fa-magnifying-glass fa-2xs"></i>
 														</button>
 													</div>
@@ -63,28 +71,29 @@
 														<th>상영 스크린 종류</th>
 														<th>상영 시작일</th>
 														<th>상영 종료일</th>
+														<th>삭제</th>
 													</tr>
-													<c:forEach var="movie" items="${getMovieList['playMovieList']}">
-														<tr>
-															<td>${movie.play.playNo}</td>
-															<td><a
-																	href="${contextPath}/movieList/detail_List/introduce/${movie.movie.movieNo}">${movie.movie.movieTitle}</a>
-															</td>
-															<td>${movie.cinema.cinemaArea}</td>
-															<td>${movie.cinema.cinemaName}</td>
-															<td>${movie.screen.screenName}</td>
-															<td>${movie.screen.screenStyle}</td>
-															<td>${movie.play.playStart}</td>
-															<td>${movie.play.playEnd}</td>
-															<td><button class="editBtn">
-																	<i class="fa-sharp fa-solid fa-pen-to-square"></i>
-																</button></td>
-															<td><button class="delBtn">
-																	<i class="fa-sharp fa-solid fa-xmark"></i>
-																</button></td>
-														</tr>
-													</c:forEach>
-
+													<tbody id="userTableBody">
+														<c:forEach var="movie" items="${getMovieList['playMovieList']}">
+															<tr>
+																<td>${movie.play.playNo}</td>
+																<td><a
+																		href="${contextPath}/movieList/detail_List/introduce/${movie.movie.movieNo}">${movie.movie.movieTitle}</a>
+																</td>
+																<td>${movie.cinema.cinemaArea}</td>
+																<td>${movie.cinema.cinemaName}</td>
+																<td>${movie.screen.screenName}</td>
+																<td>${movie.screen.screenStyle}</td>
+																<td>${movie.play.playStart}</td>
+																<td>${movie.play.playEnd}</td>
+																<td>
+																	<button class="delBtn">
+																		<i class="fa-sharp fa-solid fa-xmark"></i>
+																	</button>
+																</td>
+															</tr>
+														</c:forEach>
+													</tbody>
 												</table>
 												<div class="page_Nation">
 													<c:set var="url" value="?cp=" />

@@ -47,8 +47,14 @@
                                                 <div class="table_Title">
                                                     <span>영화 목록</span>
                                                     <div class="search_Box">
-                                                        <input placeholder="검색" />
-                                                        <button>
+                                                        <select id="selectBox">
+                                                            <option value="MOVIE_TITLE">영화 제목</option>
+                                                            <option value="MOVIE_NATION">제작 국가</option>
+                                                            <option value="MG_CONTENT">관람 등급</option>
+                                                            <option value="GENRE_NAME">장르</option>
+                                                        </select>
+                                                        <input class="searchContent" placeholder="검색" />
+                                                        <button class="checkBtn" type="button">
                                                             <i class="fa-solid fa-magnifying-glass fa-2xs"></i>
                                                         </button>
                                                     </div>
@@ -70,49 +76,51 @@
                                                         <th>수정</th>
                                                         <th>삭제</th>
                                                     </tr>
-                                                    <c:forEach var="movie" items="${getMovieList['cleanedList']}">
-                                                        <tr>
-                                                            <td> ${movie['movieNo']} </td>
-                                                            <td>
-                                                                <a
-                                                                    href="${contextPath}/movieList/detail_List/introduce/${movie['movieNo']}">${movie['movieTitle']}</a>
-                                                            </td>
-                                                            <td>${movie['movieRuntime']}</td>
-                                                            <td>${movie['movieNation']}</td>
-                                                            <td>${movie['movieOpen']}</td>
-                                                            <td>${movie['mgNo']}</td>
-                                                            <td class="textReduce">${movie['movieContent']}</td>
-                                                            <td>${movie['movieRegdate']}</td>
-                                                            <td>${movie['genreName']}</td>
-                                                            <td>${movie['moviePlayed']}</td>
-                                                            <td>${movie['movieWatched']}</td>
-                                                            <c:choose>
-                                                                <c:when test="${movie['movieSt'] == 'N'}">
-                                                                    <td><select class="Is_Play"
-                                                                            data-id="${movie['movieNo']}">
-                                                                            <option value="N" selected>N</option>
-                                                                            <option value="Y">Y</option>
-                                                                        </select></td>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <td><select class="Is_Play"
-                                                                            data-id="${movie['movieNo']}">
-                                                                            <option value="N">N</option>
-                                                                            <option value="Y" selected>Y</option>
-                                                                        </select></td>
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                            <td>
-                                                                <a href="${contextPath}/manager/movie_list/edit/${movie.movieNo}"
-                                                                    class="editEvent"><i
-                                                                        class="fa-sharp fa-solid fa-pen-to-square"></i></a>
-                                                            </td>
-                                                            <td>
-                                                                <a class="deleteEvent"><i
-                                                                        class="fa-sharp fa-solid fa-xmark"></i></a>
-                                                            </td>
-                                                        </tr>
-                                                    </c:forEach>
+                                                    <tbody id="userTableBody">
+                                                        <c:forEach var="movie" items="${getMovieList['cleanedList']}">
+                                                            <tr>
+                                                                <td> ${movie['movieNo']} </td>
+                                                                <td>
+                                                                    <a
+                                                                        href="${contextPath}/movieList/detail_List/introduce/${movie['movieNo']}">${movie['movieTitle']}</a>
+                                                                </td>
+                                                                <td>${movie['movieRuntime']}</td>
+                                                                <td>${movie['movieNation']}</td>
+                                                                <td>${movie['movieOpen']}</td>
+                                                                <td>${movie['mgNo']}</td>
+                                                                <td class="textReduce">${movie['movieContent']}</td>
+                                                                <td>${movie['movieRegdate']}</td>
+                                                                <td>${movie['genreName']}</td>
+                                                                <td>${movie['moviePlayed']}</td>
+                                                                <td>${movie['movieWatched']}</td>
+                                                                <c:choose>
+                                                                    <c:when test="${movie['movieSt'] == 'N'}">
+                                                                        <td><select class="Is_Play"
+                                                                                data-id="${movie['movieNo']}">
+                                                                                <option value="N" selected>N</option>
+                                                                                <option value="Y">Y</option>
+                                                                            </select></td>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <td><select class="Is_Play"
+                                                                                data-id="${movie['movieNo']}">
+                                                                                <option value="N">N</option>
+                                                                                <option value="Y" selected>Y</option>
+                                                                            </select></td>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                                <td>
+                                                                    <a href="${contextPath}/manager/movie_list/edit/${movie.movieNo}"
+                                                                        class="editEvent"><i
+                                                                            class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a class="deleteEvent"><i
+                                                                            class="fa-sharp fa-solid fa-xmark"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </tbody>
                                                 </table>
                                                 <div class="page_Nation">
                                                     <c:set var="url" value="?cp=" />

@@ -196,7 +196,7 @@
                         </div>
                       </div>
                     </div>
-                    <div><a id="summary" href="#none">결제하기</a></div>
+                    <div><a id="summary" href="#">결제하기</a></div>
                   </div>
 
 

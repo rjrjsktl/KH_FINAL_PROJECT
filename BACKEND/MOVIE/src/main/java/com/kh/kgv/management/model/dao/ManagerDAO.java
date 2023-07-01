@@ -22,6 +22,7 @@ import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
+import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Pagination;
 import com.kh.kgv.management.model.vo.Search;
@@ -474,6 +475,76 @@ public class ManagerDAO {
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 
 		return sqlSession.selectList("managerMapper.selectSearchMemberList", search, rowBounds);
-	}	
+	}
+	
+	// 검색한 1:1 문의 수 조회
+	public int getSearchAskCount(Search search) {
+		return sqlSession.selectOne("managerMapper.getSearchAskCount", search);
+	}
+
+	// 검색한 1:1 문의 리스트 조회
+	public List<Mtm> selectSearchAskList(Pagination pagination, Search search) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+		return sqlSession.selectList("managerMapper.selectSearchAskList", search, rowBounds);
+	}
+
+	// 검색한 분실물 수 조회
+	public int getSearchLostCount(Search search) {
+		return sqlSession.selectOne("managerMapper.getSearchLostCount", search);
+	}
+
+	// 검색한 분실물 리스트 조회
+	public List<Mtm> selectSearchLostList(Pagination pagination, Search search) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+		return sqlSession.selectList("managerMapper.selectSearchLostList", search, rowBounds);
+	}
+
+	// 검색한 영화 수 조회
+	public int getSearchmovielistCount(Search search) {
+		return sqlSession.selectOne("managerMapper.getSearchmovielistCount", search);
+	}
+
+	// 검색한 영화 리스트 조회
+	public List<Movie> searchMovieList(Pagination pagination, Search search) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+		return sqlSession.selectList("managerMapper.searchMovieList", search, rowBounds);
+	}
+
+	// 현재 상영중인 영화 검색 수
+	public int getSearchNowPlayCount(Search search) {
+		return sqlSession.selectOne("managerMapper.getSearchNowPlayCount", search);
+	}
+	
+	// 상영중인 영화 검색 리스트
+	public List<JoinPlay> getSearchPlayList(Pagination pagination, Search search) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+		return sqlSession.selectList("managerMapper.getSearchPlayList", search, rowBounds);
+	}
+
+	// 상영이 끝난 영화 검색 수
+	public int getSearchPlayEndCount(Search search) {
+		return sqlSession.selectOne("managerMapper.getSearchPlayEndCount", search);
+	}
+
+	// 상영이 끝난 영화 검색 리스트
+	public List<JoinPlay> getSearchPlayEndList(Pagination pagination, Search search) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+		return sqlSession.selectList("managerMapper.getSearchPlayEndList", search, rowBounds);
+	}
 
 }

@@ -16,12 +16,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.google.gson.Gson;
+import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.JoinPlay;
@@ -227,24 +229,28 @@ public class ReserveController {
 	
 	@PostMapping("/checkTicket")
 	@ResponseBody
-	public String checkTicket(HttpServletRequest req, String countArray, String seatArray) throws Exception {
+	public String checkTicket(HttpServletRequest req, String countArray, String seatArray, 
+			                      @ModelAttribute("loginUser") User loginUser) throws Exception {
 		int condition = 0;
 		String url = "fail";
 		try {
+			// 세션에서 상영 번호와 가격 번호를 가져옴.
 			HttpSession session = req.getSession();
 			int playNo = Integer.parseInt( (String) session.getAttribute("playNo"));
 			int priceNo = (int) session.getAttribute("priceNo");
+			int userNo = loginUser.getUserNo();
+
+			System.out.println(countArray);
+			System.out.println(seatArray);
 			
+			// 인원별 몇 명 선택했는지 배열[bookAge]로 나타냄
 			countArray = countArray.replaceAll("[^0-9]", "");
-			seatArray = seatArray.replaceAll("&quot", "");
-			
-			// 1. 좌석 수 = 인원 수 && 인원 > 0
-			// 2. 좌석이 제대로 체크된 것인지
-			// reserveMap = service.checkReserve(playNo, countArray, seatArray);
-			
 			priceMap = service.getPriceMap(priceNo, countArray);
-			int[] bookAge = (int[]) priceMap.get("countArray");
+			String bookAge = Arrays.toString( (int[]) priceMap.get("countArray") );
+			int bookPrice = (int) priceMap.get("totalPrice");
 			
+			// 어떤 좌석을 선택했는지 배열[bookSeat]로 나타냄
+			seatArray = seatArray.replaceAll("&quot", "");
 			Gson gson = new Gson();
 	        String[] gsonSeat = gson.fromJson(seatArray, String[].class);
 	        List<String> seatList = new ArrayList<>();
@@ -254,10 +260,17 @@ public class ReserveController {
 	        	if(seat != null) seatList.add('"' + seat + '"');
 	        }
 	        
-	        String bookSeat = Arrays.deepToString(seatList.toArray());
-
-	        //condition = service.check
+	        // String bookSeat = Arrays.deepToString(seatList.toArray());
 	        
+	        String bookSeat = seatArray;
+
+	        // condition = service.checkTicket(playNo, bookAge, seatList);
+	        // 일단 0으로 함
+	        if(condition == 0) {
+	        	int result = service.buyTicket(playNo, userNo, bookAge, bookSeat, bookPrice);
+	        	System.out.println(result);
+				url = "/movie/pay/pay";
+			}
 
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -266,11 +279,30 @@ public class ReserveController {
 		// 유효성 검사가 통과되면 예매 테이블에 데이터 축적
 		// 1. PLAY_NO, USER_NO, BOOK_AGE(countArray), BOOK_SEAT(seatArray), BOOK_PRICE가 전달됨
 		// 2. 성공하면 숫자 1이 전달됨.
-		if(condition == 1) {
-			url = "/movie";
-		}
+		
 		return url;
 	}
+	
+	/*
+	// 결제페이지로 이동하기
+	@GetMapping("/movie/pay/pay")
+	@ResponseBody
+	public String movePay() {
+		
+		
+		return "pay/pay";
+	}
+	
+	*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

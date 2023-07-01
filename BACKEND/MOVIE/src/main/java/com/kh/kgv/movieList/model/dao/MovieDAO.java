@@ -88,6 +88,19 @@ public class MovieDAO {
 		return sqlSession.update("reviewMapper.deleteReview", revNo);
 	}
 
+	// 별점 기능 DAO
+	public double allLike(int movieNo) {
+		Double allLike = sqlSession.selectOne("reviewMapper.allLike", movieNo);
+		double result = (allLike != null) ? allLike : 0.0;
+		return result;
+	}
+
+	public double allbook(int movieNo) {
+		Double allbook = sqlSession.selectOne("reviewMapper.allbook", movieNo);
+		double result = (allbook != null) ? allbook : 0.0;
+		return result;
+	}
+
 
 
 

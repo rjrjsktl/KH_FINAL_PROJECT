@@ -51,29 +51,42 @@ function requestPay() {
             $.ajax({
 
                 type: "POST",
-                url: "/movie/store/storeMain/store_detail/" + storeNo + "/getStorePayment/verifyIamport/" + rsp.imp_uid
+                url: "/movie/store/storeMain/store_detail/store_payment/" + storeNo + "/verifyIamport/" + rsp.imp_uid
             }).done(function (data) {
 
                 console.log(data);
 
                 if (rsp.paid_amount == data.response.amount) {
-                    alert("결제 및 결제검증완료");
 
+                    console.log("결재 및 결재검증완료");
                     //결제 성공 시 비즈니스 로직
-
+                    orderDetailNo = 'odn_' + new Date().getTime();
+                    console.log(orderDetailNo);
 
                     $.ajax({
-                        url: "/movie/store/storeMain/store_detail/" + storeNo + "/successPayment",
+                        url: "/movie/store/storeMain/store_detail/store_payment/" + storeNo + "/successPayment",
                         data: {
                             "orderPrice": totalPrice
                             , "orderCount": totalCount
+                            , "storeName": storeName
                             , "storeNo": storeNo
-                            , "userNo": userNo
+                            , "userEmail": userEmail
+                            , "orderDetailNo": orderDetailNo
+                            , "userName": userName
                         },
                         type: "POST",
 
-                        success: function () {
-                            console.log("결제성공 정보 등록 성공");
+                        success: function (result) {
+                            console.log("결제성공");
+
+                            if (result > 0) {
+                                alert("결제성공 정보DB 등록 성공");
+                                // let url = "/movie/store/storeMain";
+                                // window.location.href = url;
+
+                            } else {
+                                console.log("에러 발생으로 인해 등록 실패");
+                            }
                         },
 
                         error: function () {
