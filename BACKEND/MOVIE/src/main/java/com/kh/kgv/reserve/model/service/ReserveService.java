@@ -35,9 +35,13 @@ public interface ReserveService {
 
 	Map<String, Object> getInitialMap(String areaName);
 
-	int checkTicket(int playNo, int[] bookAge, List<String> seatList);
-
 	int buyTicket(int playNo, int userNo, String bookAge, String bookSeat, int bookPrice);
+
+	int checkTicket(int playNo, String bookAge, String bookSeat);
+
+	int updatePlaySeat(int playNo, String bookSeat);
+
+	int getBookNo(int userNo);
 
 
 
