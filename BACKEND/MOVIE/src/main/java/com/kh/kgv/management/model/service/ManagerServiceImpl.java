@@ -5,10 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import com.kh.kgv.common.Util;
 import com.kh.kgv.customer.model.vo.User;
@@ -23,6 +21,7 @@ import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
 import com.kh.kgv.management.model.vo.Event;
+import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Pagination;
 import com.kh.kgv.management.model.vo.Search;
@@ -616,7 +615,6 @@ public class ManagerServiceImpl implements ManagerService {
 		
 		// 검색한 1:1 문의 수 조회
 		int searchAskCount = dao.getSearchAskCount(search);
-		System.out.println("========================================searchAskCount : " + searchAskCount);
 
 		// 조회한 문의를 pagination 에 담기
 		Pagination pagination = new Pagination(cp, searchAskCount);
@@ -628,9 +626,114 @@ public class ManagerServiceImpl implements ManagerService {
 		getMTMLists.put("pagination", pagination);
 		getMTMLists.put("getMTMList", getMTMList);
 
-		System.out.println("=================================getMTMLists : " + getMTMLists);
 		return getMTMLists;
 	}
+	
+	// 관리자 분실물 검색 기능
+	@Override
+	public Map<String, Object> getLostSearch(Search search, int cp) {
+		// 검색한 분실물 수 조회
+		int getLostSearch = dao.getSearchLostCount(search);
+		System.out.println("========================================getLostSearch : " + getLostSearch);
 
+		// 조회한 문의를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, getLostSearch);
+
+		// 검색한 분실물 리스트 조회
+		List<Mtm> getLostList = dao.selectSearchLostList(pagination, search);
+
+		Map<String, Object> getLostLists = new HashMap<String, Object>();
+		getLostLists.put("pagination", pagination);
+		getLostLists.put("getLostList", getLostList);
+
+		System.out.println("=================================getLostList : " + getLostLists);
+		return getLostLists;
+	}
+
+	// 관리자 영화 검색 기능
+	@Override
+	public Map<String, Object> getMovieSearch(Search search, int cp) {
+		
+				// 영화 수 조회
+				int movielistCount = dao.getSearchmovielistCount(search);
+
+				// 조회한 공지사항 수를 pagination 에 담기
+				Pagination pagination = new Pagination(cp, movielistCount);
+
+				// 공지사항 리스트 조회
+				List<Movie> movielist = dao.searchMovieList(pagination, search);
+				// movielist에서 따온 값 가공하기
+				List<Movie> cleanedList = new ArrayList<>();
+				for (Movie movie : movielist) {
+					Movie cleanedMovie = new Movie();
+					cleanedMovie.setMgNo(Util.removeQuotes(movie.getMgNo()));
+					cleanedMovie.setGenreName(Util.removeQuotes(movie.getGenreName()));
+					cleanedMovie.setMovieNo(movie.getMovieNo());
+					cleanedMovie.setMovieRuntime(movie.getMovieRuntime());
+					cleanedMovie.setMovieTitle(movie.getMovieTitle());
+					cleanedMovie.setMovieNation(movie.getMovieNation());
+					cleanedMovie.setMovieOpen(movie.getMovieOpen());
+					cleanedMovie.setMovieContent(movie.getMovieContent());
+					cleanedMovie.setMovieImg1(movie.getMovieImg1());
+					cleanedMovie.setMovieImg2(movie.getMovieImg2());
+					cleanedMovie.setMovieImg3(movie.getMovieImg3());
+					cleanedMovie.setMovieImg4(movie.getMovieImg4());
+					cleanedMovie.setMovieImg5(movie.getMovieImg5());
+					cleanedMovie.setMovieImg6(movie.getMovieImg6());
+					cleanedMovie.setMovieUploader(movie.getMovieUploader());
+					cleanedMovie.setMovieDirector(movie.getMovieDirector());
+					cleanedMovie.setMovieCast(movie.getMovieCast());
+					cleanedMovie.setMovieRegdate(movie.getMovieRegdate());
+					cleanedMovie.setMovieSt(movie.getMovieSt());
+		    		cleanedMovie.setMoviePlayed(movie.getMoviePlayed());
+		    		cleanedMovie.setMovieWatched(movie.getMovieWatched());
+
+					cleanedList.add(cleanedMovie);
+				}
+				Map<String, Object> getMovieList = new HashMap<String, Object>();
+				getMovieList.put("pagination", pagination);
+				getMovieList.put("cleanedList", cleanedList);
+				
+				return getMovieList;
+	}
+	
+	// 관리자 상영중인 영화 검색
+	@Override
+	public Map<String, Object> getPlaySearch(Search search, int cp) {
+		
+		// 현재 상영중인 영화 검색 수
+		int cinemaCount = dao.getSearchNowPlayCount(search);
+
+		// 조회한 현재 상영중인 영화 수를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, cinemaCount);
+
+		// 상영중인 영화 검색 리스트
+		List<JoinPlay> playMovieList = dao.getSearchPlayList(pagination, search);
+		
+		Map<String, Object> getMovieList = new HashMap<String, Object>();
+		getMovieList.put("pagination", pagination);
+		getMovieList.put("playMovieList", playMovieList);
+		
+		return getMovieList;
+	}
+
+	// 관리자 상영이 끝난 영화 검색
+	@Override
+	public Map<String, Object> getPlayEndSearch(Search search, int cp) {
+		// 상영이 끝난 영화 검색 수
+		int cinemaCount = dao.getSearchPlayEndCount(search);
+
+		// 조회한 현재 상영중인 영화 수를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, cinemaCount);
+
+		// 상영이 끝난 영화 검색 리스트
+		List<JoinPlay> playMovieList = dao.getSearchPlayEndList(pagination, search);
+		
+		Map<String, Object> getMovieList = new HashMap<String, Object>();
+		getMovieList.put("pagination", pagination);
+		getMovieList.put("playMovieList", playMovieList);
+		
+		return getMovieList;
+	}
 
 }

@@ -771,6 +771,26 @@ img[src=""] {
     color: rgb(21, 21, 21);
 }
 
+.loginBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: lighter;
+    background-color: transparent;
+    border: 0.5px solid white;
+    cursor: pointer;
+    margin-left: 30px;
+    width: 120px;
+    height: 83px;
+}
+
+.loginBtn:hover {
+    background-color: rgb(251, 251, 251);
+    color: rgb(21, 21, 21);
+}
+
 .actorList ul {
     width: 729px;
     display: flex;

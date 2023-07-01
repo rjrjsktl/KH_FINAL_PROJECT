@@ -167,7 +167,9 @@ $(document).ready(function () {
       window.console.log("리뷰 남기러 가기 버튼 누름");
       let movieNo = $(this).data('movieno');
       window.console.log("movieNo:::" + movieNo);
-      window.location.href = "/movie/movieList/detail_List/introduce/" + movieNo;
+
+      window.location.href = "/movie/movieList/detail_List/introduce/" + movieNo + "?review=1";
+      
       
     });
   });

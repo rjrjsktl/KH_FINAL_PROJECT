@@ -2,6 +2,10 @@ const userNickElement = document.getElementById("userNick");
 const userNickValue = userNickElement.value;
 console.log(userNickValue);
 
+let urlParams = new URLSearchParams(window.location.search);
+let reviewParam = urlParams.get('review');
+console.log("reviewParam:::" + reviewParam);
+
 $(document).ready(function () {
   var foldWrap = $(".fold_wrap");
   let foldContent = $(".fold_content");
@@ -66,6 +70,17 @@ $(document).ready(function () {
     $(this).css("color", "black");
   });
 
+  if(reviewParam === "1"){
+    console.log("reviewParam=1이라서 실행");
+      $(".movie-detail").hide();
+      $(".movie-reply").show();
+      $(".info-btn").css("background", "none");
+      $(".info-btn").css("border", "1px solid #d3d3d3");
+      $(".info-btn").css("color", "white");
+      $(".star-btn").css("background", "#d3d3d3");
+      $(".star-btn").css("color", "black");
+      $("#addRevContent").focus();
+  }
   updateData();
 
   function updateData() {
@@ -79,6 +94,7 @@ $(document).ready(function () {
       $(this).css("color", "black");
     });
   }
+ 
 
   
 
@@ -109,7 +125,8 @@ $(document).ready(function () {
       },
       success: function (result) {
         if (result > 0) {
-          alert("댓글이 등록되었습니다.");
+          alert("리뷰가 등록되었습니다.");
+          window.location.href = "/movie/movieList/detail_List/introduce/" + movieNo + "?review=1";
         }
       },
       error: function (xhr, status, error) {
@@ -120,6 +137,11 @@ $(document).ready(function () {
 
   const replyBtn = $(".replyBtn");
   replyBtn.on("click", addReview);
+
+  const loginBtn = $(".loginBtn");
+  loginBtn.on("click", function() {
+    window.location.href = "/movie/user/login";
+  });
 
   var itemsToShow = 5;
   var cp = 1;
@@ -155,7 +177,7 @@ $(document).ready(function () {
                                 <p>${review.userNick}</p>
                             </div>
                             <div class="review_content">
-                                <div>관람평</div>
+                                <div>리뷰</div>
                                 <div>${review.revLike}</div>
                                 <div>${review.revContent}</div>
                                 ${deleteButton}
@@ -181,7 +203,7 @@ $(document).ready(function () {
       url: "/movie/movieList/detail_List/introduce/deleteReview/" + revNo,
       type: "POST",
       success: function (data) {
-        alert("댓글이 삭제되었습니다.");
+        alert("리뷰가 삭제되었습니다.");
         window.location.href = movieNo;
       },
       error: function (xhr, status, error) {

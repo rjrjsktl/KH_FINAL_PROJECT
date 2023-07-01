@@ -30,4 +30,10 @@ public interface MovieService {
 
 	int deleteReview(int revNo);
 
+	// 평점, 별점 service
+	double allLike(int movieNo);
+
+	// 예매율 service
+	double allbook(int movieNo);
+
 }
