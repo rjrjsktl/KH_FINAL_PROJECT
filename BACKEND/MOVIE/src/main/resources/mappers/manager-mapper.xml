@@ -1146,6 +1146,7 @@
 		  AND p.PLAY_END <![CDATA[ < ]]>SYSDATE
 		</select>
 		
+
 			<!-- 극장 목록 검색 수 조회 -->
 	<select id="getSearchCinemaCount" resultType="_int">
 		SELECT COUNT(*)
@@ -1340,5 +1341,6 @@
 			</choose>
 		</trim>
 	</select>
+
 
 </mapper>

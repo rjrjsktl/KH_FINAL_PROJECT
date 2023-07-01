@@ -596,9 +596,11 @@ public class ManagerDAO {
 
 	//  이벤트 목록 검색 조회
 	public List<Event> SearchEventList(Pagination pagination, Search search) {
+
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
 
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
 
 		return sqlSession.selectList("managerMapper.SearchEventList", search, rowBounds);
 	}
@@ -616,5 +618,6 @@ public class ManagerDAO {
 
 		return sqlSession.selectList("managerMapper.searchNoticeList", search, rowBounds);
 	}
+
 
 }

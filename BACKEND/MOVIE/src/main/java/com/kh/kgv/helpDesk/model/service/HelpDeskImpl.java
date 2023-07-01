@@ -14,6 +14,7 @@ import com.kh.kgv.helpDesk.model.vo.LostPagenation;
 import com.kh.kgv.helpDesk.model.vo.LostPackage;
 import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.helpDesk.model.vo.MtmPagenation;
+import com.kh.kgv.helpDesk.model.vo.Quest;
 import com.kh.kgv.helpDesk.model.vo.QuestPagenation;
 import com.kh.kgv.management.model.dao.ManagerDAO;
 import com.kh.kgv.management.model.vo.Cinema;
@@ -58,7 +59,7 @@ public class HelpDeskImpl implements HelpDeskService {
 	}
 
 
-	
+
 	// 1:1문의 리스트 조회
 	@Override
 	public Map<String, Object> getMtmList(int cp, int userNo, String userManagerSt) {
@@ -103,7 +104,7 @@ public class HelpDeskImpl implements HelpDeskService {
 		}
 		return dao.getMtmListCount(userNo, userManagerStAsInt);
 	}
-	
+
 	// 1:1문의 글 작성
 	@Override
 	public int addmTm(Mtm mtm) {
@@ -116,25 +117,25 @@ public class HelpDeskImpl implements HelpDeskService {
 	public int selectMtmNo(Mtm mtm) {
 		return  dao.selectMtmNo(mtm);
 	}
-	
+
 	// 1:1문의 글 삭제
 	@Override
 	public int deleteBoard(int mtmNo) {
 		return dao.deleteBoard(mtmNo);
 	}
-	
+
 	// 1:1문의 댓글 작성
 	@Override
 	public int replyWrite(int mtmNo, String content,  String managerNick) {
 		return  dao.replyWrite(mtmNo, content, managerNick);
 	}
-	
+
 	// 1:1문의 댓글 삭제
 	@Override
 	public int replyDelete(int mtmNo) {
 		return dao.replyDelete(mtmNo);
 	}
-	
+
 	// 1:1문의 삭제비밀번호 조회
 	@Override
 	public int selectmtmPw(int mtmNo) {
@@ -193,13 +194,13 @@ public class HelpDeskImpl implements HelpDeskService {
 		if (userManagerSt.equals("N") && userNo != 0) {
 			return "helpDesk/checkPw";
 		}
-		
-		
+
+
 		return null;
 	}
 
-	
-	
+
+
 	// 잃어버린물건 리스트 조회
 	@Override
 	public Map<String, Object> getLostList(int cp, int userNo, String userManagerSt) {
@@ -229,6 +230,63 @@ public class HelpDeskImpl implements HelpDeskService {
 		return getMtmList;
 	}
 
+	// 분실물 찾기 갯수 조회 ( cp용 )
+	@Override
+	public int getSearchLostCount(int userNo, String userManagerSt, String keyword, String area, String name) {
+		
+		int userManagerStAsInt = 0;
+		if(userManagerSt != null) {
+			if(userManagerSt.equals("Y")) {
+				userManagerStAsInt = 1;
+			}else if (userManagerSt.equals("null")) {
+				userManagerStAsInt = 0;
+			}
+		}
+		
+		System.out.println("분실물 검색--------------------------------------------------------------------------------");
+		System.out.println(userNo);
+		System.out.println(userManagerStAsInt);
+		System.out.println("분실물 검색--------------------------------------------------------------------------------");
+		
+		
+		return dao.getSearchLostCount(userNo, userManagerStAsInt, keyword, area, name);
+	}
+
+	// 분실물 찾기 리스트 조회
+	@Override
+	public Map<String, Object> selectSearchLOST(String keyword, String area, String name, int cp, int userNo, String userManagerSt) {
+		
+		int userManagerStAsInt = 0;
+		if(userManagerSt != null) {
+			if(userManagerSt.equals("Y")) {
+				userManagerStAsInt = 1;
+			}else if (userManagerSt.equals("null")) {
+				userManagerStAsInt = 0;
+			}
+		}
+		
+		System.out.println("분실물 검색--------------------------------------------------------------------------------");
+		System.out.println(userNo);
+		System.out.println(userManagerStAsInt);
+		System.out.println("분실물 검색--------------------------------------------------------------------------------");
+
+		int lostlistCount =  dao.getSearchLostCount(userNo, userManagerStAsInt, keyword, area, name);
+
+		LostPagenation pagination = new LostPagenation(cp, lostlistCount);
+
+
+		List<Mtm> lostLists = dao.selectSearchLOST(pagination, keyword, area, name, userNo, userManagerStAsInt);
+		Map<String, Object> getMtmList = new HashMap<String, Object>();
+		getMtmList.put("pagination", pagination);
+		getMtmList.put("lostLists", lostLists);
+
+
+
+		return getMtmList;
+	}
+
+
+
 	// 잃어버린물건 세부사항 조회
 	@Override
 	public LostPackage selectLostDetail(int lostNo) {
@@ -250,7 +308,7 @@ public class HelpDeskImpl implements HelpDeskService {
 		return dao.getLostListCount(userNo, userManagerStAsInt);
 
 	}
-	
+
 	// 잃어버린물건 글 작성
 	@Override
 	public int addLost(LostPackage lost) {
@@ -262,7 +320,7 @@ public class HelpDeskImpl implements HelpDeskService {
 	public int selectLostNo(LostPackage lost) {
 		return dao.selectLostNo(lost);
 	}
-	
+
 	// 잃어버린물건 게시글 삭제
 	@Override
 	public int deleteLost(int lostNo) {
@@ -274,7 +332,7 @@ public class HelpDeskImpl implements HelpDeskService {
 	public int replyLostWrite(int lostNo, String content, String managerNick) {
 		return  dao.replyLostWrite(lostNo, content, managerNick);
 	}
-	
+
 	// 잃어버린물건 댓글 삭제
 	@Override
 	public int replyLostDelete(int lostNo) {
@@ -292,7 +350,7 @@ public class HelpDeskImpl implements HelpDeskService {
 	public int selectLostUserNo(int lostNo) {
 		return dao.selectLostUserNo(lostNo);
 	}
-	
+
 	// 잃어버린물건 조회수 증가
 	@Override
 	public int updateLostReadCount(int lostNo) {
@@ -303,8 +361,8 @@ public class HelpDeskImpl implements HelpDeskService {
 	// 잃어버린물건 맵핑 어드레스 리턴묶음
 	@Override
 	public String checkLostPasswordAccess(int lostNo, User loginUser, int cp) {
-		
-		
+
+
 		int userNo = 0;
 		String userManagerSt = null;
 
@@ -318,7 +376,7 @@ public class HelpDeskImpl implements HelpDeskService {
 
 		int lostPw = selectmtmLostPw(lostNo);
 		int lostUserNo = selectLostUserNo(lostNo);
-		
+
 		if ( userNo == 0 && lostPw != 0 ) {
 			return "redirect:/user/login";
 		} 
@@ -340,36 +398,62 @@ public class HelpDeskImpl implements HelpDeskService {
 
 	@Override
 	public int getcountquestNum(int questNum) {
-		
+
 		return dao.getcountquestNum(questNum);
 	}
 
+
 	@Override
 	public Map<String, Object> getQuestList(int cp, int questNum) {
-	
+
 		int questCount = dao.getcountquestNum(questNum);
 		QuestPagenation pagination = new QuestPagenation(cp, questCount);
-		
+
 		List<Mtm> questList = dao.getQuestList(pagination, questNum);
 
 		Map<String, Object> getQuestList = new HashMap<String, Object>();
 		getQuestList.put("pagination", pagination);
 		getQuestList.put("questList", questList);
-		
-		
-		
+
 		return getQuestList;
 	}
 
 	@Override
+	public int getCountSelectQeustNo(String keyword) {
+		return dao.getCountSelectQeustNo( keyword);
+
+	}
+
+	@Override
+	public Map<String, Object> getSearchQuestList(String keyword, int cp) {
+
+		int questCount = dao.getCountSelectQeustNo( keyword);
+
+		QuestPagenation pagination = new QuestPagenation(cp, questCount);
+
+		List<Notice> questList = dao.getSearchQuestList(pagination, keyword);
+
+		Map<String, Object> getQuestList = new HashMap<String, Object>();
+		getQuestList.put("pagination",pagination);
+		getQuestList.put("questList", questList);
+
+
+		return getQuestList;
+	}
+
+
+
+
+
+	@Override
 	public Map<String, Object> cinemaList() {
-		
+
 		List<Cinema> cinemaList = dao.cinemaList();
-		
+
 		Map<String, Object> getcinemaList = new HashMap<String, Object>();
-		
+
 		getcinemaList.put("cinemaList", cinemaList);
-		
+
 		return getcinemaList;
 	}
 
@@ -394,15 +478,50 @@ public class HelpDeskImpl implements HelpDeskService {
 
 	}
 
+	@Override
+	public List<Quest> getQuestType() {
+		return dao.getQuestType();
+	}
+
+	@Override
+	public Map<String, Object> searchcinemaList() {
+
+		List<Cinema> dstCinemaList = dao.distinctcinemaList();
+
+		Map<String, Object> cinemaList = new HashMap<String, Object>();
+
+		cinemaList.put("cinemaList", dstCinemaList);
+
+		System.out.println(cinemaList);
+
+		return cinemaList;
+	}
+
+	@Override
+	public Map<String, Object> cinemaNameList(String area) {
+
+		System.out.println(area+"------------------------------IMPLE");
+
+		List<Cinema> selectcinemaNameList = dao.selectcinemaNameList(area);
+
+		Map<String, Object> cinemaNameList = new HashMap<String, Object>();
+
+		cinemaNameList.put("cinemaNameList", selectcinemaNameList);
+
+		System.out.println(cinemaNameList);
+
+		return cinemaNameList;
+	}
 
 
 
 
-	
 
-	
 
-	
+
+
+
+
 
 
 
