@@ -50,10 +50,12 @@
 								<h2>자주 찾는 질문</h2>
 								<div class="cont-search-wrap">
 									<span>빠른검색</span>
-									<form action="">
-										<input type="text" placeholder=" 질문을 입력해주세요!">
+
+
+									<form action="/movie/helpDesk/question_home" method="GET">
+										<input type="text" placeholder=" 질문을 입력해주세요!" name="keyword">
 										<button>
-											<img src="../../images/headerPng/glass.png" alt="">
+											<img src="${contextPath}/resources/images/headerPng/glass.png" alt="">
 										</button>
 									</form>
 								</div>
@@ -62,15 +64,9 @@
 
 							<div class="btn-wrap">
 								<button class="btn-quest" data-quest-num="0">전체</button>
-								<button class="btn-quest" data-quest-num="1">영화예매</button>
-								<button class="btn-quest" data-quest-num="2">할인혜택</button>
-								<button class="btn-quest" data-quest-num="3">결제수단/관람권</button>
-								<button class="btn-quest" data-quest-num="4">멤버십</button>
-								<button class="btn-quest" data-quest-num="5">VIP</button>
-								<button class="btn-quest" data-quest-num="6">극장</button>
-								<button class="btn-quest" data-quest-num="7">특별관</button>
-								<button class="btn-quest" data-quest-num="8">스토어</button>
-								<button class="btn-quest" data-quest-num="9">홈페이지/모바일</button>
+								<c:forEach var="quest" items="${selectType}" varStatus="status">
+									<button class="btn-quest" data-quest-num="${status.index + 1}">${quest.questType}</button>
+								</c:forEach>
 							</div>
 
 							<div class="list-wrap">
@@ -100,7 +96,7 @@
 
 								<!-- 10개씩 -->
 								<div class="page_Nation">
-									<c:set var="url" value="?cp=" />
+									<c:set var="url" value="?keyword=${keyword}&cp="  />
 									<c:set var="pagination" value="${questList['pagination']}" />
 									<c:set var="currentPage" value="${pagination.currentPage}"
 										scope="request" />
