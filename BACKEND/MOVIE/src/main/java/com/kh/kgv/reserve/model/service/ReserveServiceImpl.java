@@ -5,16 +5,21 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.gson.Gson;
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.items.model.vo.Play;
 import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.JoinPlay;
@@ -216,33 +221,128 @@ public class ReserveServiceImpl implements ReserveService {
 		return specialCinemaList;
 	}
 
-	@Override
-	public int checkTicket(int playNo, int[] bookAge, List<String> seatList) {
-		int ageCount = 0;
-		
-		for(int age : bookAge) {
-			ageCount += age;
-		}
-		
-		// 제대로 인원 선택을 했는지 check함.
-		if(ageCount != seatList.size() || seatList.size() == 0) {
-			return -1;
-		}
-		
-		return 1;
-	}
 
 	@Override
 	public int buyTicket(int playNo, int userNo, String bookAge, String bookSeat, int bookPrice) {
 		Map<String, Object> ticketMap = new HashMap<>();
+		
 		ticketMap.put("playNo", playNo);
 		ticketMap.put("userNo", userNo);
 		ticketMap.put("bookAge", bookAge);
 		ticketMap.put("bookSeat", bookSeat);
 		ticketMap.put("bookPrice", bookPrice);
-		int result = dao.buyTicket(ticketMap);
+
+		return dao.buyTicket(ticketMap);
+	}
+	
+	
+
+	@Override
+	public int checkTicket(int playNo, String bookAge, String bookSeat) {
+
+		JoinPlay userPlay = dao.getUserPlay(playNo);
+		Play play =  userPlay.getPlay();
+		Screen screen = userPlay.getScreen();
 		
+		// 이미 예약한 좌석
+		String[] playSeatArray = play.getPlayBookSeat().replaceAll("\\[|\\]", "").split(",");
+		List<String> playSeatList = new ArrayList<String>();
+		
+		for(String ps : playSeatArray) {
+	        playSeatList.add(ps.replaceAll(" ", ""));
+		}
+		
+		
+		// 전체 좌석 
+		String[][] totalSeat = new String[screen.getScreenRow()][screen.getScreenCol()];
+		List<String> totalSeatList = new ArrayList<String>();
+		String[] aisleArray = screen.getScreenAisle().replaceAll("\\[|\\]", "").split(",");
+
+		for(String aisle : aisleArray) {
+		    for(int i=0; i<totalSeat.length; i++) {
+		    	if(!aisle.equals("")) {
+		    		totalSeat[i][Integer.parseInt(aisle)-1] = "ai";
+		    	}
+				
+			}
+		}
+
+		
+		Gson gson = new Gson();
+		Map<String, Object> spaceMap = gson.fromJson(screen.getScreenSpace(), Map.class);
+		
+		for (Entry<String, Object> entry : spaceMap.entrySet()) {
+			Iterator<Double> iterate = ((List<Double>) entry.getValue()).iterator();
+			while(iterate.hasNext()){
+			    totalSeat[Integer.parseInt(entry.getKey())-1][(int) (Math.round(iterate.next())-1)] = "sp";
+			}
+        }
+		
+		for(int i=0; i<screen.getScreenRow(); i++) {
+			
+			int ai = 0;
+			
+		    for(int j=0; j<screen.getScreenCol(); j++) {
+		    	if(totalSeat[i][j] != null) {
+			    	if(totalSeat[i][j].equals("ai"))  ai += 1;
+		    	} else {
+		    		totalSeatList.add('"' + String.valueOf((char) (i + 65)) + (j-ai+1) + '"');
+		    	}
+	
+		    }
+		}
+		
+		
+		// 예약할 수 있는지 체크함
+		String[] bookSeatArray = bookSeat.replaceAll("\\[|\\]", "").replaceAll(" ", "").split(",");
+		int checkResult = 1;
+		
+		for(String bs : bookSeatArray) {
+			if(!totalSeatList.contains(bs) || playSeatList.contains(bs)) {
+			    checkResult = 0; 	
+			}
+		}
+
+		return checkResult;
+	}
+	
+
+	@Override
+	public int updatePlaySeat(int playNo, String bookSeat) {
+		String[] bookSeatArray = bookSeat.replaceAll("\\[|\\]", "").replaceAll(" ", "").split(",");
+		JoinPlay userPlay = dao.getUserPlay(playNo);
+		Play play =  userPlay.getPlay();
+		
+		String playSeat = play.getPlayBookSeat().replaceAll("\\[|\\]", "");
+		String[] playSeatArray = playSeat.split(",");
+		List<String> playSeatList = new ArrayList<String>();
+		
+		for(String ps : playSeatArray) {
+			if(!ps.equals("")) {
+		        playSeatList.add(ps);
+			}
+		}
+		
+		for(String bs : bookSeatArray) {
+			playSeatList.add(bs);
+		}
+		
+		int playBookCount = play.getPlayBookCount() + bookSeatArray.length;
+		String playBookSeat = Arrays.deepToString(playSeatList.toArray()).replaceAll(" ", "");
+		
+		Map<String, Object> seatMap = new HashMap<>();
+		seatMap.put("playNo", playNo);
+		seatMap.put("playBookSeat", playBookSeat);
+		seatMap.put("playBookCount", playBookCount);
+		
+		int result = dao.updatePlaySeat(seatMap);
+
 		return result;
+	}
+
+	@Override
+	public int getBookNo(int userNo) {
+		return dao.getBookNo(userNo);
 	}
 
 }
