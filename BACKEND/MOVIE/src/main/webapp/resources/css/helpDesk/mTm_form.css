@@ -191,28 +191,7 @@ h2 {
 	color: rgb(251, 251, 251)
 }
 
-.content-wrap>div:last-child {
-	padding: 30px;
-	display: flex;
-	justify-content: center;
-}
 
-.content-wrap>div:last-child>button {
-	width: 150px;
-	height: 50px;
-	font-size: 1.2rem;
-	background-color: rgb(73, 73, 73);
-	color: rgb(251, 251, 251);
-	border-radius: 10px;
-	cursor: pointer;
-	outline: none;
-	border: none;
-}
-
-.content-wrap>div:last-child>button:hover {
-	background-color: rgb(251, 251, 251);
-	color: rgb(21, 21, 21);
-}
 
 .btn_wraper {
 	display: flex;
@@ -227,6 +206,7 @@ h2 {
 	background-color: rgb(49, 49, 49);
 	outline: none;
 	border: none;
+	border-radius: 5px;
 }
 
 .btn_wraper button:hover {

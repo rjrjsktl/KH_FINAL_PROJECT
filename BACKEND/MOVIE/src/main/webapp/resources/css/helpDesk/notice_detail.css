@@ -103,7 +103,7 @@ h2 {
     justify-content: center;
 }
 
-.content-wrap>div:last-child>button {
+.content-wrap>div:last-child>a {
     width: 150px;
     height: 50px;
     font-size: 1.2rem;
@@ -113,11 +113,13 @@ h2 {
     cursor: pointer;
     outline: none;
     border: none;
+    text-align: center;
+    line-height: 48px;
 }
 
-.content-wrap>div:last-child>button:hover {
-    background-color: rgb(251, 251, 251);
-    color: rgb(21, 21, 21);
+.content-wrap>div:last-child>a:hover {
+    background-color: #ffc400;
+    color : #000000;
 }
 
 .aslide-list>li:nth-child(2)>a {

@@ -184,11 +184,11 @@ public class HelpDeskImpl implements HelpDeskService {
 		// 또는 게시물의 비밀번호가 0일 경우
 		// 바로  보내버린다.
 		if (userManagerSt.equals("Y") || mtmPw == 0) {
-			return "redirect:/helpDesk/mtm_detail/" + mtmNo + "?cp=" + cp;
+			return "redirect:/helpDesk/mTm_detail/" + mtmNo + "?cp=" + cp;
 		} 
 
 		if (userNo == mtmUserNo ) {
-			return "redirect:/helpDesk/mtm_detail/" + mtmNo + "?cp=" + cp;
+			return "redirect:/helpDesk/mTm_detail/" + mtmNo + "?cp=" + cp;
 		}
 
 		if (userManagerSt.equals("N") && userNo != 0) {
@@ -511,6 +511,11 @@ public class HelpDeskImpl implements HelpDeskService {
 		System.out.println(cinemaNameList );
 
 		return cinemaNameList;
+	}
+
+	@Override
+	public int getNoticeListCount() {
+		return dao.getNoticeListCount();
 	}
 
 
