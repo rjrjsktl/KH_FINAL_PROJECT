@@ -276,7 +276,7 @@ public class HelpDeskDAO {
 		params.put("keyword", keyword);
 		 params.put("userNo", userNo);
 		    params.put("userManagerSt", userManagerStAsInt);
-		return sqlSession.selectOne("lostMapper.getSearchLostCount", params);
+		return sqlSession.selectOne("lostMapper.getSearchLostCount", params );
 
 	}
 
@@ -294,7 +294,7 @@ public class HelpDeskDAO {
 	    params.put("userNo", userNo);
 	    params.put("userManagerSt", userManagerStAsInt);
 	    
-		return sqlSession.selectList("lostMapper.selectSearchLOST", params, rowBounds);
+		return sqlSession.selectList("lostMapper.selectSearchLOST", params, rowBounds );
 	}
 
 

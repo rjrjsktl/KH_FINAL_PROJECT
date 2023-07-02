@@ -243,10 +243,10 @@ public class HelpDeskImpl implements HelpDeskService {
 			}
 		}
 		
-		System.out.println("분실물 검색--------------------------------------------------------------------------------");
+		System.out.println("분실물 검색------------------------------------------------------------------ --------------");
 		System.out.println(userNo);
 		System.out.println(userManagerStAsInt);
-		System.out.println("분실물 검색--------------------------------------------------------------------------------");
+		System.out.println("분실물 검색-------------------------------------------------------------------- ------------");
 		
 		
 		return dao.getSearchLostCount(area, name, keyword, userNo, userManagerStAsInt );
@@ -265,10 +265,10 @@ public class HelpDeskImpl implements HelpDeskService {
 			}
 		}
 		
-		System.out.println("분실물 검색--------------------------------------------------------------------------------");
+		System.out.println("분실물 검색-------------------------------------------------------------- ------------------");
 		System.out.println(userNo);
 		System.out.println(userManagerStAsInt);
-		System.out.println("분실물 검색--------------------------------------------------------------------------------");
+		System.out.println("분실물 검색-------------------------------------------------------------- ------------------");
 
 		int lostlistCount =  dao.getSearchLostCount(area, name, keyword, userNo, userManagerStAsInt);
 
@@ -397,9 +397,9 @@ public class HelpDeskImpl implements HelpDeskService {
 
 
 	@Override
-	public int getcountquestNum(int questNum) {
+	public int getcountquestNum(int questNum ) {
 
-		return dao.getcountquestNum(questNum);
+		return dao.getcountquestNum(questNum );
 	}
 
 
@@ -492,7 +492,7 @@ public class HelpDeskImpl implements HelpDeskService {
 
 		cinemaList.put("cinemaList", dstCinemaList);
 
-		System.out.println(cinemaList);
+		System.out.println(cinemaList );
 
 		return cinemaList;
 	}
@@ -508,7 +508,7 @@ public class HelpDeskImpl implements HelpDeskService {
 
 		cinemaNameList.put("cinemaNameList", selectcinemaNameList);
 
-		System.out.println(cinemaNameList);
+		System.out.println(cinemaNameList );
 
 		return cinemaNameList;
 	}

@@ -67,11 +67,11 @@ public interface HelpDeskService {
 	
 	
 	Map<String, Object> searchcinemaList();
-	Map<String, Object> cinemaNameList(String area);
+	Map<String, Object> cinemaNameList(String area );
 	
 	
-	int getSearchLostCount(String area, String name, String keyword , int userNo, String userManagerSt);
-	Map<String, Object> selectSearchLOST(int cp, String area, String name, String keyword, int userNo, String userManagerSt);
+	int getSearchLostCount(String area, String name, String keyword , int userNo, String userManagerSt );
+	Map<String, Object> selectSearchLOST(int cp, String area, String name, String keyword, int userNo, String userManagerSt );
 
 
 	

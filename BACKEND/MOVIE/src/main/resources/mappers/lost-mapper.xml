@@ -271,7 +271,7 @@
 		LOST_LOCATION = ('[' || #{area} || ']' || #{name} || '점')
 		AND
 		(
-		<choose>
+		<choose> 
 			<when test="keyword != null and keyword != ''">
 				(UPPER(LOST_TITLE) LIKE '%' || UPPER(#{keyword}) || '%' OR
 				UPPER(LOST_CONTENT) LIKE '%' || UPPER(#{keyword}) || '%')
@@ -297,7 +297,7 @@
 		</choose>
 		)
 		ORDER BY LOST_PACKAGE.LOST_NO DESC
-	</select>
+	</select> 
 
 
 

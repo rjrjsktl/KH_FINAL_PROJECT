@@ -663,7 +663,7 @@ public class HelpDeskController {
 		
 		else if (keyword == null || keyword.isEmpty()) {
 			userLostCount = services.getLostListCount(userNo, userManagerSt);
-			lostList = services.getLostList(cp,userNo,userManagerSt);
+			lostList = services.getLostList(cp,userNo,userManagerSt );
 		}
 
 		else {
