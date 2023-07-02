@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-    // const keyTest = config.test;
-
     const dailyEnter = document.getElementById('dailyEnter');
 
     const today = new Date();

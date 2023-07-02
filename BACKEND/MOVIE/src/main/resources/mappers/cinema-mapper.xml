@@ -167,6 +167,25 @@
 		SELECT * FROM SCREEN
 		WHERE SCREEN_STYLE = #{type}
 	</select>
+	
+	<select id="distinctcinemaList" resultMap="cinema_rm">
+		SELECT 
+		MIN(CINEMA_NO) AS
+		CINEMA_NO,
+		CINEMA_AREA
+		 FROM CINEMA
+		 GROUP BY
+		 CINEMA_AREA
+		ORDER
+		BY CINEMA_NO ASC
+	</select>
+	
+	<select id="selectcinemaNameList" resultMap="cinema_rm">
+		SELECT
+		CINEMA_NAME
+		FROM CINEMA
+		WHERE CINEMA_AREA=#{cinemaArea}
+	</select>
 
 
 

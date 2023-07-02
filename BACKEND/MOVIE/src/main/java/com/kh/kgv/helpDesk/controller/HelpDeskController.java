@@ -3,6 +3,9 @@ package com.kh.kgv.helpDesk.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -28,6 +31,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -84,24 +88,33 @@ public class HelpDeskController {
 		return "helpDesk/helpDesk_home";
 	}
 
-	// 고객센터 리스트 출력
 	@RequestMapping("/notice_List")
 	public String noticeList(
-			Model model
-			, @RequestParam(value = "cp", required = false, defaultValue="1" ) int cp) {
+	        @RequestParam(value = "cp", required = false, defaultValue="1" ) int cp,
+	        @RequestParam(value = "keyword", required = false) String keyword,
+	        Model model){
 
-
-		int listCount = 0;
-		listCount = service.getNoticeListCount();
-		model.addAttribute("listCount", listCount);
-
-		Map<String, Object>userNoticeList = null;
-
-		userNoticeList = service.userNoticeList(cp);
-		model.addAttribute("userNoticeList", userNoticeList);
-
-
-		return "helpDesk/notice_List";
+	    Map<String, Object> userNoticeList = null;
+	    int listCount = 0;
+	    
+	    if (keyword == null || keyword.isEmpty()) {
+	        listCount = service.getNoticeListCount();
+	       
+	        userNoticeList = service.userNoticeList(cp);
+	    } else {
+	    	listCount = service.getSearchListCount(keyword);
+	        userNoticeList = service.selectSearchNTC(keyword, cp);
+	        
+	    }
+	    
+	    model.addAttribute("userNoticeList", userNoticeList);
+	    model.addAttribute("keyword", keyword);
+	    model.addAttribute("listCount", listCount);
+	    
+	    System.out.println(keyword);
+	    System.out.println(cp);
+	    
+	    return "helpDesk/notice_List";
 	}
 
 	// 고객센터 세부사항 진입 문제는 userNo이 없어서 카운트증가가 안되는데 어떻게하지..
@@ -163,6 +176,8 @@ public class HelpDeskController {
 
 		return "helpDesk/notice_detail";
 	}
+	
+
 
 
 
@@ -607,14 +622,16 @@ public class HelpDeskController {
 
 		}       
 	}
-
-
-
+	
+	// 검색기능추가
 	// 잃어버린물건 리스트 출력
-	@RequestMapping("/lost_List")
+	@GetMapping("/lost_List")
 	public String lostList(
 			Model model,
 			@RequestParam(value = "cp", required = false, defaultValue="1" ) int cp,
+			@RequestParam(value= "area", required = false) String area,
+	        @RequestParam(value = "keyword", required = false) String keyword,
+	        @RequestParam(value = "name", required = false) String name,	        
 			HttpSession session,
 			RedirectAttributes ra,
 			HttpServletRequest req, HttpServletResponse resp
@@ -623,21 +640,50 @@ public class HelpDeskController {
 		User loginUser = (User)session.getAttribute("loginUser");
 		int userNo = 0;
 		String userManagerSt = null;
-
 		if(loginUser != null) {
 			userNo = loginUser.getUserNo();
 			userManagerSt = loginUser.getUserManagerSt();
 		}
-
-		Map<String, Object>lostList = null;
-		lostList = services.getLostList(cp,userNo,userManagerSt);
-
-		int userLostCount = services.getLostListCount(userNo, userManagerSt);
+		
+		Map<String, Object>cinemaList = null;
+		cinemaList = services.searchcinemaList();
+		
+		int userLostCount = 0;
+		Map<String, Object>lostList = null; 
+		
+		System.out.println(userNo);
+		System.out.println(userManagerSt);
+		
+		  if (keyword == null || keyword.isEmpty()) {
+			  userLostCount = services.getLostListCount(userNo, userManagerSt);
+			  lostList = services.getLostList(cp,userNo,userManagerSt);
+			  
+		    }
+	
+			  else {
+		    	userLostCount = services.getSearchLostCount(userNo, userManagerSt, keyword,area,name);
+		    	lostList = services.selectSearchLOST(keyword,area,name, cp, userNo,userManagerSt);		        
+		    }
+		
+		
 		model.addAttribute("lostList", lostList);
 		model.addAttribute("lostCount", userLostCount);
-
+		model.addAttribute("cinemaList",cinemaList);
+		
 		return "helpDesk/lost_List";
 	}
+	
+	@ResponseBody
+	@GetMapping("/lost_List/selectName")
+	public Map<String, Object> getCinemaNames(@RequestParam(value="area", required = false) String area) {
+
+	    Map<String, Object> cinemaNameList = services.cinemaNameList(area);
+
+	    return cinemaNameList;
+	} 
+	
+		
+	
 
 	// 잃어버린물건 비밀번호 GetMapping
 	@GetMapping("/checkLostPw/{lostNo}")
@@ -1061,21 +1107,33 @@ public class HelpDeskController {
 	@GetMapping("/question_home")
 	public String question(
 			Model model,
+	        @RequestParam(value = "keyword", required = false) String keyword,
 			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
 			) {
 
 		int questNum = 0;
+		int qescount = 0;
+		
 
-		int qescount = services.getcountquestNum(questNum);
-
+		List<Quest>selectType = null;
+		selectType = services.getQuestType();
+		
 		Map<String, Object>questList = null;
-
-		questList = services.getQuestList(cp,questNum);
+		
+		if (keyword == null || keyword.isEmpty()) {
+			qescount = services.getcountquestNum(questNum);
+			questList = services.getQuestList(cp,questNum);
+	    }
+		else {
+			qescount = services.getCountSelectQeustNo(keyword);
+			questList = services.getSearchQuestList(keyword, cp);
+		}
+		
 
 		model.addAttribute("qescount",qescount);
 		model.addAttribute("questList", questList);
-
-
+		model.addAttribute("selectType",selectType);
+		model.addAttribute("keyword",keyword);
 
 		System.out.println(model);
 
@@ -1097,11 +1155,11 @@ public class HelpDeskController {
 		Map<String, Object> response = new HashMap<>();
 		response.put("qescount", qescount);
 		response.put("questList", questList);
+	
 
 		return response;
 	}
 
-	//영화관 목록 선택하기
 
 
 

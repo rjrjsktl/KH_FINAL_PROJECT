@@ -149,6 +149,13 @@
                                                 <div class="table_bottom">
                                                     <button class="bottom_Submit">저장</button>
                                                     <button class="bottom_Cancel">취소</button>
+                                                    <!-- 숨겨진 이미지-->
+                                                    <!-- 숨겨진 이미지 -->
+                                                    <input type="hidden" class="hiddenImg1"
+                                                        value="${editStore.storeImage}" />
+                                                    <input type="hidden" class="hiddenImg2"
+                                                        value="${editStore.storeImageBig}" />
+
                                                 </div>
                                             </div>
                                         </div>
