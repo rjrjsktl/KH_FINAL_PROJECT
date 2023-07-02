@@ -297,6 +297,10 @@ public class HelpDeskDAO {
 		return sqlSession.selectList("lostMapper.selectSearchLOST", params, rowBounds );
 	}
 
+	public int getNoticeListCount() {
+		return sqlSession.selectOne("managerMapper.helpDeskCount");
+	}
+
 
 
 
