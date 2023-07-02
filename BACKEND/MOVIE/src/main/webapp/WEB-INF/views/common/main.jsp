@@ -107,7 +107,7 @@
 														</a>
 														<div>
 															<p>
-																예매율 <span>100.0</span>%
+																예매율 <span>${bookPercent}</span>%
 															</p>
 															<p>
 																개봉일 <span>${movie['movieOpen']}</span>

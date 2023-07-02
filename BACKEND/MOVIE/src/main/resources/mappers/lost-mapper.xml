@@ -228,57 +228,77 @@
 		WHERE LOST_NO=#{lostNo}
 	</update>
 
-	<select id="getSearchLostCount" parameterType="map" resultType="int">
-    SELECT
-    CASE WHEN COUNT(*) > 0 THEN COUNT(*)
-    ELSE 0
-    END AS count
-    FROM LOST_PACKAGE
-    WHERE LOST_LOCATION = ('[' || #{area} || ']' || #{name} || '점')
-    AND
-    (UPPER(LOST_TITLE) LIKE '%' || UPPER(#{keyword}) || '%'
-    OR UPPER(LOST_CONTENT) LIKE '%' || UPPER(#{keyword}) || '%')
-    AND
-    <choose>
-        <when test="userNo != null and userNo != 0 and userManagerSt != null and userManagerSt == 1">
-            LOST_PACKAGE.LOST_ST = 'N'
-        </when>
-        <when test="userNo != 0  and userManagerSt == 0">
-            LOST_PACKAGE.USER_NO = #{userNo} AND LOST_PACKAGE.LOST_ST = 'N'
-        </when>
-        <otherwise>
-            LOST_PACKAGE.USER_NO = 0 AND LOST_PACKAGE.LOST_ST = 'N'
-        </otherwise>
-    </choose>
-    ORDER BY LOST_PACKAGE.LOST_NO DESC
-</select>
+	<select id="getSearchLostCount" parameterType="map"
+		resultType="int">
+		SELECT
+		CASE WHEN COUNT(*) > 0 THEN COUNT(*)
+		ELSE 0
+		END AS count
+		FROM LOST_PACKAGE
+		WHERE LOST_LOCATION = ('[' || #{area} || ']' || #{name} || '점')
+		AND
+		(
+		<choose>
+			<when test="keyword != null and keyword != ''">
+				(UPPER(LOST_TITLE) LIKE '%' || UPPER(#{keyword}) || '%'
+				OR UPPER(LOST_CONTENT) LIKE '%' || UPPER(#{keyword}) || '%')
+			</when>
+			<otherwise>
+				1=1
+			</otherwise>
+		</choose>
+		)
+		AND
+		<choose>
+			<when
+				test="userNo != null and userNo != 0 and userManagerSt != null and userManagerSt == 1">
+				LOST_PACKAGE.LOST_ST = 'N'
+			</when>
+			<when test="userNo != 0  and userManagerSt == 0">
+				LOST_PACKAGE.USER_NO = #{userNo} AND LOST_PACKAGE.LOST_ST = 'N'
+			</when>
+			<otherwise>
+				LOST_PACKAGE.LOST_PW = 0 AND LOST_PACKAGE.LOST_ST='N'
+			</otherwise>
+		</choose>
+	</select>
+
 
 	<select id="selectSearchLOST" resultMap="lost_rm">
-    SELECT *
-    FROM
-    LOST_PACKAGE WHERE
-    LOST_LOCATION = ('[' || #{area} || ']' || #{name} || '점')
-    AND
-    (UPPER(LOST_TITLE)
-    LIKE '%' || UPPER(#{keyword}) || '%' OR
-    UPPER(LOST_CONTENT) LIKE '%' ||
-    UPPER(#{keyword}) || '%')
-    AND
-    (
-        <choose>
-            <when test="userNo != null and userNo != 0 and userManagerSt != null and userManagerSt == 1">
-                LOST_PACKAGE.LOST_ST = 'N'
-            </when>
-            <when test="userNo != 0  and userManagerSt == 0">
-                LOST_PACKAGE.USER_NO = #{userNo} AND LOST_PACKAGE.LOST_ST = 'N'
-            </when>
-            <otherwise>
-                LOST_PACKAGE.USER_NO = 0 AND LOST_PACKAGE.LOST_ST = 'N'
-            </otherwise>
-        </choose>
-    )
-    ORDER BY LOST_PACKAGE.LOST_NO DESC
-</select>
+		SELECT *
+		FROM
+		LOST_PACKAGE WHERE
+		LOST_LOCATION = ('[' || #{area} || ']' || #{name} || '점')
+		AND
+		(
+		<choose> 
+			<when test="keyword != null and keyword != ''">
+				(UPPER(LOST_TITLE) LIKE '%' || UPPER(#{keyword}) || '%' OR
+				UPPER(LOST_CONTENT) LIKE '%' || UPPER(#{keyword}) || '%')
+			</when>
+			<otherwise>
+				1=1
+			</otherwise>
+		</choose>
+		)
+		AND
+		(
+		<choose>
+			<when
+				test="userNo != null and userNo != 0 and userManagerSt != null and userManagerSt == 1">
+				LOST_PACKAGE.LOST_ST = 'N'
+			</when>
+			<when test="userNo != 0  and userManagerSt == 0">
+				LOST_PACKAGE.USER_NO = #{userNo} AND LOST_PACKAGE.LOST_ST = 'N'
+			</when>
+			<otherwise>
+				LOST_PACKAGE.LOST_PW = 0 AND LOST_PACKAGE.LOST_ST='N'
+			</otherwise>
+		</choose>
+		)
+		ORDER BY LOST_PACKAGE.LOST_NO DESC
+	</select> 
+
 
 
 

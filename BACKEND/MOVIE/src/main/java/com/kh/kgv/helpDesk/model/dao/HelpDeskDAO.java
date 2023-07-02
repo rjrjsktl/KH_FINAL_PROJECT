@@ -263,37 +263,38 @@ public class HelpDeskDAO {
 		return sqlSession.selectList("cinemaMapper.selectcinemaNameList", area);
 	}
 
-	public int getSearchLostCount(int userNo, int userManagerStAsInt, String area, String name, String keyword) {
+	public int getSearchLostCount(String area, String name, String keyword, int userNo, int userManagerStAsInt) {
 		
 		System.out.println("분실물 검색 DAO--------------------------------------------------------------------------------");
-		System.out.println(userNo);
-		System.out.println(userManagerStAsInt);
+		System.out.println(area);
+		System.out.println(name);
 		System.out.println("분실물 검색 DAO--------------------------------------------------------------------------------");
 		
 		Map<String, Object> params = new HashMap<>();
-	    params.put("keyword", keyword);
-	    params.put("area", area);
-	    params.put("name", name);
-	    params.put("userNo", userNo);
-	    params.put("userManagerSt", userManagerStAsInt);
-		return sqlSession.selectOne("lostMapper.getSearchLostCount", params);
+		  params.put("area", area);
+		    params.put("name", name);
+		params.put("keyword", keyword);
+		 params.put("userNo", userNo);
+		    params.put("userManagerSt", userManagerStAsInt);
+		return sqlSession.selectOne("lostMapper.getSearchLostCount", params );
 
 	}
 
-	public List<Mtm> selectSearchLOST(LostPagenation pagination, String keyword, String area, String name, int userNo, int userManagerStAsInt) { 
+	public List<Mtm> selectSearchLOST(LostPagenation pagination,String area, String name,  String keyword, int userNo, int userManagerStAsInt) { 
 
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
 
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
 		Map<String, Object> params = new HashMap<>();
-	    params.put("keyword", keyword);
-	    params.put("area", area);
-	    params.put("name", name);
+		  params.put("area", area);
+		    params.put("name", name);
+		params.put("keyword", keyword);
+	  
 	    params.put("userNo", userNo);
 	    params.put("userManagerSt", userManagerStAsInt);
 	    
-		return sqlSession.selectList("lostMapper.selectSearchLOST", params, rowBounds);
+		return sqlSession.selectList("lostMapper.selectSearchLOST", params, rowBounds );
 	}
 
 
