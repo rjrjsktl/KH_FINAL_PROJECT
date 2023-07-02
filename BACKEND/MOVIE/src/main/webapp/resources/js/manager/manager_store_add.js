@@ -11,8 +11,15 @@ $(document).ready(function () {
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
-            uploadImageFile1(e.target.files[i]); // 파일 전달
+
+            if (!checkExtension(e.target.files[i].name, e.target.files[i].size)) {
+                storeImage.val('');
+                return false;
+            }
+
+
         }
+        uploadImageFile1(e.target.files[i]); // 파일 전달
     });
 
     let imageUrl1;
@@ -49,8 +56,12 @@ $(document).ready(function () {
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
-            uploadImageFile2(e.target.files[i]); // 파일 전달
+            if (!checkExtension(e.target.files[i].name, e.target.files[i].size)) {
+                storeImageBig.val('');
+                return false;
+            }
         }
+        uploadImageFile2(e.target.files[i]); // 파일 전달
     });
 
 
@@ -81,7 +92,20 @@ $(document).ready(function () {
 
 
 
+    let regex = new RegExp("(.*?\.(png|jpg|gif|jpeg)$)");
+    let maxSize = 5000000; // 5MB 제한
 
+    function checkExtension(fileName, fileSize) {
+        if (fileSize >= maxSize) {
+            alert("파일 사이즈 초과");
+            return false;
+        }
+        if (!regex.test(fileName)) {
+            alert("해당 종류 파일은 업로드 안됨.\n PNG, JPG, GIF, JPEG 만 가능합니다.");
+            return false;
+        }
+        return true;
+    };
 
 
 
@@ -135,56 +159,7 @@ $(document).ready(function () {
     $('.bottom_Submit').on("click", function (e) {
 
         console.log('저장버튼이 눌림.');
-        // if (!$("#storeCategory").val()) {
-        //     alert('선택되지 않았습니다.');
-        //     storeCategory.focus();
-        //     e.preventDefault();
-        //     storeCategory = false;
-        // }
-        // else if (!$("#storeName").val()) {
-        //     alert('상품 이름이 입력되지 않았습니다.');
-        //     storeName.focus();
-        //     e.preventDefault();
-        //     storeName = false;
 
-        // } else if (nameCheck === false) {
-        //     alert('상품 이름이 중복되었습니다.');
-        //     storeName.focus();
-        //     e.preventDefault();
-        //     nameCheck = false;
-        // }
-        // else if (!$("#storeDesc").val()) {
-        //     alert('상품 설명이 입력되지 않았습니다.');
-        //     storeDesc.focus();
-        //     e.preventDefault();
-        //     storeDesc = false;
-        // }
-
-
-        // else if (!$("#storePrice").val()) {
-        //     alert('상영 가격이 입력되지 않았습니다.');
-        //     storePrice.focus();
-        //     e.preventDefault();
-        //     storePrice = false;
-        // }
-        // else if (!$("#storeStock").val()) {
-        //     alert('제한개수가 입력되지 않았습니다.');
-        //     storeStock.focus();
-        //     e.preventDefault();
-        //     storeStock = false;
-        // }
-        // else if (!$("#storeImage").val()) {
-        //     alert('이미지가 입력되지 않았습니다.');
-        //     storeImage.focus();
-        //     e.preventDefault();
-        //     storeImage = false;
-        // }
-        // else if (!$("#storeImageBig").val()) {
-        //     alert('빅 이미지가 입력되지 않았습니다.');
-        //     storeImageBig.focus();
-        //     e.preventDefault();
-        //     storeImageBig = false;
-        // };
 
 
         if (!$("#storeCategory").val()) {

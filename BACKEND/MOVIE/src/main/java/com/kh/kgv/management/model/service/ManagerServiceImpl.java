@@ -735,6 +735,34 @@ public class ManagerServiceImpl implements ManagerService {
 		
 		return getMovieList;
 	}
+	
+	@Override
+	public int getSearchListCount(String keyword) {
+		return dao.getNTCSearchListCount(keyword);
+	}
+
+	
+	// 공지사항 검색기능 구현
+	@Override
+	public Map<String, Object> selectSearchNTC(String keyword, int cp) {
+		
+		int ntcCount = dao.getNTCSearchListCount(keyword);
+		
+		System.out.println(ntcCount);
+
+		// 조회한 현재 상영중인 영화 수를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, ntcCount);
+		
+		List<Notice> noticeLists = dao.getSearchNTCList(pagination, keyword);
+		
+		Map<String, Object> userNoticeList = new HashMap<String, Object>();
+		userNoticeList.put("pagination",pagination);
+		userNoticeList.put("noticeLists", noticeLists);
+		
+		return userNoticeList;
+	}
+
+
 
 	// 관리자 극장목록 검색
 	@Override

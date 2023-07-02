@@ -240,36 +240,37 @@ public class ReserveController {
 			int priceNo = (int) session.getAttribute("priceNo");
 			int userNo = loginUser.getUserNo();
 
-			System.out.println(countArray);
-			System.out.println(seatArray);
 			
 			// 인원별 몇 명 선택했는지 배열[bookAge]로 나타냄
+			// 총 가격을 bookPrice에 담음
 			countArray = countArray.replaceAll("[^0-9]", "");
 			priceMap = service.getPriceMap(priceNo, countArray);
 			String bookAge = Arrays.toString( (int[]) priceMap.get("countArray") );
 			int bookPrice = (int) priceMap.get("totalPrice");
+
 			
 			// 어떤 좌석을 선택했는지 배열[bookSeat]로 나타냄
 			seatArray = seatArray.replaceAll("&quot", "");
 			Gson gson = new Gson();
 	        String[] gsonSeat = gson.fromJson(seatArray, String[].class);
 	        List<String> seatList = new ArrayList<>();
-	        // System.out.println(Arrays.toString(gsonSeat));
-	        
+	
 	        for(String seat: gsonSeat) {
 	        	if(seat != null) seatList.add('"' + seat + '"');
 	        }
 	        
-	        // String bookSeat = Arrays.deepToString(seatList.toArray());
+	        String bookSeat = Arrays.deepToString(seatList.toArray());
+	        condition = service.checkTicket(playNo, bookAge, bookSeat);
 	        
-	        String bookSeat = seatArray;
-
-	        // condition = service.checkTicket(playNo, bookAge, seatList);
-	        // 일단 0으로 함
-	        if(condition == 0) {
-	        	int result = service.buyTicket(playNo, userNo, bookAge, bookSeat, bookPrice);
-	        	System.out.println(result);
-				url = "/movie/pay/pay";
+	        if(condition == 1) {
+	        	int buyResult = service.buyTicket(playNo, userNo, bookAge, bookSeat, bookPrice);
+	        	
+	        	if(buyResult > 0) {
+	        		service.updatePlaySeat(playNo, bookSeat);
+	                int bookNo = service.getBookNo(userNo);
+	                session.setAttribute("bookNo", bookNo);
+	        		url = "/movie/pay/pay";
+	        	}		
 			}
 
 		} catch(Exception e) {
@@ -282,26 +283,7 @@ public class ReserveController {
 		
 		return url;
 	}
-	
-	/*
-	// 결제페이지로 이동하기
-	@GetMapping("/movie/pay/pay")
-	@ResponseBody
-	public String movePay() {
-		
-		
-		return "pay/pay";
-	}
-	
-	*/
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	

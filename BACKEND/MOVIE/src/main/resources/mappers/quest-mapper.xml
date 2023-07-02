@@ -11,6 +11,21 @@
 		<result property="questTn" column="QUEST_TN" />
 	</resultMap>
 
+
+
+	<select id="selectType" resultMap="quest_rm">
+		SELECT
+		MIN(QUEST_NO) AS
+		QUEST_NO,
+		QUEST_TYPE
+		FROM
+		QUEST_TBL
+		GROUP BY
+		QUEST_TYPE
+		ORDER BY
+		QUEST_NO ASC
+	</select>
+
 	<select id="getcountquestNum" parameterType="int"
 		resultType="int">
 		SELECT COUNT(*) AS count
@@ -19,20 +34,14 @@
 			WHERE QUEST_TN = #{questNum}
 		</if>
 	</select>
-	
+
 	<select id="getcountquestLIST" resultMap="quest_rm">
 		SELECT
-		QUEST_NO,
-		QUEST_TYPE,
-		QUEST_TITLE,
-		QUEST_CONTENT,
-		QUEST_ST,
-		QUEST_TN
+		*
 		FROM
 		QUEST_TBL
 		<choose>
-			<when
-				test="questNum != 0">
+			<when test="questNum != 0">
 				WHERE QUEST_TN = #{questTn} ORDER BY QUEST_NO ASC
 			</when>
 			<otherwise>
@@ -42,5 +51,25 @@
 	</select>
 
 
+	<select id="getCountSelectQeustNo" parameterType="String"
+	
+		resultType="int">
+		SELECT
+		CASE WHEN COUNT(*) > 0 THEN COUNT(*)
+		ELSE 0
+		END AS
+		count
+		FROM QUEST_TBL
+		WHERE
+		(UPPER(QUEST_TITLE) LIKE '%' || UPPER(#{keyword}) || '%'
+		OR UPPER(QUEST_CONTENT) LIKE '%' || UPPER(#{keyword}) || '%')
+	</select>
+
+	<select id="getSearchQuestList" resultMap="quest_rm">
+		SELECT *
+		FROM QUEST_TBL WHERE
+		(UPPER(QUEST_TITLE) LIKE '%' || UPPER(#{keyword}) || '%' OR UPPER(QUEST_CONTENT) LIKE '%' || UPPER(#{keyword}) || '%')
+		ORDER BY QUEST_NO ASC
+	</select>
 
 </mapper>

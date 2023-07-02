@@ -7,6 +7,7 @@ import java.util.Map;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.helpDesk.model.vo.LostPackage;
 import com.kh.kgv.helpDesk.model.vo.Mtm;
+import com.kh.kgv.helpDesk.model.vo.Quest;
 import com.kh.kgv.management.model.vo.Notice;
 
 public interface HelpDeskService {
@@ -58,6 +59,19 @@ public interface HelpDeskService {
 	int updatemTm(Mtm mtm);
 	LostPackage getforLostValue(int lostNo);
 	int updateLost(LostPackage lost);
+	List<Quest> getQuestType();
+	
+	
+	int getCountSelectQeustNo( String keyword);
+	Map<String, Object> getSearchQuestList(String keyword, int cp);
+	
+	
+	Map<String, Object> searchcinemaList();
+	Map<String, Object> cinemaNameList(String area);
+	
+	
+	int getSearchLostCount(int userNo, String userManagerSt, String keyword, String area, String name);
+	Map<String, Object> selectSearchLOST(String keyword, String area, String name, int cp, int userNo, String userManagerSt);
 
 
 	
