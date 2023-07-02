@@ -14,3 +14,5 @@ if (keyword) {
     $(this).html(newHtml);
   });
 }
+
+$(".selected_Cp").parent().css("border", "1px solid rgb(255, 196, 0)");
