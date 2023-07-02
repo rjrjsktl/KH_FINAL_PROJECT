@@ -8,10 +8,13 @@ import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale.Category;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -75,13 +78,24 @@ public class HelpDeskController {
 			, @RequestParam(value = "cp", required = false, defaultValue="1" ) int cp   
 			) {
 
+		int questNum = 0;
+		
+	
+
+		
 		Map<String, Object> getEvnetList = null;
 		getEvnetList = service.mainEventList();
 		model.addAttribute("getEvnetList", getEvnetList);
-
 		Map<String, Object>userNoticeList = null;
-
 		userNoticeList = service.userNoticeList(cp);
+
+		int qescount = services.getcountquestNum(questNum);
+		Map<String, Object> questList = services.getQuestList(cp,questNum);
+		
+	
+		
+		model.addAttribute("qescount", qescount);
+	    model.addAttribute("questList", questList);
 
 		model.addAttribute("userNoticeList", userNoticeList);
 

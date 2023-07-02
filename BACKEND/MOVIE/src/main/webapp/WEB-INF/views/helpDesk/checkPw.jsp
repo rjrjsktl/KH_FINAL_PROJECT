@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1:1문의</title>
+<title>접근 금지</title>
 
 <script src="https://kit.fontawesome.com/dc6e43e0ad.js"
 	crossorigin="anonymous"></script>
