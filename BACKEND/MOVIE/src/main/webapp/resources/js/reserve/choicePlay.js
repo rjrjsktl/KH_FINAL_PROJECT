@@ -25,7 +25,9 @@ let moviePlay;
 let userPlay;
 let playBundle;
 let movieTitle;
+let nextUrl;
 let playNo = 0;
+let loginSt = 0;
 
 let originResultSection = $('main > section:nth-child(2)').clone(true);
 $('main > section:nth-child(2)').remove();
@@ -146,7 +148,7 @@ function selectStyleAjax() {
 };
 
 
-// 상영을 선택함
+// [Ajax] 상영을 선택함
 
 function selectPlayAjax() {
   $.ajax({
@@ -154,7 +156,13 @@ function selectPlayAjax() {
     data: {"playNo" : playNo},
     type: "GET",
     success: function(result) {
-      console.log("상영 선택");
+      if(result != 'fail') {
+        nextUrl = result;
+        loginSt = 1;
+      } else {
+        nextUrl = "/movie/user/login"; 
+        loginSt = 0;
+      }
     },
     error: function () {
       console.log("에러 발생");
@@ -162,6 +170,7 @@ function selectPlayAjax() {
   });
 
 }
+
 
 
 // 날짜 슬라이더
@@ -573,10 +582,20 @@ function updateResultSection(userPlay) {
   resultSection.find('#play_screen').html(userPlay.screen.screenName + "관");
   resultSection.find('#play_style').html("(" + userPlay.screen.screenStyle + ")");
   
+  resultSection.find("#choiceTicket").on("click", function() {
+    if(loginSt == 1) {
+      location.href = nextUrl;
+    } else {
+      let loginGo = confirm("로그인이 필요한 서비스입니다.");
+      if(loginGo) {
+        location.href = nextUrl;
+      }
+    }
+    
+  });
+  
   $('main').append(resultSection);
 }
-
-
 
 
 /*
