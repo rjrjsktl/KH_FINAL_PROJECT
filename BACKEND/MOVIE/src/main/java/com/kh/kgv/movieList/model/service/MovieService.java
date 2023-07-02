@@ -34,6 +34,7 @@ public interface MovieService {
 	double allLike(int movieNo);
 
 	// 예매율 service
-	double allbook(int movieNo);
+	double allBook(int movieNo);
+
 
 }

@@ -290,5 +290,32 @@
 		#{screenStyle}
 	</select>
 
+	<select id="allLike" resultType="double">
+		SELECT 
+			ROUND(SUM(REV_LIKE) / COUNT(REV_LIKE), 1)
+		FROM REVIEW
+		WHERE MOVIE_NO = ${movieNo}
+		AND REV_ST = 'N'
+	</select>
+	
+	
+	<select id="allBook" resultType="double">
+		SELECT
+    		ROUND(((subquery1.booknum / subquery2.totalnum) * 100), 1)
+		FROM
+    		(SELECT
+        		COUNT(MOVIE_NO) AS booknum
+    	FROM
+        	BOOK
+    	WHERE
+        	MOVIE_NO = ${movieNo} 
+        	AND BOOK_ST = 'Y') subquery1,
+    	(SELECT
+        	COUNT(*) AS totalnum
+    	FROM
+        	BOOK
+    	WHERE
+        	BOOK_ST = 'Y') subquery2
+	</select>
 
 </mapper>
