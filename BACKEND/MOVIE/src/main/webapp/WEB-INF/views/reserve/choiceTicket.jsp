@@ -38,7 +38,7 @@
                         <strong>성인</strong>
                         <div>
                           <a href="#none" class="minus_btn">-</a>
-                          <div id="adult_count">0</div>
+                          <div id="adult_count" class="age_count">0</div>
                           <a href="#none" class="plus_btn">+</a>
                         </div>
                       </li>
@@ -46,7 +46,7 @@
                         <strong>청소년</strong>
                         <div>
                           <a href="#none" class="minus_btn">-</a>
-                          <div id="youth_count">0</div>
+                          <div id="youth_count" class="age_count">0</div>
                           <a href="#none" class="plus_btn">+</a>
                         </div>
                       </li>
@@ -54,7 +54,7 @@
                         <strong>경로</strong>
                         <div>
                           <a href="#none" class="minus_btn">-</a>
-                          <div id="senior_count">0</div>
+                          <div id="senior_count" class="age_count">0</div>
                           <a href="#none" class="plus_btn">+</a>
                         </div>
                       </li>
@@ -62,7 +62,7 @@
                         <strong>우대</strong>
                         <div>
                           <a href="#none" class="minus_btn">-</a>
-                          <div id="special_count">0</div>
+                          <div id="special_count" class="age_count">0</div>
                           <a href="#none" class="plus_btn">+</a>
                         </div>
                       </li>
