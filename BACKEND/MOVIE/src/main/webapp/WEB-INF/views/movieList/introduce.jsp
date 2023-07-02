@@ -89,7 +89,7 @@
                                                 <span>${MovieDetail.movieTitle}</span>
                                             </p>
                                             <ul>
-                                                <li>관람객평점 <span>${revLike}</span>점</li>
+                                                <li>관람객평점 <span>${revLike} / 5</span>점</li>
                                                 <li>예매율 <span>${bookPercent}</span>%</li>
                                                 <li>누적관객수 <span>${MovieDetail.movieWatched}</span>명</li>
                                             </ul>

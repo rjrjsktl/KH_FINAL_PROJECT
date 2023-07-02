@@ -232,7 +232,7 @@ public class HelpDeskImpl implements HelpDeskService {
 
 	// 분실물 찾기 갯수 조회 ( cp용 )
 	@Override
-	public int getSearchLostCount(int userNo, String userManagerSt, String keyword, String area, String name) {
+	public int getSearchLostCount(String area, String name, String keyword, int userNo, String userManagerSt) {
 		
 		int userManagerStAsInt = 0;
 		if(userManagerSt != null) {
@@ -243,18 +243,18 @@ public class HelpDeskImpl implements HelpDeskService {
 			}
 		}
 		
-		System.out.println("분실물 검색--------------------------------------------------------------------------------");
+		System.out.println("분실물 검색------------------------------------------------------------------ --------------");
 		System.out.println(userNo);
 		System.out.println(userManagerStAsInt);
-		System.out.println("분실물 검색--------------------------------------------------------------------------------");
+		System.out.println("분실물 검색-------------------------------------------------------------------- ------------");
 		
 		
-		return dao.getSearchLostCount(userNo, userManagerStAsInt, keyword, area, name);
+		return dao.getSearchLostCount(area, name, keyword, userNo, userManagerStAsInt );
 	}
 
 	// 분실물 찾기 리스트 조회
 	@Override
-	public Map<String, Object> selectSearchLOST(String keyword, String area, String name, int cp, int userNo, String userManagerSt) {
+	public Map<String, Object> selectSearchLOST(int cp, String area, String name, String keyword, int userNo, String userManagerSt) {
 		
 		int userManagerStAsInt = 0;
 		if(userManagerSt != null) {
@@ -265,17 +265,17 @@ public class HelpDeskImpl implements HelpDeskService {
 			}
 		}
 		
-		System.out.println("분실물 검색--------------------------------------------------------------------------------");
+		System.out.println("분실물 검색-------------------------------------------------------------- ------------------");
 		System.out.println(userNo);
 		System.out.println(userManagerStAsInt);
-		System.out.println("분실물 검색--------------------------------------------------------------------------------");
+		System.out.println("분실물 검색-------------------------------------------------------------- ------------------");
 
-		int lostlistCount =  dao.getSearchLostCount(userNo, userManagerStAsInt, keyword, area, name);
+		int lostlistCount =  dao.getSearchLostCount(area, name, keyword, userNo, userManagerStAsInt);
 
 		LostPagenation pagination = new LostPagenation(cp, lostlistCount);
 
 
-		List<Mtm> lostLists = dao.selectSearchLOST(pagination, keyword, area, name, userNo, userManagerStAsInt);
+		List<Mtm> lostLists = dao.selectSearchLOST(pagination,  area, name, keyword, userNo, userManagerStAsInt);
 		Map<String, Object> getMtmList = new HashMap<String, Object>();
 		getMtmList.put("pagination", pagination);
 		getMtmList.put("lostLists", lostLists);
@@ -397,9 +397,9 @@ public class HelpDeskImpl implements HelpDeskService {
 
 
 	@Override
-	public int getcountquestNum(int questNum) {
+	public int getcountquestNum(int questNum ) {
 
-		return dao.getcountquestNum(questNum);
+		return dao.getcountquestNum(questNum );
 	}
 
 
@@ -492,7 +492,7 @@ public class HelpDeskImpl implements HelpDeskService {
 
 		cinemaList.put("cinemaList", dstCinemaList);
 
-		System.out.println(cinemaList);
+		System.out.println(cinemaList );
 
 		return cinemaList;
 	}
@@ -508,7 +508,7 @@ public class HelpDeskImpl implements HelpDeskService {
 
 		cinemaNameList.put("cinemaNameList", selectcinemaNameList);
 
-		System.out.println(cinemaNameList);
+		System.out.println(cinemaNameList );
 
 		return cinemaNameList;
 	}

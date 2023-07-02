@@ -50,7 +50,7 @@
 								<span>${detail.noticeTitle}</span>
 							</div>
 							<div>
-								<span>[${detail.noticeUploader}]<span></span> <span>|</span>
+								<span>${detail.noticeUploader}<span></span> <span>|</span>
 									<span>${detail.noticeRegDate} </span></span>
 							</div>
 							<div>
@@ -75,7 +75,7 @@
 
 								<c:choose>
 									<c:when test="${empty next.noticeNo}">
-										<a style="textDecoration:none">게시글이 존재하지 않습니다.</a>
+										<span>게시글이 존재하지 않습니다.</span>
 									</c:when>
 									<c:otherwise>
 										<a href="${contextPath}/helpDesk/notice_detail/${next.noticeNo}" style="color:white">${next.noticeTitle}</a>
@@ -87,7 +87,7 @@
 								<p>이전</p>
 								<c:choose>
 									<c:when test="${empty prev.noticeNo}">
-										<a style="textDecoration:none">게시글이 존재하지 않습니다.</a>
+										<span>게시글이 존재하지 않습니다.</span>
 									</c:when>
 									<c:otherwise>
 										<a href="${contextPath}/helpDesk/notice_detail/${prev.noticeNo}" style="color:white">${prev.noticeTitle}</a>

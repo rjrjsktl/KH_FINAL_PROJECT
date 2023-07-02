@@ -360,7 +360,7 @@
 	<!-- 영화 카드 삭제 -->
 	<update id="deleteBook">
 		UPDATE BOOK SET
-		BOOK_ST = 'N'
+		BOOK_ST = 'D'
 		WHERE BOOK_NO = ${bookNo}
 	</update>
   	
