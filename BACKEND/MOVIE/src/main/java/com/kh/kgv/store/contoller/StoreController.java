@@ -31,6 +31,7 @@ import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.management.model.service.ManagerService;
 
 import com.kh.kgv.store.model.service.StoreService;
+import com.kh.kgv.store.model.vo.StoreOrder;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
@@ -100,10 +101,13 @@ public class StoreController {
 		
 //		  HttpSession session = request.getSession();
 		
-		
-		  session.setAttribute("totalPrice", totalPrice);
-		  session.setAttribute("totalCount", totalCount);
-		    
+		 synchronized (session) {
+		        session.setAttribute("totalPrice", totalPrice);
+		        session.setAttribute("totalCount", totalCount);
+		    }
+//		  session.setAttribute("totalPrice", totalPrice);
+//		  session.setAttribute("totalCount", totalCount);
+//		    
 		  
 		    
 		logger.debug(" totalPrice : " + totalPrice);
@@ -189,12 +193,13 @@ public class StoreController {
 	 	@ResponseBody
 		@PostMapping("/storeMain/store_detail/store_payment/{storeNo}/successPayment") 	
 	 	
-	 	public String successPayment(
+	 	public int successPayment(
 	 			@RequestParam("orderPrice") int orderPrice
 				,@RequestParam("orderCount") int orderCount,
-				@RequestParam("storeNo") int storeNo
-				,@RequestParam("userNo") int userNo
+				@RequestParam("storeName") String storeName
+				,@RequestParam("userName") String userName
 				,@RequestParam("userEmail") String userEmail
+				,@RequestParam("storeNo") int storeNo
 				,@RequestParam("orderDetailNo") String orderDetailNo) {
 	 		
 	 		
@@ -202,18 +207,25 @@ public class StoreController {
 	 		
 	 		logger.debug(" orderPrice################ : " + orderPrice);
 	 		logger.debug(" totalCount################ : " + orderCount);
-	 		logger.debug(" storeNo################ : " + storeNo);
-	 		logger.debug(" userNo################ : " + userNo);
+	 		logger.debug(" storeNo################ : " + storeName);
+	 		logger.debug(" userNo################ : " + userName);
 	 		logger.debug(" userEmail################ : " + userEmail);
 	 		logger.debug(" orderDetailNo################ : " + orderDetailNo);
 	 		
 	 		
-//	 		String orderDetailNo = "odt_" + System.currentTimeMillis();
-//	 		
-//	 		System.out.println(orderDetailNo);
-	 		
-	 		
-	 		return null;
+	 		StoreOrder storeOrder  = new StoreOrder();
+
+	 		storeOrder.setOrderDetailNo(orderDetailNo);
+	 		storeOrder.setOrderCount(orderCount);
+	 		storeOrder.setOrderPrice(orderPrice);
+	 		storeOrder.setUserName(userName);
+	 		storeOrder.setStoreName(storeName);
+	 		storeOrder.setUserEmail(userEmail);
+	 		storeOrder.setStoreNo(storeNo);
+	 			 		
+	 		int result = service.successPayment(storeOrder);
+	 				 			 		
+	 		return result;
 	 	}
 	 	
 	 	

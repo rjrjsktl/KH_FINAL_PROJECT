@@ -18,15 +18,11 @@
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
 						<!-- fontawesome -->
-						<link rel="stylesheet"
-							href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-							integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-							crossorigin="anonymous" referrerpolicy="no-referrer" />
+						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+							integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 						<!-- jQuery 라이브러리 추가(CDN) -->
-						<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-							integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-							crossorigin="anonymous"></script>
+						<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 					</head>
 
 					<body>
@@ -45,12 +41,16 @@
 											<div class="table_Wrapper">
 												<div class="table_Title">
 													<span>배너 목록</span>
-													<div class="search_Box">
-														<input placeholder="검색" />
-														<button class="checkBtn">
+													<form class="search_Box">
+														<select id="selectBox" name="searchType">
+															<option value="BANNER_TITLE">배너 제목</option>
+															<option value="BANNER_REGDATE">배너 등록일</option>
+														</select>
+														<input class="searchContent" placeholder="검색" name="searchContent" />
+														<button class="checkBtn" type="submit">
 															<i class="fa-solid fa-magnifying-glass fa-2xs"></i>
 														</button>
-													</div>
+													</form>
 												</div>
 												<table class="table_main">
 													<tr>
@@ -68,15 +68,13 @@
 															<td>${getBanner['bannerRegDate']}</td>
 															<c:choose>
 																<c:when test="${getBanner['bannerSt'] == 'Y'}">
-																	<td><select class="Is_Show"
-																			data-id="${getBanner['bannerNo']}">
+																	<td><select class="Is_Show" data-id="${getBanner['bannerNo']}">
 																			<option value="N">N</option>
 																			<option value="Y" selected>Y</option>
 																		</select></td>
 																</c:when>
 																<c:otherwise>
-																	<td><select class="Is_Show"
-																			data-id="${getBanner['bannerNo']}">
+																	<td><select class="Is_Show" data-id="${getBanner['bannerNo']}">
 																			<option value="N" selected>N</option>
 																			<option value="Y">Y</option>
 																		</select></td>
@@ -84,31 +82,27 @@
 															</c:choose>
 
 															<td>
-																<a href="${contextPath}/manager/banner_list/edit/${getBanner['bannerNo']}"
-																	class="editEvent"> <i
+																<a href="${contextPath}/manager/banner_list/edit/${getBanner['bannerNo']}" class="editEvent"> <i
 																		class="fa-sharp fa-solid fa-pen-to-square"></i></a>
 															</td>
 															<td>
-																<a class="deleteEvent"><i
-																		class="fa-sharp fa-solid fa-xmark"></i></a>
+																<a class="deleteEvent"><i class="fa-sharp fa-solid fa-xmark"></i></a>
 															</td>
 														</tr>
 													</c:forEach>
 
 												</table>
 												<div class="page_Nation">
-													<c:set var="url" value="?cp=" />
+													<c:set var="url" value="?searchType=${param.searchType}&searchContent=${param.searchContent}&cp=" />
 													<c:set var="pagination" value="${getBannerList['pagination']}" />
-													<c:set var="currentPage" value="${pagination.currentPage}"
-														scope="request" />
+													<c:set var="currentPage" value="${pagination.currentPage}" scope="request" />
 													<div>
 														<a href="${url}1">&lt;&lt;</a>
 													</div>
 													<div>
 														<a href="${url}${pagination.prevPage}">&lt;</a>
 													</div>
-													<c:forEach var="i" begin="${pagination.startPage}"
-														end="${pagination.endPage}" step="1">
+													<c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
 														<c:choose>
 															<c:when test="${i == currentPage}">
 																<div>

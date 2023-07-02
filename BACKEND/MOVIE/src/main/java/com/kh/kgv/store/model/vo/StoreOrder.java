@@ -10,12 +10,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StoreOrder {
-	private int orderNo;
+	private int sorderNo;
 	private String orderDetailNo;
 	private int orderCount;
-	private String orderPrice;
+	private int orderPrice;
 	private String orderDate;
-	private String otderStatus;
+	private String orderSt;
+	private String orderDelete;
+	private String userEmail;
+	private String userName;
+	private String storeName;
+	private int storeNo;
 	
 	
 	

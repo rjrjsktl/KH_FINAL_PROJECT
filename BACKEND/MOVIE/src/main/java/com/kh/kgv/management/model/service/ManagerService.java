@@ -188,6 +188,41 @@ public interface ManagerService {
 	// 관리자 1:1 문의 검색 기능
 	Map<String, Object> getAskSearch(Search search, int cp);
 
+	// 관리자 분실물 검색 기능
+	Map<String, Object> getLostSearch(Search search, int cp);
+
+	// 관리자 영화 검색 기능
+	Map<String, Object> getMovieSearch(Search search, int cp);
+
+	// 관리자 상영중인 영화 검색
+	Map<String, Object> getPlaySearch(Search search, int cp);
+
+	// 관리자 상영이 끝난 영화 검색
+	Map<String, Object> getPlayEndSearch(Search search, int cp);
+
+
+	// 관리자 극장목록 검색
+	Map<String, Object> getSearchCinemaList(Search search, int cp);
+	
+	// 관리자 극장 가격 검색
+	Map<String, Object> getSearchCinemaPrice(Search search, int cp);
+
+	// 관리자 배너 검색
+	Map<String, Object> getSearchBannerList(int cp, Search search);
+	
+	// 관리자 이벤트 검색
+	Map<String, Object> searchEventList(int cp, Search search);
+
+	// 관리자 공지사항 검색
+	Map<String, Object> searchNoticeList(int cp, Search search);
+
+	// 고객센터 공지사항 게시판 검색
+	Map<String, Object> selectSearchNTC(String keyword, int cp);
+
+	// 공지사항 갯수 조회
+	int getSearchListCount(String keyword);
+
+
 
 	
 	

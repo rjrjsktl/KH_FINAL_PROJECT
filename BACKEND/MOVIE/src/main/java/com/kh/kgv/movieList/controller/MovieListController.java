@@ -99,6 +99,18 @@ public class MovieListController {
 
 		model.addAttribute("mgenrelist", mgenrelist);
 
+		// REV_LIKE 불러오기
+		double revLike = service.allLike(movieNo);
+		System.out.println("revLike:::" + revLike);
+		
+		model.addAttribute("revLike", revLike);
+		
+		// bookPercent 불러오기
+		double bookPercent = service.allbook(movieNo);
+		System.out.println("bookPercent" + bookPercent);
+		
+		model.addAttribute("bookPercent", bookPercent);
+		
 		// 요기부터 수정페이지에 movieNo 보냄
 		movie.setMovieNo(movieNo);
 
@@ -202,7 +214,7 @@ public class MovieListController {
 
 	@ResponseBody
 	@PostMapping("/detail_List/introduce/{movieNo}")
-	public int addRv(
+	public int addRev(
 			@RequestParam("starRating") int revLike, 
 			@RequestParam("reviewText") String content,
 			@PathVariable("movieNo") int movieNo,
@@ -239,7 +251,9 @@ public class MovieListController {
 		review.setRevNo(revNo);
 
 		int result = service.addReview(review);  
-
+		
+		System.out.println("result:::"+ result);
+		
 		return result;
 	}
 	
