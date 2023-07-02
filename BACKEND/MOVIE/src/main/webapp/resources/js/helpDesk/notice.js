@@ -1,7 +1,3 @@
-$(document).ready(function () {
-  var count = $(".count-td").length;
-  $(".count-span").text(count);
-});
 let params = new URLSearchParams(window.location.search);
 let keyword = params.get("keyword");
 

@@ -1,5 +1,7 @@
 package com.kh.kgv.main.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kh.kgv.customer.model.vo.User;
+import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.main.controller.model.service.EnterCheckService;
 import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.management.model.vo.DailyEnter;
@@ -36,6 +39,7 @@ public class MainController {
 	@RequestMapping("/main")
 	public String mainForward(HttpServletRequest request, DailyEnter de, Model model,
 			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp,
+			@RequestParam Map<String, Object> paramMap,
 			HttpServletRequest req,
 			HttpSession session
 			) {
@@ -83,8 +87,29 @@ public class MainController {
 		getBannerList = service.getBannerList(cp);
 		model.addAttribute("getBannerList", getBannerList);
 		
+		System.out.println("예매율 시작");
+		// 영화 예매율 불러오기
+		List<Movie> movieList = (List<Movie>) getMovieList.get("cleanedList");
+	    List<Double> revLike = new ArrayList<>();
+	    List<Double> bookPercent = new ArrayList<>();
 		
-		
+		System.out.println("movieList::: " + movieList);
+		if (movieList != null && !movieList.isEmpty()) {
+	        System.out.println("들어옴?");
+	        for (Movie movie : movieList) {
+	            int movieNo = movie.getMovieNo();
+	            double revLikeList = movieService.allLike(movieNo);
+	            double bookPercentList = movieService.allBook(movieNo);
+	            revLike.add(revLikeList);
+	            bookPercent.add(bookPercentList);
+	        }
+	    } else {
+	        System.out.println("null임");
+	    }
+
+	    model.addAttribute("revLike", revLike);
+	    model.addAttribute("bookPercent", bookPercent);
+
 		
 		return pageMove;
 	}
