@@ -1,8 +1,6 @@
 $(document).ready(function () {
-  // 이벤트 위임을 사용해 동적으로 생성된 요소들에 대한 이벤트를 처리합니다.
   $("#questListContainer").on("click", ".qList", function () {
     var qListDetail = $(this).next(".qList_detail");
-
     if (qListDetail.hasClass("none")) {
       $(".qList_detail").slideUp().addClass("none").removeClass("block");
       qListDetail.slideDown().removeClass("none").addClass("block");
@@ -10,9 +8,7 @@ $(document).ready(function () {
       qListDetail.slideUp().removeClass("block").addClass("none");
     }
   });
-});
 
-$(document).ready(function () {
   $("#questListContainer li:first ul").css("display", "block");
 
   $(".btn-quest").click(function () {
@@ -91,18 +87,16 @@ $(document).ready(function () {
       },
     });
   });
-});
 
-let params = new URLSearchParams(window.location.search);
-let keyword = params.get("keyword");
-console.log(
-  "-----------------------------------------하이라이트 작동테스트-------------------------------------"
-);
-if (keyword) {
-  let content = document.getElementById("questListContainer");
-  let re = new RegExp(keyword, "g");
-  content.innerHTML = content.innerHTML.replace(
-    re,
-    `<span class='highlight'>${keyword}</span>`
-  );
-}
+  let params = new URLSearchParams(window.location.search);
+  let keyword = params.get("keyword");
+
+  if (keyword) {
+    let content = document.getElementById("questListContainer");
+    let re = new RegExp(keyword, "g");
+    content.innerHTML = content.innerHTML.replace(
+      re,
+      `<span class='highlight'>${keyword}</span>`
+    );
+  }
+});

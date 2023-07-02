@@ -80,9 +80,6 @@ public class HelpDeskController {
 
 		int questNum = 0;
 		
-	
-
-		
 		Map<String, Object> getEvnetList = null;
 		getEvnetList = service.mainEventList();
 		model.addAttribute("getEvnetList", getEvnetList);
@@ -93,7 +90,7 @@ public class HelpDeskController {
 		Map<String, Object> questList = services.getQuestList(cp,questNum);
 		
 	
-		
+			
 		model.addAttribute("qescount", qescount);
 	    model.addAttribute("questList", questList);
 
@@ -113,17 +110,15 @@ public class HelpDeskController {
 
 		if (keyword == null || keyword.isEmpty()) {
 			listCount = service.getNoticeListCount();
-
 			userNoticeList = service.userNoticeList(cp);
 		} else {
 			listCount = service.getSearchListCount(keyword);
 			userNoticeList = service.selectSearchNTC(keyword, cp);
-
 		}
 
 		model.addAttribute("userNoticeList", userNoticeList);
 		model.addAttribute("keyword", keyword);
-		model.addAttribute("listCount", listCount);
+		model.addAttribute("listCount",listCount);
 
 		System.out.println(keyword);
 		System.out.println(cp);
@@ -280,7 +275,7 @@ public class HelpDeskController {
 	}
 
 	// 1:1 문의사항 세부정보 확인
-	@RequestMapping("/mtm_detail/{mtmNo}")
+	@RequestMapping("/mTm_detail/{mtmNo}")
 	public String mtmdetail(
 			Model model,
 			@PathVariable("mtmNo") int mtmNo,
@@ -295,7 +290,7 @@ public class HelpDeskController {
 
 		// Add password check here
 		String checkResult = services.checkPasswordAccess(mtmNo, loginUser, cp);
-		if (!("redirect:/helpDesk/mtm_detail/" + mtmNo + "?cp=" + cp).equals(checkResult)) {
+		if (!("redirect:/helpDesk/mTm_detail/" + mtmNo + "?cp=" + cp).equals(checkResult)) {
 			return checkResult;
 		}
 
@@ -376,7 +371,7 @@ public class HelpDeskController {
 
 
 
-		return "helpDesk/mtm_detail";
+		return "helpDesk/mTm_detail";
 	}
 
 	// 1:1문의 게시물 삽입 Get
@@ -594,7 +589,7 @@ public class HelpDeskController {
 		int result = services.replyDelete(mtmNo);
 
 		if(result > 0 ) {
-			path = "helpDesk/mtm_detail/{mtmNo}";
+			path = "helpDesk/mTm_detail/{mtmNo}";
 			message = "댓글 삭제에 성공했다.";
 
 		}else {
@@ -630,7 +625,7 @@ public class HelpDeskController {
 		int result = services.replyWrite(mtmNo, content, managerNick); 
 
 		if(result > 0 ) {
-			return ResponseEntity.ok("{\"redirectUrl\": \"/helpDesk/mtm_detail/" + mtmNo + "\"}");
+			return ResponseEntity.ok("{\"redirectUrl\": \"/helpDesk/mTm_detail/" + mtmNo + "\"}");
 		} else {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred");
 

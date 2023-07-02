@@ -13,20 +13,14 @@
 					<meta name="viewport" content="width=device-width, initial-scale=1.0">
 					<title>1 : 1 문의 작성</title>
 
-					<script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
-
-
 					<!-- jQuery 라이브러리 추가(CDN) -->
 					<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 						integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 						crossorigin="anonymous"></script>
 
-
-
 					<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
-					<link rel="stylesheet" href="${contextPath}/resources/css/helpDesk/notice_ask_form.css">
+					<link rel="stylesheet" href="${contextPath}/resources/css/helpDesk/mTm_form.css">
 					<link rel="stylesheet" href="${contextPath}/resources/css/common/notice_Aside.css">
-
 
 				</head>
 

@@ -1361,6 +1361,13 @@
 		UPPER(NOTICE_TITLE) LIKE '%' ||	UPPER(#{keyword}) || '%'
 		ORDER BY NOTICE_NO DESC
 		</select>
+		
+		<select id="helpDeskCount" resultType="_int">
+		
+		SELECT COUNT(*)
+		FROM NOTICE
+		
+		</select>
 
 
 </mapper>

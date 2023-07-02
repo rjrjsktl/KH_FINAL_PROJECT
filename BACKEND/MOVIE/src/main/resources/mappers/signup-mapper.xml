@@ -146,13 +146,11 @@
 		DEFAULT,
 		DEFAULT,
 		DEFAULT,
-		DEFAULT,
+		'Y',
 		NULL,
 		DEFAULT,
 		DEFAULT
 		)
-
-
 	</insert>
 
 
