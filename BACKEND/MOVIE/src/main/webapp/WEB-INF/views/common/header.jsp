@@ -3,7 +3,6 @@
       <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
          <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
             <%@ page session="false" %>
-               <!-- 최신화 종료 건들일없음 -->
 
                <header>
                   <section>
@@ -72,8 +71,9 @@
                                           </a></li>
                                        <c:choose>
                                           <c:when test="${loginUser.userManagerSt eq 'Y'}">
-                                             <li><a href="${contextPath}/manager/main"> <span><i
-                                                         class="fa-sharp fa-solid fa-gear"></i></span>
+                                             <li><a href="${contextPath}/manager/main"> <span><img
+                                                         src="${contextPath}/resources/images/headerPng/gear.png"
+                                                         alt=""></span>
                                                    <span>판리자페이지</span>
                                                 </a></li>
                                           </c:when>
@@ -124,7 +124,7 @@
                            <li class="navBar"><a href="${contextPath}/benefitsList/benefits_detail_List">혜택</a>
                               <ul class="menuBar" style="display: none">
                                  <li><a href="${contextPath}/benefitsList/benefits_detail_List">진행중인 혜택</a></li>
-                                 <li><a href="${contextPath}/benefitsList/benefits_end_List">진행중이였었던것이였던 혜택</a></li>
+                                 <li><a href="${contextPath}/benefitsList/benefits_end_List">지난 혜택</a></li>
                               </ul>
                            </li>
                            <li class="navBar"><a href="${contextPath}/store/storeMain">스토어</a></li>
