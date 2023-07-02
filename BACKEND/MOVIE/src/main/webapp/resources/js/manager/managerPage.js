@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    // 일일 접속자 수
     const dailyEnter = document.getElementById('dailyEnter');
 
     const today = new Date();
@@ -20,7 +21,6 @@ $(document).ready(function () {
         type: "POST",
         success: function (result) {
             console.log("가져온 result : ", result);
-
             const dateResult = [];
             for (let i = 0; i < labels.length; i++) {
                 const label = labels[i];
@@ -32,7 +32,6 @@ $(document).ready(function () {
                 }
 
             }
-
             new Chart(dailyEnter, {
                 type: 'line',
                 data: {
@@ -68,42 +67,64 @@ $(document).ready(function () {
         }
     });
 
+    // 일일 관람객 수 / 예매 수
     const dailyWatch = document.getElementById('dailyWatch');
 
-    new Chart(dailyWatch, {
-        type: 'line',
+    $.ajax({
+        url: "/movie/manager/dailyWatch",
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '일일 관람객 수',
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 2,
-                backgroundColor: 'rgba(43,137,224,.5)', // 배경색
-                borderColor: '#2b89e0', // 선색
-                fill: true,
-                lineTension: 0.4, //선 곡선모양 0이면 직선
-                pointStyle: 'circle', //포인터 스타일 변경
-                pointBorderWidth: 2, //포인터 보더사이즈
-                pointRadius: 4, //포인터 반경 범위 
-                pointBorderColor: '#D3687F',//포인터 보더 색상
-                pointBackgroundColor: '#D3687F' // 포인터 내부 색상
-            }]
+            "today": formatDate(addDays(today, 1)),
+            "lastWeek": formatDate(lastWeek)
         },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+        type: "POST",
+        success: function (result) {
+            console.log("가져온 result : ", result);
+
+            const dateResult = [];
+            for (let i = 0; i < labels.length; i++) {
+                const label = labels[i];
+                const targetDate = result.find(date => date.deDateStr == label)
+                if (targetDate) {
+                    dateResult.push(targetDate.deCount)
+                } else {
+                    dateResult.push(0)
                 }
-            },
-            legend: { // 범례 사용 안 함
-                display: true,
-            },
-            responsive: true,
-            maintainAspectRatio: false
+
+            }
+            new Chart(dailyWatch, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '일일 예매',
+                        data: dateResult,
+                        borderWidth: 2,
+                        backgroundColor: 'rgba(43,137,224,.5)', // 배경색
+                        borderColor: '#2b89e0', // 선색
+                        fill: true,
+                        lineTension: 0.4, //선 곡선모양 0이면 직선
+                        pointStyle: 'circle', //포인터 스타일 변경
+                        pointBorderWidth: 2, //포인터 보더사이즈
+                        pointRadius: 4, //포인터 반경 범위 
+                        pointBorderColor: '#D3687F',//포인터 보더 색상
+                        pointBackgroundColor: '#D3687F' // 포인터 내부 색상
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    legend: { // 범례 사용 안 함
+                        display: true,
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
         }
-    });
-
-
+    })
 });
 
 // 날짜 추가 기능

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.kgv.common.Util;
+import com.kh.kgv.customer.model.vo.Book;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.helpDesk.model.vo.LostPackage;
 import com.kh.kgv.helpDesk.model.vo.Mtm;
@@ -20,6 +21,7 @@ import com.kh.kgv.management.model.vo.Benefits;
 import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
+import com.kh.kgv.management.model.vo.DailyWatch;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.management.model.vo.Notice;
@@ -853,6 +855,55 @@ public class ManagerServiceImpl implements ManagerService {
 		getNoticeList.put("noticeLists", noticeLists);
 
 		return getNoticeList;
+	}
+	
+	//관리자_예매 리스트 조회
+	@Override
+	public Map<String, Object> selectBookList(int cp) {
+
+		// 예매 리스트 수 조회
+		int noticelistCount = dao.selectBookListCount();
+
+		// 조회한 예매 리스트 수를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, noticelistCount);
+		// 예매 리스트 조회
+		List<Book> bookLists = dao.getBookList(pagination);
+		
+		Map<String, Object> getBookList = new HashMap<String, Object>();
+		getBookList.put("pagination", pagination);
+		getBookList.put("bookLists", bookLists);
+
+		return getBookList;
+	}
+
+	//관리자 예매 리스트 검색
+	@Override
+	public Map<String, Object> getBookSearch(Search search, int cp) {
+		// 예매 리스트 검색 수 조회
+		int noticelistCount = dao.getSearchBookListCount(search);
+
+		// 조회한 예매 리스트 수를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, noticelistCount);
+		// 예매 리스트 검색 조회
+		List<Book> bookLists = dao.getSearchBookList(pagination, search);
+		
+		Map<String, Object> getBookList = new HashMap<String, Object>();
+		getBookList.put("pagination", pagination);
+		getBookList.put("bookLists", bookLists);
+
+		return getBookList;
+	}
+
+	// 관리자 메인 일일 예매 수 조회
+	@Override
+	public List<DailyWatch> getWeeklyWatch(WeeklyEnter we) {
+		return dao.getWeeklyWatch(we);
+	}
+
+	// 총 접속자 수
+	@Override
+	public List<DailyEnter> getTotalEntre() {
+		return dao.getTotalEntre();
 	}
 
 	

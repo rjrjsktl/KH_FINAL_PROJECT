@@ -107,6 +107,7 @@
 }
 
 .table_main th {
+    font-size: 0.9rem;
     font-weight: bold;
 }
 
@@ -168,4 +169,8 @@
 
 .deleteEvent {
     cursor: pointer;
+}
+
+.smallText {
+    font-size: 0.7rem;
 }

@@ -49,6 +49,14 @@
     width: 48%;
     height: 31%;
     background-color: white;
+    position: relative;
+}
+
+.totalValues {
+    position: absolute;
+    top: 10px;
+    right: 75px;
+    font-size: 0.7rem;
 }
 
 .left_Inner_Contents.algin_Left {
@@ -173,6 +181,7 @@
 .tableWrapper th {
     background-color: #ddd;
     font-size: 0.8rem;
+    color: black;
 }
 
 .tableWrapper td {
@@ -182,6 +191,16 @@
 
 .tableWrapper tr:nth-child(2n) {
     background-color: #e6fffe;
+}
+
+.tableWrapper tr:hover {
+    background-color: #747474 !important;
+    color: white;
+}
+
+.tableWrapper tr a:hover {
+    background-color: #747474 !important;
+    color: white !important;
 }
 
 .right_Item_Container {
