@@ -161,7 +161,8 @@ $(document).ready(function () {
 
 
 
-
+    const hiddenImg1 = $('.hiddenImg1');
+    const hiddenImg2 = $('.hiddenImg2');
 
 
 
@@ -206,17 +207,21 @@ $(document).ready(function () {
             e.preventDefault();
             return;
         }
-        else if (!$("#storeImage").val()) {
-            alert('이미지가 입력되지 않았습니다.');
-            $("#storeImage").focus();
-            e.preventDefault();
-            return;
+        if ($('#storeImage').val() == "") {
+
+            console.log("이미지 변경 X 시 기존 값 : " + $('.storeImage').val());
+            imageUrl1 = hiddenImg1.val();
+
+            console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl1);
+
         }
-        else if (!$("#storeImageBig").val()) {
-            alert('빅 이미지가 입력되지 않았습니다.');
-            $("#storeImageBig").focus();
-            e.preventDefault();
-            return;
+        if ($('#storeImageBig').val() == "") {
+
+            console.log("이미지 변경 X 시 기존 값 : " + $('.storeImageBig').val());
+            imageUrl2 = hiddenImg2.val();
+
+            console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl2);
+
         }
 
 

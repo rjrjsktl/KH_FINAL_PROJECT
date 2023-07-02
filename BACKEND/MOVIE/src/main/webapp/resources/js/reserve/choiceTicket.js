@@ -106,8 +106,7 @@ function updateScreen(userPlay) {
     maxColumn = userPlay.screen.screenCol;
     aisle = JSON.parse(userPlay.screen.screenAisle);
     space = JSON.parse(userPlay.screen.screenSpace);
-    console.log(space);
-    selectedSeatArray = [];
+    selectedSeatArray = JSON.parse(userPlay.play.playBookSeat);
     sweetSeatArray = JSON.parse(userPlay.screen.screenSweet);
     impairedSeatArray = JSON.parse(userPlay.screen.screenImpaired); 
     
@@ -289,7 +288,7 @@ function updateCount() {
 let seatNo;
 
 $('.seat').on("click", function(e) {
-  if(!$(this).hasClass('aisle') && !$(this).hasClass('space')) {
+  if(!$(this).hasClass('aisle') && !$(this).hasClass('space') && !$(this).hasClass('selected')) {
     seatNo = alphabet[$(this).closest("div").index()] + ($(this).prevAll(".seat, .space").length+1);
   
     if($(this).hasClass("selecting")) {

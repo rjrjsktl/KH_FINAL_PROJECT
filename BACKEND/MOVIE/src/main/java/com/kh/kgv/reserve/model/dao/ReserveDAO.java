@@ -65,5 +65,13 @@ public class ReserveDAO {
 		return sqlSession.insert("playMapper.buyTicket", ticketMap);
 	}
 
+	public int updatePlaySeat(Map<String, Object> seatMap) {
+		return sqlSession.update("playMapper.updatePlaySeat", seatMap);
+	}
+
+	public int getBookNo(int userNo) {
+		return sqlSession.selectOne("playMapper.getBookNo", userNo);
+	}
+
 
 }
