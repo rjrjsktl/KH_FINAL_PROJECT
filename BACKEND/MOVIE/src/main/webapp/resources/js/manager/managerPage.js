@@ -6,9 +6,9 @@ $(document).ready(function () {
     const lastWeek = addDays(today, -6);
     const labels = getDateRange(today, lastWeek);
 
-    console.log(formatDate(today));
-    console.log(formatDate(lastWeek));
-    console.log(labels);
+    console.log("today : " + formatDate(today));
+    console.log("lastWeek : " + formatDate(lastWeek));
+    console.log("labels : " + labels);
 
 
     $.ajax({
@@ -139,7 +139,7 @@ function getDateRange(date1, date2) {
 
 function formatDate(date) {
 
-    const formattedDate = date.getFullYear() + "-" + ('0' + ((date.getMonth() + 1))).slice(-2) + "-" + date.getDate();
+    const formattedDate = date.getFullYear() + "-" + ('0' + ((date.getMonth() + 1))).slice(-2) + "-" + ('0' + ((date.getDate()))).slice(-2);
 
     return formattedDate;
 }

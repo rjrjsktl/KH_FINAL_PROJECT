@@ -134,6 +134,38 @@ public class ManagerController {
 
 	// ===================================================
 	// ===================================================
+	// 관리자_회원 리스트 이동 및 검색기능
+	@GetMapping("/book")
+	public String moveBook(
+			Model model
+			, Search search
+			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+			, @RequestParam(value ="searchType", required = false, defaultValue = "") String searchType
+			, @RequestParam(value ="searchContent", required = false, defaultValue = "") String searchContent
+			)
+	{
+		Map<String, Object> getBookList = null;
+		
+//		// 회원 리스트 얻어오기
+//		if(!searchType.isEmpty() && !searchContent.isEmpty()) {
+//			// 검색기능
+//			search.setSearchType(searchType);
+//			search.setSearchContext(searchContent);
+//			
+//			getBookList = service.getBookSearch(search, cp);
+//			
+//		} else {
+//			getBookList = service.selectBookList(cp);
+//		}
+//		model.addAttribute("getUserList", getBookList);
+		
+		System.out.println("관리자_예매 리스트 이동");
+		return "manager/manager_book_list";
+		
+	}
+	
+	// ===================================================
+	// ===================================================
 
 	// 관리자 메인 일일 접속자 수 조회
 	@ResponseBody
