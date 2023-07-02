@@ -412,7 +412,7 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public Map<String, Object> getBannerList(int cp) {
 
-		int bannerCount = dao.bannerCount(cp);
+		int bannerCount = dao.bannerCount();
 
 		// 조회한 영화관 수를 pagination 에 담기
 		Pagination pagination = new Pagination(cp, bannerCount);
@@ -735,5 +735,125 @@ public class ManagerServiceImpl implements ManagerService {
 		
 		return getMovieList;
 	}
+	
+	@Override
+	public int getSearchListCount(String keyword) {
+		return dao.getNTCSearchListCount(keyword);
+	}
 
+	
+	// 공지사항 검색기능 구현
+	@Override
+	public Map<String, Object> selectSearchNTC(String keyword, int cp) {
+		
+		int ntcCount = dao.getNTCSearchListCount(keyword);
+		
+		System.out.println(ntcCount);
+
+		// 조회한 현재 상영중인 영화 수를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, ntcCount);
+		
+		List<Notice> noticeLists = dao.getSearchNTCList(pagination, keyword);
+		
+		Map<String, Object> userNoticeList = new HashMap<String, Object>();
+		userNoticeList.put("pagination",pagination);
+		userNoticeList.put("noticeLists", noticeLists);
+		
+		return userNoticeList;
+	}
+
+
+
+	// 관리자 극장목록 검색
+	@Override
+	public Map<String, Object> getSearchCinemaList(Search search, int cp) {
+		// 극장 목록 검색 수
+		int cinemaCount = dao.getSearchCinemaCount(search);
+
+		Pagination pagination = new Pagination(cp, cinemaCount);
+
+		// 극장 목록 검색
+		List<Cinema> cinemaList = dao.getSearchCinemaList(pagination, search);
+
+		Map<String, Object> cinemaMap = new HashMap<String, Object>();
+		cinemaMap.put("pagination", pagination);
+		cinemaMap.put("cinemaList", cinemaList);
+
+		return cinemaMap;
+	}
+	
+	// 관리자 극장 가격 검색
+	@Override
+	public Map<String, Object> getSearchCinemaPrice(Search search, int cp) {
+		// 극장 가격 목록 검색 수
+		int cinemaPriceCount = dao.getSearchCinemaPriceCount(search);
+
+		Pagination pagination = new Pagination(cp, cinemaPriceCount);
+
+		// 극장 가격 목록 검색
+		List<CinemaPrice> cinemaPriceList = dao.getSearchCinemaPriceList(pagination, search);
+
+		Map<String, Object> cinemaMap = new HashMap<String, Object>();
+		cinemaMap.put("pagination", pagination);
+		cinemaMap.put("cinemaPriceList", cinemaPriceList);
+
+		return cinemaMap;
+	}
+
+	// 관리자 배너 검색
+	@Override
+	public Map<String, Object> getSearchBannerList(int cp, Search search) {
+		//  배너 목록 검색 수
+		int bannerCount = dao.bannerSearchCount(search);
+
+		Pagination pagination = new Pagination(cp, bannerCount);
+		
+		//  배너 목록 검색
+		List<banner> BannerList = dao.getSearchBannerList(pagination, search);
+
+		Map<String, Object> getBannerList = new HashMap<String, Object>();
+		getBannerList.put("BannerList", BannerList);
+
+		return getBannerList;
+	}
+
+	// 관리자 이벤트 검색
+	@Override
+	public Map<String, Object> searchEventList(int cp, Search search) {
+				//  이벤트 목록 검색 수
+				int eventlistCount = dao.getSearchEventListCount(search);
+
+				// 조회한 회원을 pagination 에 담기
+				Pagination pagination = new Pagination(cp, eventlistCount);
+				
+				//  이벤트 목록 검색 조회
+				List<Event> eventList = dao.SearchEventList(pagination, search);
+				Map<String, Object> getEventList = new HashMap<String, Object>();
+				getEventList.put("pagination", pagination);
+				getEventList.put("eventList", eventList);
+
+				return getEventList;
+	}
+	
+	// 관리자 공지사항 검색
+	@Override
+	public Map<String, Object> searchNoticeList(int cp, Search search) {
+
+		// 검색한 공지사항 수 조회
+		int noticelistCount = dao.getSearchNoticeListCount(search);
+
+		// 조회한 검색한 공지사항 수를 pagination 에 담기
+		Pagination pagination = new Pagination(cp, noticelistCount);
+
+		// 검색한 공지사항 리스트 조회
+		List<Notice> noticeLists = dao.searchNoticeList(pagination, search);
+
+		Map<String, Object> getNoticeList = new HashMap<String, Object>();
+		getNoticeList.put("pagination", pagination);
+		getNoticeList.put("noticeLists", noticeLists);
+
+		return getNoticeList;
+	}
+
+	
 }

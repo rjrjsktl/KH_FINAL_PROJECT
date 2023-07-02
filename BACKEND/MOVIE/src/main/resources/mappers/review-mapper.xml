@@ -79,7 +79,7 @@
     	ROUND(((subquery1.booknum / subquery2.totalnum) * 100), 1)
 	FROM
     	(SELECT
-        	COUNT(BOOK_NO) AS booknum
+        	COUNT(MOVIE_NO) AS booknum
     	FROM
         	BOOK
     	WHERE

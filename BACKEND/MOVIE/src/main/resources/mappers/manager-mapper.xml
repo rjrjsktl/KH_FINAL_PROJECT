@@ -907,7 +907,7 @@
                 AND UPPER(l.LOST_ITEM) LIKE '%' || UPPER(#{searchContext}) || '%'
             </when>
             <when test="searchType == 'LOST_DATE'">
-                AND l.LOST_DATE = #{searchContext}
+                AND TO_CHAR(l.LOST_DATE) = #{searchContext}
             </when>
             <when test="searchType == 'LOST_REPDATE'">
                 AND TO_CHAR(l.LOST_REPDATE, 'YYYY-MM-DD') = #{searchContext}
@@ -938,7 +938,7 @@
 					UPPER(l.LOST_ITEM) LIKE '%' || UPPER(#{searchContext}) || '%'
 				</when>
 				<when test="searchType == 'LOST_DATE'">
-					TO_CHAR(l.LOST_DATE, 'YYYY-MM-DD') = #{searchContext}
+					TO_CHAR(l.LOST_DATE) = #{searchContext}
 				</when>
 				<when test="searchType == 'LOST_REPDATE'">
 					TO_CHAR(l.LOST_REPDATE, 'YYYY-MM-DD') = #{searchContext}
@@ -973,7 +973,7 @@
 	</select>
 	
 	
-	<!--  검색한 분실물 리스트 조회 -->
+	<!--  검색한 영화 리스트 조회 -->
 	<select id="searchMovieList" resultMap="movie_rm">
 		SELECT *
 		FROM MOVIE
@@ -1145,5 +1145,222 @@
 		  </choose>
 		  AND p.PLAY_END <![CDATA[ < ]]>SYSDATE
 		</select>
+		
+
+			<!-- 극장 목록 검색 수 조회 -->
+	<select id="getSearchCinemaCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM CINEMA
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'CINEMA_NAME'">
+					UPPER(CINEMA_NAME) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'CINEMA_AREA'">
+					UPPER(CINEMA_AREA) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<otherwise>
+					UPPER(CINEMA_REGION) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+	
+	
+	<!--  극장 목록 리스트 조회 -->
+	<select id="getSearchCinemaList" resultMap="cinema_rm">
+		SELECT *
+		FROM CINEMA
+			<trim prefix="where">
+			<choose>
+				<when test="searchType == 'CINEMA_NAME'">
+					UPPER(CINEMA_NAME) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'CINEMA_AREA'">
+					UPPER(CINEMA_AREA) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<otherwise>
+					UPPER(CINEMA_REGION) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+	
+				<!-- 극장 가격 목록 검색 수 조회 -->
+	<select id="getSearchCinemaPriceCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM PRICE
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'SCREEN_STYLE'">
+					UPPER(SCREEN_STYLE) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'PRICE_DAY'">
+					UPPER(PRICE_DAY) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<otherwise>
+					UPPER(PRICE_TIME) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+	
+	
+	<!--  극장 가격 목록 검색 조회 -->
+	<select id="getSearchCinemaPriceList" resultMap="cinemaprice_rm">
+		SELECT *
+		FROM PRICE
+				<trim prefix="where">
+			<choose>
+				<when test="searchType == 'SCREEN_STYLE'">
+					UPPER(SCREEN_STYLE) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'PRICE_DAY'">
+					UPPER(PRICE_DAY) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<otherwise>
+					UPPER(PRICE_TIME) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+	
+	<!-- 배너 목록 검색 수 조회 -->
+	<select id="bannerSearchCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM BANNER
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'BANNER_TITLE'">
+					UPPER(BANNER_TITLE) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<otherwise>
+					TO_CHAR(BANNER_REGDATE, 'YYYY-MM-DD') = #{searchContext}
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+	
+	
+	<!--  배너 목록 검색 조회 -->
+	<select id="getSearchBannerList" resultMap="banner_rm">
+		SELECT *
+		FROM BANNER
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'BANNER_TITLE'">
+					UPPER(BANNER_TITLE) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<otherwise>
+					TO_CHAR(BANNER_REGDATE, 'YYYY-MM-DD') = #{searchContext}
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+	
+	<!-- 이벤트 목록 검색 수 조회 -->
+	<select id="getSearchEventListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM EVENT
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'EVENT_TITLE'">
+					UPPER(EVENT_TITLE) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'EVENT_START'">
+					TO_CHAR(EVENT_START) = #{searchContext}
+				</when>
+				<when test="searchType == 'EVENT_END'">
+					TO_CHAR(EVENT_END) = #{searchContext}
+				</when>
+				<otherwise>
+					TO_CHAR(EVENT_REG, 'YYYY-MM-DD') = #{searchContext}
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+	
+	
+	<!--  이벤트 목록 검색 조회 -->
+	<select id="SearchEventList" resultMap="event_rm">
+		SELECT *
+		FROM EVENT
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'EVENT_TITLE'">
+					UPPER(EVENT_TITLE) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'EVENT_START'">
+					TO_CHAR(EVENT_START) = #{searchContext}
+				</when>
+				<when test="searchType == 'EVENT_END'">
+					TO_CHAR(EVENT_END) = #{searchContext}
+				</when>
+				<otherwise>
+					TO_CHAR(EVENT_REG, 'YYYY-MM-DD') = #{searchContext}
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+	
+	<!-- 공지사항 목록 검색 수 조회 -->
+	<select id="getSearchNoticeListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM NOTICE
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'NOTICE_TITLE'">
+					UPPER(NOTICE_TITLE) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'NOTICE_REGDATE'">
+					TO_CHAR(NOTICE_REGDATE, 'YYYY-MM-DD') = #{searchContext}
+				</when>
+				<otherwise>
+					UPPER(NOTICE_UPLOADER) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+	
+	
+	<!--  공지사항 목록 검색 조회 -->
+	<select id="searchNoticeList" resultMap="notice_rm">
+		SELECT *
+			FROM NOTICE
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'NOTICE_TITLE'">
+					UPPER(NOTICE_TITLE) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'NOTICE_REGDATE'">
+					TO_CHAR(NOTICE_REGDATE, 'YYYY-MM-DD') = #{searchContext}
+				</when>
+				<otherwise>
+					UPPER(NOTICE_UPLOADER) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+	
+	
+		<select id="getNTCSearchListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM NOTICE
+		WHERE
+		UPPER(NOTICE_TITLE) LIKE '%' ||	UPPER(#{keyword}) || '%'
+		</select>
+	
+		<select id="getNTCSearchList" resultMap="notice_rm">
+		SELECT
+		NOTICE_NO,
+		NOTICE_TITLE
+		, TO_CHAR(NOTICE_REGDATE, 'YYYY.MM.DD') AS NOTICE_REGDATE,
+		NOTICE_VIEW
+		FROM NOTICE
+		WHERE
+		UPPER(NOTICE_TITLE) LIKE '%' ||	UPPER(#{keyword}) || '%'
+		ORDER BY NOTICE_NO DESC
+		</select>
+
 
 </mapper>

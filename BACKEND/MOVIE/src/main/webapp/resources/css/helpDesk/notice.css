@@ -53,7 +53,7 @@ h2 {
     padding: 0 5px;
 }
 
-.search-area>div {
+.search-area form {
     width: 40%;
     height: 100%;
     display: flex;
@@ -63,14 +63,14 @@ h2 {
 
 }
 
-.search-area>div>input {
+.search-area input {
     width: 70%;
     background-color: transparent;
     outline: none;
     border: none;
 }
 
-.search-area>div>button {
+.search-area button {
     width: 30%;
     border: none;
     outline: none;
@@ -163,3 +163,10 @@ thead th:nth-child(4) {
     height:100%;
     line-height: 28px;
   }
+
+
+  .highlight{
+    background-color:rgba(255, 196, 0.3);
+    color:black;
+  }
+  

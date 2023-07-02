@@ -88,7 +88,7 @@ public class TheaterController {
 		case 5:
 			return "theater/theaterS5";
 		default:
-			return "error"; // 이 부분은 올바르지 않은 theaterID가 전달됐을 때를 대비한 에러 페이지로 리다이렉트입니다. 적절한 에러 페이지를 설정하세요.
+			return "error";
 		}
 
 

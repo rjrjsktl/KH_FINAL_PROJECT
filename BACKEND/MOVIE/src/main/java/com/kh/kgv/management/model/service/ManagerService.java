@@ -201,6 +201,29 @@ public interface ManagerService {
 	Map<String, Object> getPlayEndSearch(Search search, int cp);
 
 
+	// 관리자 극장목록 검색
+	Map<String, Object> getSearchCinemaList(Search search, int cp);
+	
+	// 관리자 극장 가격 검색
+	Map<String, Object> getSearchCinemaPrice(Search search, int cp);
+
+	// 관리자 배너 검색
+	Map<String, Object> getSearchBannerList(int cp, Search search);
+	
+	// 관리자 이벤트 검색
+	Map<String, Object> searchEventList(int cp, Search search);
+
+	// 관리자 공지사항 검색
+	Map<String, Object> searchNoticeList(int cp, Search search);
+
+	// 고객센터 공지사항 게시판 검색
+	Map<String, Object> selectSearchNTC(String keyword, int cp);
+
+	// 공지사항 갯수 조회
+	int getSearchListCount(String keyword);
+
+
+
 	
 	
 	
