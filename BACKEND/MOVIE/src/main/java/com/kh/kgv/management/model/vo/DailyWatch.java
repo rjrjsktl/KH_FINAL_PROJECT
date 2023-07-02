@@ -5,12 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-//@Data를 쓰면, @Getter @Setter @RequiredArgsConstructor @ToString @EqulasAndHashCode를 한번에 설정한다.
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class DailyEnter {
-	//  일일 접속자 수 테이블
+public class DailyWatch {
+	//  일일 관람객 수 테이블
 	private int deNo;
 	private String deDate;
 	private String deIp;

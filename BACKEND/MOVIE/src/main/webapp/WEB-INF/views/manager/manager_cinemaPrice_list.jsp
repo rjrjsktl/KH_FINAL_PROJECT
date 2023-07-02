@@ -76,11 +76,21 @@
 															<td>${cinemaPrice['screenStyle']}</td>
 															<td>${cinemaPrice['priceDay']}</td>
 															<td>${cinemaPrice['priceTime']}</td>
-															<td>${cinemaPrice['priceTeen']}</td>
-															<td>${cinemaPrice['priceNormal']}</td>
-															<td>${cinemaPrice['priceNormal']}</td>
-															<td>${cinemaPrice['priceElder']}</td>
-															<td>${cinemaPrice['priceSpecial']}</td>
+															<td>
+																<fmt:formatNumber value="${cinemaPrice['priceTeen']}" pattern="#,###" />&nbsp;원
+															</td>
+															<td>
+																<fmt:formatNumber value="${cinemaPrice['priceNormal']}" pattern="#,###" />&nbsp;원
+															</td>
+															<td>
+																<fmt:formatNumber value="${cinemaPrice['priceNormal']}" pattern="#,###" />&nbsp;원
+															</td>
+															<td>
+																<fmt:formatNumber value="${cinemaPrice['priceElder']}" pattern="#,###" />&nbsp;원
+															</td>
+															<td>
+																<fmt:formatNumber value="${cinemaPrice['priceSpecial']}" pattern="#,###" />&nbsp;원
+															</td>
 															<td>
 																<a href="${contextPath}/manager/manager_cinemaPrice_list/edit/${cinemaPrice['priceNo']}" class="editEvent">
 																	<i class="fa-sharp fa-solid fa-pen-to-square"></i>
