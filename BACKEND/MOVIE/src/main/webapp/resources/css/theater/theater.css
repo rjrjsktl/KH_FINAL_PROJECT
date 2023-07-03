@@ -1,23 +1,22 @@
-main>section {
+main>section{
     margin-bottom: 50px;
 }
 
 h2 {
     font-size: 1.5rem;
     font-weight: 500;
-    padding: 50px 0 30px 0;
+    padding:50px 0 30px 0;
 }
 
 .theater-wrap {
     width: 1040px;
     margin: 0 auto;
-    padding: 0 30px;
+    padding:0 30px;
 }
 
-.cont-wrap {
-    border: 3px solid rgba(255, 255, 255, 0.3);
+.cont-wrap{
+    border:3px solid#FCC400;
     border-radius: 10px;
-    padding: 16px 0;
 }
 
 .list_wrap {
@@ -30,30 +29,43 @@ h2 {
 .area-wrap {
     display: flex;
     border-radius: 10px;
-}
-
-
-.area-name>span {
-    padding: 20px 40px;
-    z-index: 10;
+    height:64px;
 }
 
 
 
-.area-wrap>li {
+.area-wrap li {
     width: 10%;
     cursor: pointer;
     text-align: center;
     font-size: 1.2rem;
+    line-height: 62px;
+
 }
 
+.area-wrap li:nth-child(1){
+    background-color: #FCC400;
+}
+
+.area-wrap li:nth-child(1) > a > span{
+    color:black;
+}
+
+.area-name >span{
+    padding:20px 40px;
+    z-index: 10;
+    color:black;
+}
+
+
+
 .list-detail {
-    margin-top: 5px;
+    margin-top:20px;
     display: none;
     width: 1040px;
     height: 100%;
     position: relative;
-    padding: 0px 30px;
+    padding:0px 30px;
 
 }
 
@@ -69,17 +81,18 @@ h2 {
     display: flex;
     z-index: 99;
 
+    
 }
 
 .list-detail>ul>li>a {
-    padding-left: 10px;
-    width: 80%;
+    padding-left:10px;
+    width:80%;
     text-align: left;
     font-size: 0.9rem;
 }
 
-.list-detail>ul>li>a:hover {
-    color: white;
+.list-detail>ul>li>a:hover{
+    color:white;
     text-decoration: underline;
 }
 
@@ -93,103 +106,108 @@ h2 {
 }
 
 
-.yellowCol {
-    color: black;
-    background-color: rgba(210, 210, 210, 0.8);
+.yellowCol{
+    color:black;
+    font-weight: bold;
+    background-color:  #FFC400;
 }
 
-.area-wrap>.area-name:nth-child(1)>.location {
+.location{
+    font-weight: bold;
+}
+
+.area-wrap > .area-name:nth-child(1) > .location{
     border-top-left-radius: 8px;
 }
 
-.event-wrap {
-    width: 1040px;
-    padding: 0 30px;
-    height: 100%;
-    margin: 0 auto;
+
+.event-wrap{
+    width:1040px;
+    padding:0 30px;
+    height:100%;
+    margin:0 auto;
 }
 
-.event-wrap-title {
+.event-wrap-title{
     display: flex;
     justify-content: space-between;
 }
 
-.event-wrap-title>a {
+.event-wrap-title>a{
     font-size: 0.8rem;
-    margin-top: 20px;
+    margin-top:20px;
 }
 
-.event-wrap-title>span:nth-child(1) {
+.event-wrap-title>span:nth-child(1){
     font-size: 1.5rem;
 }
 
-.event-wrap>div:nth-child(2) {
+.event-wrap>div:nth-child(2){
     padding: 30px 0 50px 0;
     display: flex;
     justify-content: space-between;
 }
 
-.event-wrap>div:nth-child(2)>div {
-    width: 49%;
-    height: 250px;
-    border: 1px solid red;
+.event-wrap>div:nth-child(2)>div{
+    width:49%;
+    height:250px;
+    border:1px solid red;
     border-radius: 10px;
     display: flex;
 }
 
-.event-wrap>div:nth-child(2)>div>a {
-    flex: 1;
-    display: flex;
+.event-wrap>div:nth-child(2)>div>a{
+  flex:1;
+  display: flex;
 }
 
-.event-wrap>div:nth-child(2)>div>a>img {
-    flex: 1;
+.event-wrap>div:nth-child(2)>div>a>img{
+    flex:1;
 }
 
-.table-wrap {
-    width: 1040px;
-    padding: 0 30px;
-    height: 100%;
-    margin: 0 auto;
+.table-wrap{
+    width:1040px;
+    padding:0 30px;
+    height:100%;
+    margin:0 auto;
     display: flex;
     flex-direction: column;
     padding-bottom: 100px;
 }
 
-.table-wrap>span {
+.table-wrap > span{
     font-size: 1.5rem;
-    padding: 15px 0;
+    padding:15px 0;
 }
 
-table {
-    padding: 15px 30px;
-    flex: 1 1 0;
-    border-top: 1px solid lightgray;
+table{
+    padding:15px 30px;
+    flex:1 1 0;
+    border-top:1px solid lightgray;
 }
 
-table thead th {
+table thead th{
     padding-bottom: 15px;
 }
 
-table td {
+table td{
     text-align: center;
 
 }
 
 table td:first-child {
     width: 5%;
-    padding: 3px 0;
+    padding:3px 0;
 }
 
-table td:nth-child(2) {
-    width: 75%;
+table td:nth-child(2){
+    width:75%;
+}
+table td:nth-child(3){
+    width:20%;
 }
 
-table td:nth-child(3) {
-    width: 20%;
-}
 
-
-.navBar:nth-child(2)>a:nth-child(1) {
-    color: rgb(255, 196, 0);
-}
+.navBar:nth-child(2) > a:nth-child(1){
+    color:rgb(255,196,0);
+ }

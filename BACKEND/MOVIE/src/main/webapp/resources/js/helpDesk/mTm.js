@@ -215,7 +215,7 @@ $(document).ready(function () {
       success: function (response) {
         var mtmNo = response.mtmNo;
         alert("작성성공");
-        var url = `/movie/helpDesk/mtm_detail/${mtmNo}`;
+        var url = `/movie/helpDesk/mTm_detail/${mtmNo}`;
         location.href = url;
       },
       error: function (xhr, status, error) {
