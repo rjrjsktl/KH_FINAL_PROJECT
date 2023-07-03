@@ -54,10 +54,12 @@ public class TheaterController {
 	
 	@ResponseBody
 	@GetMapping("/normalTheater/selectArea")
-	public Map<String, Object> getCinemaNames(@RequestParam(value="area", required = false) String area) {
+	public Map<String, Object> getCinemaNames(@RequestParam(value="area", required = false) String area,
+			Model model
+			) {
 
 		Map<String, Object> cinemaNameList = hdService.cinemaNameList(area);
-
+		model.addAttribute("cinemaNameList",cinemaNameList);
 		return cinemaNameList;
 	} 
 	
