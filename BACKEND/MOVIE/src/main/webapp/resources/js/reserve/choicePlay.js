@@ -75,7 +75,6 @@ function updatePlayAjax() {
 
 // 특정 특별관의 특정 영화 상영만 불러옴
 function updateRoomPlayAjax() {
-  console.log(movieIndex);
   $.ajax({
     url: "roomPlayList",
     data: {typeIndex, roomIndex, dateIndex, movieOptionIndex, movieIndex},
@@ -148,6 +147,7 @@ function selectAreaAjax() {
     success: function(cinemaList) {
       areaCinemaList = cinemaList;
       $("#cinema_list").empty();
+      movieIndex = -1;
       updateCinemaSection(areaCinemaList);
       if(prevAreaIndex == areaIndex) {
     	$('#cinema_list').children().eq(cinemaIndex).children().click();
@@ -242,11 +242,11 @@ $('.swiper-slide > .date').each(function(index, item){
   
   if($(this).parent().index() == 0) {
     $(this).next().html("오늘");
+    $(this).addClass("clicked");
+    $(this).siblings().addClass('clicked');
   } else {
     $(this).next().html(weeks[date.getDay()]);
   }
-  
-  
 
   if(date.getDay() == 6 || date.getDay() == 0) {
     $(this).addClass("holiday");
@@ -264,6 +264,12 @@ let playDay = new Date();
 let strPlayDay;
 
 $('.swiper-slide > .date').on("click", function(){
+
+  $('.swiper-slide > .date').removeClass('clicked');
+  $('.swiper-slide > .date').siblings().removeClass('clicked');
+  $(this).addClass('clicked');
+  $(this).siblings().addClass('clicked');
+  
   dateIndex = $(this).parent().index();
   playDay = new Date();
   playDay.setDate(today.getDate() + dateIndex);
@@ -271,19 +277,22 @@ $('.swiper-slide > .date').on("click", function(){
   strPlayDay = (playDay.getMonth()+1) + "월 " + playDay.getDate() + "일 " + weeks[playDay.getDay()] + "요일";
   $('#play_select').html(strPlayDay);
   
-  if(movieIndex != -1) {
+  if(movieIndex == -1) {
     if($('#cinema_option1').hasClass("clicked") && cinemaIndex != -1) {
       updateGreatPlayAjax();
     } else if($('#cinema_option2').hasClass("clicked") && roomIndex != -1) {
       updateSpecialPlayAjax();
-    }
-    
+    } 
   }
-  /*
+  
   else {
-    updatePlayAjax()
-  } 
-  */
+    if($('#cinema_option1').hasClass("clicked") && cinemaIndex != -1) {
+      updatePlayAjax();
+    } else if($('#cinema_option2').hasClass("clicked") && roomIndex != -1) {
+      updateRoomPlayAjax();
+    }
+  
+  }
   
 });
 
@@ -389,6 +398,7 @@ function clickSpecialScreen(e) {
 
   roomIndex = $(e.target).parent().index();
   prevTypeIndex = typeIndex;
+  movieIndex = -1;
   
   let ssInfo = ssList[roomIndex].cinemaName + " (" + ssList[roomIndex].screenStyle + ")";
   $("#cinema_select").html(ssInfo);
@@ -499,6 +509,7 @@ $('#cinema_option1').on("click", function() {
   $('#cinema_list').css('display', 'block');
   $('#special_list').css('display', 'none');
   $('#special_cinema_list').css('display', 'none');
+  resetPlay();
 });
 
 $('#cinema_option2').on("click", function() {
@@ -508,8 +519,23 @@ $('#cinema_option2').on("click", function() {
   $('#cinema_list').css('display', 'none');
   $('#special_list').css('display', 'block');
   $('#special_cinema_list').css('display', 'block');
-
+  resetPlay();
 });
+
+function resetPlay() {
+  $('#total_play').empty();
+  $('#movielist_text > li > a').removeClass("bright");
+  $('#movielist_thumb > li > a').removeClass("bright");
+  $('#cinema_list > li > a').removeClass("clicked");
+  $('#special_cinema_list > li > a').removeClass("clicked");
+  $('#cinema_select').html("극장 선택");
+  $('#movie_select').html("영화 선택");
+  $('#result_section').empty();
+  $('#result_section').css('display', 'none');
+  
+  cinemaIndex = -1;
+  roomIndex = -1;
+}
 
 // 영화 리스트 버전 선택
 
