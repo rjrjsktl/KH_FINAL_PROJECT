@@ -96,7 +96,7 @@ h2 {
     text-decoration: underline;
     color: rgb(255, 196, 0) !important;
 }
-
+ 
 .content-wrap>div:last-child {
     padding: 30px;
     display: flex;

@@ -18,7 +18,7 @@
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
-	<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
+	<link rel="stylesheet"  href="${contextPath}/resources/css/common/outline.css">
 	<link rel="stylesheet" href="${contextPath}/resources/css/helpDesk/mTm_detail.css">
 	<link rel="stylesheet" href="${contextPath}/resources/css/common/notice_Aside.css">
 
@@ -29,7 +29,7 @@
 <body>
 	<div id="wrap">
 		<jsp:include page="/WEB-INF/views/common/header.jsp" />
-
+ 
 		<main>
 			<section>
 
