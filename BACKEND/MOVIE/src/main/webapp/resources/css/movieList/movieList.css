@@ -154,3 +154,7 @@ main>div:nth-child(2)>ol>li>div:nth-child(3)>button:nth-child(2) {
 .titleFont {
     font-weight: bold;
 }
+
+.navBar:nth-child(1)>a:nth-child(1) {
+    color: rgb(255, 196, 0);
+}
