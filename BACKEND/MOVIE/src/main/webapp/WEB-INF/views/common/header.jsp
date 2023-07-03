@@ -132,7 +132,7 @@
                         <div class="dummy" style="display: none"></div>
                         <div>
                            <form action="${contextPath}/movieList/all_List" class="search-areaa">
-                              <input type="text" placeholder="아 영화 재밌는거 없나" name="keyword">
+                              <input type="text" placeholder="아 영화 재밌는거 없나" name="hkeyword">
                               <button class="submitBTN">
                                  <img src="${contextPath}/resources/images/headerPng/glasses.png" alt="">
                               </button>

@@ -34,7 +34,7 @@
 
 							<main>
 								<div>
-									<span>${pageTitle} : ${keyword}</span>
+									<span>${pageTitle} : ${hkeyword}</span>
 								</div>
 
 								<c:choose>
