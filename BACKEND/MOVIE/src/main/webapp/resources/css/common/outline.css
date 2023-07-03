@@ -114,9 +114,11 @@ header>section:nth-child(1) {
 }
 
 .memberInfo_wrap>ul>li>a>span:nth-child(1)>img {
-    width: 28px;
+    width: 32px;
     height: 32px;
 }
+
+
 
 .memberInfo_wrap>ul>li>a * {
     display: flex;
@@ -159,10 +161,17 @@ header>nav>div>ul {
 header>nav>div>ul>li {
     padding-right: 50px;
     font-weight: bold;
+    width:100%;
+    height:100%;
 }
+
+header>nav>div>ul>li>a:hover{
+    color:#FFC400;
+} 
 
 header>nav ul>li>a {
     color: #FCFCFC;
+    width:100%;
 }
 
 header>nav>div>div {
