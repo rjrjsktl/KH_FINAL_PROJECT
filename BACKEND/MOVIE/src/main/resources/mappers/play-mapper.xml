@@ -98,6 +98,14 @@
 	    <result property="bookSt"             column="BOOK_ST" />
 	</resultMap>
 	
+	<resultMap type="storeCoupon" id="storeCoupon_rm">
+		
+		<id property="scouponNo" column="S_COUPON_NO"/>
+		<result property="sorderNo" 				column="S_ORDER_NO"/>
+		<result property="couponDetailNo" 			column="COUPON_DETAIL_NO"/>
+		<result property="couponSt" 			column="COUPON_ST"/>
+	</resultMap>
+	
 	
 	<!-- 상영 중인 영화 리스트 (이름 순) -->
 	
@@ -251,6 +259,19 @@ WHERE s.SCREEN_NO = #{screenNo}
         SELECT MAX(BOOK_NO) FROM BOOK
         WHERE USER_NO = #{userNo}
     </select>
-	
+    
+    <select id="serchPrice" parameterType="_int" resultType="string">
+        SELECT BOOK_PRICE
+        FROM BOOK
+        WHERE BOOK_NO = #{bookNo}
+    </select>
+    
+	<select id="selectCoupon" parameterType="string" resultMap="storeCoupon_rm">
+        SELECT *
+        FROM STORE_COUPON
+        WHERE COUPON_DETAIL_NO = #{couponNo}
+    </select>
+    
+    
 	
 </mapper>
