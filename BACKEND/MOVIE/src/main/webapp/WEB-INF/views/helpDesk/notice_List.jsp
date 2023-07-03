@@ -19,7 +19,7 @@
 			<link rel="stylesheet" href="${contextPath}/resources/css/common/notice_Aside.css">
 			<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
 			<link rel="stylesheet" href="${contextPath}/resources/css/helpDesk/notice_List.css">
-
+ 
 		</head>
 
 		<body>

@@ -87,7 +87,7 @@ movieTicket.addEventListener("click",function(){
   $.ajax({
     url: "selectTicket",
     data: {
-      "DB에있는관람권코드번호": ticketCode.vlaue,
+      "DB에있는관람권코드번호": ticketCode.vlaue
     },
     type: "POST",
     success: function (result) {

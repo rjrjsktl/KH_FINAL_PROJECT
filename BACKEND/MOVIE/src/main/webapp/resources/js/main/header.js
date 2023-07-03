@@ -32,18 +32,16 @@ window.onclick = function(event) {
 }
 */
 
-
 // 메뉴창 하버
 $(document).ready(function () {
-  $('.navBar, .dummy').hover(
+  $(".navBar, .dummy").hover(
     function () {
-      $('.navBar ul').stop().slideDown(150);
-      $('.dummy').css('display', 'flex');
+      $(".navBar ul").stop().slideDown(150);
+      $(".dummy").css("display", "flex");
     },
     function () {
-      $('.navBar ul').stop().slideUp(150);
-      $('.dummy').css('display', 'none');
+      $(".navBar ul").stop().slideUp(150);
+      $(".dummy").css("display", "none");
     }
-  )
+  );
 });
-

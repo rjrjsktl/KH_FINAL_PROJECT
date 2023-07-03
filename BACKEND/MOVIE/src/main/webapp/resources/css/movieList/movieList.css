@@ -88,12 +88,13 @@ main>div:nth-child(2)>ol>li>div:nth-child(2)>a {
 main>div:nth-child(2)>ol>li>div:nth-child(2)>div {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin: 10px 0;
     font-size: 0.7rem;
 }
 
 main>div:nth-child(2)>ol>li>div:nth-child(2)>div>p:nth-child(1) {
-    width: 40%;
+    width: 35%;
     margin-right: 10px;
 }
 
@@ -102,12 +103,15 @@ main>div:nth-child(2)>ol>li>div:nth-child(3) {
 }
 
 main>div:nth-child(2)>ol>li>div:nth-child(3)>button {
+    width: 35%;
+
     height: 40px;
     background-color: transparent;
     outline: none;
-    border: 1px solid lightgray;
     padding: 0 5px;
     border-radius: 10px;
+    background-color: rgb(21, 21, 21);
+    border: none;
 
 }
 
@@ -120,14 +124,23 @@ main>div:nth-child(2)>ol>li>div:nth-child(3)>button:nth-child(2):hover {
     color: white;
 }
 
-main>div:nth-child(2)>ol>li>div:nth-child(3)>button:nth-child(1) {
-    width: 30%;
-}
 
-main>div:nth-child(2)>ol>li>div:nth-child(3)>button:nth-child(2) {
-    width: 70%;
+main>div:nth-child(2)>ol>li>div:nth-child(3)>a {
+    width: 60%;
     color: black;
     background-color: white;
+    line-height: 38px;
+    text-align: center;
+    margin-left: 15px;
+    border-radius: 10px;
+    background-color: #494949;
+    color: #fcfcfc;
+    cursor: pointer;
+}
+
+main>div:nth-child(2)>ol>li>div:nth-child(3)>a:hover {
+    background-color: rgb(255, 196, 0);
+    color: black;
 }
 
 
@@ -148,9 +161,31 @@ main>div:nth-child(2)>ol>li>div:nth-child(3)>button:nth-child(2) {
 /* 예매율, 개봉일 폰트 사이즈 */
 .textSize {
     font-size: 0.8rem;
+
+}
+
+.titleFont {
+    display: flex;
+    align-items: center;
 }
 
 /* 영화 제목 */
-.titleFont {
+
+.titleFont span {
     font-weight: bold;
+    font-size: 1.2rem;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.revlikeVal {
+    color: rgb(255, 196, 0);
+
+}
+
+.navBar:nth-child(1)>a:nth-child(1) {
+    color: rgb(255, 196, 0);
 }
