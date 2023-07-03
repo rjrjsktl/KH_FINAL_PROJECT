@@ -184,10 +184,10 @@ public class MovieServiceImpl implements MovieService{
 
 	// 예매율 기능 serviceImpl
 	@Override
-	public double allbook(int movieNo) {
-		// TODO Auto-generated method stub
-		return dao.allbook(movieNo);
+	public double allBook(int movieNo) {
+		return dao.allBook(movieNo);
 	}
+
 
 	
 	

@@ -230,7 +230,7 @@
                
               </div>
                   
-              <div><a href="choiceTicket" id="next_stage">좌석 선택</a></div>
+              <div><a href="#none" id="choiceTicket">좌석 선택</a></div>
 			 
           </section>
         </main>

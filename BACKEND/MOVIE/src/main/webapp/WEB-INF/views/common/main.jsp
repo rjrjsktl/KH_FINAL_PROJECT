@@ -12,7 +12,7 @@
 						<meta charset="UTF-8">
 						<meta http-equiv="X-UA-Compatible" content="IE=edge">
 						<meta name="viewport" content="width=device-width, initial-scale=1.0">
-						<title>메인페이지</title>
+						<title>Channel_KGV</title>
 						<script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 						<link rel="stylesheet" href="${contextPath}/resources/css/common/main.css" />
 						<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
@@ -107,7 +107,7 @@
 														</a>
 														<div>
 															<p>
-																예매율 <span>${bookPercent}</span>%
+																예매율 <span>${bookPercent[status.index]}</span>%
 															</p>
 															<p>
 																개봉일 <span>${movie['movieOpen']}</span>

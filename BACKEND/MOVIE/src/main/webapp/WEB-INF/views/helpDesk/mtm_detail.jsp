@@ -9,7 +9,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>공지 세부</title>
+	<title>1 : 1 문의</title>
 
 	<script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
@@ -19,7 +19,7 @@
 
 
 	<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
-	<link rel="stylesheet" href="${contextPath}/resources/css/helpDesk/mtm_detail.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/helpDesk/mTm_detail.css">
 	<link rel="stylesheet" href="${contextPath}/resources/css/common/notice_Aside.css">
 
 
@@ -48,6 +48,7 @@
 								<span>${mTmdetail.mtmTitle}</span>
 							</div>
 							<div>
+								<span>[ ${mTmdetail.mtmType} ]</span>
 								<span><span>${mTmdetail.mtmWriter}</span> <span>|</span>
 									<span>${mTmdetail.mtmRegdate} </span></span>
 							</div>
@@ -65,7 +66,7 @@
 
 						<div class="reply">
 							<div class="reply-info">
-								<p>${mTmdetail.mtmWriter}님답변드립니다.</p>
+								<p>[ ${mTmdetail.mtmWriter} ]님! 답변드립니다.</p>
 								<span
 									class="reply-writer-info"><span>${mTmdetail.mtmRepWriter}</span><span>|</span><span>${mTmdetail.mtmRepDate}</span></span>
 							</div>

@@ -153,14 +153,18 @@ public class ReserveController {
 	
 	@GetMapping("/selectPlay")
 	@ResponseBody
-	public int selectPlay(HttpServletRequest req, String playNo) {
-		int result = 0;
+	public String selectPlay(HttpServletRequest req, String playNo) {
+		String result = "fail";
 		
 		try {
 			HttpSession session = req.getSession();
 			session.setAttribute("playNo", playNo);
-		    System.out.println(playNo);
-			result = 1;		
+			
+			if(session.getAttribute("loginUser") != null) {
+				result = "choiceTicket";
+			}
+			
+		    System.out.println(playNo);		
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

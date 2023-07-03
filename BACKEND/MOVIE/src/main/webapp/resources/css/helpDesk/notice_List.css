@@ -1,4 +1,13 @@
 /* 전체 틀 잡아주는 css */
+
+* td a {
+    color:#a3a3a3 !important;
+}
+
+* td a:hover{
+    color : white !important;
+}
+
 main>section {
     width: 1040px;
     margin: 0 auto;
@@ -42,7 +51,7 @@ h2 {
     justify-content: space-between;
     width: 100%;
     height: 80px;
-    padding: 25px 0;
+    padding: 25px 0 25px 10px;
 }
 
 .search-area>p {
@@ -57,17 +66,18 @@ h2 {
     width: 40%;
     height: 100%;
     display: flex;
-    border-left: 1px solid rgb(73, 73, 73);
-    border-right: 1px solid rgb(73, 73, 73);
-    padding: 0 10px;
+    padding-left:10px;
 
 }
 
 .search-area input {
     width: 70%;
-    background-color: transparent;
     outline: none;
     border: none;
+    background-color: #191919;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding-left: 10px;
 }
 
 .search-area button {
@@ -79,8 +89,15 @@ h2 {
     align-items: center;
     background-color: transparent;
     cursor: pointer;
-    background-color: white;
-    color: black;
+    background-color: #494949;
+    color: #fcfcfc;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.search-area button:hover{
+    background-color: #ffc400;
+    color : #000000;
 }
 
 .table-wrap {
@@ -94,7 +111,8 @@ table {
 }
 
 thead * {
-    padding:10px;   border-bottom: 2px solid rgb(73, 73, 73);
+    padding:10px; 
+    background-color: rgb(52,52,52);;
 }
 
 
@@ -119,10 +137,10 @@ thead th:nth-child(4) {
     width: 10%;
 }
 
+
 .count-td td{
     padding:10px;
-    height:40px;
-    border-bottom: 1px solid rgba(73, 73, 73, 0.4);
+    height:50px;
     text-align:center;
 }
 
@@ -137,7 +155,7 @@ thead th:nth-child(4) {
 
 .count-td td:nth-child(2) > a:hover{
     text-decoration: underline;
-    color:rgb(251, 251, 251);
+    color:#ffc400 !important;
 }
 
 
@@ -164,9 +182,22 @@ thead th:nth-child(4) {
     line-height: 28px;
   }
 
+  .page_Nation div a:hover{
+    color:rgb(255, 196, 0);
+  }
+
 
   .highlight{
     background-color:rgba(255, 196, 0.3);
     color:black;
   }
   
+
+.selected_Cp {
+    color: rgb(255, 196, 0);
+}
+
+
+.count-td:nth-child(even) {
+    background-color: rgb(52,52,52);
+}

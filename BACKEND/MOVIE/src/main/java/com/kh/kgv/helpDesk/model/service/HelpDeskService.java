@@ -72,6 +72,9 @@ public interface HelpDeskService {
 	
 	int getSearchLostCount(String area, String name, String keyword , int userNo, String userManagerSt );
 	Map<String, Object> selectSearchLOST(int cp, String area, String name, String keyword, int userNo, String userManagerSt );
+	
+	
+	int getNoticeListCount();
 
 
 	

@@ -12,6 +12,7 @@ import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.management.model.vo.Benefits;
 import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
+import com.kh.kgv.management.model.vo.DailyWatch;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Search;
@@ -221,6 +222,18 @@ public interface ManagerService {
 
 	// 공지사항 갯수 조회
 	int getSearchListCount(String keyword);
+
+	//관리자_예매 리스트 조회
+	Map<String, Object> selectBookList(int cp);
+
+	//관리자 예매 리스트 검색
+	Map<String, Object> getBookSearch(Search search, int cp);
+
+	// 관리자 메인 일일 예매 수 조회
+	List<DailyWatch> getWeeklyWatch(WeeklyEnter we);
+
+	// 총 접속자 수
+	List<DailyEnter> getTotalEntre();
 
 
 
