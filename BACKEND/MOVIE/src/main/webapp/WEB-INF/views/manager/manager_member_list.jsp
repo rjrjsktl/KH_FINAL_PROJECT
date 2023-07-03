@@ -19,15 +19,11 @@
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
 						<!-- fontawesome -->
-						<link rel="stylesheet"
-							href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-							integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-							crossorigin="anonymous" referrerpolicy="no-referrer" />
+						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+							integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 						<!-- jQuery 라이브러리 추가(CDN) -->
-						<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-							integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-							crossorigin="anonymous"></script>
+						<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
 					</head>
@@ -51,8 +47,8 @@
 											<div class="table_Wrapper">
 												<div class="table_Title">
 													<span>회원목록</span>
-													<div class="search_Box">
-														<select id="selectBox">
+													<form class="search_Box">
+														<select id="selectBox" name="searchType">
 															<option value="USER_EMAIL">아이디</option>
 															<option value="USER_NAME">이름</option>
 															<option value="USER_NICKNAME">닉네임</option>
@@ -60,11 +56,12 @@
 															<option value="USER_ADDR">주소</option>
 															<option value="USER_BIRTH">생년월일</option>
 														</select>
-														<input class="searchContent" placeholder="검색" />
-														<button class="checkBtn" type="button">
+														<input class="searchContent" placeholder="검색" name="searchContent" />
+														<button class="checkBtn" type="submit">
 															<i class="fa-solid fa-magnifying-glass fa-2xs"></i>
 														</button>
-													</div>
+														<input type="hidden" value="${param.cp}" />
+													</form>
 												</div>
 												<table class="table_main">
 													<tr>
@@ -84,92 +81,84 @@
 														<th>관리자</th>
 														<th>이용제한</th>
 													</tr>
-													<tbody id="userTableBody">
-														<c:forEach var="getUser" items="${getUserList['userList']}">
-															<tr>
-																<td>${getUser['userNo']}</td>
-																<td>${getUser['userEmail']}</td>
-																<td>${getUser['userName']}</td>
-																<td>${getUser['userNick']}</td>
-																<td>${getUser['userTel']}</td>
-																<c:choose>
-																	<c:when test="${not empty getUser['userAddr']}">
-																		<td>${getUser['userAddr']}</td>
-																	</c:when>
-																	<c:otherwise>
-																		<td>미등록</td>
-																	</c:otherwise>
-																</c:choose>
-																<c:choose>
-																	<c:when test="${not empty getUser['userBirth']}">
-																		<td>${getUser['userBirth']}</td>
-																	</c:when>
-																	<c:otherwise>
-																		<td>미등록</td>
-																	</c:otherwise>
-																</c:choose>
-																<td>${getUser['userGender']}</td>
-																<td>${getUser['userRegDate']}</td>
-																<c:choose>
-																	<c:when test="${not empty getUser['userDelete']}">
-																		<td>${getUser['userDelete']}</td>
-																	</c:when>
-																	<c:otherwise>
-																		<td>-</td>
-																	</c:otherwise>
-																</c:choose>
-																<td>${getUser['userSt']}</td>
-																<td>${getUser['userPoint']}</td>
-																<td>${getUser['userSns']}</td>
-																<c:choose>
-																	<c:when test="${getUser['userManagerSt'] == 'N'}">
-																		<td><select class="Is_Manager"
-																				data-id="${getUser['userEmail']}">
-																				<option value="N" selected>N</option>
-																				<option value="Y">Y</option>
-																			</select></td>
-																	</c:when>
-																	<c:otherwise>
-																		<td><select class="Is_Manager"
-																				data-id="${getUser['userEmail']}">
-																				<option value="N">N</option>
-																				<option value="Y" selected>Y</option>
-																			</select></td>
-																	</c:otherwise>
-																</c:choose>
-																<c:choose>
-																	<c:when test="${getUser['userBlock'] == 'N'}">
-																		<td><select class="Is_Blocked"
-																				data-id="${getUser['userEmail']}">
-																				<option value="N" selected>N</option>
-																				<option value="Y">Y</option>
-																			</select></td>
-																	</c:when>
-																	<c:otherwise>
-																		<td><select class="Is_Blocked"
-																				data-id="${getUser['userEmail']}">
-																				<option value="N">N</option>
-																				<option value="Y" selected>Y</option>
-																			</select></td>
-																	</c:otherwise>
-																</c:choose>
-															</tr>
-														</c:forEach>
-													</tbody>
+													<c:forEach var="getUser" items="${getUserList['userList']}">
+														<tr>
+															<td>${getUser['userNo']}</td>
+															<td>${getUser['userEmail']}</td>
+															<td>${getUser['userName']}</td>
+															<td>${getUser['userNick']}</td>
+															<td>${getUser['userTel']}</td>
+															<c:choose>
+																<c:when test="${not empty getUser['userAddr']}">
+																	<td>${getUser['userAddr']}</td>
+																</c:when>
+																<c:otherwise>
+																	<td>미등록</td>
+																</c:otherwise>
+															</c:choose>
+															<c:choose>
+																<c:when test="${not empty getUser['userBirth']}">
+																	<td>${getUser['userBirth']}</td>
+																</c:when>
+																<c:otherwise>
+																	<td>미등록</td>
+																</c:otherwise>
+															</c:choose>
+															<td>${getUser['userGender']}</td>
+															<td>${getUser['userRegDate']}</td>
+															<c:choose>
+																<c:when test="${not empty getUser['userDelete']}">
+																	<td>${getUser['userDelete']}</td>
+																</c:when>
+																<c:otherwise>
+																	<td>-</td>
+																</c:otherwise>
+															</c:choose>
+															<td>${getUser['userSt']}</td>
+															<td>${getUser['userPoint']}</td>
+															<td>${getUser['userSns']}</td>
+															<c:choose>
+																<c:when test="${getUser['userManagerSt'] == 'N'}">
+																	<td><select class="Is_Manager" data-id="${getUser['userEmail']}">
+																			<option value="N" selected>N</option>
+																			<option value="Y">Y</option>
+																		</select></td>
+																</c:when>
+																<c:otherwise>
+																	<td><select class="Is_Manager" data-id="${getUser['userEmail']}">
+																			<option value="N">N</option>
+																			<option value="Y" selected>Y</option>
+																		</select></td>
+																</c:otherwise>
+															</c:choose>
+															<c:choose>
+																<c:when test="${getUser['userBlock'] == 'N'}">
+																	<td><select class="Is_Blocked" data-id="${getUser['userEmail']}">
+																			<option value="N" selected>N</option>
+																			<option value="Y">Y</option>
+																		</select></td>
+																</c:when>
+																<c:otherwise>
+																	<td><select class="Is_Blocked" data-id="${getUser['userEmail']}">
+																			<option value="N">N</option>
+																			<option value="Y" selected>Y</option>
+																		</select></td>
+																</c:otherwise>
+															</c:choose>
+														</tr>
+													</c:forEach>
 												</table>
 												<div class="page_Nation">
-													<c:set var="url" value="?cp=" />
+													<c:set var="url" value="?searchType=${param.searchType}&searchContent=${param.searchContent}&cp=" />
 													<c:set var="pagination" value="${getUserList['pagination']}" />
-													<c:set var="currentPage" value="${pagination.currentPage}"
-														scope="request" />
+													<c:set var="currentPage" value="${pagination.currentPage}" scope="request" />
 													<div>
 														<a href="${url}1">&lt;&lt;</a>
 													</div>
 													<div>
 														<a href="${url}${pagination.prevPage}">&lt;</a>
 													</div>
-													<c:forEach var="i" begin="${pagination.startPage}"
-														end="${pagination.endPage}" step="1">
+													<c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
 														<c:choose>
 															<c:when test="${i == currentPage}">
 																<div>

@@ -17,6 +17,7 @@ import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.helpDesk.model.vo.LostPackage;
 import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.helpDesk.model.vo.MtmPagenation;
+import com.kh.kgv.helpDesk.model.vo.Quest;
 import com.kh.kgv.helpDesk.model.vo.QuestPagenation;
 import com.kh.kgv.login.controller.LoginController;
 import com.kh.kgv.management.model.vo.Cinema;
@@ -219,6 +220,85 @@ public class HelpDeskDAO {
 
 	public int updateLost(LostPackage lost) {
 		return sqlSession.update("lostMapper.updateLost", lost);
+	}
+
+
+	public List<Quest> getQuestType() {
+		return sqlSession.selectList("questMapper.selectType");
+	}
+
+	
+	
+	
+	
+	
+	public int getCountSelectQeustNo(String keyword) {
+
+		return sqlSession.selectOne("questMapper.getCountSelectQeustNo", keyword);
+
+	}
+
+	public List<Notice> getSearchQuestList(QuestPagenation pagination, String keyword) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		Map<String, Object> params = new HashMap<>();
+	    params.put("keyword", keyword);
+
+		return sqlSession.selectList("questMapper.getSearchQuestList", params, rowBounds);
+	}
+
+	public List<Cinema> distinctcinemaList() {
+		
+		return sqlSession.selectList("cinemaMapper.distinctcinemaList");
+
+	}
+
+	public List<Cinema> selectcinemaNameList(String area) {
+		
+		System.out.println(area+"------------------------------DAOOOOOOO");
+		
+		return sqlSession.selectList("cinemaMapper.selectcinemaNameList", area);
+	}
+
+	public int getSearchLostCount(String area, String name, String keyword, int userNo, int userManagerStAsInt) {
+		
+		System.out.println("분실물 검색 DAO--------------------------------------------------------------------------------");
+		System.out.println(area);
+		System.out.println(name);
+		System.out.println("분실물 검색 DAO--------------------------------------------------------------------------------");
+		
+		Map<String, Object> params = new HashMap<>();
+		  params.put("area", area);
+		    params.put("name", name);
+		params.put("keyword", keyword);
+		 params.put("userNo", userNo);
+		    params.put("userManagerSt", userManagerStAsInt);
+		return sqlSession.selectOne("lostMapper.getSearchLostCount", params );
+
+	}
+
+	public List<Mtm> selectSearchLOST(LostPagenation pagination,String area, String name,  String keyword, int userNo, int userManagerStAsInt) { 
+
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		Map<String, Object> params = new HashMap<>();
+		  params.put("area", area);
+		    params.put("name", name);
+		params.put("keyword", keyword);
+	  
+	    params.put("userNo", userNo);
+	    params.put("userManagerSt", userManagerStAsInt);
+	    
+		return sqlSession.selectList("lostMapper.selectSearchLOST", params, rowBounds );
+	}
+
+	public int getNoticeListCount() {
+		return sqlSession.selectOne("managerMapper.helpDeskCount");
 	}
 
 

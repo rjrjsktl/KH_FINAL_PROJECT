@@ -3,6 +3,7 @@ package com.kh.kgv.movieList.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.Year;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,9 +57,28 @@ public class MovieListController {
 
 		model.addAttribute("getMovieList", getMovieList);
 
+		List<Movie> movieList = (List<Movie>) getMovieList.get("cleanedList");
+	    List<Double> revLike = new ArrayList<>();
+	    List<Double> bookPercent = new ArrayList<>();
+		
+		System.out.println("movieList::: " + movieList);
+		if (movieList != null && !movieList.isEmpty()) {
+	        System.out.println("들어옴?");
+	        for (Movie movie : movieList) {
+	            int movieNo = movie.getMovieNo();
+	            double revLikeList = service.allLike(movieNo);
+	            double bookPercentList = service.allBook(movieNo);
+	            revLike.add(revLikeList);
+	            bookPercent.add(bookPercentList);
+	        }
+	    } else {
+	        System.out.println("null임");
+	    }
+
+	    model.addAttribute("revLike", revLike);
+	    model.addAttribute("bookPercent", bookPercent);
 
 		return "movieList/detail_List";
-
 	}
 	//	메인페이지 -> 영화 -> 전체 영화목록 이동 시 영화 목록 조회
 	// 위에꺼 재활용
@@ -71,9 +91,28 @@ public class MovieListController {
 
 		model.addAttribute("getMovieList", getMovieList);
 
+		List<Movie> movieList = (List<Movie>) getMovieList.get("cleanedList");
+	    List<Double> revLike = new ArrayList<>();
+	    List<Double> bookPercent = new ArrayList<>();
+		
+		System.out.println("movieList::: " + movieList);
+		if (movieList != null && !movieList.isEmpty()) {
+	        System.out.println("들어옴?");
+	        for (Movie movie : movieList) {
+	            int movieNo = movie.getMovieNo();
+	            double revLikeList = service.allLike(movieNo);
+	            double bookPercentList = service.allBook(movieNo);
+	            revLike.add(revLikeList);
+	            bookPercent.add(bookPercentList);
+	        }
+	    } else {
+	        System.out.println("null임");
+	    }
+
+	    model.addAttribute("revLike", revLike);
+	    model.addAttribute("bookPercent", bookPercent);
 
 		return "movieList/all_List";
-
 	}
 
 	// 영화 세부내용
@@ -99,6 +138,18 @@ public class MovieListController {
 
 		model.addAttribute("mgenrelist", mgenrelist);
 
+		// REV_LIKE 불러오기
+		double revLike = service.allLike(movieNo);
+		System.out.println("revLike:::" + revLike);
+		
+		model.addAttribute("revLike", revLike);
+		
+		// bookPercent 불러오기
+		double bookPercent = service.allBook(movieNo);
+		System.out.println("bookPercent" + bookPercent);
+		
+		model.addAttribute("bookPercent", bookPercent);
+		
 		// 요기부터 수정페이지에 movieNo 보냄
 		movie.setMovieNo(movieNo);
 
@@ -188,10 +239,6 @@ public class MovieListController {
 		System.out.println("userNick"+"userNick"+userNick+"userNickuserNickuserNickuserNickuserNickuserNickuserNickuserNickuserNick");
 
 		//////////////////////////////////////////////
-
-
-
-
 		model.addAttribute("MovieDetail", getMovieDetail);
 
 
@@ -202,7 +249,7 @@ public class MovieListController {
 
 	@ResponseBody
 	@PostMapping("/detail_List/introduce/{movieNo}")
-	public int addRv(
+	public int addRev(
 			@RequestParam("starRating") int revLike, 
 			@RequestParam("reviewText") String content,
 			@PathVariable("movieNo") int movieNo,
@@ -239,7 +286,9 @@ public class MovieListController {
 		review.setRevNo(revNo);
 
 		int result = service.addReview(review);  
-
+		
+		System.out.println("result:::"+ result);
+		
 		return result;
 	}
 	

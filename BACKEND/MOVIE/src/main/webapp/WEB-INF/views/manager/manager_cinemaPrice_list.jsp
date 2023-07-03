@@ -14,20 +14,15 @@
 
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_inner_Header.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
-						<link rel="stylesheet"
-							href="${contextPath}/resources/css/manager/manager_cinema_price_list.css">
+						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_cinema_price_list.css">
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/manager_nav.css">
 
 						<!-- fontawesome -->
-						<link rel="stylesheet"
-							href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-							integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-							crossorigin="anonymous" referrerpolicy="no-referrer" />
+						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+							integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 						<!-- jQuery 라이브러리 추가(CDN) -->
-						<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-							integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-							crossorigin="anonymous"></script>
+						<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 					</head>
 
 
@@ -47,11 +42,17 @@
 
 												<div class="table_Title">
 													<span>극장 가격 목록</span>
-													<div class="search_Box">
-														<input placeholder="검색" />
-														<button class="checkBtn"><i
-																class="fa-solid fa-magnifying-glass fa-2xs"></i></button>
-													</div>
+													<form class="search_Box">
+														<select id="selectBox" name="searchType">
+															<option value="SCREEN_STYLE">상영관</option>
+															<option value="PRICE_DAY">평일 / 주말</option>
+															<option value="PRICE_TIME">오전 / 오후</option>
+														</select>
+														<input class="searchContent" placeholder="검색" name="searchContent" />
+														<button class="checkBtn" type="submit">
+															<i class="fa-solid fa-magnifying-glass fa-2xs"></i>
+														</button>
+													</form>
 												</div>
 
 												<table class="table_main">
@@ -68,44 +69,49 @@
 														<th>수정</th>
 														<th>삭제</th>
 													</tr>
-													<c:forEach var="cinemaPrice"
-														items="${cinemaMap['cinemaPriceList']}">
+
+													<c:forEach var="cinemaPrice" items="${cinemaMap['cinemaPriceList']}">
 														<tr>
 															<td>${cinemaPrice['priceNo']}</td>
 															<td>${cinemaPrice['screenStyle']}</td>
 															<td>${cinemaPrice['priceDay']}</td>
 															<td>${cinemaPrice['priceTime']}</td>
-															<td>${cinemaPrice['priceTeen']}</td>
-															<td>${cinemaPrice['priceNormal']}</td>
-															<td>${cinemaPrice['priceNormal']}</td>
-															<td>${cinemaPrice['priceElder']}</td>
-															<td>${cinemaPrice['priceSpecial']}</td>
-
-
-
-															<td><a href="${contextPath}/manager/manager_cinemaPrice_list/edit/${cinemaPrice['priceNo']}"
-																	class="editEvent"><i
-																		class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+															<td>
+																<fmt:formatNumber value="${cinemaPrice['priceTeen']}" pattern="#,###" />&nbsp;원
 															</td>
-															<td><a class="deleteEvent"><i
-																		class="fa-sharp fa-solid fa-xmark"></i></a></td>
+															<td>
+																<fmt:formatNumber value="${cinemaPrice['priceNormal']}" pattern="#,###" />&nbsp;원
+															</td>
+															<td>
+																<fmt:formatNumber value="${cinemaPrice['priceNormal']}" pattern="#,###" />&nbsp;원
+															</td>
+															<td>
+																<fmt:formatNumber value="${cinemaPrice['priceElder']}" pattern="#,###" />&nbsp;원
+															</td>
+															<td>
+																<fmt:formatNumber value="${cinemaPrice['priceSpecial']}" pattern="#,###" />&nbsp;원
+															</td>
+															<td>
+																<a href="${contextPath}/manager/manager_cinemaPrice_list/edit/${cinemaPrice['priceNo']}" class="editEvent">
+																	<i class="fa-sharp fa-solid fa-pen-to-square"></i>
+																</a>
+															</td>
+															<td><a class="deleteEvent"><i class="fa-sharp fa-solid fa-xmark"></i></a></td>
 														</tr>
 													</c:forEach>
 
 												</table>
 												<div class="page_Nation">
-													<c:set var="url" value="?cp=" />
+													<c:set var="url" value="?searchType=${param.searchType}&searchContent=${param.searchContent}&cp=" />
 													<c:set var="pagination" value="${cinemaMap['pagination']}" />
-													<c:set var="currentPage" value="${pagination.currentPage}"
-														scope="request" />
+													<c:set var="currentPage" value="${pagination.currentPage}" scope="request" />
 													<div>
 														<a href="${url}1">&lt;&lt;</a>
 													</div>
 													<div>
 														<a href="${url}${pagination.prevPage}">&lt;</a>
 													</div>
-													<c:forEach var="i" begin="${pagination.startPage}"
-														end="${pagination.endPage}" step="1">
+													<c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
 														<c:choose>
 															<c:when test="${i == currentPage}">
 																<div>

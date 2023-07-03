@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -27,10 +27,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.kh.kgv.common.Util;
 import com.kh.kgv.common.Util.SessionUtil;
 import com.kh.kgv.customer.model.vo.User;
+
 import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.management.model.service.ManagerService;
 
 import com.kh.kgv.store.model.service.StoreService;
+
+import com.kh.kgv.store.model.vo.StoreCoupon;
+import com.kh.kgv.store.model.vo.StoreOrder;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
@@ -41,12 +45,15 @@ import com.siot.IamportRestClient.response.Payment;
 @SessionAttributes({"loginUser"})
 public class StoreController {
 
+	private List<Store> storeList = null;
+	private List<StoreOrder> storeOrderList = null;
+	private List<StoreCoupon> storeCouponList = null;
+	private Map<String, Object> storePaymentMap = null;
 	
 	@Autowired
 	private StoreService service;
 	
-	@Autowired
-	private ManagerService services;
+
 	
 	private Logger logger = LoggerFactory.getLogger(StoreController.class);
 	
@@ -100,10 +107,13 @@ public class StoreController {
 		
 //		  HttpSession session = request.getSession();
 		
-		
-		  session.setAttribute("totalPrice", totalPrice);
-		  session.setAttribute("totalCount", totalCount);
-		    
+		 synchronized (session) {
+		        session.setAttribute("totalPrice", totalPrice);
+		        session.setAttribute("totalCount", totalCount);
+		    }
+//		  session.setAttribute("totalPrice", totalPrice);
+//		  session.setAttribute("totalCount", totalCount);
+//		    
 		  
 		    
 		logger.debug(" totalPrice : " + totalPrice);
@@ -189,12 +199,13 @@ public class StoreController {
 	 	@ResponseBody
 		@PostMapping("/storeMain/store_detail/store_payment/{storeNo}/successPayment") 	
 	 	
-	 	public String successPayment(
+	 	public int successPayment(
 	 			@RequestParam("orderPrice") int orderPrice
 				,@RequestParam("orderCount") int orderCount,
-				@RequestParam("storeNo") int storeNo
-				,@RequestParam("userNo") int userNo
+				@RequestParam("storeName") String storeName
+				,@RequestParam("userName") String userName
 				,@RequestParam("userEmail") String userEmail
+				,@RequestParam("storeNo") int storeNo
 				,@RequestParam("orderDetailNo") String orderDetailNo) {
 	 		
 	 		
@@ -202,20 +213,60 @@ public class StoreController {
 	 		
 	 		logger.debug(" orderPrice################ : " + orderPrice);
 	 		logger.debug(" totalCount################ : " + orderCount);
-	 		logger.debug(" storeNo################ : " + storeNo);
-	 		logger.debug(" userNo################ : " + userNo);
+	 		logger.debug(" storeNo################ : " + storeName);
+	 		logger.debug(" userNo################ : " + userName);
 	 		logger.debug(" userEmail################ : " + userEmail);
 	 		logger.debug(" orderDetailNo################ : " + orderDetailNo);
 	 		
 	 		
-//	 		String orderDetailNo = "odt_" + System.currentTimeMillis();
-//	 		
-//	 		System.out.println(orderDetailNo);
+	 		StoreOrder storeOrder  = new StoreOrder();
+
+	 		storeOrder.setOrderDetailNo(orderDetailNo);
+	 		storeOrder.setOrderCount(orderCount);
+	 		storeOrder.setOrderPrice(orderPrice);
+	 		storeOrder.setUserName(userName);
+	 		storeOrder.setStoreName(storeName);
+	 		storeOrder.setUserEmail(userEmail);
+	 		storeOrder.setStoreNo(storeNo);
+	 			 		
+	 		int result = service.successPayment(storeOrder);
 	 		
-	 		
-	 		return null;
+	 		logger.debug(" userNo################ : " + userName);
+	 				 			 		
+	 		return result;
 	 	}
 	 	
 	 	
+	 // 결제 완료페이지로 이동하기
+		@GetMapping("/store_Success")
+		public String storeSuccess( HttpSession session
+				, Model model) {
+				
+			
+			
+			 int sorderNo = (int) session.getAttribute("generatedOrderNo");
+			 logger.debug(" SorderNo################************************* : " + sorderNo);
+
+			 storePaymentMap = new HashMap<>(); 
+			 storeList = service.getstoreList(sorderNo);
+			 storeOrderList = service.getstoreOrderList(sorderNo);
+			 storeCouponList = service.getstoreCouponList(sorderNo);;
+			 
+			
+			 
+			 logger.debug(" storeList################************************* : " + storeList);
+			 logger.debug(" storeOrderList################************************* : " + storeOrderList);
+			 logger.debug(" storeCouponList################************************* : " + storeCouponList);
+			 model.addAttribute("storeList", storeList);
+			 model.addAttribute("storeOrderList", storeOrderList);
+			 model.addAttribute("storeCouponList", storeCouponList);
+			 
+//			 joinStore =  service.getSuccess(sorderNo);
+			 
+			// logger.debug(" joinStore################************************* : " + joinStore);
+			 
+			
+			return "store/store_Success";
+		}
 	 	
 }

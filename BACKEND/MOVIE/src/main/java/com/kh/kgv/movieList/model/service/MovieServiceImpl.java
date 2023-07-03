@@ -176,6 +176,17 @@ public class MovieServiceImpl implements MovieService{
 		return dao.deleteReview(revNo);
 	}
 
+	// 별점 기능 serviceImpl
+	@Override
+	public double allLike(int movieNo) {
+		return dao.allLike(movieNo);
+	}
+
+	// 예매율 기능 serviceImpl
+	@Override
+	public double allBook(int movieNo) {
+		return dao.allBook(movieNo);
+	}
 
 
 	

@@ -142,7 +142,7 @@
 	<select id="getTotalPlayList" parameterType="Map" resultMap="jp_rm">
 	<![CDATA[
 	    SELECT m.MOVIE_NO, m.MOVIE_TITLE, m.MG_CONTENT, m.MOVIE_IMG1, c.CINEMA_NAME, s.SCREEN_NAME, s.SCREEN_SEAT, s.SCREEN_STYLE,
-	           p.PLAY_NO, p.PLAY_START, p.PLAY_END  
+	           p.PLAY_NO, p.PLAY_START, p.PLAY_END, p.PLAY_BOOKCOUNT  
 	    FROM PLAY p
         INNER JOIN SCREEN s ON p.SCREEN_NO  = s.SCREEN_NO 
         INNER JOIN CINEMA c ON s.CINEMA_NAME = c.CINEMA_NAME
@@ -156,7 +156,7 @@
 	<select id="getMoviePlayList" parameterType="Map" resultMap="jp_rm">
 	<![CDATA[
 	    SELECT m.MOVIE_NO, m.MOVIE_TITLE, m.MG_CONTENT, m.MOVIE_IMG1, c.CINEMA_NAME, s.SCREEN_NAME, s.SCREEN_SEAT, s.SCREEN_STYLE,
-	           p.PLAY_NO, p.PLAY_START, p.PLAY_END  
+	           p.PLAY_NO, p.PLAY_START, p.PLAY_END, p.PLAY_BOOKCOUNT  
 	    FROM PLAY p
         INNER JOIN SCREEN s ON p.SCREEN_NO  = s.SCREEN_NO 
         INNER JOIN CINEMA c ON s.CINEMA_NAME = c.CINEMA_NAME
@@ -226,7 +226,7 @@ WHERE s.SCREEN_NO = #{screenNo}
 		</update>
 		
 <!--  screenName + cinemaName 으로 screenNo 구해오기 -->
-	<select id="getScreenNo" resultType="int">
+	<select id="getScreenNo" resultType="_int">
     SELECT s.SCREEN_NO
     FROM SCREEN s
     INNER JOIN CINEMA c ON s.CINEMA_NAME = c.CINEMA_NAME
@@ -240,6 +240,17 @@ WHERE s.SCREEN_NO = #{screenNo}
         VALUES(SEQ_BOOK_NO.NEXTVAL, #{playNo}, #{userNo}, ( SELECT MOVIE_NO FROM PLAY WHERE PLAY_NO = #{playNo}), 
                    DEFAULT, #{bookAge}, #{bookSeat}, #{bookPrice}, 'N')
     </insert>
+    
+    <update id="updatePlaySeat" parameterType="Map">
+        UPDATE PLAY
+        SET PLAY_BOOKCOUNT = #{playBookCount}, PLAY_BOOKSEAT = #{playBookSeat}
+        WHERE PLAY_NO = #{playNo}
+    </update>
+    
+    <select id="getBookNo" resultType="_int">
+        SELECT MAX(BOOK_NO) FROM BOOK
+        WHERE USER_NO = #{userNo}
+    </select>
 	
 	
 </mapper>

@@ -64,8 +64,5 @@
 		WHERE REV_NO = #{revNo}
 
 	</update>
-
-
-
-
+	
 </mapper>

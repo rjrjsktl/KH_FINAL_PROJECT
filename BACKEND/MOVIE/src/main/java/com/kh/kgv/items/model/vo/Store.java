@@ -18,6 +18,5 @@ public class Store {
 	private int storeStock;
 	private String storeImageBig;
 	
-	
 
 }

@@ -43,6 +43,8 @@ h2 {
 
 .notice-contents>div:nth-child(2) {
     padding: 10px 0 20px 0;
+    display: flex;
+    justify-content: right;
 }
 
 .notice-contents>div:nth-child(3) {
@@ -67,16 +69,22 @@ h2 {
 }
 
 .next-page {
-    border-top: 1px solid rgb(73, 73, 73);
+    background-color: rgb(52,52,52);
 }
 
 .prev-page>p,
 .next-page>p {
     width: 15%;
     text-align: center;
-    background-color: rgb(21, 21, 21);
 }
 
+.prev-page>span,
+.next-page>span {
+    width: 15%;
+    text-align: center;
+    padding-left: 20px;
+    color:#a3a3a3;
+}
 
 .prev-page>a,
 .next-page>a {
@@ -86,7 +94,7 @@ h2 {
 .prev-page>a:hover,
 .next-page>a:hover {
     text-decoration: underline;
-    color: rgb(251, 251, 251)
+    color: rgb(255, 196, 0) !important;
 }
 
 .content-wrap>div:last-child {
@@ -95,7 +103,7 @@ h2 {
     justify-content: center;
 }
 
-.content-wrap>div:last-child>button {
+.content-wrap>div:last-child>a {
     width: 150px;
     height: 50px;
     font-size: 1.2rem;
@@ -105,11 +113,13 @@ h2 {
     cursor: pointer;
     outline: none;
     border: none;
+    text-align: center;
+    line-height: 48px;
 }
 
-.content-wrap>div:last-child>button:hover {
-    background-color: rgb(251, 251, 251);
-    color: rgb(21, 21, 21);
+.content-wrap>div:last-child>a:hover {
+    background-color: #ffc400;
+    color : #000000;
 }
 
 .aslide-list>li:nth-child(2)>a {

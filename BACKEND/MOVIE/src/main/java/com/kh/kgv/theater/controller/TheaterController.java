@@ -58,40 +58,38 @@ public class TheaterController {
 			Model model,
 			@PathVariable("theaterID") int theaterID
 			) {
+		
+		String path = null;
 
 		String special = null;
 		if( theaterID ==1 ) {
 			special = "KMAX";
+			path = "theater/theaterS1";
 		}else if(theaterID==2) {
 			special = "DOLBY";
+			path =  "theater/theaterS2";
+
 		}else if (theaterID==3) {
 			special = "PUPPY &amp; ME";
+			path =  "theater/theaterS3";
+
 		}else if(theaterID==4) {
 			special = "YES KIDS";
+			path =  "theater/theaterS4";
+
 		}else {
 			special = "CHEF &amp; CINE";
+			path =  "theater/theaterS5";
+
 		}
 		
 		List<Screen> screenInfo =  services.getScreenInfo(special);
 		model.addAttribute("screenInfo", screenInfo);
 		
 
-		switch (theaterID) {
-		case 1:
-			return "theater/theaterS1";
-		case 2:
-			return "theater/theaterS2";
-		case 3:
-			return "theater/theaterS3";
-		case 4:
-			return "theater/theaterS4";
-		case 5:
-			return "theater/theaterS5";
-		default:
-			return "error"; // 이 부분은 올바르지 않은 theaterID가 전달됐을 때를 대비한 에러 페이지로 리다이렉트입니다. 적절한 에러 페이지를 설정하세요.
-		}
 
-
+		return path;
+		
 	}
 
 

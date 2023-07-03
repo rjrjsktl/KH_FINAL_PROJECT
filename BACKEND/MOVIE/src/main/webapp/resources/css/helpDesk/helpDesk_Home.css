@@ -35,37 +35,39 @@ h2 {
     align-items: center;
     padding: 30px;
     background-color: rgb(72 72 72);
+    border-radius: 10px;
 }
 
 /* 빠른검색 */
 .cont-search-wrap>span {
     padding-right: 20px;
     font-size: 1.2rem;
-    font-weight: 400;
+    font-weight: bold;
 }
 
 .cont-search-wrap form {
     width: 60%;
     display: flex;
     height: 36px;
-    border: 1px solid lightgray;
     border-radius: 10px;
 }
 
 .cont-search-wrap form>input {
     width: 90%;
     border: none;
-    color: rgb(21, 21, 21);
+    background-color: rgb(32, 32, 32);
     padding-left: 10px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    border:none;
+    outline: none;
 }
 
 .cont-search-wrap form>button {
     width: 10%;
     border: none;
     outline: none;
-    background-color: white;
+    background-color:  rgb(32, 32, 32);
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -132,13 +134,14 @@ h2 {
 
 .new-wrap>div>a:nth-child(2)>p {
     font-size: 1.4rem;
-    font-weight: 400;
+    font-weight: 500;
     padding: 3px 0;
 }
 
 .new-wrap>div>a:nth-child(2)>span {
     font-size: 0.9rem;
     padding: 3px 0;
+    color:#FCFCFC;
 }
 
 /* ...................... 뻨킹 테이블 ㅅㅂ */
@@ -190,6 +193,7 @@ tbody{
 }
 .question_tbl_wrap p>a>span:hover,
 .notice_tbl_wrap p>a>span:hover {
+    color:#ffc400 !important;
     text-decoration: underline;
 }
 
@@ -240,17 +244,18 @@ table *{
     padding-left:5px;
 }
 .row th >a:hover{
-    color:white;
+    color:rgb(255, 196, 0);
     text-decoration: underline;
 }
 
 
 .event-wrap {
+    flex:1;
     margin-top: 30px;
 }
 
 .event-wrap>div:nth-child(1) {
-    width: 803px;
+    width: 784px;
     overflow: hidden;
 
 }
@@ -258,6 +263,7 @@ table *{
 .event-title {
     height: 60px;
     display: flex;
+    width:784px;
     justify-content: space-between;
 }
 
@@ -277,20 +283,25 @@ table *{
     display: flex;
 }
 
-.event-title>div>button {
+.button {
     width: 100%;
     height: 40px;
     background-color: #494949;
     border-radius: 10px;
     outline: none;
     cursor: pointer;
-    color: #FFff;
+    color: #fcfcfc !important;
     border: none;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.event-title>div>button:hover {
-    background-color: #FCFCFC;
-    color: #191919;
+
+.button:hover {
+    background-color: #ffc400 ;
+    color: #000000 !important;
 }
 
 .swiper-container {
@@ -325,10 +336,11 @@ table *{
 }
 
 
+
 .swiper-container>div:nth-child(2)::after,
 .swiper-container>div:nth-child(3)::after {
     font-size: 1rem;
-    color: black;
+    color: #FCFCFC;
 }
 
 .swiper-container>div:nth-child(2),
@@ -337,7 +349,7 @@ table *{
     width: 44px;
     height: 44px;
     color: transparent;
-    background-color: white;
+    background-color: #494949;
     border-radius: 50%;
     line-height: 42px;
     opacity: 0.9;
@@ -351,6 +363,7 @@ table *{
 .swiper-container>div:nth-child(2):hover,
 .swiper-container>div:nth-child(3):hover {
     background-color: rgb(255, 196, 0);
+    
 }
 
 .swiper-container>div:nth-child(2) {

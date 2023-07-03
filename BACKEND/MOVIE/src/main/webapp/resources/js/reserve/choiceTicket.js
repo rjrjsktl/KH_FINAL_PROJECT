@@ -70,6 +70,8 @@ function checkTicketAjax() {
 	success: function(url) {
 	  if(url != 'fail') {
 	    location.href = url;
+	  } else {
+	    updateSeatAjax();
 	  }
 	},
 	error: function () {
@@ -78,6 +80,29 @@ function checkTicketAjax() {
   });
 
 }
+
+
+
+function updateSeatAjax() {
+  $.ajax({
+    url: "loadPlay",
+    data: {},
+    type: "GET",
+    success: function(userPlay) {
+      $('.seat').empty();
+      updateScreenSection(userPlay);
+      resetCount();
+      updateSeatSection();
+      updateCountArray();
+      resetPriceSection();
+      alert("해당 좌석은 이미 예매된 좌석입니다.");
+    },
+    error: function () {
+      console.log("페이지 로딩 중 에러 발생");
+    }
+  });
+}
+
 
 function updateScreenSection(userPlay) {
     console.log(userPlay);
@@ -106,8 +131,7 @@ function updateScreen(userPlay) {
     maxColumn = userPlay.screen.screenCol;
     aisle = JSON.parse(userPlay.screen.screenAisle);
     space = JSON.parse(userPlay.screen.screenSpace);
-    console.log(space);
-    selectedSeatArray = [];
+    selectedSeatArray = JSON.parse(userPlay.play.playBookSeat);
     sweetSeatArray = JSON.parse(userPlay.screen.screenSweet);
     impairedSeatArray = JSON.parse(userPlay.screen.screenImpaired); 
     
@@ -270,6 +294,19 @@ $('.minus_btn').click(function(){
 
 // 2-F1) 선택 인원 초기화
 
+function resetCount() {
+  adultCount =0;
+  youthCount = 0;
+  seniorCount = 0;
+  specialCount = 0;
+  totalCount = 0;
+  choiceCount = 0;
+  
+  $('.age_count').html(0);
+  $('#seat_area > div > a').removeClass("selecting");
+  seatArray = [];
+} 
+
 function updateCount() {
   // 연령별 선택인원이 다시 변경됨
   // 선택 중인 좌석들이 모두 없어짐
@@ -289,7 +326,7 @@ function updateCount() {
 let seatNo;
 
 $('.seat').on("click", function(e) {
-  if(!$(this).hasClass('aisle') && !$(this).hasClass('space')) {
+  if(!$(this).hasClass('aisle') && !$(this).hasClass('space') && !$(this).hasClass('selected')) {
     seatNo = alphabet[$(this).closest("div").index()] + ($(this).prevAll(".seat, .space").length+1);
   
     if($(this).hasClass("selecting")) {

@@ -86,6 +86,11 @@
 		<result property="deCount" column="DE_COUNT" />
 	</resultMap>
 
+	<resultMap type="dw" id="dw_rm">
+		<id property="deDateStr" column="DE_DATESTR" />
+		<result property="deCount" column="DE_COUNT" />
+	</resultMap>
+
 	<resultMap type="we" id="weekly_rm">
 		<result property="today" column="WE_TODAY" />
 		<result property="lastWeek" column="WE_LASTWEEK" />
@@ -157,6 +162,72 @@
 		<result property="searchContext" column="Search_Content" />
 	</resultMap>
 
+	<resultMap type="play" id="play_rm">
+		<id property="playNo" column="PLAY_NO" />
+		<result property="movieNo" column="MOVIE_NO" />
+		<result property="screenNo" column="SCREEN_NO" />
+		<result property="playStart" column="PLAY_START" />
+		<result property="playEnd" column="PLAY_END" />
+		<result property="playRegDate" column="PLAY_REGDATE" />
+		<result property="playUploader" column="PLAY_UPLOADER" />
+		<result property="playBookCount" column="PLAY_BOOKCOUNT" />
+		<result property="playBookSeat" column="PLAY_BOOKSEAT" />
+	</resultMap>
+
+	<resultMap type="cinema" id="cinema_rm">
+		<id property="cinemaNo" column="CINEMA_NO" />
+		<result property="cinemaName" column="CINEMA_NAME" />
+		<result property="cinemaArea" column="CINEMA_AREA" />
+		<result property="cinemaRegion" column="CINEMA_REGION" />
+		<result property="cinemaScreen" column="CINEMA_SCREEN" />
+	</resultMap>
+
+	<resultMap type="tt" id="tt_rm">
+		<id property="ttNo" column="TT_NO" />
+		<result property="ttTime" column="TT_TIME" />
+	</resultMap>
+
+	<resultMap type="screen" id="screen_rm">
+		<id property="screenNo" column="SCREEN_NO" />
+		<result property="cinemaName" column="CINEMA_NAME" />
+		<result property="screenName" column="SCREEN_NAME" />
+		<result property="screenStyle" column="SCREEN_STYLE" />
+		<result property="screenSeat" column="SCREEN_SEAT" />
+		<result property="screenDetail" column="SCREEN_DETAIL" />
+	</resultMap>
+
+	<resultMap type="book" id="book_rm">
+		<id property="bookNo" column="BOOK_NO" />
+		<result property="playNo" column="PLAY_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="movieNo" column="MOVIE_NO" />
+		<result property="bookDt" column="BOOK_DT" />
+		<result property="bookAge" column="BOOK_AGE" />
+		<result property="bookSeat" column="BOOK_SEAT" />
+		<result property="bookPrice" column="BOOK_PRICE" />
+		<result property="bookSt" column="BOOK_ST" />
+		<result property="totalRow" column="totalRow" />
+	</resultMap>
+
+	<resultMap type="jp" id="jp_rm">
+		<collection property="play" resultMap="play_rm" />
+		<collection property="cinema" resultMap="cinema_rm" />
+		<collection property="movie" resultMap="movie_rm" />
+		<collection property="tt" resultMap="tt_rm" />
+		<collection property="screen" resultMap="screen_rm" />
+	</resultMap>
+
+	<resultMap type="jb" id="jb_rm">
+		<collection property="book" resultMap="book_rm" />
+		<collection property="play" resultMap="play_rm" />
+		<collection property="user" resultMap="user_rm" />
+		<collection property="movie" resultMap="movie_rm" />
+		<collection property="screen" resultMap="screen_rm" />
+		<collection property="cinema" resultMap="cinema_rm" />
+		<collection property="tt" resultMap="tt_rm" />
+		<collection property="cinemaPrice" resultMap="cinemaprice_rm" />
+	</resultMap>
+
 
 	<!-- 관리자 메인 신규 회원 목록 조회 -->
 	<select id="getAllUser" resultMap="user_rm">
@@ -167,7 +238,7 @@
 		SELECT * FROM USERS
 		ORDER BY USER_NO DESC
 		)
-		WHERE ROWNUM 		<![CDATA[ <= ]]>
+		WHERE ROWNUM 				<![CDATA[ <= ]]>
 		6
 	</select>
 
@@ -180,7 +251,7 @@
 		SELECT * FROM NOTICE
 		ORDER BY NOTICE_NO DESC
 		)
-		WHERE ROWNUM 		<![CDATA[ <= ]]>
+		WHERE ROWNUM 				<![CDATA[ <= ]]>
 		6
 	</select>
 
@@ -193,24 +264,41 @@
 		SELECT * FROM MTM_TBL
 		ORDER BY MTM_NO DESC
 		)
-		WHERE ROWNUM 		<![CDATA[ <= ]]>
+		WHERE ROWNUM 				<![CDATA[ <= ]]>
 		6
 	</select>
 
 	<!-- 관리자 메인 일일 접속자 수 조회 -->
-	<select id="getDailyEnter" resultMap="daily_rm"
-		parameterType="we">
+	<select id="getDailyEnter" resultMap="daily_rm" parameterType="we">
 		SELECT TO_CHAR(DE_DATE, 'YYYY-MM-DD') AS "DE_DATESTR", COUNT(DE_NO) AS
 		"DE_COUNT"
 		FROM DAILY_ENTER
-		WHERE DE_DATE 		<![CDATA[ >= ]]>
-		TO_DATE(#{lastWeek}, 'YYYY-MM-DD') AND DE_DATE 		<![CDATA[ < ]]>TO_DATE(#{today},
+		WHERE DE_DATE 				<![CDATA[ >= ]]>
+		TO_DATE(#{lastWeek}, 'YYYY-MM-DD') AND DE_DATE 				<![CDATA[ < ]]>TO_DATE(#{today},
 		'YYYY-MM-DD')
 		GROUP BY TO_CHAR(DE_DATE, 'YYYY-MM-DD')
 		ORDER BY
 		TO_CHAR(DE_DATE, 'YYYY-MM-DD')
 	</select>
 
+	<!-- 관리자 메인 일일 예매 수 조회 -->
+	<select id="getWeeklyWatch" resultMap="dw_rm" parameterType="we">
+		SELECT TO_CHAR(BOOK_DT, 'YYYY-MM-DD') AS "DE_DATESTR", COUNT(BOOK_NO) AS
+		"DE_COUNT"
+		FROM BOOK
+		WHERE BOOK_DT 				<![CDATA[ >= ]]>
+		TO_DATE(#{lastWeek}, 'YYYY-MM-DD') AND BOOK_DT 				<![CDATA[ < ]]>TO_DATE(#{today},
+		'YYYY-MM-DD')
+		GROUP BY TO_CHAR(BOOK_DT, 'YYYY-MM-DD')
+		ORDER BY
+		TO_CHAR(BOOK_DT, 'YYYY-MM-DD')
+	</select>
+
+	<!-- 전체 접속 수 조회 -->
+	<select id="getTotalEntre" resultType="_int">
+		SELECT count(DE_NO) 
+		FROM DAILY_ENTER
+	</select>
 
 	<!-- 회원 수 조회 -->
 	<select id="getListCount" resultType="_int">
@@ -466,7 +554,7 @@
 		ORDER BY
 		EVENT_NO DESC
 		)
-		WHERE ROWNUM 		<![CDATA[ <= ]]>
+		WHERE ROWNUM 				<![CDATA[ <= ]]>
 		7
 	</select>
 
@@ -529,8 +617,7 @@
 		WHERE
 		SCREEN_STYLE = #{screenStyle}
 		AND PRICE_DAY = #{priceDay}
-		AND PRICE_TIME
-		= #{priceTime}
+		AND PRICE_TIME = #{priceTime}
 	</select>
 
 	<!-- 관리자_극장 가격 등록 -->
@@ -735,7 +822,7 @@
 					UPPER(USER_ADDR) LIKE '%' || UPPER(#{searchContext})	|| '%'
 				</when>
 				<otherwise>
-					UPPER(USER_BIRTH LIKE) '%' || UPPER(#{searchContext}) ||	'%'
+					UPPER(USER_BIRTH) LIKE '%' || UPPER(#{searchContext}) ||	'%'
 				</otherwise>
 			</choose>
 		</trim>
@@ -764,25 +851,25 @@
 		, USER_BLOCK
 		FROM
 		USERS
-		<trim prefix="where">
+		<trim prefix="where" prefixOverrides="AND | OR">
 			<choose>
 				<when test="searchType == 'USER_EMAIL'">
-					UPPER(USER_EMAIL) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+					 UPPER(USER_EMAIL) LIKE '%' ||	UPPER(#{searchContext}) || '%'
 				</when>
 				<when test="searchType == 'USER_NAME'">
-					UPPER(USER_NAME) LIKE '%' || UPPER(#{searchContext}) || '%'
+					 UPPER(USER_NAME) LIKE '%' || UPPER(#{searchContext}) || '%'
 				</when>
 				<when test="searchType == 'USER_NICKNAME'">
-					UPPER(USER_NICKNAME) LIKE '%' || UPPER(#{searchContext}) || '%'
+					 UPPER(USER_NICKNAME) LIKE '%' || UPPER(#{searchContext}) || '%'
 				</when>
 				<when test="searchType == 'USER_TEL'">
-					UPPER(USER_TEL) LIKE '%' || UPPER(#{searchContext}) || '%'
+					 UPPER(USER_TEL) LIKE '%' || UPPER(#{searchContext}) || '%'
 				</when>
 				<when test="searchType == 'USER_ADDR'">
-					UPPER(USER_ADDR) LIKE '%' || UPPER(#{searchContext})	|| '%'
+					 UPPER(USER_ADDR) LIKE '%' || UPPER(#{searchContext})	|| '%'
 				</when>
 				<otherwise>
-					UPPER(USER_BIRTH LIKE) '%' || UPPER(#{searchContext}) ||'%'
+					 UPPER(USER_BIRTH) LIKE '%' || UPPER(#{searchContext}) || '%'
 				</otherwise>
 			</choose>
 		</trim>
@@ -816,8 +903,8 @@
 			</choose>
 		</trim>
 	</select>
-	
-	
+
+
 	<!--  검색한 1:1 문의 리스트 조회 -->
 	<select id="selectSearchAskList" resultMap="jcs_rm">
 		SELECT m.*,
@@ -843,6 +930,634 @@
 				</when>
 				<otherwise>
 					UPPER(m.MTM_REPWRITER) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+	<!-- 검색한 분실물 수 조회 -->
+	<select id="getSearchLostCount" resultType="_int">
+    SELECT COUNT(*)
+    FROM LOST_PACKAGE l
+    INNER JOIN USERS u ON l.USER_NO = u.USER_NO
+		<trim prefix="where" prefixOverrides="AND |OR ">
+			<choose>
+				<when test="searchType == 'USER_EMAIL'">
+                AND UPPER(u.USER_EMAIL) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'LOST_TITLE'">
+                AND UPPER(l.LOST_TITLE) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'LOST_ITEM'">
+                AND UPPER(l.LOST_ITEM) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'LOST_DATE'">
+                AND TO_CHAR(l.LOST_DATE) = #{searchContext}
+				</when>
+				<when test="searchType == 'LOST_REPDATE'">
+                AND TO_CHAR(l.LOST_REPDATE, 'YYYY-MM-DD') = #{searchContext}
+				</when>
+				<otherwise>
+                AND UPPER(l.LOST_REPWRITER) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+
+	<!--  검색한 분실물 리스트 조회 -->
+	<select id="selectSearchLostList" resultMap="jcs_rm">
+		SELECT l.*,
+        u.USER_EMAIL AS USER_EMAIL
+		FROM LOST_PACKAGE l
+		INNER JOIN USERS u ON l.USER_NO = u.USER_NO
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'USER_EMAIL'">
+					UPPER(u.USER_EMAIL) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'LOST_TITLE'">
+					UPPER(l.LOST_TITLE) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'LOST_ITEM'">
+					UPPER(l.LOST_ITEM) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'LOST_DATE'">
+					TO_CHAR(l.LOST_DATE) = #{searchContext}
+				</when>
+				<when test="searchType == 'LOST_REPDATE'">
+					TO_CHAR(l.LOST_REPDATE, 'YYYY-MM-DD') = #{searchContext}
+				</when>
+				<otherwise>
+					UPPER(l.LOST_REPWRITER) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+	<!-- 검색한 영화 수 조회 -->
+	<select id="getSearchmovielistCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM MOVIE m
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'MOVIE_TITLE'">
+					UPPER(MOVIE_TITLE) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'MOVIE_NATION'">
+					UPPER(MOVIE_NATION) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'MG_CONTENT'">
+					UPPER(MG_CONTENT) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<otherwise>
+					UPPER(GENRE_NAME) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+
+	<!--  검색한 영화 리스트 조회 -->
+	<select id="searchMovieList" resultMap="movie_rm">
+		SELECT *
+		FROM MOVIE
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'MOVIE_TITLE'">
+					UPPER(MOVIE_TITLE) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'MOVIE_NATION'">
+					UPPER(MOVIE_NATION) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'MG_CONTENT'">
+					UPPER(MG_CONTENT) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<otherwise>
+					UPPER(GENRE_NAME) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+	<!-- 현재 상영중인 영화 검색 수 -->
+	<select id="getSearchNowPlayCount" resultType="_int">
+  SELECT COUNT(p.PLAY_NO)
+  FROM PLAY p
+  INNER JOIN SCREEN s ON p.SCREEN_NO = s.SCREEN_NO
+  INNER JOIN CINEMA c ON s.CINEMA_NAME = c.CINEMA_NAME
+  INNER JOIN MOVIE m ON p.MOVIE_NO = m.MOVIE_NO
+  WHERE
+		<choose>
+			<when test="searchType == 'MOVIE_TITLE'">
+      UPPER(m.MOVIE_TITLE) LIKE '%' || UPPER(#{searchContext}) || '%'
+			</when>
+			<when test="searchType == 'CINEMA_AREA'">
+      UPPER(c.CINEMA_AREA) LIKE '%' || UPPER(#{searchContext}) || '%'
+			</when>
+			<when test="searchType == 'CINEMA_NAME'">
+      UPPER(c.CINEMA_NAME) LIKE '%' || UPPER(#{searchContext}) || '%'
+			</when>
+			<when test="searchType == 'SCREEN_STYLE'">
+      UPPER(s.SCREEN_STYLE) LIKE '%' || UPPER(#{searchContext}) || '%'
+			</when>
+			<when test="searchType == 'PLAY_START'">
+      TO_CHAR(p.PLAY_START, 'YYYY-MM-DD') = #{searchContext}
+			</when>
+			<otherwise>
+      TO_CHAR(p.PLAY_END, 'YYYY-MM-DD') = #{searchContext}
+			</otherwise>
+		</choose>
+  AND p.PLAY_END > SYSDATE
+	</select>
+
+	<!-- 상영중인 영화 검색 리스트 -->
+	<select id="getSearchPlayList" resultMap="jp_rm">
+		SELECT
+		p.PLAY_NO
+		,
+		m.MOVIE_TITLE
+		, c.CINEMA_AREA
+		, c.CINEMA_NAME
+		, s.SCREEN_NAME,
+		TO_CHAR(p.PLAY_START, 'YYYY-MM-DD HH24:MI') AS PLAY_START
+		,
+		TO_CHAR(p.PLAY_END, 'YYYY-MM-DD
+		HH24:MI') AS PLAY_END
+		, s.SCREEN_STYLE
+		,
+		m.MOVIE_NO
+		FROM PLAY p
+		INNER JOIN SCREEN s ON p.SCREEN_NO = s.SCREEN_NO
+		INNER JOIN CINEMA c ON s.CINEMA_NAME = c.CINEMA_NAME
+		INNER JOIN MOVIE m ON p.MOVIE_NO = m.MOVIE_NO
+		  WHERE
+		<choose>
+			<when test="searchType == 'MOVIE_TITLE'">
+		      UPPER(m.MOVIE_TITLE) LIKE '%' || UPPER(#{searchContext}) || '%'
+			</when>
+			<when test="searchType == 'CINEMA_AREA'">
+		      UPPER(c.CINEMA_AREA) LIKE '%' || UPPER(#{searchContext}) || '%'
+			</when>
+			<when test="searchType == 'CINEMA_NAME'">
+		      UPPER(c.CINEMA_NAME) LIKE '%' || UPPER(#{searchContext}) || '%'
+			</when>
+			<when test="searchType == 'SCREEN_STYLE'">
+		      UPPER(s.SCREEN_STYLE) LIKE '%' || UPPER(#{searchContext}) || '%'
+			</when>
+			<when test="searchType == 'PLAY_START'">
+		      TO_CHAR(p.PLAY_START, 'YYYY-MM-DD') = #{searchContext}
+			</when>
+			<otherwise>
+		      TO_CHAR(p.PLAY_END, 'YYYY-MM-DD') = #{searchContext}
+			</otherwise>
+		</choose>
+		  AND p.PLAY_END > SYSDATE
+	</select>
+
+
+	<!-- 상영이 끝난 영화 검색 수 -->
+	<select id="getSearchPlayEndCount" resultType="_int">
+  SELECT COUNT(p.PLAY_NO)
+  FROM PLAY p
+  INNER JOIN SCREEN s ON p.SCREEN_NO = s.SCREEN_NO
+  INNER JOIN CINEMA c ON s.CINEMA_NAME = c.CINEMA_NAME
+  INNER JOIN MOVIE m ON p.MOVIE_NO = m.MOVIE_NO
+  WHERE
+		<choose>
+			<when test="searchType == 'MOVIE_TITLE'">
+      UPPER(m.MOVIE_TITLE) LIKE '%' || UPPER(#{searchContext}) || '%'
+			</when>
+			<when test="searchType == 'CINEMA_AREA'">
+      UPPER(c.CINEMA_AREA) LIKE '%' || UPPER(#{searchContext}) || '%'
+			</when>
+			<when test="searchType == 'CINEMA_NAME'">
+      UPPER(c.CINEMA_NAME) LIKE '%' || UPPER(#{searchContext}) || '%'
+			</when>
+			<when test="searchType == 'SCREEN_STYLE'">
+      UPPER(s.SCREEN_STYLE) LIKE '%' || UPPER(#{searchContext}) || '%'
+			</when>
+			<when test="searchType == 'PLAY_START'">
+      TO_CHAR(p.PLAY_START, 'YYYY-MM-DD') = #{searchContext}
+			</when>
+			<otherwise>
+      TO_CHAR(p.PLAY_END, 'YYYY-MM-DD') = #{searchContext}
+			</otherwise>
+		</choose>
+  AND p.PLAY_END 		<![CDATA[ < ]]>SYSDATE
+	</select>
+
+	<!-- 상영이 끝난 영화 검색 리스트 -->
+	<select id="getSearchPlayEndList" resultMap="jp_rm">
+		SELECT
+		p.PLAY_NO
+		,
+		m.MOVIE_TITLE
+		, c.CINEMA_AREA
+		, c.CINEMA_NAME
+		, s.SCREEN_NAME,
+		TO_CHAR(p.PLAY_START, 'YYYY-MM-DD HH24:MI') AS PLAY_START
+		,
+		TO_CHAR(p.PLAY_END, 'YYYY-MM-DD
+		HH24:MI') AS PLAY_END
+		, s.SCREEN_STYLE
+		,
+		m.MOVIE_NO
+		FROM PLAY p
+		INNER JOIN SCREEN s ON p.SCREEN_NO = s.SCREEN_NO
+		INNER JOIN CINEMA c ON s.CINEMA_NAME = c.CINEMA_NAME
+		INNER JOIN MOVIE m ON p.MOVIE_NO = m.MOVIE_NO
+		  WHERE
+		<choose>
+			<when test="searchType == 'MOVIE_TITLE'">
+		      UPPER(m.MOVIE_TITLE) LIKE '%' || UPPER(#{searchContext}) || '%'
+			</when>
+			<when test="searchType == 'CINEMA_AREA'">
+		      UPPER(c.CINEMA_AREA) LIKE '%' || UPPER(#{searchContext}) || '%'
+			</when>
+			<when test="searchType == 'CINEMA_NAME'">
+		      UPPER(c.CINEMA_NAME) LIKE '%' || UPPER(#{searchContext}) || '%'
+			</when>
+			<when test="searchType == 'SCREEN_STYLE'">
+		      UPPER(s.SCREEN_STYLE) LIKE '%' || UPPER(#{searchContext}) || '%'
+			</when>
+			<when test="searchType == 'PLAY_START'">
+		      TO_CHAR(p.PLAY_START, 'YYYY-MM-DD') = #{searchContext}
+			</when>
+			<otherwise>
+		      TO_CHAR(p.PLAY_END, 'YYYY-MM-DD') = #{searchContext}
+			</otherwise>
+		</choose>
+		  AND p.PLAY_END 		<![CDATA[ < ]]>SYSDATE
+	</select>
+
+
+	<!-- 극장 목록 검색 수 조회 -->
+	<select id="getSearchCinemaCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM CINEMA
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'CINEMA_NAME'">
+					UPPER(CINEMA_NAME) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'CINEMA_AREA'">
+					UPPER(CINEMA_AREA) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<otherwise>
+					UPPER(CINEMA_REGION) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+
+	<!--  극장 목록 리스트 조회 -->
+	<select id="getSearchCinemaList" resultMap="cinema_rm">
+		SELECT *
+		FROM CINEMA
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'CINEMA_NAME'">
+					UPPER(CINEMA_NAME) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'CINEMA_AREA'">
+					UPPER(CINEMA_AREA) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<otherwise>
+					UPPER(CINEMA_REGION) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+	<!-- 극장 가격 목록 검색 수 조회 -->
+	<select id="getSearchCinemaPriceCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM PRICE
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'SCREEN_STYLE'">
+					UPPER(SCREEN_STYLE) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'PRICE_DAY'">
+					UPPER(PRICE_DAY) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<otherwise>
+					UPPER(PRICE_TIME) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+
+	<!--  극장 가격 목록 검색 조회 -->
+	<select id="getSearchCinemaPriceList" resultMap="cinemaprice_rm">
+		SELECT *
+		FROM PRICE
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'SCREEN_STYLE'">
+					UPPER(SCREEN_STYLE) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'PRICE_DAY'">
+					UPPER(PRICE_DAY) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<otherwise>
+					UPPER(PRICE_TIME) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+	<!-- 배너 목록 검색 수 조회 -->
+	<select id="bannerSearchCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM BANNER
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'BANNER_TITLE'">
+					UPPER(BANNER_TITLE) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<otherwise>
+					TO_CHAR(BANNER_REGDATE, 'YYYY-MM-DD') = #{searchContext}
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+
+	<!--  배너 목록 검색 조회 -->
+	<select id="getSearchBannerList" resultMap="banner_rm">
+		SELECT *
+		FROM BANNER
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'BANNER_TITLE'">
+					UPPER(BANNER_TITLE) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<otherwise>
+					TO_CHAR(BANNER_REGDATE, 'YYYY-MM-DD') = #{searchContext}
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+	<!-- 이벤트 목록 검색 수 조회 -->
+	<select id="getSearchEventListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM EVENT
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'EVENT_TITLE'">
+					UPPER(EVENT_TITLE) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'EVENT_START'">
+					TO_CHAR(EVENT_START) = #{searchContext}
+				</when>
+				<when test="searchType == 'EVENT_END'">
+					TO_CHAR(EVENT_END) = #{searchContext}
+				</when>
+				<otherwise>
+					TO_CHAR(EVENT_REG, 'YYYY-MM-DD') = #{searchContext}
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+
+	<!--  이벤트 목록 검색 조회 -->
+	<select id="SearchEventList" resultMap="event_rm">
+		SELECT *
+		FROM EVENT
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'EVENT_TITLE'">
+					UPPER(EVENT_TITLE) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'EVENT_START'">
+					TO_CHAR(EVENT_START) = #{searchContext}
+				</when>
+				<when test="searchType == 'EVENT_END'">
+					TO_CHAR(EVENT_END) = #{searchContext}
+				</when>
+				<otherwise>
+					TO_CHAR(EVENT_REG, 'YYYY-MM-DD') = #{searchContext}
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+	<!-- 공지사항 목록 검색 수 조회 -->
+	<select id="getSearchNoticeListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM NOTICE
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'NOTICE_TITLE'">
+					UPPER(NOTICE_TITLE) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'NOTICE_REGDATE'">
+					TO_CHAR(NOTICE_REGDATE, 'YYYY-MM-DD') = #{searchContext}
+				</when>
+				<otherwise>
+					UPPER(NOTICE_UPLOADER) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+
+	<!--  공지사항 목록 검색 조회 -->
+	<select id="searchNoticeList" resultMap="notice_rm">
+		SELECT *
+			FROM NOTICE
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'NOTICE_TITLE'">
+					UPPER(NOTICE_TITLE) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'NOTICE_REGDATE'">
+					TO_CHAR(NOTICE_REGDATE, 'YYYY-MM-DD') = #{searchContext}
+				</when>
+				<otherwise>
+					UPPER(NOTICE_UPLOADER) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+
+	<select id="getNTCSearchListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM NOTICE
+		WHERE
+		UPPER(NOTICE_TITLE) LIKE '%' ||	UPPER(#{keyword}) || '%'
+	</select>
+
+	<select id="getNTCSearchList" resultMap="notice_rm">
+		SELECT
+		NOTICE_NO,
+		NOTICE_TITLE
+		, TO_CHAR(NOTICE_REGDATE, 'YYYY.MM.DD') AS NOTICE_REGDATE,
+		NOTICE_VIEW
+		FROM NOTICE
+		WHERE
+		UPPER(NOTICE_TITLE) LIKE '%' ||	UPPER(#{keyword}) || '%'
+		ORDER BY NOTICE_NO DESC
+	</select>
+
+	<!-- 예매 리스트 수 조회 -->
+	<select id="selectBookListCount" resultType="_int">
+		SELECT
+		COUNT(BOOK_NO) FROM BOOK
+	</select>
+
+	<select id="helpDeskCount" resultType="_int">
+		
+		SELECT COUNT(*)
+		FROM NOTICE
+		
+	</select>
+
+
+	<!--예매 리스트 조회 -->
+	<select id="getBookList" resultMap="jb_rm">
+SELECT
+		<!-- 예매 번호  -->
+b.BOOK_NO
+		<!-- 예매 일  -->
+, b.BOOK_DT
+		<!-- 회원 아이디 -->
+, u.USER_EMAIL
+		<!-- 예매 영화 -->
+, m.MOVIE_TITLE
+		<!-- 상영 지역 -->
+, c.CINEMA_AREA
+		<!-- 상영 영화관 -->
+, s.CINEMA_NAME
+		<!-- 상영 스크린 -->
+, s.SCREEN_STYLE
+		<!-- 상영관 번호 -->
+, s.SCREEN_NAME
+		<!-- 상영 시작 시간 -->
+, p.PLAY_START
+		<!-- 상영 종료 시간 -->
+, p.PLAY_END
+		<!-- 선택 좌석 -->
+, b.BOOK_SEAT 
+		<!-- 인원 -->
+, b.BOOK_AGE 
+		<!-- 가격 -->
+, b.BOOK_PRICE 
+		<!-- 예매 상태 -->
+, b.BOOK_ST 
+FROM BOOK b																										
+INNER JOIN PLAY p ON b.PLAY_NO = p.PLAY_NO
+INNER JOIN USERS u ON b.USER_NO = u.USER_NO
+INNER JOIN MOVIE m ON b.MOVIE_NO = m.MOVIE_NO
+INNER JOIN SCREEN s ON p.SCREEN_NO  = s.SCREEN_NO
+INNER JOIN CINEMA c ON s.CINEMA_NAME  = c.CINEMA_NAME
+ORDER BY b.BOOK_DT DESC
+	</select>
+
+	<!-- 예매 리스트 검색 수 조회 -->
+	<select id="getSearchBookListCount" resultType="_int">
+		SELECT
+		COUNT(BOOK_NO)
+		FROM BOOK b																										
+		INNER JOIN PLAY p ON b.PLAY_NO = p.PLAY_NO
+		INNER JOIN USERS u ON b.USER_NO = u.USER_NO
+		INNER JOIN MOVIE m ON b.MOVIE_NO = m.MOVIE_NO
+		INNER JOIN SCREEN s ON p.SCREEN_NO  = s.SCREEN_NO
+		INNER JOIN CINEMA c ON s.CINEMA_NAME  = c.CINEMA_NAME
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'BOOK_DT'">
+					TO_CHAR(b.BOOK_DT, 'YYYY-MM-DD') = #{searchContext}
+				</when>
+				<when test="searchType == 'USER_EMAIL'">
+					UPPER(u.USER_EMAIL) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'MOVIE_TITLE'">
+					UPPER(m.MOVIE_TITLE) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'CINEMA_AREA'">
+					UPPER(c.CINEMA_AREA) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'CINEMA_NAME'">
+					UPPER(s.CINEMA_NAME) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'SCREEN_STYLE'">
+					UPPER(s.SCREEN_STYLE) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<otherwise>
+					UPPER(b.BOOK_ST ) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+
+
+	<!--예매 리스트 검색 조회 -->
+	<select id="getSearchBookList" resultMap="jb_rm">
+SELECT
+		<!-- 예매 번호  -->
+b.BOOK_NO
+		<!-- 예매 일  -->
+, b.BOOK_DT
+		<!-- 회원 아이디 -->
+, u.USER_EMAIL
+		<!-- 예매 영화 -->
+, m.MOVIE_TITLE
+		<!-- 상영 지역 -->
+, c.CINEMA_AREA
+		<!-- 상영 영화관 -->
+, s.CINEMA_NAME
+		<!-- 상영 스크린 -->
+, s.SCREEN_STYLE
+		<!-- 상영관 번호 -->
+, s.SCREEN_NAME
+		<!-- 상영 시작 시간 -->
+, p.PLAY_START
+		<!-- 상영 종료 시간 -->
+, p.PLAY_END
+		<!-- 선택 좌석 -->
+, b.BOOK_SEAT 
+		<!-- 인원 -->
+, b.BOOK_AGE 
+		<!-- 가격 -->
+, b.BOOK_PRICE 
+		<!-- 예매 상태 -->
+, b.BOOK_ST 
+FROM BOOK b																										
+INNER JOIN PLAY p ON b.PLAY_NO = p.PLAY_NO
+INNER JOIN USERS u ON b.USER_NO = u.USER_NO
+INNER JOIN MOVIE m ON b.MOVIE_NO = m.MOVIE_NO
+INNER JOIN SCREEN s ON p.SCREEN_NO  = s.SCREEN_NO
+INNER JOIN CINEMA c ON s.CINEMA_NAME  = c.CINEMA_NAME
+		<trim prefix="where">
+			<choose>
+				<when test="searchType == 'BOOK_DT'">
+					TO_CHAR(b.BOOK_DT, 'YYYY-MM-DD') = #{searchContext}
+				</when>
+				<when test="searchType == 'USER_EMAIL'">
+					UPPER(u.USER_EMAIL) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'MOVIE_TITLE'">
+					UPPER(m.MOVIE_TITLE) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'CINEMA_AREA'">
+					UPPER(c.CINEMA_AREA) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'CINEMA_NAME'">
+					UPPER(s.CINEMA_NAME) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<when test="searchType == 'SCREEN_STYLE'">
+					UPPER(s.SCREEN_STYLE) LIKE '%' || UPPER(#{searchContext}) || '%'
+				</when>
+				<otherwise>
+					UPPER(b.BOOK_ST ) LIKE '%' || UPPER(#{searchContext}) || '%'
 				</otherwise>
 			</choose>
 		</trim>

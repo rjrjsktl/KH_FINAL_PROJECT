@@ -67,7 +67,6 @@
 
                                         <div class="detail-info-wrap">
 
-
                                             <p>
                                                 <c:choose>
                                                     <c:when test="${fn:contains(MovieDetail.mgNo, '전체')}">
@@ -90,8 +89,8 @@
                                                 <span>${MovieDetail.movieTitle}</span>
                                             </p>
                                             <ul>
-                                                <li>관람객평점 <span>4.5</span>점</li>
-                                                <li>예매율 <span>50</span>%</li>
+                                                <li>관람객평점 <span>${revLike} / 5</span>점</li>
+                                                <li>예매율 <span>${bookPercent}</span>%</li>
                                                 <li>누적관객수 <span>${MovieDetail.movieWatched}</span>명</li>
                                             </ul>
 
@@ -135,7 +134,7 @@
                                     <div>
                                         <div class="movide-expalin-wrap">
                                             <p class="info-btn">영화정보</p>
-                                            <p class="star-btn">평점 및 관람평</p>
+                                            <p class="star-btn">평점 및 리뷰</p>
                                         </div>
                                         <!-- 영화정보 -->
                                         <div class="movie-detail">
@@ -254,7 +253,7 @@
                                         <div class="movie-reply" style="display:none">
 
                                             <div class="replywritewrap">
-                                                <span>평점 관람평 작성</span>
+                                                <span>평점 리뷰 작성</span>
                                                 <div class="star-wrapper">
 
 
@@ -275,7 +274,7 @@
 
                                                         <c:choose>
                                                             <c:when test="${not empty loginUser.userNo}">
-                                                                <div class="replyBtn">관람평작성</div>
+                                                                <div class="replyBtn">리뷰작성</div>
                                                             </c:when>
                                                             <c:otherwise>
                                                                 <div class="loginBtn">로그인</div>
@@ -289,7 +288,7 @@
 
                                             <div class="replywrap">
                                                 <div>
-                                                    <p>관람객 관람평</p>
+                                                    <p>관람객 리뷰</p>
 
                                                 </div>
                                             </div>
@@ -312,7 +311,7 @@
                                                                             <p>${review.userNick}</p>
                                                                         </div>
                                                                         <div class="review_content">
-                                                                            <div>관람평</div>
+                                                                            <div>리뷰</div>
                                                                             <div>${review.revLike}</div>
                                                                             <div>${review.revContent}</div>
                                                                             <c:choose>
@@ -346,6 +345,7 @@
                                             <input type="hidden" id="userNo" value="${loginUser.userNo}">
                                             <input type="hidden" id="userNick" value="${userNick}">
                                             <input type="hidden" id="userMst" value="${loginUser.userManagerSt}">
+
                                         </div>
 
                                     </div>
@@ -362,8 +362,12 @@
                         <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
                         </div>
-
-
+                        <script>
+                            const bookPercent = "${bookPercent}";
+                            console.log("bookPercent::::" + bookPercent);
+                            const revLike = "${revLike}";
+                            console.log("revLike::::" + revLike);
+                        </script>
                         <script src="${contextPath}/resources/js/main/header.js"></script>
                         <script src="${contextPath}/resources/js/introduce/introduce.js"></script>
                         </div>
