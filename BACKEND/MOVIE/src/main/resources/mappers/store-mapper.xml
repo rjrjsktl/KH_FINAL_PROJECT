@@ -85,12 +85,24 @@
         SELECT COUNT(*) FROM STORE
     </select>
     
+    <!-- 스토어 오더 수 조회 -->
+      <select id="getStoreBuyCount" resultType="_int">
+       SELECT COUNT(*) FROM STORE_ORDER
+    </select>  
+    
      <!-- 스토어 리스트 조회 -->
     
     <select id="getStoreList" resultMap="store_rm">
         SELECT * FROM STORE
         ORDER BY STORE_NO ASC
     </select>
+    
+    <!-- 스토어 구매리스트 조회 -->
+     <select id="getStoreBuyList" resultMap="storeOrder_rm">
+        SELECT * FROM STORE_ORDER
+        ORDER BY S_ORDER_NO ASC
+    </select>
+    
     
    <!-- 스토어 디테일 값 불러오기 -->
 	<select id="getStoreDetail" resultMap="store_rm">

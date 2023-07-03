@@ -31,6 +31,7 @@ import com.kh.kgv.management.model.vo.Search;
 import com.kh.kgv.management.model.vo.WeeklyEnter;
 import com.kh.kgv.management.model.vo.banner;
 import com.kh.kgv.mypage.controller.MyPageController;
+import com.kh.kgv.store.model.vo.StoreOrder;
 
 @Repository
 public class ManagerDAO {
@@ -299,7 +300,13 @@ public class ManagerDAO {
 	public int getStoreCount() {
 		return sqlSession.selectOne("storeMapper.getStoreCount");
 	}
-
+	
+	// 스토어오더 수 조회 
+		public int getStoreBuyCount() {
+			return sqlSession.selectOne("storeMapper.getStoreBuyCount");
+		}
+	
+	
 	// 스토어 목록 조회
 	public List<Store> getStoreList(Pagination pagination) {
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
@@ -307,6 +314,16 @@ public class ManagerDAO {
 
 		return sqlSession.selectList("storeMapper.getStoreList", null, rowBounds);
 	}
+	
+	// 스토어 구매 목록 조회
+	public List<StoreOrder> getStoreOrderList(Pagination pagination) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("storeMapper.getStoreBuyList", null, rowBounds);
+	}
+	
+	
 
 	// 메인 -> 이벤트 이동 시 이벤트
 	public List<Event> selectEventList() {
@@ -674,5 +691,9 @@ public class ManagerDAO {
 	public List<DailyEnter> getTotalEntre() {
 		return sqlSession.selectList("managerMapper.getTotalEntre");
 	}
+
+	
+
+	
 
 }
