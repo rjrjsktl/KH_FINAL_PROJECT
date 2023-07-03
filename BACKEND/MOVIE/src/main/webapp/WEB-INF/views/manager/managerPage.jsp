@@ -19,15 +19,11 @@
 						<link rel="stylesheet" href="${contextPath}/resources/css/manager/reset.css">
 
 						<!-- fontawesome -->
-						<link rel="stylesheet"
-							href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-							integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-							crossorigin="anonymous" referrerpolicy="no-referrer" />
+						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+							integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 						<!-- jQuery 라이브러리 추가(CDN) -->
-						<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-							integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-							crossorigin="anonymous"></script>
+						<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 						<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -50,30 +46,32 @@
 
 											<!-- 일일 접속자 수 -->
 											<div class="left_Inner_Contents">
+												<span class="totalValues">누적 접속자 수 : ${totalEnter}</span>
 												<canvas id="dailyEnter"></canvas>
 											</div>
 
 											<!-- 일일 관람객 수 -->
 											<div class="left_Inner_Contents algin_Left">
+												<span class="totalValues">누적 예매 수 : </span>
 												<canvas id="dailyWatch"></canvas>
 											</div>
 
 											<!-- 신규 회원 -->
 											<div class="left_Inner_Contents">
 												<div class="inner_Top">
-													<span class="inner_Top_Text">신규 회원</span> <a
-														href="${contextPath}/manager/member" class="new_more">더보기</a>
+													<span class="inner_Top_Text">신규 회원</span> <a href="${contextPath}/manager/member" class="new_more">더보기</a>
 												</div>
 												<div class="inner_Top_Content">
 													<div class="noticeTable">
 														<table class="tableWrapper">
-															<th class="boardNum">번호</th>
-															<th class="boardTItle">아이디</th>
-															<th class="boardWriter">닉네임</th>
-															<th class="boardDate">가입일</th>
-															<th class="boardWatch">SNS</th>
-															<c:forEach var="getUser" items="${getUser}"
-																varStatus="status">
+															<tr>
+																<th class="boardNum">번호</th>
+																<th class="boardTItle">아이디</th>
+																<th class="boardWriter">닉네임</th>
+																<th class="boardDate">가입일</th>
+																<th class="boardWatch">SNS</th>
+															</tr>
+															<c:forEach var="getUser" items="${getUser}" varStatus="status">
 																<tr>
 																	<td>${status.count}</td>
 																	<td>${getUser.userEmail}</td>
@@ -90,26 +88,23 @@
 											<!-- 상영중인 영화 -->
 											<div class="left_Inner_Contents algin_Left">
 												<div class="inner_Top">
-													<span class="inner_Top_Text">상영중인 영화</span> <a
-														href="${contextPath}/manager/play_list"
-														class="movie_more">더보기</a>
+													<span class="inner_Top_Text">상영중인 영화</span> <a href="${contextPath}/manager/play_list" class="movie_more">더보기</a>
 												</div>
 												<div class="inner_Top_Content">
 													<div class="noticeTable">
 														<table class="tableWrapper">
-															<th class="boardNum">번호</th>
-															<th class="boardTItle">영화명</th>
-															<th class="boardWriter">예매율</th>
-															<th class="boardDate">누적상영횟수</th>
-															<th class="boardDate">누적관람횟수</th>
-															<th class="boardWatch">개봉일</th>
-															<c:forEach var="movie"
-																items="${getMovieList['cleanedList']}"
-																varStatus="status">
+															<tr>
+																<th class="boardNum">번호</th>
+																<th class="boardTItle">영화명</th>
+																<th class="boardWriter">예매율</th>
+																<th class="boardDate">누적상영횟수</th>
+																<th class="boardDate">누적관람횟수</th>
+																<th class="boardWatch">개봉일</th>
+															</tr>
+															<c:forEach var="movie" items="${getMovieList['cleanedList']}" varStatus="status">
 																<tr>
 																	<td>${status.count}</td>
-																	<td><a
-																			href="${contextPath}/movieList/detail_List/introduce/${movie['movieNo']}">
+																	<td><a href="${contextPath}/movieList/detail_List/introduce/${movie['movieNo']}">
 																			${movie['movieTitle']}</a></td>
 																	<td>예매율</td>
 																	<td>${movie['moviePlayed']}</td>
@@ -125,24 +120,22 @@
 											<!-- 공지사항 -->
 											<div class="left_Inner_Contents">
 												<div class="inner_Top">
-													<span class="inner_Top_Text">공지사항</span> <a
-														href="${contextPath}/manager/notice_list"
-														class="notice_more">더보기</a>
+													<span class="inner_Top_Text">공지사항</span> <a href="${contextPath}/manager/notice_list" class="notice_more">더보기</a>
 												</div>
 												<div class="inner_Top_Content">
 													<div class="noticeTable">
 														<table class="tableWrapper">
-															<th class="boardNum">번호</th>
-															<th class="boardTItle">제목</th>
-															<th class="boardWriter">작성자</th>
-															<th class="boardDate">작성일</th>
-															<th class="boardWatch">조회수</th>
-															<c:forEach var="getNotice" items="${getNotice}"
-																varStatus="status">
+															<tr>
+																<th class="boardNum">번호</th>
+																<th class="boardTItle">제목</th>
+																<th class="boardWriter">작성자</th>
+																<th class="boardDate">작성일</th>
+																<th class="boardWatch">조회수</th>
+															</tr>
+															<c:forEach var="getNotice" items="${getNotice}" varStatus="status">
 																<tr>
 																	<td>${status.count}</td>
-																	<td><a
-																			href="${contextPath}/helpDesk/notice_detail/${getNotice['noticeNo']}">${getNotice['noticeTitle']}</a>
+																	<td><a href="${contextPath}/helpDesk/notice_detail/${getNotice['noticeNo']}">${getNotice['noticeTitle']}</a>
 																	</td>
 																	<td>${getNotice.noticeUploader}</td>
 																	<td>${getNotice.noticeRegDate}</td>
@@ -157,23 +150,22 @@
 											<!-- 1 : 1 문의 -->
 											<div class="left_Inner_Contents algin_Left">
 												<div class="inner_Top">
-													<span class="inner_Top_Text">1 : 1 문의</span> <a
-														href="${contextPath}/manager/ask_list" class="qna_more">더보기</a>
+													<span class="inner_Top_Text">1 : 1 문의</span> <a href="${contextPath}/manager/ask_list" class="qna_more">더보기</a>
 												</div>
 												<div class="inner_Top_Content">
 													<div class="noticeTable">
 														<table class="tableWrapper">
-															<th class="boardNum">번호</th>
-															<th class="boardTItle">제목</th>
-															<th class="boardWriter">작성일</th>
-															<th class="boardDate">답변여부</th>
-															<th class="boardWatch">답변일</th>
-															<c:forEach var="mtm" items="${getMTMList}"
-																varStatus="status">
+															<tr>
+																<th class="boardNum">번호</th>
+																<th class="boardTItle">제목</th>
+																<th class="boardWriter">작성일</th>
+																<th class="boardDate">답변여부</th>
+																<th class="boardWatch">답변일</th>
+															</tr>
+															<c:forEach var="mtm" items="${getMTMList}" varStatus="status">
 																<tr>
 																	<td>${status.count}</td>
-																	<td><a
-																			href="${contextPath}/helpDesk/mtm_detail/${mtm['mtmNo']}">
+																	<td><a href="${contextPath}/helpDesk/mtm_detail/${mtm['mtmNo']}">
 																			${mtm.mtmTitle}</a></td>
 																	<td>${mtm.mtmRegdate}</td>
 																	<td>${mtm.mtmRepSt}</td>

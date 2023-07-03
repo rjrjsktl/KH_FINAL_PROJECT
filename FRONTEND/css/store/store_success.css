@@ -188,7 +188,7 @@ main {
     padding-top: 20px;
     border-top: 1px solid #DDD;
 
-
+    position: relative;
     padding: 20px 25px;
 }
 
@@ -256,6 +256,26 @@ main {
     padding-left: 30px;
 
 }
+
+
+.minus-icon {
+
+    position: absolute;
+    left: 227px;
+    top: 28px;
+}
+
+.equals-icon {
+
+    position: absolute;
+    left: 465px;
+    top: 28px;
+}
+
+
+
+
+
 
 /* 두번째 div의 세번째 div*/
 #wrapper>div>div:nth-child(2)>div:nth-child(3) {

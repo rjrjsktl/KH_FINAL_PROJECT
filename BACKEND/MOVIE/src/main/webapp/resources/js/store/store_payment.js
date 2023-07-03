@@ -81,8 +81,9 @@ function requestPay() {
 
                             if (result > 0) {
                                 alert("결제성공 정보DB 등록 성공");
-                                // let url = "/movie/store/storeMain";
-                                // window.location.href = url;
+                                let url = "/movie/store/store_Success";
+
+                                window.location.href = url;
 
                             } else {
                                 console.log("에러 발생으로 인해 등록 실패");

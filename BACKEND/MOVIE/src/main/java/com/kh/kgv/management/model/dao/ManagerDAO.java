@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.kgv.customer.model.vo.Book;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.helpDesk.model.vo.LostPackage;
 import com.kh.kgv.helpDesk.model.vo.Mtm;
@@ -21,6 +22,7 @@ import com.kh.kgv.management.model.vo.Benefits;
 import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
+import com.kh.kgv.management.model.vo.DailyWatch;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.management.model.vo.Notice;
@@ -635,5 +637,42 @@ public class ManagerDAO {
 		return sqlSession.selectList("managerMapper.getNTCSearchList", keyword, rowBounds);
 	}
 
+	// 예매 리스트 수 조회
+	public int selectBookListCount() {
+		return sqlSession.selectOne("managerMapper.selectBookListCount");
+	}
+
+	// 예매 리스트 조회
+	public List<Book> getBookList(Pagination pagination) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+		return sqlSession.selectList("managerMapper.getBookList", null, rowBounds);
+	}
+
+	// 예매 리스트 검색 수 조회
+	public int getSearchBookListCount(Search search) {
+		return sqlSession.selectOne("managerMapper.getSearchBookListCount", search);
+	}
+	
+	// 예매 리스트 검색 조회
+	public List<Book> getSearchBookList(Pagination pagination, Search search) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+		return sqlSession.selectList("managerMapper.getSearchBookList", search, rowBounds);
+	}
+
+	// 관리자 메인 일일 예매 수 조회
+	public List<DailyWatch> getWeeklyWatch(WeeklyEnter we) {
+		return sqlSession.selectList("managerMapper.getWeeklyWatch", we);
+	}
+
+	// 총 접속자 수
+	public List<DailyEnter> getTotalEntre() {
+		return sqlSession.selectList("managerMapper.getTotalEntre");
+	}
 
 }

@@ -14,7 +14,7 @@
 			<script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
 
-			<link rel="stylesheet" href="${contextPath}/resources/css/helpDesk/find-my-item.css" />
+			<link rel="stylesheet" href="${contextPath}/resources/css/helpDesk/lost_List.css" />
 
 			<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
 
