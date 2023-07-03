@@ -337,4 +337,16 @@
 		)
 		ORDER BY MOVIE_NO DESC
 	</select>
+	
+	<select id="randomMovie" resultMap="movie_rm">
+		<![CDATA[
+		SELECT MOVIE_NO, MOVIE_IMG1
+		FROM (
+    		SELECT MOVIE_NO, MOVIE_IMG1
+    		FROM MOVIE
+    		ORDER BY DBMS_RANDOM.RANDOM
+		)
+		WHERE ROWNUM < = 3]]>
+	</select>
+	
 </mapper>
