@@ -1,7 +1,5 @@
 package com.kh.kgv.management.model.vo;
 
-import com.kh.kgv.items.model.vo.SeatPrice;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

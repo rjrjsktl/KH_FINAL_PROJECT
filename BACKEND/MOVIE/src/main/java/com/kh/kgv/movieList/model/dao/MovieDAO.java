@@ -90,13 +90,14 @@ public class MovieDAO {
 
 	// 별점 기능 DAO
 	public double allLike(int movieNo) {
-		Double allLike = sqlSession.selectOne("reviewMapper.allLike", movieNo);
+		Double allLike = sqlSession.selectOne("movieMapper.allLike", movieNo);
 		double result = (allLike != null) ? allLike : 0.0;
 		return result;
 	}
 
-	public double allbook(int movieNo) {
-		Double allbook = sqlSession.selectOne("reviewMapper.allbook", movieNo);
+	// 예매율 DAO
+	public double allBook(int movieNo) {
+		Double allbook = sqlSession.selectOne("movieMapper.allBook", movieNo);
 		double result = (allbook != null) ? allbook : 0.0;
 		return result;
 	}

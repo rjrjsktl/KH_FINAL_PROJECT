@@ -9,21 +9,33 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Store;
 import com.kh.kgv.store.contoller.StoreController;
 import com.kh.kgv.store.model.dao.StoreDAO;
+import com.kh.kgv.store.model.vo.JoinStore;
 import com.kh.kgv.store.model.vo.StoreCoupon;
 import com.kh.kgv.store.model.vo.StoreOrder;
 
 @Service
 public class StoreServiceImpl implements StoreService {
 	
+	
+	
+	
+	
 	private Logger logger = LoggerFactory.getLogger(StoreController.class);
+	
+	@Autowired
+	private HttpSession session;
+	
 	@Autowired
 	private StoreDAO dao;
 
@@ -52,7 +64,7 @@ public class StoreServiceImpl implements StoreService {
 		 int generatedOrderNo = storeOrder.getSorderNo();
 		 
 		 		//storeOrder.setOrderSt("Y");
-		 
+		 session.setAttribute("generatedOrderNo", generatedOrderNo);
 		 
 		 
 		 logger.debug(" storeOrder################ : " + storeOrder);
@@ -83,6 +95,34 @@ public class StoreServiceImpl implements StoreService {
 		    
 		    return result;	
 	}
+
+	@Override
+	public List<Store> getstoreList(int sorderNo) {
+		List<Store> storeList = dao.getstoreList(sorderNo);
+		
+		
+		return storeList;
+	}
+
+	@Override
+	public List<StoreOrder> getstoreOrderList(int sorderNo) {
+		List<StoreOrder> storeOrderList = dao.getstoreOrderList(sorderNo);
+		
+		
+		return storeOrderList;
+	}
+
+	@Override
+	public List<StoreCoupon> getstoreCouponList(int sorderNo) {
+		List<StoreCoupon> storeCouponList = dao.getstoreCouponList(sorderNo);
+		
+		
+		return storeCouponList;
+	}
+
+	
+	
+	
 
 
 

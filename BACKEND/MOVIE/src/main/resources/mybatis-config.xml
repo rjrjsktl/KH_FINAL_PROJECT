@@ -31,15 +31,18 @@
 		<typeAlias type="com.kh.kgv.management.model.vo.DiscountAdd" alias="da"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.Manager" alias="manager"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.DailyEnter" alias="de"/>
+		<typeAlias type="com.kh.kgv.management.model.vo.DailyWatch" alias="dw"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.WeeklyEnter" alias="we"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.banner" alias="banner"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.CinemaPrice" alias="CinemaPrice"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.Search" alias="search"/>
+		
 
 		<typeAlias type="com.kh.kgv.management.model.vo.Benefits" alias="benefits"/>
 
 		<typeAlias type="com.kh.kgv.management.model.vo.JoinPlay" alias="jp"/>
 		<typeAlias type="com.kh.kgv.management.model.vo.JoinCS" alias="jcs"/>
+		<typeAlias type="com.kh.kgv.management.model.vo.JoinBook" alias="jb"/>
 		
 		<typeAlias type="com.kh.kgv.mypage.model.vo.JoinReview" alias="jr"/>
 		<typeAlias type="com.kh.kgv.mypage.model.vo.JoinMovie" alias="jm"/>
@@ -53,9 +56,9 @@
 		<typeAlias type="com.kh.kgv.helpDesk.model.vo.Quest" alias="quest"/>
 		<typeAlias type="com.kh.kgv.customer.model.vo.Review" alias="review"/>
 		
-		<typeAlias type="com.kh.kgv.store.model.vo.StoreOrder" alias="storeOrder"/>
+		<typeAlias type="com.kh.kgv.store.model.vo.StoreOrder" 	alias="storeOrder"/>
 		<typeAlias type="com.kh.kgv.store.model.vo.StoreCoupon" alias="storeCoupon"/>
-		
+		<typeAlias type="com.kh.kgv.store.model.vo.JoinStore" 	alias="js"/>
 
 		
 	</typeAliases>

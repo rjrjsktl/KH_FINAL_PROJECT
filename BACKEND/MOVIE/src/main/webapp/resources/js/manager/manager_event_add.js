@@ -43,7 +43,7 @@ $(document).ready(function () {
         var data = new FormData();
         data.append("file", file);
         $.ajax({
-            url: 'event_add/uploadImageFile',
+            url: 'event_add/uploadEventImageFile',
             type: "POST",
             enctype: 'multipart/form-data',
             data: data,

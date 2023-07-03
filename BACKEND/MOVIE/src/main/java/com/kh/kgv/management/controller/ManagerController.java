@@ -37,6 +37,7 @@ import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.management.model.vo.Benefits;
 import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.DailyEnter;
+import com.kh.kgv.management.model.vo.DailyWatch;
 import com.kh.kgv.management.model.vo.Event;
 import com.kh.kgv.management.model.vo.Notice;
 import com.kh.kgv.management.model.vo.Search;
@@ -134,19 +135,56 @@ public class ManagerController {
 
 	// ===================================================
 	// ===================================================
+	// 관리자_예매 리스트 이동 및 검색기능
+	@GetMapping("/book")
+	public String moveBook(
+			Model model
+			, Search search
+			, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+			, @RequestParam(value ="searchType", required = false, defaultValue = "") String searchType
+			, @RequestParam(value ="searchContent", required = false, defaultValue = "") String searchContent
+			)
+	{
+		Map<String, Object> getBookList = null;
+		
+		// 회원 리스트 얻어오기
+		if(!searchType.isEmpty() && !searchContent.isEmpty()) {
+			// 검색기능
+			search.setSearchType(searchType);
+			search.setSearchContext(searchContent);
+			
+			getBookList = service.getBookSearch(search, cp);
+			
+		} else {
+			getBookList = service.selectBookList(cp);
+		}
+		model.addAttribute("getBookList", getBookList);
+		
+		System.out.println("관리자_예매 리스트 이동");
+		return "manager/manager_book_list";
+		
+	}
+	
+	// ===================================================
+	// ===================================================
 
 	// 관리자 메인 일일 접속자 수 조회
 	@ResponseBody
 	@PostMapping("/getDailyEnter")
 	public List<DailyEnter> getDailyEnter(@RequestParam("today") String today,
-			@RequestParam("lastWeek") String lastWeek, WeeklyEnter we) {
+			@RequestParam("lastWeek") String lastWeek, WeeklyEnter we, Model model) {
 
 		System.out.println(today + " today  ========================");
 		System.out.println(lastWeek + " today  ========================");
 
 		we.setToday(today);
 		we.setLastWeek(lastWeek);
-
+		
+		// 총 접속자 수
+		List<DailyEnter> totalEnter = service.getTotalEntre();
+		System.out.println("=====================================================================================totalEnter : " + totalEnter);
+		model.addAttribute("totalEnter", totalEnter);
+		
 		List<DailyEnter> dailyEnter = null;
 		dailyEnter = service.getWeeklyEnter(we);
 
@@ -154,6 +192,30 @@ public class ManagerController {
 				dailyEnter + " ==============================================================================");
 
 		return dailyEnter;
+	}
+	
+	// ===================================================
+	// ===================================================
+	
+	// 관리자 메인 일일 예매 수 조회
+	@ResponseBody
+	@PostMapping("/dailyWatch")
+	public List<DailyWatch> dailyWatch(@RequestParam("today") String today,
+			@RequestParam("lastWeek") String lastWeek, WeeklyEnter we) {
+		
+		System.out.println(today + " today  ========================");
+		System.out.println(lastWeek + " today  ========================");
+		
+		we.setToday(today);
+		we.setLastWeek(lastWeek);
+		
+		List<DailyWatch> dailyWatch = null;
+		dailyWatch = service.getWeeklyWatch(we);
+		
+		System.out.println(
+				dailyWatch + " ==============================================================================");
+		
+		return dailyWatch;
 	}
 
 	// ===================================================

@@ -107,7 +107,7 @@
 														</a>
 														<div>
 															<p>
-																예매율 <span>${bookPercent}</span>%
+																예매율 <span>${bookPercent[status.index]}</span>%
 															</p>
 															<p>
 																개봉일 <span>${movie['movieOpen']}</span>

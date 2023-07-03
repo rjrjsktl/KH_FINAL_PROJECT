@@ -39,7 +39,12 @@
 		<result property="couponSt" 			column="COUPON_ST"/>
 	</resultMap>	
 	
+	<resultMap type="js" id="js_rm">
+		<collection property="store" resultMap="store_rm" />
+		<collection property="storeOrder" resultMap="storeOrder_rm" />
+		<collection property="storeCoupon" resultMap="storeCoupon_rm" />
 	
+	</resultMap>
 	
 	
 	<!-- 상품 이름 중복 검사 -->
@@ -157,5 +162,29 @@
 	
 	
 	
+	
+	
+	<select id="getstoreList" parameterType="int" resultMap="store_rm">
+    SELECT *
+    FROM STORE
+    WHERE STORE_NO IN (
+        SELECT STORE_NO
+        FROM STORE_ORDER
+        WHERE S_ORDER_NO = #{sorderNo}
+    )
+</select>
+
+<select id="getstoreOrderList" parameterType="int" resultMap="storeOrder_rm">
+     SELECT *
+    FROM STORE_ORDER
+    WHERE S_ORDER_NO = #{sorderNo}
+</select>
+
+<select id="getstoreCouponList" parameterType="int" resultMap="storeCoupon_rm">
+     SELECT *
+    FROM STORE_COUPON
+    WHERE S_ORDER_NO = #{sorderNo}
+</select>
+
 	
 </mapper>
