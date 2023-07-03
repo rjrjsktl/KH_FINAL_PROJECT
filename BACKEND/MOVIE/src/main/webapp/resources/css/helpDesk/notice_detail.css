@@ -96,7 +96,7 @@ h2 {
     text-decoration: underline;
     color: rgb(255, 196, 0) !important;
 }
-
+ 
 .content-wrap>div:last-child {
     padding: 30px;
     display: flex;
@@ -123,9 +123,9 @@ h2 {
 }
 
 .aslide-list>li:nth-child(2)>a {
-    background-color: rgb(73, 73, 73);
+    background-color: #FFC400;
 }
 
 .aslide-list>li:nth-child(2)>a {
-    color: rgb(251, 251, 251);
+    color: black;
 }

@@ -22,7 +22,7 @@
 			<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
 			<link rel="stylesheet" href="${contextPath}/resources/css/helpDesk/lost_detail.css">
 			<link rel="stylesheet" href="${contextPath}/resources/css/common/notice_Aside.css">
-
+ 
 
 
 		</head>
@@ -49,7 +49,7 @@
 										<span>${lostdetail.lostTitle}</span>
 									</div>
 									<div>
-										<span>${lostdetail.lostLocation}</span>
+										<span>${lostdetail.lostLocation} <span> / </span> <span>${lostdetail.lostItem}</span> </span>
 										<span><span>${lostdetail.lostWriter}</span> <span>|</span>
 											<span>${lostdetail.lostDate} </span></span>
 
@@ -138,7 +138,7 @@
 			<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 
-			<script src="${contextPath}/resources/js/helpDesk/lost_form.js"></script>
+			<script src="${contextPath}/resources/js/helpDesk/lost.js"></script>
 
 		</body>
 

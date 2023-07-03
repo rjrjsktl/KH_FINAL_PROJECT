@@ -224,7 +224,8 @@
 		, LOST_DATE = #{lostDate}
 		, LOST_FILE = #{lostFile}
 		,
-		LOST_CONTENT = #{lostContent}
+		LOST_CONTENT = #{lostContent},
+		LOST_PW = #{lostPw}
 		WHERE LOST_NO=#{lostNo}
 	</update>
 

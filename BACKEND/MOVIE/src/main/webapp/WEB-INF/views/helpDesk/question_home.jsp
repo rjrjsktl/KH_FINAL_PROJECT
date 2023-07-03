@@ -55,7 +55,7 @@
 									<form action="/movie/helpDesk/question_home" method="GET">
 										<input type="text" placeholder=" 질문을 입력해주세요!" name="keyword">
 										<button>
-											<img src="${contextPath}/resources/images/headerPng/glass.png" alt="">
+											<img src="${contextPath}/resources/images/headerPng/glasses.png" alt="">
 										</button>
 									</form>
 								</div>
@@ -73,7 +73,7 @@
 								<p>
 									<span>전체</span><span class="counts">${qescount}</span>건
 								</p>
-
+ 
 								<ul class="cNumber" id="questListContainer">
 									<c:forEach var="quest" items="${questList.questList}"
 										varStatus="loop">

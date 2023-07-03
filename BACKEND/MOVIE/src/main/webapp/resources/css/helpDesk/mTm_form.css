@@ -9,11 +9,11 @@ main>section {
 }
 
 .aslide-list>li:nth-child(3)>a {
-	background-color: rgb(73, 73, 73);
+    background-color: #FFC400;
 }
 
 .aslide-list>li:nth-child(3)>a {
-	color: rgb(251, 251, 251);
+    color: black;
 }
 
 * {
@@ -191,7 +191,7 @@ h2 {
 	color: rgb(251, 251, 251)
 }
 
-
+ 
 
 .btn_wraper {
 	display: flex;

@@ -12,12 +12,12 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<title>1 : 1 문의</title>
 			<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
-			<link rel="stylesheet" href="${contextPath}/resources/css/helpDesk/mtm_List.css">
+			<link rel="stylesheet" href="${contextPath}/resources/css/helpDesk/mTm_List.css">
 			<link rel="stylesheet" href="${contextPath}/resources/css/common/notice_Aside.css">
 			<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 				integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		</head>
-
+ 
 		<body>
 			<div id="wrap">
 				<jsp:include page="/WEB-INF/views/common/header.jsp" />
@@ -88,8 +88,9 @@
 																			</td>
 																		</c:when>
 																		<c:otherwise>
-																			<td><span id="mtmList_pass"
-																					class="qlrhdro">비공개 글입니다.</span>
+																			<td><a
+																				href="${contextPath}/helpDesk/checkPw/${userMtmList.mtmNo}?cp=${param.cp}"
+																				id="mtmList_pass" class="qlrhdro">비공개 글입니다.</a>
 																			</td>
 																		</c:otherwise>
 																	</c:choose>
