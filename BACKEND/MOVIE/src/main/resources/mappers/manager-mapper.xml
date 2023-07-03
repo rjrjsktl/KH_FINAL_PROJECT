@@ -299,6 +299,12 @@
 		SELECT count(DE_NO) 
 		FROM DAILY_ENTER
 	</select>
+	
+		<!-- 전체 접속 수 조회 -->
+	<select id="getTotalBook" resultType="_int">
+		SELECT count(BOOK_NO) 
+		FROM BOOK
+	</select>
 
 	<!-- 회원 수 조회 -->
 	<select id="getListCount" resultType="_int">

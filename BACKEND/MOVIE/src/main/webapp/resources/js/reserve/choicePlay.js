@@ -44,10 +44,6 @@ $.ajax({
     areaCinemaList = initialMap.cinemaList;
     titleRankList = initialMap.titleRankList;
     rateRankList = initialMap.rateRankList;
-    
-    console.log(areaCinemaList);
-    console.log(titleRankList);
-    console.log(rateRankList);
   },
   error: function () {
     console.log("페이지 로딩 중 에러 발생");
@@ -77,6 +73,26 @@ function updatePlayAjax() {
 }
 
 
+// 특정 특별관의 특정 영화 상영만 불러옴
+function updateRoomPlayAjax() {
+  console.log(movieIndex);
+  $.ajax({
+    url: "roomPlayList",
+    data: {typeIndex, roomIndex, dateIndex, movieOptionIndex, movieIndex},
+    type: "GET",
+    success: function(joinPlayList) {
+      $("#total_play").empty();
+	  if(joinPlayList.length){
+	    updateMoviePlay(joinPlayList);
+	    userPlayList = joinPlayList; 
+	  }
+    },
+    error: function () {
+      console.log("해당 극장의 상영을 불러오려다 에러 발생");
+    }
+  });  
+}
+
 
 // [ajax] 모든 영화의 상영을 불러옴
 
@@ -100,6 +116,26 @@ function updateGreatPlayAjax() {
   });
 }
 
+
+function updateSpecialPlayAjax() {
+  $.ajax({
+    url: "specialPlayList",
+    data: {typeIndex, roomIndex, dateIndex},
+    type: "GET",
+    success: function(joinPlayList) {
+      $("#total_play").empty();
+      $('#movielist_text > li > a').removeClass("bright");
+      $('#movielist_thumb > li > a').removeClass("bright");
+      if(joinPlayList.length) {
+        updateTotalPlay(joinPlayList);      
+      }
+    },
+    error: function () {
+      console.log("에러 발생");
+    }
+  });
+
+}
 
 
 // [ajax] 지역을 선택함
@@ -134,7 +170,6 @@ function selectStyleAjax() {
     type: "GET",
     success: function(specialScreenList) {
       ssList = specialScreenList;
-      console.log(ssList);
       $("#special_cinema_list").empty();
       updateSpecialCinemaSection(ssList);
       if(prevTypeIndex == typeIndex) {
@@ -236,13 +271,19 @@ $('.swiper-slide > .date').on("click", function(){
   strPlayDay = (playDay.getMonth()+1) + "월 " + playDay.getDate() + "일 " + weeks[playDay.getDay()] + "요일";
   $('#play_select').html(strPlayDay);
   
-  if(cinemaIndex != -1 && movieIndex == -1) {
-    updateGreatPlayAjax()
+  if(movieIndex != -1) {
+    if($('#cinema_option1').hasClass("clicked") && cinemaIndex != -1) {
+      updateGreatPlayAjax();
+    } else if($('#cinema_option2').hasClass("clicked") && roomIndex != -1) {
+      updateSpecialPlayAjax();
+    }
+    
   }
-
-  else if(cinemaIndex != -1 && movieIndex != -1) {
+  /*
+  else {
     updatePlayAjax()
   } 
+  */
   
 });
 
@@ -356,7 +397,7 @@ function clickSpecialScreen(e) {
   $(e.target).addClass("clicked");
   
   $('main > section:nth-child(2)').remove();
-  // updateGreatPlayAjax();
+  updateSpecialPlayAjax();
 }
 
 $("#cinema_list > li > a").on("click", function(e){
@@ -497,9 +538,11 @@ let movieName;
 movie.on("click", function(){
   $('main > section:nth-child(2)').remove();
   movieIndex = $(this).parent().index();
-  if(cinemaIndex != -1) {
-    updatePlayAjax()
+  if(cinemaIndex != -1 || roomIndex != -1) {
+	if($('#cinema_option1').hasClass("clicked")) updatePlayAjax();
+    else updateRoomPlayAjax();
   }
+  
   
   movieName = this.querySelector('.movie_name').innerText;
   $('#movie_select').html(movieName);
@@ -540,9 +583,10 @@ function clickPlay(e) {
 
 function updateResultSection(userPlay) {
   $('main > section:nth-child(2)').remove();
+  $("#movie_select").html(userPlay.movie.movieTitle);
+  
   resultSection = originResultSection.clone(true);
   resultSection.find('#movie_thumb > img').attr("src", `${userPlay.movie.movieImg1}`);
-  console.log(userPlay);
   resultSection.find('#movie_name').html(userPlay.movie.movieTitle);
   
   resultSection.find('#movie_grade').removeClass();

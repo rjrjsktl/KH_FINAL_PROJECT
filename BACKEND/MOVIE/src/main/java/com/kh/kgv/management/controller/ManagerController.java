@@ -83,7 +83,15 @@ public class ManagerController {
 
 	            // 관리자 메인 상영중인 영화
 	            Map<String, Object> getMovieList = movieService.mainMovieList();
-
+	    		
+	    		// 총 접속자 수
+	    		int totalEnter = service.getTotalEntre();
+	    		
+	    		// 총 예매 수
+	    		int totalBook = service.getTotlaBook();
+	    		
+	    		model.addAttribute("totalEnter", totalEnter);
+	    		model.addAttribute("totalBook", totalBook);
 	            model.addAttribute("getUser", getUser);
 	            model.addAttribute("getNotice", getNotice);
 	            model.addAttribute("getMTMList", getMTMList);
@@ -179,11 +187,6 @@ public class ManagerController {
 
 		we.setToday(today);
 		we.setLastWeek(lastWeek);
-		
-		// 총 접속자 수
-		List<DailyEnter> totalEnter = service.getTotalEntre();
-		System.out.println("=====================================================================================totalEnter : " + totalEnter);
-		model.addAttribute("totalEnter", totalEnter);
 		
 		List<DailyEnter> dailyEnter = null;
 		dailyEnter = service.getWeeklyEnter(we);
@@ -1106,7 +1109,26 @@ public class ManagerController {
 
 	// ===================================================
 	// ===================================================
+	
+	// 관리자_스토어 구매 목록
+		@GetMapping("/store_buylist")
+		public String moveStoreBuyList(Model model, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
 
+			Map<String, Object> storebuyMap = null;
+			storebuyMap = service.getStorebuyMap(cp);
+			model.addAttribute("storebuyMap", storebuyMap);
+
+			System.out.println("관리자_스토어 구매 목록");
+			
+			 logger.debug(" storebuyMap################************************* : " + storebuyMap);
+			return "manager/manager_store_buylist";
+		}
+	
+	
+	// ===================================================
+	// ===================================================
+		
+		
 	// 관리자 스토어 물품 수정
 	@GetMapping("/store_list/edit/{storeNo}")
 	public String editStore(@PathVariable("storeNo") int storeNo, Model model, Store store) {

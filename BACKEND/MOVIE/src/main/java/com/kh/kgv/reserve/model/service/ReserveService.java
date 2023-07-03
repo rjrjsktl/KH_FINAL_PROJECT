@@ -43,6 +43,11 @@ public interface ReserveService {
 
 	int getBookNo(int userNo);
 
+	List<JoinPlay> getSpecialPlayList(String screenStyle, String cinemaName, String dateIndex);
+
+	List<JoinPlay> getRoomPlayList(String screenStyle, String cinemaName, String dateIndex, String movieOptionIndex,
+			String movieIndex);
+
 
 
 }

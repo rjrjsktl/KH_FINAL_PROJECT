@@ -108,6 +108,9 @@ public interface ManagerService {
 
 	// 스토어 목록 조회
 	Map<String, Object> getStoreMap(int cp);
+	
+	// 스토어 구매 목록 조회
+	Map<String, Object> getStorebuyMap(int cp);
 
 	// 메인 -> 이벤트 이동 시 이벤트
 	Map<String, Object> selectEventList();
@@ -233,7 +236,12 @@ public interface ManagerService {
 	List<DailyWatch> getWeeklyWatch(WeeklyEnter we);
 
 	// 총 접속자 수
-	List<DailyEnter> getTotalEntre();
+	int getTotalEntre();
+
+	// 총 예매 수
+	int getTotlaBook();
+	
+
 
 
 

@@ -291,6 +291,16 @@
 									</div>
 								</div>
 								<ul class="slide_Down_items">
+									<a href="${contextPath}/manager/store_buylist">
+										<li>
+											<div class="inner_align">
+												<div class="inner_Left_Icon">
+													<i class="fa-solid fa-play fa-2xs"></i>
+												</div>
+												<span>스토어 구매 목록</span>
+											</div>
+										</li>
+									</a>
 									<a href="${contextPath}/manager/store_list">
 										<li>
 											<div class="inner_align">
@@ -311,6 +321,7 @@
 											</div>
 										</li>
 									</a>
+
 								</ul>
 							</li>
 							<li class="slide_Content">
