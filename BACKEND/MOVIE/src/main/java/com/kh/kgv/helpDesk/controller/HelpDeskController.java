@@ -93,9 +93,8 @@ public class HelpDeskController {
 			
 		model.addAttribute("qescount", qescount);
 	    model.addAttribute("questList", questList);
-
+	
 		model.addAttribute("userNoticeList", userNoticeList);
-
 		return "helpDesk/helpDesk_home";
 	}
 
