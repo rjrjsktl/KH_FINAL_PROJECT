@@ -49,7 +49,7 @@
 										<span>${lostdetail.lostTitle}</span>
 									</div>
 									<div>
-										<span>${lostdetail.lostLocation} <span> / </span> <span>${lostdetail.lostItem}</span> </span>
+										<span>${lostdetail.lostLocation} <span> | </span> <span>${lostdetail.lostItem}</span> </span>
 										<span><span>${lostdetail.lostWriter}</span> <span>|</span>
 											<span>${lostdetail.lostDate} </span></span>
 

@@ -68,7 +68,8 @@
 							<div class="new-wrap">
 
 								<div>
-									<a href="${contextPath}/myPage/myReview"><img src="${contextPath}/resources/images/myPage/myPage01.png"
+									<a href="${contextPath}/myPage/myReview" onmouseenter="zoomIn(event)"
+									onmouseleave="zoomOut(event)"><img src="${contextPath}/resources/images/myPage/myPage01.png"
 										alt=""></a> <a href="${contextPath}/myPage/myReview">
 										<p>내가 쓴 리뷰</p> <span>내 리뷰를 확인하세요!</span>
 									</a>
@@ -76,33 +77,38 @@
 
 
 								<div>
-									<a href="${contextPath}/myPage/myMovie"><img src="${contextPath}/resources/images/myPage/myPage02.png" alt="내가 본 영화 이미지 찾기"></a> <a
+									<a href="${contextPath}/myPage/myMovie" onmouseenter="zoomIn(event)"
+									onmouseleave="zoomOut(event)"><img src="${contextPath}/resources/images/myPage/myPage02.png" alt="내가 본 영화 이미지 찾기"></a> <a
 										href="${contextPath}/myPage/myMovie">
 										<p>내가 본 영화</p> <span>내 영화를 확인하세요!</span>
 									</a>
 
 								</div>
 								<div>
-									<a href="${contextPath}/myPage/myMtmList"><img src="${contextPath}/resources/images/myPage/myPage03.png"
+									<a href="${contextPath}/myPage/myMtmList" onmouseenter="zoomIn(event)"
+									onmouseleave="zoomOut(event)"><img src="${contextPath}/resources/images/myPage/myPage03.png"
 										alt=""></a> <a href="${contextPath}/myPage/myMtmList">
 										<p>내 문의 내역</p> <span>내 문의를 확인하세요!</span>
 									</a>
 								</div>
 								<div>
-									<a href="${contextPath}/myPage/myLostList"><img src="${contextPath}/resources/images/myPage/myPage04.png"
+									<a href="${contextPath}/myPage/myLostList" onmouseenter="zoomIn(event)"
+									onmouseleave="zoomOut(event)"><img src="${contextPath}/resources/images/myPage/myPage04.png"
 										alt=""></a> <a href="${contextPath}/myPage/myLostList">
 										<p>내 분실물 문의 내역</p> <span>내 물건을 확인하세요!</span>
 									</a>
 
 								</div>
 								<div>
-									<a href="${contextPath}/myPage/info"><img src="${contextPath}/resources/images/myPage/myPage05.png"
+									<a href="${contextPath}/myPage/info" onmouseenter="zoomIn(event)"
+									onmouseleave="zoomOut(event)"><img src="${contextPath}/resources/images/myPage/myPage05.png"
 										alt=""></a> <a href="${contextPath}/myPage/info">
 										<p>개인정보 수정</p> <span>내 정보를 수정하세요!</span>
 									</a>
 								</div>
 								<div>
-									<a href="${contextPath}/myPage/changePw"><img src="${contextPath}/resources/images/myPage/myPage06.png" alt="비밀번호 수정 이미지 찾기"></a> <a
+									<a href="${contextPath}/myPage/changePw" onmouseenter="zoomIn(event)"
+									onmouseleave="zoomOut(event)"><img src="${contextPath}/resources/images/myPage/myPage06.png" alt="비밀번호 수정 이미지 찾기"></a> <a
 										href="${contextPath}/myPage/changePw">
 										<p>비밀번호 변경</p> <span>내 비밀번호를 변경하세요!</span>
 									</a>
@@ -131,6 +137,7 @@
 
 	<script src="${contextPath}/resources/js/common/header.js"></script>
 	<script src="${contextPath}/resources/js/myPage/myPage_swiper.js"></script>
+	<script src="${contextPath}/resources/js/myPage/myPage_home.js"></script>
 	<script src="${contextPath}/resources/js/myPage/myPage_randomEvent.js"></script>
 </body>
 
