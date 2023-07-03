@@ -16,14 +16,10 @@
 						<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
 
 						<!-- fontawesome -->
-						<link rel="stylesheet"
-							href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-							integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-							crossorigin="anonymous" referrerpolicy="no-referrer" />
+						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+							integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-						<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-							integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-							crossorigin="anonymous"></script>
+						<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 					</head>
 
@@ -39,25 +35,20 @@
 
 								<div>
 									<ol>
-										<c:forEach var="benefits" items="${getBenefitsList['getBenefitsList']}"
-											varStatus="status">
+										<c:forEach var="benefits" items="${getBenefitsList['getBenefitsList']}" varStatus="status">
 											<c:choose>
 												<c:when test="${benefits['benefitsStatus'] ne 'Y'}">
 													<li>
 														<div>
-															<input type="hidden" class="benefitsNo"
-																value="${benefits['benefitsNo']}" />
+															<input type="hidden" class="benefitsNo" value="${benefits['benefitsNo']}" />
 															<span class="wordOuter"></span>
-															<a
-																href="${contextPath}/benefitsList/benefits_end_List/introduce/${benefits['benefitsNo']}">
+															<a href="${contextPath}/benefitsList/benefits_end_List/introduce/${benefits['benefitsNo']}">
 																<img src="${benefits['benefitsImg']}" class="target1"></a>
 														</div>
 
 														<div>
-															<a class="target1"
-																href="${contextPath}/benefitsList/benefits_end_List/introduce/${benefits['benefitsNo']}">
-																<span
-																	class="benefitsTitle">${benefits['benefitsTitle']}</span></a>
+															<a class="target1" href="${contextPath}/benefitsList/benefits_end_List/introduce/${benefits['benefitsNo']}">
+																<span class="benefitsTitle">${benefits['benefitsTitle']}</span></a>
 															<div>
 																<p>
 																	기간&nbsp;:&nbsp;<span>${benefits['benefitsStart']}&nbsp;~&nbsp;

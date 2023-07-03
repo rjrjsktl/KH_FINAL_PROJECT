@@ -251,3 +251,7 @@ main {
     background-color: #FF243E;
     cursor: pointer;
 }
+
+.navBar:nth-child(6)>a:nth-child(1) {
+    color: rgb(255, 196, 0);
+}
