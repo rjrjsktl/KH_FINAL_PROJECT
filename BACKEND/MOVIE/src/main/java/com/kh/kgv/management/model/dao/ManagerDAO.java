@@ -688,8 +688,13 @@ public class ManagerDAO {
 	}
 
 	// 총 접속자 수
-	public List<DailyEnter> getTotalEntre() {
-		return sqlSession.selectList("managerMapper.getTotalEntre");
+	public int getTotalEntre() {
+		return sqlSession.selectOne("managerMapper.getTotalEntre");
+	}
+
+	// 총 예매 수
+	public int getTotalBook() {
+		return sqlSession.selectOne("managerMapper.getTotalBook");
 	}
 
 	
