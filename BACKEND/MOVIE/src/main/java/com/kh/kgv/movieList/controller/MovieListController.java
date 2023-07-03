@@ -80,15 +80,26 @@ public class MovieListController {
 
 		return "movieList/detail_List";
 	}
+	
+	
 	//	메인페이지 -> 영화 -> 전체 영화목록 이동 시 영화 목록 조회
 	// 위에꺼 재활용
 	@RequestMapping("/all_List")
-	public String allMoveList(Model model) {
+	public String allMoveList(Model model,
+	// 파라미터
+			@RequestParam(value = "keyword", required = false) String keyword
+			) {
 
 		Map<String, Object>getMovieList = null;
-		System.out.println("DB에서 가지고온 getMovieList : =============================================" + getMovieList);
+		String pageTitle = "전체 영화 목록";
+		
+		if ( keyword == null || keyword == "") {
 		getMovieList = service.movieList();
-
+		} else {
+		getMovieList = service.searchMovieList(keyword);
+		 pageTitle = "검색 결과";
+		}
+		
 		model.addAttribute("getMovieList", getMovieList);
 
 		List<Movie> movieList = (List<Movie>) getMovieList.get("cleanedList");
@@ -111,6 +122,8 @@ public class MovieListController {
 
 	    model.addAttribute("revLike", revLike);
 	    model.addAttribute("bookPercent", bookPercent);
+	    model.addAttribute("pageTitle", pageTitle); 
+	    model.addAttribute("keyword",keyword);
 
 		return "movieList/all_List";
 	}
@@ -314,6 +327,7 @@ public class MovieListController {
 	}
 	
 
+	
 
 
 

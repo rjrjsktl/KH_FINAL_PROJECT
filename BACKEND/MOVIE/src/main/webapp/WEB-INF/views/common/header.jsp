@@ -131,9 +131,9 @@
                         </ul>
                         <div class="dummy" style="display: none"></div>
                         <div>
-                           <form action="">
-                              <input type="text" placeholder="아 영화 재밌는거 없나">
-                              <button>
+                           <form action="${contextPath}/movieList/all_List">
+                              <input type="text" placeholder="아 영화 재밌는거 없나" name="keyword">
+                              <button class="submitBTN">
                                  <img src="${contextPath}/resources/images/headerPng/test6.png" alt="">
                               </button>
                            </form>

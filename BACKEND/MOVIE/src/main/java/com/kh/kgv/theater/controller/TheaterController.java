@@ -43,7 +43,10 @@ public class TheaterController {
 		
 		Map<String, Object>cinemaList = null;
 		cinemaList = hdService.searchcinemaList();
-
+		
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = service.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
 		model.addAttribute("getNoticeList", userNoticeList);
 		model.addAttribute("cinemaList",cinemaList);
 
