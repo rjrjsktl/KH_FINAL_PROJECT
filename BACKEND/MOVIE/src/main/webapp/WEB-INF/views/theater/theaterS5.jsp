@@ -32,14 +32,14 @@
                         <!-- 백그라운드이미지로 처리 -->
                         <div>
                             <ul>
-                                <li><a href="${contextPath}/theater/theaterS"> KMAX </li>
-                                <li><a href="${contextPath}/theater/theaterS2">DOLBY</a></li>
-                                <li><a href="${contextPath}/theater/theaterS5">DISH &
-                                        WINE</a></li>
-                                <li><a href="${contextPath}/theater/theaterS3">WITH A
-                                        PUPPY</a></li>
-                                <li><a href="${contextPath}/theater/theaterS4">KIDS</a></li>
-                            </ul>
+								<li> <a href="${contextPath}/theater/specialTheater/1"> KMAX</a> </li>
+								<li><a href="${contextPath}/theater/specialTheater/2">DOLBY</a></li>
+								<li><a href="${contextPath}/theater/specialTheater/5">DISH &
+										WINE</a></li>
+								<li> <a href="${contextPath}/theater/specialTheater/3">WITH A
+										PUPPY</a></li>
+								<li> <a href="${contextPath}/theater/specialTheater/4">KIDS</a></li>
+							</ul>
                         </div>
                     </div>
 

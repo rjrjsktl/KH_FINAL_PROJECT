@@ -258,18 +258,11 @@ public class HelpDeskDAO {
 
 	public List<Cinema> selectcinemaNameList(String area) {
 		
-		System.out.println(area+"------------------------------DAOOOOOOO");
 		
 		return sqlSession.selectList("cinemaMapper.selectcinemaNameList", area);
 	}
 
 	public int getSearchLostCount(String area, String name, String keyword, int userNo, int userManagerStAsInt) {
-		
-		System.out.println("분실물 검색 DAO--------------------------------------------------------------------------------");
-		System.out.println(area);
-		System.out.println(name);
-		System.out.println("분실물 검색 DAO--------------------------------------------------------------------------------");
-		
 		Map<String, Object> params = new HashMap<>();
 		  params.put("area", area);
 		    params.put("name", name);
