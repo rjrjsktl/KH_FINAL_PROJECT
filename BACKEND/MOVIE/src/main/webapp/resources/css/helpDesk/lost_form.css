@@ -11,7 +11,7 @@ main>section {
 .aslide-list>li:nth-child(5)>a {
     background-color: rgb(73, 73, 73);
 }
-
+ 
 .aslide-list>li:nth-child(5)>a {
     color: rgb(251, 251, 251);
 }

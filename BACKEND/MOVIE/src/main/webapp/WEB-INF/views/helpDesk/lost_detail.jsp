@@ -22,7 +22,7 @@
 			<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
 			<link rel="stylesheet" href="${contextPath}/resources/css/helpDesk/lost_detail.css">
 			<link rel="stylesheet" href="${contextPath}/resources/css/common/notice_Aside.css">
-
+ 
 
 
 		</head>

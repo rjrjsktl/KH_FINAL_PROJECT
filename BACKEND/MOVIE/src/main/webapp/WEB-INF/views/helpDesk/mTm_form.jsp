@@ -27,7 +27,7 @@
 				<body>
 					<div id="wrap">
 						<jsp:include page="/WEB-INF/views/common/header.jsp" />
-
+ 
 						<main>
 							<section>
 

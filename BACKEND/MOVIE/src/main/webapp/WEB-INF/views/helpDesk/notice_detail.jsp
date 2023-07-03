@@ -32,7 +32,7 @@
 
 		<main>
 			<section>
-
+ 
 				<jsp:include page="/WEB-INF/views/common/noticeAside.jsp" />
 
 				<div class="container">
