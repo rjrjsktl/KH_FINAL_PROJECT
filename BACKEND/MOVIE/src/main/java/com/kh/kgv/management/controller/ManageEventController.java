@@ -56,7 +56,7 @@ public class ManageEventController {
 	}
 
 	// 이벤트 등록용 이미지 업로드
-	@PostMapping("uploadImageFile")
+	@PostMapping("uploadEventImageFile")
 	@ResponseBody
 	public String uploadImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request) {
 		JsonObject jsonObject = new JsonObject();

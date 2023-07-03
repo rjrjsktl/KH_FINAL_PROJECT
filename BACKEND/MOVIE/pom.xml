@@ -225,6 +225,12 @@
 		</dependency>
 
 
+		<dependency>
+   		 <groupId>org.springframework</groupId>
+    		<artifactId>spring-aop</artifactId>
+    		<version>5.3.15</version>
+		</dependency>
+
 		<!-- AspectJ : AOP 기능을 사용하기 위한 언어 문법 -->
 		<!-- aspectjrt : AspectJ 런타임 프로그램 -->
 		<dependency>
@@ -240,6 +246,12 @@
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
 			<version>${org.aspectj-version}</version>
+		</dependency>
+		
+				<dependency>
+    		<groupId>cglib</groupId>
+    		<artifactId>cglib</artifactId>
+    		<version>3.2.4</version>
 		</dependency>
 
 

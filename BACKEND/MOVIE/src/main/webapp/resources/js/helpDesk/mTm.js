@@ -1,3 +1,7 @@
+$(document).ready(function () {
+  $(".selected_Cp").parent().css("border", "1px solid rgb(255, 196, 0)");
+});
+
 let imageUrl1 = "";
 
 $(document).ready(function () {

@@ -70,7 +70,9 @@
 															<td>${cinema['cinemaNo']}</td>
 															<td>${cinema['cinemaName']}</td>
 															<td>${cinema['cinemaArea']}</td>
-															<td>${cinema['cinemaRegion']}</td>
+															<c:set var="addr" value="${cinema['cinemaRegion']}" />
+															<c:set var="addr" value="${fn:replace(addr, ',,', ', ')}" />
+															<td>${addr}</td>
 															<td>${cinema['cinemaScreen']}</td>
 															<td>
 																<a href="${contextPath}/manager/event_list/edit/${getEvent['eventNo']}" class="editEvent">

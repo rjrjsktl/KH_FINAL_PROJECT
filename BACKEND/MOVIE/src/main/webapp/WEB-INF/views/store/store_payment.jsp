@@ -55,9 +55,9 @@
 
                                             <div>
                                                 <div>
-                                                    <div>
-                                                        <img src="${storeDetail.storeImage}">
-                                                    </div>
+
+                                                    <img src="${storeDetail.storeImage}">
+
 
                                                 </div>
 
@@ -84,6 +84,7 @@
                                                         </div>
 
                                                     </div>
+                                                    <div></div>
                                                 </div>
                                             </div>
                                         </div>

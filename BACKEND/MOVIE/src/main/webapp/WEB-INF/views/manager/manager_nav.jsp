@@ -24,6 +24,13 @@
 									</div> <span>회원 리스트</span>
 								</li>
 							</a>
+							<a class="title_move" href="${contextPath}/manager/book">
+								<li class="slide_Title">
+									<div class="slide_Left_Icon">
+										<i class="fa-solid fa-user"></i>
+									</div> <span>예매 리스트</span>
+								</li>
+							</a>
 							<li class="slide_Content">
 								<div class="slide_Wrapper">
 									<div class="slide_Left_Icon">
