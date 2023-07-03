@@ -102,16 +102,28 @@
 									</a>
 
 								</div>
+								
 								<div>
-									<a href="${contextPath}/myPage/myMtmList"
-										onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)"><img
-										src="${contextPath}/resources/images/helpDesk/notice05.png"
-										alt="mymtm" onmouseenter="zoomIn(event)"
-										onmouseleave="zoomOut(event)"></a><a
-										href="${contextPath}/myPage/myMtmList">
-										<p>내 상담 내역</p> <span>내가 등록한 문의 확인하기</span>
-									</a>
-								</div>
+									<c:choose>
+									  <c:when test="${loginUser.userNo > 0}">
+										<a href="${contextPath}/myPage/myMtmList"
+										   onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)"><img
+										   src="${contextPath}/resources/images/helpDesk/notice05.png"
+										   alt="mymtm" onmouseenter="zoomIn(event)"
+										   onmouseleave="zoomOut(event)"></a>
+										<a href="${contextPath}/myPage/myMtmList"><p>내 상담 내역</p> <span>내가 등록한 문의 확인하기</span> </a>
+									  </c:when>
+									  <c:otherwise>
+										<a href="${contextPath}/user/login"
+										   onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)"><img
+										   src="${contextPath}/resources/images/helpDesk/notice05.png"
+										   alt="mymtm" onmouseenter="zoomIn(event)"
+										   onmouseleave="zoomOut(event)"></a>
+										<a href="${contextPath}/user/login"><p>내 상담 내역</p> <span>내가 등록한 문의 확인하기</span> </a>
+									  </c:otherwise>
+									</c:choose>
+								  </div>
+
 								<div>
 									<a href="${contextPath}/helpDesk/mTm_List"
 										onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)"><img

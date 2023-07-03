@@ -36,19 +36,17 @@ public class TheaterController {
 	@GetMapping("/normalTheater")
 	public String normarTheater(	Model model
 			, @RequestParam(value = "cp", required = false, defaultValue="1" ) int cp) {
-
-		Map<String, Object>getNoticeList = null;
-
-		// 회원 리스트 얻어오기
-		getNoticeList = service.noticeList(cp);
+		
+		Map<String, Object>userNoticeList = null;
+		userNoticeList = service.userNoticeList(cp);
+		model.addAttribute("userNoticeList", userNoticeList);
 		
 		Map<String, Object>cinemaList = null;
 		cinemaList = hdService.searchcinemaList();
 
-		model.addAttribute("getNoticeList", getNoticeList);
+		model.addAttribute("getNoticeList", userNoticeList);
 		model.addAttribute("cinemaList",cinemaList);
 
-		System.out.println("관리자_공지사항 목록 이동");
 		return "theater/normalTheater";
 	}
 	
