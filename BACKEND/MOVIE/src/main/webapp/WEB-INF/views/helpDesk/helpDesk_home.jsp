@@ -34,7 +34,7 @@
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/common/notice_Aside.css">
 </head>
-
+ 
 <body>
 	<div id="wrap">
 		<jsp:include page="/WEB-INF/views/common/header.jsp" />
