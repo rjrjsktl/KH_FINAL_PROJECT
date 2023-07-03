@@ -68,6 +68,6 @@
     color: rgb(21, 21, 21);
 }
 
-.navBar:nth-child(4)>a:nth-child(1) {
+.navBar:nth-child(5)>a:nth-child(1) {
     color: rgb(255, 196, 0);
 }
