@@ -102,6 +102,10 @@ public class MovieDAO {
 		return result;
 	}
 
+	public List<Movie> searchMovieList(String keyword) {
+		return sqlSession.selectList("movieMapper.searchMovieList", keyword);
+	}
+
 
 
 

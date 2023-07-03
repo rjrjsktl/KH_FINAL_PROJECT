@@ -44,4 +44,9 @@ $(document).ready(function () {
       $(".dummy").css("display", "none");
     }
   );
+
+  // 검색
+  $(".submitBTN").click(function () {
+    var keyword = $("input[name='keyword']").val();
+  });
 });

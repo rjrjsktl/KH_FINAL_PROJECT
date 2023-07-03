@@ -189,3 +189,10 @@ main>div:nth-child(2)>ol>li>div:nth-child(3)>a:hover {
 .navBar:nth-child(1)>a:nth-child(1) {
     color: rgb(255, 196, 0);
 }
+
+
+.noList{
+    padding-top:30px;
+    padding-left:10px;
+    font-size:1.5rem;
+}
