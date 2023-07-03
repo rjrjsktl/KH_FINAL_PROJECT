@@ -27,7 +27,7 @@
 	href="${contextPath}/resources/css/helpDesk/lost_form.css">
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/common/notice_Aside.css">
-	<script src="${contextPath}/resources/js/helpDesk/lost_form.js"></script>
+	<script src="${contextPath}/resources/js/helpDesk/lost.js"></script>
 
 
 </head>
