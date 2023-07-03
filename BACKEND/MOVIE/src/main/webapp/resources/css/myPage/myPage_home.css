@@ -12,8 +12,14 @@ h2 {
     font-size: 1.8rem;
     padding: 0 0 30px 10px;
     border-bottom: 3px solid rgb(255, 196, 0);
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
+
+.aslide-list>li:nth-child(1)>a {
+    background-color: #FFC400;
+    color: black;
+}
+
 
 .new-wrap {
     width: 100%;
