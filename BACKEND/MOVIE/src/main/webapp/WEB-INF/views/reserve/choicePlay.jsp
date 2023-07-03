@@ -44,35 +44,34 @@
                     </div>
                     <div>
                       <div>
-                        <ul id="area_list">
-                          <li><a href="#none" class="clicked">서울</a></li>
-                          <li><a href="#none">인천 경기</a></li>
-                          <li><a href="#none">대전 충남 충북</a></li>
-                          <li><a href="#none">광주 전남 전북</a></li>
-                          <li><a href="#none">부산 울산 경남</a></li>
-                          <li><a href="#none">대구 경북</a></li>
-                          <li><a href="#none">강원</a></li>
-                          <li><a href="#none">제주</a></li>
-                        </ul>
-                        <ul id="special_list" style="display: none">
-                          <li><a href="#none" class="clicked">KMAX</a></li>
-                          <li><a href="#none">DOLBY</a></li>
-                          <li><a href="#none">CHEF & CINE</a></li>
-                          <li><a href="#none">PUPPY & ME</a></li>
-                          <li><a href="#none">YES KIDS</a></li>
-                        </ul>
+
+                          <ul id="area_list">
+                              <li><a href="#none" class="clicked">서울</a></li>
+                              <li><a href="#none">인천 경기</a></li>
+                              <li><a href="#none">대전 충남 충북</a></li>
+                              <li><a href="#none">광주 전남 전북</a></li>
+                              <li><a href="#none">부산 울산 경남</a></li>
+                              <li><a href="#none">대구 경북</a></li>
+                              <li><a href="#none">강원</a></li>
+                              <li><a href="#none">제주</a></li>
+                          </ul>
+                          <ul id="special_list" style="display: none">
+                              <li><a href="#none">KMAX</a></li>
+                              <li><a href="#none">DOLBY</a></li>
+                              <li><a href="#none">CHEF & CINE</a></li>
+                              <li><a href="#none">PUPPY & ME</a></li>
+                              <li><a href="#none">YES KIDS</a></li>
+                          </ul>
                       </div>
                       <div>
-                        <ul id="cinema_list">
-                          <c:forEach var="cinema" items="${reserveMap['cinemaList']}">
-                            <li><a href="#none">${cinema['cinemaName']}</a></li>
-                          </c:forEach>
-                        </ul>
-                        <ul id="special_cinema_list" style="display: none">
-                          <c:forEach var="specialScreen" items="${reserveMap['specialScreenList']}">
-                            <li><a href="#none">${specialScreen['cinemaName']}</a></li>
-                          </c:forEach>
-                        </ul>
+                          <ul id="cinema_list">
+                            <c:forEach var="cinema" items="${reserveMap['cinemaList']}">
+                              <li><a href="#none">${cinema['cinemaName']}</a></li>
+                            </c:forEach>
+                          </ul>
+                          <ul id="special_cinema_list" style="display: none">
+                          </ul>
+                        
                       </div>
 
                     </div>
