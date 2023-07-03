@@ -47,7 +47,6 @@ public class TheaterController {
 		model.addAttribute("getNoticeList", userNoticeList);
 		model.addAttribute("cinemaList",cinemaList);
 
-		System.out.println("관리자_공지사항 목록 이동");
 		return "theater/normalTheater";
 	}
 	

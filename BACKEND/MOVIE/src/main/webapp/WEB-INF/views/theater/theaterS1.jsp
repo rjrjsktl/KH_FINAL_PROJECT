@@ -27,13 +27,13 @@
 						<!-- 백그라운드이미지로 처리 -->
 						<div>
 							<ul>
-								<li> <a href="${contextPath}/theater/specialTheater/KMAX"> KMAX </li>
-								<li><a href="${contextPath}/theater/specialTheater/DOLBY">DOLBY</a></li>
-								<li><a href="${contextPath}/theater/specialTheater/CHEF">DISH &
+								<li> <a href="${contextPath}/theater/specialTheater/1"> KMAX</a> </li>
+								<li><a href="${contextPath}/theater/specialTheater/2">DOLBY</a></li>
+								<li><a href="${contextPath}/theater/specialTheater/5">DISH &
 										WINE</a></li>
-								<li> <a href="${contextPath}/theater/specialTheater/PUPPY">WITH A
+								<li> <a href="${contextPath}/theater/specialTheater/3">WITH A
 										PUPPY</a></li>
-								<li> <a href="${contextPath}/theater/specialTheater/KIDS">KIDS</a></li>
+								<li> <a href="${contextPath}/theater/specialTheater/4">KIDS</a></li>
 							</ul>
 						</div>
 					</div>

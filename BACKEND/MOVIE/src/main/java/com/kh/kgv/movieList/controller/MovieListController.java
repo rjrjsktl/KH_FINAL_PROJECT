@@ -222,7 +222,6 @@ public class MovieListController {
 
 		int reviewCount = service.getCountReviews(movieNo);
 
-		System.out.println(reviewCount);
 
 		Map<String, Object>reviewList = null;
 
@@ -234,9 +233,6 @@ public class MovieListController {
 		model.addAttribute("userNick", userNick);
 		
 
-		System.out.println(model);
-		
-		System.out.println("userNick"+"userNick"+userNick+"userNickuserNickuserNickuserNickuserNickuserNickuserNickuserNickuserNick");
 
 		//////////////////////////////////////////////
 		model.addAttribute("MovieDetail", getMovieDetail);
@@ -287,7 +283,6 @@ public class MovieListController {
 
 		int result = service.addReview(review);  
 		
-		System.out.println("result:::"+ result);
 		
 		return result;
 	}

@@ -31,7 +31,6 @@ public class KakaoServiceImple implements KakaoService {
 	   @Override
 	   public String getAccessToken(String authorize_code) {
 		   
-		   System.out.println(authorize_code);
 		   
 	      String access_Token = "";
 	      String refresh_Token = "";
@@ -59,15 +58,9 @@ public class KakaoServiceImple implements KakaoService {
 	         bw.write(sb.toString());
 	         bw.flush();
 	         
-	         System.out.println();
 	            
 	         // 결과 코드가 200이라면 성공
 	         int responseCode = conn.getResponseCode();
-	         
-	         System.out.println("responseCode ㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗ : " + responseCode);
-	         
-	         
-	         
 	         
 	            
 	         // 요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
@@ -78,7 +71,6 @@ public class KakaoServiceImple implements KakaoService {
 	         while ((line = br.readLine()) != null) {
 	            result += line;
 	         }
-	         System.out.println("response body : " + result);
 	            
 	         // Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
 	         JsonParser parser = new JsonParser();
@@ -86,9 +78,6 @@ public class KakaoServiceImple implements KakaoService {
 	            
 	         access_Token = element.getAsJsonObject().get("access_token").getAsString();
 	         refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
-	            
-	         System.out.println("access_token : " + access_Token);
-	         System.out.println("refresh_token : " + refresh_Token);
 	            
 	         br.close();
 	         bw.close();
@@ -113,7 +102,6 @@ public class KakaoServiceImple implements KakaoService {
 	         conn.setRequestProperty("Authorization", "Bearer " + access_Token);
 
 	         int responseCode = conn.getResponseCode();
-	         System.out.println("responseCode : " + responseCode);
 
 	         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
@@ -123,7 +111,6 @@ public class KakaoServiceImple implements KakaoService {
 	         while ((line = br.readLine()) != null) {
 	            result += line;
 	         }
-	         System.out.println("response body : " + result);
 
 	         JsonParser parser = new JsonParser();
 	         JsonElement element = parser.parse(result);
@@ -151,19 +138,13 @@ public class KakaoServiceImple implements KakaoService {
 	         
 	         
 
-	         System.out.println("nickname : "+nickname);
-	         System.out.println("email : "+email);
-	         System.out.println("age_range : "+age_range);
-	         System.out.println("gender : "+gender);
 	      } catch (IOException e) {
 	         e.printStackTrace();
 	      }
 	      User result = dao.findkakao(userInfo);
-	      System.out.println("S:" + result);
 	      if(result==null) {
 	      // result가 null이면 정보가 저장이 안되있는거므로 정보를 저장.
 	         dao.kakaoinsert(userInfo);
-	         System.out.println("userinfo저장됨 : "+userInfo);
 	         // 위 코드가 정보를 저장하기 위해 Repository로 보내는 코드임.
 	         return dao.findkakao(userInfo);
 	         // 위 코드는 정보 저장 후 컨트롤러에 정보를 보내는 코드임.
@@ -187,7 +168,6 @@ public class KakaoServiceImple implements KakaoService {
 	            conn.setRequestProperty("Authorization", "Bearer " + access_Token);
 
 	            int responseCode = conn.getResponseCode();
-	            System.out.println("responseCode : " + responseCode);
 
 	            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
@@ -197,7 +177,6 @@ public class KakaoServiceImple implements KakaoService {
 	            while ((line = br.readLine()) != null) {
 	                result += line;
 	            }
-	            System.out.println(result);
 	        } catch (IOException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();

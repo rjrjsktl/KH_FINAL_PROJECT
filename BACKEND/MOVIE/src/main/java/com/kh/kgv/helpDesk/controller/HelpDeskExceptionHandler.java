@@ -13,22 +13,22 @@ import org.springframework.web.servlet.ModelAndView;
 @SessionAttributes({"loginUser"})
 public class HelpDeskExceptionHandler {
 	
-//	  @ExceptionHandler(MissingRequestHeaderException.class)
-//	    public ModelAndView handleMissingRequestHeaderException(MissingRequestHeaderException ex, HttpServletRequest request) {
-//	        ModelAndView modelAndView = new ModelAndView();
-//	        modelAndView.addObject("exception", ex);
-//	        modelAndView.addObject("url", request.getRequestURL());
-//	        modelAndView.setViewName("/helpDesk/error");  // Your custom error page
-//	        return modelAndView;
-//	    }
-//	  
-//	  @ExceptionHandler(NullPointerException.class)
-//	  public ModelAndView handleNullPointerException(NullPointerException ex, HttpServletRequest request) {
-//	      ModelAndView modelAndView = new ModelAndView();
-//	      modelAndView.addObject("exception", ex);
-//	      modelAndView.addObject("url", request.getRequestURL());
-//	      modelAndView.setViewName("/helpDesk/error");  // 사용자 정의 오류 페이지
-//	      return modelAndView;
-//	  }
+	  @ExceptionHandler(MissingRequestHeaderException.class)
+	    public ModelAndView handleMissingRequestHeaderException(MissingRequestHeaderException ex, HttpServletRequest request) {
+	        ModelAndView modelAndView = new ModelAndView();
+	        modelAndView.addObject("exception", ex);
+	        modelAndView.addObject("url", request.getRequestURL());
+	        modelAndView.setViewName("/helpDesk/error");  // Your custom error page
+	        return modelAndView;
+	    }
+	  
+	  @ExceptionHandler(NullPointerException.class)
+	  public ModelAndView handleNullPointerException(NullPointerException ex, HttpServletRequest request) {
+	      ModelAndView modelAndView = new ModelAndView();
+	      modelAndView.addObject("exception", ex);
+	      modelAndView.addObject("url", request.getRequestURL());
+	      modelAndView.setViewName("/helpDesk/error");  // 사용자 정의 오류 페이지
+	      return modelAndView;
+	  }
 
 }
