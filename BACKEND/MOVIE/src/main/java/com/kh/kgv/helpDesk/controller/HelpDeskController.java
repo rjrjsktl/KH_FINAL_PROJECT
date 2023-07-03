@@ -210,9 +210,10 @@ public class HelpDeskController {
 		}
 
 		Map<String, Object>mtmList = null;
+		int userMtmListCount = services.getuserMtmListCount(userNo,userManagerSt);
 		mtmList = services.getMtmList(cp,userNo,userManagerSt);
 
-		int userMtmListCount = services.getuserMtmListCount(userNo,userManagerSt);
+
 
 		model.addAttribute("mtmList", mtmList);
 		model.addAttribute("userMtmListCount",userMtmListCount);

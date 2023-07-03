@@ -12,15 +12,13 @@
                         <meta http-equiv="X-UA-Compatible" content="IE=edge">
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
                         <title>${MovieDetail.movieTitle}</title>
-                        <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
                         <link rel="stylesheet" href="${contextPath}/resources/css/movieList/introduce.css">
+                        <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
                         <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
                         <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-                            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-                            crossorigin="anonymous"></script>
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
                     </head>
 
@@ -61,8 +59,7 @@
                                     <div>
                                         <div>
                                             <!-- 이미지 205px 292px -->
-                                            <a href=""><img src="${MovieDetail.movieImg1}" alt=""
-                                                    class="movie-poster-img"></a>
+                                            <a href=""><img src="${MovieDetail.movieImg1}" alt="" class="movie-poster-img"></a>
                                         </div>
 
                                         <div class="detail-info-wrap">
@@ -70,20 +67,16 @@
                                             <p>
                                                 <c:choose>
                                                     <c:when test="${fn:contains(MovieDetail.mgNo, '전체')}">
-                                                        <img src="${contextPath}/resources/images/age/aage.png"
-                                                            class="age-img-area">
+                                                        <img src="${contextPath}/resources/images/age/aage.png" class="age-img-area">
                                                     </c:when>
                                                     <c:when test="${fn:contains(MovieDetail.mgNo, '12')}">
-                                                        <img src="${contextPath}/resources/images/age/12age.png"
-                                                            class="age-img-area">
+                                                        <img src="${contextPath}/resources/images/age/12age.png" class="age-img-area">
                                                     </c:when>
                                                     <c:when test="${fn:contains(MovieDetail.mgNo, '15')}">
-                                                        <img src="${contextPath}/resources/images/age/15age.png"
-                                                            class="age-img-area">
+                                                        <img src="${contextPath}/resources/images/age/15age.png" class="age-img-area">
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <img src="${contextPath}/resources/images/age/18age.png"
-                                                            class="age-img-area">
+                                                        <img src="${contextPath}/resources/images/age/18age.png" class="age-img-area">
                                                     </c:otherwise>
                                                 </c:choose>
                                                 <span>${MovieDetail.movieTitle}</span>
@@ -102,8 +95,7 @@
                                                 <li>감독<span>${MovieDetail.movieDirector}</span></li>
                                                 <li class="actorList">주연
                                                     <ul>
-                                                        <c:forTokens var="name" items="${MovieDetail.movieCast}"
-                                                            delims=",">
+                                                        <c:forTokens var="name" items="${MovieDetail.movieCast}" delims=",">
                                                             <li>
                                                                 <a href="">
                                                                     <c:out value="${name}" />
@@ -212,13 +204,10 @@
                                                 <p>출연자</p>
                                                 <div>
                                                     <ul>
-                                                        <c:forTokens var="directorName"
-                                                            items="${MovieDetail.movieDirector}" delims=","
-                                                            varStatus="status">
+                                                        <c:forTokens var="directorName" items="${MovieDetail.movieDirector}" delims="," varStatus="status">
                                                             <li>
                                                                 <div>
-                                                                    <img src="${contextPath}/resources/images/profile/bono.jpg"
-                                                                        alt="">
+                                                                    <img src="${contextPath}/resources/images/profile/bono.jpg" alt="">
                                                                 </div>
                                                                 <div>
                                                                     <span>
@@ -229,12 +218,10 @@
                                                             </li>
                                                         </c:forTokens>
 
-                                                        <c:forTokens var="actorName" items="${MovieDetail.movieCast}"
-                                                            delims="," varStatus="status">
+                                                        <c:forTokens var="actorName" items="${MovieDetail.movieCast}" delims="," varStatus="status">
                                                             <li>
                                                                 <div>
-                                                                    <img src="${contextPath}/resources/images/profile/bono.jpg"
-                                                                        alt="">
+                                                                    <img src="${contextPath}/resources/images/profile/bono.jpg" alt="">
                                                                 </div>
                                                                 <div>
                                                                     <span>
@@ -269,8 +256,7 @@
                                                 <div>
                                                     <form action="" class="replywrite">
 
-                                                        <textarea name="" id="addRevContent" cols="30"
-                                                            rows="3"></textarea>
+                                                        <textarea name="" id="addRevContent" cols="30" rows="3"></textarea>
 
                                                         <c:choose>
                                                             <c:when test="${not empty loginUser.userNo}">
@@ -315,12 +301,10 @@
                                                                             <div>${review.revLike}</div>
                                                                             <div>${review.revContent}</div>
                                                                             <c:choose>
-                                                                                <c:when
-                                                                                    test="${loginUser.userNo == review.userNo || loginUser.userManagerSt == 'Y'}">
+                                                                                <c:when test="${loginUser.userNo == review.userNo || loginUser.userManagerSt == 'Y'}">
                                                                                     <!-- loginUser.userNo와 review.userNo가 같을 때 삭제 버튼을 보여줍니다. -->
                                                                                     <div>
-                                                                                        <button class="deleteReview"
-                                                                                            data-revno="${review.revNo}">Delete</button>
+                                                                                        <button class="deleteReview" data-revno="${review.revNo}">Delete</button>
                                                                                     </div>
                                                                                 </c:when>
                                                                                 <c:otherwise>
@@ -338,7 +322,7 @@
                                                 </ul>
 
                                                 <div class="morePage">더보기</div>
-                                                
+
                                             </div>
 
                                             <input type="hidden" id="movieNo" value="${movieNo}">

@@ -8,11 +8,11 @@ main>section {
 }
 
 .aslide-list>li:nth-child(4)>a {
-    background-color: rgb(73, 73, 73);
+    background-color: #FFC400;
 }
 
 .aslide-list>li:nth-child(4)>a {
-    color: rgb(251, 251, 251);
+    color: black;
 }
 
 

@@ -88,8 +88,9 @@
 																			</td>
 																		</c:when>
 																		<c:otherwise>
-																			<td><span id="mtmList_pass"
-																					class="qlrhdro">비공개 글입니다.</span>
+																			<td><a
+																				href="${contextPath}/helpDesk/checkPw/${userMtmList.mtmNo}?cp=${param.cp}"
+																				id="mtmList_pass" class="qlrhdro">비공개 글입니다.</a>
 																			</td>
 																		</c:otherwise>
 																	</c:choose>
