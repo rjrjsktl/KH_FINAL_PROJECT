@@ -56,7 +56,7 @@
                               <li><a href="#none">제주</a></li>
                           </ul>
                           <ul id="special_list" style="display: none">
-                              <li><a href="#none" class="clicked">KMAX</a></li>
+                              <li><a href="#none">KMAX</a></li>
                               <li><a href="#none">DOLBY</a></li>
                               <li><a href="#none">CHEF & CINE</a></li>
                               <li><a href="#none">PUPPY & ME</a></li>
@@ -70,9 +70,6 @@
                             </c:forEach>
                           </ul>
                           <ul id="special_cinema_list" style="display: none">
-                            <c:forEach var="specialScreen" items="${reserveMap['specialScreenList']}">
-                              <li><a href="#none">${specialScreen['cinemaName']}</a></li>
-                            </c:forEach>
                           </ul>
                       </div>
                       

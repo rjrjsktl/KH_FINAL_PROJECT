@@ -132,6 +132,25 @@ public class ReserveController {
 		return joinPlayList;
 	}
 	
+	@GetMapping("/specialPlayList")
+	@ResponseBody
+	public List<JoinPlay> getSpecialPlayList(String typeIndex, String roomIndex, String dateIndex ) throws Exception {
+		
+		try {
+			String screenStyle = specialArray[Integer.parseInt(typeIndex)];
+			specialScreenList = service.getSpecialScreenList(screenStyle);
+			
+			String cinemaName = specialScreenList.get(Integer.parseInt(roomIndex)).getCinemaName();
+			joinPlayList = service.getSpecialPlayList(screenStyle, cinemaName, dateIndex);
+		} catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println("배열 범위 이외의 숫자입니다.");
+		} catch(NumberFormatException e) {
+			System.out.println("잘못된 인덱스입니다.");
+		}
+		
+		return joinPlayList;
+	}
+	
 	
 	@GetMapping("/moviePlayList")
 	@ResponseBody
@@ -141,6 +160,27 @@ public class ReserveController {
 		try {
 			String areaName = areaArray[Integer.parseInt(areaIndex)];
 			joinPlayList = service.getMoviePlayList(areaName, cinemaIndex, dateIndex, movieOptionIndex, movieIndex);
+		} catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println("배열 범위 이외의 숫자입니다.");
+		} catch(NumberFormatException e) {
+			System.out.println("잘못된 인덱스입니다.");
+		}
+		
+		return joinPlayList;
+	}
+	
+	
+	@GetMapping("/roomPlayList")
+	@ResponseBody
+	public List<JoinPlay> getRoomPlayList(String typeIndex, String roomIndex, String dateIndex, 
+			                                        String movieOptionIndex, String movieIndex ) {
+		
+		try {
+			String screenStyle = specialArray[Integer.parseInt(typeIndex)];
+			specialScreenList = service.getSpecialScreenList(screenStyle);
+			
+			String cinemaName = specialScreenList.get(Integer.parseInt(roomIndex)).getCinemaName();
+			joinPlayList = service.getRoomPlayList(screenStyle, cinemaName, dateIndex, movieOptionIndex, movieIndex);
 		} catch(ArrayIndexOutOfBoundsException e) {
 			System.out.println("배열 범위 이외의 숫자입니다.");
 		} catch(NumberFormatException e) {
