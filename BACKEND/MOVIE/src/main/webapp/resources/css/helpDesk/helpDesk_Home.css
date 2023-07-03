@@ -14,11 +14,11 @@ main>section {
 
 
 .aslide-list>li:nth-child(1)>a {
-    background-color: rgb(73, 73, 73);
+    background-color: #FFC400;
 }
 
 .aslide-list>li:nth-child(1)>a {
-    color: rgb(251, 251, 251);
+    color: black;
 }
 
 h2 {
@@ -137,7 +137,7 @@ h2 {
     font-weight: 500;
     padding: 3px 0;
 }
-
+ 
 .new-wrap>div>a:nth-child(2)>span {
     font-size: 0.9rem;
     padding: 3px 0;

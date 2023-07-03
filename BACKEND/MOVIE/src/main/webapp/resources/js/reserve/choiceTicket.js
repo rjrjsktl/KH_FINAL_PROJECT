@@ -91,10 +91,6 @@ function updateSeatAjax() {
     success: function(userPlay) {
       $('.seat').empty();
       updateScreenSection(userPlay);
-      resetCount();
-      updateSeatSection();
-      updateCountArray();
-      resetPriceSection();
       alert("해당 좌석은 이미 예매된 좌석입니다.");
     },
     error: function () {
@@ -115,8 +111,17 @@ function updateScreenSection(userPlay) {
       $(`#seat_area > div:nth-child(${k}) > div:first-child`).text(alphabet[k - 1]);
     }
     
+    ageArray = [0, 0, 0, 0];
+    totalCount = 0;
+    $(".age_count").html(0);
+    
     changeRoom();
     updateSpecialSeat();
+    
+    updateCount();
+    updateSeatSection();
+    updateCountArray();
+    resetPriceSection();
 
 }
 
@@ -294,18 +299,6 @@ $('.minus_btn').click(function(){
 
 // 2-F1) 선택 인원 초기화
 
-function resetCount() {
-  adultCount =0;
-  youthCount = 0;
-  seniorCount = 0;
-  specialCount = 0;
-  totalCount = 0;
-  choiceCount = 0;
-  
-  $('.age_count').html(0);
-  $('#seat_area > div > a').removeClass("selecting");
-  seatArray = [];
-} 
 
 function updateCount() {
   // 연령별 선택인원이 다시 변경됨

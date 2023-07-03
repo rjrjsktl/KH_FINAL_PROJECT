@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  $(".selected_Cp").parent().css("border", "1px solid rgb(255, 196, 0)");
+
   $("#questListContainer").on("click", ".qList", function () {
     var qListDetail = $(this).next(".qList_detail");
     if (qListDetail.hasClass("none")) {
@@ -17,10 +19,9 @@ $(document).ready(function () {
       color: "white",
     });
 
-    // 현재 클릭된 버튼의 스타일을 변경합니다.
     $(this).css({
-      "background-color": "white",
-      color: "#151515",
+      "background-color": "#FFC400",
+      color: "black",
     });
 
     var questNum = $(this).data("quest-num");

@@ -119,9 +119,7 @@
 									</table>
 
 									<div>
-										<button>
 											<a href="${contextPath}/helpDesk/mTm_List">고객센터 가기</a>
-										</button>
 									</div>
 									<!-- 10개씩 -->
 									<div class="page_Nation">

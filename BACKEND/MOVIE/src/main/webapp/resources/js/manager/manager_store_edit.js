@@ -128,7 +128,7 @@ $(document).ready(function () {
 
 
 
-    let nameCheck = false;
+    let nameCheck = true;
 
     const titleRegex = /^[가-힣|a-z|A-Z|0-9|{1,}$\s]+$/;
 

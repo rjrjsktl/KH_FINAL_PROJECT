@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
 		<!DOCTYPE html>
 		<html lang="en">
 
@@ -11,17 +9,11 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<title>분실물</title>
 
-			<script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
-
-
-			<link rel="stylesheet" href="${contextPath}/resources/css/helpDesk/find-my-item.css" />
-
+			<link rel="stylesheet" href="${contextPath}/resources/css/helpDesk/lost_List.css" />
 			<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
-
 			<link rel="stylesheet" href="${contextPath}/resources/css/common/notice_Aside.css">
 			<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 				integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
 		</head>
 
 		<body>
@@ -57,11 +49,11 @@
 													</c:when>
 													<c:otherwise>
 														<c:forEach var="cinemaList" items="${cinemaList.cinemaList}">
-															
-																<option value="${cinemaList.cinemaArea}">
-																	${cinemaList.cinemaArea}
-																</option>
-													
+
+															<option value="${cinemaList.cinemaArea}">
+																${cinemaList.cinemaArea}
+															</option>
+
 														</c:forEach>
 													</c:otherwise>
 												</c:choose>
@@ -144,10 +136,8 @@
 										</table>
 
 										<div>
-											<button>
 												<a href="${contextPath}/helpDesk/lost_form/${lostNo}">게시물
 													등록</a>
-											</button>
 										</div>
 										<!-- 10개씩 -->
 										<div class="page_Nation">
@@ -191,12 +181,8 @@
 				</main>
 
 			</div>
-
 			<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 			<script src="${contextPath}/resources/js/helpDesk/lost.js"></script>
-
-
- 
 		</body>
 
 		</html>

@@ -12,7 +12,7 @@ main>section {
 .notice-wraaper>div:nth-child(2) {
     width: 82%;
 }
-
+ 
 /* 여기까지  왼쪽 ui관련 재활용 계속해야합니당.*/
 
 
@@ -252,9 +252,9 @@ a.hover {
 }
 
 .aslide-list>li:nth-child(5)>a {
-    background-color: rgb(73, 73, 73);
+    background-color: #FFC400;
 }
 
 .aslide-list>li:nth-child(5)>a {
-    color: rgb(251, 251, 251);
+    color: black;
 }

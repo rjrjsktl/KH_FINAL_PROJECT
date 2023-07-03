@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.kh.kgv.helpDesk.model.service.HelpDeskService;
 import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.theater.model.service.TheaterService;
 import com.kh.kgv.theater.model.vo.Screen;
@@ -27,6 +29,9 @@ public class TheaterController {
 
 	@Autowired
 	private TheaterService services;
+	
+	@Autowired
+	private HelpDeskService hdService;
 
 	@GetMapping("/normalTheater")
 	public String normarTheater(	Model model
@@ -36,22 +41,35 @@ public class TheaterController {
 
 		// 회원 리스트 얻어오기
 		getNoticeList = service.noticeList(cp);
+		
+		Map<String, Object>cinemaList = null;
+		cinemaList = hdService.searchcinemaList();
 
 		model.addAttribute("getNoticeList", getNoticeList);
+		model.addAttribute("cinemaList",cinemaList);
 
 		System.out.println("관리자_공지사항 목록 이동");
 		return "theater/normalTheater";
 	}
+	
+	@ResponseBody
+	@GetMapping("/normalTheater/selectArea")
+	public Map<String, Object> getCinemaNames(@RequestParam(value="area", required = false) String area,
+			Model model
+			) {
 
-
+		Map<String, Object> cinemaNameList = hdService.cinemaNameList(area);
+		model.addAttribute("cinemaNameList",cinemaNameList);
+		return cinemaNameList;
+	} 
+	
+	
+	
+	
 	@RequestMapping("/specialTheater")
 	public String specialTheater() {
 		return "theater/specialTheater";
 	}
-
-
-	//	Map<String, Object>cinemaList = null;
-	//	cinemaList = services.cinemaList();
 
 	@RequestMapping("/specialTheater/{theaterID}")
 	public String specialTheater(
