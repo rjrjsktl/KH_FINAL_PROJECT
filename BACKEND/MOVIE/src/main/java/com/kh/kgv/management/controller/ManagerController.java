@@ -1106,7 +1106,26 @@ public class ManagerController {
 
 	// ===================================================
 	// ===================================================
+	
+	// 관리자_스토어 구매 목록
+		@GetMapping("/store_buylist")
+		public String moveStoreBuyList(Model model, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
 
+			Map<String, Object> storebuyMap = null;
+			storebuyMap = service.getStorebuyMap(cp);
+			model.addAttribute("storebuyMap", storebuyMap);
+
+			System.out.println("관리자_스토어 구매 목록");
+			
+			 logger.debug(" storebuyMap################************************* : " + storebuyMap);
+			return "manager/manager_store_buylist";
+		}
+	
+	
+	// ===================================================
+	// ===================================================
+		
+		
 	// 관리자 스토어 물품 수정
 	@GetMapping("/store_list/edit/{storeNo}")
 	public String editStore(@PathVariable("storeNo") int storeNo, Model model, Store store) {

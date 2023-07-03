@@ -15,8 +15,8 @@ h2 {
 }
 
 .aslide-list>li:nth-child(2)>a {
-    background-color: rgb(73, 73, 73);
-    color: rgb(251, 251, 251);
+    background-color: #FFC400;
+    color: black;
 }
 
 * {

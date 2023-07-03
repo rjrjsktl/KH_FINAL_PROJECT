@@ -1,3 +1,6 @@
+::-webkit-scrollbar {display: none; }
+
+
 main>:nth-child(1)>div {
     margin: 10px;
 
@@ -232,6 +235,7 @@ main>:nth-child(1)>div>div>:nth-child(4)>div {
 .box_2_2>:nth-child(2)>input {
     width: 200px;
     height: 30px;
+    color: black;
 }
 
 /* 테이블 관련 */
@@ -254,6 +258,10 @@ main>:nth-child(1)>div>div>:nth-child(4)>div {
     height: 40px;
     border-collapse: collapse;
 }
+
+
+
+
 .ticketTable_1 tr th {
     border: 1px solid white;
     
@@ -317,6 +325,9 @@ main>:nth-child(1)>div>div>:nth-child(4)>div {
 
 .exitBtn {
     cursor: pointer;
+}
+.useBtn{
+	background-color: rgb(0, 255, 0);
 }
 
 button {

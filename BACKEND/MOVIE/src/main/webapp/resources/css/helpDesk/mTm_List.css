@@ -90,7 +90,7 @@ table {
 
 thead * {
 	padding: 10px;
-	background-color: rgb(52,52,52);;
+	background-color: rgb(52,52,52);
 }
 
 thead th:nth-child(1) {

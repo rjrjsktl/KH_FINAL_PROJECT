@@ -136,10 +136,8 @@
 										</table>
 
 										<div>
-											<button>
 												<a href="${contextPath}/helpDesk/lost_form/${lostNo}">게시물
 													등록</a>
-											</button>
 										</div>
 										<!-- 10개씩 -->
 										<div class="page_Nation">

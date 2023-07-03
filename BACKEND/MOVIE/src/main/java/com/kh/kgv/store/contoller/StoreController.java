@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,12 +30,13 @@ import com.kh.kgv.common.Util.SessionUtil;
 import com.kh.kgv.customer.model.vo.User;
 
 import com.kh.kgv.items.model.vo.Store;
-import com.kh.kgv.management.model.service.ManagerService;
+
 
 import com.kh.kgv.store.model.service.StoreService;
 
 import com.kh.kgv.store.model.vo.StoreCoupon;
 import com.kh.kgv.store.model.vo.StoreOrder;
+
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
@@ -177,9 +179,22 @@ public class StoreController {
 
 	 private IamportClient api;
 	 
-	// 아임포트 결제 검증	
-	 public StoreController() {
+	
+	    
+	    
+	 	
+
+	    
+	    public StoreController() {
+	    	 
+	    	
+	    	
+	    
+	    	 
+		 
 		 	
+
+		 
 	        // REST API 키와 REST API secret 를 아래처럼 순서대로 입력한다.
 	        this.api = new IamportClient("","");
 	    }
@@ -248,6 +263,7 @@ public class StoreController {
 			 logger.debug(" SorderNo################************************* : " + sorderNo);
 
 			 storePaymentMap = new HashMap<>(); 
+			 
 			 storeList = service.getstoreList(sorderNo);
 			 storeOrderList = service.getstoreOrderList(sorderNo);
 			 storeCouponList = service.getstoreCouponList(sorderNo);;
