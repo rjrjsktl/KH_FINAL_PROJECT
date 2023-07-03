@@ -45,7 +45,7 @@
 										</p>
 										<form action="/movie/helpDesk/notice_List" method="GET" class="search-form">
 											<input type="text" name="keyword" placeholder="공지사항을 검색하세요">
-											<button>검색하기</button>
+											<button class="searchBtn">검색하기</button>
 										</form>
 									</div>
 
@@ -136,7 +136,9 @@
 			</div>
 			<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-			<script src="${contextPath}/resources/js/helpDesk/notice.js"></script>
+			
+
 		</body>
+		<script src="${contextPath}/resources/js/helpDesk/notice.js"></script>
 
 		</html>

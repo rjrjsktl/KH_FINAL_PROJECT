@@ -87,16 +87,16 @@ public class MovieListController {
 	@RequestMapping("/all_List")
 	public String allMoveList(Model model,
 	// 파라미터
-			@RequestParam(value = "keyword", required = false) String keyword
+			@RequestParam(value = "hkeyword", required = false) String hkeyword
 			) {
 
 		Map<String, Object>getMovieList = null;
 		String pageTitle = "전체 영화 목록";
 		
-		if ( keyword == null || keyword == "") {
+		if ( hkeyword == null || hkeyword == "") {
 		getMovieList = service.movieList();
 		} else {
-		getMovieList = service.searchMovieList(keyword);
+		getMovieList = service.searchMovieList(hkeyword);
 		 pageTitle = "검색 결과";
 		}
 		
@@ -123,7 +123,7 @@ public class MovieListController {
 	    model.addAttribute("revLike", revLike);
 	    model.addAttribute("bookPercent", bookPercent);
 	    model.addAttribute("pageTitle", pageTitle); 
-	    model.addAttribute("keyword",keyword);
+	    model.addAttribute("hkeyword",hkeyword);
 
 		return "movieList/all_List";
 	}
