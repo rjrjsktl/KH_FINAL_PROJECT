@@ -42,6 +42,6 @@
 }
 
 .aslide-list>li>a:hover {
-    color: rgb(251, 251, 251);
-    background-color: rgb(73, 73, 73);
+    color: black;
+    background-color: #FFC400;
 }

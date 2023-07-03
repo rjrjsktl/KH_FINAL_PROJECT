@@ -78,7 +78,7 @@
 														<span>${movie['movieTitle']}</span></a>
 													<div>
 														<p class="textSize">
-															예매율&nbsp<span>${bookPercent[status.index]}</span>%
+															예매율&nbsp<span class="revlikeVal">${bookPercent[status.index]}</span>%
 														</p>
 														<p class="textSize">
 															개봉일&nbsp<span>${movie['movieOpen']}</span>
@@ -88,8 +88,8 @@
 
 												<div>
 													<!-- 좋아요버튼 -->
-													<button>${revLike[status.index]} /5.0</button>
-													<button>예매</button>
+													<button><span class="revlikeVal">${revLike[status.index]}</span> /5.0</button>
+													<a href="${contextPath}/reserve/choicePlay">예매</a>
 												</div>
 											</li>
 										</c:forEach>
