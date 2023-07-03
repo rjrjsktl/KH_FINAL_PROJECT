@@ -29,6 +29,7 @@ import com.kh.kgv.management.model.vo.Pagination;
 import com.kh.kgv.management.model.vo.Search;
 import com.kh.kgv.management.model.vo.WeeklyEnter;
 import com.kh.kgv.management.model.vo.banner;
+import com.kh.kgv.store.model.vo.StoreOrder;
 
 @Service
 public class ManagerServiceImpl implements ManagerService {
@@ -355,7 +356,7 @@ public class ManagerServiceImpl implements ManagerService {
 		return playMap;
 	}
 
-	// 스토어
+	// 스토어 목록 조회
 	@Override
 	public Map<String, Object> getStoreMap(int cp) {
 		//  스토어 수 조회
@@ -373,6 +374,28 @@ public class ManagerServiceImpl implements ManagerService {
 
 		return storeMap;
 	}
+	
+	
+	// 스토어 구매 목록 조회
+	@Override
+	public Map<String, Object> getStorebuyMap(int cp) {
+			//  스토어오더 수 조회
+			int storeBuyCount = dao.getStoreBuyCount();
+
+			// 조회한 스토어 수를 pagination 에 담기
+			Pagination pagination = new Pagination(cp, storeBuyCount);
+
+			// 스토어 리스트 조회
+			List<StoreOrder> storeOrderList = dao.getStoreOrderList(pagination);
+
+			Map<String, Object> storebuyMap = new HashMap<String, Object>();
+			storebuyMap.put("pagination", pagination);
+			storebuyMap.put("storeOrderList", storeOrderList);
+
+			return storebuyMap;
+	}
+	
+	
 
 	// 메인 -> 이벤트 이동 시 이벤트
 	@Override
@@ -902,9 +925,17 @@ public class ManagerServiceImpl implements ManagerService {
 
 	// 총 접속자 수
 	@Override
-	public List<DailyEnter> getTotalEntre() {
+	public int getTotalEntre() {
 		return dao.getTotalEntre();
 	}
+
+	// 총 예매 수
+	@Override
+	public int getTotlaBook() {
+		return dao.getTotalBook();
+	}
+
+	
 
 	
 }

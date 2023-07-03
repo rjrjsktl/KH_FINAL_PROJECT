@@ -167,9 +167,7 @@ h2 {
     border-bottom: 1px solid rgb(255, 196, 0);
 }
 
-.event-title p{
-	line-height:38px;
-}
+
 
 
 tbody{
@@ -249,9 +247,36 @@ table *{
 }
 
 
+.button {
+    width: 100%;
+    height: 40px;
+    background-color: #494949;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    color: #fcfcfc !important;
+    border: none;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.button:hover {
+    background-color: #ffc400 ;
+    color: #000000 !important;
+}
+
+
+
 .event-wrap {
     flex:1;
     margin-top: 30px;
+}
+
+.event-title p{
+	line-height:38px;
 }
 
 .event-wrap>div:nth-child(1) {
@@ -283,26 +308,6 @@ table *{
     display: flex;
 }
 
-.button {
-    width: 100%;
-    height: 40px;
-    background-color: #494949;
-    border-radius: 10px;
-    outline: none;
-    cursor: pointer;
-    color: #fcfcfc !important;
-    border: none;
-    font-size: 1.2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.button:hover {
-    background-color: #ffc400 ;
-    color: #000000 !important;
-}
 
 .swiper-container {
     position: relative;

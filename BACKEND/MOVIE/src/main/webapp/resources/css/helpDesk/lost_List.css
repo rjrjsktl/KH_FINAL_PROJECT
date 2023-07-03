@@ -218,24 +218,30 @@ tbody {
     display: none;
   }
 
-.table-wrap> div:nth-child(2) {
-    margin-top:20px;
-    display: flex;
-    justify-content: right;
-    right:0;
+
+  .table-wrap>div:nth-child(2) {
+	margin-top: 20px;
+	display: flex;
+	justify-content: right;
+	right: 0;
 }
 
-.table-wrap> div:nth-child(2) > button {
-    background-color: rgb(73, 73, 73);
-    padding:10px;
-    outline: none;
-    border: none;
-    cursor: pointer;
+.table-wrap>div:nth-child(2)>a {
+	width: 105px;
+	height: 41px;
+	background-color: rgb(49, 49, 49);
+	color:white;
+	outline: none;
+	border: none;
+	line-height:39px;
+	text-align: center;
+	border-radius: 5px;
 }
 
-.table-wrap> div:nth-child(2) > button:hover{
-    background-color: white;
-    color: black;
+.table-wrap>div:nth-child(2)>a:hover {
+	background-color: rgb(255, 196, 0);
+	color: black;
+	cursor: pointer;
 }
 
 .qlrhdro {
