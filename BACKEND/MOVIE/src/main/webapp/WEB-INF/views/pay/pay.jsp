@@ -92,7 +92,7 @@
                                     <th>최종결제가격</th>
                                 </tr>
                                 <tr>
-                                    <th>${play_price}</th>
+                                    <th>${reservePrice}</th>
                                     <th class="minus">-</th>
                                     <th>${price.price.teen}</th>
                                     <th>=</th>
@@ -157,33 +157,28 @@
                                         <tr class="table_header">
                                             <th>관람권</th>
                                             <th>상태</th>
-                                            <th>사용</th>
+                                            <th>적용하기</th>
                                         </tr>
                                     </table>
                                 </div>
 
                                 <div class="box_2_3_2">
                                     <table class="ticketTable_2">
-                                        <c:choose>
-                                            <c:when test="">
+                                        
+                                      <c:forEach var="coupon" items="${storeCouponList}">
                                                 <tr>
                                                     <th>
-                                                        "관람권타이틀""
+                                                        ${storeCouponList.couponDetailNo}
                                                     </th>
                                                     <th>
-                                                        "관람권상태"
+                                                        ${storeCouponList.couponSt}
                                                     </th>
                                                     <th>
                                                         <button>사용</button>
                                                     </th>
                                                 </tr>
-                                                
+                                      </c:forEach>    
 
-                                            </c:when>
-                                            <c:otherwise>
-
-                                            </c:otherwise>
-                                        </c:choose>
 
                                     </table>
                                 </div>
@@ -205,7 +200,7 @@
                     <div class="box_3">
                         <div>
                             <button class="exitBtn">닫기</button>
-                            <button>적용</button>
+                            <button class="useBtn">적용</button>
                         </div>
                     </div>
                 </div>

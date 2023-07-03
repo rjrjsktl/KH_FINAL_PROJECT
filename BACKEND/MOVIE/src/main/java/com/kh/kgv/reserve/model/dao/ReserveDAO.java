@@ -73,5 +73,13 @@ public class ReserveDAO {
 		return sqlSession.selectOne("playMapper.getBookNo", userNo);
 	}
 
+	public List<JoinPlay> getSpecialPlayList(Map<String, Object> condition) {
+		return sqlSession.selectList("playMapper.getSpecialPlayList", condition);
+	}
+
+	public List<JoinPlay> getRoomPlayList(Map<String, Object> condition) {
+		return sqlSession.selectList("playMapper.getRoomPlayList", condition);
+	}
+
 
 }

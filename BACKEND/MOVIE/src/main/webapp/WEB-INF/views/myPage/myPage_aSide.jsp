@@ -9,9 +9,7 @@
         <div class="aside-ul-wrap">
             <ul class="aslide-list">
                 <li>
-                    <a href="${contextPath}/myPage/myHome">
-                        <h1>MY PAGE</h1>
-                    </a>
+                    <a href="${contextPath}/myPage/myHome">MY PAGE</a>
                 </li>
                 <li>
                     <a href="${contextPath}/myPage/myReview">내가 쓴 리뷰</a>

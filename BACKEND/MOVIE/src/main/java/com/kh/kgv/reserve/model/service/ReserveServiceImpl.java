@@ -344,5 +344,50 @@ public class ReserveServiceImpl implements ReserveService {
 	public int getBookNo(int userNo) {
 		return dao.getBookNo(userNo);
 	}
+    
+	
+	// 특별관의 전체 상영 리스트 조회
+	@Override
+	public List<JoinPlay> getSpecialPlayList(String screenStyle, String cinemaName, String dateIndex) {
+		LocalDateTime now = LocalDateTime.now();
+		LocalDateTime date = now.plusDays(Integer.parseInt(dateIndex));
+		String strDate = date.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+		
+		Map<String, Object> condition = new HashMap<>();
+		condition.put("screenStyle", screenStyle);
+		condition.put("cinemaName", cinemaName);
+		condition.put("strDate", strDate);
+		List<JoinPlay> specialPlayList = dao.getSpecialPlayList(condition);
+		
+		return specialPlayList;
+	}
+
+	@Override
+	public List<JoinPlay> getRoomPlayList(String screenStyle, String cinemaName, String dateIndex, 
+			                                        String movieOptionIndex, String movieIndex) {
+		
+		int movieNo = 0;
+		
+		LocalDateTime now = LocalDateTime.now();
+		LocalDateTime date = now.plusDays(Integer.parseInt(dateIndex));
+		String strDate = date.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+		
+		if(movieOptionIndex.equals("0")) {
+			movieList = dao.getPlayingMovieList();
+			movieNo = movieList.get(Integer.parseInt(movieIndex)).getMovieNo();
+		} else {
+			thumbList = dao.getPlayingThumbList();
+			movieNo = thumbList.get(Integer.parseInt(movieIndex)).getMovieNo();
+		}
+
+		Map<String, Object> condition = new HashMap<>();
+		condition.put("screenStyle", screenStyle);
+		condition.put("cinemaName", cinemaName);
+		condition.put("strDate", strDate);
+		condition.put("movieNo", movieNo);
+		List<JoinPlay> roomPlayList = dao.getRoomPlayList(condition);
+
+		return roomPlayList;
+	}
 
 }
