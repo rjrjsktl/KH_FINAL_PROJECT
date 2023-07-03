@@ -65,6 +65,7 @@
 										</c:choose>
 										건
 									</p>
+									
 								</div>
 
 								<div class="table-wrap">
@@ -109,9 +110,7 @@
 									</table>
 
 									<div>
-										<button>
 											<a href="${contextPath}/helpDesk/lost_List">고객센터 가기</a>
-										</button>
 									</div>
 									<!-- 10개씩 -->
 									<div class="page_Nation">

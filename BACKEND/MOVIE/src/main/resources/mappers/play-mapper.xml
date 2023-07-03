@@ -98,6 +98,14 @@
 	    <result property="bookSt"             column="BOOK_ST" />
 	</resultMap>
 	
+	<resultMap type="storeCoupon" id="storeCoupon_rm">
+		
+		<id property="scouponNo" column="S_COUPON_NO"/>
+		<result property="sorderNo" 				column="S_ORDER_NO"/>
+		<result property="couponDetailNo" 			column="COUPON_DETAIL_NO"/>
+		<result property="couponSt" 			column="COUPON_ST"/>
+	</resultMap>
+	
 	
 	<!-- 상영 중인 영화 리스트 (이름 순) -->
 	
@@ -163,6 +171,36 @@
         INNER JOIN MOVIE m ON p.MOVIE_NO = m.MOVIE_NO
         WHERE c.CINEMA_NO = #{cinemaNo} AND TO_CHAR(p.PLAY_START, 'YYYYMMDD') = #{strDate} AND p.PLAY_START > SYSDATE
               AND m.MOVIE_NO = #{movieNo}
+	]]>
+	</select>
+	
+	
+	<!-- 특별관의 전체 상영 검색 -->
+	<select id="getSpecialPlayList" parameterType="Map" resultMap="jp_rm">
+	<![CDATA[
+	    SELECT m.MOVIE_NO, m.MOVIE_TITLE, m.MG_CONTENT, m.MOVIE_IMG1, c.CINEMA_NAME, s.SCREEN_NAME, s.SCREEN_SEAT, s.SCREEN_STYLE,
+	           p.PLAY_NO, p.PLAY_START, p.PLAY_END, p.PLAY_BOOKCOUNT  
+	    FROM PLAY p
+        INNER JOIN SCREEN s ON p.SCREEN_NO  = s.SCREEN_NO 
+        INNER JOIN CINEMA c ON s.CINEMA_NAME = c.CINEMA_NAME
+        INNER JOIN MOVIE m ON p.MOVIE_NO = m.MOVIE_NO
+        WHERE TO_CHAR(p.PLAY_START, 'YYYYMMDD') = #{strDate} AND p.PLAY_START > SYSDATE
+                  AND s.SCREEN_STYLE = #{screenStyle} AND s.CINEMA_NAME = #{cinemaName}
+        ORDER BY m.MOVIE_TITLE DESC
+	]]>
+	</select>
+	
+	<!-- 특정 특별관의 특정 영화에 대한 상영 검색 -->
+	<select id="getRoomPlayList" parameterType="Map" resultMap="jp_rm">
+	<![CDATA[
+	    SELECT m.MOVIE_NO, m.MOVIE_TITLE, m.MG_CONTENT, m.MOVIE_IMG1, c.CINEMA_NAME, s.SCREEN_NAME, s.SCREEN_SEAT, s.SCREEN_STYLE,
+	           p.PLAY_NO, p.PLAY_START, p.PLAY_END, p.PLAY_BOOKCOUNT  
+	    FROM PLAY p
+        INNER JOIN SCREEN s ON p.SCREEN_NO  = s.SCREEN_NO 
+        INNER JOIN CINEMA c ON s.CINEMA_NAME = c.CINEMA_NAME
+        INNER JOIN MOVIE m ON p.MOVIE_NO = m.MOVIE_NO
+        WHERE TO_CHAR(p.PLAY_START, 'YYYYMMDD') = #{strDate} AND p.PLAY_START > SYSDATE
+                  AND s.SCREEN_STYLE = #{screenStyle} AND s.CINEMA_NAME = #{cinemaName} AND m.MOVIE_NO = #{movieNo}
 	]]>
 	</select>
 	
@@ -251,6 +289,19 @@ WHERE s.SCREEN_NO = #{screenNo}
         SELECT MAX(BOOK_NO) FROM BOOK
         WHERE USER_NO = #{userNo}
     </select>
-	
+    
+    <select id="serchPrice" parameterType="_int" resultType="string">
+        SELECT BOOK_PRICE
+        FROM BOOK
+        WHERE BOOK_NO = #{bookNo}
+    </select>
+    
+	<select id="selectCoupon" parameterType="string" resultMap="storeCoupon_rm">
+        SELECT *
+        FROM STORE_COUPON
+        WHERE COUPON_DETAIL_NO = #{couponNo}
+    </select>
+    
+    
 	
 </mapper>
