@@ -41,22 +41,28 @@ h2 {
     flex-direction: column;
 }
 
+
 .notice-contents>div:nth-child(1) {
-   	padding: 10px 0 10px 0;
+    padding: 10px 0 10px 0;
     height:40%;
+
 }
 
 .notice-contents>div:nth-child(1)>span {
-    font-size:1.5rem;
+        font-size:1.5rem;
     font-weight: 400;
+
+  
 }
 
 .notice-contents>div:nth-child(2) {
     padding: 10px 0 10px 0;
-    height:30%;
-    display:flex;
-    justify-content:right;
+      height:30%;
+	  display: flex;
+	  justify-content: space-between;
 }
+
+
 .notice-contents>div:nth-child(2) >span>span{
 	padding:0 5px;
 }
@@ -66,10 +72,14 @@ h2 {
     padding: 15px 0;
     padding-bottom: 30px;
     height:64%;
+   
 }
 
 .content-wrap>div:nth-child(3) {
+
     border-top: 1px solid rgb(73, 73, 73);
+    
+
 }
 
 
@@ -103,37 +113,12 @@ h2 {
     color: rgb(251, 251, 251)
 }
 
+
 .contentText-wrap{
 	word-wrap: break-word;
 	white-space: normal;
 
 }
-
-.btn_wraper {
-	display:flex;
-	justify-content:right;
-}
-
-.btn_wraper button{
-	margin-left:15px;
-	margin-top:30px;
-	width:105px;
-	height:41px;
-	background-color:rgb(49,49,49);
-	outline:none;
-	border:none;
-}
-
-.btn_wraper button:hover{
-	background-color: rgb(255, 196, 0);
-	color:black;
-	cursor:pointer;
-}
-
-a.hover {
-   color:black;
-}
-
 
 .reply_wrap{
 	display:flex;
@@ -170,10 +155,14 @@ a.hover {
 	justify-content:right;
 }
 
+.btn_wraper a {
+	color:white;
+}
+
 .btn_wraper button{
 	margin-left:15px;
 	margin-top:30px;
-	width:105px;
+		width:105px;
 	height:41px;
 	background-color:rgb(49,49,49);
 	outline:none;
@@ -192,9 +181,9 @@ a.hover {
 
 
 .reply{
-	margin-top:30px;
 	border: 1px solid rgb(255, 196, 0);
 	background-color:black;
+	border-radius: 10px;
 }
 
 .reply-info p {
@@ -228,6 +217,7 @@ a.hover {
 	justify-content: center;
 	line-height:48px;
 	cursor:pointer;
+	border-radius: 10px;
 	
 	outline:none;
 	border: 1px solid rgb(255, 196, 0);
@@ -239,14 +229,19 @@ a.hover {
 	font-weight:bold;
 	width:100%;
 	height:100%;
+	border-radius: 10px;
 }
 
 .reply_delete a:hover{
 	background-color:red;
 }
 
+.imageArea{
+	margin:30px 0;
+	display: flex;
+}
+
 .imageArea img {
-	width: 200px;
-	height: 200px;
+	max-height: 200px;
 	cursor: pointer;
 }
