@@ -9,7 +9,7 @@
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>돌비</title>
+            <title>DOLBY</title>
 
             <link rel="stylesheet" href="${contextPath}/resources/css/theater/theaterS2.css">
             <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
@@ -25,7 +25,7 @@
                 <main>
                     <div>
                         <!-- 백그라운드이미지로 처리 -->
-                        <div>
+						<div  class="topBg_imgarea">
                             <ul>
 								<li> <a href="${contextPath}/theater/specialTheater/1"> KMAX</a> </li>
 								<li><a href="${contextPath}/theater/specialTheater/2">DOLBY</a></li>
@@ -35,6 +35,13 @@
 										PUPPY</a></li>
 								<li> <a href="${contextPath}/theater/specialTheater/4">KIDS</a></li>
 							</ul>
+
+                            <div class="spanCLS">
+                                <p>몰입감 넘치는 사운드</p>
+                                <p>DOLBY</p>
+                            </div>
+                                
+
                         </div>
                     </div>
 
@@ -42,8 +49,7 @@
                     <div>
                         <div>
                             <div class="left_stheaterwrap">
-                                <span>DOLBY</span>
-                                <span>입체적 사운드, 단 하나의 시네마 </span>
+                            
                             </div>
 
 
@@ -146,18 +152,12 @@
                             <!-- TOP3만 올리세요 스와이퍼넣기싫어 귀찮아 제발.. -->
                             <p>DOLBY 추천영화</p>
                             <div class="top3-wrap">
-                                <div>
-                                    <a href="#"><img src="${contextPath}/resources/images/movieList/movie_01.jpg"></a>
-                                    <button>예매하기</button>
-                                </div>
-                                <div>
-                                    <a href="#"><img src="${contextPath}/resources/images/movieList/movie_01.jpg"></a>
-                                    <button>예매하기</button>
-                                </div>
-                                <div>
-                                    <a href="#"><img src="${contextPath}/resources/images/movieList/movie_01.jpg"></a>
-                                    <button>예매하기</button>
-                                </div>
+                                <c:forEach var="ranMovie" items="${randomMovie}">
+									<div>
+										<a href="${contextPath}/movieList/detail_List/introduce/${ranMovie.movieNo}"><img src="${ranMovie.movieImg1}"></a>
+										<button>예매하기</button>
+									</div>
+								</c:forEach>
                             </div>
                         </div>
                     </div>
@@ -169,8 +169,6 @@
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-
-            <script src="${contextPath}/resources/js/common/header.js"></script>
             <script src="${contextPath}/resources/js/theater/special-detail.js"></script>
         </body>
 

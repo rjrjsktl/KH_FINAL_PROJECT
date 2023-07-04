@@ -25,7 +25,7 @@
                 <main>
                     <div>
                         <!-- 백그라운드이미지로 처리 -->
-                        <div>
+						<div  class="topBg_imgarea">
                             <ul>
 								<li> <a href="${contextPath}/theater/specialTheater/1"> KMAX</a> </li>
 								<li><a href="${contextPath}/theater/specialTheater/2">DOLBY</a></li>
@@ -35,6 +35,12 @@
 										PUPPY</a></li>
 								<li> <a href="${contextPath}/theater/specialTheater/4">KIDS</a></li>
 							</ul>
+
+                            <div class="spanCLS">
+                                <p>세계 두번째</p>
+                                <p>반려동물 동반 멀티플렉스</p>
+                            </div>
+
                         </div>
                     </div>
 
@@ -42,8 +48,7 @@
                     <div>
                         <div>
                             <div class="left_stheaterwrap">
-                                <span>세계 두번째</span>
-                                <span>반려동물 동반 멀티플렉스</span>
+                               
                             </div>
 
 
@@ -161,18 +166,12 @@
                             <!-- TOP3만 올리세요 스와이퍼넣기싫어 귀찮아 제발.. -->
                             <p>반려동물과 함께하는 추천영화</p>
                             <div class="top3-wrap">
-                                <div>
-                                    <a href="#"><img src="${contextPath}/resources/images/movieList/movie_01.jpg"></a>
-                                    <button>예매하기</button>
-                                </div>
-                                <div>
-                                    <a href="#"><img src="${contextPath}/resources/images/movieList/movie_01.jpg"></a>
-                                    <button>예매하기</button>
-                                </div>
-                                <div>
-                                    <a href="#"><img src="${contextPath}/resources/images/movieList/movie_01.jpg"></a>
-                                    <button>예매하기</button>
-                                </div>
+                                <c:forEach var="ranMovie" items="${randomMovie}">
+									<div>
+										<a href="${contextPath}/movieList/detail_List/introduce/${ranMovie.movieNo}"><img src="${ranMovie.movieImg1}"></a>
+										<button>예매하기</button>
+									</div>
+								</c:forEach>
                             </div>
                         </div>
                     </div>

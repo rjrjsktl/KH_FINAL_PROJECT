@@ -10,6 +10,6 @@ public interface TheaterService {
 
 	List<Screen> getScreenInfo(String special);
 
-	List<Movie> randomMovie();
+	List<Movie> randomMovie(String special);
 
 }
