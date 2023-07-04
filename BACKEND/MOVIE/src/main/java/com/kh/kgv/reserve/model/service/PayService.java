@@ -11,5 +11,8 @@ public interface PayService {
 	
 	// 관람권 코드 검색
 	List<StoreCoupon> selectCoupon(String couponNo);
+	
+	// 관람권 상태 변경 
+	int updateTicketStatus(String couponNo);
 
 }

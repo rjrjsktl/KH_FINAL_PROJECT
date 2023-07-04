@@ -27,5 +27,12 @@ public class PayServiceImpl implements PayService {
 	public List<StoreCoupon> selectCoupon(String couponNo) {
 		return dao.selectCoupon(couponNo);
 	}
+	
+	// 관람권 상태 변경
+	@Override
+	public int updateTicketStatus(String couponNo) {
+		
+		return dao.updateTicketStatus(couponNo);
+	}
 
 }
