@@ -96,10 +96,6 @@ main>section:nth-child(2) .swiper-title>div:nth-child(1) * {
     margin-right: 30px;
 }
 
-main>section:nth-child(2) .swiper-title>div:nth-child(1)>a:hover {
-    color: #FCFCFC;
-}
-
 main>section:nth-child(2) .swiper-title>button {
     width: 145px;
     height: 40px;
@@ -145,7 +141,13 @@ main>section:nth-child(2) .swiper-slide>div:nth-child(2) {
     text-align: center;
 }
 
+main>section:nth-child(2) .swiper-slide>div:nth-child(2) a {
+    width:221px;
+    display: flex;
+}
+
 main>section:nth-child(2) .swiper-slide>div:nth-child(2)>a>span {
+    width:100%;
     font-size: 0.9rem;
     font-weight: bold;
     text-overflow: ellipsis;
@@ -257,15 +259,12 @@ main>section:nth-child(3)>div:nth-child(1) {
     justify-content: space-between;
 }
 
-.event-title>a {
+.event-title>p {
     font-size: 1.5rem;
     font-weight: bold;
     margin-right: 30px;
 }
 
-.event-title>a:hover {
-    color: #FCFCFC;
-}
 
 .event-title>div {
     width: 145px;
@@ -546,7 +545,14 @@ main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(2)> :nth-child(1) {
     font-weight: bold;
 }
 
+.nottitle{
+    color:white;
+}
 
+.nottitle:hover{
+    color:#FCC400;
+    text-decoration: underline;
+}
 
 
 
@@ -587,8 +593,12 @@ main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(3)>a {
     padding: 0 20px;
     cursor: pointer;
     background-color: #191919;
-    ;
     line-height: 30px;
+}
+
+main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(3)>a:hover{
+    background-color: #FFC400;
+    color:black;
 }
 
 
@@ -642,4 +652,8 @@ main>section:nth-child(5)>div>div:nth-child(2) {
     background-color: #FCC400;
     color: black;
 
+}
+
+.revlikeVal{
+    color:#FCC400;
 }
