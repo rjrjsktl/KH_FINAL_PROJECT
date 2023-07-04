@@ -180,19 +180,24 @@
 											<div>
 												<a href="${contextPath}/theater/specialTheater/1" class="stheater"> <img
 														src="${contextPath}/resources/images/teater_special/imax_04.jpg"
-														alt="" />
+														onmouseenter="zoomIn(event)"
+																onmouseleave="zoomOut(event)" alt="" />
 												</a> <a href="${contextPath}/theater/specialTheater/2" class="stheater">
 													<img src="${contextPath}/resources/images/teater_special/img-theater-db-view05.png"
-														alt="" />
+													onmouseenter="zoomIn(event)"
+													onmouseleave="zoomOut(event)" alt="" />
 												</a> <a href="${contextPath}/theater/specialTheater/5" class="stheater">
 													<img src="${contextPath}/resources/images/teater_special/abcd.jpg"
-														alt="" />
+													onmouseenter="zoomIn(event)"
+													onmouseleave="zoomOut(event)" alt="" />
 												</a> <a href="${contextPath}/theater/specialTheater/3" class="stheater">
 													<img src="${contextPath}/resources/images/teater_special/style_625d608c1cb71.jpg"
-														alt="" />
+													onmouseenter="zoomIn(event)"
+													onmouseleave="zoomOut(event)" alt="" />
 												</a> <a href="${contextPath}/theater/specialTheater/4" class="stheater">
 													<img src="${contextPath}/resources/images/teater_special/Featured-1068x580-1-2.png"
-														alt="" />
+													onmouseenter="zoomIn(event)"
+													onmouseleave="zoomOut(event)" alt="" />
 												</a>
 											</div>
 
