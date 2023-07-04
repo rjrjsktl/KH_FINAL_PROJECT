@@ -9,7 +9,7 @@
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>돌비</title>
+            <title>DOLBY</title>
 
             <link rel="stylesheet" href="${contextPath}/resources/css/theater/theaterS2.css">
             <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
@@ -152,18 +152,12 @@
                             <!-- TOP3만 올리세요 스와이퍼넣기싫어 귀찮아 제발.. -->
                             <p>DOLBY 추천영화</p>
                             <div class="top3-wrap">
-                                <div>
-                                    <a href="#"><img src="${contextPath}/resources/images/movieList/movie_01.jpg"></a>
-                                    <button>예매하기</button>
-                                </div>
-                                <div>
-                                    <a href="#"><img src="${contextPath}/resources/images/movieList/movie_01.jpg"></a>
-                                    <button>예매하기</button>
-                                </div>
-                                <div>
-                                    <a href="#"><img src="${contextPath}/resources/images/movieList/movie_01.jpg"></a>
-                                    <button>예매하기</button>
-                                </div>
+                                <c:forEach var="ranMovie" items="${randomMovie}">
+									<div>
+										<a href="${contextPath}/movieList/detail_List/introduce/${ranMovie.movieNo}"><img src="${ranMovie.movieImg1}"></a>
+										<button>예매하기</button>
+									</div>
+								</c:forEach>
                             </div>
                         </div>
                     </div>
