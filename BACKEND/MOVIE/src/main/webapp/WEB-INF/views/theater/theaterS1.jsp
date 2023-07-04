@@ -140,18 +140,12 @@
 							<!-- TOP3만 올리세요 스와이퍼넣기싫어 귀찮아 제발.. -->
 							<p>KMAX 추천영화</p>
 							<div class="top3-wrap">
-								<div>
-									<a href="#"><img src="${contextPath}/resources/images/movieList/movie_01.jpg"></a>
-									<button>예매하기</button>
-								</div>
-								<div>
-									<a href="#"><img src="${contextPath}/resources/images/movieList/movie_01.jpg"></a>
-									<button>예매하기</button>
-								</div>
-								<div>
-									<a href="#"><img src="${contextPath}/resources/images/movieList/movie_01.jpg"></a>
-									<button>예매하기</button>
-								</div>
+								<c:forEach var="ranMovie" items="${randomMovie}">
+									<div>
+										<a href="${contextPath}/movieList/detail_List/introduce/${ranMovie.movieNo}"><img src="${ranMovie.movieImg1}"></a>
+										<button>예매하기</button>
+									</div>
+								</c:forEach>
 							</div>
 						</div>
 					</div>
@@ -164,13 +158,6 @@
 
 
 			<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-
-			<script>
-				const screenTest = "${screen.cinemaName}";
-				console.log("screenTest::: "+screenTest);
-				const movieNo = "${randomMovie.movieNo}";
-				console.log("movieNo::: "+movieNo);
-			</script>
 
 			<script src="${contextPath}/resources/js/common/header.js"></script>
 			<script src="${contextPath}/resources/js/theater/special-detail.js"></script>
