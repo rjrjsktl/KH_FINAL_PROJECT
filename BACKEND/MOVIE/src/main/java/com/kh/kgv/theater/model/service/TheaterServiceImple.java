@@ -22,8 +22,8 @@ public class TheaterServiceImple implements TheaterService {
 	}
 
 	@Override
-	public List<Movie> randomMovie() {
-		return dao.randomMovie();
+	public List<Movie> randomMovie(String special) {
+		return dao.randomMovie(special);
 	}
 
 

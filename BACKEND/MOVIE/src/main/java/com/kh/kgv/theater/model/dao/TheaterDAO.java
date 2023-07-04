@@ -21,9 +21,9 @@ public class TheaterDAO {
 		return sqlSession.selectList("movieMapper.getScreenInfo",special);
 	}
 
-	public List<Movie> randomMovie() {
+	public List<Movie> randomMovie(String special) {
 
-		return sqlSession.selectList("movieMapper.randomMovie");
+		return sqlSession.selectList("movieMapper.randomMovie", special);
 	}
 
 }
