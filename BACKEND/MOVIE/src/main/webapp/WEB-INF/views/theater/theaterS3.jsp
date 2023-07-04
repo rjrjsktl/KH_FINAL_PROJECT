@@ -25,7 +25,7 @@
                 <main>
                     <div>
                         <!-- 백그라운드이미지로 처리 -->
-                        <div>
+						<div  class="topBg_imgarea">
                             <ul>
 								<li> <a href="${contextPath}/theater/specialTheater/1"> KMAX</a> </li>
 								<li><a href="${contextPath}/theater/specialTheater/2">DOLBY</a></li>
@@ -35,6 +35,12 @@
 										PUPPY</a></li>
 								<li> <a href="${contextPath}/theater/specialTheater/4">KIDS</a></li>
 							</ul>
+
+                            <div class="spanCLS">
+                                <p>세계 두번째</p>
+                                <p>반려동물 동반 멀티플렉스</p>
+                            </div>
+
                         </div>
                     </div>
 
@@ -42,8 +48,7 @@
                     <div>
                         <div>
                             <div class="left_stheaterwrap">
-                                <span>세계 두번째</span>
-                                <span>반려동물 동반 멀티플렉스</span>
+                               
                             </div>
 
 
