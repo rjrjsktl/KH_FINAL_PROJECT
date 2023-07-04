@@ -1128,19 +1128,37 @@ public class ManagerController {
 			return "manager/manager_store_buylist";
 		}
 	
-	
-		// 아임포트 환불 
-		@RequestMapping(value = "/coupon_cancel.do")
-		@ResponseBody
-		public String cancel(@RequestParam(value = "orderDetailNo") String orderDetailNo
-				,@RequestParam(value = "sorderNo") String sorderNo
-				) {
-		    System.out.println("orderDetailNo = " + orderDetailNo);
-		    System.out.println("sorderNo = " + sorderNo);
-		    
-		    
-		   // StoreOrder storeOrder = service.recentlyPay(orderDetailNo); // StoreOrder에 대한 서비스 클래스가 있다고 가정
-		    
+		
+		
+		
+		
+//		 private IamportClient api;
+//		 
+//		 public ManagerController() {
+//	    	 
+//		    	
+//			 
+//		        // REST API 키와 REST API secret 를 아래처럼 순서대로 입력한다.
+//		        this.api = new IamportClient("","");
+//		        
+//		    }
+//			private List<StoreOrder> storeOrderList = null;
+//		// 아임포트 환불 
+//		@RequestMapping(value = "/coupon_cancel.do")
+//		@ResponseBody
+//		public String cancel(@RequestParam(value = "orderDetailNo") String orderDetailNo
+//				,@RequestParam(value = "sorderNo") String sorderNo
+//				,HttpSession session
+//				) {
+//			
+//			
+//			
+//		    System.out.println("orderDetailNo = " + orderDetailNo);
+//		    System.out.println("sorderNo = " + sorderNo);
+//		    
+//		    
+//		    List<StoreOrder> storeOrderList = service.recentlyPay(orderDetailNo); // StoreOrder에 대한 서비스 클래스가 있다고 가정
+//		    
 //		    if (storeOrder != null) {
 //		      
 //		        storeOrder.setOrderSt("N"); 
@@ -1149,31 +1167,31 @@ public class ManagerController {
 //		        service.saveStoreOrder(storeOrder);
 //		        
 //		        
-//		      
+//	      
 //
 //		        return "Success";
 //		    } else {
-//		        return "Order not found";
+//		    	return "Order not found";
 //		    }
-		    
-		    
+//		    
+//		    
 //		  
-//	            for (Payment payment : storeOrder) {
+//            for (Payment payment : storeOrderList ) {
 //	                //캔슬 데이터 생성
-//	                CancelData cancelData = new CancelData(payment.getImp_uid(),true);
-//	                IamportClient.cancelPaymentByImpUid(orderDetailNo);
+//	                CancelData cancelData = new CancelData(payment.getImpUid(),true);
+//	                api.cancelPaymentByImpUid(cancelData);
 //	                //페이먼트 삭제해주기
-//	                service.deleteStoreOrder(storeOrder);
+//	                service.deleteStoreOrder(storeOrderList);
 //	            }
-	      
-		    return "Success";
-		}
-
+//	      
+//		    return "Success";
+////		    response.put("response","success");
+////	        return ResponseEntity.ok(response);
+//		}
 
 		
-//	        response.put("response","success");
-//	        return ResponseEntity.ok(response);
-//	    }
+	        
+	    
 		    		    	     
 		    
 //	}
