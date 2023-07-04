@@ -10,7 +10,7 @@
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<title>KMAX</title>
-			<link rel="stylesheet" href="${contextPath}/resources/css/theater/theaterS.css">
+			<link rel="stylesheet" href="${contextPath}/resources/css/theater/theaterS1.css">
 			<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
 
 			<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -25,9 +25,9 @@
 				<main>
 					<div>
 						<!-- 백그라운드이미지로 처리 -->
-						<div>
+						<div  class="topBg_imgarea">
 							<ul>
-								<li> <a href="${contextPath}/theater/specialTheater/1"> KMAX</a> </li>
+								<li> <a> KMAX</a> </li>
 								<li><a href="${contextPath}/theater/specialTheater/2">DOLBY</a></li>
 								<li><a href="${contextPath}/theater/specialTheater/5">DISH &
 										WINE</a></li>
@@ -35,6 +35,12 @@
 										PUPPY</a></li>
 								<li> <a href="${contextPath}/theater/specialTheater/4">KIDS</a></li>
 							</ul>
+
+						<div class="spanCLS">
+							<p>궁극의 몰입감</p>
+							<p>KMAX</p>
+						</div>
+							
 						</div>
 					</div>
 
@@ -42,7 +48,6 @@
 					<div>
 						<div>
 							<div class="left_stheaterwrap">
-								<span>KMAX</span> <span>압도적 경험을 만나다</span>
 							</div>
 
 
@@ -172,7 +177,6 @@
 				console.log("movieNo::: "+movieNo);
 			</script>
 
-			<script src="${contextPath}/resources/js/common/header.js"></script>
 			<script src="${contextPath}/resources/js/theater/special-detail.js"></script>
 
 		</body>

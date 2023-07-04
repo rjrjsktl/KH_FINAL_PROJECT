@@ -21,6 +21,7 @@
 
 body {
     background-color: rgb(32, 32, 32);
+    overflow-x: hidden;
 }
 
 header {
@@ -420,7 +421,7 @@ header > section{
 
 .go_top_area{
 position: absolute;
-bottom:-700px;
+bottom:-660px;
 right:150px;
 display: none;
 }
