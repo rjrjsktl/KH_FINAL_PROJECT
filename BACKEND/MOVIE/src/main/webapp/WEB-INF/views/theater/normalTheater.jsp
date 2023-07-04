@@ -15,8 +15,8 @@
 			<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 				integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-				<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-						<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+			<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
 
 		</head>
@@ -60,25 +60,22 @@
 							</div>
 							<div class="swiper-container">
 								<div class="swiper-wrapper">
-									<c:forEach var="event" items="${getEvnetList['getEvnetList']}"
-										varStatus="status">
+									<c:forEach var="event" items="${getEvnetList['getEvnetList']}" varStatus="status">
 										<c:choose>
 											<c:when test="${event['eventStatus'] ne 'N'}">
-												<input type="hidden" class="eventNo"
-													value="${event['eventNo']}" />
+												<input type="hidden" class="eventNo" value="${event['eventNo']}" />
 												<div class="swiper-slide">
 													<a
 														href="${contextPath}/eventList/detail_List/introduce/${event['eventNo']}">
 														<img src="${event['eventImg']}" alt=""
-															onmouseenter="zoomIn(event)"
-															onmouseleave="zoomOut(event)">
+															onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
 														<strong>${event['eventTitle']}</strong>
 														<span>${event['eventStart']}&nbsp;~&nbsp;
 															${event['eventEnd']}</span>
 													</a>
 												</div>
 											</c:when>
-										
+
 										</c:choose>
 									</c:forEach>
 
@@ -88,54 +85,53 @@
 							</div>
 
 						</div>
-						</div>
-
-
 					</div>
 
-					<div class="table-wrap">
-						<span>극장 공지사항</span>
 
-						<table>
-							<thead>
-								<th>번호</th>
-								<th>내용</th>
-								<th>등록일</th>
-								<th>조회수</th>
-							</thead>
-							<tbody>
+			</div>
 
-								<c:choose>
-									<c:when test="${empty getNoticeList.noticeLists}">
-										<tr>
-											<th colspan="3">게시글이 존재하지 않습니다.</th>
+			<div class="table-wrap">
+				<span>극장 공지사항</span>
+
+				<table>
+					<thead>
+						<th>번호</th>
+						<th>내용</th>
+						<th>등록일</th>
+						<th>조회수</th>
+					</thead>
+					<tbody>
+
+						<c:choose>
+							<c:when test="${empty getNoticeList.noticeLists}">
+								<tr>
+									<th colspan="3">게시글이 존재하지 않습니다.</th>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="getNotice" items="${getNoticeList['noticeLists']}" varStatus="loop">
+									<c:if test="${loop.index < 5}">
+										<tr class="row">
+											<td>${getNotice.noticeNo}</td>
+											<td><a href="${contextPath}/helpDesk/notice_detail/${getNotice.noticeNo}"
+													style="color:white">${getNotice.noticeTitle}</a></td>
+											<td>${getNotice.noticeRegDate}</td>
+											<td>${getNotice.noticeView}</td>
 										</tr>
-									</c:when>
-									<c:otherwise>
-										<c:forEach var="getNotice" items="${getNoticeList['noticeLists']}"
-											varStatus="loop">
-											<c:if test="${loop.index < 5}">
-												<tr class="row">
-													<td>${getNotice.noticeNo}</td>
-													<td><a href="${contextPath}/helpDesk/notice_detail/${getNotice.noticeNo}"
-														style="color:white">${getNotice.noticeTitle}</a></td>
-													<td>${getNotice.noticeRegDate}</td>
-													<td>${getNotice.noticeView}</td>
-												</tr>
-											</c:if>
-										</c:forEach>
-									</c:otherwise>
-								</c:choose>
+									</c:if>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
 
 
-							</tbody>
-						</table>
+					</tbody>
+				</table>
 
-					</div>
+			</div>
 
 
 
-				</main>
+			</main>
 
 			</div>
 

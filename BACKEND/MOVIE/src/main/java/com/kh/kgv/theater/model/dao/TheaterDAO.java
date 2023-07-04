@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.theater.model.vo.Screen;
 
 @Repository
@@ -20,9 +21,9 @@ public class TheaterDAO {
 		return sqlSession.selectList("movieMapper.getScreenInfo",special);
 	}
 
+	public List<Movie> randomMovie() {
 
-
-
-
+		return sqlSession.selectList("movieMapper.randomMovie");
+	}
 
 }

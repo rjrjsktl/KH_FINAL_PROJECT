@@ -62,6 +62,7 @@
 									<span>${mTmdetail.mtmTitle}</span>
 								</div>
 								<div>
+									<span>[ ${mTmdetail.mtmType} ]</span>
 									<span><span>${mTmdetail.mtmWriter}</span> <span>|</span>
 										<span>${mTmdetail.mtmRegdate} </span></span>
 								</div>

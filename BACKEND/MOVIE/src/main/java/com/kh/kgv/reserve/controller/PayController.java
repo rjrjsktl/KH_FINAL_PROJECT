@@ -64,5 +64,14 @@ public class PayController {
 		return storeCouponList;
 	}
 	
-
+	// 관람권 상태 변경
+	@PostMapping("/updateTicketStatus")
+	@ResponseBody
+	public int updateTicketStatus(@RequestParam("COUPON_DETAIL_NO") String couponNo ) {
+		System.out.println("관람권 상태 변경 시작");
+		int result = service.updateTicketStatus(couponNo);
+		
+		return result;
+	}
+	
 }

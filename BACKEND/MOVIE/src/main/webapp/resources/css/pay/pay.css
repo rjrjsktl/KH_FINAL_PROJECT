@@ -326,10 +326,13 @@ main>:nth-child(1)>div>div>:nth-child(4)>div {
 .exitBtn {
     cursor: pointer;
 }
-.useBtn{
-	background-color: rgb(0, 255, 0);
-}
+
 
 button {
+	color: #a3a3a3;
     cursor: pointer;
+}
+
+.ticketTable_2>tbody {
+	height: 35px;
 }

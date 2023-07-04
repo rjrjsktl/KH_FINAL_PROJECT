@@ -123,7 +123,6 @@ public class SignUpDAO {
 
 	public void kakaoinsert(HashMap<String, Object> userInfo) {
 		   sqlSession.insert("signupMapper.kakaoinsert",userInfo);
-		      System.out.println("userInfo: "+userInfo);
 
 		
 	}
