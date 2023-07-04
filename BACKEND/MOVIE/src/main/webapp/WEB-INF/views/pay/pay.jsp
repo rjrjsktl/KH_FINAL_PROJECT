@@ -174,7 +174,7 @@
                                                         ${storeCouponList.couponSt}
                                                     </th>
                                                     <th>
-                                                        <button>사용</button>
+                                                        <button>미사용</button>
                                                     </th>
                                                 </tr>
                                       </c:forEach>    
