@@ -92,11 +92,11 @@
                                     <th>최종결제가격</th>
                                 </tr>
                                 <tr>
-                                    <th>${reservePrice}</th>
+                                    <th class="reservePrice">${reservePrice}</th>
                                     <th class="minus">-</th>
-                                    <th>${price.price.teen}</th>
+                                    <th class="discountPrice">0</th>
                                     <th>=</th>
-                                    <th></th>
+                                    <th class="finshPrice">${reservePrice}</th>
                                 </tr>
                             </table>
                         </div>
@@ -187,7 +187,8 @@
                         <div class="box_2_4">
                             <div>
                                 <span>
-                                    이용안내<br><br>
+                                    이용안내<br>
+                                    관람권 사용으로 인한 차액금은 반환불가<br>
                                     온라인에 등록된 관람권은 극장 매표소에서는 사용이 불가합니다<br>
                                     등록된 관람권은 나의 KGV에서 확인하실 수 있습니다
                                 </span>

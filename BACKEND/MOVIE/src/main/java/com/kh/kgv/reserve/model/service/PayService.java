@@ -14,5 +14,11 @@ public interface PayService {
 	
 	// 관람권 상태 변경 
 	int updateTicketStatus(String couponNo);
+	
+	// 좌석 수 확인
+	int checkSeatCount(int bookNo);
+	
+	// 쿠폰 카테고리 검색
+	String serchCategory(String couponNo);
 
 }
