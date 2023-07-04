@@ -30,7 +30,7 @@
                 <main>
                     <div>
                         <!-- 백그라운드이미지로 처리 -->
-                        <div>
+						<div  class="topBg_imgarea">
                             <ul>
 								<li> <a href="${contextPath}/theater/specialTheater/1"> KMAX</a> </li>
 								<li><a href="${contextPath}/theater/specialTheater/2">DOLBY</a></li>
@@ -40,6 +40,11 @@
 										PUPPY</a></li>
 								<li> <a href="${contextPath}/theater/specialTheater/4">KIDS</a></li>
 							</ul>
+                            
+                            <div class="spanCLS">
+                                <p>For Your Very</p>
+                                <p> Special Moment</p>
+                            </div>
                         </div>
                     </div>
 
@@ -47,10 +52,7 @@
                     <div>
                         <div>
                             <div class="left_stheaterwrap">
-                                <span>For Your Very Special Moment
-                                </span>
-                                <span>소중한 사람과 함께 하는 소중한 시간
-                                </span>
+                        
                             </div>
                         </div>
                     </div>
