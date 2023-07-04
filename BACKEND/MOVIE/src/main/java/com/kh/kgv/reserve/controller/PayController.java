@@ -1,6 +1,9 @@
 package com.kh.kgv.reserve.controller;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kh.kgv.reserve.model.service.PayService;
 import com.kh.kgv.reserve.model.service.ReserveService;
@@ -20,12 +25,14 @@ import com.kh.kgv.store.model.vo.StoreCoupon;
 
 @Controller
 @RequestMapping("/pay")
+@SessionAttributes({ "loginUser" })
 public class PayController {
 	
 	@Autowired
 	private PayService service;
 	
 	private List<StoreCoupon> storeCouponList = null;
+	
 	
 	// 결제페이지로 이동하기
 	@GetMapping("/pay")
@@ -46,9 +53,29 @@ public class PayController {
 		return "pay/pay";
 	}
 	
+	// 몇명 보러왔나?
+	@GetMapping("/loadPay")
+	@ResponseBody
+	public int checkSeat(HttpServletRequest req) {
+		
+		
+		HttpSession session = req.getSession();
+		int bookNo = (int) session.getAttribute("bookNo");
+				
+		// 좌석 수 확인
+		int seatCount = service.checkSeatCount(bookNo);
+		
+		return seatCount;
+	}
+	
+	
+	
+
+	
+	
 	@PostMapping("/selectTicket")
 	@ResponseBody
-	public List<StoreCoupon> selectCoupon(@RequestParam("COUPONNO") String couponNo,
+	public Map<String, Object> selectCoupon(@RequestParam("COUPONNO") String couponNo,
 							Model model) {
 		
 		System.out.println("쿠폰번호 들어옴?");
@@ -60,16 +87,27 @@ public class PayController {
 		
 //		model.addAttribute("storeCouponList", storeCouponList);
 		
-				
-		return storeCouponList;
+		String category = service.serchCategory(couponNo);
+		System.out.println("내가 찾은 상품의 카테고리는 : " + category);
+		Map<String, Object> couponMap = new HashMap<>();
+		
+		
+		couponMap.put("storeCouponList", storeCouponList);
+		couponMap.put("category", category);
+		return couponMap;
+		
 	}
 	
 	// 관람권 상태 변경
 	@PostMapping("/updateTicketStatus")
 	@ResponseBody
-	public int updateTicketStatus(@RequestParam("COUPON_DETAIL_NO") String couponNo ) {
+	public int updateTicketStatus(@RequestParam("COUPON_DETAIL_NO") String couponNo,
+								  HttpServletRequest req) {
 		System.out.println("관람권 상태 변경 시작");
 		int result = service.updateTicketStatus(couponNo);
+		
+		
+
 		
 		return result;
 	}

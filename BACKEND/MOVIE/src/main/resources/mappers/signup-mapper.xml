@@ -125,8 +125,7 @@
 	<select id="kakao" parameterType="java.util.HashMap"
 		resultMap="user_rm">
 
-		SELECT * FROM USERS WHERE USER_NICKNAME= #{nickname} AND USER_EMAIL =
-		#{email}
+		SELECT * FROM USERS WHERE USER_EMAIL = #{email}
 
 
 	</select>
@@ -136,8 +135,8 @@
 		SEQ_USER_NO.NEXTVAL,
 		#{email},
 		DEFAULT,
-		DEFAULT,
 		#{nickname},
+		#{randomNick},
 		DEFAULT,
 		DEFAULT,
 		#{age_range},

@@ -65,7 +65,7 @@
 
 									<div class="swiper-title">
 										<div>
-											<a href="#">상영중인 영화</a>
+											<p >상영중인 영화</p>
 										</div>
 										<a class="moveBtn" href="${contextPath}/movieList/detail_List">전체보기</a>
 									</div>
@@ -106,7 +106,7 @@
 														</a>
 														<div>
 															<p>
-																예매율 <span>${bookPercent[status.index]}</span>%
+																예매율 <span class="revlikeVal">${bookPercent[status.index]}</span>%
 															</p>
 															<p>
 																개봉일 <span>${movie['movieOpen']}</span>
@@ -125,7 +125,7 @@
 								<section>
 									<div>
 										<div class="event-title">
-											<a href="">EVENT</a>
+											<p>EVENT</p>
 											<div>
 												<a class="moveBtn" href="${contextPath}/eventList/detail_List">전체보기</a>
 											</div>
@@ -170,7 +170,7 @@
 
 										<div>
 											<div>
-												<a href="#">특별관 안내</a>
+												<p>특별관 안내</p>
 											</div>
 											<a class="moveBtn" href="${contextPath}/theater/specialTheater">전체보기</a>
 										</div>
@@ -180,19 +180,24 @@
 											<div>
 												<a href="${contextPath}/theater/specialTheater/1" class="stheater"> <img
 														src="${contextPath}/resources/images/teater_special/imax_04.jpg"
-														alt="" />
+														onmouseenter="zoomIn(event)"
+																onmouseleave="zoomOut(event)" alt="" />
 												</a> <a href="${contextPath}/theater/specialTheater/2" class="stheater">
 													<img src="${contextPath}/resources/images/teater_special/img-theater-db-view05.png"
-														alt="" />
+													onmouseenter="zoomIn(event)"
+													onmouseleave="zoomOut(event)" alt="" />
 												</a> <a href="${contextPath}/theater/specialTheater/5" class="stheater">
 													<img src="${contextPath}/resources/images/teater_special/abcd.jpg"
-														alt="" />
+													onmouseenter="zoomIn(event)"
+													onmouseleave="zoomOut(event)" alt="" />
 												</a> <a href="${contextPath}/theater/specialTheater/3" class="stheater">
 													<img src="${contextPath}/resources/images/teater_special/style_625d608c1cb71.jpg"
-														alt="" />
+													onmouseenter="zoomIn(event)"
+													onmouseleave="zoomOut(event)" alt="" />
 												</a> <a href="${contextPath}/theater/specialTheater/4" class="stheater">
 													<img src="${contextPath}/resources/images/teater_special/Featured-1068x580-1-2.png"
-														alt="" />
+													onmouseenter="zoomIn(event)"
+													onmouseleave="zoomOut(event)" alt="" />
 												</a>
 											</div>
 
@@ -237,7 +242,7 @@
 																	varStatus="loop">
 																	<c:if test="${loop.index < 1}">
 																		<span><a
-																				href="${contextPath}/helpDesk/notice_detail/${getNotice.noticeNo}">${getNotice.noticeTitle}</a></span>
+																				href="${contextPath}/helpDesk/notice_detail/${getNotice.noticeNo}" class="nottitle">${getNotice.noticeTitle}</a></span>
 																	</c:if>
 																</c:forEach>
 															</c:otherwise>

@@ -106,6 +106,34 @@
 		<result property="couponSt" 			column="COUPON_ST"/>
 	</resultMap>
 	
+	<resultMap type="storeOrder" id="storeOrder_rm">
+		
+		<id property="sorderNo" column="S_ORDER_NO"/>
+		<result property="orderDetailNo" 			column="ORDER_DETAIL_NO"/>
+		<result property="orderCount" 				column="ORDER_COUNT"/>
+		<result property="orderPrice" 				column="ORDER_PRICE"/>
+		<result property="orderDate" 				column="ORDER_DATE"/>
+		<result property="orderSt" 				column="ORDER_ST"/>
+		<result property="orderDelete" 				column="ORDER_DELETE"/>
+		<result property="userEmail" 				column="USER_EMAIL"/>
+		<result property="userName" 				column="USER_NAME"/>
+		<result property="storeName" 				column="STORE_NAME"/>
+		<result property="storeNo" 					column="STORE_NO"/>
+	</resultMap>
+	
+	<resultMap type="store" id="store_rm">
+		
+		<id property="storeNo" column="STORE_NO"/>
+		<result property="storeCategory" 			column="STORE_CATEGORY"/>
+		<result property="storeName" 				column="STORE_NAME"/>
+		<result property="storePrice" 				column="STORE_PRICE"/>
+		<result property="storeImage" 				column="STORE_IMAGE"/>
+		<result property="storeDesc" 				column="STORE_DESC"/>
+		<result property="storeStock" 				column="STORE_STOCK"/>
+		<result property="storeImageBig" 			column="STORE_IMAGE_BIG"/>
+		
+	</resultMap>
+	
 	
 	<!-- 상영 중인 영화 리스트 (이름 순) -->
 	
@@ -296,20 +324,30 @@ WHERE s.SCREEN_NO = #{screenNo}
         WHERE BOOK_NO = #{bookNo}
     </select>
     
+    <select id="checkSeat" parameterType="_int" resultType="string">
+        SELECT BOOK_SEAT
+        FROM BOOK
+        WHERE BOOK_NO = #{bookNo}
+    </select>
+    
 	<select id="selectCoupon" parameterType="string" resultMap="storeCoupon_rm">
         SELECT *
         FROM STORE_COUPON
         WHERE COUPON_DETAIL_NO = #{couponNo}
     </select>
     
-    <update id="updateTicketStatus" parameterType="string">
+    <select id="selectCategory" parameterType="string" resultType="string">
+		SELECT s.STORE_CATEGORY
+		FROM STORE_COUPON sc
+			INNER JOIN STORE_ORDER so ON sc.S_ORDER_NO = so.S_ORDER_NO 
+			INNER JOIN STORE s ON so.STORE_NO = s.STORE_NO 
+		WHERE COUPON_DETAIL_NO = #{couponNo}
+    </select>
+    
+    <update id="updateTicketStatus" parameterType="Map">
         UPDATE STORE_COUPON
-		SET COUPON_ST = CASE
-    		WHEN COUPON_ST = 'Y' THEN 'N'
-    		WHEN COUPON_ST = 'N' THEN 'Y'
-    		ELSE COUPON_ST
-		END
-		WHERE COUPON_DETAIL_NO = #{couponNO}
+		SET COUPON_ST = 'N'
+		WHERE COUPON_DETAIL_NO = #{couponDetailNo}
     </update>
     
 	
