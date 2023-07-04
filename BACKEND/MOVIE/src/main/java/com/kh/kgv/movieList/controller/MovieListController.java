@@ -80,15 +80,26 @@ public class MovieListController {
 
 		return "movieList/detail_List";
 	}
+	
+	
 	//	메인페이지 -> 영화 -> 전체 영화목록 이동 시 영화 목록 조회
 	// 위에꺼 재활용
 	@RequestMapping("/all_List")
-	public String allMoveList(Model model) {
+	public String allMoveList(Model model,
+	// 파라미터
+			@RequestParam(value = "hkeyword", required = false) String hkeyword
+			) {
 
 		Map<String, Object>getMovieList = null;
-		System.out.println("DB에서 가지고온 getMovieList : =============================================" + getMovieList);
+		String pageTitle = "전체 영화 목록";
+		
+		if ( hkeyword == null || hkeyword == "") {
 		getMovieList = service.movieList();
-
+		} else {
+		getMovieList = service.searchMovieList(hkeyword);
+		 pageTitle = "검색 결과";
+		}
+		
 		model.addAttribute("getMovieList", getMovieList);
 
 		List<Movie> movieList = (List<Movie>) getMovieList.get("cleanedList");
@@ -111,6 +122,8 @@ public class MovieListController {
 
 	    model.addAttribute("revLike", revLike);
 	    model.addAttribute("bookPercent", bookPercent);
+	    model.addAttribute("pageTitle", pageTitle); 
+	    model.addAttribute("hkeyword",hkeyword);
 
 		return "movieList/all_List";
 	}
@@ -222,7 +235,6 @@ public class MovieListController {
 
 		int reviewCount = service.getCountReviews(movieNo);
 
-		System.out.println(reviewCount);
 
 		Map<String, Object>reviewList = null;
 
@@ -234,9 +246,6 @@ public class MovieListController {
 		model.addAttribute("userNick", userNick);
 		
 
-		System.out.println(model);
-		
-		System.out.println("userNick"+"userNick"+userNick+"userNickuserNickuserNickuserNickuserNickuserNickuserNickuserNickuserNick");
 
 		//////////////////////////////////////////////
 		model.addAttribute("MovieDetail", getMovieDetail);
@@ -287,7 +296,6 @@ public class MovieListController {
 
 		int result = service.addReview(review);  
 		
-		System.out.println("result:::"+ result);
 		
 		return result;
 	}
@@ -319,6 +327,7 @@ public class MovieListController {
 	}
 	
 
+	
 
 
 

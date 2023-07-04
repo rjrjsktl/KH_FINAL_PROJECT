@@ -1,8 +1,4 @@
 $(document).ready(function () {
-  $(".selected_Cp").parent().css("border", "1px solid rgb(255, 196, 0)");
-});
-
-$(document).ready(function () {
   $("#lostArea").change(function () {
     var area = $(this).val();
 
@@ -382,4 +378,38 @@ function showImage(imgName) {
     win.document.close();
   };
   img.src = imgName;
+}
+
+$(document).ready(function () {
+  $(".selected_Cp").parent().css("border", "1px solid rgb(255, 196, 0)");
+});
+
+$(document).ready(function () {
+  $("form").on("submit", function (e) {
+    var area = $("#lostArea").val();
+    var name = $("#lostName").val();
+
+    if (!area) {
+      // area가 null 이거나 빈 문자열인 경우
+      alert("지역을 선택하세요.");
+      e.preventDefault();
+    } else if (!name) {
+      // name이 null 이거나 빈 문자열인 경우
+      alert("상영관을 선택하세요.");
+      e.preventDefault();
+    }
+  });
+});
+
+let params = new URLSearchParams(window.location.search);
+let keyword = params.get("keyword");
+
+if (keyword) {
+  let re = new RegExp(keyword, "g");
+
+  $(".row a").each(function () {
+    let html = $(this).html();
+    let newHtml = html.replace(re, `<span class='highlight'>${keyword}</span>`);
+    $(this).html(newHtml);
+  });
 }

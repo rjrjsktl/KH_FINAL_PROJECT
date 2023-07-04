@@ -77,7 +77,7 @@
 															<td>${mtmList.mtm.mtmNo}</td>
 															<td>${mtmList.user.userEmail}</td>
 															<td>${mtmList.mtm.mtmType}</td>
-															<td><a href="${contextPath}/helpDesk/mtm_detail/${mtmList.mtm.mtmNo}">${mtmList.mtm.mtmTitle}</a></td>
+															<td><a href="${contextPath}/helpDesk/mTm_detail/${mtmList.mtm.mtmNo}">${mtmList.mtm.mtmTitle}</a></td>
 															<td class="wordReduce">${mtmList.mtm.mtmContent}</td>
 															<td>${mtmList.mtm.mtmRegdate}</td>
 															<td>${mtmList.mtm.mtmRepSt}</td>

@@ -24,5 +24,11 @@ public class PayDAO {
 		return sqlSession.selectList("playMapper.selectCoupon", couponNo);
 	}
 	
+	// 관람권 상태 변경
+	public int updateTicketStatus(String couponNo) {
+		return sqlSession.update("playMapper.updateTicketStatus",couponNo);
+	}
+
+	
 
 }

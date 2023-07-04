@@ -79,7 +79,7 @@ public class HelpDeskController {
 			) {
 
 		int questNum = 0;
-		
+
 		Map<String, Object> getEvnetList = null;
 		getEvnetList = service.mainEventList();
 		model.addAttribute("getEvnetList", getEvnetList);
@@ -88,16 +88,15 @@ public class HelpDeskController {
 
 		int qescount = services.getcountquestNum(questNum);
 		Map<String, Object> questList = services.getQuestList(cp,questNum);
-		
-	
-			
+
 		model.addAttribute("qescount", qescount);
-	    model.addAttribute("questList", questList);
+		model.addAttribute("questList", questList);
 
 		model.addAttribute("userNoticeList", userNoticeList);
-
 		return "helpDesk/helpDesk_home";
 	}
+	
+
 
 	@RequestMapping("/notice_List")
 	public String noticeList(
@@ -120,13 +119,9 @@ public class HelpDeskController {
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("listCount",listCount);
 
-		System.out.println(keyword);
-		System.out.println(cp);
-
 		return "helpDesk/notice_List";
 	}
 
-	// 고객센터 세부사항 진입 문제는 userNo이 없어서 카운트증가가 안되는데 어떻게하지..
 	@RequestMapping("/notice_detail/{noticeNo}")
 	public String noticedetail(
 			Model model,
@@ -150,12 +145,10 @@ public class HelpDeskController {
 				if ( cookie == null ) { 
 					cookie = new Cookie("readnoticeNo", noticeNo+"");
 					result = service.updateNoticeView(noticeNo);
-					System.out.println("공지사항 카운트 업데이트 결과는 1성공 0실패입니다."+result);
 				} else { 
 					String[] temp = cookie.getValue().split("/");
 					List<String> list = Arrays.asList(temp);
 					if( list.indexOf(noticeNo+"") == -1 ) { 
-						System.out.println("공지사항 카운트 업데이트 결과는 1성공 0실패입니다."+result);
 						cookie.setValue( cookie.getValue() + "/" + noticeNo );
 						result = service.updateNoticeView(noticeNo); 
 					}
@@ -172,7 +165,6 @@ public class HelpDeskController {
 			}
 		}
 
-		System.out.println("=========================================================================" + detail);
 		String unescapedContent = StringEscapeUtils.unescapeHtml4(detail.getNoticeContent());
 		detail.setNoticeContent(unescapedContent);
 		model.addAttribute("detail", detail);
@@ -237,8 +229,6 @@ public class HelpDeskController {
 
 		String path = services.checkPasswordAccess(mtmNo, loginUser, cp);
 
-		System.out.println(path);
-
 		return path;
 	}
 
@@ -254,12 +244,9 @@ public class HelpDeskController {
 			HttpSession session
 			) {
 
-		System.out.println("현재 접속하려고하는 게시물의 비밀번호는?");
-		System.out.println(password);
 
 		int mtmPw = 0;
 		mtmPw = services.selectmtmPw(mtmNo);
-		//      DB에있는 mtmPw의 값을 저장
 
 
 		int result = 0;
@@ -294,8 +281,6 @@ public class HelpDeskController {
 		if (!("redirect:/helpDesk/mTm_detail/" + mtmNo + "?cp=" + cp).equals(checkResult)) {
 			return checkResult;
 		}
-
-		System.out.println(checkResult);
 
 
 		Mtm mTmdetail = services.selectmTmDetail(mtmNo);
@@ -360,7 +345,6 @@ public class HelpDeskController {
 			}
 		}
 
-		System.out.println("=========================================================================" + mTmdetail);
 		String unescapedContent = StringEscapeUtils.unescapeHtml4(mTmdetail.getMtmContent());
 		mTmdetail.setMtmContent(unescapedContent);
 
@@ -369,7 +353,6 @@ public class HelpDeskController {
 		model.addAttribute("mTmdetail", mTmdetail);
 		mTmdetail.setUserNo(userNo);
 		model.addAttribute("cp", cp);
-
 
 
 		return "helpDesk/mTm_detail";
@@ -428,13 +411,6 @@ public class HelpDeskController {
 			@PathVariable("mtmNo") int mtmNo,
 			HttpSession session) {
 
-
-		System.out.println(title);
-		System.out.println(content);
-		System.out.println(inquiry);
-		System.out.println(open);
-		System.out.println(imageUrl);
-		System.out.println(mtmNo);
 
 
 		Mtm mtm = new Mtm();
@@ -498,9 +474,6 @@ public class HelpDeskController {
 		mtm.setMtmPw(open);
 		mtm.setMtmImage(imageUrl);
 
-		System.out.println(open);
-
-
 
 		services.addmTm(mtm);  
 
@@ -540,7 +513,6 @@ public class HelpDeskController {
 			e.printStackTrace();
 		}
 		String a = jsonObject.toString();
-		System.out.println("================================================= 이미지 는?? : : " + a);
 		return a;
 	}
 
@@ -661,16 +633,11 @@ public class HelpDeskController {
 		int userLostCount = 0;
 		Map<String, Object>lostList = null; 
 
-		System.out.println(area + "------------------------------------------------ controller area.equeals");
-		System.out.println(name + "------------------------------------------------ controller area.equeals");
-
-		
-
 		if ((keyword == null || keyword.isEmpty()) && (area != null && !area.isEmpty()) && (name != null && !name.isEmpty())) {
 			userLostCount = services.getSearchLostCount(area,name,keyword, userNo, userManagerSt);
 			lostList = services.selectSearchLOST(cp,area,name,keyword,  userNo,userManagerSt);		
 		}
-		
+
 		else if (keyword == null || keyword.isEmpty()) {
 			userLostCount = services.getLostListCount(userNo, userManagerSt);
 			lostList = services.getLostList(cp,userNo,userManagerSt );
@@ -687,503 +654,480 @@ public class HelpDeskController {
 		model.addAttribute("cinemaList",cinemaList);
 
 		return "helpDesk/lost_List";
+	}
+
+	@ResponseBody
+	@GetMapping("/lost_List/selectName")
+	public Map<String, Object> getCinemaNames(@RequestParam(value="area", required = false) String area) {
+
+		Map<String, Object> cinemaNameList = services.cinemaNameList(area);
+
+		return cinemaNameList;
+	} 
+
+
+	// 잃어버린물건 비밀번호 GetMapping
+	@GetMapping("/checkLostPw/{lostNo}")
+	public String checkLostPw (
+			@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
+			@PathVariable("lostNo") int lostNo,
+			Model model,
+			RedirectAttributes ra,
+			@RequestHeader ("referer") String referer,
+			HttpSession session,
+			HttpServletRequest req, HttpServletResponse resp
+			) {
+
+		User loginUser = (User)session.getAttribute("loginUser");
+
+		String path = services.checkLostPasswordAccess(lostNo, loginUser, cp);
+
+
+		return path;
+	}
+
+	// 잃어버린물건 비밀번호 Post맵핑
+	@ResponseBody
+	@PostMapping("/checkLostPw/{lostNo}")
+	public int compareLostPw (
+			@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
+			@PathVariable("lostNo") int lostNo,
+			@RequestParam("password") int password,
+			Model model,
+			RedirectAttributes ra,
+			HttpSession session
+			) {
+
+
+		int lostPw = 0;
+		lostPw = services.selectmtmLostPw(lostNo);
+		//      DB에있는 mtmPw의 값을 저장
+
+
+		int result = 0;
+
+		if(lostPw == password) {
+			result = 1;
+
+		} else {
+			result = 0;
 		}
 
-		@ResponseBody
-		@GetMapping("/lost_List/selectName")
-		public Map<String, Object> getCinemaNames(@RequestParam(value="area", required = false) String area) {
+		return result;
 
-			Map<String, Object> cinemaNameList = services.cinemaNameList(area);
+	}
 
-			return cinemaNameList;
-		} 
+	// 잃어버린물건 세부사항 진입
+	@RequestMapping("/lost_detail/{lostNo}")
+	public String lostdetail(
+			Model model,
+			@PathVariable("lostNo") int lostNo,
+			HttpSession session,
+			HttpServletRequest req, HttpServletResponse resp,
+			@RequestParam(value = "cp", required = false, defaultValue="1") int cp
+			){
 
+		User loginUser = (User)session.getAttribute("loginUser");
 
-
-
-		// 잃어버린물건 비밀번호 GetMapping
-		@GetMapping("/checkLostPw/{lostNo}")
-		public String checkLostPw (
-				@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
-				@PathVariable("lostNo") int lostNo,
-				Model model,
-				RedirectAttributes ra,
-				@RequestHeader ("referer") String referer,
-				HttpSession session,
-				HttpServletRequest req, HttpServletResponse resp
-				) {
-
-			User loginUser = (User)session.getAttribute("loginUser");
-
-			String path = services.checkLostPasswordAccess(lostNo, loginUser, cp);
-
-			System.out.println(path);
-
-			return path;
+		String checkResult = services.checkLostPasswordAccess(lostNo, loginUser, cp);
+		if (!("redirect:/helpDesk/lost_detail/" + lostNo + "?cp=" + cp).equals(checkResult)) {
+			return checkResult;
 		}
 
-		// 잃어버린물건 비밀번호 Post맵핑
-		@ResponseBody
-		@PostMapping("/checkLostPw/{lostNo}")
-		public int compareLostPw (
-				@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
-				@PathVariable("lostNo") int lostNo,
-				@RequestParam("password") int password,
-				Model model,
-				RedirectAttributes ra,
-				HttpSession session
-				) {
 
-			System.out.println("현재 접속하려고하는 게시물의 비밀번호는?");
-			System.out.println(password);
+		LostPackage lostdetail = services.selectLostDetail(lostNo);
 
-			int lostPw = 0;
-			lostPw = services.selectmtmLostPw(lostNo);
-			//      DB에있는 mtmPw의 값을 저장
-
-
-			int result = 0;
-
-			if(lostPw == password) {
-				result = 1;
-
-			} else {
-				result = 0;
-			}
-
-			return result;
-
+		if (lostdetail == null) {
+			return "helpDesk/error";
 		}
 
-		// 잃어버린물건 세부사항 진입
-		@RequestMapping("/lost_detail/{lostNo}")
-		public String lostdetail(
-				Model model,
-				@PathVariable("lostNo") int lostNo,
-				HttpSession session,
-				HttpServletRequest req, HttpServletResponse resp,
-				@RequestParam(value = "cp", required = false, defaultValue="1") int cp
-				){
+		int userNo = 0;
 
-			User loginUser = (User)session.getAttribute("loginUser");
+		if(loginUser != null ) {
+			userNo = loginUser.getUserNo();
+		}
 
-			String checkResult = services.checkLostPasswordAccess(lostNo, loginUser, cp);
-			if (!("redirect:/helpDesk/lost_detail/" + lostNo + "?cp=" + cp).equals(checkResult)) {
-				return checkResult;
-			}
+		if( lostdetail != null ) { 
+			if( lostdetail.getUserNo() != userNo ) {
 
-			System.out.println(checkResult);
+				Cookie cookie = null;
 
-			LostPackage lostdetail = services.selectLostDetail(lostNo);
+				Cookie[] cArr = req.getCookies();
 
-			if (lostdetail == null) {
-				return "helpDesk/error";
-			}
+				if(cArr != null && cArr.length > 0) {
 
-			int userNo = 0;
-
-			if(loginUser != null ) {
-				userNo = loginUser.getUserNo();
-			}
-
-			if( lostdetail != null ) { 
-				if( lostdetail.getUserNo() != userNo ) {
-
-					Cookie cookie = null;
-
-					Cookie[] cArr = req.getCookies();
-
-					if(cArr != null && cArr.length > 0) {
-
-						for(Cookie c : cArr) {
-							if(c.getName().equals("readLostdNo")) {
-								cookie = c;
-							}
+					for(Cookie c : cArr) {
+						if(c.getName().equals("readLostdNo")) {
+							cookie = c;
 						}
 					}
+				}
 
-					int result = 0;
+				int result = 0;
 
-					if ( cookie == null ) { 
-						cookie = new Cookie("readLostdNo", lostNo+"");
-						result = services.updateLostReadCount(lostNo);
+				if ( cookie == null ) { 
+					cookie = new Cookie("readLostdNo", lostNo+"");
+					result = services.updateLostReadCount(lostNo);
 
-					} else { 
+				} else { 
 
-						String[] temp = cookie.getValue().split("/");
-
-
-						List<String> list = Arrays.asList(temp);
-
-						if( list.indexOf(lostNo+"") == -1 ) { 
-
-							cookie.setValue( cookie.getValue() + "/" + lostNo );
-							result = services.updateLostReadCount(lostNo); 
-
-						}
-					}
+					String[] temp = cookie.getValue().split("/");
 
 
-					if (result > 0) {
-						lostdetail.setLostView(lostdetail.getLostView() + 1);
+					List<String> list = Arrays.asList(temp);
 
-						cookie.setPath(req.getContextPath());
-						cookie.setMaxAge(60 * 60 * 1);
-						resp.addCookie(cookie);
+					if( list.indexOf(lostNo+"") == -1 ) { 
+
+						cookie.setValue( cookie.getValue() + "/" + lostNo );
+						result = services.updateLostReadCount(lostNo); 
 
 					}
 				}
+
+
+				if (result > 0) {
+					lostdetail.setLostView(lostdetail.getLostView() + 1);
+
+					cookie.setPath(req.getContextPath());
+					cookie.setMaxAge(60 * 60 * 1);
+					resp.addCookie(cookie);
+
+				}
 			}
-
-
-			System.out.println("=========================================================================" + lostdetail);
-			String unescapedContent = StringEscapeUtils.unescapeHtml4(lostdetail.getLostContent());
-			lostdetail.setLostContent(unescapedContent);
-			model.addAttribute("lostdetail", lostdetail);
-			model.addAttribute("cp", cp);
-
-			return "helpDesk/lost_detail";
-
-		}
-
-		@PostMapping("/lost_form/uploadLostImage")
-		@ResponseBody
-		public String uploadLostFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request) {
-			JsonObject jsonObject = new JsonObject();
-
-			String webPath = "/resources/images/helpDesk/";
-
-			String fileRoot = request.getServletContext().getRealPath(webPath);
-
-			String originalFileName = multipartFile.getOriginalFilename();
-			String savedFileName = Util.fileRename(originalFileName);
-
-			File targetFile = new File(fileRoot + savedFileName);
-			try {
-				InputStream fileStream = multipartFile.getInputStream();
-				FileUtils.copyInputStreamToFile(fileStream, targetFile); // 파일 저장
-				jsonObject.addProperty("url", request.getContextPath() + webPath + savedFileName);
-				jsonObject.addProperty("responseCode", "success");
-
-			} catch (IOException e) {
-				FileUtils.deleteQuietly(targetFile); // 저장된 파일 삭제
-				jsonObject.addProperty("responseCode", "error");
-				e.printStackTrace();
-			}
-			String a = jsonObject.toString();
-			System.out.println("================================================= 이미지 는?? : : " + a);
-			return a;
-		}
-
-		// 잃어버린 게시물 수정 Get
-		@GetMapping("/lost_form/{lostNo}")
-		public String getLostForm(
-				@PathVariable("lostNo") int lostNo, 
-				Model model) {
-			System.out.println(lostNo);
-			LostPackage lost = services.getforLostValue(lostNo);
-			model.addAttribute("lost", lost);
-			model.addAttribute("lostNo", lostNo);
-
-			Map<String, Object>cinemaList = null;
-
-			cinemaList = services.cinemaList();
-
-			model.addAttribute("cinemaList",cinemaList);
-			return "helpDesk/lost_form";
-		}
-
-		// 잃어버린 게시물 수정 Post
-		@PostMapping("/lost_form/{lostNo}")
-		public ResponseEntity<Map<String, Object>> updateLost(
-				@RequestParam("titleInput") String title, 
-				@RequestParam("lostItem") String item, 
-				@RequestParam("lostArea") String area, 
-				@RequestParam("lostDate") String date, 
-				@RequestParam("contentTextarea") String details,
-				@RequestParam("open") int open,
-				@RequestParam(value = "imageUrl1", required = false) String imageUrl,
-				@PathVariable("lostNo") int lostNo,
-				HttpSession session) {
-
-
-
-			LostPackage lost = new LostPackage();
-
-			details = details.replaceAll("\n", "<br>");
-			details = details.replaceAll("\r\n", "<br>");
-			details = details.replaceAll(" ", "&nbsp;");
-
-			lost.setLostNo(lostNo);
-			lost.setLostTitle(title);
-			lost.setLostItem(item);
-			lost.setLostLocation(area);
-			lost.setLostContent(details);
-			lost.setLostDate(date);
-			lost.setLostPw(open);
-			lost.setLostFile(imageUrl);
-
-			services.updateLost(lost);  
-
-
-			Map<String, Object> response = new HashMap<>();
-			response.put("lostNo", lostNo);
-
-
-			return ResponseEntity.ok(response);
-
-
 		}
 
 
+		String unescapedContent = StringEscapeUtils.unescapeHtml4(lostdetail.getLostContent());
+		lostdetail.setLostContent(unescapedContent);
+		model.addAttribute("lostdetail", lostdetail);
+		model.addAttribute("cp", cp);
 
-		// 잃어버린물건 삽입 Get
-		@GetMapping("/lost_form")
-		public String lostwrite(
-				Model model,
-				HttpSession session,      HttpServletRequest req, HttpServletResponse resp
-				) {
+		return "helpDesk/lost_detail";
 
-			User loginUser = (User)session.getAttribute("loginUser");
+	}
 
-			int userNo = 0;
+	@PostMapping("/lost_form/uploadLostImage")
+	@ResponseBody
+	public String uploadLostFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request) {
+		JsonObject jsonObject = new JsonObject();
 
-			String path = null;
+		String webPath = "/resources/images/helpDesk/";
 
-			if(loginUser != null) {
-				userNo = loginUser.getUserNo();
-			}
+		String fileRoot = request.getServletContext().getRealPath(webPath);
 
-			Map<String, Object>cinemaList = null;
+		String originalFileName = multipartFile.getOriginalFilename();
+		String savedFileName = Util.fileRename(originalFileName);
 
-			cinemaList = services.cinemaList();
+		File targetFile = new File(fileRoot + savedFileName);
+		try {
+			InputStream fileStream = multipartFile.getInputStream();
+			FileUtils.copyInputStreamToFile(fileStream, targetFile); // 파일 저장
+			jsonObject.addProperty("url", request.getContextPath() + webPath + savedFileName);
+			jsonObject.addProperty("responseCode", "success");
 
-			model.addAttribute("userNo", userNo);
-			model.addAttribute("cinemaList",cinemaList);
+		} catch (IOException e) {
+			FileUtils.deleteQuietly(targetFile); // 저장된 파일 삭제
+			jsonObject.addProperty("responseCode", "error");
+			e.printStackTrace();
+		}
+		String a = jsonObject.toString();
+		return a;
+	}
 
-			System.out.println(model);
+	// 잃어버린 게시물 수정 Get
+	@GetMapping("/lost_form/{lostNo}")
+	public String getLostForm(
+			@PathVariable("lostNo") int lostNo, 
+			Model model) {
+		LostPackage lost = services.getforLostValue(lostNo);
+		model.addAttribute("lost", lost);
+		model.addAttribute("lostNo", lostNo);
 
-			if ( userNo > 0) {
-				path = "helpDesk/lost_form";
-			} else {
-				String referer = req.getHeader("Referer"); // 이전 페이지의 URL을 가져옵니다.
-				session.setAttribute("prevPage", referer); // 이전 페이지의 URL을 세션에 저장합니다.
+		Map<String, Object>cinemaList = null;
 
-				logger.debug("referer은~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+referer);
-				path ="redirect:/user/login";
+		cinemaList = services.cinemaList();
+
+		model.addAttribute("cinemaList",cinemaList);
+		return "helpDesk/lost_form";
+	}
+
+	// 잃어버린 게시물 수정 Post
+	@PostMapping("/lost_form/{lostNo}")
+	public ResponseEntity<Map<String, Object>> updateLost(
+			@RequestParam("titleInput") String title, 
+			@RequestParam("lostItem") String item, 
+			@RequestParam("lostArea") String area, 
+			@RequestParam("lostDate") String date, 
+			@RequestParam("contentTextarea") String details,
+			@RequestParam("open") int open,
+			@RequestParam(value = "imageUrl1", required = false) String imageUrl,
+			@PathVariable("lostNo") int lostNo,
+			HttpSession session) {
 
 
-			}
 
-			return path; 
+		LostPackage lost = new LostPackage();
+
+		details = details.replaceAll("\n", "<br>");
+		details = details.replaceAll("\r\n", "<br>");
+		details = details.replaceAll(" ", "&nbsp;");
+
+		lost.setLostNo(lostNo);
+		lost.setLostTitle(title);
+		lost.setLostItem(item);
+		lost.setLostLocation(area);
+		lost.setLostContent(details);
+		lost.setLostDate(date);
+		lost.setLostPw(open);
+		lost.setLostFile(imageUrl);
+
+		services.updateLost(lost);  
+
+
+		Map<String, Object> response = new HashMap<>();
+		response.put("lostNo", lostNo);
+
+
+		return ResponseEntity.ok(response);
+
+
+	}
+
+
+
+	// 잃어버린물건 삽입 Get
+	@GetMapping("/lost_form")
+	public String lostwrite(
+			Model model,
+			HttpSession session,      HttpServletRequest req, HttpServletResponse resp
+			) {
+
+		User loginUser = (User)session.getAttribute("loginUser");
+
+		int userNo = 0;
+
+		String path = null;
+
+		if(loginUser != null) {
+			userNo = loginUser.getUserNo();
+		}
+
+		Map<String, Object>cinemaList = null;
+
+		cinemaList = services.cinemaList();
+
+		model.addAttribute("userNo", userNo);
+		model.addAttribute("cinemaList",cinemaList);
+
+
+		if ( userNo > 0) {
+			path = "helpDesk/lost_form";
+		} else {
+			String referer = req.getHeader("Referer"); // 이전 페이지의 URL을 가져옵니다.
+			session.setAttribute("prevPage", referer); // 이전 페이지의 URL을 세션에 저장합니다.
+
+			logger.debug("referer은~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+referer);
+			path ="redirect:/user/login";
+
+
+		}
+
+		return path; 
+	}
+
+
+
+	// 잃어버린물건 삽입 Post
+	@PostMapping("/lost_form")
+	public ResponseEntity<Map<String, Object>> addLost(
+			@RequestParam("titleInput") String title, 
+			@RequestParam("lostItem") String item, 
+			@RequestParam("lostArea") String area, 
+			@RequestParam("lostDate") String date, 
+			@RequestParam("contentTextarea") String details,
+			@RequestParam("open") int open,
+			@RequestParam(value = "imageUrl1", required = false) String imageUrl,
+			HttpSession session) {
+
+		User loginUser = (User)session.getAttribute("loginUser");
+
+		int userNo = 0;
+		String userNick = null;
+
+		if(loginUser != null) {
+			userNo = loginUser.getUserNo();
+			userNick = loginUser.getUserNick();
+		}
+
+		LostPackage lost = new LostPackage();
+
+		details = details.replaceAll("\n", "<br>");
+		details = details.replaceAll("\r\n", "<br>");
+		details = details.replaceAll(" ", "&nbsp;");
+
+		lost.setLostTitle(title);
+		lost.setUserNo(userNo);  
+		lost.setLostItem(item);
+		lost.setLostLocation(area);
+		lost.setLostContent(details);
+		lost.setLostDate(date);
+		lost.setLostWriter(userNick);
+		lost.setLostPw(open);
+		lost.setLostFile(imageUrl);
+
+		services.addLost(lost);  
+
+		int lostNo = services.selectLostNo(lost); 
+
+		Map<String, Object> response = new HashMap<>();
+		response.put("lostNo", lostNo);
+
+
+
+		return ResponseEntity.ok(response);
+	}
+
+	// 잃어버린물건 삭제
+	@GetMapping("/deleteLost/{lostNo}")
+	public String lostDelete(
+			@PathVariable("lostNo") int lostNo,
+			@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
+			Model model,
+			RedirectAttributes ra,
+			@RequestHeader ("referer") String referer
+			) {
+
+		String path = null;
+		String message = null;
+
+		int result = services.deleteLost(lostNo);
+
+		if(result > 0 ) {
+			path = "helpDesk/lost_List"+"?cp="+cp;
+			message = "글 삭제에 성공했다.";
+
+		}else {
+			path = "referer";  
+		}
+
+		ra.addFlashAttribute("message",message);
+
+
+		return "redirect:/" +path;
+	}
+
+	//잃어버린물건 답글 삭제
+	@GetMapping("/replyLostDelete/{lostNo}")
+	public String replyLostDelete(
+			@PathVariable("lostNo") int lostNo,
+			@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
+			Model model,
+			RedirectAttributes ra,
+			@RequestHeader ("referer") String referer
+			) {
+
+		String path = null;
+		String message = null;
+
+		int result = services.replyLostDelete(lostNo);
+
+		if(result > 0 ) {
+			path = "helpDesk/lost_detail/{lostNo}";
+			message = "댓글 삭제에 성공했다.";
+
+		}else {
+			path = "referer";  
+		}
+
+		ra.addFlashAttribute("message",message);
+
+		return "redirect:/" +path;
+	}
+
+	//replyLostWrite
+	@PostMapping("/replyLostWrite/{lostNo}")
+	public ResponseEntity<?> replyLostWrite(
+			@PathVariable("lostNo") int lostNo,
+			@RequestParam("contentTextarea") String content,
+			Model model,   HttpSession session,
+			RedirectAttributes ra
+			){
+		User loginUser = (User)session.getAttribute("loginUser");
+
+		String managerNick = null;
+
+		if(loginUser != null) {
+			managerNick = loginUser.getUserNick();
+		}
+
+		content = content.replaceAll("\n", "<br>");
+		content = content.replaceAll("\r\n", "<br>");
+		content = content.replaceAll(" ", "&nbsp;");
+
+
+		int result = services.replyLostWrite(lostNo, content, managerNick); 
+
+		if(result > 0 ) {
+			return ResponseEntity.ok("{\"redirectUrl\": \"/helpDesk/lost_detail/" + lostNo + "\"}");
+		} else {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred");
+
+		}       
+	}
+
+
+	@GetMapping("/question_home")
+	public String question(
+			Model model,
+			@RequestParam(value = "keyword", required = false) String keyword,
+			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+			) {
+
+		int questNum = 0;
+		int qescount = 0;
+
+
+		List<Quest>selectType = null;
+		selectType = services.getQuestType();
+
+		Map<String, Object>questList = null;
+
+		if (keyword == null || keyword.isEmpty()) {
+			qescount = services.getcountquestNum(questNum);
+			questList = services.getQuestList(cp,questNum);
+		}
+		else {
+			qescount = services.getCountSelectQeustNo(keyword);
+			questList = services.getSearchQuestList(keyword, cp);
 		}
 
 
+		model.addAttribute("qescount",qescount);
+		model.addAttribute("questList", questList);
+		model.addAttribute("selectType",selectType);
+		model.addAttribute("keyword",keyword);
 
-		// 잃어버린물건 삽입 Post
-		@PostMapping("/lost_form")
-		public ResponseEntity<Map<String, Object>> addLost(
-				@RequestParam("titleInput") String title, 
-				@RequestParam("lostItem") String item, 
-				@RequestParam("lostArea") String area, 
-				@RequestParam("lostDate") String date, 
-				@RequestParam("contentTextarea") String details,
-				@RequestParam("open") int open,
-				@RequestParam(value = "imageUrl1", required = false) String imageUrl,
-				HttpSession session) {
-
-			User loginUser = (User)session.getAttribute("loginUser");
-
-			int userNo = 0;
-			String userNick = null;
-
-			if(loginUser != null) {
-				userNo = loginUser.getUserNo();
-				userNick = loginUser.getUserNick();
-			}
-
-			LostPackage lost = new LostPackage();
-
-			details = details.replaceAll("\n", "<br>");
-			details = details.replaceAll("\r\n", "<br>");
-			details = details.replaceAll(" ", "&nbsp;");
-
-			lost.setLostTitle(title);
-			lost.setUserNo(userNo);  
-			lost.setLostItem(item);
-			lost.setLostLocation(area);
-			lost.setLostContent(details);
-			lost.setLostDate(date);
-			lost.setLostWriter(userNick);
-			lost.setLostPw(open);
-			lost.setLostFile(imageUrl);
-
-			services.addLost(lost);  
-
-			int lostNo = services.selectLostNo(lost); 
-
-			Map<String, Object> response = new HashMap<>();
-			response.put("lostNo", lostNo);
-
-			System.out.println("lostNo------------------------------------------------" + lostNo);
+		return "helpDesk/question_home";
+	}
 
 
-			return ResponseEntity.ok(response);
-		}
+	@PostMapping("/question_home")
+	@ResponseBody
+	public Map<String, Object> postQuestion(
+			Model model,
+			@RequestParam("questNum") int questNum,
+			@RequestParam(value = "cp", required = false, defaultValue="1") int cp
+			) {
 
-		// 잃어버린물건 삭제
-		@GetMapping("/deleteLost/{lostNo}")
-		public String lostDelete(
-				@PathVariable("lostNo") int lostNo,
-				@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
-				Model model,
-				RedirectAttributes ra,
-				@RequestHeader ("referer") String referer
-				) {
+		int qescount = services.getcountquestNum(questNum);
+		Map<String, Object> questList = services.getQuestList(cp,questNum);
 
-			String path = null;
-			String message = null;
-
-			int result = services.deleteLost(lostNo);
-
-			if(result > 0 ) {
-				path = "helpDesk/lost_List"+"?cp="+cp;
-				message = "글 삭제에 성공했다.";
-
-			}else {
-				path = "referer";  
-			}
-
-			ra.addFlashAttribute("message",message);
+		Map<String, Object> response = new HashMap<>();
+		response.put("qescount", qescount);
+		response.put("questList", questList);
 
 
-			return "redirect:/" +path;
-		}
-
-		//잃어버린물건 답글 삭제
-		@GetMapping("/replyLostDelete/{lostNo}")
-		public String replyLostDelete(
-				@PathVariable("lostNo") int lostNo,
-				@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
-				Model model,
-				RedirectAttributes ra,
-				@RequestHeader ("referer") String referer
-				) {
-
-			String path = null;
-			String message = null;
-
-			int result = services.replyLostDelete(lostNo);
-
-			if(result > 0 ) {
-				path = "helpDesk/lost_detail/{lostNo}";
-				message = "댓글 삭제에 성공했다.";
-
-			}else {
-				path = "referer";  
-			}
-
-			ra.addFlashAttribute("message",message);
-
-			return "redirect:/" +path;
-		}
-
-		//replyLostWrite
-		@PostMapping("/replyLostWrite/{lostNo}")
-		public ResponseEntity<?> replyLostWrite(
-				@PathVariable("lostNo") int lostNo,
-				@RequestParam("contentTextarea") String content,
-				Model model,   HttpSession session,
-				RedirectAttributes ra
-				){
-			User loginUser = (User)session.getAttribute("loginUser");
-
-			String managerNick = null;
-
-			if(loginUser != null) {
-				managerNick = loginUser.getUserNick();
-			}
-
-			content = content.replaceAll("\n", "<br>");
-			content = content.replaceAll("\r\n", "<br>");
-			content = content.replaceAll(" ", "&nbsp;");
-
-
-			int result = services.replyLostWrite(lostNo, content, managerNick); 
-
-			if(result > 0 ) {
-				return ResponseEntity.ok("{\"redirectUrl\": \"/helpDesk/lost_detail/" + lostNo + "\"}");
-			} else {
-				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred");
-
-			}       
-		}
-
-
-		@GetMapping("/question_home")
-		public String question(
-				Model model,
-				@RequestParam(value = "keyword", required = false) String keyword,
-				@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
-				) {
-
-			int questNum = 0;
-			int qescount = 0;
-
-
-			List<Quest>selectType = null;
-			selectType = services.getQuestType();
-
-			Map<String, Object>questList = null;
-
-			if (keyword == null || keyword.isEmpty()) {
-				qescount = services.getcountquestNum(questNum);
-				questList = services.getQuestList(cp,questNum);
-			}
-			else {
-				qescount = services.getCountSelectQeustNo(keyword);
-				questList = services.getSearchQuestList(keyword, cp);
-			}
-
-
-			model.addAttribute("qescount",qescount);
-			model.addAttribute("questList", questList);
-			model.addAttribute("selectType",selectType);
-			model.addAttribute("keyword",keyword);
-
-			System.out.println(model);
-
-			return "helpDesk/question_home";
-		}
-
-
-		@PostMapping("/question_home")
-		@ResponseBody
-		public Map<String, Object> postQuestion(
-				Model model,
-				@RequestParam("questNum") int questNum,
-				@RequestParam(value = "cp", required = false, defaultValue="1") int cp
-				) {
-
-			int qescount = services.getcountquestNum(questNum);
-			Map<String, Object> questList = services.getQuestList(cp,questNum);
-
-			Map<String, Object> response = new HashMap<>();
-			response.put("qescount", qescount);
-			response.put("questList", questList);
-
-
-			return response;
-		}
-
-
-
-
-
-
-
-
-
-
+		return response;
+	}
 
 }

@@ -925,8 +925,14 @@ public class ManagerServiceImpl implements ManagerService {
 
 	// 총 접속자 수
 	@Override
-	public List<DailyEnter> getTotalEntre() {
+	public int getTotalEntre() {
 		return dao.getTotalEntre();
+	}
+
+	// 총 예매 수
+	@Override
+	public int getTotlaBook() {
+		return dao.getTotalBook();
 	}
 
 	

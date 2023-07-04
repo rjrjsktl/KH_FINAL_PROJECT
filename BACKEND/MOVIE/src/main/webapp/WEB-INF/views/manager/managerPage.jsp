@@ -46,13 +46,23 @@
 
 											<!-- 일일 접속자 수 -->
 											<div class="left_Inner_Contents">
-												<span class="totalValues">누적 접속자 수 : ${totalEnter}</span>
+												<c:set var="totalEnter" value="${totalEnter}" />
+												<c:set var="totalEnter" value="${fn:replace(totalEnter, '[', '' )}" />
+												<c:set var="totalEnter" value="${fn:replace(totalEnter, ']', '')}" />
+												<span class="totalValues">누적 접속자 수 :
+													<fmt:formatNumber value="${totalEnter}" pattern="#,###" /> 명
+												</span>
 												<canvas id="dailyEnter"></canvas>
 											</div>
 
 											<!-- 일일 관람객 수 -->
 											<div class="left_Inner_Contents algin_Left">
-												<span class="totalValues">누적 예매 수 : </span>
+												<c:set var="totalBook" value="${totalBook}" />
+												<c:set var="totalBook" value="${fn:replace(totalBook, '[', '' )}" />
+												<c:set var="totalBook" value="${fn:replace(totalBook, ']', '')}" />
+												<span class="totalValues">누적 예매 수 :
+													<fmt:formatNumber value="${totalBook}" pattern="#,###" /> 회
+												</span>
 												<canvas id="dailyWatch"></canvas>
 											</div>
 
@@ -165,7 +175,7 @@
 															<c:forEach var="mtm" items="${getMTMList}" varStatus="status">
 																<tr>
 																	<td>${status.count}</td>
-																	<td><a href="${contextPath}/helpDesk/mtm_detail/${mtm['mtmNo']}">
+																	<td><a href="${contextPath}/helpDesk/mTm_detail/${mtm['mtmNo']}">
 																			${mtm.mtmTitle}</a></td>
 																	<td>${mtm.mtmRegdate}</td>
 																	<td>${mtm.mtmRepSt}</td>

@@ -1,3 +1,15 @@
+$(document).ready(function () {
+  $(".search-form").on("submit", function (e) {
+    var input = $("input[name='keyword']").val();
+    console.log("하이");
+
+    if (!input) {
+      e.preventDefault();
+      alert("공지사항을 검색하세요");
+    }
+  });
+});
+
 let params = new URLSearchParams(window.location.search);
 let keyword = params.get("keyword");
 

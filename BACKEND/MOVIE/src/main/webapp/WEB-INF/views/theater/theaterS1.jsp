@@ -9,7 +9,7 @@
 			<meta charset="UTF-8">
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>IMAX</title>
+			<title>KMAX</title>
 			<link rel="stylesheet" href="${contextPath}/resources/css/theater/theaterS.css">
 			<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
 
@@ -27,13 +27,13 @@
 						<!-- 백그라운드이미지로 처리 -->
 						<div>
 							<ul>
-								<li> <a href="${contextPath}/theater/specialTheater/KMAX"> KMAX </li>
-								<li><a href="${contextPath}/theater/specialTheater/DOLBY">DOLBY</a></li>
-								<li><a href="${contextPath}/theater/specialTheater/CHEF">DISH &
+								<li> <a href="${contextPath}/theater/specialTheater/1"> KMAX</a> </li>
+								<li><a href="${contextPath}/theater/specialTheater/2">DOLBY</a></li>
+								<li><a href="${contextPath}/theater/specialTheater/5">DISH &
 										WINE</a></li>
-								<li> <a href="${contextPath}/theater/specialTheater/PUPPY">WITH A
+								<li> <a href="${contextPath}/theater/specialTheater/3">WITH A
 										PUPPY</a></li>
-								<li> <a href="${contextPath}/theater/specialTheater/KIDS">KIDS</a></li>
+								<li> <a href="${contextPath}/theater/specialTheater/4">KIDS</a></li>
 							</ul>
 						</div>
 					</div>
@@ -68,7 +68,7 @@
 								<img src="${contextPath}/resources/images/teater_special/imax_list0.png">
 								<div>
 									<p style="font-size: 1.5rem">
-										Crystal Clear<br> <strong style="font-size: 2rem">IMAGE</strong>
+										Crystal Clear<br> <strong style="font-size: 2rem">KMAGE</strong>
 									</p>
 									<span> Customized Projector로<br> 비교할 수 없는 밝음과 뛰어난<br>
 										선명한 화질 제공<br>
@@ -104,7 +104,7 @@
 						<div>
 							<img src="${contextPath}/resources/images/teater_special/imax_05.jpg" alt="">
 							<p>
-								궁극의 몰입감<br>IMAX
+								궁극의 몰입감<br>KMAX
 							</p>
 						</div>
 
@@ -138,7 +138,7 @@
 					<div>
 						<div>
 							<!-- TOP3만 올리세요 스와이퍼넣기싫어 귀찮아 제발.. -->
-							<p>DOLBY 추천영화</p>
+							<p>KMAX 추천영화</p>
 							<div class="top3-wrap">
 								<div>
 									<a href="#"><img src="${contextPath}/resources/images/movieList/movie_01.jpg"></a>
@@ -164,6 +164,13 @@
 
 
 			<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+			<script>
+				const screenTest = "${screen.cinemaName}";
+				console.log("screenTest::: "+screenTest);
+				const movieNo = "${randomMovie.movieNo}";
+				console.log("movieNo::: "+movieNo);
+			</script>
 
 			<script src="${contextPath}/resources/js/common/header.js"></script>
 			<script src="${contextPath}/resources/js/theater/special-detail.js"></script>

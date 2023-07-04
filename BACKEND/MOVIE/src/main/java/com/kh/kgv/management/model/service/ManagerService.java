@@ -236,7 +236,10 @@ public interface ManagerService {
 	List<DailyWatch> getWeeklyWatch(WeeklyEnter we);
 
 	// 총 접속자 수
-	List<DailyEnter> getTotalEntre();
+	int getTotalEntre();
+
+	// 총 예매 수
+	int getTotlaBook();
 	
 
 

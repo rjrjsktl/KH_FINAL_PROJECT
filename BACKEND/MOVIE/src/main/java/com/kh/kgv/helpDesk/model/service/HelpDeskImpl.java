@@ -74,8 +74,6 @@ public class HelpDeskImpl implements HelpDeskService {
 		}
 
 		int mtmlistCount = dao.getMtmListCount(userNo, userManagerStAsInt);
-		System.out.println("MTM 리스트 카운트 조회-[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[["+mtmlistCount);
-		System.out.println("1:1문의 리스트 관리자권한 조회-[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[["+userManagerStAsInt);
 		MtmPagenation pagination = new MtmPagenation(cp, mtmlistCount);
 		List<Mtm> mtmLists = dao.getMtmList(pagination, userNo, userManagerStAsInt);
 
@@ -218,7 +216,6 @@ public class HelpDeskImpl implements HelpDeskService {
 
 		LostPagenation pagination = new LostPagenation(cp, lostlistCount);
 
-		System.out.println(lostlistCount+"====================================================================");
 
 		List<Mtm> lostLists = dao.lostLists(pagination, userNo, userManagerStAsInt);
 		Map<String, Object> getMtmList = new HashMap<String, Object>();
@@ -243,11 +240,6 @@ public class HelpDeskImpl implements HelpDeskService {
 			}
 		}
 		
-		System.out.println("분실물 검색------------------------------------------------------------------ --------------");
-		System.out.println(userNo);
-		System.out.println(userManagerStAsInt);
-		System.out.println("분실물 검색-------------------------------------------------------------------- ------------");
-		
 		
 		return dao.getSearchLostCount(area, name, keyword, userNo, userManagerStAsInt );
 	}
@@ -264,11 +256,6 @@ public class HelpDeskImpl implements HelpDeskService {
 				userManagerStAsInt = 0;
 			}
 		}
-		
-		System.out.println("분실물 검색-------------------------------------------------------------- ------------------");
-		System.out.println(userNo);
-		System.out.println(userManagerStAsInt);
-		System.out.println("분실물 검색-------------------------------------------------------------- ------------------");
 
 		int lostlistCount =  dao.getSearchLostCount(area, name, keyword, userNo, userManagerStAsInt);
 
@@ -290,7 +277,6 @@ public class HelpDeskImpl implements HelpDeskService {
 	// 잃어버린물건 세부사항 조회
 	@Override
 	public LostPackage selectLostDetail(int lostNo) {
-		System.out.println(lostNo+"서비스");
 		return dao.selectLostDetail(lostNo);
 	}
 
@@ -492,7 +478,6 @@ public class HelpDeskImpl implements HelpDeskService {
 
 		cinemaList.put("cinemaList", dstCinemaList);
 
-		System.out.println(cinemaList );
 
 		return cinemaList;
 	}
@@ -500,7 +485,6 @@ public class HelpDeskImpl implements HelpDeskService {
 	@Override
 	public Map<String, Object> cinemaNameList(String area) {
 
-		System.out.println(area+"------------------------------IMPLE");
 
 		List<Cinema> selectcinemaNameList = dao.selectcinemaNameList(area);
 
@@ -508,7 +492,6 @@ public class HelpDeskImpl implements HelpDeskService {
 
 		cinemaNameList.put("cinemaNameList", selectcinemaNameList);
 
-		System.out.println(cinemaNameList );
 
 		return cinemaNameList;
 	}
