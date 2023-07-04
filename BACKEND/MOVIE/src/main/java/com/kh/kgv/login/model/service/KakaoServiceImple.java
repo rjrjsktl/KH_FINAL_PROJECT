@@ -191,7 +191,6 @@ public class KakaoServiceImple implements KakaoService {
 	                result += line;
 	            }
 	        } catch (IOException e) {
-	            // TODO Auto-generated catch block
 	            e.printStackTrace();
 	        }
 	    }
