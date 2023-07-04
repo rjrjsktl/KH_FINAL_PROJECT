@@ -41,10 +41,13 @@ public class TheaterController {
 		
 		Map<String, Object>userNoticeList = null;
 		userNoticeList = service.userNoticeList(cp);
-		model.addAttribute("userNoticeList", userNoticeList);
 		
 		Map<String, Object>cinemaList = null;
 		cinemaList = hdService.searchcinemaList();
+		
+		Map<String, Object> getEvnetList = null;
+		getEvnetList = service.mainEventList();
+		model.addAttribute("getEvnetList", getEvnetList);
 
 		model.addAttribute("getNoticeList", userNoticeList);
 		model.addAttribute("cinemaList",cinemaList);
@@ -105,17 +108,9 @@ public class TheaterController {
 		System.out.println("screenInfo::: " + screenInfo);
 		model.addAttribute("screenInfo", screenInfo);
 		
-//		List<Movie> randomMovieList = services.randomMovie();
-//		List<Integer> randomMovie = new ArrayList<>();
-//		if (randomMovieList != null && !randomMovieList.isEmpty()) {
-//	        System.out.println("들어옴?");
-//	        for (Movie movie : randomMovieList) {
-//	            int movieNo = movie.getMovieNo();
-//	            randomMovie.add(movieNo);
-//	        }
-//		}		
-//		System.out.println("randomMovie::: " + randomMovie);
-//		model.addAttribute("randomMovie", randomMovie);
+		List<Movie> randomMovie = services.randomMovie(special);
+		System.out.println("randomMovie::: " + randomMovie);
+		model.addAttribute("randomMovie", randomMovie);
 
 
 		return path;

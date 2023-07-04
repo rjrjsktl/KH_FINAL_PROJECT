@@ -45,3 +45,22 @@ $(document).ready(function () {
     }
   );
 });
+
+$(document).ready(function () {
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 100) {
+      $(".go_top_area")
+        .fadeIn()
+        .children("div")
+        .children("a:nth-child(1)")
+        .addClass("slide-in");
+    } else {
+      $(".go_top_area").hide();
+    }
+  });
+
+  $(".go_top_area > div > a:nth-child(2)").click(function () {
+    $("html, body").animate({ scrollTop: 0 }, 200);
+    return false;
+  });
+});
