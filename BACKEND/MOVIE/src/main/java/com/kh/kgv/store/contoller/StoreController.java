@@ -213,8 +213,8 @@ public class StoreController {
 				,@RequestParam("userEmail") String userEmail
 				,@RequestParam("storeNo") int storeNo
 				,@RequestParam("orderDetailNo") String orderDetailNo
-				,@RequestParam("imp_uid") int imp_uid) {
-	 		
+				,@RequestParam("impUid") String impUid
+				,HttpSession session) {
 	 		
 	 		
 	 		
@@ -237,6 +237,7 @@ public class StoreController {
 	 		storeOrder.setStoreName(storeName);
 	 		storeOrder.setUserEmail(userEmail);
 	 		storeOrder.setStoreNo(storeNo);
+	 		storeOrder.setImpUid(impUid);
 	 			 		
 	 		int result = service.successPayment(storeOrder);
 	 		
