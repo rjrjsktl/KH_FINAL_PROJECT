@@ -71,7 +71,7 @@
                                                         items="${storebuyMap['storeOrderList']}">
                                                         <tr>
                                                             <td>${storeOrder['sorderNo']}</td>
-                                                            <td>${storeOrder['orderDetailNo']}</td>
+                                                            <td id="orderDetailNo">${storeOrder['orderDetailNo']}</td>
                                                             <td>
                                                                 ${storeOrder['orderCount']}
                                                             </td>
@@ -105,8 +105,10 @@
                                                                     class="editEvent"><i
                                                                         class="fa-sharp fa-solid fa-pen-to-square"></i></a>
                                                             </td>
-                                                            <td><a class="deleteEvent"><i
-                                                                        class="fa-sharp fa-solid fa-xmark"></i></a></td>
+                                                            <td>
+                                                                <button id="cancelPay">환불하기</button>
+
+                                                            </td>
 
                                                         </tr>
                                                     </c:forEach>

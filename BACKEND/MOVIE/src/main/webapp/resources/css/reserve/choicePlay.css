@@ -473,6 +473,11 @@ main>section:first-child>div:last-child>div:nth-child(2)>.swiper .swiper-slide>.
   cursor: pointer;
 }
 
+main>section:first-child>div:last-child>div:nth-child(2)>.swiper .swiper-slide>.date.clicked {
+  border-color: #E9b630;
+  color: #E9b630;
+}
+
 main>section:first-child>div:last-child>div:nth-child(2)>.swiper .swiper-slide>.day {
   position: absolute;
   top: 80px;
@@ -483,6 +488,9 @@ main>section:first-child>div:last-child>div:nth-child(2)>.swiper .swiper-slide>.
   text-align: center;
 }
 
+main>section:first-child>div:last-child>div:nth-child(2)>.swiper .swiper-slide>.month.clicked, .day.clicked {
+  color: #E9b630;
+}
 
 main>section:first-child>div:last-child>div:nth-child(2)>.swiper-button-next::after {
   color: #f05650;
