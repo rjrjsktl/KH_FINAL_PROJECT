@@ -70,8 +70,9 @@
                                                     <c:forEach var="storeOrder"
                                                         items="${storebuyMap['storeOrderList']}">
                                                         <tr>
-                                                            <td>${storeOrder['sorderNo']}</td>
-                                                            <td id="orderDetailNo">${storeOrder['orderDetailNo']}</td>
+                                                            <td class="sorderNo">${storeOrder['sorderNo']}</td>
+                                                            <td class="orderDetailNo">${storeOrder['orderDetailNo']}
+                                                            </td>
                                                             <td>
                                                                 ${storeOrder['orderCount']}
                                                             </td>
@@ -106,7 +107,9 @@
                                                                         class="fa-sharp fa-solid fa-pen-to-square"></i></a>
                                                             </td>
                                                             <td>
-                                                                <button id="cancelPay">환불하기</button>
+
+                                                                <button class="cancelPay"
+                                                                    data-sorderNo="${storeOrder['sorderNo']}">환불하기</button>
 
                                                             </td>
 

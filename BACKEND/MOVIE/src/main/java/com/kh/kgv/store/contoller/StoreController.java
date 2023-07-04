@@ -180,23 +180,14 @@ public class StoreController {
 	 private IamportClient api;
 	 
 	
-	    
-	    
-	 	
-
-	    
+   
 	    public StoreController() {
 	    	 
 	    	
-	    	
-	    
-	    	 
-		 
-		 	
-
 		 
 	        // REST API 키와 REST API secret 를 아래처럼 순서대로 입력한다.
 	        this.api = new IamportClient("","");
+	        
 	    }
 	 
 	 	@ResponseBody
@@ -221,7 +212,10 @@ public class StoreController {
 				,@RequestParam("userName") String userName
 				,@RequestParam("userEmail") String userEmail
 				,@RequestParam("storeNo") int storeNo
-				,@RequestParam("orderDetailNo") String orderDetailNo) {
+				,@RequestParam("orderDetailNo") String orderDetailNo
+				,@RequestParam("imp_uid") int imp_uid) {
+	 		
+	 		
 	 		
 	 		
 	 		System.out.println("ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ");

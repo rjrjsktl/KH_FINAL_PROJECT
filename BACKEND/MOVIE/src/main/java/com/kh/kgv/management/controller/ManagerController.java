@@ -45,6 +45,10 @@ import com.kh.kgv.management.model.vo.WeeklyEnter;
 import com.kh.kgv.management.model.vo.banner;
 import com.kh.kgv.movieList.model.service.MovieService;
 import com.kh.kgv.mypage.controller.MyPageController;
+import com.kh.kgv.store.model.vo.StoreOrder;
+import com.siot.IamportRestClient.IamportClient;
+import com.siot.IamportRestClient.request.CancelData;
+import com.siot.IamportRestClient.response.Payment;
 
 @Controller
 @RequestMapping("/manager")
@@ -1125,6 +1129,58 @@ public class ManagerController {
 		}
 	
 	
+		// 아임포트 환불 
+		@RequestMapping(value = "/coupon_cancel.do")
+		@ResponseBody
+		public String cancel(@RequestParam(value = "orderDetailNo") String orderDetailNo
+				,@RequestParam(value = "sorderNo") String sorderNo
+				) {
+		    System.out.println("orderDetailNo = " + orderDetailNo);
+		    System.out.println("sorderNo = " + sorderNo);
+		    
+		    
+		   // StoreOrder storeOrder = service.recentlyPay(orderDetailNo); // StoreOrder에 대한 서비스 클래스가 있다고 가정
+		    
+//		    if (storeOrder != null) {
+//		      
+//		        storeOrder.setOrderSt("N"); 
+//
+//		     
+//		        service.saveStoreOrder(storeOrder);
+//		        
+//		        
+//		      
+//
+//		        return "Success";
+//		    } else {
+//		        return "Order not found";
+//		    }
+		    
+		    
+//		  
+//	            for (Payment payment : storeOrder) {
+//	                //캔슬 데이터 생성
+//	                CancelData cancelData = new CancelData(payment.getImp_uid(),true);
+//	                IamportClient.cancelPaymentByImpUid(orderDetailNo);
+//	                //페이먼트 삭제해주기
+//	                service.deleteStoreOrder(storeOrder);
+//	            }
+	      
+		    return "Success";
+		}
+
+
+		
+//	        response.put("response","success");
+//	        return ResponseEntity.ok(response);
+//	    }
+		    		    	     
+		    
+//	}
+		
+		
+		
+		
 	// ===================================================
 	// ===================================================
 		
