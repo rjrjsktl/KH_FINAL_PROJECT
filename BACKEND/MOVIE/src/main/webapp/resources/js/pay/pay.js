@@ -1,5 +1,27 @@
+let couponDetailNo = 0;
+let couponStVal = 0;
+let totalCount = 0;
+let couponCount = 0;
+let couponSt = "";
+let couponArray = [];
+let usedCouponArray = [];
+let tempCouponArray = [];
+
+$.ajax({
+  url: "loadPay",
+  data: {},
+  type: "GET",
+  success: function (seatCount) {
+    totalCount = seatCount;
+    console.log("total Count ::::" + totalCount);
+  },
+  error: function () {
+    console.log("페이지 로딩 중 에러 발생");
+  }
+});
+
 // DOMContentLoaded 이벤트 핸들러
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   var discountStepLi = document.querySelector('.discount_step_li.slide');
   discountStepLi.addEventListener('click', handleClick);
 });
@@ -13,7 +35,7 @@ function handleClick(event) {
   toggleClass(displayChoice, 'slide_none');
   toggleClass(parentLi, 'click_change_bColor');
 
-  setTimeout(function() {
+  setTimeout(function () {
     toggleClass(displayChoice, 'slide_block');
   }, 0);
 }
@@ -30,15 +52,23 @@ function toggleClass(element, className) {
 ///////////////////////////////////////////////////////////////////
 
 // 모달 
-$(document).ready(function() {
+$(document).ready(function () {
   // modalClick 클래스 클릭 이벤트 처리
-  $(".modalClick").click(function() {
+  $(".modalClick").click(function () {
     $(".modal").show(); // 모달 표시
+
+    tempCouponArray = [];
   });
 
   // 모달 내부의 닫기 버튼 클릭 이벤트 처리
-  $(".exitBtn").click(function() {
-    $(".modal").hide(); // 모달 숨기기
+  $(".exitBtn").click(function () {
+    var confirmMessage = 'KGV 관람권 사용을 취소하시겠습니까?';
+    if (confirm(confirmMessage)) {
+      $(".ticketTable_2").empty();
+      $(".modal").hide(); // 모달 숨기기
+      usedCouponArray = [];
+      console.log(usedCouponArray);
+    }
   });
 });
 
@@ -47,28 +77,28 @@ var modal = document.querySelector('.modal');
 var isDragging = false;
 var dragOffset = { x: 0, y: 0 };
 
-box1.addEventListener('mousedown', function(event) {
+box1.addEventListener('mousedown', function (event) {
   isDragging = true;
   dragOffset.x = event.clientX - modal.offsetLeft;
   dragOffset.y = event.clientY - modal.offsetTop;
 });
 
-document.addEventListener('mousemove', function(event) {
+document.addEventListener('mousemove', function (event) {
   if (isDragging) {
     modal.style.left = event.clientX - dragOffset.x + 'px';
     modal.style.top = event.clientY - dragOffset.y + 'px';
   }
 });
 
-document.addEventListener('mouseup', function() {
+document.addEventListener('mouseup', function () {
   isDragging = false;
 });
 
-box1.addEventListener('mouseenter', function() {
+box1.addEventListener('mouseenter', function () {
   document.body.style.cursor = 'move';
 });
 
-box1.addEventListener('mouseleave', function() {
+box1.addEventListener('mouseleave', function () {
   document.body.style.cursor = 'default';
 });
 
@@ -78,7 +108,7 @@ box1.addEventListener('mouseleave', function() {
 
 const movieTicket = document.getElementById("movieTicket");
 const ticketCode = document.getElementById("ticketCode");
-movieTicket.addEventListener("click", function() {
+movieTicket.addEventListener("click", function () {
   console.log("관람권을 찾으러 가보자");
 
   $.ajax({
@@ -87,85 +117,158 @@ movieTicket.addEventListener("click", function() {
       "COUPONNO": ticketCode.value
     },
     type: "POST",
-    success: function(storeCouponList) {
-      if (storeCouponList != null) {
-        console.log(storeCouponList);
-        console.log("입력한 관람권코드가 유효합니다");
-        ticketCode.value = ""; // 검색후 코드 인풋란 초기화
-      }
+    success: function (couponMap) {
+      
 
-      if (storeCouponList.length > 0) {
-        storeCouponList.forEach(function(coupon) {
-          var couponStatus = coupon.couponSt === 'Y' ? '미사용' : '사용';
+      if (couponMap.category == '티켓') {
+        console.log(couponArray);
+        if (couponArray.indexOf(ticketCode.value) == -1) {
+          couponArray.push(ticketCode.value);
+          console.log(couponMap.storeCouponList);
+          console.log(couponMap.category);
+          console.log("입력한 관람권코드가 유효합니다");
 
-          var cardHTML = `
-            <tr style="border: 1px solid; width: 100%; height: 30px;">
-              <td class="couponDetailNo" style="border: 1px solid; width: 60.5%; text-align: center;">
-                ${coupon.couponDetailNo}
-              </td>
-              <td style="border: 1px solid; width: 20.5%; text-align: center;">
-                ${coupon.couponSt}
-              </td>
-              <td style="width: 17.5%; text-align: center;">
-                <button class="couponBtn" style="width: 65px;">${couponStatus}</button>
-              </td>
-            </tr>
-          `;
-          document.querySelector(".ticketTable_2").innerHTML += cardHTML;
-        });
+
+
+          couponMap.storeCouponList.forEach(function (coupon) {
+            var couponStatus = coupon.couponSt === 'Y' ? '미사용' : '사용';
+
+            var cardHTML = `
+              <tr style="border: 1px solid; width: 100%; height: 30px;">
+                <td class="couponDetailNo" style="border: 1px solid; width: 60.5%; text-align: center;">${coupon.couponDetailNo}</td>
+                <td class="couponSt" style="border: 1px solid; width: 20.5%; text-align: center;">${coupon.couponSt}</td>
+                <td style="width: 17.5%; text-align: center;">
+                  <button class="couponBtn" style="width: 65px;">${couponStatus}</button>
+                </td>
+              </tr>
+            `;
+            document.querySelector(".ticketTable_2").innerHTML += cardHTML;
+          })
+
+        } else {
+          alert("이미 찾아온 코드입니다")
+
+        }
+
+    
+
+      } else if (couponMap.category == null) {
+        console.log("존재하지 않는 코드번호 입니다");
+        alert("존재하지 않는 코드번호 입니다");
       } else {
         console.log("관람권코드가 잘못되었거나 찾을 수 없습니다");
-        alert("코드를 올바르지 않거나 찾을 수 없습니다");
+        alert("코드가 올바르지 않거나 찾을 수 없습니다");
       }
+
+
+      ticketCode.value = ""; // 검색후 코드 인풋란 초기화
     },
-    error: function() {
-      console.log("관람권을 찾으러 가기 실패했습니다");
-    }
-  });
+      error: function () {
+        console.log("관람권을 찾으러 가기 실패했습니다");
+      }
+    });
 });
 
-$(document).on('click', '.couponBtn', function() {
+$(document).on('click', '.couponBtn', function () {
   var couponBtn = $(this);
-  var couponDetailNo = couponBtn.closest('tr').find('.couponDetailNo').text();
+  couponDetailNo = couponBtn.closest('tr').find('.couponDetailNo').text();
+  couponSt = couponBtn.closest('tr').find('.couponSt');
 
   if (couponBtn.text() === '미사용') {
     var confirmMessage = 'KGC 관람권을 사용하시겠습니까?';
+    
     if (confirm(confirmMessage)) {
       couponBtn.text('사용');
-      updateCouponStatus(couponDetailNo);
-    }
-  } else if (couponBtn.text() === '사용') {
-    var confirmMessage = 'KGV 관람권 사용을 취소하시겠습니까?';
-    if (confirm(confirmMessage)) {
-      couponBtn.text('미사용');
-      updateCouponStatus(couponDetailNo);
+      couponSt.text("N");
+      couponStVal = "N";
+      tempCouponArray.push(couponDetailNo);
+      couponBtn.closest('tr').find('.couponDetailNo').css('background-color', "red");
     }
   }
 });
 
-function updateCouponStatus(couponDetailNo) {
-  $.ajax({
-    url: "updateTicketStatus",
-    data: {
-      "COUPON_DETAIL_NO": couponDetailNo
-    },
-    type: "POST",
-    success: function(result) {
-      if (result > 0) {
-        console.log("관람권 상태를 변경했습니다");
-      } else {
-        console.log("관람권 상태 변경에 실패했습니다");
-      }
-    },
-    error: function() {
-      console.log("관람권 상태 업데이트 중 오류가 발생했습니다");
+$(".useBtn").on('click', function () {
+  var confirmMessage = 'KGC 관람권을 사용하시겠습니까?';
+  if (confirm(confirmMessage)) {
+    for(let i=0; i<tempCouponArray.length; i++){
+
+      usedCouponArray.push(tempCouponArray[i]);
+
+
     }
-  });
+
+    $(".discountPrice").text(usedCouponArray.length * 5000);
+
+    let finishPrice = Number($(".reservePrice").text()) - (usedCouponArray.length * 5000);
+    $(".finshPrice").text(Math.max(finishPrice, 0))
+
+
+    console.log(usedCouponArray)
+
+    
+    $(".modal").hide();
+  }
+
+})
+
+
+
+
+
+// function updateCouponStatus(couponDetailNo, couponStVal) {
+//   $.ajax({
+//     url: "updateTicketStatus",
+//     data: {
+//       "COUPON_DETAIL_NO": couponDetailNo,
+//       "COUPON_ST": couponStVal
+//     },
+//     type: "POST",
+//     success: function (result) {
+//       if (result > 0) {
+//         console.log("관람권 상태를 변경했습니다");
+//       } else {
+//         console.log("관람권 상태 변경에 실패했습니다");
+//       }
+//     },
+//     error: function () {
+//       console.log("관람권 상태 업데이트 중 오류가 발생했습니다");
+//     }
+//   });
+// }
+
+
+$(".payBtn").on("click", function(){
+  var confirmMessage = '결제하실?';
+  if (confirm(confirmMessage)) {
+    updateCouponStatus()
+  }
+})
+
+// 결제 api 성공후에 updateCouponStatus() 이 함수를 돌려서 st 상태를 변경해야한다.  상태를 먼저 변경하면 안됌
+
+function updateCouponStatus() {
+
+  for(let i=0; i<usedCouponArray.length; i++ ){
+    $.ajax({
+      url: "updateTicketStatus",
+      data: {
+        "COUPON_DETAIL_NO": usedCouponArray[i],
+
+      },
+      type: "POST",
+      success: function (result) {
+        if (result > 0) {
+          console.log("관람권 상태를 변경했습니다");
+        } else {
+          console.log("관람권 상태 변경에 실패했습니다");
+        }
+      },
+      error: function () {
+        console.log("관람권 상태 업데이트 중 오류가 발생했습니다");
+      }
+    });
+  }
+  
 }
-
-
-
-
-
 
 

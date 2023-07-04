@@ -69,22 +69,22 @@
 
                     <div>
                         <div>
-                            <div><img src="${contextPath}/resources//images/teater_special/bg-boarding.png">
+                            <div><img src="${contextPath}/resources/images/teater_special/bg-boarding.png">
                                 <div class="explain">
                                     <p>BOARDING</p>
                                 </div>
                             </div>
-                            <div><img src="${contextPath}/resources//images/teater_special/bg-bath.png">
+                            <div><img src="${contextPath}/resources/images/teater_special/bg-bath.png">
                                 <div class="explain">
                                     <p>BATH</p>
                                 </div>
                             </div>
-                            <div><img src="${contextPath}/resources//images/teater_special/bg-salon.png">
+                            <div><img src="${contextPath}/resources/images/teater_special/bg-salon.png">
                                 <div class="explain">
                                     <p>SALON</p>
                                 </div>
                             </div>
-                            <div><img src="${contextPath}/resources//images/teater_special/bg-restaurant.png">
+                            <div><img src="${contextPath}/resources/images/teater_special/bg-restaurant.png">
                                 <div class="explain">
                                     <p>RESTAURANT</p>
                                 </div>
@@ -98,7 +98,7 @@
                     <!-- 6 -->
                     <div>
                         <div>
-                            <img src=${contextPath}/resources//images/teater_special/img-theater-puppy-view02.png" alt="">
+                            <img src="${contextPath}/resources/images/teater_special/img-theater-puppy-view02.png" alt="">
                         </div>
                         <ul class="puppy-ul">
                             <li>Boarding</li>
@@ -114,7 +114,7 @@
                     <!-- 7 -->
                     <div>
                         <div>
-                            <img src="${contextPath}/resources//images/teater_special/img-theater-puppy-view03.png" alt="">
+                            <img src="${contextPath}/resources/images/teater_special/img-theater-puppy-view03.png" alt="">
                         </div>
                         <ul class="puppy-ul">
                             <li>Bath</li>
@@ -129,7 +129,7 @@
 
                     <div>
                         <div>
-                            <img src="${contextPath}/resources//images/teater_special/img-theater-puppy-view04.png" alt="">
+                            <img src="${contextPath}/resources/images/teater_special/img-theater-puppy-view04.png" alt="">
                         </div>
                         <ul class="puppy-ul">
                             <li>Salon</li>

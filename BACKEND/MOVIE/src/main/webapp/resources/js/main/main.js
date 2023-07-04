@@ -106,8 +106,8 @@ $(document).ready(function () {
   var theater = $(".stheater");
   var rightSide = $(".deleteUnderline");
 
-  var lastActiveTheater = theater.first(); // 마지막으로 활성화된 stheater
-  var lastActiveUnderline = null; // 마지막으로 활성화된 underline
+  var lastActiveTheater = theater.first();
+  var lastActiveUnderline = null;
 
   theater.css("display", "none");
   theater.first().css("display", "block");
@@ -117,24 +117,25 @@ $(document).ready(function () {
       var underlineSpan = $(rightSide[i]).children("span").first();
 
       $(rightSide[i]).on("mouseenter", function () {
-        theater.css("display", "none");
-        $(theater[i]).css("display", "block");
-        // 마지막에 활성화된
-        if (lastActiveUnderline && lastActiveUnderline !== $(rightSide[i])) {
-          lastActiveUnderline.css("border-radius", "0px");
-          lastActiveUnderline.css("border-left", "0px");
-          lastActiveUnderline.css("border-right", "0px");
-          lastActiveUnderline.css("border-bottom", "0px");
-          lastActiveUnderline
-            .children("span")
-            .first()
-            .css("font-weight", "normal");
+        // If there was a previously active underline, reset its styles
+        if (lastActiveUnderline) {
+          var lastUnderlineSpan = lastActiveUnderline.children("span").first();
+          lastUnderlineSpan.css("font-weight", "normal");
+          lastActiveUnderline.css("border", "none");
+          if (i > 0) {
+            // For non-first elements, also reset the border-top
+            $(rightSide[i - 1]).css("border-bottom", "none");
+          }
         }
 
+        theater.css("display", "none");
+        $(theater[i]).css("display", "block");
+
         underlineSpan.css("font-weight", "bold");
-        $(rightSide[i]).css("border", "1px solid #a3a3a3"); // 4면 border 추가
-        $(rightSide[i]).css("border-radius", "10px"); // 4면 border 추가
-        $(rightSide[i + 1]).css("border-top", "none"); // 4면 border 추가
+        $(rightSide[i]).css("border", "3px solid #a3a3a3");
+        $(rightSide[i]).css("border-radius", "10px");
+        $(rightSide[i + 1]).css("border-top", "none");
+
         lastActiveTheater = $(theater[i]); // 마지막으로 활성화된 stheater를 업데이트
         lastActiveUnderline = $(rightSide[i]); // 마지막으로 활성화된 underline 업데이트
       });

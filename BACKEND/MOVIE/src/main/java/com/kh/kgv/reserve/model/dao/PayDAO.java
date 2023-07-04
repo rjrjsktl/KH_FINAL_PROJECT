@@ -1,6 +1,7 @@
 package com.kh.kgv.reserve.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,19 @@ public class PayDAO {
 	}
 	
 	// 관람권 상태 변경
-	public int updateTicketStatus(String couponNo) {
-		return sqlSession.update("playMapper.updateTicketStatus",couponNo);
+	public int updateTicketStatus(Map<String, Object> CT) {
+		return sqlSession.update("playMapper.updateTicketStatus",CT);
+	}
+	
+	// 좌석 수 확인
+	public String checkSeat(int bookNo) {
+		
+		return sqlSession.selectOne("playMapper.checkSeat",bookNo);
+	}
+	
+	// 쿠폰 카테고리 검색
+	public String serchCategory(String couponNo) {
+		return sqlSession.selectOne("playMapper.selectCategory",couponNo);
 	}
 
 	
