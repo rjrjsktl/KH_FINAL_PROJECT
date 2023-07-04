@@ -102,8 +102,6 @@
 											<li><a href="findEmail">아이디 찾기</a></li>
 											<span>|</span>
 											<li><a href="/movie/signUp/signUp_sns">회원가입</a></li>
-											<span>|</span>
-											<li><a href="paymentBtn">결제</a></li>
 										</ul>
 									</div>
 								</div>

@@ -8,6 +8,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -119,9 +120,8 @@ public class KakaoServiceImple implements KakaoService {
 	         JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 
 	         String nickname = properties.getAsJsonObject().get("nickname").getAsString();
-	         
-	         String email = kakao_account.getAsJsonObject().get("email").getAsString();
 	         String age_range = kakao_account.getAsJsonObject().get("age_range").getAsString();
+	         String email = kakao_account.getAsJsonObject().get("email").getAsString();
 	         String gender = kakao_account.getAsJsonObject().get("gender").getAsString();
 
 	         if ( gender.equals("female")) {
@@ -130,11 +130,24 @@ public class KakaoServiceImple implements KakaoService {
 	        	 gender = "M";
 	         }
 	         
+	         if ( age_range.equals("01~10") || age_range.equals("10~19") ) {
+	        	 age_range = "29991231";
+	         }else {
+	        	 age_range = "19000101";
+	         }
+	         
+	         Random rand = new Random();
+	         int i = rand.nextInt(10000) + 1;  // 1 to 1000까지의 난수 생성
+
+
+	         String randomNick = "새로온손님" + i;
+	         
 
 	         userInfo.put("nickname", nickname);
 	         userInfo.put("email", email);
-	         userInfo.put("age_range", age_range);
 	         userInfo.put("gender", gender);
+	         userInfo.put("randomNick", randomNick);
+	         userInfo.put("age_range", age_range);
 	         
 	         
 
@@ -153,7 +166,7 @@ public class KakaoServiceImple implements KakaoService {
 	         return result;
 	         // 정보가 이미 있기 때문에 result를 리턴함.
 	      }
-	   
+	      
 	   
 	   }
 
