@@ -42,19 +42,23 @@ h2 {
 .notice-contents>div:nth-child(1) {
     padding: 10px 0 10px 0;
     height:40%;
+
 }
 
 .notice-contents>div:nth-child(1)>span {
-    font-size: 1.5rem;
+        font-size:1.5rem;
     font-weight: 400;
+
+  
 }
 
 .notice-contents>div:nth-child(2) {
-    padding: 10px 0 10px 0;
-    height:30%;
-    display:flex;
-    justify-content:right;
+    padding: 10px 0 20px 0;
+      height:30%;
+      display:flex;
+      justify-content:space-between;
 }
+
 
 .notice-contents>div:nth-child(2) >span>span{
 	padding:0 5px;
@@ -62,28 +66,13 @@ h2 {
 
 .notice-contents>div:nth-child(3) {
     border-top: 1px solid rgb(73, 73, 73);
-    padding: 15px 0;
+    padding: 20px 0;
     padding-bottom: 30px;
     height:64%;
-   
+	word-wrap: break-word;
+	white-space: normal;
 }
 
-.content-wrap>div:nth-child(3) {
-    border-top: 1px solid rgb(73, 73, 73);
-}
-
-
-.content-wrap>div:last-child>button {
-    width: 150px;
-    height: 50px;
-    font-size: 1.2rem;
-    background-color: rgb(73, 73, 73);
-    color: rgb(251, 251, 251);
-    border-radius: 10px;
-    cursor: pointer;
-    outline: none;
-    border: none;
-}
 
 .content-wrap>div:last-child>button:hover {
     background-color: rgb(251, 251, 251);
@@ -114,15 +103,14 @@ h2 {
 	
 }
 
-.contentText-wrap{
-	word-wrap: break-word;
-	white-space: normal;
-
-}
 
 .btn_wraper {
 	display:flex;
 	justify-content:right;
+}
+
+.btn_wraper a {
+	color:white;
 }
 
 .btn_wraper button{
@@ -133,12 +121,14 @@ h2 {
 	background-color:rgb(49,49,49);
 	outline:none;
 	border:none;
+	border-radius: 5px;
 }
 
 .btn_wraper button:hover{
 	background-color: rgb(255, 196, 0);
 	color:black;
 	cursor:pointer;
+
 }
 
 a.hover {
@@ -147,9 +137,9 @@ a.hover {
 
 
 .reply{
-	margin-top:30px;
 	border: 1px solid rgb(255, 196, 0);
-	background-color:black;
+	background-color:#191919;
+	border-radius: 10px;
 }
 
 .reply-info p {
@@ -164,10 +154,11 @@ a.hover {
 	display:flex;
 	justify-content:right;
 	border-bottom:1px solid rgb(73,73,73);
+	padding-right:10px;
 }
 
 .reply-writer-info > span{
-	padding:10px 5px;
+	padding:10px 5px 20px 5px;
 }
 
 .reply-content{
@@ -178,12 +169,12 @@ a.hover {
 	margin-top:10px;
 	width:100%;
 	height:50px;
-	background-color:black;
+	background-color:#191919;
 	display:flex;
 	justify-content: center;
 	line-height:48px;
 	cursor:pointer;
-	
+	border-radius: 10px;
 	outline:none;
 	border: 1px solid rgb(255, 196, 0);
 }
@@ -194,15 +185,21 @@ a.hover {
 	font-weight:bold;
 	width:100%;
 	height:100%;
+	border-radius: 10px;
 }
 
 .reply_delete a:hover{
 	background-color:red;
+	color:black;
+}
+
+.imageArea{
+	margin: 30px 0;
+	display: flex;
 }
 
 .imageArea img {
-	width: 200px;
-	height: 200px;
+	max-height: 200px;
 	cursor: pointer;
 }
 

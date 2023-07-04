@@ -12,6 +12,14 @@ $(document).ready(function(){
                 window.location.href = url; // get방식으로 url에 요청
             }
         });
+        $(".btn_wraper button").hover(
+          function () {
+            $(this).find("a").addClass("hover");
+          },
+          function () {
+            $(this).find("a").removeClass("hover");
+          }
+        );
 });
 
 // 이미지 크게보기

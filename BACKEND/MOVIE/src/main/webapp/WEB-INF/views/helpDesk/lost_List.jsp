@@ -183,6 +183,7 @@
 			</div>
 			<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 			<script src="${contextPath}/resources/js/helpDesk/lost.js"></script>
+			<script src="${contextPath}/resources/js/helpDesk/lostSearch.js"></script>
 		</body>
 
 		</html>
