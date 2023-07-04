@@ -1,5 +1,6 @@
 package com.kh.kgv.theater.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kh.kgv.helpDesk.model.service.HelpDeskService;
+import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.theater.model.service.TheaterService;
 import com.kh.kgv.theater.model.vo.Screen;
@@ -43,10 +45,7 @@ public class TheaterController {
 		
 		Map<String, Object>cinemaList = null;
 		cinemaList = hdService.searchcinemaList();
-		
-		Map<String, Object> getEvnetList = null;
-		getEvnetList = service.mainEventList();
-		model.addAttribute("getEvnetList", getEvnetList);
+
 		model.addAttribute("getNoticeList", userNoticeList);
 		model.addAttribute("cinemaList",cinemaList);
 
@@ -103,8 +102,20 @@ public class TheaterController {
 		}
 		
 		List<Screen> screenInfo =  services.getScreenInfo(special);
+		System.out.println("screenInfo::: " + screenInfo);
 		model.addAttribute("screenInfo", screenInfo);
 		
+//		List<Movie> randomMovieList = services.randomMovie();
+//		List<Integer> randomMovie = new ArrayList<>();
+//		if (randomMovieList != null && !randomMovieList.isEmpty()) {
+//	        System.out.println("들어옴?");
+//	        for (Movie movie : randomMovieList) {
+//	            int movieNo = movie.getMovieNo();
+//	            randomMovie.add(movieNo);
+//	        }
+//		}		
+//		System.out.println("randomMovie::: " + randomMovie);
+//		model.addAttribute("randomMovie", randomMovie);
 
 
 		return path;

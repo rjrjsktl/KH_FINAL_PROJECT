@@ -55,6 +55,8 @@ function requestPay() {
             }).done(function (data) {
 
                 console.log(data);
+                console.log(rsp.merchant_uid);
+
 
                 if (rsp.paid_amount == data.response.amount) {
 
@@ -71,7 +73,7 @@ function requestPay() {
                             , "storeName": storeName
                             , "storeNo": storeNo
                             , "userEmail": userEmail
-                            , "orderDetailNo": orderDetailNo
+                            , "orderDetailNo": rsp.merchant_uid
                             , "userName": userName
                         },
                         type: "POST",

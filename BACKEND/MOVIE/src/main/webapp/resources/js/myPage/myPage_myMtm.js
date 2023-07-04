@@ -11,6 +11,15 @@ $(document).ready(function(){
             	window.location.href = url;
         	}
     });
+
+	$(".btn_wraper button").hover(
+		function () {
+		  $(this).find("a").addClass("hover");
+		},
+		function () {
+		  $(this).find("a").removeClass("hover");
+		}
+	  );
 });
 
 function showImage(imgName) {

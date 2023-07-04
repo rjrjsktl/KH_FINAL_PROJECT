@@ -302,6 +302,15 @@ WHERE s.SCREEN_NO = #{screenNo}
         WHERE COUPON_DETAIL_NO = #{couponNo}
     </select>
     
+    <update id="updateTicketStatus" parameterType="string">
+        UPDATE STORE_COUPON
+		SET COUPON_ST = CASE
+    		WHEN COUPON_ST = 'Y' THEN 'N'
+    		WHEN COUPON_ST = 'N' THEN 'Y'
+    		ELSE COUPON_ST
+		END
+		WHERE COUPON_DETAIL_NO = #{couponNO}
+    </update>
     
 	
 </mapper>
