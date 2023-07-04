@@ -27,7 +27,7 @@
                 <main>
                     <div>
                         <!-- 백그라운드이미지로 처리 -->
-                        <div>
+						<div  class="topBg_imgarea">
                             <ul>
 								<li> <a href="${contextPath}/theater/specialTheater/1"> KMAX</a> </li>
 								<li><a href="${contextPath}/theater/specialTheater/2">DOLBY</a></li>
@@ -37,6 +37,12 @@
 										PUPPY</a></li>
 								<li> <a href="${contextPath}/theater/specialTheater/4">KIDS</a></li>
 							</ul>
+
+                            <div class="spanCLS">
+                                <p>Cultureplex for Kids </p>
+                                <p>& Families</p>
+                            </div>
+
                         </div>
                     </div>
 
@@ -44,9 +50,7 @@
                     <div>
                         <div>
                             <div class="left_stheaterwrap">
-                                <span>Cultureplex for Kids & Families</span>
-                                <span>어린이와 가족 고객을 위한 키즈 전용 씨네마를 경험하세요.
-                                </span>
+                        
                             </div>
 
 

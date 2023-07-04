@@ -25,7 +25,7 @@
                 <main>
                     <div>
                         <!-- 백그라운드이미지로 처리 -->
-                        <div>
+						<div  class="topBg_imgarea">
                             <ul>
 								<li> <a href="${contextPath}/theater/specialTheater/1"> KMAX</a> </li>
 								<li><a href="${contextPath}/theater/specialTheater/2">DOLBY</a></li>
@@ -35,6 +35,13 @@
 										PUPPY</a></li>
 								<li> <a href="${contextPath}/theater/specialTheater/4">KIDS</a></li>
 							</ul>
+
+                            <div class="spanCLS">
+                                <p>몰입감 넘치는 사운드</p>
+                                <p>DOLBY</p>
+                            </div>
+                                
+
                         </div>
                     </div>
 
@@ -42,8 +49,7 @@
                     <div>
                         <div>
                             <div class="left_stheaterwrap">
-                                <span>DOLBY</span>
-                                <span>입체적 사운드, 단 하나의 시네마 </span>
+                            
                             </div>
 
 
@@ -163,8 +169,6 @@
 
             <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-
-            <script src="${contextPath}/resources/js/common/header.js"></script>
             <script src="${contextPath}/resources/js/theater/special-detail.js"></script>
         </body>
 

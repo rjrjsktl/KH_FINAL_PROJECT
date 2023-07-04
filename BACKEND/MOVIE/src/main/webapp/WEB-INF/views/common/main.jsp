@@ -178,35 +178,24 @@
 
 										<div>
 											<div>
-												<a href="${contextPath}/theater/theaterS" class="stheater"> <img
+												<a href="${contextPath}/theater/specialTheater/1" class="stheater"> <img
 														src="${contextPath}/resources/images/teater_special/imax_04.jpg"
 														alt="" />
-												</a> <a href="${contextPath}/theater/theaterS2" class="stheater">
+												</a> <a href="${contextPath}/theater/specialTheater/2" class="stheater">
 													<img src="${contextPath}/resources/images/teater_special/img-theater-db-view05.png"
 														alt="" />
-												</a> <a href="${contextPath}/theater/theaterS5" class="stheater">
+												</a> <a href="${contextPath}/theater/specialTheater/5" class="stheater">
 													<img src="${contextPath}/resources/images/teater_special/abcd.jpg"
 														alt="" />
-												</a> <a href="${contextPath}/theater/theaterS3" class="stheater">
+												</a> <a href="${contextPath}/theater/specialTheater/3" class="stheater">
 													<img src="${contextPath}/resources/images/teater_special/style_625d608c1cb71.jpg"
 														alt="" />
-												</a> <a href="${contextPath}/theater/theaterS4" class="stheater">
+												</a> <a href="${contextPath}/theater/specialTheater/4" class="stheater">
 													<img src="${contextPath}/resources/images/teater_special/Featured-1068x580-1-2.png"
 														alt="" />
 												</a>
 											</div>
 
-
-<!-- 
-											<ul>
-												<li> <a href="${contextPath}/theater/specialTheater/1"> KMAX </li>
-												<li><a href="${contextPath}/theater/specialTheater/2">DOLBY</a></li>
-												<li><a href="${contextPath}/theater/specialTheater/5">DISH &
-														WINE</a></li>
-												<li> <a href="${contextPath}/theater/specialTheater/3">WITH A
-														PUPPY</a></li>
-												<li> <a href="${contextPath}/theater/specialTheater/4">KIDS</a></li>
-											</ul> -->
 
 											<div class="preventDiv">
 												<!-- hover시 각각의 div에 border 생성하시면됩니다. -->
