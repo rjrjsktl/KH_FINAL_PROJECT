@@ -36,5 +36,7 @@ public interface MovieService {
 	// 예매율 service
 	double allBook(int movieNo);
 
+	Map<String, Object> searchMovieList( String keyword);
+
 
 }

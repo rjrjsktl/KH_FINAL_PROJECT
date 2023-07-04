@@ -43,7 +43,6 @@ public class KakaoController {
 			@RequestParam(value = "code" , required = false) String code,
 			Model model
 			) throws Exception {
-		System.out.println("#########" + code);
 		String access_Token = service.getAccessToken(code);
 		
 		
@@ -51,8 +50,6 @@ public class KakaoController {
 		
 		// 엑세스 토큰값은 정상적으로 받아와진다.
 		User loginUser = service.getUserInfo(access_Token);
-		System.out.println("###access_Token#### : " + access_Token);
-		System.out.println("loginUser : "+loginUser);
 		session.setAttribute("loginUser", loginUser);
 		if(loginUser !=null) {
 			session.setAttribute("loginUser", loginUser);
@@ -75,7 +72,6 @@ public class KakaoController {
 	               session.removeAttribute("loginMember");
 	               session.invalidate();
 	           }else{
-	               System.out.println("access_Token is null");
 	           }
 	      status.setComplete();
 	      return "redirect:/";

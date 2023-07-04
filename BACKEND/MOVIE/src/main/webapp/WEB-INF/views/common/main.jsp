@@ -13,7 +13,6 @@
 						<meta http-equiv="X-UA-Compatible" content="IE=edge">
 						<meta name="viewport" content="width=device-width, initial-scale=1.0">
 						<title>Channel_KGV</title>
-						<script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 						<link rel="stylesheet" href="${contextPath}/resources/css/common/main.css" />
 						<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
 
@@ -198,23 +197,31 @@
 											</div>
 
 
-
-
+<!-- 
+											<ul>
+												<li> <a href="${contextPath}/theater/specialTheater/1"> KMAX </li>
+												<li><a href="${contextPath}/theater/specialTheater/2">DOLBY</a></li>
+												<li><a href="${contextPath}/theater/specialTheater/5">DISH &
+														WINE</a></li>
+												<li> <a href="${contextPath}/theater/specialTheater/3">WITH A
+														PUPPY</a></li>
+												<li> <a href="${contextPath}/theater/specialTheater/4">KIDS</a></li>
+											</ul> -->
 
 											<div class="preventDiv">
 												<!-- hover시 각각의 div에 border 생성하시면됩니다. -->
-												<a href="${contextPath}/theater/theaterS" class="deleteUnderline">
+												<a href="${contextPath}/theater/specialTheater/1" class="deleteUnderline">
 													<span>KMAX</span> <span>#세계 최대의 상영관</span>
-												</a> <a href="${contextPath}/theater/theaterS2" class="deleteUnderline">
+												</a> <a href="${contextPath}/theater/specialTheater/2" class="deleteUnderline">
 													<span>DOLBY</span> <span>#차세대
 														몰입형 사운드</span>
-												</a> <a href="${contextPath}/theater/theaterS5" class="deleteUnderline">
+												</a> <a href="${contextPath}/theater/specialTheater/5" class="deleteUnderline">
 													<span>CHEF & CINE</span> <span>#최고의
 														가치를 경험하세요</span> </span>
-												</a> <a href="${contextPath}/theater/theaterS3" class="deleteUnderline">
+												</a> <a href="${contextPath}/theater/specialTheater/3" class="deleteUnderline">
 													<span>PUPPY & ME</span> <span>#반려동물과
 														영원히 함께</span>
-												</a> <a href="${contextPath}/theater/theaterS4" class="deleteUnderline">
+												</a> <a href="${contextPath}/theater/specialTheater/4" class="deleteUnderline">
 													<span>YES KIDS</span> <span>#더이상
 														노키즈존은 STOP</span>
 												</a>
