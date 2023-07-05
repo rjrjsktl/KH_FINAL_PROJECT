@@ -1,17 +1,22 @@
 package com.kh.kgv.reserve.controller;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,7 +26,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kh.kgv.reserve.model.service.PayService;
 import com.kh.kgv.reserve.model.service.ReserveService;
+import com.kh.kgv.store.contoller.StoreController;
 import com.kh.kgv.store.model.vo.StoreCoupon;
+import com.siot.IamportRestClient.IamportClient;
+import com.siot.IamportRestClient.exception.IamportResponseException;
+import com.siot.IamportRestClient.response.IamportResponse;
+import com.siot.IamportRestClient.response.Payment;
 
 @Controller
 @RequestMapping("/pay")
@@ -31,6 +41,8 @@ public class PayController {
 	@Autowired
 	private PayService service;
 	
+	private Logger logger = LoggerFactory.getLogger(PayController.class);
+		
 	private List<StoreCoupon> storeCouponList = null;
 	
 	
@@ -68,11 +80,7 @@ public class PayController {
 		return seatCount;
 	}
 	
-	
-	
-
-	
-	
+		
 	@PostMapping("/selectTicket")
 	@ResponseBody
 	public Map<String, Object> selectCoupon(@RequestParam("COUPONNO") String couponNo,
@@ -106,10 +114,71 @@ public class PayController {
 		System.out.println("관람권 상태 변경 시작");
 		int result = service.updateTicketStatus(couponNo);
 		
+		return result;
+	}
+	
+	
+	// 결제
+	
+	private IamportClient api;
+	
+	public PayController() {
 		
+		// REST API 키와 REST API secret 를 아래처럼 순서대로 입력한다.
+        this.api = new IamportClient("","");
+	}
+	
+	// 결제 검증
+	@ResponseBody
+    @RequestMapping(value="/pay/verifyIamport/{merchant_uid}")
+    public IamportResponse<Payment> paymentByImpUid(
+    		Model model,
+    		Locale locale,
+    		HttpSession session,
+    		@PathVariable(value= "merchant_uid") String merchant_uid) throws IamportResponseException, IOException {
+		
+		System.out.println("결제검증 시작");
+		
+        return api.paymentByImpUid(merchant_uid);
+        
+    }
+	
+	// 결제 성공 후 돌아가는 ajax
+	@PostMapping("/pay/successPayment")
+	@ResponseBody
+	public int successPayment(@RequestParam("bookNo") int bookNo,
+							  @RequestParam("reserveCodeNo") String reserveCodeNo) {
 
+		logger.debug(" bookNo : " + bookNo);
+		logger.debug(" reserveCodeNo : " + reserveCodeNo);
+		
+		// 예매내역 테이블 정보 저장
+		int result = service.successPayment(bookNo,reserveCodeNo);
 		
 		return result;
 	}
+	
+	
+	
+	
+	
+	// 결제완료 페이지 이동
+	@GetMapping("/finshed")
+	public String movePayFinshed(HttpSession session,
+								 Model model) {
+		
+		int bookNo = (int) session.getAttribute("bookNo");
+		
+		Map<String, Object> finalMap = new HashMap<>();
+		
+		String payOrder = service.serchPayOrder(bookNo);
+		finalMap.put("payOrder", payOrder);
+		
+		model.addAttribute("finalMap", finalMap);
+		
+		return "pay/pay_finshed";
+	}
+	
+	
 	
 }

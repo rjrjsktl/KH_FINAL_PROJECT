@@ -189,6 +189,7 @@ $(document).on('click', '.couponBtn', function () {
 
 $(".useBtn").on('click', function () {
   var confirmMessage = 'KGC 관람권을 사용하시겠습니까?';
+  
   if (confirm(confirmMessage)) {
     for(let i=0; i<tempCouponArray.length; i++){
 
@@ -213,39 +214,15 @@ $(".useBtn").on('click', function () {
 
 
 
-
-
-// function updateCouponStatus(couponDetailNo, couponStVal) {
-//   $.ajax({
-//     url: "updateTicketStatus",
-//     data: {
-//       "COUPON_DETAIL_NO": couponDetailNo,
-//       "COUPON_ST": couponStVal
-//     },
-//     type: "POST",
-//     success: function (result) {
-//       if (result > 0) {
-//         console.log("관람권 상태를 변경했습니다");
-//       } else {
-//         console.log("관람권 상태 변경에 실패했습니다");
-//       }
-//     },
-//     error: function () {
-//       console.log("관람권 상태 업데이트 중 오류가 발생했습니다");
-//     }
-//   });
-// }
-
-
 $(".payBtn").on("click", function(){
   var confirmMessage = '결제하실?';
   if (confirm(confirmMessage)) {
-    updateCouponStatus()
+    requestPay()
   }
 })
 
-// 결제 api 성공후에 updateCouponStatus() 이 함수를 돌려서 st 상태를 변경해야한다.  상태를 먼저 변경하면 안됌
-
+// 결제 api 성공후에 updateCouponStatus() 이 함수를 돌려서 st 상태를 변경해야한다.
+// 상태를 먼저 변경하면 안됌
 function updateCouponStatus() {
 
   for(let i=0; i<usedCouponArray.length; i++ ){
@@ -272,3 +249,4 @@ function updateCouponStatus() {
 }
 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
