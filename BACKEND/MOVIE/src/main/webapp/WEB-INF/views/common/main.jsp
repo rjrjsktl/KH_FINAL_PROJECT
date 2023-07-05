@@ -24,12 +24,34 @@
 						<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 							integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 							crossorigin="anonymous"></script>
+							<script src="${contextPath}/resources/js/main/main.js"></script>
 
 
 
 					</head>
 
 					<body>
+					<div class="modal_wrap">
+
+						<div class="mdContWrap">
+							<div class="mdCont">
+								<p>저희 Channel_KGV는 
+									<br><span>"비영리 목적"</span>으로 만들어진,
+									<br>포트폴리오만을 위한 홈페이지입니다.
+									<br>이미지, 글 등 해당 홈페이지의
+									<br>컨텐츠는 "절대" 상업적으로 이용하지
+									<br>않는 것을 말씀드립니다.
+									<br>컨텐츠의 저작권 등에 문제가 발생한다면
+									<br>010-8229-7832로 연락주시면 즉시 조치하겠습니다.
+									<br>email : dogeunlee89@gmail.com
+								</p>
+
+								<a class="closemdp">24시간동안 닫기</a>
+							</div>
+						</div>
+
+					</div>			
+					
 						<div id="wrap">
 							<!-- header -->
 							<jsp:include page="/WEB-INF/views/common/header.jsp" />
@@ -65,7 +87,7 @@
 
 									<div class="swiper-title">
 										<div>
-											<a href="#">상영중인 영화</a>
+											<p >상영중인 영화</p>
 										</div>
 										<a class="moveBtn" href="${contextPath}/movieList/detail_List">전체보기</a>
 									</div>
@@ -106,7 +128,7 @@
 														</a>
 														<div>
 															<p>
-																예매율 <span>${bookPercent[status.index]}</span>%
+																예매율 <span class="revlikeVal">${bookPercent[status.index]}</span>%
 															</p>
 															<p>
 																개봉일 <span>${movie['movieOpen']}</span>
@@ -125,7 +147,7 @@
 								<section>
 									<div>
 										<div class="event-title">
-											<a href="">EVENT</a>
+											<p>EVENT</p>
 											<div>
 												<a class="moveBtn" href="${contextPath}/eventList/detail_List">전체보기</a>
 											</div>
@@ -170,7 +192,7 @@
 
 										<div>
 											<div>
-												<a href="#">특별관 안내</a>
+												<p>특별관 안내</p>
 											</div>
 											<a class="moveBtn" href="${contextPath}/theater/specialTheater">전체보기</a>
 										</div>
@@ -242,7 +264,7 @@
 																	varStatus="loop">
 																	<c:if test="${loop.index < 1}">
 																		<span><a
-																				href="${contextPath}/helpDesk/notice_detail/${getNotice.noticeNo}">${getNotice.noticeTitle}</a></span>
+																				href="${contextPath}/helpDesk/notice_detail/${getNotice.noticeNo}" class="nottitle">${getNotice.noticeTitle}</a></span>
 																	</c:if>
 																</c:forEach>
 															</c:otherwise>
@@ -282,6 +304,5 @@
 					</body>
 
 
-					<script src="${contextPath}/resources/js/main/main.js"></script>
 
 					</html>

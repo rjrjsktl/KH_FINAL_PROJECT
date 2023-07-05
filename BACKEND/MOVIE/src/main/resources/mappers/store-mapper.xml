@@ -28,6 +28,8 @@
 		<result property="userName" 				column="USER_NAME"/>
 		<result property="storeName" 				column="STORE_NAME"/>
 		<result property="storeNo" 					column="STORE_NO"/>
+		<result property="impUid" 					column="IMP_UID"/>
+		
 	</resultMap>	
 	
 	
@@ -154,6 +156,7 @@
         , #{userName}
         , #{storeName}
         , #{storeNo}
+        , #{impUid}
     )
 </insert>
 
