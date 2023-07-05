@@ -24,12 +24,34 @@
 						<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 							integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 							crossorigin="anonymous"></script>
+							<script src="${contextPath}/resources/js/main/main.js"></script>
 
 
 
 					</head>
 
 					<body>
+					<div class="modal_wrap">
+
+						<div class="mdContWrap">
+							<div class="mdCont">
+								<p>저희 Channel_KGV는 
+									<br><span>"비영리 목적"</span>으로 만들어진,
+									<br>포트폴리오만을 위한 홈페이지입니다.
+									<br>이미지, 글 등 해당 홈페이지의
+									<br>컨텐츠는 "절대" 상업적으로 이용하지
+									<br>않는 것을 말씀드립니다.
+									<br>컨텐츠의 저작권 등에 문제가 발생한다면
+									<br>010-8229-7832로 연락주시면 즉시 조치하겠습니다.
+									<br>email : dogeunlee89@gmail.com
+								</p>
+
+								<a class="closemdp">24시간동안 닫기</a>
+							</div>
+						</div>
+
+					</div>			
+					
 						<div id="wrap">
 							<!-- header -->
 							<jsp:include page="/WEB-INF/views/common/header.jsp" />
@@ -282,6 +304,5 @@
 					</body>
 
 
-					<script src="${contextPath}/resources/js/main/main.js"></script>
 
 					</html>
