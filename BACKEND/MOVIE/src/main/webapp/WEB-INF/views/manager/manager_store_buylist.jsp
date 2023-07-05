@@ -65,6 +65,7 @@
                                                         <th>이메일</th>
                                                         <th>이름</th>
                                                         <th>상품이름</th>
+                                                        <th>imp</th>
 
                                                     </tr>
                                                     <c:forEach var="storeOrder"
@@ -99,7 +100,7 @@
                                                             <td>${storeOrder['userEmail']}</td>
                                                             <td>${storeOrder['userName']}</td>
                                                             <td>${storeOrder['storeName']}</td>
-
+                                                            <td>${storeOrder['imp_uid']}</td>
 
 
                                                             <td><a href="${contextPath}/manager/store_list/edit/${store['storeNo']}"
@@ -109,7 +110,8 @@
                                                             <td>
 
                                                                 <button class="cancelPay"
-                                                                    data-sorderNo="${storeOrder['sorderNo']}">환불하기</button>
+                                                                    data-sorderNo="${storeOrder['sorderNo']}"
+                                                                    data-imp_uid="${storeOrder['imp_uid']}">환불하기</button>
 
                                                             </td>
 

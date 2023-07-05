@@ -21,7 +21,7 @@ public class StoreOrder {
 	private String userName;
 	private String storeName;
 	private int storeNo;
-	private String impUid;
+	private String imp_uid;
 	
 	
 	
