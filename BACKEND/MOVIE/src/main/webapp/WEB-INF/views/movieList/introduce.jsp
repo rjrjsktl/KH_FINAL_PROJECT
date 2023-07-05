@@ -121,7 +121,7 @@
                                                 <div>
                                                     <ul>
 
-                                                        <li><a href="../reserve/reserve.html">예매하기</a></li>
+                                                        <li><a href="${contextPath}/reserve/choicePlay">예매하기</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
