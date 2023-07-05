@@ -392,17 +392,6 @@ public class MyPageController {
 
 		logger.info("loginUserNo:::::" + loginUser.getUserNo());
 
-//		logger.info("loginUserNo:::::" + loginUser.getUserNo() );
-//		// 로그인된 회원의 번호를 paramMap 추가
-//		
-//		int userNo = loginUser.getUserNo();
-//		
-//		List<Review> myReviewList = service.myReviewList(userNo);
-//
-//		model.addAttribute("myReviewList", myReviewList);
-//
-//		logger.info("myReviewList::::" + myReviewList);
-
 		// 메인 이벤트 목록 가지고 오기 - 7개
 		Map<String, Object> getEvnetList = null;
 		getEvnetList = managerService.mainEventList();
