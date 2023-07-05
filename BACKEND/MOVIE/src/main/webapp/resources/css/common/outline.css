@@ -421,7 +421,7 @@ header > section{
 
 .go_top_area{
 position: absolute;
-bottom:-660px;
+bottom:-700px;
 right:150px;
 display: none;
 }
@@ -451,7 +451,7 @@ display: none;
     width:135px;
     height:40px;
     border-radius: 10px;
-    background-color: #FFC400;
+    background-color: rgba(255, 196, 0);
     color:black;
     line-height: 38px;
     text-align: center;
