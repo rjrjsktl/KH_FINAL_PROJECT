@@ -52,7 +52,7 @@ public class SignUpController {
 			int result = service.emailDupCheck(userEmail);
 			
 			
-			System.out.println(result);
+			
 			return result;
 		}
 		
@@ -63,7 +63,7 @@ public class SignUpController {
 			
 			int result = service.nicknameDupCheck(userNick);
 			
-			System.out.println(result);
+			
 			return result;
 			
 		}
@@ -75,7 +75,7 @@ public class SignUpController {
 			
 			int result = service.nameDupCheck(userName);
 			
-			System.out.println(result);
+		
 			return result;
 		}
 		
@@ -97,7 +97,7 @@ public class SignUpController {
 							,String[] userAddr
 							,RedirectAttributes ra	) {
 			
-			logger.debug("inputUser : " + inputUser);
+		
 			
 			inputUser.setUserAddr( String.join(",,", userAddr));
 			
@@ -112,7 +112,7 @@ public class SignUpController {
 			
 			String message =null;
 			String path =null;
-			logger.debug("result : " + result);
+		
 			
 			if(result > 0) {
 				message = "회원가입 성공!";
@@ -132,7 +132,7 @@ public class SignUpController {
 		public int sendEmail(String userEmail 
 				) {
 			
-			logger.debug("userEmail : " + userEmail);
+		
 			
 			
 			 String cNumber = "";
@@ -170,7 +170,7 @@ public class SignUpController {
 	        	                "<br>" + 
 	        	                "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
 	         
-	         logger.debug("mailSender : " + mailSender);
+	     
 				
 	         
 	         try {
@@ -203,13 +203,12 @@ public class SignUpController {
 		public int checkNumber(String userEmail ,String cNumber) {
 			
 			
-			logger.debug("userEmail : " + userEmail);
-			logger.debug("cnum : " + cNumber);
+		
 			
 			
 			int result =  service.checkNumber(cNumber, userEmail);
 						
-			logger.debug("result : " + result);
+		
 			
 			return result;
 			
