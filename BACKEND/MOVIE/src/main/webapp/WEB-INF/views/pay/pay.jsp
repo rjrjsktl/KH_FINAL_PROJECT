@@ -27,6 +27,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <!-- iamport.payment.js -->
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    
+
 </head>
 
 <body>
@@ -46,7 +52,9 @@
                         <div>
                             <span>예매 내역</span>
                             <div>
-                                <span>&nbsp; - 영화제목?</span>
+                                <input type="hidden" id="userEmail" value="${loginUser.userEmail}">
+                                <input type="hidden" id="userName" value="${loginUser.userName}">
+                                <input type="hidden" id="bookNo" value="${bookNo}">
                             </div>
                         </div>
 
@@ -215,6 +223,8 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
     <script src="${contextPath}/resources/js/pay/pay.js"></script>
+    <script src="${contextPath}/resources/js/pay/pay_iamport.js"></script>
+    <script src="${contextPath}/resources/js/manager/apikey.js"></script>
 
 </body>
 

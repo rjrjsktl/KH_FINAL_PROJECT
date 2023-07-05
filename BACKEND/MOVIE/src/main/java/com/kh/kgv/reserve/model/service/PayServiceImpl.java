@@ -54,5 +54,23 @@ public class PayServiceImpl implements PayService {
 	public String serchCategory(String couponNo) {
 		return dao.serchCategory(couponNo);
 	}
+	
+	// 예매내역 테이블 정보 저장
+	@Override
+	public int successPayment(int bookNo, String reserveCodeNo) {
+		
+		Map<String, Object> SP = new HashMap<>();
+		
+		SP.put("bookNo", bookNo);
+		SP.put("reserveCodeNo", reserveCodeNo);
+		
+		return dao.successPayment(SP);
+	}
+	
+	// 예매내역 정보 찾아오기
+	@Override
+	public String serchPayOrder(int bookNo) {
+		return dao.serchPayOrder(bookNo);
+	}
 
 }
