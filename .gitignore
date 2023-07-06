@@ -22,6 +22,9 @@ BACKEND/MOVIE/src/test
 
 apikey.js
 key.properties
+ApiKey.java
+NewApiKeys.java
+
 
 # Created by https://www.toptal.com/developers/gitignore/api/java,eclipse,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,eclipse,windows
