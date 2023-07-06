@@ -22,16 +22,22 @@ import com.google.gson.JsonParser;
 
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.login.model.dao.SignUpDAO;
+import com.kh.kgv.management.vo.ApiKey;
 
 @Service
 public class KakaoServiceImple implements KakaoService {
 
 	   @Autowired
 	   public SignUpDAO dao;
-
+		
 	   @Override
 	   public String getAccessToken(String authorize_code) {
 		   
+			ApiKey apikey = new ApiKey();
+			
+			String cid = apikey.getKakaoKey();
+			String addr = apikey.getKakaoAddress();
+			
 		   
 	      String access_Token = "";
 	      String refresh_Token = "";
@@ -51,10 +57,8 @@ public class KakaoServiceImple implements KakaoService {
 	         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 	         StringBuilder sb = new StringBuilder();
 	         sb.append("grant_type=authorization_code");
-	       
-	         sb.append("&client_id=2efba8f52b3a5151a0a8fdbfc437d7b2"); //본인이 발급받은 key
-	         sb.append("&redirect_uri=http://kgv.co.kr/movie/sign_Up/sns/kakao"); // 본인이 설정한 주소
-	            
+	         sb.append("&client_id="+cid); //본인이 발급받은 key
+	         sb.append("&redirect_uri="+addr);// 본인이 설정한 주소
 	         sb.append("&code=" + authorize_code);
 	         bw.write(sb.toString());
 	         bw.flush();
@@ -194,6 +198,11 @@ public class KakaoServiceImple implements KakaoService {
 	            e.printStackTrace();
 	        }
 	    }
+
+
+
+
+
 	   
 
 	

@@ -60,6 +60,8 @@
 		<typeAlias type="com.kh.kgv.store.model.vo.StoreOrder" 	alias="storeOrder"/>
 		<typeAlias type="com.kh.kgv.store.model.vo.StoreCoupon" alias="storeCoupon"/>
 		<typeAlias type="com.kh.kgv.store.model.vo.JoinStore" 	alias="js"/>
+		
+		
 
 		
 	</typeAliases>

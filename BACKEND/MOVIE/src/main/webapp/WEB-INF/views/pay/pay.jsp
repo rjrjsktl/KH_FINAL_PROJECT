@@ -32,6 +32,7 @@
     <!-- iamport.payment.js -->
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
     
+  
 
 </head>
 
@@ -225,7 +226,6 @@
     <script src="${contextPath}/resources/js/pay/pay.js"></script>
     <script src="${contextPath}/resources/js/pay/pay_iamport.js"></script>
     <script src="${contextPath}/resources/js/manager/apikey.js"></script>
-
 </body>
 
 </html>

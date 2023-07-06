@@ -1,8 +1,8 @@
-main>div {
+main>form>div {
 	padding-bottom: 110px;
 }
 
-main>:nth-child(1) {
+main>form>:nth-child(1) {
     display: flex;
     flex-direction: column;
 
@@ -10,26 +10,26 @@ main>:nth-child(1) {
 }
 
 /* 비밀번호 재설정 */
-main>:nth-child(1)>:nth-child(1) {
+main>form>:nth-child(1)>:nth-child(1) {
     font-size: 2rem;
 
 	padding-top: 100px;
     padding-bottom: 30px;
 }
 /* 새로운 비밀번호를 기입해주세요 */
-main>:nth-child(1)>:nth-child(2) {
+main>form>:nth-child(1)>:nth-child(2) {
     font-size: 0.8rem;
 
     padding-bottom: 10px;
 }
 
 /* 비밀번호 */
-main>:nth-child(1)>:nth-child(3) {
+main>form>:nth-child(1)>:nth-child(3) {
     margin-bottom: 15px;
 }
 
 /* 비밀번호 확인 */
-main>:nth-child(1)>:nth-child(4) {
+main>form>:nth-child(1)>:nth-child(4) {
     
 }
 
