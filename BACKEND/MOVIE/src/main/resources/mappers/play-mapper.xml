@@ -378,6 +378,11 @@ WHERE s.SCREEN_NO = #{screenNo}
 		WHERE BOOK_NO = #{bookNo}
     </select>
     
+    <select id="getPlayNo" parameterType="_int" resultType="_int">
+        SELECT PLAY_NO
+        FROM BOOK
+        WHERE BOOK_NO = #{bookNo}
+    </select>
     
     
     

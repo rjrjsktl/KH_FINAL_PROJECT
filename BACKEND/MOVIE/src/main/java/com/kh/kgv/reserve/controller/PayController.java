@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.management.vo.ApiKey;
 import com.kh.kgv.reserve.model.service.PayService;
 import com.kh.kgv.reserve.model.service.ReserveService;
@@ -182,6 +183,9 @@ public class PayController {
 		Map<String, Object> finalMap = new HashMap<>();
 
 		String payOrder = service.serchPayOrder(bookNo);
+	    JoinPlay userPlay = service.getUserPlayByBookNo(bookNo);
+		
+		finalMap.put("userPlay", userPlay);
 		finalMap.put("payOrder", payOrder);
 
 		model.addAttribute("finalMap", finalMap);
