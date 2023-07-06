@@ -391,26 +391,42 @@ public class ReserveServiceImpl implements ReserveService {
 		return roomPlayList;
 	}
     
+	
+	
+	// 스케줄링을 통해 예매 취소된 좌석을 지우고, 상영 인원을 업데이트함
+	
 	@Override
 	public int removeSeat() {
-		// 스케줄링을 통해 예매 취소된 좌석을 지우고, 상영 인원을 업데이트함
+		
+		// 미결제 예매를 상영 번호에 따라 분류함.
+		
 		List<Book> canceledBookList = dao.getCanceledBookList();
 		Map<Integer, List<Book>> canceledBookMap = canceledBookList.stream().collect(Collectors.groupingBy(Book::getPlayNo));
+		
 		int playCount = 0;
 		int bookCount = 0;
+
 		
 		for ( Integer key : canceledBookMap.keySet() ) {
+			
+			// 상영 번호(key)를 통해 해당 상영의 관람 인원과 예매 좌석을 불러옴.
+
 			Play play = dao.getSimplePlay(key);
 			int playBookCount = play.getPlayBookCount();
-			
 			String[] playSeatArray = play.getPlayBookSeat().replaceAll("\\[|\\]", "").split(",");
+			
+			// ArrayList는 용량이 변할 수 있으므로, 예매 좌석을 ArrayList로 변환함.
+			
 			List<String> playSeatList = new ArrayList<String>();
-						
+			
 			for(String ps : playSeatArray) {
 				if(!ps.equals("")) {
 			        playSeatList.add(ps);
 				}
 			}
+			
+			// 예매 좌석 ArrayList에서 미결제 예매 좌석들을 제거함.
+			// 관람 인원에서 미결제 예매의 좌석 수만큼 줄임.
 
 			for(Book canceledBook : canceledBookMap.get(key)) {
 				String bookSeat = canceledBook.getBookSeat().replaceAll("\\[|\\]", "").replaceAll(" ", "");
@@ -423,8 +439,9 @@ public class ReserveServiceImpl implements ReserveService {
 				playBookCount -= bookSeatArray.length;
 			}
 			
+			// 미결제 예매 좌석을 모두 처리하면 상영 정보를 수정함. 
+
 			String playBookSeat = Arrays.deepToString(playSeatList.toArray()).replaceAll(" ", "");
-			
 
 			Map<String, Object> seatMap = new HashMap<>();
 			seatMap.put("playNo", key);
@@ -435,11 +452,50 @@ public class ReserveServiceImpl implements ReserveService {
 			
 		}
 		
+		// 모든 상영 정보를 수정하면 미결제 예매를 모두 삭제함
+		
 		if(playCount > 0) {
 			bookCount = dao.deleteBook();
 		}
 		
 		return bookCount;
+	}
+
+	
+	
+	// 스케줄러를 통해 영화의 누적 관람 인원 수를 업데이트함  
+	
+	@Override
+	public int updateMovieWatchCount() {
+		
+		int playCount = 0;
+		int movieCount = 0;
+		
+		// 상영 시간이 끝났지만, 누적 예매 정보에 반영되지 않은 상영만을 불러옴
+		// 해당 상영들을 영화 번호에 따라 분류함.
+		
+		List<Play> pastPlayList = dao.getPastPlayList();
+		Map<Integer, List<Play>> pastPlayMap = pastPlayList.stream().collect(Collectors.groupingBy(Play::getMovieNo));
+		
+		for ( Integer key : pastPlayMap.keySet() ) {
+			int movieBookCount = dao.getTotalTicket(key);
+			
+			for(Play pastPlay : pastPlayMap.get(key)) {
+				movieBookCount += pastPlay.getPlayBookCount();
+			}
+
+			Map<String, Object> movieMap = new HashMap<>();
+			movieMap.put("movieNo", key);
+			movieMap.put("movieWatched", movieBookCount);
+			
+			movieCount += dao.updateTotalTicket(movieMap);
+		}
+		
+		if(movieCount > 0) {
+			playCount = dao.updatePlaySt();
+		}
+		
+		return playCount;
 	}
 
 
