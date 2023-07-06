@@ -83,7 +83,7 @@ function requestPay() {
               console.log("결제성공");
 
               if (result > 0) {
-                  alert("결제성공 정보DB 등록 성공");
+                  //alert("결제성공 정보DB 등록 성공");
                   let url = "/movie/pay/finshed";
 
                   window.location.href = url;
