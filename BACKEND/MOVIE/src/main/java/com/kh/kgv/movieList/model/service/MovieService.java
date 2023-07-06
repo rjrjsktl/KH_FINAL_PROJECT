@@ -38,5 +38,7 @@ public interface MovieService {
 
 	Map<String, Object> searchMovieList( String keyword);
 
+	int countMyReview(int movieNo, int userNo);
+
 
 }
