@@ -39,15 +39,15 @@ public class SchedulingTest {
 	
 	private Logger logger = LoggerFactory.getLogger(SchedulingTest.class);
 	
-//	@Scheduled(fixedRate=5000)
-	//@Scheduled(cron="0 * * * * *") // 매 분 0초마다
-	//@Scheduled(cron="0 0 * * * *") // 정시마다
-	//@Scheduled(cron="0 0 12 * * *") // 매일 12 정각마다
-	//@Scheduled(cron="0 0 12 1, 11, 21 * *") // 매달 1,11,21일 매일 12 정각마다
-	//@Scheduled(cron="0 0 14 * * 2") // 월요일 14시 마다
+    // @Scheduled(fixedRate=5000)
+	// @Scheduled(cron="0 * * * * *") // 매 분 0초마다
+	// @Scheduled(cron="0 0 * * * *") // 정시마다
+	// @Scheduled(cron="0 0 12 * * *") // 매일 12 정각마다
+	// @Scheduled(cron="0 0 12 1, 11, 21 * *") // 매달 1,11,21일 매일 12 정각마다
+	// @Scheduled(cron="0 0 14 * * 2") // 월요일 14시 마다
 	// cron="초 분 시 일 월 요일 [년도]" - 요일 : 1(SUN) ~ 7(SAT)
 	public void test() {
-		logger.info("5초마다 출력");
+		logger.info("매 분 0초마다");
 	}
 	
 	
