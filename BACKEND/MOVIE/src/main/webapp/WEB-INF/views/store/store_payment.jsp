@@ -94,7 +94,7 @@
                                             </div>
                                             <div>
                                                 <div>
-                                                    <button type="button" class="pay_simple_btn_box active"><span
+                                                    <button type="button" class="pay_simple_btn_box "><span
                                                             class="pay_simple_thm"><img
                                                                 src="${contextPath}/resources/images/storeimg/payment_simple_kakao.png"
                                                                 alt="카카오페이"></span><span
@@ -128,21 +128,36 @@
                                                                         </div>
                                                                         <button class="btn_txt_more ty2">약관보기</button>
                                                                     </li>
-                                                                    <li><input type="checkbox"
-                                                                            id="chkProvisionTerm02"><label
-                                                                            for="chkProvisionTerm02" class="ty2">고유식별정보
-                                                                            수집 및 이용안내</label><button
-                                                                            class="btn_txt_more ty2">약관보기</button></li>
-                                                                    <li><input type="checkbox"
-                                                                            id="chkProvisionTerm03"><label
-                                                                            for="chkProvisionTerm03" class="ty2">개인정보 수집
-                                                                            및 이용동의</label><button
-                                                                            class="btn_txt_more ty2">약관보기</button></li>
-                                                                    <li><input type="checkbox"
-                                                                            id="chkProvisionTerm04"><label
-                                                                            for="chkProvisionTerm04" class="ty2">개인정보
-                                                                            제3자 제공/위탁동의</label><button
-                                                                            class="btn_txt_more ty2">약관보기</button></li>
+                                                                    <li>
+                                                                        <div>
+                                                                            <input type="checkbox"
+                                                                                id="chkProvisionTerm02"><label
+                                                                                for="chkProvisionTerm02"
+                                                                                class="ty2">고유식별정보
+                                                                                수집 및 이용안내</label>
+                                                                        </div>
+                                                                        <button class="btn_txt_more ty2">약관보기</button>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div>
+                                                                            <input type="checkbox"
+                                                                                id="chkProvisionTerm03">
+                                                                            <label for="chkProvisionTerm03"
+                                                                                class="ty2">개인정보 수집
+                                                                                및 이용동의</label>
+                                                                        </div>
+                                                                        <button class="btn_txt_more ty2">약관보기</button>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div>
+                                                                            <input type="checkbox"
+                                                                                id="chkProvisionTerm04"><label
+                                                                                for="chkProvisionTerm04"
+                                                                                class="ty2">개인정보
+                                                                                제3자 제공/위탁동의</label>
+                                                                        </div>
+                                                                        <button class="btn_txt_more ty2">약관보기</button>
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
