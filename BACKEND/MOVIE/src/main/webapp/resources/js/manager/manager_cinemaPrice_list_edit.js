@@ -128,15 +128,15 @@ $(document).ready(function () {
             return false;
         }
 
-        console.log('상영관 종류 : ' + screenType.val());
-        console.log('주중 / 주말 : ' + chooseDay.val());
-        console.log('오전 / 오후 : ' + chooseTime.val());
-        console.log('청소년 가격 : ' + teen.val());
-        console.log('일반 가격 : ' + normal.val());
-        console.log('경로 가격 : ' + elder.val());
-        console.log('우대 가격 : ' + special.val());
-        console.log('커플 가격 : ' + couple.val());
-        console.log('가격 번호 : ' + priceNo.val());
+        //console.log('상영관 종류 : ' + screenType.val());
+        //console.log('주중 / 주말 : ' + chooseDay.val());
+        //console.log('오전 / 오후 : ' + chooseTime.val());
+        //console.log('청소년 가격 : ' + teen.val());
+        //console.log('일반 가격 : ' + normal.val());
+        //console.log('경로 가격 : ' + elder.val());
+        //console.log('우대 가격 : ' + special.val());
+        //console.log('커플 가격 : ' + couple.val());
+        //console.log('가격 번호 : ' + priceNo.val());
 
 
         $.ajax({
@@ -154,7 +154,7 @@ $(document).ready(function () {
             },
             type: "POST",
             success: function (result) {
-                console.log(result);
+                //console.log(result);
                 // 등록 완료 : 1
                 // 등록 실패 : 0
                 if (result > 0) {

@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     const orderDetailNo = $('.orderDetailNo').text().trim();
 
-    console.log(orderDetailNo);
+    // console.log(orderDetailNo);
 
 
 
@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     cancelBtn.on('click', function (e) {
 
-        console.log("환불버튼눌림");
+        // console.log("환불버튼눌림");
 
         e.preventDefault();
 
@@ -20,8 +20,8 @@ $(document).ready(function () {
         const imp_uid = $(this).data('imp_uid');
 
         // 가져온 sorderNo 값을 출력하거나 원하는 로직을 수행합니다.
-        console.log(sorderNo);
-        console.log(imp_uid);
+        // console.log(sorderNo);
+        // console.log(imp_uid);
         $.ajax({
             url: "/manager/coupon_cancel.do",
 
@@ -41,7 +41,7 @@ $(document).ready(function () {
             type: "POST",
 
             success: function (result) {
-                console.log("환불성공");
+                // console.log("환불성공");
 
                 if (result = 0) {
                     alert(" 환불성공 정보DB 등록 성공");
@@ -50,12 +50,12 @@ $(document).ready(function () {
                     // window.location.href = url;
 
                 } else {
-                    console.log("에러 발생으로 인해 등록 실패");
+                    // console.log("에러 발생으로 인해 등록 실패");
                 }
             },
 
             error: function () {
-                console.log("에러 발생으로 인해 등록 실패");
+                // console.log("에러 발생으로 인해 등록 실패");
             }
 
 
