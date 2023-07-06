@@ -421,7 +421,7 @@ header > section{
 
 .go_top_area{
 position: absolute;
-bottom:-700px;
+bottom:-580%;
 right:150px;
 display: none;
 }

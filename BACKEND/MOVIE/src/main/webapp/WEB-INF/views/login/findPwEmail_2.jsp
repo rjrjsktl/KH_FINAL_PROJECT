@@ -90,37 +90,47 @@
             <div class="user-info">
                 <div class="img_wrap">
                     <a id="mainLogo" href="${contextPath}">
-
                     <img src="${contextPath}/resources/images/logo/logo.png" alt="logo"></a>
                 </div>
                 <div class="find_wrap">
                     <p>아이디 / 비밀번호 찾기</p>
                     <div class="fidpw">
-                        <a  href="findEmail" class="fid">아이디찾기</a><a  href="findPw" class="fpw">비밀번호찾기</a>
+                        <a  href="findEmail" class="fid">아이디찾기</a>
+                        <a  href="findPw" class="fpw">비밀번호찾기</a>
                     </div>
                     <span>간편찾기</span>
 
                     <div class="input-infowrap">
-           
                         <div class="iifpdiv">
-                            <p>이름</p><div><input type="text" placeholder="이름" name="userName" id="userName"></div>
-                        </div>
-                        <div class="iifpdiv">
-                            <p>생년월일</p><div> <input type="text" placeholder="생년월일 (ex:19920517)" name="userBirth" id="userBirth"></div>
-                        </div>
-                        <div class="iifpdiv">
-                            <p>이메일</p><div> <input type="text" placeholder="이메일" name="userEmail" id="userEmail"></div> <span id="sendBtn">인증하기</span>
-                        </div>
-                        <div class="iifpdiv">
-                            <p>인증번호</p><div>                                            <input type="text" placeholder="인증번호" name="cNumber" id="cNumber">
+                            <p>이름</p>
+                            <div>
+                            	<input type="text" placeholder="이름" name="userName" id="userName">
                             </div>
                         </div>
-                        <div> <span class="signUp-message" id="cMessage"></span></div>
-
+                        <div class="iifpdiv">
+                            <p>생년월일</p>
+                            <div>
+                            	<input type="text" placeholder="생년월일 (ex:19920517)" name="userBirth" id="userBirth">
+                            </div>
+                        </div>
+                        <div class="iifpdiv">
+                            <p>이메일</p>
+                            <div>
+                            	<input type="text" placeholder="이메일" name="userEmail" id="userEmail"></div>
+                            	<span id="sendBtn">인증하기</span>
+                        	</div>
+                        <div class="iifpdiv">
+                            <p>인증번호</p>
+                            <div>
+                            	<input type="text" placeholder="인증번호" name="cNumber" id="cNumber"> 
+                            
+                            </div>
+                            <p class="signUp-message"  id="cMessage" ></p>
+                        </div>
+                        
                         <p class="pnbalert">※ 인증이 어려울 경우 고객센터를 통하여 찾기를 진행 해 주시기 바랍니다.</p>
  
-                       <button id="cBtn" onclick="location.href='pwChange'">비밀번호 찾기</button>
-                
+	                    <button id="cBtn" onclick="goChangPw()">비밀번호 찾기</button>
                     </div>
                 </div>
             </div>

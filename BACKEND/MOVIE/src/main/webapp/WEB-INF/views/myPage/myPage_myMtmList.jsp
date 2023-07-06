@@ -170,20 +170,20 @@
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-	<div id="myModal" class="modal">
+	<!-- <div id="myModal" class="modal">
 		<div class="modal-content">
 			<div class="close-button">&times;</div>
 			<iframe src="../login/login.html" frameborder="0" width="500px"
 				height="500px"></iframe>
 		</div>
-	</div>
+	</div> -->
 
 	<script src="${contextPath}/resources/js/common/header.js"></script>
 	<script src="${contextPath}/resources/js/myPage/myPage_swiper.js"></script>
 	<script src="${contextPath}/resources/js/myPage/myPage_myMtm.js"></script>
 	<script src="${contextPath}/resources/js/myPage/myPage_randomEvent.js"></script>
 
-	<script>
+	<!-- <script>
 	
 		const mtmUserListmtmList = "${mtmUserList.mtmList}";
 		console.log(mtmUserListmtmList
@@ -192,7 +192,7 @@
 		const userMtmCount = "${mtmUserList.pagination.listCount}";
 		console.log(userMtmCount
 				+ "+++++++++++++++++++++++++++++++++++++++++++++++++++++");
-	</script>
+	</script> -->
 
 
 </body>

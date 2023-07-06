@@ -18,6 +18,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.login.model.dao.SignUpDAO;
+import com.kh.kgv.management.vo.ApiKey;
 
 
 
@@ -29,6 +30,13 @@ public class NaverServiceImple implements NaverService {
 
 	@Override
 	public String getAccessToken(String authorize_code) {
+
+		ApiKey apikey = new ApiKey();
+		
+		String cid = apikey.getNaverKey();
+		String secr = apikey.getNaverSecret();
+		String addr = apikey.getNaverAddress();
+		
 		String access_token = "";
 		String refresh_Token = "";
 		String reqURL = "https://nid.naver.com/oauth2.0/token";
@@ -46,9 +54,9 @@ public class NaverServiceImple implements NaverService {
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");
-			sb.append("&client_id=zbgd6cEyo8jMiPuWLAHo");
-			sb.append("&client_secret=SduvBv1SRj");
-			sb.append("&redirect_uri=https://kgv.co.kr/movie/sign_Up/sns/naver");
+			sb.append("&client_id="+cid);
+			sb.append("&client_secret="+secr);
+			sb.append("&redirect_uri="+addr);
 			sb.append("&code="+authorize_code);
 			sb.append("&state=url_parameter");
 			bw.write(sb.toString());

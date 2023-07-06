@@ -127,14 +127,6 @@
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-	<div id="myModal" class="modal">
-		<div class="modal-content">
-			<div class="close-button">&times;</div>
-			<iframe src="../login/login.html" frameborder="0" width="500px"
-				height="500px"></iframe>
-		</div>
-	</div>
-
 	<script src="${contextPath}/resources/js/common/header.js"></script>
 	<script src="${contextPath}/resources/js/myPage/myPage_swiper.js"></script>
 	<script src="${contextPath}/resources/js/myPage/myPage_home.js"></script>

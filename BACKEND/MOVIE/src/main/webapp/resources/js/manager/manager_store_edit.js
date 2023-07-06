@@ -9,7 +9,7 @@ $(document).ready(function () {
 
     let storeCategory = $('#storeCategory');
 
-    console.log("Value received from the database: " + storeCategory.val());
+    console.log(storeCategory.val());
 
 
 

@@ -3,6 +3,7 @@ package com.kh.kgv.reserve.model.service;
 import java.util.List;
 import java.util.Map;
 
+import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.store.model.vo.StoreCoupon;
 
 public interface PayService {
@@ -27,6 +28,9 @@ public interface PayService {
 
 	// 예매내역 정보 찾아오기
 	String serchPayOrder(int bookNo);
+	
+	// PLAY_NO 얻어오기
+	JoinPlay getUserPlayByBookNo(int bookNo);
 	
 	
 	

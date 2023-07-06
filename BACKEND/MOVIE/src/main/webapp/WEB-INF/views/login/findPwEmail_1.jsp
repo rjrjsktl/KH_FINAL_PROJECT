@@ -91,35 +91,36 @@
 
 	<div class="cont_wrap">
 		<div class="user-info">
+		
 			<div class="img_wrap">
-
 				<a id="mainLogo" href="${contextPath}">
 				<img src="${contextPath}/resources/images/logo/logo.png" alt="logo"></a>
 			</div>
+			
 			<div class="find_wrap">
 				<p>아이디 / 비밀번호 찾기</p>
 				<div class="fidpw">
-				   <a  href="findEmail" class="fid">아이디찾기</a><a  href="findPw" class="fpw">비밀번호찾기</a>
+				   <a  href="findEmail" class="fid">아이디찾기</a>
+				   <a  href="findPw" class="fpw">비밀번호찾기</a>
 				</div>
 				<span>간편찾기</span>
 
 				<div class="input-infowrap">
 					<form action="findId" method="POST">
-					<div class="iifpdiv">
-						<p>이름</p><div><input type="text" placeholder="이름" name="userName" id="userName"></div>
-					</div>
-					<div class="iifpdiv">
-						<p>생년월일</p><div> <input type="text" placeholder="생년월일 (ex:19920517)" name="userBirth" id="userBirth"></div>
-					</div>
-					<div class="iifpdiv">
-						<p>휴대폰 번호</p><div><input type="text" placeholder="'-' 없이 입력" name="userTel" id="userTel"></div>
-					</div>
+						<div class="iifpdiv">
+							<p>이름</p><div><input type="text" placeholder="이름" name="userName" id="userName"></div>
+						</div>
+						<div class="iifpdiv">
+							<p>생년월일</p><div> <input type="text" placeholder="생년월일 (ex:19920517)" name="userBirth" id="userBirth"></div>
+						</div>
+						<div class="iifpdiv">
+							<p>휴대폰 번호</p><div><input type="text" placeholder="'-' 없이 입력" name="userTel" id="userTel"></div>
+						</div>
 
-					<p class="pnbalert">※ 휴대폰 번호가 변경 된 경우 고객센터를 통하여 찾기를 진행 해 주시기 바랍니다.</p>
+						<p class="pnbalert">※ 휴대폰 번호가 변경 된 경우 고객센터를 통하여 찾기를 진행 해 주시기 바랍니다.</p>
 
-				   <button id="">아이디 찾기</button>
-
-				</form>
+					   <button id="sendBtn">아이디 찾기</button>
+					</form>
 				</div>
 			</div>
 		</div>

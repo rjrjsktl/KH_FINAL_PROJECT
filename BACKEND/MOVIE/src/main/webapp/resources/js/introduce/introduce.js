@@ -70,8 +70,7 @@ $(document).ready(function () {
     console.log("reviewParam=1이라서 실행");
     $(".movie-detail").hide();
     $(".movie-reply").show();
-    $(".info-btn").css("background", "none");
-    $(".info-btn").css("border", "1px solid rgb(19,19,19)");
+    $(".info-btn").css("background", "rgb(25,25,25");
     $(".info-btn").css("color", "white");
     $(".star-btn").css("background", "rgb(21,21,21)");
     $(".star-btn").css("color", "white");

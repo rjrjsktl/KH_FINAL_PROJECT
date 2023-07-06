@@ -444,13 +444,29 @@ function resetPriceSection() {
 
 // 결제하기
 
-$("#summary").on("click", function() {
+$("#summary").on("click", function(e) {
   // 조건 1 : 인원의 합계만큼 좌석 선택 완료 && 1명 이상 선택
   // countArray와 seatArray를 넘긴다.
   if(totalCount == choiceCount && totalCount > 0) {
-    checkTicketAjax();
+    
+    function ask(question, yes, no) { // 등록 후 찜 목록 이동 여부 물어보기.
+      if (confirm(question)) {
+        yes(); // 찜 목록 이동 희망
+        checkTicketAjax();
+      } else {
+        e.preventDefault();
+        no(); // 거부 시, 메인 화면에 계속 머물기
+      }
+    };
+      ask( // function ask() 용 질의 구문
+      "3분 이내에 결제하지 않으면 예매가 취소됩니다. 결제하시겠습니까?",
+      (ask) => alert("결제 페이지로 이동합니다."),
+      (ask) => alert("취소 버튼을 누르셨습니다.")
+      );
   }
-  
 })
+
+
+
 
 

@@ -64,18 +64,18 @@ public class MyPageController {
 //						, HttpServletResponse resp
 			, RedirectAttributes ra, Model model) throws IOException {
 
-		logger.info("1. 마이페이지 버튼 누름");
-
+		logger.info("마이페이지 이동");
+		
 		String message = null;
 		String path = null;
 
 		HttpSession session = req.getSession(false);
 		if (session != null && session.getAttribute("loginUser") != null) {
-			logger.info("로그인 o 마페 ㄱㄱ");
+			logger.info("로그인 o");
 			path = "myPage/myPage_home";
 		} else {
-			logger.info("로그인 x 로페 ㄱㄱ");
-			message = "로그인 부터 하시라옹";
+			logger.info("로그인 x");
+			message = "서비스 사용을 위해 로그인 하세요.";
 
 //			String referer = req.getHeader("Referer"); // 이전 페이지의 URL을 가져옵니다.
 //	        session.setAttribute("prevPage", referer); // 이전 페이지의 URL을 세션에 저장합니다.
@@ -121,7 +121,6 @@ public class MyPageController {
 		Map<String, Object> mtmUserList = service.mtmList(paramMap);
 
 		model.addAttribute("mtmUserList", mtmUserList);
-		logger.info("Controll.mtmUserList:::::" + mtmUserList);
 
 		// 메인 이벤트 목록 가지고 오기 - 7개
 		Map<String, Object> getEvnetList = null;
@@ -227,7 +226,7 @@ public class MyPageController {
 
 		if (result > 0) {
 			path = "myPage/myMtmList" + "?cp=" + cp;
-			message = "글 삭제에 성공했다.";
+			message = "글 삭제를 완료했습니다.";
 
 		} else {
 			path = "referer";
@@ -245,8 +244,6 @@ public class MyPageController {
 
 		logger.info("LostList페이지 들어옴");
 
-		logger.info("분실물 문의 리스트 뿌리자잇");
-
 		paramMap.put("userNo", loginUser.getUserNo());
 		paramMap.put("cp", cp);
 //		int userNo = loginUser.getUserNo();
@@ -254,7 +251,6 @@ public class MyPageController {
 		Map<String, Object> lostUserList = service.lostList(paramMap);
 
 		model.addAttribute("lostUserList", lostUserList);
-		logger.info("Controll.lostUserList:::::" + lostUserList);
 
 		// 메인 이벤트 목록 가지고 오기 - 7개
 		Map<String, Object> getEvnetList = null;
@@ -270,7 +266,6 @@ public class MyPageController {
 			@PathVariable("lostNo") int lostNo, HttpSession session, HttpServletRequest req, HttpServletResponse resp,
 			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
 
-		logger.info("들어오냐 잃어버린 디테일");
 //
 //			User loginUser = (User)session.getAttribute("loginUser");
 //
@@ -338,8 +333,6 @@ public class MyPageController {
 				}
 			}
 		}
-
-		System.out.println("=========================================================================" + lostdetail);
 		String unescapedContent = StringEscapeUtils.unescapeHtml4(lostdetail.getLostContent());
 		lostdetail.setLostContent(unescapedContent);
 		model.addAttribute("lostdetail", lostdetail);
@@ -389,7 +382,6 @@ public class MyPageController {
 			, @ModelAttribute("loginUser") User loginUser, RedirectAttributes ra) {
 
 		logger.info("review페이지 시작");
-
 		logger.info("loginUserNo:::::" + loginUser.getUserNo());
 
 		// 메인 이벤트 목록 가지고 오기 - 7개
@@ -458,7 +450,6 @@ public class MyPageController {
 		int result = service.updateInfo(paramMap);
 
 		String message = null;
-		logger.info("돌아온 result:::" + result);
 		if (result > 0) {
 			message = "회원 정보가 수정되었습니다.";
 			// DB - Session의 회원 정보 동기화
@@ -560,7 +551,6 @@ public class MyPageController {
 		List<Review> myReviewList = service.loadReviewCards(paramMap); // 데이터베이스에서 추가 데이터 조회
 
 		model.addAttribute("myReviewList", myReviewList);
-		logger.info("myReviewList", myReviewList);
 		return myReviewList;
 	}
 
@@ -605,7 +595,6 @@ public class MyPageController {
 		List<Review> myMovieList = service.loadMovieCards(paramMap); // 데이터베이스에서 추가 데이터 조회
 
 		model.addAttribute("myMovieList", myMovieList);
-		logger.info("myMovieList", myMovieList);
 		return myMovieList;
 	}
 	
@@ -621,7 +610,7 @@ public class MyPageController {
 			int result = service.deleteBook(bookNo);
 			if (result > 0) {
 			path = "myPage/myMovie";
-			message = "영화를 삭제했습니다.";
+			message = "영화 삭제를 완료했습니다.";
 		} else {
 			path = "referer";
 			message = "삭제 중 오류발생.";
