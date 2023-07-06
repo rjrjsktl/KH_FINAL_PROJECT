@@ -360,6 +360,27 @@ WHERE s.SCREEN_NO = #{screenNo}
 		WHERE COUPON_DETAIL_NO = #{couponDetailNo}
     </update>
     
+    
+    <select id="getCanceledBookList" resultMap="book_rm">
+    <![CDATA[
+        SELECT * FROM BOOK
+        WHERE BOOK_ST = 'N' AND BOOK_DT < (SYSDATE-3/(24*60))
+        ORDER BY PLAY_NO
+    ]]>
+    </select>
+    
+    <select id="getSimplePlay" parameterType="_int" resultMap="play_rm">
+        SELECT * FROM PLAY
+        WHERE PLAY_NO = #{playNo}
+    </select>
+    
+    <delete id="deleteBook">
+    <![CDATA[
+        DELETE FROM BOOK
+        WHERE BOOK_ST = 'N' AND BOOK_DT < (SYSDATE-3/(24*60))
+    ]]>
+    </delete>
+
     <insert id="successPayment" parameterType="Map">
         INSERT INTO PAY_ORDER
         VALUES
@@ -377,11 +398,5 @@ WHERE s.SCREEN_NO = #{screenNo}
 		FROM PAY_ORDER
 		WHERE BOOK_NO = #{bookNo}
     </select>
-    
-    
-    
-    
-    
-    
 	
 </mapper>
