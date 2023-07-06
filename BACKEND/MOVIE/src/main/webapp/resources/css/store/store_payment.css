@@ -270,7 +270,7 @@ main {
     align-items: center;
 }
 
-.payment>div:nth-child(1)>div:first-child .provision_list li>div {
+.payment>div:nth-child(1)>div:first-child .chk_List li>div {
     display: flex;
     justify-content: center;
     align-items: center;

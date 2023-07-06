@@ -1,28 +1,24 @@
 $(document).ready(function () {
     var IMP = window.IMP;
 
-    const api = config.test;
     const imm = config.imp1;
-
-
-
 
     IMP.init(imm);
 
 
 
 
-    $("#chkSavingTerm").on("click", function () {
+    $("#chkTerm").on("click", function () {
 
-        $(".provision_list input[type='checkbox']").prop("checked", $(this).is(":checked"));
+        $(".chk_List input[type='checkbox']").prop("checked", $(this).is(":checked"));
     });
 
 
-    $(".provision_list input[type='checkbox']").on("click", function () {
+    $(".chk_List input[type='checkbox']").on("click", function () {
 
-        var allChecked = $(".provision_list input[type='checkbox']").length === $(".provision_list input[type='checkbox']:checked").length;
+        var allChecked = $(".chk_List input[type='checkbox']").length === $(".chk_List input[type='checkbox']:checked").length;
 
-        $("#chkSavingTerm").prop("checked", allChecked);
+        $("#chkTerm").prop("checked", allChecked);
     });
 
 
@@ -30,23 +26,23 @@ $(document).ready(function () {
 
 
 
-    $(".pay_simple_btn_box").on("click", function () {
+    $(".pay_btn_box").on("click", function () {
         $(this).toggleClass("active");
     });
 
 
 
     $('.pay_Submit').on("click", function (e) {
-        var isPaymentSelected = $(".pay_simple_btn_box").hasClass("active");
-        // var isAgreementChecked = $("#chkProvisionTerm01").prop("checked");
-        var isAllChecked = $(".provision_list input[type='checkbox']:not(#chkProvisionTerm01)").length === $(".provision_list input[type='checkbox']:not(#chkProvisionTerm01):checked").length;
-        var isSavingTermChecked = $("#chkProvisionTerm01").prop("checked");
+        var paymentSelected = $(".pay_btn_box").hasClass("active");
+
+        var allChecked = $(".chk_List input[type='checkbox']:not(#chkTerm01)").length === $(".chk_List input[type='checkbox']:not(#chkTerm01):checked").length;
+        var TermChecked = $("#chkTerm01").prop("checked");
 
 
-        if (!isPaymentSelected) {
+        if (!paymentSelected) {
             e.preventDefault();
             alert('결제수단을 선택해주세요.');
-        } else if (!isAllChecked || !isSavingTermChecked) {
+        } else if (!allChecked || !TermChecked) {
             e.preventDefault();
             alert('약관동의를 모두 해주세요.');
         } else {
