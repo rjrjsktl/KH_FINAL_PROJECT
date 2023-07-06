@@ -68,6 +68,8 @@ sendBtn.addEventListener("click", function () {
 
     return false;
   }
+  var cMessage = document.getElementById("cMessage");
+  cMessage.style.backgroundColor = "rgb(32,32,32)";
 
   // 인풋 3개(이름,생년월일,이메일 아이디가 제대로 되어있는지 확인하기)
   $.ajax({
@@ -126,7 +128,8 @@ sendBtn.addEventListener("click", function () {
           if (min === -1) {
             // 만료
             cMessage.classList.add("error");
-            cMessage.innerText = "인증번호가 만료되었습니다.";
+            cMessage.innerText = "fail";
+            cMessage.style.color = "red";
 
             clearInterval(checkInterval); // checkInterval 반복을 지움
           }
@@ -145,7 +148,7 @@ sendBtn.addEventListener("click", function () {
 const cNumber = document.getElementById("cNumber");
 const cBtn = document.getElementById("cBtn");
 
-// 인증완료 버튼을 눌렀을때
+// 인증번호 인풋에 값을 적었을때
 cNumber.addEventListener("input", function () {
   console.log(checkObj);
   
@@ -171,9 +174,10 @@ cNumber.addEventListener("input", function () {
           if (result == 1) {
             clearInterval(checkInterval); // 타이머 멈춤
             
-			checkObj.cNumber = true;
+			      checkObj.cNumber = true;
 			
             cMessage.innerText = "success";
+            cMessage.style.color = "greenyellow";
             cMessage.classList.add("confirm");
             cMessage.classList.remove("error");
             
