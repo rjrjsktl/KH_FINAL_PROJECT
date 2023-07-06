@@ -27,15 +27,18 @@ const checkObj = {
   userPw: false,
   userPwConfirm: false,
   userNick: false,
-  sendEmail: false, // 인증번호 발송 체크
+  cNumber: false,
+  sendEmail: false // 인증번호 발송 체크
 };
 
-// 비밀번호 인풋값들
+// 비밀번호 찾기 인풋값들
 const userEmail = document.getElementById("userEmail");
 const userName = document.getElementById("userName");
 const userBirth = document.getElementById("userBirth");
+
 // 인증하기버튼
 const sendBtn = document.getElementById("sendBtn");
+
 // 타이머
 const cMessage = document.getElementById("cMessage");
 let checkInterval; // setInterval을 저장할 변수
@@ -143,9 +146,9 @@ const cNumber = document.getElementById("cNumber");
 const cBtn = document.getElementById("cBtn");
 
 // 인증완료 버튼을 눌렀을때
-cBtn.addEventListener("click", function () {
+cNumber.addEventListener("input", function () {
   console.log(checkObj);
-
+  
   // 1. 인증번호 받기 버튼이 클릭되어 이메일 발송되었는지 확인
   if (checkObj.sendEmail) {
     // 2. 입력된 인증번호가 6자리가 맞는지 확인
@@ -167,10 +170,13 @@ cBtn.addEventListener("click", function () {
 
           if (result == 1) {
             clearInterval(checkInterval); // 타이머 멈춤
-
-            cMessage.innerText = "인증되었습니다.";
+            
+			checkObj.cNumber = true;
+			
+            cMessage.innerText = "success";
             cMessage.classList.add("confirm");
             cMessage.classList.remove("error");
+            
           } else if (result == 2) {
             alert("만료된 인증 번호 입니다.");
           } else {
@@ -195,78 +201,15 @@ cBtn.addEventListener("click", function () {
   }
 });
 
-// 재설정할 비밀번호 유효성 검사
-const userPw = document.getElementById("userPw");
-const userPwConfirm = document.getElementById("userPwConfirm");
-const pwMessage = document.getElementById("pwMessage");
 
-userPw.addEventListener("keydown", function () {
-  if (userPw.value.lengh == 0) {
-    pwMessage.innerText =
-      "영어, 숫자, 특수문자(!,@,#,-,_) 6~20글자 사이로 작성해주세요.";
-  }
 
-  const regExp = /^[\w!@#_-]{6,20}/;
-
-  if (regExp.test(userPw.value)) {
-    // 정규표현식 통과
-
-    checkObj.userPw = true;
-
-    if (userPwConfirm.value.length == 0) {
-      pwMessage.innerText = "유효한 비밀번호 형식입니다.";
-      pwMessage.classList.add("confirm");
-      pwMessage.classList.remove("error");
-    } else {
-      checkPw();
-    }
-  } else {
-    // 유효하지않은 상태
-    pwMessage.innerText =
-      "영어, 숫자, 특수문자(!,@,#,-,_) 6~20글자 사이로 작성해주세요.";
-    pwMessage.classList.add("error");
-    pwMessage.classList.remove("confirm");
-
-    checkObj.userPw = false;
-  }
-});
-
-function checkPw() {
-  // 비밀번호 일치 검사
-
-  const regExp = /^[\w!@#_-]{6,20}$/;
-
-  if (userPw.value == userPwConfirm.value) {
-    console.log("비밀번호 일치 시킴!");
-    console.log(userPwConfirm.value);
-    console.log(userPw.value);
-
-    if (regExp.test(userPw.value)) {
-      pwMessage.innerText = "";
-      pwMessage.classList.add("confirm");
-      pwMessage.classList.remove("error");
-
-      checkObj.userPwConfirm = true;
-    } else {
-      pwMessage.innerText =
-        "영어, 숫자, 특수문자(!,@,#,-,_) 6~20글자 사이로 작성해주세요.";
-      pwMessage.classList.add("error");
-      pwMessage.classList.remove("confirm");
-
-      checkObj.userPwConfirm = false;
-    }
-  } else {
-    pwMessage.innerText = "비밀번호가 일치하지 않습니다.";
-    pwMessage.classList.add("error");
-    pwMessage.classList.remove("confirm");
-
-    checkObj.userPwConfirm = false;
-  }
+function goChangPw(){
+	if(checkObj.cNumber==true){
+		let url = 'pwChange';
+		window.location.href = url;
+	} else {
+		alert("필수기입항목들이 기입되지 않았습니다");
+	}
 }
 
-// 비밀번호 재설정
-const changePw = document.getElementById("changPw");
 
-changePw.addEventListener("click", function () {
-  console("비밀번호 재설정중...");
-});
