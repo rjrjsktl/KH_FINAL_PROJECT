@@ -80,7 +80,8 @@
 }
 
 .signUp-wrap>div:nth-child(1)>div:nth-child(1)>div:nth-child(1)>div>a:nth-child(3)>button {
-
+    height:44px;
+    padding:2px;
     background-color: #03c75a;
     color: white;
 }
@@ -122,9 +123,3 @@
 }
  */
 
-
-
-.signUp-wrap>div:nth-child(1)>div:nth-child(1)>div:nth-child(1) img {
-    width: 360px;
-    height: 60px;
-}

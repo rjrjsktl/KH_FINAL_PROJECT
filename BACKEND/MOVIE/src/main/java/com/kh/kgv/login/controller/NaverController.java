@@ -1,11 +1,7 @@
 package com.kh.kgv.login.controller;
 
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpSession;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +22,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.login.model.service.KakaoService;
+import com.kh.kgv.login.model.service.NaverService;
 import com.kh.kgv.login.model.service.SignUpService;
 
 import lombok.AllArgsConstructor;
@@ -33,23 +30,24 @@ import lombok.extern.log4j.Log4j;
 
 @SessionAttributes({ "loginUser" })
 @Controller
-public class KakaoController {
-	
+public class NaverController {
+
 	@Autowired
-	private KakaoService service;
+	private NaverService service;
 	@Autowired
 	private HttpSession session;
-
-	@RequestMapping("/sign_Up/sns/kakao")
-	public String kakaoLogin(
+	
+	//네아로 컨트롤러
+	@RequestMapping("/sign_Up/sns/naver")
+	public String naverLogin(
 			@RequestParam(value = "code" , required = false) String code,
 			Model model
 			) throws Exception {
 		String access_Token = service.getAccessToken(code);
 		
-		// 엑세스 토큰값은 정상적으로 받아와진다.
 		User loginUser = service.getUserInfo(access_Token);
 		session.setAttribute("loginUser", loginUser);
+		
 		if(loginUser !=null) {
 			session.setAttribute("loginUser", loginUser);
 			session.setAttribute("access_Token", access_Token);
@@ -61,23 +59,6 @@ public class KakaoController {
 
 	}
 	
-	
-	@GetMapping("/logout")
-	   public String logout(SessionStatus status,HttpSession session) {
-	       String access_Token = (String)session.getAttribute("access_Token");
-
-	           if(access_Token != null && !"".equals(access_Token)){
-	        	   service.kakaoLogout(access_Token);
-	               session.removeAttribute("access_Token");
-	               session.removeAttribute("loginMember");
-	               session.invalidate();
-	           }else{
-	           }
-	      status.setComplete();
-	      return "redirect:/";
-	   }
-	
 
 
 }
-

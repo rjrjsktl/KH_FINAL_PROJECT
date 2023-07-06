@@ -226,9 +226,9 @@
 
 
 		<dependency>
-   		 <groupId>org.springframework</groupId>
-    		<artifactId>spring-aop</artifactId>
-    		<version>5.3.15</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>5.3.15</version>
 		</dependency>
 
 		<!-- AspectJ : AOP 기능을 사용하기 위한 언어 문법 -->
@@ -247,11 +247,11 @@
 			<artifactId>aspectjweaver</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>
-		
-				<dependency>
-    		<groupId>cglib</groupId>
-    		<artifactId>cglib</artifactId>
-    		<version>3.2.4</version>
+
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>3.2.4</version>
 		</dependency>
 
 
@@ -371,9 +371,6 @@
 			<artifactId>lucy-xss-servlet</artifactId>
 			<version>2.0.1</version>
 		</dependency>
-
-	
-
 
 
 
