@@ -32,13 +32,22 @@ public class PayDAO {
 	
 	// 좌석 수 확인
 	public String checkSeat(int bookNo) {
-		
 		return sqlSession.selectOne("playMapper.checkSeat",bookNo);
 	}
 	
 	// 쿠폰 카테고리 검색
 	public String serchCategory(String couponNo) {
 		return sqlSession.selectOne("playMapper.selectCategory",couponNo);
+	}
+	
+	// 예매내역 테이블 정보 저장
+	public int successPayment(Map<String, Object> SP) {
+		return sqlSession.insert("playMapper.successPayment",SP);
+	}
+	
+	// 예매내역 정보 찾아오기
+	public String serchPayOrder(int bookNo) {
+		return sqlSession.selectOne("playMapper.serchPayOrder", bookNo);
 	}
 
 	
