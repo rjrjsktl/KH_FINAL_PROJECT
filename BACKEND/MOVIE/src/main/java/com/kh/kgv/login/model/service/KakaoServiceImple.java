@@ -28,7 +28,7 @@ public class KakaoServiceImple implements KakaoService {
 
 	   @Autowired
 	   public SignUpDAO dao;
-
+		
 	   @Override
 	   public String getAccessToken(String authorize_code) {
 		   
@@ -55,6 +55,7 @@ public class KakaoServiceImple implements KakaoService {
 	         sb.append("&client_id=2efba8f52b3a5151a0a8fdbfc437d7b2"); //본인이 발급받은 key
 
 	         sb.append("&redirect_uri=https://kgv.co.kr/movie/sign_Up/sns/kakao");// 본인이 설정한 주소
+
 	            
 	         sb.append("&code=" + authorize_code);
 	         bw.write(sb.toString());
@@ -195,6 +196,11 @@ public class KakaoServiceImple implements KakaoService {
 	            e.printStackTrace();
 	        }
 	    }
+
+
+
+
+
 	   
 
 	

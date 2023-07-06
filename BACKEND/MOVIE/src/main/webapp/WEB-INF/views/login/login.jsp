@@ -22,7 +22,8 @@
 						<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 							integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 							crossorigin="anonymous"></script>
-							<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js" charset="utf-8"></script>
+						<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"
+							charset="utf-8"></script>
 
 
 					</head>
@@ -82,16 +83,11 @@
 
 											<!-- SNS 로그인 -->
 											<div class="kakaoLogin">
-													<a><button onclick="loginWithKakao()" >카카오로 로그인하기</button></a>
-
-
-												</div>
-												<!-- <li><a href="sns/naver"><img
-															src="${contextPath}/resources/images/loginpage_images/naver_btn_icon_square.png"
-															alt="네이버"></a></li>
-												<li><a href="sns/google"><img
-															src="${contextPath}/resources/images/loginpage_images/google_btn_icon_square.png"
-															alt="구글"></a></li> -->
+												<a><button onclick="loginWithKakao()">카카오로 로그인하기</button></a>
+											</div>
+											<a id="loginNaver" href="#">
+												<img src="${contextPath}/resources/images/logo/btnG_완성형.png"
+													alt=""></a>
 
 										</div>
 

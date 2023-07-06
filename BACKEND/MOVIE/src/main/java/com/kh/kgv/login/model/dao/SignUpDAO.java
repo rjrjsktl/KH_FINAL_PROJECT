@@ -124,7 +124,15 @@ public class SignUpDAO {
 	public void kakaoinsert(HashMap<String, Object> userInfo) {
 		   sqlSession.insert("signupMapper.kakaoinsert",userInfo);
 
-		
+	}
+
+
+	public User findNaver(HashMap<String, Object> naverUserInfo) {
+		return sqlSession.selectOne("signupMapper.findNaver",naverUserInfo);
+	}
+	
+	public void naverinsert(HashMap<String, Object> naverUserInfo) {
+		   sqlSession.insert("signupMapper.naverinsert",naverUserInfo);
 	}
 	
 
