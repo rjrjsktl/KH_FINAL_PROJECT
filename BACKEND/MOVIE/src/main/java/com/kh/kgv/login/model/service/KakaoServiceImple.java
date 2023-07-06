@@ -57,20 +57,8 @@ public class KakaoServiceImple implements KakaoService {
 	         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 	         StringBuilder sb = new StringBuilder();
 	         sb.append("grant_type=authorization_code");
-	       
-<<<<<<< HEAD
 	         sb.append("&client_id="+cid); //본인이 발급받은 key
-=======
-	         sb.append("&client_id=2efba8f52b3a5151a0a8fdbfc437d7b2"); //본인이 발급받은 key
->>>>>>> ec9eca641f8120f3f6acdb087439172825700422
-
-
-<<<<<<< HEAD
 	         sb.append("&redirect_uri="+addr);// 본인이 설정한 주소
-
-	            
-=======
->>>>>>> ec9eca641f8120f3f6acdb087439172825700422
 	         sb.append("&code=" + authorize_code);
 	         bw.write(sb.toString());
 	         bw.flush();

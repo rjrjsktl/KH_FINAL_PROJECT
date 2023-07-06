@@ -122,8 +122,10 @@
                         <div class="iifpdiv">
                             <p>인증번호</p>
                             <div>
-                            	<input type="text" placeholder="인증번호" name="cNumber" id="cNumber"> <span class="signUp-message" id="cMessage"></span>
+                            	<input type="text" placeholder="인증번호" name="cNumber" id="cNumber"> 
+                            
                             </div>
+                            <p class="signUp-message"  id="cMessage" ></p>
                         </div>
                         
                         <p class="pnbalert">※ 인증이 어려울 경우 고객센터를 통하여 찾기를 진행 해 주시기 바랍니다.</p>

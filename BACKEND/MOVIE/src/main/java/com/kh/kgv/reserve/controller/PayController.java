@@ -134,12 +134,9 @@ public class PayController {
 		System.out.println(key);
 		System.out.println(srckey);
 		// REST API 키와 REST API secret 를 아래처럼 순서대로 입력한다.
-<<<<<<< HEAD
 		this.api = new IamportClient(key,srckey);
-=======
-        this.api = new IamportClient("1212046075703083","0aTIevttJkDRmm2iLKZSTbstVQ6wPUVjq9Ijg1X1xy6AtrSO3opsXaKPfKKueEhf2GNsv5T2CKl9Fe1X");
->>>>>>> ec9eca641f8120f3f6acdb087439172825700422
 	}
+
 
 	// 결제 검증
 	@ResponseBody
