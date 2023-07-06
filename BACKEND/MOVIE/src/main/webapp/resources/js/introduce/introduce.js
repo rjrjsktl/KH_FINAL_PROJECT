@@ -2,6 +2,15 @@ const userNickElement = document.getElementById("userNick");
 const userNickValue = userNickElement.value;
 console.log(userNickValue);
 
+$(document).ready(function () {
+  var itemCount = $("li.review").length;
+  if (itemCount <= 4) {
+    $(".morePage").hide();
+  } else {
+    $(".morePage").show();
+  }
+});
+
 let urlParams = new URLSearchParams(window.location.search);
 let reviewParam = urlParams.get("review");
 console.log("reviewParam:::" + reviewParam);
@@ -151,6 +160,13 @@ $(document).ready(function () {
       url: "/movie/movieList/detail_List/introduce/" + movieNo + "/" + cp,
       type: "GET",
       success: function (data) {
+        if (data.length === 0) {
+          // 데이터가 더 이상 없으므로 '더보기' 버튼을 숨김
+          console.log("????????????????????????????????????? ");
+          $(".morePage").hide();
+          return;
+        }
+
         data.forEach(function (review) {
           const li = $(document.createElement("li"));
           var userNo = document.getElementById("userNo").value;

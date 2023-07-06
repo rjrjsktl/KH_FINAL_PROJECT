@@ -307,8 +307,11 @@ public class MovieListController {
 	    @PathVariable("cp") int cp) throws Exception {
 
 	    Map<String, Object> reviewList = service.getReviewList(movieNo, cp);
+	    
 	    return (List<Review>) reviewList.get("reviewList");
 	}
+	
+
 	
 	@ResponseBody
 	@PostMapping("/detail_List/introduce/deleteReview/{revNo}")
