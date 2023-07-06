@@ -48,6 +48,7 @@ public class ReserveController {
 	private Map<String, Object> reserveMap = null;
 	private Map<String, Object> priceMap = null; 
 	
+	
 
 	@GetMapping("/choicePlay")
 	public String enterChoicePlay(Model model) {

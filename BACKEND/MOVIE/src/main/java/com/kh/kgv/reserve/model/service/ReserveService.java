@@ -45,9 +45,9 @@ public interface ReserveService {
 
 	List<JoinPlay> getSpecialPlayList(String screenStyle, String cinemaName, String dateIndex);
 
-	List<JoinPlay> getRoomPlayList(String screenStyle, String cinemaName, String dateIndex, String movieOptionIndex,
-			String movieIndex);
+	List<JoinPlay> getRoomPlayList(String screenStyle, String cinemaName, String dateIndex, String movieOptionIndex, String movieIndex);
 
+	int removeSeat();
 
 
 }

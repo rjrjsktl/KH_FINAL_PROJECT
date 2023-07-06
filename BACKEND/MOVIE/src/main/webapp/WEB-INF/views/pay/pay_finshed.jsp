@@ -63,6 +63,7 @@
                             <span>예매하신 코드번호 :</span>
                             <span>${finalMap.payOrder}</span>
                             <span>${finalMap.payOrder}</span>
+                            <span>${finalMap.userPlay.movie.movieTitle}</span>
                         </div>
 
                         <!-- 결제 api 전 단계 영역-->

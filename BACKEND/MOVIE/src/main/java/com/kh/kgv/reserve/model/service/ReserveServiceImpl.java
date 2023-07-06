@@ -13,11 +13,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
+import com.kh.kgv.customer.model.vo.Book;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.items.model.vo.Play;
 import com.kh.kgv.management.model.vo.Cinema;
@@ -35,7 +37,6 @@ public class ReserveServiceImpl implements ReserveService {
 	private List<Cinema> cinemaList = null;
 	private List<Movie> movieList = null;
 	private List<Movie> thumbList = null;
-	private List<JoinPlay> joinPlayList = null;
 
 	@Override
 	public List<Cinema> getAreaCinemaList(String areaName) {
@@ -389,5 +390,58 @@ public class ReserveServiceImpl implements ReserveService {
 
 		return roomPlayList;
 	}
+    
+	@Override
+	public int removeSeat() {
+		// 스케줄링을 통해 예매 취소된 좌석을 지우고, 상영 인원을 업데이트함
+		List<Book> canceledBookList = dao.getCanceledBookList();
+		Map<Integer, List<Book>> canceledBookMap = canceledBookList.stream().collect(Collectors.groupingBy(Book::getPlayNo));
+		int playCount = 0;
+		int bookCount = 0;
+		
+		for ( Integer key : canceledBookMap.keySet() ) {
+			Play play = dao.getSimplePlay(key);
+			int playBookCount = play.getPlayBookCount();
+			
+			String[] playSeatArray = play.getPlayBookSeat().replaceAll("\\[|\\]", "").split(",");
+			List<String> playSeatList = new ArrayList<String>();
+						
+			for(String ps : playSeatArray) {
+				if(!ps.equals("")) {
+			        playSeatList.add(ps);
+				}
+			}
+
+			for(Book canceledBook : canceledBookMap.get(key)) {
+				String bookSeat = canceledBook.getBookSeat().replaceAll("\\[|\\]", "").replaceAll(" ", "");
+				String[] bookSeatArray = bookSeat.split(",");
+				
+				for(String bs : bookSeatArray) {
+					playSeatList.remove(bs);
+				}
+				
+				playBookCount -= bookSeatArray.length;
+			}
+			
+			String playBookSeat = Arrays.deepToString(playSeatList.toArray()).replaceAll(" ", "");
+			
+
+			Map<String, Object> seatMap = new HashMap<>();
+			seatMap.put("playNo", key);
+			seatMap.put("playBookSeat", playBookSeat);
+			seatMap.put("playBookCount", playBookCount);
+			
+			playCount += dao.updatePlaySeat(seatMap);
+			
+		}
+		
+		if(playCount > 0) {
+			bookCount = dao.deleteBook();
+		}
+		
+		return bookCount;
+	}
+
+
 
 }
