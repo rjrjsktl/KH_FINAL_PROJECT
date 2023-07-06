@@ -48,7 +48,7 @@ public class NaverServiceImple implements NaverService {
 			sb.append("grant_type=authorization_code");
 			sb.append("&client_id=zbgd6cEyo8jMiPuWLAHo");
 			sb.append("&client_secret=SduvBv1SRj");
-			sb.append("&redirect_uri=http://localhost:8080/movie/sign_Up/sns/naver");
+			sb.append("&redirect_uri=https://kgv.co.kr/movie/sign_Up/sns/naver");
 			sb.append("&code="+authorize_code);
 			sb.append("&state=url_parameter");
 			bw.write(sb.toString());
