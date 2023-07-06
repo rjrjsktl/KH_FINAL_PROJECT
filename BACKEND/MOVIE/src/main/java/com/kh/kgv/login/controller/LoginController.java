@@ -71,13 +71,10 @@ public class LoginController {
 			SessionStatus status,
 			@RequestParam(value="saveId", required=false) String saveId) {
 
-
 		logger.info("1. 로그인 기능 수행 시작");
-
 
 		// 아이디, 비밀번호가 일치하는 회원 정보를 조회하는 Service 호출 후 결과 반환 받기
 		User loginUser = service.login(inputUser);
-
 		logger.info("6. service 에서 받아온 loginUser : " + loginUser);
 
 		String path = null;
@@ -85,16 +82,11 @@ public class LoginController {
 		String prevPage = (String) session.getAttribute("prevPage");
 	    String mainPage = "/";
 	
-	    
 	    if (prevPage == null) {
 	        prevPage = mainPage;
 	    }
 
-
-
 		if(loginUser != null) { // 로그인 성공 시
-
-
 
 			if (prevPage != null) {
 				path =  "redirect:" + prevPage;
@@ -137,10 +129,6 @@ public class LoginController {
 
 			// 쿠키를 응답 시 클라이언트에게 전달
 			resp.addCookie(cookie);
-			
-			
-
-
 
 		} else {
 
@@ -156,284 +144,238 @@ public class LoginController {
 			// Spring에서 제공해줌
 			// -> RedirectAttributes 객체  (컨트롤러 매개변수에 작성하면 사용 가능)
 
-			//			return "redirect:/user/login"; 
+			return "redirect:/user/login"; 
 		}
-
-
 		
 	return path;
 
-}
+	}
+	
+	// 로그아웃
+	@GetMapping("/logout")
+	public String logout( /*HttpSession session,*/
+							SessionStatus status) {
+		// * @SessionAttributes을 이용해서 session scope에 배치된 데이터는
+		//   SessionStatus라는 별도 객체를 이용해야만 없앨 수 있다.
+		logger.info("로그아웃 수행됨");
 
-//session.setAttribute("loginUser", loginUser);
+		// session.invalidate(); // 기존 세션 무효화 방식으로는 안된다!
+		status.setComplete(); 
+		return "redirect:/";
+	}
 
-//		User checkloginUser = (User) session.getAttribute("loginUser");
-//		
-//		if (checkloginUser != null) {
-//		    logger.info("세션있음");
-//		} else {
-//			logger.info("세션없음");
-//		}
-//		
-//		
-//		logger.info("마지막 로그인 기능 수행됨");
-//		
-//		return "redirect:/";
-////		//return "login/login_welcome";
-//	}
+	// 비밀번호 찾기 진입
+	@RequestMapping("/findPw")
+	public String findPw(@ModelAttribute User inputUser,
+						 Model model,
+						 RedirectAttributes ra,
+						 HttpServletResponse resp,
+						 HttpServletRequest req,
+						 HttpSession session) {
 
-// 로그아웃
-@GetMapping("/logout")
-public String logout( /*HttpSession session,*/
-		SessionStatus status) {
-	// * @SessionAttributes을 이용해서 session scope에 배치된 데이터는
-	//   SessionStatus라는 별도 객체를 이용해야만 없앨 수 있다.
-	logger.info("로그아웃 수행됨");
+		logger.info("비밀번호 찾기 위한 준비 !");
 
-	// session.invalidate(); // 기존 세션 무효화 방식으로는 안된다!
+		return "login/findPwEmail_2";
+	}
 
-	status.setComplete(); 
+	// 아이디 찾기 진입
+	@RequestMapping("/findEmail")
+	public String findEmail(@ModelAttribute User inputUser,
+							Model model,
+							RedirectAttributes ra,
+							HttpServletResponse resp,
+							HttpServletRequest req,
+							HttpSession session) {
 
-	return "redirect:/";
+		logger.info("아이디 찾기 위한 준비 !");
 
+		return "login/findPwEmail_1";
+	}
 
-}
+	// 비밀번호 찾기 checkUser
+	@GetMapping("/checkUser")
+	@ResponseBody
+	public int checkUser(String userName, String userBirth, String userEmail) {
 
-// 비밀번호 찾기 진입
-@RequestMapping("/findPw")
-public String findPw(@ModelAttribute User inputUser,
-		Model model,
-		RedirectAttributes ra,
-		HttpServletResponse resp,
-		HttpServletRequest req,
-		HttpSession session) {
+		// 1. User 객체 생성
+		User user = new User();
 
-	logger.info("비밀번호 찾기 위한 준비 !");
+		logger.info("비밀번호를 찾으러 떠나자!");
 
-	return "login/findPwEmail_2";
-}
+		// 2. User 객체 안에 값을 넣어줌.
+		user.setUserName(userName);
+		user.setUserBirth(userBirth);
+		user.setUserEmail(userEmail);
 
-// 아이디 찾기 진입
-@RequestMapping("/findEmail")
-public String findEmail(@ModelAttribute User inputUser,
-		Model model,
-		RedirectAttributes ra,
-		HttpServletResponse resp,
-		HttpServletRequest req,
-		HttpSession session) {
+		// 3. 1과 0 보다는 값의 존재 여부 확인하는게 더 '낳'은거 같아서 boolean으로 넘김
+		Boolean checkPw = service.checkUser(user);
 
-	logger.info("아이디 찾기 위한 준비 !");
+		logger.info("찾아야될 User : " + checkPw);
+		// 9. AJAX에서 result값을 받을때 1과 0으로 구분한다. 그래서 받아온 값이 true이면 1 아니면 0을 반납한다.
+		// -> result가 아니어도 값이 넘어갑니다.
+		return checkPw ? 1 : 0;
+	}
 
-	return "login/findPwEmail_1";
-}
+	// 이메일 보내기
+	@ResponseBody
+	@GetMapping("/sendEmail")
+	public int sendEmail( String userEmail ) {
 
-// 비밀번호 찾기 checkUser
-@GetMapping("/checkUser")
-@ResponseBody
-public int checkUser(String userName, String userBirth, String userEmail) {
+		logger.debug("<<이메일 보내기>> userEmail : " + userEmail);
 
-	// 1. User 객체 생성
-	User user = new User();
-
-	logger.info("비밀번호를 찾으러 떠나자!");
-
-	// 2. User 객체 안에 값을 넣어줌.
-	user.setUserName(userName);
-	user.setUserBirth(userBirth);
-	user.setUserEmail(userEmail);
-
-	// 3. 1과 0 보다는 값의 존재 여부 확인하는게 더 '낳'은거 같아서 boolean으로 넘김
-	Boolean checkPw = service.checkUser(user);
-
-	logger.info("찾아야될 User : " + checkPw);
-	// 9. AJAX에서 result값을 받을때 1과 0으로 구분한다. 그래서 받아온 값이 true이면 1 아니면 0을 반납한다.
-	// -> result가 아니어도 값이 넘어갑니다.
-	return checkPw ? 1 : 0;
-}
-
-// 이메일 보내기
-@ResponseBody
-@GetMapping("/sendEmail")
-public int sendEmail( String userEmail ) {
-
-	logger.debug("<<이메일 보내기>> userEmail : " + userEmail);
-
-
-	String cNumber = "";
-	for (int i = 0; i < 6; i++) {
-
-		int sel1 = (int) (Math.random() * 3); // 0:숫자 / 1,2:영어
-
-		if (sel1 == 0) {
-
-			int num = (int) (Math.random() * 10); // 0~9
-			cNumber += num;
-
-		} else {
-
-			char ch = (char) (Math.random() * 26 + 65); // A~Z
-
-			int sel2 = (int) (Math.random() * 2); // 0:소문자 / 1:대문자
-
-			if (sel2 == 0) {
-				ch = (char) (ch + ('a' - 'A')); // 대문자로 변경
+		String cNumber = "";
+		
+		for (int i = 0; i < 6; i++) {
+			int sel1 = (int) (Math.random() * 3); // 0:숫자 / 1,2:영어
+			if (sel1 == 0) {
+				int num = (int) (Math.random() * 10); // 0~9
+				cNumber += num;
+			} else {
+				char ch = (char) (Math.random() * 26 + 65); // A~Z
+				int sel2 = (int) (Math.random() * 2); // 0:소문자 / 1:대문자
+				if (sel2 == 0) {
+					ch = (char) (ch + ('a' - 'A')); // 대문자로 변경
+				}
+				cNumber += ch;
 			}
-
-			cNumber += ch;
 		}
 
+		String setForm = "channelkgv1@gmail.com";
+		String toMail = userEmail;
+		String title = "KGV 아이디/비밀번호 찾기 인증 메일 입니다.";
+		String content = 
+				"KGV 홈페이지를 방문해주셔서 감사합니다." +
+						"<br><br>" + 
+						"아이디/비밀번호 찾기에 대한 인증 번호는 " + cNumber + "입니다." + 
+						"<br>" + 
+						"해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
+
+		logger.debug("<<이메일 보내기>> mailSender : " + mailSender);
+
+
+		try {
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+			helper.setFrom(setForm);
+			helper.setTo(toMail);
+			helper.setSubject(title);
+			helper.setText(content,true);
+			mailSender.send(message);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+
+		String cnum = cNumber.toString();
+		int result = service.insertCertification(cnum,userEmail);
+		return result;
 	}
 
-	String setForm = "channelkgv1@gmail.com";
-	String toMail = userEmail;
-	String title = "KGV 아이디/비밀번호 찾기 인증 메일 입니다.";
-	String content = 
-			"KGV 홈페이지를 방문해주셔서 감사합니다." +
-					"<br><br>" + 
-					"아이디/비밀번호 찾기에 대한 인증 번호는 " + cNumber + "입니다." + 
-					"<br>" + 
-					"해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
-
-	logger.debug("<<이메일 보내기>> mailSender : " + mailSender);
 
 
-	try {
-		MimeMessage message = mailSender.createMimeMessage();
-		MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
-		helper.setFrom(setForm);
-		helper.setTo(toMail);
-		helper.setSubject(title);
-		helper.setText(content,true);
-		mailSender.send(message);
 
-	}catch(Exception e) {
 
-		e.printStackTrace();
+	// 인증번호 인증하기
+	@ResponseBody
+	@GetMapping("/checkNumber")
+	public int checkNumber(String userEmail,
+						   String cNumber,
+						   Model model,
+						   HttpSession session ) {
 
+		logger.debug("<<인증번호 인증하기>> userEmail : " + userEmail);
+		logger.debug("<<인증번호 인증하기>> cnum : " + cNumber);
+
+
+		int result =  service.checkNumber(cNumber, userEmail);
+
+		//model.addAttribute("userEmail", userEmail);
+		session.setAttribute("userEmail", userEmail);
+
+		logger.info("<<인증번호 인증하기>> 찾고있는 비밀번호의 아이디 : " + userEmail);
+		logger.debug("result : " + result);
+
+		return result;
 	}
 
-	String cnum = cNumber.toString();
-
-	int result = service.insertCertification(cnum,userEmail);
-
-	return result;
-}
-
-
-
-
-
-// 인증번호 인증하기
-@ResponseBody
-@GetMapping("/checkNumber")
-public int checkNumber(String userEmail,
-		String cNumber,
-		Model model,
-		HttpSession session ) {
-
-
-	logger.debug("<<인증번호 인증하기>> userEmail : " + userEmail);
-	logger.debug("<<인증번호 인증하기>> cnum : " + cNumber);
-
-
-	int result =  service.checkNumber(cNumber, userEmail);
-
-	//		model.addAttribute("userEmail", userEmail);
-	session.setAttribute("userEmail", userEmail);
-
-	logger.info("<<인증번호 인증하기>> 찾고있는 비밀번호의 아이디 : " + userEmail);
-
-
-	logger.debug("result : " + result);
-
-	return result;
-
-}
-
-// 비밀번호 재설정 진입
-@GetMapping("/pwChange")
-public String pwChange(HttpSession session) {
-
-	String userEmail = (String) session.getAttribute("userEmail");
-
-	logger.info(userEmail);
-
-	return "login/pwChange";
-}
-
-// 비밀번호 재설정 하기
-@RequestMapping("/finshedchangePw")
-public String finshedchangePw(HttpSession session,
-		@RequestParam("userPw") String userPw,
-		/* User inputUser, */
-		RedirectAttributes ra) {
-
-	String userEmail = (String) session.getAttribute("userEmail");
-
-	System.out.println(userPw);
-
-	int result = service.changePw(userEmail,userPw);
-
-	String message = null;
-	String path = null;
-
-	if(result > 0 ) {
-		message = "비밀번호 재설정이 완료되었습니다";
-
-		logger.info("성공 렛쯔기릿~~~~~");
-
-		session.removeAttribute("userEmail");
-
-		return "common/main";
-
-	} else {
-		message = "비밀번호 재설정에 실패하였습니다.";
-
-		logger.info("실패 tlqkf~~~~~");
-
+	// 비밀번호 재설정 진입
+	@GetMapping("/pwChange")
+	public String pwChange(HttpSession session) {
+		String userEmail = (String) session.getAttribute("userEmail");
+		logger.info(userEmail);
 		return "login/pwChange";
-
 	}
 
-}
+	// 비밀번호 재설정 하기
+	@PostMapping("/finshedchangePw")
+	public String finshedchangePw(HttpSession session,
+								  @RequestParam("userPw") String userPw,
+								  /* User inputUser, */
+								  RedirectAttributes ra) {
 
+		String userEmail = (String) session.getAttribute("userEmail");
+		
+		System.out.println("userEmail ::::::::::::::::" + userEmail);
+		System.out.println("userPw    ::::::::::::::::" + userPw);
 
+		int result = service.changePw(userEmail,userPw);
 
+		String message = null;
+		String path = null;
 
-// 아이디 찾기
-@PostMapping("/findId")
-public String findEmail(String userName, String userBirth, String userTel,
-		RedirectAttributes ra) {
-	logger.info("userName :"+ userName + " // " +"userBirth :"+ userBirth + " // " + "userTel :"+ userTel  );
-
-
-	User user = new User();
-
-	logger.info("아이디를 찾으러 떠나자!");
-
-	// 2. User 객체 안에 값을 넣어줌.
-	user.setUserName(userName);
-	user.setUserBirth(userBirth);
-	user.setUserTel(userTel);
-
-	String findEmail = service.findEmail(user);
-
-	logger.info("받아온 findEmail : " + findEmail);
-
-	String message = null;
-	String path = null;
-
-	if (findEmail != null) {
-		message = "아이디찾기를 통해 찾은 아이디는 " + findEmail + " 입니다";
-		path = "redirect:/"; // 리다이렉트 경로로 수정
-	} else {
-		message = "찾을 수 있는 아이디가 존재하지 않습니다.";
-		path = "redirect:/user/findEmail"; // 리다이렉트 경로로 수정
+		if(result > 0 ) {
+			message = "비밀번호 재설정이 완료되었습니다";
+			logger.info("성공 렛쯔기릿~~~~~");
+			session.removeAttribute("userEmail");
+			path = "redirect:/";
+		} else {
+			message = "비밀번호 재설정에 실패하였습니다.";
+			logger.info("실패 tlqkf~~~~~");
+			path = "login/pwChange";
+		}
+		ra.addFlashAttribute("message",message);
+		
+		return path;
+				
 	}
-	ra.addFlashAttribute("message", message);
 
-	return path;
-}
+
+
+
+	// 아이디 찾기
+	@PostMapping("/findId")
+	public String findEmail(String userName,
+							String userBirth,
+							String userTel,
+							RedirectAttributes ra) {
+		logger.info("userName :"+ userName + " // " +"userBirth :"+ userBirth + " // " + "userTel :"+ userTel  );
+
+		User user = new User();
+
+		logger.info("아이디를 찾으러 떠나자!");
+
+		// 2. User 객체 안에 값을 넣어줌.
+		user.setUserName(userName);
+		user.setUserBirth(userBirth);
+		user.setUserTel(userTel);
+
+		String findEmail = service.findEmail(user);
+
+		logger.info("받아온 findEmail : " + findEmail);
+
+		String message = null;
+		String path = null;
+
+		if (findEmail != null) {
+			message = "아이디찾기를 통해 찾은 아이디는 " + findEmail + " 입니다";
+			path = "redirect:/"; // 리다이렉트 경로로 수정
+		} else {
+			message = "찾을 수 있는 아이디가 존재하지 않습니다.";
+			path = "redirect:/user/findEmail"; // 리다이렉트 경로로 수정
+		}
+		ra.addFlashAttribute("message", message);
+
+		return path;
+	}
 
 
 
