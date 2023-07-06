@@ -8,6 +8,36 @@ $(document).ready(function () {
 
 
     IMP.init(imm);
+
+
+
+
+    $("#chkSavingTerm").on("click", function () {
+
+        $(".provision_list input[type='checkbox']").prop("checked", $(this).is(":checked"));
+    });
+
+
+    $(".provision_list input[type='checkbox']").on("click", function () {
+
+        var allChecked = $(".provision_list input[type='checkbox']").length === $(".provision_list input[type='checkbox']:checked").length;
+
+        $("#chkSavingTerm").prop("checked", allChecked);
+    });
+
+
+
+
+
+
+    $(".pay_simple_btn_box").on("click", function () {
+        $(this).toggleClass("active");
+    });
+
+
+
+
+
 });
 
 
