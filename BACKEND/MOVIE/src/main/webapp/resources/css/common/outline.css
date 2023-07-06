@@ -92,7 +92,7 @@ header>section:nth-child(1) {
     height: 57px;
     display: flex;
     align-items: center;
-
+    justify-content: right;
 }
 
 /* 광고이미지 wrapper */
