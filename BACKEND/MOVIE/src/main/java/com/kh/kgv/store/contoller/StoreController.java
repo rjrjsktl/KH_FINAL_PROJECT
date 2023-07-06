@@ -30,7 +30,7 @@ import com.kh.kgv.common.Util.SessionUtil;
 import com.kh.kgv.customer.model.vo.User;
 
 import com.kh.kgv.items.model.vo.Store;
-import com.kh.kgv.management.vo.ApiKey;
+import com.kh.kgv.management.vo.NewApiKeys;
 import com.kh.kgv.store.model.service.StoreService;
 
 import com.kh.kgv.store.model.vo.StoreCoupon;
@@ -185,7 +185,7 @@ public class StoreController {
 	public StoreController() {
 
 
-		ApiKey apikey = new ApiKey();
+		NewApiKeys apikey = new NewApiKeys();
 		String key = apikey.getIamportKey();
 		String secretKey = apikey.getIamportSecretKey();
 
