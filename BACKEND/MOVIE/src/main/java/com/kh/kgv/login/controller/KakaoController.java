@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -33,6 +34,7 @@ import lombok.extern.log4j.Log4j;
 @SessionAttributes({ "loginUser" })
 @Controller
 public class KakaoController {
+	
 	@Autowired
 	private KakaoService service;
 	@Autowired
@@ -44,9 +46,6 @@ public class KakaoController {
 			Model model
 			) throws Exception {
 		String access_Token = service.getAccessToken(code);
-		
-		
-		
 		
 		// 엑세스 토큰값은 정상적으로 받아와진다.
 		User loginUser = service.getUserInfo(access_Token);
@@ -62,6 +61,7 @@ public class KakaoController {
 
 	}
 	
+	
 	@GetMapping("/logout")
 	   public String logout(SessionStatus status,HttpSession session) {
 	       String access_Token = (String)session.getAttribute("access_Token");
@@ -76,7 +76,7 @@ public class KakaoController {
 	      status.setComplete();
 	      return "redirect:/";
 	   }
-
+	
 
 
 }

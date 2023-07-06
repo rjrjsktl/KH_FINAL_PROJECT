@@ -32,7 +32,6 @@ window.onclick = function(event) {
 }
 */
 
-// 메뉴창 하버
 $(document).ready(function () {
   $(".navBar, .dummy").hover(
     function () {
@@ -44,9 +43,7 @@ $(document).ready(function () {
       $(".dummy").css("display", "none");
     }
   );
-});
 
-$(document).ready(function () {
   $(window).scroll(function () {
     if ($(this).scrollTop() > 100) {
       $(".go_top_area")
@@ -62,5 +59,13 @@ $(document).ready(function () {
   $(".go_top_area > div > a:nth-child(2)").click(function () {
     $("html, body").animate({ scrollTop: 0 }, 200);
     return false;
+  });
+
+  $(".submitBTN").click(function (e) {
+    var inputLength = $('input[name="hkeyword"]').val().length;
+    if (inputLength < 2) {
+      e.preventDefault();
+      alert("두 글자 이상 입력해주세요");
+    }
   });
 });

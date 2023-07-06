@@ -13,11 +13,15 @@
                         <title>스토어</title>
 
                         <!-- fontawesome -->
-                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-                            integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                        <link rel="stylesheet"
+                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+                            integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+                            crossorigin="anonymous" referrerpolicy="no-referrer" />
 
                         <!-- jQuery 라이브러리 추가(CDN) -->
-                        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                            crossorigin="anonymous"></script>
 
 
                         <link rel="stylesheet" href="${contextPath}/resources/css/store/storeMain.css">
@@ -35,7 +39,8 @@
                             <main>
 
                                 <div>
-                                    <img src="${contextPath}/resources/images/storeimg/cd29de8de4104808ac9a22160cfcff76.png" alt="">
+                                    <img src="${contextPath}/resources/images/storeimg/cd29de8de4104808ac9a22160cfcff76.png"
+                                        alt="">
                                 </div>
 
                                 <div id="wrapper">
@@ -45,7 +50,8 @@
                                     <div class="tab-list fixed">
                                         <ul>
 
-                                            <li><a href="#none" id="storeTab_1" class="storeTab clicked" title="전체탭">전체</a>
+                                            <li><a href="#none" id="storeTab_1" class="storeTab clicked"
+                                                    title="전체탭">전체</a>
                                             </li>
 
                                             <li><a href="#none" id="storeTab_2" class="storeTab" title="음료탭">음료</a></li>
@@ -54,7 +60,7 @@
 
                                             <li><a href="#none" id="storeTab_4" class="storeTab" title="스낵탭">스낵</a></li>
 
-                                            <li><a href="#none" id="storeTab_5" class="storeTab" title="티켓탭">KGV티켓</a>
+                                            <li><a href="#none" id="storeTab_5" class="storeTab" title="티켓탭">티켓할인권</a>
                                             </li>
 
                                         </ul>
@@ -73,7 +79,8 @@
                                                 <c:choose>
                                                     <c:when test="${store.storeCategory eq '음료'}">
                                                         <li class="">
-                                                            <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}" title="${store.storeName}">
+                                                            <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
+                                                                title="${store.storeName}">
                                                                 <div class="img">
                                                                     <img src="${store['storeImage']}">
                                                                 </div>
@@ -85,7 +92,9 @@
                                                                     <div class="price">
                                                                         <p class="sale">
                                                                             <em>
-                                                                                <fmt:formatNumber value="${store.storePrice}" pattern="#,###" />
+                                                                                <fmt:formatNumber
+                                                                                    value="${store.storePrice}"
+                                                                                    pattern="#,###" />
                                                                             </em>
                                                                             <span>원</span>
                                                                         </p>
@@ -118,7 +127,8 @@
                                                 <c:choose>
                                                     <c:when test="${store.storeCategory eq '팝콘'}">
                                                         <li class="">
-                                                            <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}" title="${store.storeName}">
+                                                            <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
+                                                                title="${store.storeName}">
                                                                 <div class="img">
                                                                     <img src="${store['storeImage']}">
                                                                 </div>
@@ -130,7 +140,9 @@
                                                                     <div class="price">
                                                                         <p class="sale">
                                                                             <em>
-                                                                                <fmt:formatNumber value="${store.storePrice}" pattern="#,###" />
+                                                                                <fmt:formatNumber
+                                                                                    value="${store.storePrice}"
+                                                                                    pattern="#,###" />
                                                                             </em>
                                                                             <span>원</span>
                                                                         </p>
@@ -164,7 +176,8 @@
                                                 <c:choose>
                                                     <c:when test="${store.storeCategory eq '스낵'}">
                                                         <li class="">
-                                                            <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}" title="${store.storeName}">
+                                                            <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
+                                                                title="${store.storeName}">
                                                                 <div class="img">
                                                                     <img src="${store['storeImage']}">
                                                                 </div>
@@ -176,7 +189,9 @@
                                                                     <div class="price">
                                                                         <p class="sale">
                                                                             <em>
-                                                                                <fmt:formatNumber value="${store.storePrice}" pattern="#,###" />
+                                                                                <fmt:formatNumber
+                                                                                    value="${store.storePrice}"
+                                                                                    pattern="#,###" />
                                                                             </em>
                                                                             <span>원</span>
                                                                         </p>
@@ -198,7 +213,7 @@
                                         </ul>
 
 
-                                        <h3 class="store_h3 store_ticket">티켓</h3>
+                                        <h3 class="store_h3 store_ticket">할인권</h3>
                                         <ul class="store_ul store_ticket">
 
 
@@ -207,7 +222,8 @@
                                                 <c:choose>
                                                     <c:when test="${store.storeCategory eq '티켓'}">
                                                         <li class="">
-                                                            <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}" title="${store.storeName}">
+                                                            <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
+                                                                title="${store.storeName}">
                                                                 <div class="img">
                                                                     <img src="${store['storeImage']}">
                                                                 </div>
@@ -219,7 +235,9 @@
                                                                     <div class="price">
                                                                         <p class="sale">
                                                                             <em>
-                                                                                <fmt:formatNumber value="${store.storePrice}" pattern="#,###" />
+                                                                                <fmt:formatNumber
+                                                                                    value="${store.storePrice}"
+                                                                                    pattern="#,###" />
                                                                             </em>
                                                                             <span>원</span>
                                                                         </p>

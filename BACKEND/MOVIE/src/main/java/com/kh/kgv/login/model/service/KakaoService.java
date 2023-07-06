@@ -9,8 +9,10 @@ public interface KakaoService {
 
 	String getAccessToken(String authorize_code);
 	User getUserInfo(String access_Token);
-	
 	public void kakaoLogout(String access_Token);
+	
+	
+
 
 
 }

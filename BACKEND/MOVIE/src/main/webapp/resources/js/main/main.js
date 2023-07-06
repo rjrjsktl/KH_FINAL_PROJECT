@@ -1,16 +1,39 @@
-function zoomIn(event) {
-  event.target.style.transform = "scale(1.05)"; //1.2배 확대
-  event.target.style.zIndex = 1;
-  event.target.style.transition = "all 0.5s"; // 속도
+function setCookie(name, value, exhours) {
+  var date = new Date();
+  date.setTime(date.getTime() + exhours * 60 * 60 * 1000);
+  var expires = "expires=" + date.toUTCString();
+  document.cookie = name + "=" + value + ";" + expires + ";path=/movie";
 }
-function zoomOut(event) {
-  event.target.style.transform = "scale(1)";
-  event.target.style.zIndex = 0;
-  event.target.style.transition = "all 0.5s";
+
+function getCookie(name) {
+  var name = name + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(";");
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
 }
 
 // 메인 이미지 무한 슬라이더************************************************************
 $(document).ready(function () {
+  function zoomIn(event) {
+    event.target.style.transform = "scale(1.05)"; //1.2배 확대
+    event.target.style.zIndex = 1;
+    event.target.style.transition = "all 0.5s"; // 속도
+  }
+  function zoomOut(event) {
+    event.target.style.transform = "scale(1)";
+    event.target.style.zIndex = 0;
+    event.target.style.transition = "all 0.5s";
+  }
+
   var swiper = new Swiper("main section:nth-of-type(1) .swiper-container", {
     slidesPerView: 1,
     spaceBetween: 100,
@@ -30,11 +53,7 @@ $(document).ready(function () {
   swiper.el.addEventListener("mouseleave", function () {
     swiper.autoplay.start();
   });
-});
-// 메인 이미지 무한 슬라이더************************************************************
 
-// 상영목록 슬라이더*******************************************************************
-$(document).ready(function () {
   var swiper = new Swiper("main section:nth-of-type(2) .swiper-container", {
     slidesPerView: 4,
     spaceBetween: 32,
@@ -54,11 +73,7 @@ $(document).ready(function () {
       },
     },
   });
-});
-// 상영목록 슬라이더*******************************************************************
 
-// 이벤트 슬라이더*******************************************************************
-$(document).ready(function () {
   var swiper = new Swiper(
     "main section:nth-of-type(3) > div >  .swiper-container",
     {
@@ -91,18 +106,7 @@ $(document).ready(function () {
   swiper.el.addEventListener("mouseleave", function () {
     swiper.autoplay.start();
   });
-});
 
-// 이벤트 슬라이더*******************************************************************
-// 슬라이더 끗-
-
-// --------------------------------------------------------------------------------
-// 구현해야할 JS 리스트
-
-// 1. for문 배열 돌려서..............................
-//    해당클래스에 해당하는 특별관들 display:none
-
-$(document).ready(function () {
   var theater = $(".stheater");
   var rightSide = $(".deleteUnderline");
 
@@ -141,4 +145,26 @@ $(document).ready(function () {
       });
     })(i);
   }
+
+  // 모달 닫기 이벤트
+  $(".closemdp").click(function () {
+    $(".modal_wrap").css("display", "none");
+    $("body").removeClass("modal-open"); // 클래스 제거
+  });
+
+  // if (getCookie("modal_closed") == "true") {
+  //   $(".modal_wrap").css("display", "none");
+  // }
+
+  if (getCookie("modal_closed") != "true") {
+    $("body").addClass("modal-open");
+  } else {
+    $(".modal_wrap").css("display", "none");
+  }
+
+  // "24시간동안 닫기" 링크 클릭 시, 쿠키 설정
+  $(".closemdp").click(function () {
+    $(".modal_wrap").css("display", "none");
+    setCookie("modal_closed", "true", 24); // 쿠키 이름: "modal_closed", 쿠키 값: "true", 만료시간: 24시간
+  });
 });

@@ -9,13 +9,13 @@
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>회원가입 페이지</title>
-	
-	
-			<link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css"> 
+
+
+            <link rel="stylesheet" href="${contextPath}/resources/css/common/outline.css">
             <link rel="stylesheet" href="${contextPath}/resources/css/signUp/signUp.css">
-            
+
             <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
         </head>
@@ -26,7 +26,7 @@
 
                 <!-- header -->
                 <jsp:include page="/WEB-INF/views/common/header.jsp" />
-                
+
                 <main>
                     <!-- 여기서 부터 작업하세요. -->
 
@@ -46,7 +46,7 @@
                                     autocomplete="off" required>
 
 
-                                <button type="button" id="sendBtn"  >인증번호 받기</button>
+                                <button type="button" id="sendBtn">인증번호 받기</button>
                             </div>
 
                             <span class="signUp-message" id="emailMessage"></span>
@@ -59,9 +59,10 @@
 
                             <div class="signUp-input-area">
                                 <!-- cNumber -->
-                                <input type="text" id="cNumber" name="cNumber" placeholder="인증번호 입력" maxlength="6" autocomplete="off">
+                                <input type="text" id="cNumber" name="cNumber" placeholder="인증번호 입력" maxlength="6"
+                                    autocomplete="off">
 
-                                <button type="button" id="cBtn" >인증하기</button>
+                                <button type="button" id="cBtn">인증하기</button>
                             </div>
 
                             <!-- 5:00 타이머 -->
@@ -179,7 +180,7 @@
                             </div>
 
                             <button type="submit" id="signUp-btn">가입하기</button>
-                            <button type="button" id="test-btn">테스트</button>
+
                         </form>
 
                     </section>
@@ -218,7 +219,7 @@
              -->
 
             <!-- jQuery 라이브러리 추가(CDN) -->
-      
+
             <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
             <script src="${contextPath}/resources/js/signUp/signUp.js"></script>
