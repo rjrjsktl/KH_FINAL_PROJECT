@@ -498,7 +498,7 @@ main>section:nth-child(5)>div {
 /* 좌측랩퍼 암코리안탑클래스힙합모범노블레스.. */
 main>section:nth-child(5)>div>div:nth-child(1) {
     width: 65%;
-    border: 1px solid #a3a3a3;
+    background-color: rgb(32,32,32);
     border-radius: 10px;
     padding: 30px;
 }
@@ -532,11 +532,14 @@ main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(1)> :nth-child(2) {
 
 main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(1)> :nth-child(3) {
     width: 10%;
-    border: 1px solid lightgray;
-    border-radius: 20px;
     text-align: center;
     padding: 3px 10px;
     font-size: 0.8rem;
+}
+
+main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(1)> :nth-child(3):hover{
+    color:#FFC400;
+    text-decoration: underline;
 }
 
 main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(2)> :nth-child(1) {
@@ -592,7 +595,7 @@ main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(3)>a {
     color: #FCFCFC;
     padding: 0 20px;
     cursor: pointer;
-    background-color: #191919;
+    background-color: rgb(49,49,49);
     line-height: 30px;
 }
 
