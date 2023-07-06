@@ -111,7 +111,7 @@
                                             <div class="payment">
 
                                                 <div>
-                                                    <div class="group_item active">
+                                                    <div class="group_item ">
                                                         <div class="bx_item"><input type="checkbox"
                                                                 id="chkSavingTerm"><label for="chkSavingTerm"
                                                                 class="ty2">결제대행서비스 약관 동의</label></div>
@@ -126,7 +126,8 @@
                                                                                 class="ty2">전자금융거래
                                                                                 이용약관 동의</label>
                                                                         </div>
-                                                                        <button class="btn_txt_more ty2">약관보기</button>
+                                                                        <button
+                                                                            class="btn_txt_more ty2 modalClick">약관보기</button>
                                                                     </li>
                                                                     <li>
                                                                         <div>
@@ -177,7 +178,7 @@
                                                         </span><em>원</em>
                                                     </div>
                                                     <div>
-                                                        <button onclick="requestPay()">결제하기</button>
+                                                        <button class="pay_Submit">결제하기</button>
 
                                                     </div>
                                                 </div>
@@ -191,6 +192,34 @@
 
 
                                 </div>
+
+                                <div class="modal areaModal">
+                                    <div class="box_1">
+                                        <div>
+                                            <span>결제대행서비스 약관</span>
+                                            <div>
+                                                <i class="fa-solid fa-square-xmark exitBtn"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <!-- 타이틀 -->
+
+                                        <!-- 중간 -->
+
+
+
+                                        <!-- 버튼 -->
+                                        <div class="box_3">
+                                            <div>
+                                                <button class="exitBtn">닫기</button>
+                                                <button class="useBtn">적용</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </main>
                         </div>
 

@@ -53,12 +53,16 @@ public class LoginController {
 	@Autowired
 	private JavaMailSender mailSender;
 
+
+
 	// 로그인 페이지 진입
 	@GetMapping("/login")
 	public String enterLogin() { 
 
 		return "login/login";
 	}
+
+
 
 	// 로그인
 	@PostMapping("/login")
@@ -69,30 +73,25 @@ public class LoginController {
 			HttpServletRequest req,
 			HttpSession session,
 			SessionStatus status,
-			@RequestParam(value="saveId", required=false) String saveId) {
+			@RequestParam(value="saveId", required=false) String saveId) throws IOException {
 
-		logger.info("1. 로그인 기능 수행 시작");
 
-		// 아이디, 비밀번호가 일치하는 회원 정보를 조회하는 Service 호출 후 결과 반환 받기
+
+
 		User loginUser = service.login(inputUser);
-		logger.info("6. service 에서 받아온 loginUser : " + loginUser);
-
 		String path = null;
-
-		String prevPage = (String) session.getAttribute("prevPage");
-	    String mainPage = "/";
-	
-	    if (prevPage == null) {
-	        prevPage = mainPage;
-	    }
 
 		if(loginUser != null) { // 로그인 성공 시
 
-			if (prevPage != null) {
-				path =  "redirect:" + prevPage;
-				session.removeAttribute("prevPage");
+			String url_prior_login = (String) session.getAttribute("url_prior_login");
+
+			if (url_prior_login == null) {
+				path = "redirect:/";  // 기본 페이지
+			} else {
+				path = "redirect:" + url_prior_login; // 이전 페이지로 리다이렉트
 			}
 
+	
 			String blockUser = loginUser.getUserBlock();
 
 			if(blockUser.equals("Y")) {
@@ -101,7 +100,7 @@ public class LoginController {
 				status.setComplete(); 
 
 				return "redirect:/"; 
-			} 
+			}
 
 			logger.info("로그인 성공!");
 
@@ -112,23 +111,20 @@ public class LoginController {
 			Cookie cookie = new Cookie("saveId", loginUser.getUserEmail());
 
 			if(saveId != null) { // 아이디 저장이 체크 되었을 때
-
 				cookie.setMaxAge(60 * 60 * 24 * 7); // 초 단위로 지정 (일주일)
-
 				logger.info("cookie run !");
-
 			} else { // 체크 되지 않았을 때
 				cookie.setMaxAge(0); // 0초 -> 생성 되자마자 사라짐 == 쿠키 삭제
-
 				logger.info("cookie death !");
 			}
-
 
 			// 쿠키가 적용될 범위(경로) 지정
 			cookie.setPath(req.getContextPath());
 
 			// 쿠키를 응답 시 클라이언트에게 전달
 			resp.addCookie(cookie);
+			
+		
 
 		} else {
 
@@ -146,15 +142,15 @@ public class LoginController {
 
 			return "redirect:/user/login"; 
 		}
-		
-	return path;
+
+		return path;
 
 	}
-	
+
 	// 로그아웃
 	@GetMapping("/logout")
 	public String logout( /*HttpSession session,*/
-							SessionStatus status) {
+			SessionStatus status) {
 		// * @SessionAttributes을 이용해서 session scope에 배치된 데이터는
 		//   SessionStatus라는 별도 객체를 이용해야만 없앨 수 있다.
 		logger.info("로그아웃 수행됨");
@@ -167,11 +163,11 @@ public class LoginController {
 	// 비밀번호 찾기 진입
 	@RequestMapping("/findPw")
 	public String findPw(@ModelAttribute User inputUser,
-						 Model model,
-						 RedirectAttributes ra,
-						 HttpServletResponse resp,
-						 HttpServletRequest req,
-						 HttpSession session) {
+			Model model,
+			RedirectAttributes ra,
+			HttpServletResponse resp,
+			HttpServletRequest req,
+			HttpSession session) {
 
 		logger.info("비밀번호 찾기 위한 준비 !");
 
@@ -181,11 +177,11 @@ public class LoginController {
 	// 아이디 찾기 진입
 	@RequestMapping("/findEmail")
 	public String findEmail(@ModelAttribute User inputUser,
-							Model model,
-							RedirectAttributes ra,
-							HttpServletResponse resp,
-							HttpServletRequest req,
-							HttpSession session) {
+			Model model,
+			RedirectAttributes ra,
+			HttpServletResponse resp,
+			HttpServletRequest req,
+			HttpSession session) {
 
 		logger.info("아이디 찾기 위한 준비 !");
 
@@ -224,7 +220,7 @@ public class LoginController {
 		logger.debug("<<이메일 보내기>> userEmail : " + userEmail);
 
 		String cNumber = "";
-		
+
 		for (int i = 0; i < 6; i++) {
 			int sel1 = (int) (Math.random() * 3); // 0:숫자 / 1,2:영어
 			if (sel1 == 0) {
@@ -278,9 +274,9 @@ public class LoginController {
 	@ResponseBody
 	@GetMapping("/checkNumber")
 	public int checkNumber(String userEmail,
-						   String cNumber,
-						   Model model,
-						   HttpSession session ) {
+			String cNumber,
+			Model model,
+			HttpSession session ) {
 
 		logger.debug("<<인증번호 인증하기>> userEmail : " + userEmail);
 		logger.debug("<<인증번호 인증하기>> cnum : " + cNumber);
@@ -308,12 +304,12 @@ public class LoginController {
 	// 비밀번호 재설정 하기
 	@PostMapping("/finshedchangePw")
 	public String finshedchangePw(HttpSession session,
-								  @RequestParam("userPw") String userPw,
-								  /* User inputUser, */
-								  RedirectAttributes ra) {
+			@RequestParam("userPw") String userPw,
+			/* User inputUser, */
+			RedirectAttributes ra) {
 
 		String userEmail = (String) session.getAttribute("userEmail");
-		
+
 		System.out.println("userEmail ::::::::::::::::" + userEmail);
 		System.out.println("userPw    ::::::::::::::::" + userPw);
 
@@ -333,9 +329,9 @@ public class LoginController {
 			path = "login/pwChange";
 		}
 		ra.addFlashAttribute("message",message);
-		
+
 		return path;
-				
+
 	}
 
 
@@ -344,9 +340,9 @@ public class LoginController {
 	// 아이디 찾기
 	@PostMapping("/findId")
 	public String findEmail(String userName,
-							String userBirth,
-							String userTel,
-							RedirectAttributes ra) {
+			String userBirth,
+			String userTel,
+			RedirectAttributes ra) {
 		logger.info("userName :"+ userName + " // " +"userBirth :"+ userBirth + " // " + "userTel :"+ userTel  );
 
 		User user = new User();

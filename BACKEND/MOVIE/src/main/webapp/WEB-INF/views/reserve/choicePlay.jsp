@@ -44,7 +44,6 @@
                     </div>
                     <div>
                       <div>
-
                           <ul id="area_list">
                               <li><a href="#none" class="clicked">서울</a></li>
                               <li><a href="#none">인천 경기</a></li>

@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.reserve.model.dao.PayDAO;
 import com.kh.kgv.reserve.model.dao.ReserveDAO;
 import com.kh.kgv.store.model.vo.StoreCoupon;
@@ -70,7 +71,16 @@ public class PayServiceImpl implements PayService {
 	// 예매내역 정보 찾아오기
 	@Override
 	public String serchPayOrder(int bookNo) {
-		return dao.serchPayOrder(bookNo);
+		String payOrder =  dao.serchPayOrder(bookNo);
+		return payOrder;
+	}
+	
+	// PLAY_NO 얻어오기
+	@Override
+	public JoinPlay getUserPlayByBookNo(int bookNo) {
+		int playNo = dao.getPlayNo(bookNo);
+		JoinPlay userPlay = dao.getUserPlay(playNo);
+		return userPlay;
 	}
 
 }
