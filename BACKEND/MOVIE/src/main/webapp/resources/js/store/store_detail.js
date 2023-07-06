@@ -25,8 +25,7 @@ $(document).ready(function () {
             totalPrice += price;
             $('#totalPrice').text(numberWithCommas(totalPrice));
 
-            console.log(totalCount);
-            console.log(totalPrice);
+
 
 
 
@@ -62,11 +61,7 @@ $(document).ready(function () {
 
 
 
-    function calcuprice() {
 
-        return price;
-
-    }
 
 
     $(".btn-toggle").on("click", function () {
@@ -114,14 +109,11 @@ $(document).ready(function () {
             },
 
             error: function () {
-                console.log("에러 발생으로 인해 등록 실패");
+                //console.log("에러 발생으로 인해 등록 실패");
             }
         });
 
-        console.log("상품 : " + storeName);
 
-        console.log("상품 총 가격 : " + totalPrice);
-        console.log("상품 개수 : " + totalCount);
 
     })
 

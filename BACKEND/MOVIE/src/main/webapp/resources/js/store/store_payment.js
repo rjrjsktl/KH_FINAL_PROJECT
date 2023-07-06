@@ -36,6 +36,25 @@ $(document).ready(function () {
 
 
 
+    $('.pay_Submit').on("click", function (e) {
+        var isPaymentSelected = $(".pay_simple_btn_box").hasClass("active");
+        // var isAgreementChecked = $("#chkProvisionTerm01").prop("checked");
+        var isAllChecked = $(".provision_list input[type='checkbox']:not(#chkProvisionTerm01)").length === $(".provision_list input[type='checkbox']:not(#chkProvisionTerm01):checked").length;
+        var isSavingTermChecked = $("#chkProvisionTerm01").prop("checked");
+
+
+        if (!isPaymentSelected) {
+            e.preventDefault();
+            alert('결제수단을 선택해주세요.');
+        } else if (!isAllChecked || !isSavingTermChecked) {
+            e.preventDefault();
+            alert('약관동의를 모두 해주세요.');
+        } else {
+            console.log('결제버튼이 눌림.');
+            requestPay();
+        }
+
+    })
 
 
 });
@@ -75,7 +94,7 @@ function requestPay() {
         function (rsp) {
 
 
-            console.log(rsp);
+            // console.log(rsp);
 
             // 결제검증
             $.ajax({
@@ -84,16 +103,16 @@ function requestPay() {
                 url: "/movie/store/storeMain/store_detail/store_payment/" + storeNo + "/verifyIamport/" + rsp.imp_uid
             }).done(function (data) {
 
-                console.log(data);
-                console.log(rsp.merchant_uid);
+                // console.log(data);
+                // console.log(rsp.merchant_uid);
 
 
                 if (rsp.paid_amount == data.response.amount) {
 
-                    console.log("결재 및 결재검증완료");
+                    //console.log("결재 및 결재검증완료");
                     //결제 성공 시 비즈니스 로직
                     orderDetailNo = 'odn_' + new Date().getTime();
-                    console.log(orderDetailNo);
+
 
                     $.ajax({
                         url: "/movie/store/storeMain/store_detail/store_payment/" + storeNo + "/successPayment",
@@ -110,7 +129,7 @@ function requestPay() {
                         type: "POST",
 
                         success: function (result) {
-                            console.log("결제성공");
+                            //console.log("결제성공");
 
                             if (result > 0) {
                                 alert("결제성공 정보DB 등록 성공");
@@ -119,12 +138,12 @@ function requestPay() {
                                 window.location.href = url;
 
                             } else {
-                                console.log("에러 발생으로 인해 등록 실패");
+                                // console.log("에러 발생으로 인해 등록 실패");
                             }
                         },
 
                         error: function () {
-                            console.log("에러 발생으로 인해 등록 실패");
+                            // console.log("에러 발생으로 인해 등록 실패");
                         }
                     });
 
@@ -142,4 +161,16 @@ function requestPay() {
 
 
 
+$(document).ready(function () {
+    // modalClick 클래스 클릭 이벤트 처리
+    $(".modalClick").click(function () {
+        $(".modal").show(); // 모달 표시
 
+
+    });
+
+    // 모달 내부의 닫기 버튼 클릭 이벤트 처리
+    $(".exitBtn").click(function () {
+        $(".modal").hide(); // 모달 숨기기
+    });
+});
