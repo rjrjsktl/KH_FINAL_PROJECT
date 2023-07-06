@@ -269,14 +269,19 @@
                                                 <div>
                                                     <form action="" class="replywrite">
 
-                                                        <textarea name="" id="addRevContent" cols="30"
-                                                            rows="3"></textarea>
-
+                                    
                                                         <c:choose>
+                                                            
                                                             <c:when test="${not empty loginUser.userNo}">
+                                                                <textarea name="" id="addRevContent" cols="30"
+                                                                rows="3" placeholder="이쁘고 고운말만 써주세영!"></textarea>
                                                                 <div class="replyBtn">리뷰작성</div>
                                                             </c:when>
+
                                                             <c:otherwise>
+                                
+                                                        <textarea name="" id="addRevContent" cols="30"
+                                                        rows="3" placeholder="작성 전 로그인해주세요!"></textarea>
                                                                 <div class="loginBtn">로그인</div>
                                                             </c:otherwise>
                                                         </c:choose>
@@ -299,7 +304,7 @@
                                                     <c:choose>
                                                         <c:when test="${empty reviewList.reviewList}">
                                                             <li>
-                                                                <p>게시글이 존재하지 않습니다.</p>
+                                                                <p style="text-align: center;">리뷰가 존재하지 않습니다.</p>
                                                             </li>
                                                         </c:when>
                                                         <c:otherwise>
@@ -345,9 +350,19 @@
 
                                                 </ul>
 
-                                                <div class="morePage">더보기</div>
-
+                                               
                                             </div>
+                                          
+                                    <c:choose>
+                                        <c:when test="${empty reviewList.reviewList}">
+                                            <div></div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="morePage">더보기</div>
+                                        </c:otherwise>
+                                    </c:choose>
+
+
 
                                             <input type="hidden" id="movieNo" value="${movieNo}">
                                             <input type="hidden" id="userNo" value="${loginUser.userNo}">
