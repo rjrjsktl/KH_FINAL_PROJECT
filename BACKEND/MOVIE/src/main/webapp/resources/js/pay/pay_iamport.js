@@ -81,8 +81,15 @@ function requestPay() {
               console.log("결제성공");
 
               if (result > 0) {
+<<<<<<< HEAD
                 alert("결제성공 정보DB 등록 성공");
                 let url = "/movie/pay/finshed";
+=======
+                  //alert("결제성공 정보DB 등록 성공");
+                  let url = "/movie/pay/finshed";
+
+                  window.location.href = url;
+>>>>>>> ec9eca641f8120f3f6acdb087439172825700422
 
                 window.location.href = url;
               } else {

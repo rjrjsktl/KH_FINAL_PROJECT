@@ -35,19 +35,22 @@
 		<jsp:include page="/WEB-INF/views/common/header.jsp" />
     	
         <main>
-            <div>
-                <span>비밀번호 재설정</span>
+            <form action="finshedchangePw" method="POST" onsubmit="return PwChangeValidate();">
+                <div>
+                    <span>비밀번호 재설정</span>
 
-                <span>새로운 비밀번호를 기입해주세요!!</span>
+                    <span>새로운 비밀번호를 기입해주세요!!</span>
                 
-                <input type="password" placeholder="비밀번호" name="userPw" id="userPw">
-                <input type="password" placeholder="비밀번호 확인" name="userPwConfirm" id="userPwConfirm">
-                <span id="pwMessage"></span>
+                    <input type="password" placeholder="비밀번호" name="userPw" id="userPw">
+                    <input type="password" placeholder="비밀번호 확인" name="userPwConfirm" id="userPwConfirm">
+                    <span id="pwMessage"></span>
                 
-                
-                <!-- <button onclick="location.href='finshedchangePw'">비밀번호 변경</button> -->
-                <button onclick="location.href='finshedchangePw?userPw=' + document.getElementById('userPw').value">비밀번호 변경</button>
-            </div>
+                    <!-- <button onclick="location.href='finshedchangePw'">비밀번호 변경</button> -->
+                    <!-- <button onclick="location.href='finshedchangePw?userPw=' + document.getElementById('userPw').value">비밀번호 변경</button> -->
+                    <button type="submit">비밀번호 변경</button>
+                </div>
+            </form>
+            
         </main>
     </div>
     

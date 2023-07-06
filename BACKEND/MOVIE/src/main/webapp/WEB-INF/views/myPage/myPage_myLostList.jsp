@@ -161,13 +161,12 @@
     <!-- footer -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-
     <script src="${contextPath}/resources/js/common/header.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_swiper.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_myLost.js"></script>
     <script src="${contextPath}/resources/js/myPage/myPage_randomEvent.js"></script>
     
-	<script>
+	<!-- <script>
 	
 		
 		const param = "${param.cp}";
@@ -177,7 +176,7 @@
 		const userLostCount = "${lostUserList.pagination.listCount}";
 		console.log(userLostCount
 				+ "+++++++++++++++++++++++++++++++++++++++++++++++++++++");
-	</script>
+	</script> -->
 
 </body>
 

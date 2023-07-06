@@ -151,7 +151,7 @@ function closeDaumPostcode() {
 }
 
 function execDaumPostcode() {
-	console.log("주소 검색 js");	
+	// console.log("주소 검색 js");	
     new daum.Postcode({
     	oncomplete: function (data) {
         
@@ -217,11 +217,6 @@ $(document).ready(function() {
         $(this).find("input").focus();
     });
 });
-
-
-
-
-
 
 // 내가 본 영화, 쓴 리뷰 더보기 버튼 구현 
 //          참고용
