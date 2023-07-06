@@ -7,7 +7,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.kgv.customer.model.vo.Book;
 import com.kh.kgv.items.model.vo.Movie;
+import com.kh.kgv.items.model.vo.Play;
 import com.kh.kgv.management.model.vo.Cinema;
 import com.kh.kgv.management.model.vo.CinemaPrice;
 import com.kh.kgv.management.model.vo.JoinPlay;
@@ -79,6 +81,18 @@ public class ReserveDAO {
 
 	public List<JoinPlay> getRoomPlayList(Map<String, Object> condition) {
 		return sqlSession.selectList("playMapper.getRoomPlayList", condition);
+	}
+
+	public List<Book> getCanceledBookList() {
+		return sqlSession.selectList("playMapper.getCanceledBookList");
+	}
+
+	public Play getSimplePlay(int playNo) {
+		return sqlSession.selectOne("playMapper.getSimplePlay", playNo);
+	}
+
+	public int deleteBook() {
+		return sqlSession.delete("playMapper.deleteBook");
 	}
 
 

@@ -38,7 +38,7 @@ public class ReserveController {
 	@Autowired
 	private ReserveService service;
 	
-	private String[] areaArray = {"서울", "경기", "충청", "전라", "경남", "경북", "강원", "제주"};
+	private String[] areaArray = {"서울", "경기", "경남", "경북", "강원", "제주", "충청", "전라"};
 	private String[] specialArray = {"KMAX", "DOLBY", "CHEF &amp; CINE", "PUPPY &amp; ME", "YES KIDS"};
 	private List<Cinema> cinemaList = null;
 	private List<Screen> specialScreenList = null;
@@ -47,6 +47,7 @@ public class ReserveController {
 	private List<JoinPlay> joinPlayList = null;
 	private Map<String, Object> reserveMap = null;
 	private Map<String, Object> priceMap = null; 
+	
 	
 
 	@GetMapping("/choicePlay")
