@@ -70,7 +70,7 @@ userTel.addEventListener("input", function () {
 
             error: function () {
 
-                console.log("에러 발생");
+                //console.log("에러 발생");
             }
 
         });
@@ -143,7 +143,7 @@ userEmail.addEventListener("input", function () {
 
             error: function () {
 
-                console.log("에러 발생");
+                // console.log("에러 발생");
             }
 
         });
@@ -215,7 +215,7 @@ userNick.addEventListener("input", function () {
             },
 
             error: function () {
-                console.log("에러 발생");
+                // console.log("에러 발생");
             }
 
 
@@ -286,7 +286,7 @@ userName.addEventListener("input", function () {
 
             },
             error: function () {
-                console.log("에러 발생");
+                //  console.log("에러 발생");
             }
 
         });
@@ -570,8 +570,8 @@ sendBtn.addEventListener("click", function () {
             data: { "userEmail": userEmail.value },
             type: "GET",
             success: function (result) {
-                console.log("이메일 발송 성공");
-                console.log(result);
+                //  console.log("이메일 발송 성공");
+                // console.log(result);
 
                 // 인증 버튼이 클릭되어 정상적으로 메일이 보내졌음을 checkObj에 기록
                 checkObj.sendEmail = true;
@@ -579,7 +579,7 @@ sendBtn.addEventListener("click", function () {
 
             },
             error: function () {
-                console.log("이메일 발송 실패")
+                //  console.log("이메일 발송 실패")
 
 
 
@@ -634,7 +634,7 @@ sendBtn.addEventListener("click", function () {
 
 
 
-    console.log(checkObj.sendEmail);
+    //console.log(checkObj.sendEmail);
 
 
 
@@ -655,13 +655,13 @@ const cBtn = document.getElementById("cBtn");
 
 cBtn.addEventListener("click", function () {
 
-    console.log(checkObj.sendEmail);
+
 
 
     // 1. 인증번호 받기 버튼이 클릭되어 이메일 발송되었는지 확인
     if (checkObj.sendEmail) {
 
-        console.log(checkObj.sendEmail);
+
         // 2. 입력된 인증번호가 6자리가 맞는지 확인
         if (cNumber.value.length == 6) { // 6자리 맞음
 
@@ -673,7 +673,7 @@ cBtn.addEventListener("click", function () {
                 },
                 type: "GET",
                 success: function (result) {
-                    console.log(result);
+
                     // 1 : 인증번호 일치 O, 시간 만족O
                     // 2 : 인증번호 일치 O, 시간 만족X
                     // 3 : 인증번호 일치 X
@@ -702,7 +702,7 @@ cBtn.addEventListener("click", function () {
                 },
 
                 error: function () {
-                    console.log("이메일 인증 실패")
+                    //   console.log("이메일 인증 실패")
                 }
             });
 
@@ -742,32 +742,4 @@ function sample4_execDaumPostcode() {
 
 
 
-const testbtn = document.getElementById("test-btn");
 
-testbtn.addEventListener("click", function () {
-
-    console.log("테스트");
-    console.log("이메일" + checkObj.userEmail);
-    console.log("비밀번호" + checkObj.userPw);
-    console.log("닉네임" + checkObj.userNick);
-    console.log("이름" + checkObj.userName);
-    console.log("생일" + checkObj.userBirth);
-    console.log("성별" + checkObj.userGender);
-    console.log("연락처" + checkObj.userTel);
-    console.log("이메일 인증번호 버튼" + checkObj.sendEmail);
-    console.log("이메일 인증" + checkObj.cNumber);
-    console.log("이메일 인증 체크 " + checkObj.sendEmailcheck);
-
-
-    console.log("이메일" + userEmail.value);
-    console.log("비밀번호" + userPw.value);
-    console.log("닉네임" + userNick.value);
-    console.log("이름" + userName.value);
-    console.log("생일" + userBirth.value);
-    console.log("성별" + userGender.value);
-    console.log("연락처" + userTel.value);
-    console.log("이메일 인증번호 버튼" + sendEmail.sendBtn);
-    console.log("이메일 인증" + cNumber.value);
-
-
-})

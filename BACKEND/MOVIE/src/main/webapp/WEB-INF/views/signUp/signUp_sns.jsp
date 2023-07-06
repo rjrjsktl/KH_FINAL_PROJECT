@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 
         <!DOCTYPE html>
         <html lang="en">
@@ -42,10 +43,9 @@
                                         
                                         <a href="signUp"><button>이메일 회원가입</button></a>
                                         <a><button  onclick="loginWithKakao()" >카카오로 가입하기</button></a>
-                                        
-<!-- 
-                                        <a href="#"><button>네이버로 가입하기</button></a>
-                                        <a href="#"><button>구글로 가입하기</button></a> -->
+                                        <a id="loginNaver" href="#">
+                                              <img src="${contextPath}/resources/images/logo/btnG_완성형.png" alt="">
+                                        </a>
                                     </div>
                                 </div>
 
@@ -92,6 +92,7 @@
              -->
 
          <script src="${contextPath}/resources/js/manager/apikey.js"></script>
+     
 
         </body>
 

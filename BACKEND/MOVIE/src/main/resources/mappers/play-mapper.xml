@@ -134,6 +134,16 @@
 		
 	</resultMap>
 	
+	<resultMap type="PO" id="payOrder_rm">
+		
+		<id property="reserveNo" 			column="RESERVE_NO"/>
+		<result property="bookNo" 			column="BOOK_NO"/>
+		<result property="reserveCodeNo" 	column="RESERVE_CODE_NO"/>
+		<result property="reserveSt" 		column="RESERVE_ST"/>
+		
+		
+	</resultMap>
+	
 	
 	<!-- 상영 중인 영화 리스트 (이름 순) -->
 	
@@ -370,5 +380,23 @@ WHERE s.SCREEN_NO = #{screenNo}
         WHERE BOOK_ST = 'N' AND BOOK_DT < (SYSDATE-3/(24*60))
     ]]>
     </delete>
+
+    <insert id="successPayment" parameterType="Map">
+        INSERT INTO PAY_ORDER
+        VALUES
+        (
+        	SEQ_PAYORDER_NO.NEXTVAL,
+        	#{bookNo},
+        	#{reserveCodeNo},
+        	DEFAULT
+        )
+    </insert>
+    
+    
+    <select id="serchPayOrder" parameterType="_int" resultType="string">
+		SELECT RESERVE_CODE_NO
+		FROM PAY_ORDER
+		WHERE BOOK_NO = #{bookNo}
+    </select>
 	
 </mapper>

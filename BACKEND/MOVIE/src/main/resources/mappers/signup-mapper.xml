@@ -151,6 +151,44 @@
 		DEFAULT
 		)
 	</insert>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<select id="findNaver" parameterType="java.util.HashMap"
+		resultMap="user_rm">
+
+		SELECT * FROM USERS WHERE USER_EMAIL = #{email}
+
+
+	</select>
+
+	<insert id="naverinsert" parameterType="java.util.HashMap">
+		INSERT INTO USERS VALUES(
+		SEQ_USER_NO.NEXTVAL,
+		#{email},
+		DEFAULT,
+		#{name},
+		#{nickname},
+		DEFAULT,
+		DEFAULT,
+		#{birth},
+		#{gender},
+		DEFAULT,
+		DEFAULT,
+		DEFAULT,
+		DEFAULT,
+		'Y',
+		NULL,
+		DEFAULT,
+		DEFAULT
+		)
+	</insert>
 
 
 

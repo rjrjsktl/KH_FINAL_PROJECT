@@ -8,22 +8,18 @@ console.log("reviewParam:::" + reviewParam);
 
 $(document).ready(function () {
   var foldWrap = $(".fold_wrap");
-  let foldContent = $(".fold_content");
   var moreBtn = $(".more_btn");
   var isFolded = true;
 
   moreBtn.click(function () {
     if (isFolded) {
-      foldWrap.animate({ height: foldContent.height() }, 200);
-      foldWrap.css("overflow", "visible");
+      foldWrap.css("max-height", "500px");
       moreBtn.html("접기");
-      isFolded = false;
     } else {
-      foldWrap.animate({ height: "60px" }, 200);
-      foldWrap.css("overflow", "hidden");
+      foldWrap.css("max-height", "60px");
       moreBtn.html("더보기");
-      isFolded = true;
     }
+    isFolded = !isFolded;
   });
 
   var swiper0 = new Swiper(".swiper-container.zeroOne", {
@@ -64,21 +60,20 @@ $(document).ready(function () {
   $(".info-btn").click(function () {
     $(".movie-detail").show();
     $(".movie-reply").hide();
-    $(".star-btn").css("background", "none");
+    $(".star-btn").css("background", "#191919");
     $(".star-btn").css("color", "white");
-    $(this).css("background", "#d3d3d3");
-    $(this).css("color", "black");
+    $(this).css("background", "rgb(21,21,21)");
+    $(this).css("color", "#FFC400");
   });
 
   if (reviewParam === "1") {
     console.log("reviewParam=1이라서 실행");
     $(".movie-detail").hide();
     $(".movie-reply").show();
-    $(".info-btn").css("background", "none");
-    $(".info-btn").css("border", "1px solid #d3d3d3");
+    $(".info-btn").css("background", "rgb(25,25,25");
     $(".info-btn").css("color", "white");
-    $(".star-btn").css("background", "#d3d3d3");
-    $(".star-btn").css("color", "black");
+    $(".star-btn").css("background", "rgb(21,21,21)");
+    $(".star-btn").css("color", "white");
     $("#addRevContent").focus();
   }
   updateData();
@@ -87,11 +82,10 @@ $(document).ready(function () {
     $(".star-btn").click(function () {
       $(".movie-detail").hide();
       $(".movie-reply").show();
-      $(".info-btn").css("background", "none");
-      $(".info-btn").css("border", "1px solid #d3d3d3");
+      $(".info-btn").css("background", "#191919");
       $(".info-btn").css("color", "white");
-      $(this).css("background", "#d3d3d3");
-      $(this).css("color", "black");
+      $(this).css("background", "rgb(21,21,21)");
+      $(this).css("color", "#FFC400");
     });
   }
 
@@ -108,6 +102,12 @@ $(document).ready(function () {
     const reviewText = document.querySelector(".replywrite textarea").value;
     var movieNo = document.getElementById("movieNo").value;
     var revNo = $(this).data("revno");
+
+    if (starRating === 0) {
+      alert("점수를 선택해주세요");
+      return;
+    }
+
     if (!reviewText) {
       alert("리뷰를 입력해주세요");
       return;
@@ -167,11 +167,10 @@ $(document).ready(function () {
           } else {
             deleteButton = "<div></div>";
           }
-
           li.html(`
                         <div class="rvWrap">
                             <div class="user_info">
-                                <img src="" alt="">
+
                                 <p>${review.userNick}</p>
                             </div>
                             <div class="review_content">
@@ -188,7 +187,7 @@ $(document).ready(function () {
           li.slideDown(); // animate to show the li
         });
       },
-      error: function (xhr, status, error) {
+      error: function (error) {
         console.error(error);
       },
     });
