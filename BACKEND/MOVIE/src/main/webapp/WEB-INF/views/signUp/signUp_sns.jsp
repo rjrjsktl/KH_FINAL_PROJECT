@@ -44,7 +44,7 @@
                                         <a href="signUp"><button>이메일 회원가입</button></a>
                                         <a><button  onclick="loginWithKakao()" >카카오로 가입하기</button></a>
                                         <a id="loginNaver" href="#">
-                                                가즈아
+                                              <img src="${contextPath}/resources/images/logo/btnG_완성형.png" alt="">
                                         </a>
                                     </div>
                                 </div>

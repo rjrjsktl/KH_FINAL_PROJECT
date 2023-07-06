@@ -123,3 +123,17 @@
 }
  */
 
+#loginNaver{
+    width:360px;
+    height:44px;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: rgb(3,199,90);
+    margin-top:10px;
+}
+
+#loginNaver img{
+
+    width:50%; height:100%;
+}
