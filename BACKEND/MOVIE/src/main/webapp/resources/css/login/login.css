@@ -192,8 +192,8 @@ main>div>div>div>:nth-child(2)>form>div>:nth-child(2)>button:hover {
     width:365px;
     height:40px;
     border-radius: 5px;
-    background-color: rgba(100, 100, 100);
-    color:#DEDEDE;
+    background-color: rgba(240 206	71);
+    color:black;
   }
 
 
@@ -216,4 +216,19 @@ main>div>div>ul>li:hover {
 /* span | 태그 */
 main>div>div>ul>span {
     margin: 10px;
+}
+
+
+#loginNaver{
+    width:365px;
+    height:40px;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: rgb(3,199,90);
+    margin-top:20px;
+}
+
+#loginNaver img{
+    width:45%; height:100%;
 }

@@ -8,7 +8,7 @@ main {
 }
 
 main>div:nth-child(1) {
-    border-bottom: 2px solid yellow;
+    border-bottom: 2px solid #FFC400;
     padding-bottom: 30px;
     height: 100%;
 }
@@ -56,10 +56,12 @@ main>div:nth-child(2)>ol>li>div:nth-child(1)>span {
     position: absolute;
     width: 30px;
     height: 30px;
-    margin: 20px;
+    margin: 10px;
     line-height: 28px;
     font-size: 2rem;
     z-index: 1;
+    color:#FFC400;    font-style: italic;
+
 }
 
 main>div:nth-child(2)>ol>li>div:nth-child(1)>a {

@@ -30,8 +30,7 @@ import com.kh.kgv.common.Util.SessionUtil;
 import com.kh.kgv.customer.model.vo.User;
 
 import com.kh.kgv.items.model.vo.Store;
-
-
+import com.kh.kgv.management.vo.ApiKey;
 import com.kh.kgv.store.model.service.StoreService;
 
 import com.kh.kgv.store.model.vo.StoreCoupon;
@@ -51,51 +50,53 @@ public class StoreController {
 	private List<StoreOrder> storeOrderList = null;
 	private List<StoreCoupon> storeCouponList = null;
 	private Map<String, Object> storePaymentMap = null;
-	
+
+
+
 	@Autowired
 	private StoreService service;
-	
 
-	
+
+
 	private Logger logger = LoggerFactory.getLogger(StoreController.class);
-	
-	
-	
+
+
+
 	@RequestMapping("/storeMain")
 	public String storeMain(Model model
 			) {
-		
+
 		Map<String, Object> storeMap = null;
 		storeMap = service.getStoreMap();
-		
+
 		logger.debug("storeMap : " + storeMap);
 		model.addAttribute("storeMap", storeMap);
-	
+
 		return "store/storeMain";
 	}
-	
-	
+
+
 	@RequestMapping("/storeMain/store_detail/{storeNo}")
 	public String getStoreDetail(Model model,
-			 @PathVariable("storeNo") int storeNo
-			 ,Store store
-			 
+			@PathVariable("storeNo") int storeNo
+			,Store store
+
 			) {
-		
-//		store.setStoreNo(storeNo);
-		
+
+		//		store.setStoreNo(storeNo);
+
 		Store getStoreDetail = service.getStoreDetail(store);
-		
+
 		logger.debug("getStoreDetail : " + getStoreDetail);
-		
+
 		model.addAttribute("storeDetail", getStoreDetail);
-		
-		
-		
+
+
+
 		return "store/store_detail";
 	}
-	
-	
+
+
 	@ResponseBody
 	@PostMapping("/storeMain/store_detail/{storeNo}/getStorePayment")
 	public String getStorePayment (
@@ -104,31 +105,31 @@ public class StoreController {
 			,@RequestParam("totalCount") int totalCount,
 			@PathVariable("storeNo") int storeNo,
 			Store store,
-			 HttpSession session
+			HttpSession session
 			,HttpServletRequest request)  {
-		
-//		  HttpSession session = request.getSession();
-		
-		 synchronized (session) {
-		        session.setAttribute("totalPrice", totalPrice);
-		        session.setAttribute("totalCount", totalCount);
-		    }
-//		  session.setAttribute("totalPrice", totalPrice);
-//		  session.setAttribute("totalCount", totalCount);
-//		    
-		  
-		    
+
+		//		  HttpSession session = request.getSession();
+
+		synchronized (session) {
+			session.setAttribute("totalPrice", totalPrice);
+			session.setAttribute("totalCount", totalCount);
+		}
+		//		  session.setAttribute("totalPrice", totalPrice);
+		//		  session.setAttribute("totalCount", totalCount);
+		//		    
+
+
 		logger.debug(" totalPrice : " + totalPrice);
 		logger.debug(" totalCount : " + totalCount);
-		
-		return "store/store_payment";
-	
-		
-	}
-	
-	
 
-	
+		return "store/store_payment";
+
+
+	}
+
+
+
+
 	@GetMapping("/storeMain/store_detail/store_payment/{storeNo}")
 	public String storePayment ( 
 			Store store
@@ -137,147 +138,154 @@ public class StoreController {
 			,HttpServletResponse response
 			,HttpServletRequest request
 			,HttpSession session) throws Exception{
-		
+
 		User  loginUser = (User) SessionUtil.getSession().getAttribute("loginUser");
-		
-		
-		
+
+
+
 		if(loginUser == null ) {
 			Util.alertAndMovePage(response, "로그인을 하셔야 합니다.", "/movie/user/login");
 
-			
-			 
+
+
 			return "store/store_payment";
 		}
-		
-		
-		  logger.debug(" loginUser************** : " + loginUser);
-		
-		
+
+
+		logger.debug(" loginUser************** : " + loginUser);
+
+
 
 		int totalPrice = (int) session.getAttribute("totalPrice");
-	    int totalCount = (int) session.getAttribute("totalCount");
-	    
-	    logger.debug(" totalPrice************** : " + totalPrice);
-	    logger.debug(" totalCount*************** : " + totalCount);
-		
+		int totalCount = (int) session.getAttribute("totalCount");
+
+		logger.debug(" totalPrice************** : " + totalPrice);
+		logger.debug(" totalCount*************** : " + totalCount);
+
 		logger.debug(" store : " + store);
 		Store getStore = service.getStoreDetail(store);
-		
-		
+
+
 		model.addAttribute("storeDetail", getStore);
 		model.addAttribute("totalPrice", totalPrice);
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("loginUser", loginUser);
-		
-		
-		
-		
+
+
+
+
 		return  "store/store_payment";
 	}
-	
 
-	 private IamportClient api;
-	 
-	
-   
-	    public StoreController() {
-	    	 
-	    	
-		 
-	        // REST API 키와 REST API secret 를 아래처럼 순서대로 입력한다.
-	        this.api = new IamportClient("","");
-	        
-	    }
-	 
-	 	@ResponseBody
-	    @RequestMapping(value="/storeMain/store_detail/store_payment/{storeNo}/verifyIamport/{imp_uid}")
-	    public IamportResponse<Payment> paymentByImpUid(
-	            Model model
-	            , Locale locale
-	            , HttpSession session
-	            , @PathVariable(value= "imp_uid") String imp_uid) throws IamportResponseException, IOException
-	    {
-	        return api.paymentByImpUid(imp_uid);
-	    }
-	
+
+	private IamportClient api;
+
+
+
+	public StoreController() {
+
+
+		ApiKey apikey = new ApiKey();
+		String key = apikey.getIamportKey();
+		String secretKey = apikey.getIamportSecretKey();
+
+		System.out.println(key + ":: 키값");
+		System.out.println(secretKey + ":: 시크릿키값");
+
+
+		// REST API 키와 REST API secret 를 아래처럼 순서대로 입력한다.
+		this.api = new IamportClient(key,secretKey);
+
+	}
+
+	@ResponseBody
+	@RequestMapping(value="/storeMain/store_detail/store_payment/{storeNo}/verifyIamport/{imp_uid}")
+	public IamportResponse<Payment> paymentByImpUid(
+			Model model
+			, Locale locale
+			, HttpSession session
+			, @PathVariable(value= "imp_uid") String imp_uid) throws IamportResponseException, IOException
+	{
+		return api.paymentByImpUid(imp_uid);
+	}
+
 	//결제성공 정보 받아오는 ajax
-	 	@ResponseBody
-		@PostMapping("/storeMain/store_detail/store_payment/{storeNo}/successPayment") 	
-	 	
-	 	public int successPayment(
-	 			@RequestParam("orderPrice") int orderPrice
-				,@RequestParam("orderCount") int orderCount,
-				@RequestParam("storeName") String storeName
-				,@RequestParam("userName") String userName
-				,@RequestParam("userEmail") String userEmail
-				,@RequestParam("storeNo") int storeNo
-				,@RequestParam("orderDetailNo") String orderDetailNo
-				,@RequestParam("imp_uid") String imp_uid
-				,HttpSession session) {
-	 		
-	 		
-	 		
-	 		System.out.println("ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ");
-	 		
-	 		logger.debug(" orderPrice################ : " + orderPrice);
-	 		logger.debug(" totalCount################ : " + orderCount);
-	 		logger.debug(" storeNo################ : " + storeName);
-	 		logger.debug(" userNo################ : " + userName);
-	 		logger.debug(" userEmail################ : " + userEmail);
-	 		logger.debug(" orderDetailNo################ : " + orderDetailNo);
-	 		
-	 		
-	 		StoreOrder storeOrder  = new StoreOrder();
+	@ResponseBody
+	@PostMapping("/storeMain/store_detail/store_payment/{storeNo}/successPayment") 	
 
-	 		storeOrder.setOrderDetailNo(orderDetailNo);
-	 		storeOrder.setOrderCount(orderCount);
-	 		storeOrder.setOrderPrice(orderPrice);
-	 		storeOrder.setUserName(userName);
-	 		storeOrder.setStoreName(storeName);
-	 		storeOrder.setUserEmail(userEmail);
-	 		storeOrder.setStoreNo(storeNo);
-	 		storeOrder.setImp_uid(imp_uid);
-	 			 		
-	 		int result = service.successPayment(storeOrder);
-	 		
-	 		logger.debug(" userNo################ : " + userName);
-	 				 			 		
-	 		return result;
-	 	}
-	 	
-	 	
-	 // 결제 완료페이지로 이동하기
-		@GetMapping("/store_Success")
-		public String storeSuccess( HttpSession session
-				, Model model) {
-				
-			
-			
-			 int sorderNo = (int) session.getAttribute("generatedOrderNo");
-			 logger.debug(" SorderNo################************************* : " + sorderNo);
+	public int successPayment(
+			@RequestParam("orderPrice") int orderPrice
+			,@RequestParam("orderCount") int orderCount,
+			@RequestParam("storeName") String storeName
+			,@RequestParam("userName") String userName
+			,@RequestParam("userEmail") String userEmail
+			,@RequestParam("storeNo") int storeNo
+			,@RequestParam("orderDetailNo") String orderDetailNo
+			,@RequestParam("imp_uid") String imp_uid
+			,HttpSession session) {
 
-			 storePaymentMap = new HashMap<>(); 
-			 
-			 storeList = service.getstoreList(sorderNo);
-			 storeOrderList = service.getstoreOrderList(sorderNo);
-			 storeCouponList = service.getstoreCouponList(sorderNo);;
-			 
-			
-			 
-			 logger.debug(" storeList################************************* : " + storeList);
-			 logger.debug(" storeOrderList################************************* : " + storeOrderList);
-			 logger.debug(" storeCouponList################************************* : " + storeCouponList);
-			 model.addAttribute("storeList", storeList);
-			 model.addAttribute("storeOrderList", storeOrderList);
-			 model.addAttribute("storeCouponList", storeCouponList);
-			 
-//			 joinStore =  service.getSuccess(sorderNo);
-			 
-			// logger.debug(" joinStore################************************* : " + joinStore);
-			 
-			
-			return "store/store_Success";
-		}
-	 	
+
+
+		System.out.println("ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ");
+
+		logger.debug(" orderPrice################ : " + orderPrice);
+		logger.debug(" totalCount################ : " + orderCount);
+		logger.debug(" storeNo################ : " + storeName);
+		logger.debug(" userNo################ : " + userName);
+		logger.debug(" userEmail################ : " + userEmail);
+		logger.debug(" orderDetailNo################ : " + orderDetailNo);
+
+
+		StoreOrder storeOrder  = new StoreOrder();
+
+		storeOrder.setOrderDetailNo(orderDetailNo);
+		storeOrder.setOrderCount(orderCount);
+		storeOrder.setOrderPrice(orderPrice);
+		storeOrder.setUserName(userName);
+		storeOrder.setStoreName(storeName);
+		storeOrder.setUserEmail(userEmail);
+		storeOrder.setStoreNo(storeNo);
+		storeOrder.setImp_uid(imp_uid);
+
+		int result = service.successPayment(storeOrder);
+
+		logger.debug(" userNo################ : " + userName);
+
+		return result;
+	}
+
+
+	// 결제 완료페이지로 이동하기
+	@GetMapping("/store_Success")
+	public String storeSuccess( HttpSession session
+			, Model model) {
+
+
+
+		int sorderNo = (int) session.getAttribute("generatedOrderNo");
+		logger.debug(" SorderNo################************************* : " + sorderNo);
+
+		storePaymentMap = new HashMap<>(); 
+
+		storeList = service.getstoreList(sorderNo);
+		storeOrderList = service.getstoreOrderList(sorderNo);
+		storeCouponList = service.getstoreCouponList(sorderNo);;
+
+
+
+		logger.debug(" storeList################************************* : " + storeList);
+		logger.debug(" storeOrderList################************************* : " + storeOrderList);
+		logger.debug(" storeCouponList################************************* : " + storeCouponList);
+		model.addAttribute("storeList", storeList);
+		model.addAttribute("storeOrderList", storeOrderList);
+		model.addAttribute("storeCouponList", storeCouponList);
+
+		//			 joinStore =  service.getSuccess(sorderNo);
+
+		// logger.debug(" joinStore################************************* : " + joinStore);
+
+
+		return "store/store_Success";
+	}
+
 }

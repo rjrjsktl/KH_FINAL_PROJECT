@@ -379,8 +379,7 @@ public class HelpDeskController {
 		if ( userNo > 0) {
 			path = "helpDesk/mTm_form";
 		} else {
-			String referer = req.getHeader("Referer"); 
-			session.setAttribute("prevPage", referer); 
+		
 
 			path ="redirect:/user/login";
 		}
@@ -923,10 +922,7 @@ public class HelpDeskController {
 		if ( userNo > 0) {
 			path = "helpDesk/lost_form";
 		} else {
-			String referer = req.getHeader("Referer"); // 이전 페이지의 URL을 가져옵니다.
-			session.setAttribute("prevPage", referer); // 이전 페이지의 URL을 세션에 저장합니다.
-
-			logger.debug("referer은~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+referer);
+		
 			path ="redirect:/user/login";
 
 
