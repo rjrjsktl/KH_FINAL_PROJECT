@@ -205,7 +205,7 @@ main section>div:nth-child(3)::after {
 
 /* 세부정보 / 스틸컷 / 댓글 섹션 */
 .steal-reply-wrap {
-    padding: 30px 20px 50px 20px;
+    padding: 30px 20px 30px 20px;
     height: 100%;
 }
 
@@ -502,12 +502,11 @@ main>section:nth-child(3)>div>div:nth-child(3) {
 }
 
 .morePage {
-    width: 920px;
+    width: 150px;
     height: 50px;
     text-align: center;
     cursor: pointer;
     line-height: 48px;
-    border: 1px solid lightgray;
     display: flex;
     justify-content: center;
     margin: 0 auto;
@@ -823,14 +822,19 @@ img[src=""] {
     color:white;
     background-color: #494949 ;
     cursor: pointer;
-    margin-left: 30px;
-    width: 120px;
-    height: 83px;
+
+    width:50% !important;
+    height: 40px !important;
+    line-height: 38px;
+    padding:0 !important;
+    margin-top:20px;
 }
 
 .loginBtn:hover {
     background-color: #FCC400;
     color: rgb(21, 21, 21);
+
+    width:50%;
 }
 
 .actorList ul {
@@ -842,3 +846,12 @@ img[src=""] {
 .revlikeVal{
     color:#FFC400;
 }
+
+
+.writtenReview{
+    line-height: 100px;
+    text-align: center;
+    font-size: 1.2rem;
+    color:#FFC400;
+}
+

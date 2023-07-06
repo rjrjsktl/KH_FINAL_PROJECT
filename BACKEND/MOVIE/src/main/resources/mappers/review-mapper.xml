@@ -22,6 +22,7 @@
 		FROM
 		REVIEW
 		WHERE MOVIE_NO = #{movieNo}
+		AND REV_ST = 'N'
 	</select>
 
 
@@ -64,5 +65,12 @@
 		WHERE REV_NO = #{revNo}
 
 	</update>
+	
+	<select id="countMyReview" resultType="_int">
+	SELECT COUNT(*) FROM REVIEW
+	WHERE USER_NO = #{userNo}
+	AND MOVIE_NO = #{movieNo}
+	AND REV_ST = 'N'
+	</select>
 	
 </mapper>
