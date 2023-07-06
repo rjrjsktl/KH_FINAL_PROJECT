@@ -75,7 +75,7 @@ function requestPay() {
                             , "userEmail": userEmail
                             , "orderDetailNo": rsp.merchant_uid
                             , "userName": userName
-                            , "impUid": rsp.imp_uid
+                            , "imp_uid": rsp.imp_uid
                         },
                         type: "POST",
 
