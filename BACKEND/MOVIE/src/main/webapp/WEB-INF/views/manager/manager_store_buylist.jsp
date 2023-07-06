@@ -45,7 +45,7 @@
                                         <div class="set_Edge">
                                             <div class="table_Wrapper">
                                                 <div class="table_Title">
-                                                    <span>스토어 물품 목록</span>
+                                                    <span>스토어 구매 목록</span>
                                                     <div class="search_Box">
                                                         <input placeholder="검색" />
                                                         <button>
@@ -103,10 +103,10 @@
                                                             <td>${storeOrder['imp_uid']}</td>
 
 
-                                                            <td><a href="${contextPath}/manager/store_list/edit/${store['storeNo']}"
+                                                            <!-- <td><a href="${contextPath}/manager/store_list/edit/${store['storeNo']}"
                                                                     class="editEvent"><i
                                                                         class="fa-sharp fa-solid fa-pen-to-square"></i></a>
-                                                            </td>
+                                                            </td> -->
                                                             <td>
 
                                                                 <button class="cancelPay"

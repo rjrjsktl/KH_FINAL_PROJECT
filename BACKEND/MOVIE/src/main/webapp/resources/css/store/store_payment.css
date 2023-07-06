@@ -414,3 +414,67 @@ input[type='checkbox']:checked {
 .navBar:nth-child(6)>a:nth-child(1) {
     color: rgb(255, 196, 0);
 }
+
+
+/* 모달 */
+
+.modal {
+    background-color: rgba(212, 29, 29, 0);
+
+    top: 20%;
+}
+
+.modal>:nth-child(1) {
+    margin: auto;
+    background-color: rgb(45, 44, 44);
+    width: 800px;
+    padding: 10px;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.modal>:nth-child(2) {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    margin: auto;
+    background-color: rgb(55, 54, 54);
+    width: 800px;
+    height: 550px;
+
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 0 1px 1px 1px solid blue;
+}
+
+.modal button {
+    width: 50px;
+}
+
+.box_1 {
+    background-color: rgb(43, 42, 42);
+}
+
+.box_1>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.tab_wrap>li>.tab_tit {
+    position: absolute;
+    top: 0;
+}
+
+.txtarea_box {
+    overflow-y: scroll;
+    height: 300px;
+    line-height: 1.4;
+    padding: 20px;
+    border-bottom: 1px solid #CCC;
+
+
+}
