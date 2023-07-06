@@ -60,7 +60,7 @@
 
                                             <li><a href="#none" id="storeTab_4" class="storeTab" title="스낵탭">스낵</a></li>
 
-                                            <li><a href="#none" id="storeTab_5" class="storeTab" title="티켓탭">KGV티켓</a>
+                                            <li><a href="#none" id="storeTab_5" class="storeTab" title="티켓탭">티켓할인권</a>
                                             </li>
 
                                         </ul>
@@ -213,7 +213,7 @@
                                         </ul>
 
 
-                                        <h3 class="store_h3 store_ticket">티켓</h3>
+                                        <h3 class="store_h3 store_ticket">할인권</h3>
                                         <ul class="store_ul store_ticket">
 
 
