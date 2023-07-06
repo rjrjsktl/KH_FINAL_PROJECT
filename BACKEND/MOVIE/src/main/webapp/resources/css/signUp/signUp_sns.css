@@ -80,7 +80,8 @@
 }
 
 .signUp-wrap>div:nth-child(1)>div:nth-child(1)>div:nth-child(1)>div>a:nth-child(3)>button {
-
+    height:44px;
+    padding:2px;
     background-color: #03c75a;
     color: white;
 }
@@ -122,9 +123,17 @@
 }
  */
 
+#loginNaver{
+    width:360px;
+    height:44px;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: rgb(3,199,90);
+    margin-top:10px;
+}
 
+#loginNaver img{
 
-.signUp-wrap>div:nth-child(1)>div:nth-child(1)>div:nth-child(1) img {
-    width: 360px;
-    height: 60px;
+    width:50%; height:100%;
 }
