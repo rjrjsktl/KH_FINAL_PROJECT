@@ -57,13 +57,13 @@ $(document).ready(function () {
                 jsonFn(jsonArray);
             },
             error: function (e) {
-                console.log(e);
+                //console.log(e);
             }
         });
     }
 
     function jsonFn(jsonArray) {
-        console.log(jsonArray);
+        //console.log(jsonArray);
     }
 
 
@@ -74,7 +74,7 @@ $(document).ready(function () {
     let movie_image1 = $('.movie_image1');
 
     movie_image1.on('change', function (e) {
-        console.log(e.target.files); // 파일 목록 출력
+        //console.log(e.target.files); // 파일 목록 출력
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
@@ -115,14 +115,14 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             success: function (data1) {
-                console.log("성공 후 반환 메시지11", data1);
+                //console.log("성공 후 반환 메시지11", data1);
                 let jsonArray = JSON.parse(data1); // JSON 문자열을 파싱하여 배열로 변환
                 let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
                 imageUrl1 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
-                console.log("이미지 URL:", imageUrl1);
+                //console.log("이미지 URL:", imageUrl1);
             },
             error: function (e) {
-                console.log(e);
+                //console.log(e);
             }
         });
     }
@@ -192,11 +192,11 @@ $(document).ready(function () {
 
     submitBtn.on('click', (e) => {
         e.preventDefault();
-        console.log("제목 : " + eventTitle.val());
-        console.log("이벤트 시작일 : " + startDate.val());
-        console.log("이벤트 종료일 : " + endDate.val());
-        console.log("본문 내용 : " + textArea.val());
-        console.log("이미지 : " + imageUrl1);
+        //console.log("제목 : " + eventTitle.val());
+        //console.log("이벤트 시작일 : " + startDate.val());
+        //console.log("이벤트 종료일 : " + endDate.val());
+        //console.log("본문 내용 : " + textArea.val());
+        //console.log("이미지 : " + imageUrl1);
 
         if (!eventTitle.val()) {
             alert('제목이 입력되지 않았습니다.');
@@ -254,7 +254,7 @@ $(document).ready(function () {
             },
 
             error: function () {
-                console.log("에러 발생으로 인해 등록 실패");
+                //console.log("에러 발생으로 인해 등록 실패");
             }
         });
     });

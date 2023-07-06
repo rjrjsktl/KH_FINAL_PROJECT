@@ -55,11 +55,15 @@ public class LoginController {
 
 
 
-	// 로그인 페이지 진입
-	@GetMapping("/login")
-	public String enterLogin() { 
+	@GetMapping("/login") 
+	public String showLogin(HttpServletRequest req, HttpSession session) { 
+		String referer = req.getHeader("Referer"); 
+		if(referer != null) { 
+			session.setAttribute("prevPage", referer); 
+		} 
 
-		return "login/login";
+		System.out.println(referer+"================================================= 현재 리퍼럴은?");
+		return "login/login"; 
 	}
 
 
@@ -83,15 +87,24 @@ public class LoginController {
 
 		if(loginUser != null) { // 로그인 성공 시
 
-			String url_prior_login = (String) session.getAttribute("url_prior_login");
+			String prevPage = (String) session.getAttribute("prevPage");
+			String path1 = "http://localhost:8080/movie/signUp/signUp_sns";
+			String path2 = "https://kgv.co.kr/movie/signUp/signUp_sns";
 
-			if (url_prior_login == null) {
-				path = "redirect:/";  // 기본 페이지
+
+			if(prevPage.equals(path1) || prevPage.equals(path2)) {
+				path = "redirect:/";
+			} else if(
+					prevPage != null && !prevPage.isEmpty()
+					) {
+				path = "redirect:"+prevPage;;
+				session.removeAttribute("prevPage");
 			} else {
-				path = "redirect:" + url_prior_login; // 이전 페이지로 리다이렉트
+				path = "redirect:/";
 			}
 
-	
+
+
 			String blockUser = loginUser.getUserBlock();
 
 			if(blockUser.equals("Y")) {
@@ -123,8 +136,8 @@ public class LoginController {
 
 			// 쿠키를 응답 시 클라이언트에게 전달
 			resp.addCookie(cookie);
-			
-		
+
+
 
 		} else {
 

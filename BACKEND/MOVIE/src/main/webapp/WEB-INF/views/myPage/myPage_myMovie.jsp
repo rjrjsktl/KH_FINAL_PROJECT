@@ -66,7 +66,7 @@
                                                 <div>
                                                     <div>${book.movie.movieTitle}</div>
                                                     <a href="delete-movie-btn"
-                                                        data-bookno="book.book.bookno">
+                                                        data-bookno="book.book.bookNo">
                                                         <i class="fa-regular fa-circle-xmark"></i></a>
                                                 </div>
 

@@ -57,13 +57,13 @@ $(document).ready(function () {
                 jsonFn(jsonArray);
             },
             error: function (e) {
-                console.log(e);
+                // console.log(e);
             }
         });
     }
 
     function jsonFn(jsonArray) {
-        console.log(jsonArray);
+        // console.log(jsonArray);
     }
 
 
@@ -75,10 +75,10 @@ $(document).ready(function () {
 
     submitBtn.on('click', (e) => {
         e.preventDefault();
-        console.log("제목 : " + eventTitle.val());
-        console.log("본문 내용 : " + textArea.val());
-        console.log("사용자 이름 : " + userName.val());
-        console.log("공지사항 번호 : " + noticeNo.val());
+        // console.log("제목 : " + eventTitle.val());
+        // console.log("본문 내용 : " + textArea.val());
+        // console.log("사용자 이름 : " + userName.val());
+        // console.log("공지사항 번호 : " + noticeNo.val());
 
         if (!eventTitle.val()) {
             alert('제목이 입력되지 않았습니다.');
@@ -116,7 +116,7 @@ $(document).ready(function () {
             },
 
             error: function () {
-                console.log("에러 발생으로 인해 공지사항 수정 실패");
+                // console.log("에러 발생으로 인해 공지사항 수정 실패");
             }
         });
     });

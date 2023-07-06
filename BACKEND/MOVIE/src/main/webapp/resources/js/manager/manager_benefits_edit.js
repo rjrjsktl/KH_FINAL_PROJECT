@@ -57,13 +57,13 @@ $(document).ready(function () {
                 jsonFn(jsonArray);
             },
             error: function (e) {
-                console.log(e);
+                //console.log(e);
             }
         });
     }
 
     function jsonFn(jsonArray) {
-        console.log(jsonArray);
+        //console.log(jsonArray);
     }
 
 
@@ -132,11 +132,11 @@ $(document).ready(function () {
 
     submitBtn.on('click', (e) => {
         e.preventDefault();
-        console.log("번호 : " + benefitsNo.val());
-        console.log("제목 : " + benefitsTitle.val());
-        console.log("이벤트 시작일 : " + startDate.val());
-        console.log("이벤트 종료일 : " + endDate.val());
-        console.log("본문 내용 : " + textArea.val());
+        //console.log("번호 : " + benefitsNo.val());
+        //console.log("제목 : " + benefitsTitle.val());
+        //console.log("이벤트 시작일 : " + startDate.val());
+        //console.log("이벤트 종료일 : " + endDate.val());
+        //console.log("본문 내용 : " + textArea.val());
 
         if (!benefitsTitle.val()) {
             alert('제목이 입력되지 않았습니다.');
@@ -188,7 +188,7 @@ $(document).ready(function () {
             },
 
             error: function () {
-                console.log("에러 발생으로 인해 수정 실패");
+                //console.log("에러 발생으로 인해 수정 실패");
             }
         });
     });
