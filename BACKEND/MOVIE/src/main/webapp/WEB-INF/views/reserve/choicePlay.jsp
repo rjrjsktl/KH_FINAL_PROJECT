@@ -48,12 +48,12 @@
                           <ul id="area_list">
                               <li><a href="#none" class="clicked">서울</a></li>
                               <li><a href="#none">인천 경기</a></li>
-                              <li><a href="#none">대전 충남 충북</a></li>
-                              <li><a href="#none">광주 전남 전북</a></li>
                               <li><a href="#none">부산 울산 경남</a></li>
                               <li><a href="#none">대구 경북</a></li>
                               <li><a href="#none">강원</a></li>
                               <li><a href="#none">제주</a></li>
+                              <li><a href="#none">대전 충남 충북</a></li>
+                              <li><a href="#none">광주 전남 전북</a></li>
                           </ul>
                           <ul id="special_list" style="display: none">
                               <li><a href="#none">KMAX</a></li>
