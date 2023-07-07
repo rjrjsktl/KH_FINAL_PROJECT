@@ -168,7 +168,7 @@ $(document).ready(function () {
   $(window).scroll(function () {
     if (
       $(window).scrollTop() >
-      $(document).height() - $(window).height() - 200
+      $(document).height() - $(window).height() - 300
     ) {
       if (!isFetching) {
         fetchMoreData();
@@ -219,7 +219,7 @@ $(document).ready(function () {
 
           li.hide();
           $(".replyList ul").append(li);
-          li.slideDown();
+          li.slideDown(500);
         });
 
         isFetching = false;

@@ -64,6 +64,7 @@
                             <img src="${finalMap.userPlay.movie.movieImg1}">
 
                             <div>
+                     
                                 <div>
                                     <c:choose>
                                         <c:when test="${fn:contains(userPlay.movie.mgNo, '전체')}">
@@ -79,7 +80,8 @@
                                             <div class="age18">18</div>
                                         </c:otherwise>
                                     </c:choose>
-                                </div>
+                                </div>  
+                           
 
                                 <span>${finalMap.userPlay.movie.movieTitle}</span>
 
