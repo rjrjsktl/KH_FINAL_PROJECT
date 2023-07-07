@@ -40,7 +40,7 @@ public class KakaoServiceImple implements KakaoService {
 		   
 	      String access_Token = "";
 	      String refresh_Token = "";
-	      String reqURL = "https://kauth.kakao.com/oauth/token";
+	      String reqURL = "https://kauth.kakao.cm/oauth/token";
 
 	      try {
 	         URL url = new URL(reqURL);
