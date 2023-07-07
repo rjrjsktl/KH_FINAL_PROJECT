@@ -187,6 +187,10 @@ public class PayController {
 	    JoinPlay userPlay = service.getUserPlayByBookNo(bookNo);
 	    Book bookAll = service.serchBook(bookNo);
 	    
+	    int changeSt = service.changeSt(bookNo);
+	    
+	    
+	    
 	    
 		finalMap.put("userPlay", userPlay);
 		finalMap.put("payOrder", payOrder);
@@ -196,6 +200,27 @@ public class PayController {
 
 		return "pay/pay_finshed";
 	}
+	
+	
+	@GetMapping("/loadPlay")
+	@ResponseBody
+	public JoinPlay LoadPlay(HttpServletRequest req) throws Exception {
+		JoinPlay userPlay = null;
+
+		try {
+			HttpSession session = req.getSession();
+			int bookNo = (int) session.getAttribute("bookNo");
+			userPlay = service.getUserPlayByBookNo(bookNo);
+
+			System.out.println("유저플레이 : " +  userPlay);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return userPlay;
+	}
+	
+	
 
 
 
