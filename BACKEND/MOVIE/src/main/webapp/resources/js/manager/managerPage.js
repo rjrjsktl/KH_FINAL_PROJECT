@@ -7,9 +7,9 @@ $(document).ready(function () {
     const lastWeek = addDays(today, -6);
     const labels = getDateRange(today, lastWeek);
 
-    console.log("today : " + formatDate(today));
-    console.log("lastWeek : " + formatDate(lastWeek));
-    console.log("labels : " + labels);
+    // console.log("today : " + formatDate(today));
+    // console.log("lastWeek : " + formatDate(lastWeek));
+    // console.log("labels : " + labels);
 
 
     $.ajax({
@@ -20,7 +20,7 @@ $(document).ready(function () {
         },
         type: "POST",
         success: function (result) {
-            console.log("가져온 result : ", result);
+            // console.log("가져온 result : ", result);
             const dateResult = [];
             for (let i = 0; i < labels.length; i++) {
                 const label = labels[i];
@@ -78,7 +78,7 @@ $(document).ready(function () {
         },
         type: "POST",
         success: function (result) {
-            console.log("가져온 result : ", result);
+            // console.log("가져온 result : ", result);
 
             const dateResult = [];
             for (let i = 0; i < labels.length; i++) {

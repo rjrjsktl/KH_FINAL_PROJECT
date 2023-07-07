@@ -225,6 +225,11 @@ public class MovieServiceImpl implements MovieService{
 		return getMovieList;
 	}
 
+	@Override
+	public int countMyReview(int movieNo, int userNo) {
+		return dao.countMyReview(movieNo, userNo);
+	}
+
 
 	
 	

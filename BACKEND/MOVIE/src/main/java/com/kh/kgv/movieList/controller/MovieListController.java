@@ -227,9 +227,11 @@ public class MovieListController {
 		///// DB에 저장되어있는 review 땡겨오기..
 
 		
+		int userNo = 0;
 		String userNick = null;
 		
 		if ( loginUser !=null) {
+			userNo = loginUser.getUserNo();
 			userNick = loginUser.getUserNick();
 		}
 
@@ -239,11 +241,18 @@ public class MovieListController {
 		Map<String, Object>reviewList = null;
 
 		reviewList = service.getReviewList(movieNo, cp);
+		
+		int countMyReview = 0;
 
+		countMyReview = service.countMyReview(movieNo, userNo);
+
+		
+		System.out.println(countMyReview+"====================================================================");
 
 		model.addAttribute("reviewCount",reviewCount);
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("userNick", userNick);
+		model.addAttribute("countMyReview",countMyReview);
 		
 
 
@@ -307,8 +316,11 @@ public class MovieListController {
 	    @PathVariable("cp") int cp) throws Exception {
 
 	    Map<String, Object> reviewList = service.getReviewList(movieNo, cp);
+	    
 	    return (List<Review>) reviewList.get("reviewList");
 	}
+	
+
 	
 	@ResponseBody
 	@PostMapping("/detail_List/introduce/deleteReview/{revNo}")

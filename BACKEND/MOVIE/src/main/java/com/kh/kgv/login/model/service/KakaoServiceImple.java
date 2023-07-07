@@ -18,11 +18,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 
-
-
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.login.model.dao.SignUpDAO;
-import com.kh.kgv.management.vo.ApiKey;
+import com.kh.kgv.management.vo.NewApiKeys;
 
 @Service
 public class KakaoServiceImple implements KakaoService {
@@ -33,7 +31,7 @@ public class KakaoServiceImple implements KakaoService {
 	   @Override
 	   public String getAccessToken(String authorize_code) {
 		   
-			ApiKey apikey = new ApiKey();
+		   NewApiKeys apikey = new NewApiKeys();
 			
 			String cid = apikey.getKakaoKey();
 			String addr = apikey.getKakaoAddress();
