@@ -21,37 +21,35 @@
 						<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
 
-						<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-							integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-							crossorigin="anonymous"></script>
-							<script src="${contextPath}/resources/js/main/main.js"></script>
+						<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+						<script src="${contextPath}/resources/js/main/main.js"></script>
 
 
 
 					</head>
 
 					<body>
-					<div class="modal_wrap">
+						<div class="modal_wrap">
 
-						<div class="mdContWrap">
-							<div class="mdCont">
-								<p>저희 Channel_KGV는 
-									<br><span>"비영리 목적"</span>으로 만들어진,
-									<br>포트폴리오만을 위한 홈페이지입니다.
-									<br>이미지, 글 등 해당 홈페이지의
-									<br>컨텐츠는 "절대" 상업적으로 이용하지
-									<br>않는 것을 말씀드립니다.
-									<br>컨텐츠의 저작권 등에 문제가 발생한다면
-									<br>010-8229-7832로 연락주시면 즉시 조치하겠습니다.
-									<br>email : dogeunlee89@gmail.com
-								</p>
+							<div class="mdContWrap">
+								<div class="mdCont">
+									<p>저희 Channel_KGV는
+										<br><span>"비영리 목적"</span>으로 만들어진,
+										<br>포트폴리오만을 위한 홈페이지입니다.
+										<br>이미지, 글 등 해당 홈페이지의
+										<br>컨텐츠는 "절대" 상업적으로 이용하지
+										<br>않는 것을 말씀드립니다.
+										<br>컨텐츠의 저작권 등에 문제가 발생한다면
+										<br>010-8229-7832 또는 010-2082-3987로 연락주시면 즉시 조치하겠습니다.
+										<br>email : dogeunlee89@gmail.com / cropruch@naver.com
+									</p>
 
-								<a class="closemdp">24시간동안 닫기</a>
+									<a class="closemdp">24시간동안 닫기</a>
+								</div>
 							</div>
+
 						</div>
 
-					</div>			
-					
 						<div id="wrap">
 							<!-- header -->
 							<jsp:include page="/WEB-INF/views/common/header.jsp" />
@@ -65,8 +63,7 @@
 												<c:choose>
 													<c:when test="${getBanner['bannerSt'] ne 'N'}">
 														<div class="swiper-slide">
-															<a href="${getBanner['bannerUrl']}"><img
-																	src="${getBanner['bannerImg']}" alt=""></a>
+															<a href="${getBanner['bannerUrl']}"><img src="${getBanner['bannerImg']}" alt=""></a>
 														</div>
 													</c:when>
 													<c:otherwise>
@@ -87,43 +84,35 @@
 
 									<div class="swiper-title">
 										<div>
-											<p >상영중인 영화</p>
+											<p>상영중인 영화</p>
 										</div>
 										<a class="moveBtn" href="${contextPath}/movieList/detail_List">전체보기</a>
 									</div>
 									<div class="swiper-container">
 										<div class="swiper-wrapper">
-											<c:forEach var="movie" items="${getMovieList['cleanedList']}"
-												varStatus="status">
+											<c:forEach var="movie" items="${getMovieList['cleanedList']}" varStatus="status">
 												<div class="swiper-slide">
 													<div id="positionSet">
 														<em>${status.count}</em>
 														<c:choose>
 															<c:when test="${fn:contains(movie['mgNo'], '전체')}">
-																<img src="${contextPath}/resources/images/age/aage.png"
-																	class="age-img-area">
+																<img src="${contextPath}/resources/images/age/aage.png" class="age-img-area">
 															</c:when>
 															<c:when test="${fn:contains(movie['mgNo'], '12')}">
-																<img src="${contextPath}/resources/images/age/12age.png"
-																	class="age-img-area">
+																<img src="${contextPath}/resources/images/age/12age.png" class="age-img-area">
 															</c:when>
 															<c:when test="${fn:contains(movie['mgNo'], '15')}">
-																<img src="${contextPath}/resources/images/age/15age.png"
-																	class="age-img-area">
+																<img src="${contextPath}/resources/images/age/15age.png" class="age-img-area">
 															</c:when>
 															<c:otherwise>
-																<img src="${contextPath}/resources/images/age/18age.png"
-																	class="age-img-area">
+																<img src="${contextPath}/resources/images/age/18age.png" class="age-img-area">
 															</c:otherwise>
 														</c:choose>
-														<a
-															href="${contextPath}/movieList/detail_List/introduce/${movie['movieNo']}"><img
-																src="${movie['movieImg1']}" onmouseenter="zoomIn(event)"
+														<a href="${contextPath}/movieList/detail_List/introduce/${movie['movieNo']}"><img src="${movie['movieImg1']}" onmouseenter="zoomIn(event)"
 																onmouseleave="zoomOut(event)" class="ageIndexLeve"></a>
 													</div>
 													<div>
-														<a
-															href="${contextPath}/movieList/detail_List/introduce/${movie['movieNo']}">
+														<a href="${contextPath}/movieList/detail_List/introduce/${movie['movieNo']}">
 															<span>${movie['movieTitle']}</span>
 														</a>
 														<div>
@@ -154,18 +143,13 @@
 										</div>
 										<div class="swiper-container">
 											<div class="swiper-wrapper">
-												<c:forEach var="event" items="${getEvnetList['getEvnetList']}"
-													varStatus="status">
+												<c:forEach var="event" items="${getEvnetList['getEvnetList']}" varStatus="status">
 													<c:choose>
 														<c:when test="${event['eventStatus'] ne 'N'}">
-															<input type="hidden" class="eventNo"
-																value="${event['eventNo']}" />
+															<input type="hidden" class="eventNo" value="${event['eventNo']}" />
 															<div class="swiper-slide">
-																<a
-																	href="${contextPath}/eventList/detail_List/introduce/${event['eventNo']}">
-																	<img src="${event['eventImg']}" alt=""
-																		onmouseenter="zoomIn(event)"
-																		onmouseleave="zoomOut(event)">
+																<a href="${contextPath}/eventList/detail_List/introduce/${event['eventNo']}">
+																	<img src="${event['eventImg']}" alt="" onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
 																	<strong>${event['eventTitle']}</strong>
 																	<span>${event['eventStart']}&nbsp;~&nbsp;
 																		${event['eventEnd']}</span>
@@ -200,26 +184,19 @@
 
 										<div>
 											<div>
-												<a href="${contextPath}/theater/specialTheater/1" class="stheater"> <img
-														src="${contextPath}/resources/images/teater_special/imax_04.jpg"
-														onmouseenter="zoomIn(event)"
-																onmouseleave="zoomOut(event)" alt="" />
+												<a href="${contextPath}/theater/specialTheater/1" class="stheater"> <img src="${contextPath}/resources/images/teater_special/imax_04.jpg"
+														onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)" alt="" />
 												</a> <a href="${contextPath}/theater/specialTheater/2" class="stheater">
-													<img src="${contextPath}/resources/images/teater_special/img-theater-db-view05.png"
-													onmouseenter="zoomIn(event)"
-													onmouseleave="zoomOut(event)" alt="" />
+													<img src="${contextPath}/resources/images/teater_special/img-theater-db-view05.png" onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)"
+														alt="" />
 												</a> <a href="${contextPath}/theater/specialTheater/5" class="stheater">
-													<img src="${contextPath}/resources/images/teater_special/abcd.jpg"
-													onmouseenter="zoomIn(event)"
-													onmouseleave="zoomOut(event)" alt="" />
+													<img src="${contextPath}/resources/images/teater_special/abcd.jpg" onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)" alt="" />
 												</a> <a href="${contextPath}/theater/specialTheater/3" class="stheater">
-													<img src="${contextPath}/resources/images/teater_special/style_625d608c1cb71.jpg"
-													onmouseenter="zoomIn(event)"
-													onmouseleave="zoomOut(event)" alt="" />
+													<img src="${contextPath}/resources/images/teater_special/style_625d608c1cb71.jpg" onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)"
+														alt="" />
 												</a> <a href="${contextPath}/theater/specialTheater/4" class="stheater">
-													<img src="${contextPath}/resources/images/teater_special/Featured-1068x580-1-2.png"
-													onmouseenter="zoomIn(event)"
-													onmouseleave="zoomOut(event)" alt="" />
+													<img src="${contextPath}/resources/images/teater_special/Featured-1068x580-1-2.png" onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)"
+														alt="" />
 												</a>
 											</div>
 
@@ -259,12 +236,9 @@
 																<span>게시글이 존재하지 않습니다.</span>
 															</c:when>
 															<c:otherwise>
-																<c:forEach var="getNotice"
-																	items="${getNoticeList.noticeLists}"
-																	varStatus="loop">
+																<c:forEach var="getNotice" items="${getNoticeList.noticeLists}" varStatus="loop">
 																	<c:if test="${loop.index < 1}">
-																		<span><a
-																				href="${contextPath}/helpDesk/notice_detail/${getNotice.noticeNo}" class="nottitle">${getNotice.noticeTitle}</a></span>
+																		<span><a href="${contextPath}/helpDesk/notice_detail/${getNotice.noticeNo}" class="nottitle">${getNotice.noticeTitle}</a></span>
 																	</c:if>
 																</c:forEach>
 															</c:otherwise>
@@ -283,8 +257,7 @@
 											</div>
 
 											<div>
-												<a href="${contextPath}/helpDesk/mTm_List">FAQ</a> <a
-													href="${contextPath}/helpDesk/mTm_List">1:1문의</a> <a href="#">대관 /
+												<a href="${contextPath}/helpDesk/mTm_List">FAQ</a> <a href="${contextPath}/helpDesk/mTm_List">1:1문의</a> <a href="#">대관 /
 													단체
 													문의</a>
 											</div>
