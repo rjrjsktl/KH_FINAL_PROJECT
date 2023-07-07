@@ -94,11 +94,9 @@
                                             </div>
                                             <div>
                                                 <div>
-                                                    <button type="button" class="pay_simple_btn_box "><span
-                                                            class="pay_simple_thm"><img
+                                                    <button type="button" class="pay_btn_box "><span><img
                                                                 src="${contextPath}/resources/images/storeimg/payment_simple_kakao.png"
-                                                                alt="카카오페이"></span><span
-                                                            class="pay_simple_tit">카카오페이</span></button>
+                                                                alt="카카오페이"></span><span>카카오페이</span></button>
 
                                                 </div>
                                                 <div></div>
@@ -111,53 +109,44 @@
                                             <div class="payment">
 
                                                 <div>
-                                                    <div class="group_item ">
-                                                        <div class="bx_item"><input type="checkbox"
-                                                                id="chkSavingTerm"><label for="chkSavingTerm"
-                                                                class="ty2">결제대행서비스 약관 동의</label></div>
-                                                        <div class="group_side">
-                                                            <div class="bx_provision">
-                                                                <ul class="provision_list">
+                                                    <div>
+                                                        <div><input type="checkbox" id="chkTerm"><label
+                                                                for="chkTerm">결제대행서비스 약관 동의</label>
+                                                        </div>
+                                                        <div>
+                                                            <div>
+                                                                <ul class="chk_List">
                                                                     <li>
                                                                         <div>
-                                                                            <input type="checkbox"
-                                                                                id="chkProvisionTerm01">
-                                                                            <label for="chkProvisionTerm01"
-                                                                                class="ty2">전자금융거래
+                                                                            <input type="checkbox" id="chkTerm01">
+                                                                            <label for="chkTerm01">전자금융거래
                                                                                 이용약관 동의</label>
                                                                         </div>
-                                                                        <button
-                                                                            class="btn_txt_more ty2 modalClick">약관보기</button>
+                                                                        <button class="modalClick">약관보기</button>
                                                                     </li>
                                                                     <li>
                                                                         <div>
-                                                                            <input type="checkbox"
-                                                                                id="chkProvisionTerm02"><label
-                                                                                for="chkProvisionTerm02"
-                                                                                class="ty2">고유식별정보
+                                                                            <input type="checkbox" id="chkTerm02"><label
+                                                                                for="chkTerm02">고유식별정보
                                                                                 수집 및 이용안내</label>
                                                                         </div>
-                                                                        <button class="btn_txt_more ty2">약관보기</button>
+                                                                        <button>약관보기</button>
                                                                     </li>
                                                                     <li>
                                                                         <div>
-                                                                            <input type="checkbox"
-                                                                                id="chkProvisionTerm03">
-                                                                            <label for="chkProvisionTerm03"
-                                                                                class="ty2">개인정보 수집
+                                                                            <input type="checkbox" id="chkTerm03">
+                                                                            <label for="chkTerm03">개인정보 수집
                                                                                 및 이용동의</label>
                                                                         </div>
-                                                                        <button class="btn_txt_more ty2">약관보기</button>
+                                                                        <button>약관보기</button>
                                                                     </li>
                                                                     <li>
                                                                         <div>
-                                                                            <input type="checkbox"
-                                                                                id="chkProvisionTerm04"><label
-                                                                                for="chkProvisionTerm04"
-                                                                                class="ty2">개인정보
+                                                                            <input type="checkbox" id="chkTerm04"><label
+                                                                                for="chkTerm04">개인정보
                                                                                 제3자 제공/위탁동의</label>
                                                                         </div>
-                                                                        <button class="btn_txt_more ty2">약관보기</button>
+                                                                        <button>약관보기</button>
                                                                     </li>
                                                                 </ul>
                                                             </div>

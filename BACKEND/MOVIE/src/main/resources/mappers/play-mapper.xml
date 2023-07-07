@@ -41,6 +41,7 @@
 	    <result property="playUploader"         column="PLAY_UPLOADER"/>
 	    <result property="playBookCount"        column="PLAY_BOOKCOUNT"/>
 	    <result property="playBookSeat"         column="PLAY_BOOKSEAT"/>
+	    <result property="playSt"                  column="PLAY_ST"/>
 	</resultMap>
 	
 	<resultMap type="screen" id="screen_rm">
@@ -99,7 +100,6 @@
 	</resultMap>
 	
 	<resultMap type="storeCoupon" id="storeCoupon_rm">
-		
 		<id property="scouponNo" column="S_COUPON_NO"/>
 		<result property="sorderNo" 				column="S_ORDER_NO"/>
 		<result property="couponDetailNo" 			column="COUPON_DETAIL_NO"/>
@@ -107,7 +107,6 @@
 	</resultMap>
 	
 	<resultMap type="storeOrder" id="storeOrder_rm">
-		
 		<id property="sorderNo" column="S_ORDER_NO"/>
 		<result property="orderDetailNo" 			column="ORDER_DETAIL_NO"/>
 		<result property="orderCount" 				column="ORDER_COUNT"/>
@@ -122,7 +121,6 @@
 	</resultMap>
 	
 	<resultMap type="store" id="store_rm">
-		
 		<id property="storeNo" column="STORE_NO"/>
 		<result property="storeCategory" 			column="STORE_CATEGORY"/>
 		<result property="storeName" 				column="STORE_NAME"/>
@@ -131,17 +129,13 @@
 		<result property="storeDesc" 				column="STORE_DESC"/>
 		<result property="storeStock" 				column="STORE_STOCK"/>
 		<result property="storeImageBig" 			column="STORE_IMAGE_BIG"/>
-		
 	</resultMap>
 	
 	<resultMap type="PO" id="payOrder_rm">
-		
 		<id property="reserveNo" 			column="RESERVE_NO"/>
 		<result property="bookNo" 			column="BOOK_NO"/>
 		<result property="reserveCodeNo" 	column="RESERVE_CODE_NO"/>
 		<result property="reserveSt" 		column="RESERVE_ST"/>
-		
-		
 	</resultMap>
 	
 	
@@ -406,11 +400,36 @@ WHERE s.SCREEN_NO = #{screenNo}
         WHERE BOOK_NO = #{bookNo}
     </select>
     
+
     <select id="serchBook" parameterType="_int" resultType="book_rm">
         SELECT *
         FROM BOOK
         WHERE BOOK_NO = #{bookNo}
+
+    <select id="getPastPlayList" resultMap="play_rm">
+    <![CDATA[
+        SELECT * FROM PLAY
+        WHERE PLAY_END < SYSDATE AND PLAY_ST = 'N'
+        ORDER BY MOVIE_NO
+    ]]>
     </select>
 
+	<select id="getTotalTicket" parameterType="_int" resultType="_int">
+	    SELECT MOVIE_WATCHED FROM MOVIE
+	    WHERE MOVIE_NO = #{movieNo}
+	</select>
 	
+	<update id="updatePlaySt">
+	<![CDATA[
+        UPDATE PLAY
+		SET PLAY_ST = 'Y'
+		WHERE PLAY_END < SYSDATE AND PLAY_ST = 'N'
+    ]]>
+	</update>
+	
+	<update id="updateTotalTicket" parameterType="Map">
+	    UPDATE Movie
+		SET MOVIE_WATCHED = #{movieWatched}
+		WHERE MOVIE_NO = #{movieNo}
+	</update>
 </mapper>
