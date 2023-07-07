@@ -20,7 +20,7 @@ $(document).ready(function () {
 
     touchMoveStopPropagation: false,
     touchReleaseOnEdges: false,
-    threshold: 22, // 일정 거리를 조절하는 값
+    threshold: 10, // 일정 거리를 조절하는 값
     on: {
       touchEnd: function () {
         if (this.snapIndex === this.previousIndex) {
