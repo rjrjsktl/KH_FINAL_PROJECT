@@ -131,7 +131,7 @@
 
 
                                                 <a>
-                                                    <button>결제내역</button>
+                                                    <button class="delBtn">결제내역</button>
                                                 </a>
 
                                                 <a href="${contextPath}/store/storeMain">
@@ -160,7 +160,7 @@
                             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
                             crossorigin="anonymous"></script>
 
-                        <script src="${contextPath}/resources/js/store/store_success.js"></script>
+                        <script src="${contextPath}/resources/js/store/store_Success.js"></script>
                         <script src="${contextPath}/resources/js/common/header.js"></script>
                         <script src="${contextPath}/resources/js/manager/apikey.js"></script>
                     </body>

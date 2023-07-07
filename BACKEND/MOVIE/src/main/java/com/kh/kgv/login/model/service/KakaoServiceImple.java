@@ -18,11 +18,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 
-
-
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.login.model.dao.SignUpDAO;
-import com.kh.kgv.management.vo.NewApiKeys;
+import com.kh.kgv.management.model.vo.NewApiKeys;
+
 
 @Service
 public class KakaoServiceImple implements KakaoService {
@@ -41,7 +40,7 @@ public class KakaoServiceImple implements KakaoService {
 		   
 	      String access_Token = "";
 	      String refresh_Token = "";
-	      String reqURL = "https://kauth.kakao.com/oauth/token";
+	      String reqURL = "https://kauth.kakao.cm/oauth/token";
 
 	      try {
 	         URL url = new URL(reqURL);

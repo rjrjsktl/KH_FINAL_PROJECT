@@ -24,8 +24,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.kh.kgv.customer.model.vo.Book;
 import com.kh.kgv.management.model.vo.JoinPlay;
-import com.kh.kgv.management.vo.NewApiKeys;
+import com.kh.kgv.management.model.vo.NewApiKeys;
 import com.kh.kgv.reserve.model.service.PayService;
 import com.kh.kgv.reserve.model.service.ReserveService;
 import com.kh.kgv.store.contoller.StoreController;
@@ -184,14 +185,42 @@ public class PayController {
 
 		String payOrder = service.serchPayOrder(bookNo);
 	    JoinPlay userPlay = service.getUserPlayByBookNo(bookNo);
-		
+	    Book bookAll = service.serchBook(bookNo);
+	    
+	    int changeSt = service.changeSt(bookNo);
+	    
+	    
+	    
+	    
 		finalMap.put("userPlay", userPlay);
 		finalMap.put("payOrder", payOrder);
-
+		finalMap.put("bookAll", bookAll);
+		
 		model.addAttribute("finalMap", finalMap);
 
 		return "pay/pay_finshed";
 	}
+	
+	
+	@GetMapping("/loadPlay")
+	@ResponseBody
+	public JoinPlay LoadPlay(HttpServletRequest req) throws Exception {
+		JoinPlay userPlay = null;
+
+		try {
+			HttpSession session = req.getSession();
+			int bookNo = (int) session.getAttribute("bookNo");
+			userPlay = service.getUserPlayByBookNo(bookNo);
+
+			System.out.println("유저플레이 : " +  userPlay);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return userPlay;
+	}
+	
+	
 
 
 

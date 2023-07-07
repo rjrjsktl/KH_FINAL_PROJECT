@@ -68,7 +68,7 @@
 						<div class="btn_wraper">
 
 							<button class="goback">
-								<a href="${contextPath}/helpDesk/mTm_List/?cp=${param.cp}">이전페이지로</a>
+								<a href="${contextPath}">메인 페이지로</a>
 							</button>
 
 						</div>

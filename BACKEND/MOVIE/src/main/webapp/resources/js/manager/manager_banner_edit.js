@@ -3,7 +3,7 @@ $(document).ready(function () {
     let movie_image1 = $('.movie_image1');
 
     movie_image1.on('change', function (e) {
-        console.log(e.target.files); // 파일 목록 출력
+        //console.log(e.target.files); // 파일 목록 출력
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
@@ -47,14 +47,14 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             success: function (data1) {
-                console.log("성공 후 반환 메시지11", data1);
+                //console.log("성공 후 반환 메시지11", data1);
                 let jsonArray = JSON.parse(data1); // JSON 문자열을 파싱하여 배열로 변환
                 let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
                 imageUrl1 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
-                console.log("이미지 URL:", imageUrl1);
+                //console.log("이미지 URL:", imageUrl1);
             },
             error: function (e) {
-                console.log(e);
+                //console.log(e);
             }
         });
     }
@@ -72,10 +72,10 @@ $(document).ready(function () {
         // 이미지 변경이 없을 경우
         if ($('.movie_image1').val() == "") {
 
-            console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image1').val());
-            imageUrl1 = hiddenImg1.val();
+            //console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image1').val());
+            imageUrl1 = hiddenImg.val();
 
-            console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl1);
+            //console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl1);
 
         }
         // 이미지를 변경 할 경우
@@ -87,11 +87,11 @@ $(document).ready(function () {
 
 
         e.preventDefault();
-        console.log("제목 : " + eventTitle.val());
-        console.log("URL : " + enterUrl.val());
-        console.log("이미지 : " + imageUrl1);
-        console.log("숨겨진 이미지 URL : " + hiddenImg.val());
-        console.log("배너 번호 : " + bannerNo.val());
+        //console.log("제목 : " + eventTitle.val());
+        //console.log("URL : " + enterUrl.val());
+        //console.log("이미지 : " + imageUrl1);
+        //console.log("숨겨진 이미지 URL : " + hiddenImg.val());
+        //console.log("배너 번호 : " + bannerNo.val());
 
         if (!eventTitle.val()) {
             alert('제목이 입력되지 않았습니다.');
@@ -125,7 +125,7 @@ $(document).ready(function () {
             },
 
             error: function () {
-                console.log("에러 발생으로 인해 배너 수정 실패");
+                //console.log("에러 발생으로 인해 배너 수정 실패");
             }
         });
     });

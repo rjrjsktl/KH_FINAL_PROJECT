@@ -80,11 +80,7 @@
 															<td>${movie.screen.screenStyle}</td>
 															<td>${movie.play.playStart}</td>
 															<td>${movie.play.playEnd}</td>
-															<td>
-																<button class="delBtn">
-																	<i class="fa-sharp fa-solid fa-xmark"></i>
-																</button>
-															</td>
+															<td><a class="deleteEvent"><i class="fa-sharp fa-solid fa-xmark"></i></a></td>
 														</tr>
 													</c:forEach>
 												</table>

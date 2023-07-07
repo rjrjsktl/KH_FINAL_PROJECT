@@ -8,7 +8,7 @@ $(document).ready(function () {
     let movie_image1 = $('.movie_image1');
 
     movie_image1.on('change', function (e) {
-        console.log(e.target.files); // 파일 목록 출력
+        // console.log(e.target.files); // 파일 목록 출력
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
@@ -50,14 +50,14 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             success: function (data1) {
-                console.log("성공 후 반환 메시지11", data1);
+                // console.log("성공 후 반환 메시지11", data1);
                 let jsonArray = JSON.parse(data1); // JSON 문자열을 파싱하여 배열로 변환
                 let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
                 imageUrl1 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
-                console.log("이미지 URL:", imageUrl1);
+                // console.log("이미지 URL:", imageUrl1);
             },
             error: function (e) {
-                console.log(e);
+                // console.log(e);
             }
         });
     }
@@ -68,7 +68,7 @@ $(document).ready(function () {
     let movie_image2 = $('.movie_image2');
 
     movie_image2.on('change', function (e) {
-        console.log(e.target.files); // 파일 목록 출력
+        // console.log(e.target.files); // 파일 목록 출력
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
@@ -89,14 +89,14 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             success: function (data2) {
-                console.log("성공 후 반환 메시지22", data2);
+                // console.log("성공 후 반환 메시지22", data2);
                 let jsonArray = JSON.parse(data2); // JSON 문자열을 파싱하여 배열로 변환
                 let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
                 imageUrl2 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
-                console.log("이미지 URL:", imageUrl2);
+                // console.log("이미지 URL:", imageUrl2);
             },
             error: function (e) {
-                console.log(e);
+                // console.log(e);
             }
         });
     }
@@ -104,7 +104,7 @@ $(document).ready(function () {
     let movie_image3 = $('.movie_image3');
 
     movie_image3.on('change', function (e) {
-        console.log(e.target.files); // 파일 목록 출력
+        // console.log(e.target.files); // 파일 목록 출력
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
@@ -125,14 +125,14 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             success: function (data3) {
-                console.log("성공 후 반환 메시지33", data3);
+                // console.log("성공 후 반환 메시지33", data3);
                 let jsonArray = JSON.parse(data3); // JSON 문자열을 파싱하여 배열로 변환
                 let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
                 imageUrl3 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
-                console.log("이미지 URL:", imageUrl3);
+                // console.log("이미지 URL:", imageUrl3);
             },
             error: function (e) {
-                console.log(e);
+                // console.log(e);
             }
         });
     }
@@ -140,7 +140,7 @@ $(document).ready(function () {
     let movie_image4 = $('.movie_image4');
 
     movie_image4.on('change', function (e) {
-        console.log(e.target.files); // 파일 목록 출력
+        // console.log(e.target.files); // 파일 목록 출력
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
@@ -161,14 +161,14 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             success: function (data4) {
-                console.log("성공 후 반환 메시지44", data4);
+                // console.log("성공 후 반환 메시지44", data4);
                 let jsonArray = JSON.parse(data4); // JSON 문자열을 파싱하여 배열로 변환
                 let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
                 imageUrl4 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
-                console.log("이미지 URL:", imageUrl4);
+                // console.log("이미지 URL:", imageUrl4);
             },
             error: function (e) {
-                console.log(e);
+                // console.log(e);
             }
         });
     }
@@ -176,7 +176,7 @@ $(document).ready(function () {
     let movie_image5 = $('.movie_image5');
 
     movie_image5.on('change', function (e) {
-        console.log(e.target.files); // 파일 목록 출력
+        // console.log(e.target.files); // 파일 목록 출력
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
@@ -197,14 +197,14 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             success: function (data5) {
-                console.log("성공 후 반환 메시지55", data5);
+                // console.log("성공 후 반환 메시지55", data5);
                 let jsonArray = JSON.parse(data5); // JSON 문자열을 파싱하여 배열로 변환
                 let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
                 imageUrl5 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
-                console.log("이미지 URL:", imageUrl5);
+                // console.log("이미지 URL:", imageUrl5);
             },
             error: function (e) {
-                console.log(e);
+                // console.log(e);
             }
         });
     }
@@ -212,7 +212,7 @@ $(document).ready(function () {
     let movie_image6 = $('.movie_image6');
 
     movie_image6.on('change', function (e) {
-        console.log(e.target.files); // 파일 목록 출력
+        // console.log(e.target.files); // 파일 목록 출력
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
@@ -233,14 +233,14 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             success: function (data6) {
-                console.log("성공 후 반환 메시지66", data6);
+                // console.log("성공 후 반환 메시지66", data6);
                 let jsonArray = JSON.parse(data6); // JSON 문자열을 파싱하여 배열로 변환
                 let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
                 imageUrl6 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
-                console.log("이미지 URL:", imageUrl6);
+                // console.log("이미지 URL:", imageUrl6);
             },
             error: function (e) {
-                console.log(e);
+                // console.log(e);
             }
         });
     }
@@ -269,14 +269,14 @@ $(document).ready(function () {
                 newDiv.innerHTML += delBtn;
                 movie_Genre.append(newDiv);
                 genre_Arr.push(addText)
-                console.log("추가된 값은 : " + addText);
+                // console.log("추가된 값은 : " + addText);
             }
         } else {
             alert('같은 값은 추가 할 수 없습니다.');
             return false;
         }
-        console.log("clickCount : " + clickCount);
-        console.log(genre_Arr);
+        // console.log("clickCount : " + clickCount);
+        // console.log(genre_Arr);
     });
 
     // 배열에서 삭제
@@ -287,11 +287,11 @@ $(document).ready(function () {
         for (let i = 0; i < genre_Arr.length; i++) {
             if (genre_Arr[i] === clickedText) {
                 genre_Arr.splice(i, 1);
-                console.log("제거된 값은 : " + clickedText);
+                // console.log("제거된 값은 : " + clickedText);
                 break;
             }
         }
-        console.log(genre_Arr);
+        // console.log(genre_Arr);
         $(e.currentTarget).remove();
     });
 
@@ -337,14 +337,14 @@ $(document).ready(function () {
                 newDiv.innerHTML += delBtn;
                 movie_level.append(newDiv);
                 level_Arr.push(addText)
-                console.log("추가된 값은 : " + addText);
+                // console.log("추가된 값은 : " + addText);
             }
         } else {
             alert('같은 값은 추가 할 수 없습니다.');
             return false;
         }
-        console.log("clickCount : " + clickCount);
-        console.log(level_Arr);
+        // console.log("clickCount : " + clickCount);
+        // console.log(level_Arr);
     });
 
     // 배열에서 삭제
@@ -355,11 +355,11 @@ $(document).ready(function () {
         for (let i = 0; i < level_Arr.length; i++) {
             if (level_Arr[i] === clickedText) {
                 level_Arr.splice(i, 1);
-                console.log("제거된 값은 : " + clickedText);
+                // console.log("제거된 값은 : " + clickedText);
                 break;
             }
         }
-        console.log(level_Arr);
+        // console.log(level_Arr);
         $(e.currentTarget).remove();
     });
 
@@ -444,60 +444,60 @@ $(document).ready(function () {
         // 메인 이미지
         if ($('.movie_image1').val() == "") {
 
-            console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image1').val());
+            // console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image1').val());
             imageUrl1 = hiddenImg1.val();
 
-            console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl1);
+            // console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl1);
 
         }
 
         // 추가 이미지 1
         if ($('.movie_image2').val() == "") {
 
-            console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image2').val());
+            // console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image2').val());
             imageUrl2 = hiddenImg2.val();
 
-            console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl2);
+            // console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl2);
 
         }
 
         // 추가 이미지 2
         if ($('.movie_image3').val() == "") {
 
-            console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image3').val());
+            // console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image3').val());
             imageUrl3 = hiddenImg3.val();
 
-            console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl3);
+            // console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl3);
 
         }
 
         // 추가 이미지 3
         if ($('.movie_image4').val() == "") {
 
-            console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image4').val());
+            // console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image4').val());
             imageUrl4 = hiddenImg4.val();
 
-            console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl4);
+            // console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl4);
 
         }
 
         // 추가 이미지 4
         if ($('.movie_image5').val() == "") {
 
-            console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image5').val());
+            // console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image5').val());
             imageUrl5 = hiddenImg5.val();
 
-            console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl5);
+            // console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl5);
 
         }
 
         // 추가 이미지 5
         if ($('.movie_image6').val() == "") {
 
-            console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image6').val());
+            // console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image6').val());
             imageUrl6 = hiddenImg6.val();
 
-            console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl6);
+            // console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl6);
 
         }
 
@@ -560,26 +560,26 @@ $(document).ready(function () {
 
         const movieNo = $('#movieNo');
 
-        console.log('저장버튼이 눌림.');
-        console.log("Uploader : " + $("input[name=movieUploader]").val());
-        console.log("영화 제목 : " + movie_title.val());
-        console.log("감독 : " + movie_director.val());
-        console.log("출연진 : " + movie_cast.val());
-        console.log("상영 시간 : " + movie_time.val());
-        console.log("제작 국가 : " + movie_country.val());
-        console.log("개봉일 : " + movie_releseDate.val());
-        console.log("메인 이미지 : " + imageUrl1);
-        console.log("추가 이미지1 : " + imageUrl2);
-        console.log("추가 이미지2 : " + imageUrl3);
-        console.log("추가 이미지3 : " + imageUrl4);
-        console.log("추가 이미지4 : " + imageUrl5);
-        console.log("추가 이미지5 : " + imageUrl6);
-        console.log("줄거리 : " + $('.movie_story').val());
-        console.log("관람 등급 : " + level_Arr);
-        console.log("장르 : " + genre_Arr);
+        // console.log('저장버튼이 눌림.');
+        // console.log("Uploader : " + $("input[name=movieUploader]").val());
+        // console.log("영화 제목 : " + movie_title.val());
+        // console.log("감독 : " + movie_director.val());
+        // console.log("출연진 : " + movie_cast.val());
+        // console.log("상영 시간 : " + movie_time.val());
+        // console.log("제작 국가 : " + movie_country.val());
+        // console.log("개봉일 : " + movie_releseDate.val());
+        // console.log("메인 이미지 : " + imageUrl1);
+        // console.log("추가 이미지1 : " + imageUrl2);
+        // console.log("추가 이미지2 : " + imageUrl3);
+        // console.log("추가 이미지3 : " + imageUrl4);
+        // console.log("추가 이미지4 : " + imageUrl5);
+        // console.log("추가 이미지5 : " + imageUrl6);
+        // console.log("줄거리 : " + $('.movie_story').val());
+        // console.log("관람 등급 : " + level_Arr);
+        // console.log("장르 : " + genre_Arr);
 
         // 등록된 영화 ajax
-        console.log("영화등록 AJAX");
+        // console.log("영화등록 AJAX");
         $.ajax({
             url: "/movie/manager/movie_list/edit/" + movieNo.val() + "/movie_edit",
             data: {
@@ -604,7 +604,7 @@ $(document).ready(function () {
             dataType: "json",
 
             success: function (result) {
-                console.log(result);
+                // console.log(result);
                 // 등록 완료 : 1
                 // 등록 실패 : 0
                 if (result > 0) {
@@ -613,12 +613,12 @@ $(document).ready(function () {
                     let url = "/movie/manager/movie_list";
                     window.location.href = url;
                 } else {
-                    console.log("영화 수정 실패");
+                    // console.log("영화 수정 실패");
                 }
             },
             error: function () {
                 window.alert("영화 수정 실패")
-                console.log("영화 수정 ajax 실패");
+                // console.log("영화 수정 ajax 실패");
             }
         })
     });

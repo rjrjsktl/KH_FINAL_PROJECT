@@ -60,7 +60,7 @@
 																	class="eventTitle">${event['eventTitle']}</span></a>
 															<div>
 																<p>
-																	기간&nbsp;:&nbsp;<span>${event['eventStart']}&nbsp;~&nbsp;
+																	<span class="evedate">${event['eventStart']}&nbsp;~&nbsp;
 																		${event['eventEnd']}</span>
 																</p>
 															</div>

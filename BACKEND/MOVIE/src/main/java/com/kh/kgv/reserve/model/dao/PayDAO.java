@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.kgv.customer.model.vo.Book;
 import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.store.model.vo.StoreCoupon;
 
@@ -60,6 +61,15 @@ public class PayDAO {
 	public JoinPlay getUserPlay(int playNo) {
 		
 		return sqlSession.selectOne("playMapper.getUserPlay", playNo);
+	}
+
+	public Book serchBook(int bookNo) {
+		return sqlSession.selectOne("playMapper.serchBook", bookNo);
+	}
+	
+	// book 상태 변경
+	public int changeSt(int bookNo) {
+		return sqlSession.update("playMapper.changeSt",bookNo);
 	}
 
 	

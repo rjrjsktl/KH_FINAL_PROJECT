@@ -1,56 +1,50 @@
 $(document).ready(function () {
     var IMP = window.IMP;
 
-    const api = config.test;
     const imm = config.imp1;
-
-
-
 
     IMP.init(imm);
 
 
 
 
-    $("#chkSavingTerm").on("click", function () {
+    $("#chkTerm").on("click", function () {
 
-        $(".provision_list input[type='checkbox']").prop("checked", $(this).is(":checked"));
+        $(".chk_List input[type='checkbox']").prop("checked", $(this).is(":checked"));
     });
 
 
-    $(".provision_list input[type='checkbox']").on("click", function () {
+    $(".chk_List input[type='checkbox']").on("click", function () {
 
-        var allChecked = $(".provision_list input[type='checkbox']").length === $(".provision_list input[type='checkbox']:checked").length;
+        var allChecked = $(".chk_List input[type='checkbox']").length === $(".chk_List input[type='checkbox']:checked").length;
 
-        $("#chkSavingTerm").prop("checked", allChecked);
+        $("#chkTerm").prop("checked", allChecked);
     });
 
 
 
 
-
-
-    $(".pay_simple_btn_box").on("click", function () {
+    $(".pay_btn_box").on("click", function () {
         $(this).toggleClass("active");
     });
 
 
 
     $('.pay_Submit').on("click", function (e) {
-        var isPaymentSelected = $(".pay_simple_btn_box").hasClass("active");
-        // var isAgreementChecked = $("#chkProvisionTerm01").prop("checked");
-        var isAllChecked = $(".provision_list input[type='checkbox']:not(#chkProvisionTerm01)").length === $(".provision_list input[type='checkbox']:not(#chkProvisionTerm01):checked").length;
-        var isSavingTermChecked = $("#chkProvisionTerm01").prop("checked");
+        var paymentSelected = $(".pay_btn_box").hasClass("active");
+
+        var allChecked = $(".chk_List input[type='checkbox']:not(#chkTerm01)").length === $(".chk_List input[type='checkbox']:not(#chkTerm01):checked").length;
+        var TermChecked = $("#chkTerm01").prop("checked");
 
 
-        if (!isPaymentSelected) {
+        if (!paymentSelected) {
             e.preventDefault();
             alert('결제수단을 선택해주세요.');
-        } else if (!isAllChecked || !isSavingTermChecked) {
+        } else if (!allChecked || !TermChecked) {
             e.preventDefault();
             alert('약관동의를 모두 해주세요.');
         } else {
-            console.log('결제버튼이 눌림.');
+            // console.log('결제버튼이 눌림.');
             requestPay();
         }
 
@@ -61,22 +55,22 @@ $(document).ready(function () {
 
 
 const storeNo = $('#storeNo').val();
-console.log('스토어 넘버', storeNo);
+// console.log('스토어 넘버', storeNo);
 const userEmail = $('#userEmail').val();
 
-console.log(userEmail);
+// console.log(userEmail);
 const userNo = $('#userNo').val();
 
-console.log('유저 넘버', userNo);
+// console.log('유저 넘버', userNo);
 
 const userName = $('#userName').val();
-console.log(userName);
+// console.log(userName);
 var totalPrice = parseInt($('#totalPrice').text().replace(/,/g, ''));
-console.log('결제 금액:', totalPrice);
+// console.log('결제 금액:', totalPrice);
 var storeName = $("#storeName").text();
-console.log('스토어 이름:', storeName);
+// console.log('스토어 이름:', storeName);
 var totalCount = parseInt($('#totalCount').text().replace(/,/g, ''));
-console.log('총개수:', totalCount);
+// console.log('총개수:', totalCount);
 
 
 function requestPay() {
@@ -132,7 +126,7 @@ function requestPay() {
                             //console.log("결제성공");
 
                             if (result > 0) {
-                                alert("결제성공 정보DB 등록 성공");
+                                alert("결제에 성공하셨습니다.");
                                 let url = "/movie/store/store_Success";
 
                                 window.location.href = url;
@@ -173,4 +167,23 @@ $(document).ready(function () {
     $(".exitBtn").click(function () {
         $(".modal").hide(); // 모달 숨기기
     });
+});
+
+
+
+/*모달 약관 버튼 관련 js*/
+
+$(".modalClick").click(function () {
+    var termId = "#" + $(this).data("term");
+
+    $(".terms-content > div[class^='txtarea_box']").hide();
+    $(termId).show();
+});
+
+$(".storeTab").click(function (e) {
+    e.preventDefault();
+    var termId = "#" + $(this).data("term");
+
+    $(".terms-content > div[id^='txtTerm']").hide();
+    $(termId).show();
 });

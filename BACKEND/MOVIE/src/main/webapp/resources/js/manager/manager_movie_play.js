@@ -44,14 +44,14 @@ $(document).ready(function () {
                 newDiv.innerHTML += delBtn;
                 play_cinema_area_enter.append(newDiv);
                 area_Arr.push(addText)
-                console.log("추가된 값은 : " + addText);
+                // console.log("추가된 값은 : " + addText);
             }
         } else {
             alert('같은 값은 추가 할 수 없습니다.');
             return false;
         }
-        console.log("clickCount : " + clickCount);
-        console.log(area_Arr);
+        // console.log("clickCount : " + clickCount);
+        // console.log(area_Arr);
     });
 
     // 배열에서 삭제
@@ -61,11 +61,11 @@ $(document).ready(function () {
         for (let i = 0; i < area_Arr.length; i++) {
             if (area_Arr[i] === clickedText) {
                 area_Arr.splice(i, 1);
-                console.log("제거된 값은 : " + clickedText);
+                // console.log("제거된 값은 : " + clickedText);
                 break;
             }
         }
-        console.log(area_Arr);
+        // console.log(area_Arr);
         $(e.currentTarget).remove();
         $('.play_cinema_slide').empty();
         $(".play_screen_slide").empty();
@@ -126,7 +126,7 @@ $(document).ready(function () {
                 }
             },
             error: function () {
-                console.log("에러 발생");
+                // console.log("에러 발생");
             }
         });
     })
@@ -155,15 +155,15 @@ $(document).ready(function () {
                 newDiv.innerHTML += delBtn;
                 play_cinema_enter.append(newDiv);
                 cinema_Arr.push(addText);
-                console.log("추가된 값은 : " + addText);
+                // console.log("추가된 값은 : " + addText);
                 createScreenList(addText);
             }
         } else {
             alert('같은 값은 추가 할 수 없습니다.');
             return false;
         }
-        console.log("clickCount : " + clickCount);
-        console.log(cinema_Arr);
+        // console.log("clickCount : " + clickCount);
+        // console.log(cinema_Arr);
     }
 
     // 배열에서 삭제
@@ -174,11 +174,11 @@ $(document).ready(function () {
         for (let i = 0; i < cinema_Arr.length; i++) {
             if (cinema_Arr[i] === clickedText) {
                 cinema_Arr.splice(i, 1);
-                console.log("제거된 값은 : " + clickedText);
+                // console.log("제거된 값은 : " + clickedText);
                 break;
             }
         }
-        console.log(cinema_Arr);
+        // console.log(cinema_Arr);
         $(e.currentTarget).remove();
         $(".play_screen_slide").empty();
         $(".play_screen_enter").empty();
@@ -254,15 +254,15 @@ $(document).ready(function () {
                 newDiv.innerHTML += delBtn;
                 play_screen_enter.append(newDiv);
                 screen_Arr.push(addText)
-                console.log("추가된 값은 : " + addText);
+                // console.log("추가된 값은 : " + addText);
                 screenIndex = $(e.currentTarget).index();
             }
         } else {
             alert('같은 값은 추가 할 수 없습니다.');
             return false;
         }
-        console.log("clickCount : " + clickCount);
-        console.log(screen_Arr);
+        // console.log("clickCount : " + clickCount);
+        // console.log(screen_Arr);
     };
 
 
@@ -274,11 +274,11 @@ $(document).ready(function () {
         for (let i = 0; i < screen_Arr.length; i++) {
             if (screen_Arr[i] === clickedText) {
                 screen_Arr.splice(i, 1);
-                console.log("제거된 값은 : " + clickedText);
+                // console.log("제거된 값은 : " + clickedText);
                 break;
             }
         }
-        console.log(screen_Arr);
+        // console.log(screen_Arr);
         $(e.currentTarget).remove();
         screenIndex = -1;
     });
@@ -334,15 +334,15 @@ $(document).ready(function () {
                 newDiv.innerHTML += delBtn;
                 play_movie_enter.append(newDiv);
                 movie_Arr.push(addText)
-                console.log("추가된 값은 : " + addText);
+                // console.log("추가된 값은 : " + addText);
                 movieIndex = $(e.currentTarget).index();
             }
         } else {
             alert('같은 값은 추가 할 수 없습니다.');
             return false;
         }
-        console.log("clickCount : " + clickCount);
-        console.log(movie_Arr);
+        // console.log("clickCount : " + clickCount);
+        // console.log(movie_Arr);
     });
 
 
@@ -354,11 +354,11 @@ $(document).ready(function () {
         for (let i = 0; i < movie_Arr.length; i++) {
             if (movie_Arr[i] === clickedText) {
                 movie_Arr.splice(i, 1);
-                console.log("제거된 값은 : " + clickedText);
+                // console.log("제거된 값은 : " + clickedText);
                 break;
             }
         }
-        console.log(movie_Arr);
+        // console.log(movie_Arr);
         $(e.currentTarget).remove();
         movieIndex = -1;
     });
@@ -416,15 +416,15 @@ $(document).ready(function () {
                 newDiv.innerHTML += delBtn;
                 play_time_enter.append(newDiv);
                 time_Arr.push(addText)
-                console.log("추가된 값은 : " + addText);
+                // console.log("추가된 값은 : " + addText);
                 timeIndex = $(e.currentTarget).index();
             }
         } else {
             alert('같은 값은 추가 할 수 없습니다.');
             return false;
         }
-        console.log("clickCount : " + clickCount);
-        console.log(time_Arr);
+        // console.log("clickCount : " + clickCount);
+        // console.log(time_Arr);
     });
 
     // 배열에서 삭제
@@ -435,11 +435,11 @@ $(document).ready(function () {
         for (let i = 0; i < time_Arr.length; i++) {
             if (time_Arr[i] === clickedText) {
                 time_Arr.splice(i, 1);
-                console.log("제거된 값은 : " + clickedText);
+                // console.log("제거된 값은 : " + clickedText);
                 break;
             }
         }
-        console.log(time_Arr);
+        // console.log(time_Arr);
         $(e.currentTarget).remove();
     });
 
@@ -545,18 +545,18 @@ $(document).ready(function () {
     // 상영시간 유효성 검사
     function timeCheck() {
         if (screen_Arr.length && movie_Arr.length && time_Arr.length && endDate.val()) {
-            console.log('상영 지역 : ' + area_Arr);
-            console.log('상영 지역 인덱스 : ' + areaIndex);
-            console.log('상영 영화관 : ' + cinema_Arr);
-            console.log('상영 영화관 인덱스 : ' + cinemaIndex);
-            console.log('상영 스크린 : ' + screen_Arr);
-            console.log('상영 스크린 인덱스 : ' + screenIndex);
-            console.log('상영 영화 : ' + movie_Arr);
-            console.log('상영 영화 인덱스 : ' + movieIndex);
-            console.log('상영 시간 : ' + time_Arr);
-            console.log('상영 시간 인덱스 : ' + timeIndex);
-            console.log('상영 시작일 : ' + startDate.val());
-            console.log('상영 종료일 : ' + endDate.val());
+            // console.log('상영 지역 : ' + area_Arr);
+            // console.log('상영 지역 인덱스 : ' + areaIndex);
+            // console.log('상영 영화관 : ' + cinema_Arr);
+            // console.log('상영 영화관 인덱스 : ' + cinemaIndex);
+            // console.log('상영 스크린 : ' + screen_Arr);
+            // console.log('상영 스크린 인덱스 : ' + screenIndex);
+            // console.log('상영 영화 : ' + movie_Arr);
+            // console.log('상영 영화 인덱스 : ' + movieIndex);
+            // console.log('상영 시간 : ' + time_Arr);
+            // console.log('상영 시간 인덱스 : ' + timeIndex);
+            // console.log('상영 시작일 : ' + startDate.val());
+            // console.log('상영 종료일 : ' + endDate.val());
             $.ajax({
                 url: "play_add/playTimeCheck",
                 data: { areaIndex, cinemaIndex, screenIndex, movieIndex, timeIndex, "startDate": startDate.val(), "endDate": endDate.val() },
@@ -568,7 +568,7 @@ $(document).ready(function () {
 
                         let playData = result[0];
 
-                        console.log(result);
+                        // console.log(result);
                         alert(playData.playUploader + " 관의 선택하신 상영 시간은 다른 시간과 겹칩니다.\n"
                             + "가장 빠른 상영일 : " + playData.playStart + " " + playData.playBookSeat + "\n"
                             + "가장 늦은 상영일 : " + playData.playEnd + " " + playData.playRegDate + "\n"
@@ -591,7 +591,7 @@ $(document).ready(function () {
                 },
 
                 error: function () {
-                    console.log("에러 발생");
+                    // console.log("에러 발생");
                 }
             });
 
@@ -606,18 +606,18 @@ $(document).ready(function () {
 
 
     submitBtn.on('click', () => {
-        console.log('상영 지역 : ' + area_Arr);
-        console.log('상영 지역 인덱스 : ' + areaIndex);
-        console.log('상영 영화관 : ' + cinema_Arr);
-        console.log('상영 영화관 인덱스 : ' + cinemaIndex);
-        console.log('상영 스크린 : ' + screen_Arr);
-        console.log('상영 스크린 인덱스 : ' + screenIndex);
-        console.log('상영 영화 : ' + movie_Arr);
-        console.log('상영 영화 인덱스 : ' + movieIndex);
-        console.log('상영 시간 : ' + time_Arr);
-        console.log('상영 시간 인덱스 : ' + timeIndex);
-        console.log('상영 시작일 : ' + startDate.val());
-        console.log('상영 종료일 : ' + endDate.val());
+        // console.log('상영 지역 : ' + area_Arr);
+        // console.log('상영 지역 인덱스 : ' + areaIndex);
+        // console.log('상영 영화관 : ' + cinema_Arr);
+        // console.log('상영 영화관 인덱스 : ' + cinemaIndex);
+        // console.log('상영 스크린 : ' + screen_Arr);
+        // console.log('상영 스크린 인덱스 : ' + screenIndex);
+        // console.log('상영 영화 : ' + movie_Arr);
+        // console.log('상영 영화 인덱스 : ' + movieIndex);
+        // console.log('상영 시간 : ' + time_Arr);
+        // console.log('상영 시간 인덱스 : ' + timeIndex);
+        // console.log('상영 시작일 : ' + startDate.val());
+        // console.log('상영 종료일 : ' + endDate.val());
 
         if (enrollCheck) {
             let dataName = ["areaIndex", "cinemaIndex", "screenIndex", "movieIndex", "timeIndex", "startDate", "endDate"];
@@ -641,15 +641,11 @@ $(document).ready(function () {
 
     });
 
-    // const slideUpAll = $('.set_Edge');
-    // slideUpAll.on('click', (e) => {
-    //     e.preventDefault();
-    //     Cinema_slide.slideUp();
-    //     movie_slide.slideUp();
-    //     time_slide.slideUp();
-    // });
-
-
+    const delBtn = $('.deleteEvent');
+    delBtn.on('click', (e) => {
+        e.preventDefault();
+        alert('삭제기능은 비활성화 하였습니다');
+    })
 
 
 

@@ -275,17 +275,18 @@ main>div:nth-child(7) p {
     flex-wrap: wrap;
     align-items: center;
     padding-bottom: 30px;
+    justify-content: space-around;
 
 }
 
 .stheater_wrap>ul>li {
-    width: 25%;
+    width: 23%;
     height: 60px;
     padding: 10px;
     text-align: center;
     border-radius: 10px;
     margin-bottom: 10px;
-    ;
+    background-color: #494949;
     display: flex;
 }
 
@@ -298,8 +299,10 @@ main>div:nth-child(7) p {
 }
 
 .stheater_wrap ul li:hover {
-    background-color: white;
+    background-color: #FFC400;
+    color:black;
 }
+
 
 .hovered {
     color: black;
@@ -338,12 +341,6 @@ main>div:nth-child(8) p {
     flex-direction: column;
 }
 
-.top3-wrap div a {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    margin: 0 auto;
-}
 
 .top3-wrap div img {
     width: 90%;
@@ -353,18 +350,34 @@ main>div:nth-child(8) p {
 
 }
 
+
 .top3-wrap div button {
-    width: 65%;
-    height: 70px;
     margin: 20px auto;
     border-radius: 10px;
-    cursor: pointer;
-    color: black;
+    display: flex;
+    border:none;
+    outline: none;
+
 }
 
-.top3-wrap div button:hover {
-    background-color: yellow;
+.top3-wrap div button a {
+    color:white;
+    background-color: #494949;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 55px;
+    margin:0 auto;
+    width:210px;
+    text-align: center;
+    cursor:pointer;
+    font-weight: bold;
 }
+
+.top3-wrap div button a:hover{
+    background-color: #FFC400;
+    color:black;
+}
+
 
 .navBar:nth-child(2)>a:nth-child(1) {
     color: rgb(255, 196, 0);
@@ -391,4 +404,8 @@ main>div:nth-child(8) p {
     background-position: center;
     background-size: cover;
     z-index: 1;
+  }
+
+  .cinename{
+    margin-left:10px;
   }
