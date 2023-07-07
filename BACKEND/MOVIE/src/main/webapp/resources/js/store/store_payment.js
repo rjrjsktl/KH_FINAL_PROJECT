@@ -24,8 +24,6 @@ $(document).ready(function () {
 
 
 
-
-
     $(".pay_btn_box").on("click", function () {
         $(this).toggleClass("active");
     });
@@ -128,7 +126,7 @@ function requestPay() {
                             //console.log("결제성공");
 
                             if (result > 0) {
-                                alert("결제성공 정보DB 등록 성공");
+                                alert("결제에 성공하셨습니다.");
                                 let url = "/movie/store/store_Success";
 
                                 window.location.href = url;
@@ -169,4 +167,23 @@ $(document).ready(function () {
     $(".exitBtn").click(function () {
         $(".modal").hide(); // 모달 숨기기
     });
+});
+
+
+
+/*모달 약관 버튼 관련 js*/
+
+$(".modalClick").click(function () {
+    var termId = "#" + $(this).data("term");
+
+    $(".terms-content > div[class^='txtarea_box']").hide();
+    $(termId).show();
+});
+
+$(".storeTab").click(function (e) {
+    e.preventDefault();
+    var termId = "#" + $(this).data("term");
+
+    $(".terms-content > div[id^='txtTerm']").hide();
+    $(termId).show();
 });

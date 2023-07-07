@@ -1112,7 +1112,7 @@ public class ManagerController {
 		storeMap = service.getStoreMap(cp);
 		model.addAttribute("storeMap", storeMap);
 
-		System.out.println("관리자_스토어 물품 목록");
+		
 		return "manager/manager_store_list";
 	}
 
@@ -1127,9 +1127,9 @@ public class ManagerController {
 			storebuyMap = service.getStorebuyMap(cp);
 			model.addAttribute("storebuyMap", storebuyMap);
 
-			System.out.println("관리자_스토어 구매 목록");
+		
 			
-			 logger.debug(" storebuyMap################************************* : " + storebuyMap);
+//			 logger.debug(" storebuyMap################************************* : " + storebuyMap);
 			return "manager/manager_store_buylist";
 		}
 	
@@ -1162,13 +1162,11 @@ public class ManagerController {
 	@ResponseBody
 	@PostMapping("/store_list/edit/{storeNo}/store_edit")
 	public int StoreEdit(Store updateStore, @PathVariable("storeNo") int storeNo) {
-		logger.info("스토어 수정 기능 수행");
-
-		logger.info("updateStore" + updateStore);
+		
 
 		int result = service.StoreEdit(updateStore);
 
-		logger.info("update result:::" + result);
+		
 
 		return result;
 	}
@@ -1177,11 +1175,11 @@ public class ManagerController {
 		@ResponseBody
 		@GetMapping("/store_list/edit/{storeNo}/store_edit/NameDupChecks")
 		public int NameDupChecks(String storeName, @PathVariable("storeNo") int storeNo, Store store) {
-			System.out.println(storeName);
+			
 			String originName = service.getStoreInfo(storeNo).getStoreName();
 			int result = service.NameDupChecks(storeName,originName);
 
-			System.out.println(result);
+			
 			return result;
 
 		}
