@@ -22,6 +22,10 @@
                                  <div>
                                     <img src="" alt="">
                                  </div>
+                                 <!-- <li><a href="${contextPath}/myPage/myPgMain"> <span><img
+                                             src="${contextPath}/resources/images/headerPng/test3.png" alt=""></span>
+                                       <span>MY KGV</span>
+                                    </a></li> -->
                                  <li><a href="${contextPath}/user/login"> <!-- <a href="#"   id="loginButton"> -->
                                        <span><img src="${contextPath}/resources/images/headerPng/test.png"
                                              alt=""></span>
@@ -31,10 +35,7 @@
                                              src="${contextPath}/resources/images/headerPng/test2.png" alt=""></span>
                                        <span>회원가입</span>
                                     </a></li>
-                                 <li><a href="${contextPath}/myPage/myPgMain"> <span><img
-                                             src="${contextPath}/resources/images/headerPng/test3.png" alt=""></span>
-                                       <span>MY KGV</span>
-                                    </a></li>
+                                 
                                  <li><a href="${contextPath}/helpDesk/helpDesk_home"> <span><img
                                              src="${contextPath}/resources/images/headerPng/test5.png" alt=""></span>
                                        <span>고객센터</span>
@@ -50,11 +51,11 @@
                                        <div>
                                           <img src="" alt="">
                                        </div>
-                                       <li style="visibility: hidden"><a href="${contextPath}/user/login"> <span><img
+                                       <!-- <li style="visibility: hidden"><a href="${contextPath}/user/login"> <span><img
                                                    src="${contextPath}/resources/images/headerPng/test.png"
                                                    alt=""></span>
                                              <span>로그인</span>
-                                          </a></li>
+                                          </a></li> -->
                                        <li><a href="${contextPath}/user/logout"> <span><img
                                                    src="${contextPath}/resources/images/headerPng/logout1.png"
                                                    alt=""></span> <span>로그아웃</span>

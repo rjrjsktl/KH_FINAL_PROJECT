@@ -80,9 +80,9 @@ $(document).ready(function () {
 
 
     if (checkScreen != null && checkWeek != null && checkTime != null) {
-      console.log("checkScreen : " + checkScreen);
-      console.log("checkWeek : " + checkWeek);
-      console.log("checkTime : " + checkTime);
+      //console.log("checkScreen : " + checkScreen);
+      //console.log("checkWeek : " + checkWeek);
+      //console.log("checkTime : " + checkTime);
 
       $.ajax({
         url: "manager_cinema_price/check",
@@ -93,21 +93,21 @@ $(document).ready(function () {
         },
         type: "POST",
         success: function (result) {
-          console.log(result);
+          //console.log(result);
           // 중복 O : 1
           // 중복 X : 0
           if (result > 0) {
-            console.log("중복 O");
+            //console.log("중복 O");
             alert('해당 가격이 이미 존재합니다!')
             submitBtn.prop('disabled', true); // 등록 버튼 비활성화
           } else {
-            console.log("중복 X");
+            //console.log("중복 X");
             submitBtn.prop('disabled', false); // 등록 버튼 활성화
           }
         },
         error: function () {
           window.alert("중복 조회 실패")
-          console.log("중복 조회 실패");
+          //console.log("중복 조회 실패");
         }
       })
     }
@@ -172,14 +172,14 @@ $(document).ready(function () {
       return false;
     }
 
-    console.log('상영관 종류 : ' + screenType.val());
-    console.log('주중 / 주말 : ' + chooseDay.val());
-    console.log('오전 / 오후 : ' + chooseTime.val());
-    console.log('청소년 가격 : ' + teen.val());
-    console.log('일반 가격 : ' + normal.val());
-    console.log('경로 가격 : ' + elder.val());
-    console.log('우대 가격 : ' + special.val());
-    console.log('커플 가격 : ' + couple.val());
+    //console.log('상영관 종류 : ' + screenType.val());
+    //console.log('주중 / 주말 : ' + chooseDay.val());
+    //console.log('오전 / 오후 : ' + chooseTime.val());
+    //console.log('청소년 가격 : ' + teen.val());
+    //console.log('일반 가격 : ' + normal.val());
+    //console.log('경로 가격 : ' + elder.val());
+    //console.log('우대 가격 : ' + special.val());
+    //console.log('커플 가격 : ' + couple.val());
 
 
     $.ajax({
@@ -196,21 +196,21 @@ $(document).ready(function () {
       },
       type: "POST",
       success: function (result) {
-        console.log(result);
+        //console.log(result);
         // 등록 완료 : 1
         // 등록 실패 : 0
         if (result > 0) {
-          console.log("가격 등록 완료");
+          //console.log("가격 등록 완료");
           window.alert("가격 등록 성공")
           let url = "/movie/manager/manager_cinemaPrice_list";
           window.location.href = url;
         } else {
-          console.log("가격 등록 실패");
+          //console.log("가격 등록 실패");
         }
       },
       error: function () {
         window.alert("가격 등록 실패")
-        console.log("가격 등록 ajax 실패");
+        //console.log("가격 등록 ajax 실패");
       }
     })
 

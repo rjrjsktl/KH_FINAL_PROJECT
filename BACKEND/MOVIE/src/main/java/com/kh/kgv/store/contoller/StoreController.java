@@ -30,7 +30,7 @@ import com.kh.kgv.common.Util.SessionUtil;
 import com.kh.kgv.customer.model.vo.User;
 
 import com.kh.kgv.items.model.vo.Store;
-import com.kh.kgv.management.vo.NewApiKeys;
+import com.kh.kgv.management.model.vo.NewApiKeys;
 import com.kh.kgv.store.model.service.StoreService;
 
 import com.kh.kgv.store.model.vo.StoreCoupon;

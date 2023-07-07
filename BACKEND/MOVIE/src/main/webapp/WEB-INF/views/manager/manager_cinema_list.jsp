@@ -62,7 +62,6 @@
 														<th>지역</th>
 														<th>주소</th>
 														<th>상영관</th>
-														<th>수정</th>
 														<th>삭제</th>
 													</tr>
 													<c:forEach var="cinema" items="${cinemaMap['cinemaList']}">
@@ -74,11 +73,6 @@
 															<c:set var="addr" value="${fn:replace(addr, ',,', ', ')}" />
 															<td>${addr}</td>
 															<td>${cinema['cinemaScreen']}</td>
-															<td>
-																<a href="${contextPath}/manager/event_list/edit/${getEvent['eventNo']}" class="editEvent">
-																	<i class="fa-sharp fa-solid fa-pen-to-square"></i>
-																</a>
-															</td>
 															<td><a class="deleteEvent"><i class="fa-sharp fa-solid fa-xmark"></i></a></td>
 														</tr>
 													</c:forEach>
