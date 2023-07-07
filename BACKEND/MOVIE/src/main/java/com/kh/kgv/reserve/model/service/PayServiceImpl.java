@@ -88,5 +88,11 @@ public class PayServiceImpl implements PayService {
 	public Book serchBook(int bookNo) {
 		return dao.serchBook(bookNo);
 	}
+	
+	// book 상태 변경
+	@Override
+	public int changeSt(int bookNo) {
+		return dao.changeSt(bookNo);
+	}
 
 }

@@ -76,7 +76,7 @@
                                  </c:if>
                      </div>
                      <div class="go_top_area">
-                        <div><a href="${contextPath}/reserve/choicePlay">예매하기</a><a><img src="${contextPath}/resources/images/headerPng/toparrow2.png" alt=""></a></div>
+                        <div><a><img src="${contextPath}/resources/images/headerPng/toparrow2.png" alt=""></a><a href="${contextPath}/reserve/choicePlay">예매하기</a></div>
                      </div>
                   </section>
 
