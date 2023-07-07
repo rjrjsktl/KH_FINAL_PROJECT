@@ -49,5 +49,7 @@ public interface ReserveService {
 
 	int removeSeat();
 
+	int updateMovieWatchCount();
+
 
 }
