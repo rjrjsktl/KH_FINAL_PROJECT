@@ -406,7 +406,7 @@ WHERE s.SCREEN_NO = #{screenNo}
         SELECT *
         FROM BOOK
         WHERE BOOK_NO = #{bookNo}
-        </select>
+     </select>
 
     <select id="getPastPlayList" resultMap="play_rm">
     <![CDATA[
