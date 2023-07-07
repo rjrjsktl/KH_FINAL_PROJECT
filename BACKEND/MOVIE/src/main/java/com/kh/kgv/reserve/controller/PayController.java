@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.kh.kgv.customer.model.vo.Book;
 import com.kh.kgv.management.model.vo.JoinPlay;
 import com.kh.kgv.management.model.vo.NewApiKeys;
 import com.kh.kgv.reserve.model.service.PayService;
@@ -184,10 +185,13 @@ public class PayController {
 
 		String payOrder = service.serchPayOrder(bookNo);
 	    JoinPlay userPlay = service.getUserPlayByBookNo(bookNo);
-		
+	    Book bookAll = service.serchBook(bookNo);
+	    
+	    
 		finalMap.put("userPlay", userPlay);
 		finalMap.put("payOrder", payOrder);
-
+		finalMap.put("bookAll", bookAll);
+		
 		model.addAttribute("finalMap", finalMap);
 
 		return "pay/pay_finshed";

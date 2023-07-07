@@ -8,8 +8,7 @@
                   <section>
                      <div class="logo-section">
                         <div>
-                           <a id="mainLogo" href="${contextPath}"><img
-                                 src="${contextPath}/resources/images/logo/logo.png" alt="logo"></a>
+                           <a id="mainLogo" href="${contextPath}"><img src="${contextPath}/resources/images/logo/logo.png" alt="logo"></a>
                         </div>
                         <span>KHTHEATER</span>
                      </div>
@@ -27,17 +26,14 @@
                                        <span>MY KGV</span>
                                     </a></li> -->
                                  <li><a href="${contextPath}/user/login"> <!-- <a href="#"   id="loginButton"> -->
-                                       <span><img src="${contextPath}/resources/images/headerPng/test.png"
-                                             alt=""></span>
+                                       <span><img src="${contextPath}/resources/images/headerPng/test.png" alt=""></span>
                                        <span>로그인</span>
                                     </a></li>
-                                 <li><a href="${contextPath}/signUp/signUp_sns"> <span><img
-                                             src="${contextPath}/resources/images/headerPng/test2.png" alt=""></span>
+                                 <li><a href="${contextPath}/signUp/signUp_sns"> <span><img src="${contextPath}/resources/images/headerPng/test2.png" alt=""></span>
                                        <span>회원가입</span>
                                     </a></li>
-                                 
-                                 <li><a href="${contextPath}/helpDesk/helpDesk_home"> <span><img
-                                             src="${contextPath}/resources/images/headerPng/test5.png" alt=""></span>
+
+                                 <li><a href="${contextPath}/helpDesk/helpDesk_home"> <span><img src="${contextPath}/resources/images/headerPng/test5.png" alt=""></span>
                                        <span>고객센터</span>
                                     </a></li>
 
@@ -56,31 +52,22 @@
                                                    alt=""></span>
                                              <span>로그인</span>
                                           </a></li> -->
-                                       <li><a href="${contextPath}/user/logout"> <span><img
-                                                   src="${contextPath}/resources/images/headerPng/logout1.png"
-                                                   alt=""></span> <span>로그아웃</span>
+                                       <li><a href="${contextPath}/user/logout"> <span><img src="${contextPath}/resources/images/headerPng/logout1.png" alt=""></span> <span>로그아웃</span>
                                           </a></li>
-                                       <li><a href="${contextPath}/myPage/myPgMain"> <span><img
-                                                   src="${contextPath}/resources/images/headerPng/test3.png"
-                                                   alt=""></span>
+                                       <li><a href="${contextPath}/myPage/myPgMain"> <span><img src="${contextPath}/resources/images/headerPng/test3.png" alt=""></span>
                                              <span>MY KGV</span>
                                           </a></li>
-                                       <li><a href="${contextPath}/helpDesk/helpDesk_home"> <span><img
-                                                   src="${contextPath}/resources/images/headerPng/test5.png"
-                                                   alt=""></span>
+                                       <li><a href="${contextPath}/helpDesk/helpDesk_home"> <span><img src="${contextPath}/resources/images/headerPng/test5.png" alt=""></span>
                                              <span>고객센터</span>
                                           </a></li>
                                        <c:choose>
                                           <c:when test="${loginUser.userManagerSt eq 'Y'}">
-                                             <li><a href="${contextPath}/manager/main"> <span><img
-                                                         src="${contextPath}/resources/images/headerPng/gear.png"
-                                                         alt=""></span>
+                                             <li><a href="${contextPath}/manager/main"> <span><img src="${contextPath}/resources/images/headerPng/gear.png" alt=""></span>
                                                    <span>판리자페이지</span>
                                                 </a></li>
                                           </c:when>
                                           <c:otherwise>
-                                             <li style="display: none"><a href="${contextPath}/manager/main"> <span><i
-                                                         class="fa-sharp fa-solid fa-gear"></i></span>
+                                             <li style="display: none"><a href="${contextPath}/manager/main"> <span><i class="fa-sharp fa-solid fa-gear"></i></span>
                                                    <span>판리자페이지</span>
                                                 </a></li>
                                           </c:otherwise>
@@ -144,18 +131,6 @@
                         </div>
                      </div>
                   </nav>
-                 
-                 
-
-
-                  <script>
-
-                     const test = "${loginUser}";
-                     console.log(test
-                        + "+++++++++++++++++++++++++++++++++++++++++++++++++++++");
-
-
-                  </script>
 
                   <script src="${contextPath}/resources/js/main/header.js"></script>
 

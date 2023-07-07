@@ -1,6 +1,6 @@
 const userNickElement = document.getElementById("userNick");
 const userNickValue = userNickElement.value;
-console.log(userNickValue);
+// console.log(userNickValue);
 
 $(document).ready(function () {
   var itemCount = $("li.review").length;
@@ -13,7 +13,7 @@ $(document).ready(function () {
 
 let urlParams = new URLSearchParams(window.location.search);
 let reviewParam = urlParams.get("review");
-console.log("reviewParam:::" + reviewParam);
+// console.log("reviewParam:::" + reviewParam);
 
 $(document).ready(function () {
   var foldWrap = $(".fold_wrap");
@@ -114,7 +114,7 @@ $(document).ready(function () {
     $(this).parent().children("a").removeClass("on");
     $(this).addClass("on").prevAll("a").addClass("on");
     var numberOfOnClasses = $(this).parent().children("a.on").length;
-    console.log(numberOfOnClasses);
+    // console.log(numberOfOnClasses);
     return false;
   });
 
@@ -168,7 +168,7 @@ $(document).ready(function () {
   $(window).scroll(function () {
     if (
       $(window).scrollTop() >
-      $(document).height() - $(window).height() - 200
+      $(document).height() - $(window).height() - 300
     ) {
       if (!isFetching) {
         fetchMoreData();
@@ -219,7 +219,7 @@ $(document).ready(function () {
 
           li.hide();
           $(".replyList ul").append(li);
-          li.slideDown();
+          li.slideDown(500);
         });
 
         isFetching = false;

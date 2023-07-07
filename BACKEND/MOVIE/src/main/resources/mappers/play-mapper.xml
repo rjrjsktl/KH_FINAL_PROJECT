@@ -168,6 +168,7 @@
 		<![CDATA[WHERE PLAY_START <= TO_DATE(#{playEnd}, 'YYYY-MM-DD HH24:MI:SS') 
 		         AND PLAY_END >= TO_DATE(#{playStart}, 'YYYY-MM-DD HH24:MI:SS')
 		         AND SCREEN_NO = #{screenNo}]]>
+		         
 	</select>
 	
 	<!-- 상영 등록 -->
@@ -342,7 +343,7 @@ WHERE s.SCREEN_NO = #{screenNo}
     
     <select id="selectCategory" parameterType="string" resultType="string">
 		SELECT s.STORE_CATEGORY
-		FROM STORE_COUPON sc
+		FROM STORE_COUPON S
 			INNER JOIN STORE_ORDER so ON sc.S_ORDER_NO = so.S_ORDER_NO 
 			INNER JOIN STORE s ON so.STORE_NO = s.STORE_NO 
 		WHERE COUPON_DETAIL_NO = #{couponNo}
@@ -400,6 +401,13 @@ WHERE s.SCREEN_NO = #{screenNo}
         WHERE BOOK_NO = #{bookNo}
     </select>
     
+
+    <select id="serchBook" parameterType="_int" resultType="book">
+        SELECT *
+        FROM BOOK
+        WHERE BOOK_NO = #{bookNo}
+     </select>
+
     <select id="getPastPlayList" resultMap="play_rm">
     <![CDATA[
         SELECT * FROM PLAY
@@ -426,4 +434,5 @@ WHERE s.SCREEN_NO = #{screenNo}
 		SET MOVIE_WATCHED = #{movieWatched}
 		WHERE MOVIE_NO = #{movieNo}
 	</update>
+	
 </mapper>
