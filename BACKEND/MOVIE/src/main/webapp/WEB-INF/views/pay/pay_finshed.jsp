@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+      <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+        <%@ page session="false" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,9 +63,12 @@
                         <!-- 할인&혜택 영역 -->
                         <div class="discount_step">
                             
+                            <!-- 예매한 영화 이미지 -->
                             <img src="${finalMap.userPlay.movie.movieImg1}">
 
-                            <div>
+                            
+                            <div class="ticketInfo">
+                                <!-- 관람제한 나이 -->
                                 <div>
                                     <c:choose>
                                         <c:when test="${fn:contains(userPlay.movie.mgNo, '전체')}">
@@ -81,15 +86,22 @@
                                     </c:choose>
                                 </div>
 
-                                <span>${finalMap.userPlay.movie.movieTitle}</span>
+                                <!-- 영화제목 -->
+                                <span>${finalMap.userPlay.movie.movieTitle}</span> 
 
+                                <div>
+                                    
+                                </div>
+                                <!-- 지역,관,스크린 -->
                                 <div>
                                     ${finalMap.userPlay.screen.cinemaName} 
                                     ${finalMap.userPlay.screen.screenName}관
                                     (${finalMap.userPlay.screen.screenStyle})
+                                    ${finalMap.bookAll.bookSeat}
                                 </div>
                             </div>
                             
+                            <!-- 예매코드번호 -->
                             <div>
                                 <span>예매하신 코드번호 :</span>
                                 <span>${finalMap.payOrder}</span>
