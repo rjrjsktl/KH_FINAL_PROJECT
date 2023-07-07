@@ -5,11 +5,11 @@ $(document).ready(function () {
 
     play.on('change', (e) => {
         let clickTarget = $(e.currentTarget).val();
-        console.log("가져온 번호는 : " + $(e.currentTarget).data('id'));
+        // console.log("가져온 번호는 : " + $(e.currentTarget).data('id'));
 
 
         if (clickTarget == 'Y') {
-            console.log("Y가 찍힘" + clickTarget);
+            // console.log("Y가 찍힘" + clickTarget);
 
             $.ajax({
                 url: "Movie_ST",
@@ -20,16 +20,16 @@ $(document).ready(function () {
                 type: "POST",
                 success: function (result) {
                     if (result > 0) {
-                        console.log("N -> Y로 변경 완료");
+                        // console.log("N -> Y로 변경 완료");
                         alert("영화 상태 변경 완료!");
                     } else {
-                        console.log("N -> Y로 변경 실패");
+                        // console.log("N -> Y로 변경 실패");
                         alert("영화 상태 변경 실패!");
                     }
                 },
 
                 error: function () {
-                    console.log("error : N -> Y로 변경 실패");
+                    // console.log("error : N -> Y로 변경 실패");
                 }
             });
 
@@ -37,7 +37,7 @@ $(document).ready(function () {
 
 
         } else {
-            console.log("N이 찍힘" + clickTarget);
+            // console.log("N이 찍힘" + clickTarget);
 
             $.ajax({
                 url: "Movie_ST",
@@ -48,16 +48,16 @@ $(document).ready(function () {
                 type: "POST",
                 success: function (result) {
                     if (result > 0) {
-                        console.log("Y -> N으로 변경 완료");
+                        // console.log("Y -> N으로 변경 완료");
                         alert("영화 상태 변경 완료!");
                     } else {
-                        console.log("Y -> N으로 변경 실패");
+                        // console.log("Y -> N으로 변경 실패");
                         alert("영화 상태 변경 완료!");
                     }
                 },
 
                 error: function () {
-                    console.log("error : Y -> N으로 변경 실패");
+                    // console.log("error : Y -> N으로 변경 실패");
                 }
             });
 

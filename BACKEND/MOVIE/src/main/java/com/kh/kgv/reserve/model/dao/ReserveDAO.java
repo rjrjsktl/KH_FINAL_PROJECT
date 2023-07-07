@@ -95,5 +95,22 @@ public class ReserveDAO {
 		return sqlSession.delete("playMapper.deleteBook");
 	}
 
+	public List<Play> getPastPlayList() {
+		return sqlSession.selectList("playMapper.getPastPlayList");
+	}
+
+	public int getTotalTicket(int movieNo) {
+		return sqlSession.selectOne("playMapper.getTotalTicket", movieNo);
+	}
+
+	public int updatePlaySt() {
+		return sqlSession.update("playMapper.updatePlaySt");
+	}
+
+	public int updateTotalTicket(Map<String, Object> movieMap) {
+		return sqlSession.update("playMapper.updateTotalTicket", movieMap);
+	}
+
+
 
 }

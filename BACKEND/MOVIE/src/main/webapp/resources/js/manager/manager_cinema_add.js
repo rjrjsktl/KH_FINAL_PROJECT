@@ -11,17 +11,17 @@ $(document).ready(function () {
     sweet: [],
     impaired: []
   }));
-  
+
 
   $('.screen input.screenStyle').attr('value', "일반관");
-  $('.screen input.screenSeat').attr('value', 12*24);
+  $('.screen input.screenSeat').attr('value', 12 * 24);
 
   let room;
   let tempNo;
   let tempStyle;
   let tempSeat;
   let tempRoom;
-  
+
   let clickCount = 0;   // 클릭하여 활성화된 좌석의 갯수
   let firstSeat = [];   // 첫번째로 클릭하여 활성화된 좌석 [x, y]
   let secondSeat = [];  // 두번째로 클릭하여 활성화된 좌석 [x, y]
@@ -32,10 +32,10 @@ $(document).ready(function () {
   let alphabet = 'ABCDEFGHIJKLMNOPQLSTUVWXYZ';
   let deleteBtn = '<button type="button" class="room_delete"><i class="fa-solid fa-ban"></i></button>';
   let screenCount = 4;
-  
+
   let nameCheck = false;
   let addrCheck = false;
-  
+
   // 영화관 이름 유효성 검사
 
   const cinemaRegex = /^[가-힣|a-z|A-Z|0-9|{1,}$]+$/;
@@ -56,7 +56,7 @@ $(document).ready(function () {
           }
         },
         error: function () {
-          console.log("에러 발생");
+          //console.log("에러 발생");
         }
       });
     } else {
@@ -64,11 +64,11 @@ $(document).ready(function () {
       nameCheck = false;
     }
   });
-  
-  
-   // 상영관 추가 버튼
-   
-  $("#plusScreen").on("click", function() {
+
+
+  // 상영관 추가 버튼
+
+  $("#plusScreen").on("click", function () {
     let newScreen = $('.screen[data-room-no=0]').clone(true);
     newScreen.attr('data-room-no', ++screenCount);
     newScreen.find('.screenName').html(screenCount);
@@ -77,17 +77,17 @@ $(document).ready(function () {
     newScreen.css('display', 'block');
     $(this).before(newScreen);
   });
-  
-  
+
+
   // 상영관 삭제 버튼
-  $(document).on("click", '.room_delete', function() {
-    if(screenCount > 4) {
+  $(document).on("click", '.room_delete', function () {
+    if (screenCount > 4) {
       $(`.screen[data-room-no=${screenCount--}]`).remove();
-    } 
-    
-    if(screenCount >= 5) {
+    }
+
+    if (screenCount >= 5) {
       $(`.screen[data-room-no=${screenCount}]`).find('.screen_btn').append(deleteBtn);
-    } 
+    }
   });
 
 
@@ -245,8 +245,8 @@ $(document).ready(function () {
         j++;
       }
     }
-	
-	tempSeat = $("[data-code]").length;
+
+    tempSeat = $("[data-code]").length;
     tempRoom.sweet.forEach(s => $(`[data-code=${s}]`).addClass('sweet'));
 
   }
@@ -724,9 +724,9 @@ $(document).ready(function () {
 
     $('#room_area').css('display', 'none');
     $('#room_area').css('z-index', '0');
-    
-    console.log(tempRoom);
-    console.log(tempSeat);
+
+    //console.log(tempRoom);
+    //console.log(tempSeat);
   });
 
 
@@ -740,7 +740,7 @@ $(document).ready(function () {
 
     tempStyle = "일반관";
     tempSeat = 12 * 24;
-    
+
     tempRoom.maxRow = 12;
     tempRoom.maxColumn = 24;
     tempRoom.aisle = [];
@@ -764,18 +764,18 @@ $(document).ready(function () {
 
 
   // submit 함수
-  
-  $('.bottom_Submit').on("click", function() {
-  
-    if($('#cinemaRoadAddress').val().length > 0) {
+
+  $('.bottom_Submit').on("click", function () {
+
+    if ($('#cinemaRoadAddress').val().length > 0) {
       addrCheck = true;
     }
 
-    if(nameCheck == false) {
+    if (nameCheck == false) {
       alert("이름이 유효하지 않습니다.");
-    } else if(addrCheck == false) {
+    } else if (addrCheck == false) {
       alert("주소가 유효하지 않습니다.");
-    } else if(nameCheck && addrCheck) {
+    } else if (nameCheck && addrCheck) {
       $(this).attr("type", "submit");
       $('#cinemaAddForm').submit();
     }

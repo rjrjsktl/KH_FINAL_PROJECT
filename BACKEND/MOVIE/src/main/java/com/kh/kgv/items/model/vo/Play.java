@@ -20,4 +20,5 @@ public class Play {
 	private int playBookCount;
 	private String playBookSeat;
 	private String playDate; // myPage 영화 본 날짜
+	private String playSt;
 }

@@ -34,7 +34,7 @@
 
 							<main>
 								<div>
-									<span>${pageTitle} : ${hkeyword}</span>
+									<span>${pageTitle}</span> <span class="hkeywordss">${hkeyword}</span>
 								</div>
 
 								<c:choose>
@@ -115,6 +115,15 @@
 						<script src="${contextPath}/resources/js/introduce/detail_list.js"></script>
 						<!-- <script src="${contextPath}/resources/js/introduce/introduce.js"></script> -->
 
+
+						<script>
+							$(document).ready(function () {
+								$('.hkeywordss').each(function () {
+									var originalText = $(this).text();
+									$(this).text(": " + originalText);
+								});
+							});
+						</script>
 					</body>
 
 					</html>

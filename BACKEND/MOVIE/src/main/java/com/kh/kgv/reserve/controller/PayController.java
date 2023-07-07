@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kh.kgv.management.model.vo.JoinPlay;
-import com.kh.kgv.management.vo.NewApiKeys;
+import com.kh.kgv.management.model.vo.NewApiKeys;
 import com.kh.kgv.reserve.model.service.PayService;
 import com.kh.kgv.reserve.model.service.ReserveService;
 import com.kh.kgv.store.contoller.StoreController;

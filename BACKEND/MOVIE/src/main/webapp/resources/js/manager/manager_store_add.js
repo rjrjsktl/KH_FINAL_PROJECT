@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 
     storeImage.on('change', function (e) {
-        console.log(e.target.files); // 파일 목록 출력
+        // console.log(e.target.files); // 파일 목록 출력
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
@@ -35,14 +35,14 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             success: function (data1) {
-                console.log("성공 후 반환 메시지11", data1);
+                // console.log("성공 후 반환 메시지11", data1);
                 let jsonArray = JSON.parse(data1); // JSON 문자열을 파싱하여 배열로 변환
                 let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
                 imageUrl1 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
-                console.log("이미지 URL:", imageUrl1);
+                // console.log("이미지 URL:", imageUrl1);
             },
             error: function (e) {
-                console.log(e);
+                // console.log(e);
             }
         });
     }
@@ -52,7 +52,7 @@ $(document).ready(function () {
     let storeImageBig = $('#storeImageBig')
 
     storeImageBig.on('change', function (e) {
-        console.log(e.target.files); // 파일 목록 출력
+        // console.log(e.target.files); // 파일 목록 출력
 
         // 파일 업로드(다중업로드를 위해 반복문 사용)
         for (var i = 0; i < e.target.files.length; i++) {
@@ -78,14 +78,14 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             success: function (data2) {
-                console.log("성공 후 반환 메시지22", data2);
+                // console.log("성공 후 반환 메시지22", data2);
                 let jsonArray = JSON.parse(data2); // JSON 문자열을 파싱하여 배열로 변환
                 let imageObject = jsonArray[0]; // 배열의 첫 번째 요소 선택
                 imageUrl2 = imageObject[""]; // 빈 키에 해당하는 이미지 URL 선택
-                console.log("이미지 URL:", imageUrl2);
+                // console.log("이미지 URL:", imageUrl2);
             },
             error: function (e) {
-                console.log(e);
+                // console.log(e);
             }
         });
     }
@@ -126,7 +126,7 @@ $(document).ready(function () {
     $("#storeName").on("input", function () {
         if (titleRegex.test($(this).val())) {
 
-            console.log($(this).val());
+            // console.log($(this).val());
             $.ajax({
                 url: "store_add/NameDupCheck",
                 data: { "storeName": $(this).val() },
@@ -141,7 +141,7 @@ $(document).ready(function () {
                     }
                 },
                 error: function () {
-                    console.log("에러 발생");
+                    // console.log("에러 발생");
                 }
             });
         } else {
@@ -158,7 +158,7 @@ $(document).ready(function () {
 
     $('.bottom_Submit').on("click", function (e) {
 
-        console.log('저장버튼이 눌림.');
+        // console.log('저장버튼이 눌림.');
 
 
 
@@ -238,19 +238,19 @@ $(document).ready(function () {
             },
 
             error: function () {
-                console.log("에러 발생으로 인해 등록 실패");
+                // console.log("에러 발생으로 인해 등록 실패");
             }
         });
 
 
-        console.log("상품 카테고리 : " + $("#storeCategory").val());
-        console.log("상품 이름 : " + $("#storeName").val());
-        console.log("상품 설명 : " + $("#storeDesc").val());
-        console.log("상품 가격 : " + $("#storePrice").val());
-        console.log("개수제한 : " + $("#storeStock").val());
-        console.log("상품 이미지 : " + $("#storeImage").val());
-        console.log("상품 이미지 : " + imageUrl1);
-        console.log("상품 빅 이미지 : " + imageUrl2);
+        // console.log("상품 카테고리 : " + $("#storeCategory").val());
+        // console.log("상품 이름 : " + $("#storeName").val());
+        // console.log("상품 설명 : " + $("#storeDesc").val());
+        // console.log("상품 가격 : " + $("#storePrice").val());
+        // console.log("개수제한 : " + $("#storeStock").val());
+        // console.log("상품 이미지 : " + $("#storeImage").val());
+        // console.log("상품 이미지 : " + imageUrl1);
+        // console.log("상품 빅 이미지 : " + imageUrl2);
 
 
     });

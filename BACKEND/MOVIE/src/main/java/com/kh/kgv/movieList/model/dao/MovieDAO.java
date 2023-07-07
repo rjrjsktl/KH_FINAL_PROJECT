@@ -106,6 +106,14 @@ public class MovieDAO {
 		return sqlSession.selectList("movieMapper.searchMovieList", keyword);
 	}
 
+	public int countMyReview(int movieNo, int userNo) {
+		Map<String, Object> params = new HashMap<>();
+		params.put("movieNo", movieNo);
+		params.put("userNo", userNo);
+		
+		return sqlSession.selectOne("reviewMapper.countMyReview", params);
+	}
+
 
 
 
