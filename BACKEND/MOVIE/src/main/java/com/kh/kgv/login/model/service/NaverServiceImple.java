@@ -18,7 +18,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.login.model.dao.SignUpDAO;
-import com.kh.kgv.management.vo.NewApiKeys;
+import com.kh.kgv.management.model.vo.NewApiKeys;
+
 
 
 
