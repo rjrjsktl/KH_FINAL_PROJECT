@@ -5,7 +5,6 @@ import java.util.Map;
 
 import com.kh.kgv.customer.model.vo.Book;
 import com.kh.kgv.management.model.vo.JoinPlay;
-import com.kh.kgv.reserve.controller.book;
 import com.kh.kgv.store.model.vo.StoreCoupon;
 
 public interface PayService {

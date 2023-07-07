@@ -263,7 +263,7 @@
                                             <c:when test="${not empty loginUser.userNo}">
                                                 <c:choose>
                                                     <c:when test="${countMyReview >= 1}">
-                                                        <div class="writtenReview">리뷰참여 정말 감사합니당!</div>
+                                                        <div class="writtenReview">고객님의 리뷰가 이미 작성 되었습니다.</div>
                                         </div>
                                         </c:when>
 
@@ -358,7 +358,7 @@
                                             <div></div>
                                         </c:when>
                                         <c:otherwise>
-                                            <div class="morePage">scroll</div>
+                                            <div class="morePage">스크롤</div>
                                         </c:otherwise>
                                     </c:choose>
                                 </div>
