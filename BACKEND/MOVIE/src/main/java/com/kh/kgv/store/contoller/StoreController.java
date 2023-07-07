@@ -69,7 +69,7 @@ public class StoreController {
 		Map<String, Object> storeMap = null;
 		storeMap = service.getStoreMap();
 
-		logger.debug("storeMap : " + storeMap);
+//		logger.debug("storeMap : " + storeMap);
 		model.addAttribute("storeMap", storeMap);
 
 		return "store/storeMain";
@@ -83,11 +83,11 @@ public class StoreController {
 
 			) {
 
-		//		store.setStoreNo(storeNo);
+	
 
 		Store getStoreDetail = service.getStoreDetail(store);
 
-		logger.debug("getStoreDetail : " + getStoreDetail);
+//		logger.debug("getStoreDetail : " + getStoreDetail);
 
 		model.addAttribute("storeDetail", getStoreDetail);
 
@@ -108,19 +108,17 @@ public class StoreController {
 			HttpSession session
 			,HttpServletRequest request)  {
 
-		//		  HttpSession session = request.getSession();
+	
 
 		synchronized (session) {
 			session.setAttribute("totalPrice", totalPrice);
 			session.setAttribute("totalCount", totalCount);
 		}
-		//		  session.setAttribute("totalPrice", totalPrice);
-		//		  session.setAttribute("totalCount", totalCount);
-		//		    
+		 
 
 
-		logger.debug(" totalPrice : " + totalPrice);
-		logger.debug(" totalCount : " + totalCount);
+//		logger.debug(" totalPrice : " + totalPrice);
+//		logger.debug(" totalCount : " + totalCount);
 
 		return "store/store_payment";
 
@@ -152,17 +150,17 @@ public class StoreController {
 		}
 
 
-		logger.debug(" loginUser************** : " + loginUser);
+//		logger.debug(" loginUser************** : " + loginUser);
 
 
 
 		int totalPrice = (int) session.getAttribute("totalPrice");
 		int totalCount = (int) session.getAttribute("totalCount");
 
-		logger.debug(" totalPrice************** : " + totalPrice);
-		logger.debug(" totalCount*************** : " + totalCount);
-
-		logger.debug(" store : " + store);
+//		logger.debug(" totalPrice************** : " + totalPrice);
+//		logger.debug(" totalCount*************** : " + totalCount);
+//
+//		logger.debug(" store : " + store);
 		Store getStore = service.getStoreDetail(store);
 
 
@@ -189,8 +187,8 @@ public class StoreController {
 		String key = apikey.getIamportKey();
 		String secretKey = apikey.getIamportSecretKey();
 
-		System.out.println(key + ":: 키값");
-		System.out.println(secretKey + ":: 시크릿키값");
+//		System.out.println(key + ":: 키값");
+//		System.out.println(secretKey + ":: 시크릿키값");
 
 
 		// REST API 키와 REST API secret 를 아래처럼 순서대로 입력한다.
@@ -226,14 +224,14 @@ public class StoreController {
 
 
 
-		System.out.println("ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ");
+	
 
-		logger.debug(" orderPrice################ : " + orderPrice);
-		logger.debug(" totalCount################ : " + orderCount);
-		logger.debug(" storeNo################ : " + storeName);
-		logger.debug(" userNo################ : " + userName);
-		logger.debug(" userEmail################ : " + userEmail);
-		logger.debug(" orderDetailNo################ : " + orderDetailNo);
+//		logger.debug(" orderPrice################ : " + orderPrice);
+//		logger.debug(" totalCount################ : " + orderCount);
+//		logger.debug(" storeNo################ : " + storeName);
+//		logger.debug(" userNo################ : " + userName);
+//		logger.debug(" userEmail################ : " + userEmail);
+//		logger.debug(" orderDetailNo################ : " + orderDetailNo);
 
 
 		StoreOrder storeOrder  = new StoreOrder();
@@ -249,7 +247,7 @@ public class StoreController {
 
 		int result = service.successPayment(storeOrder);
 
-		logger.debug(" userNo################ : " + userName);
+		//logger.debug(" userNo################ : " + userName);
 
 		return result;
 	}
@@ -263,7 +261,7 @@ public class StoreController {
 
 
 		int sorderNo = (int) session.getAttribute("generatedOrderNo");
-		logger.debug(" SorderNo################************************* : " + sorderNo);
+	//	logger.debug(" SorderNo################************************* : " + sorderNo);
 
 		storePaymentMap = new HashMap<>(); 
 
@@ -273,16 +271,14 @@ public class StoreController {
 
 
 
-		logger.debug(" storeList################************************* : " + storeList);
-		logger.debug(" storeOrderList################************************* : " + storeOrderList);
-		logger.debug(" storeCouponList################************************* : " + storeCouponList);
+//		logger.debug(" storeList################************************* : " + storeList);
+//		logger.debug(" storeOrderList################************************* : " + storeOrderList);
+//		logger.debug(" storeCouponList################************************* : " + storeCouponList);
 		model.addAttribute("storeList", storeList);
 		model.addAttribute("storeOrderList", storeOrderList);
 		model.addAttribute("storeCouponList", storeCouponList);
 
-		//			 joinStore =  service.getSuccess(sorderNo);
-
-		// logger.debug(" joinStore################************************* : " + joinStore);
+	
 
 
 		return "store/store_Success";

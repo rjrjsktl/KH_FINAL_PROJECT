@@ -167,27 +167,29 @@ h2 {
 }
 
 .table-wrap{
-    width:1040px;
-    padding:0 30px;
+    width:980px;
     height:100%;
     margin:0 auto;
     display: flex;
     flex-direction: column;
-    padding-bottom: 100px;
+    background-color: #313131;
+    border-radius: 10px;
+    margin-bottom: 50px;
 }
 
 .table-wrap > span{
     font-size: 1.5rem;
-    padding:15px 0;
+    padding:15px 30px;
 }
 
 table{
     padding:15px 30px;
     flex:1 1 0;
-    border-top:1px solid lightgray;
+    border-top:1px solid #484848;
 }
 
 table thead th{
+ 
     padding-bottom: 15px;
 }
 
@@ -197,15 +199,23 @@ table td{
 }
 
 table td:first-child {
-    width: 10%;
+    width: 5%;
     padding:3px 0;
 }
 
 table td:nth-child(2){
     width:60%;
+    text-align: left;
+    padding-left: 50px;
 }
+
+table td:nth-child(2) a:hover{
+    color:#FFC400 !important;
+    text-decoration: underline;
+}
+
 table td:nth-child(3){
-    width:15%;
+    width:20%;
 }
 
 table td:nth-child(4){

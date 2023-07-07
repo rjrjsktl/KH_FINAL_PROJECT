@@ -27,7 +27,7 @@
 
 /* 제목 폰트 사이즈 및 효과 */
 #titleArea>span {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
 }
 
@@ -49,25 +49,29 @@
 
 /* 뒤로가기 버튼 */
 #returnBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 150px;
-    height: 50px;
-    border: 1px solid white;
-    border-radius: 10px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 80px;
-    background-color: transparent;
-    cursor: pointer;
+    width: 200px;
+    height: 60px;
+    background-color: rgb(49,49,49);
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 50px;
+    font-size: 1.5rem;
+    line-height: 58px;
+    text-align: center;
+    color:white;
+    cursor:pointer;
 }
 
 #returnBtn:hover {
-    background-color: rgb(251, 251, 251);
+    background-color: #FFC400;
     color: rgb(21, 21, 21);
 }
 
 .navBar:nth-child(4)>a:nth-child(1) {
     color: rgb(255, 196, 0);
+}
+
+.regdate{
+    text-align: center;
 }

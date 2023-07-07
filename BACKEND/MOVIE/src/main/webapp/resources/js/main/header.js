@@ -56,7 +56,7 @@ $(document).ready(function () {
     }
   });
 
-  $(".go_top_area > div > a:nth-child(2)").click(function () {
+  $(".go_top_area > div > a:nth-child(1)").click(function () {
     $("html, body").animate({ scrollTop: 0 }, 200);
     return false;
   });

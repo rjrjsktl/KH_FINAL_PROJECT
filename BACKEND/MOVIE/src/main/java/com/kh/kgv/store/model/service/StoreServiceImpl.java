@@ -63,12 +63,11 @@ public class StoreServiceImpl implements StoreService {
 		 
 		 int generatedOrderNo = storeOrder.getSorderNo();
 		 
-		 		//storeOrder.setOrderSt("Y");
+		 		
 		 session.setAttribute("generatedOrderNo", generatedOrderNo);
 		 
 		 
-		 logger.debug(" storeOrder################ : " + storeOrder);
-		 logger.debug(" generatedOrderNo################ : " + generatedOrderNo);
+		
 
 		    if (result > 0 && storeOrder.getOrderDetailNo() != null) {
 		       

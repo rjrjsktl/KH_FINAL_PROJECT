@@ -131,7 +131,7 @@
 							<div class="stheater_wrap">
 								<ul>
 									<c:forEach var="screen" items="${screenInfo}">
-										<li><a href="#">${screen.screenStyle} <span>${screen.cinemaName}</span></a></li>
+										<li><a href="${contextPath}/reserve/choicePlay">${screen.screenStyle} <span class="cinename">${screen.cinemaName}</span></a></li>
 									</c:forEach>
 								</ul>
 							</div>
@@ -147,8 +147,9 @@
 							<div class="top3-wrap">
 								<c:forEach var="ranMovie" items="${randomMovie}">
 									<div>
-										<a href="${contextPath}/movieList/detail_List/introduce/${ranMovie.movieNo}"><img src="${ranMovie.movieImg1}"></a>
-										<button>예매하기</button>
+										<a href="${contextPath}/movieList/detail_List/introduce/${ranMovie.movieNo}"><img src="${ranMovie.movieImg1}" onmouseenter="zoomIn(event)"
+											onmouseleave="zoomOut(event)"></a>
+										<button><a href="${contextPath}/reserve/choicePlay">예매하기</a></button>
 									</div>
 								</c:forEach>
 							</div>
