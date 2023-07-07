@@ -8,7 +8,7 @@ main {
 }
 
 main>div:nth-child(1) {
-    border-bottom: 2px solid yellow;
+    border-bottom: 2px solid #FFC400;
     padding-bottom: 30px;
     height: 100%;
 }
