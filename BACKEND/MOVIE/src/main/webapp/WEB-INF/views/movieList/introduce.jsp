@@ -18,9 +18,7 @@
 
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
                         <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-                            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-                            crossorigin="anonymous"></script>
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
                     </head>
 
@@ -61,8 +59,7 @@
                                     <div>
                                         <div>
                                             <!-- 이미지 205px 292px -->
-                                            <a href=""><img src="${MovieDetail.movieImg1}" alt=""
-                                                    class="movie-poster-img"></a>
+                                            <a href=""><img src="${MovieDetail.movieImg1}" alt="" class="movie-poster-img"></a>
                                         </div>
 
                                         <div class="detail-info-wrap">
@@ -70,20 +67,16 @@
                                             <p>
                                                 <c:choose>
                                                     <c:when test="${fn:contains(MovieDetail.mgNo, '전체')}">
-                                                        <img src="${contextPath}/resources/images/age/aage.png"
-                                                            class="age-img-area">
+                                                        <img src="${contextPath}/resources/images/age/aage.png" class="age-img-area">
                                                     </c:when>
                                                     <c:when test="${fn:contains(MovieDetail.mgNo, '12')}">
-                                                        <img src="${contextPath}/resources/images/age/12age.png"
-                                                            class="age-img-area">
+                                                        <img src="${contextPath}/resources/images/age/12age.png" class="age-img-area">
                                                     </c:when>
                                                     <c:when test="${fn:contains(MovieDetail.mgNo, '15')}">
-                                                        <img src="${contextPath}/resources/images/age/15age.png"
-                                                            class="age-img-area">
+                                                        <img src="${contextPath}/resources/images/age/15age.png" class="age-img-area">
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <img src="${contextPath}/resources/images/age/18age.png"
-                                                            class="age-img-area">
+                                                        <img src="${contextPath}/resources/images/age/18age.png" class="age-img-area">
                                                     </c:otherwise>
                                                 </c:choose>
                                                 <span>${MovieDetail.movieTitle}</span>
@@ -103,8 +96,7 @@
                                                 <li>감독<span>${MovieDetail.movieDirector}</span></li>
                                                 <li class="actorList">주연
                                                     <ul>
-                                                        <c:forTokens var="name" items="${MovieDetail.movieCast}"
-                                                            delims=",">
+                                                        <c:forTokens var="name" items="${MovieDetail.movieCast}" delims=",">
                                                             <li>
                                                                 <a>
                                                                     <c:out value="${name}" />
@@ -213,13 +205,10 @@
                                                 <p>출연자</p>
                                                 <div>
                                                     <ul>
-                                                        <c:forTokens var="directorName"
-                                                            items="${MovieDetail.movieDirector}" delims=","
-                                                            varStatus="status">
+                                                        <c:forTokens var="directorName" items="${MovieDetail.movieDirector}" delims="," varStatus="status">
                                                             <li>
                                                                 <div>
-                                                                    <img src="${contextPath}/resources/images/profile/bono.jpg"
-                                                                        alt="">
+                                                                    <img src="${contextPath}/resources/images/profile/bono.jpg" alt="">
                                                                 </div>
                                                                 <div>
                                                                     <span>
@@ -230,12 +219,10 @@
                                                             </li>
                                                         </c:forTokens>
 
-                                                        <c:forTokens var="actorName" items="${MovieDetail.movieCast}"
-                                                            delims="," varStatus="status">
+                                                        <c:forTokens var="actorName" items="${MovieDetail.movieCast}" delims="," varStatus="status">
                                                             <li>
                                                                 <div>
-                                                                    <img src="${contextPath}/resources/images/profile/bono.jpg"
-                                                                        alt="">
+                                                                    <img src="${contextPath}/resources/images/profile/bono.jpg" alt="">
                                                                 </div>
                                                                 <div>
                                                                     <span>
@@ -279,8 +266,7 @@
                                             </div>
                                             <div>
                                                 <form action="" class="replywrite">
-                                                    <textarea name="" id="addRevContent" cols="30" rows="3"
-                                                        placeholder="이쁘고 고운말만 써주세영!"></textarea>
+                                                    <textarea name="" id="addRevContent" cols="30" rows="3" placeholder="이쁘고 고운말만 써주세영!"></textarea>
                                                     <div class="replyBtn">리뷰작성</div>
                                                 </form>
                                             </div>
@@ -318,8 +304,7 @@
                                                                     <div>리뷰</div>
                                                                     <div>${review.revLike}</div>
                                                                     <c:choose>
-                                                                        <c:when
-                                                                            test="${loginUser.userNo == review.userNo || loginUser.userManagerSt == 'Y'}">
+                                                                        <c:when test="${loginUser.userNo == review.userNo || loginUser.userManagerSt == 'Y'}">
                                                                             <div style="color: #FFC400;">
                                                                                 ${review.revContent}</div>
                                                                         </c:when>
@@ -329,11 +314,9 @@
                                                                     </c:choose>
 
                                                                     <c:choose>
-                                                                        <c:when
-                                                                            test="${loginUser.userNo == review.userNo || loginUser.userManagerSt == 'Y'}">
+                                                                        <c:when test="${loginUser.userNo == review.userNo || loginUser.userManagerSt == 'Y'}">
                                                                             <div>
-                                                                                <button class="deleteReview"
-                                                                                    data-revno="${review.revNo}">Delete</button>
+                                                                                <button class="deleteReview" data-revno="${review.revNo}">Delete</button>
                                                                             </div>
                                                                         </c:when>
                                                                         <c:otherwise>
@@ -389,9 +372,9 @@
                         </div>
                         <script>
                             const bookPercent = "${bookPercent}";
-                            console.log("bookPercent::::" + bookPercent);
+                            // console.log("bookPercent::::" + bookPercent);
                             const revLike = "${revLike}";
-                            console.log("revLike::::" + revLike);
+                           // console.log("revLike::::" + revLike);
                         </script>
                         <script src="${contextPath}/resources/js/main/header.js"></script>
                         <script src="${contextPath}/resources/js/introduce/introduce.js"></script>
