@@ -402,7 +402,7 @@ WHERE s.SCREEN_NO = #{screenNo}
     </select>
     
 
-    <select id="serchBook" parameterType="_int" resultType="book_rm">
+    <select id="serchBook" parameterType="_int" resultType="book">
         SELECT *
         FROM BOOK
         WHERE BOOK_NO = #{bookNo}
