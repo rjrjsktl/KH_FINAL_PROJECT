@@ -44,7 +44,7 @@ $(document).ready(function () {
             e.preventDefault();
             alert('약관동의를 모두 해주세요.');
         } else {
-            console.log('결제버튼이 눌림.');
+            // console.log('결제버튼이 눌림.');
             requestPay();
         }
 
@@ -55,22 +55,22 @@ $(document).ready(function () {
 
 
 const storeNo = $('#storeNo').val();
-console.log('스토어 넘버', storeNo);
+// console.log('스토어 넘버', storeNo);
 const userEmail = $('#userEmail').val();
 
-console.log(userEmail);
+// console.log(userEmail);
 const userNo = $('#userNo').val();
 
-console.log('유저 넘버', userNo);
+// console.log('유저 넘버', userNo);
 
 const userName = $('#userName').val();
-console.log(userName);
+// console.log(userName);
 var totalPrice = parseInt($('#totalPrice').text().replace(/,/g, ''));
-console.log('결제 금액:', totalPrice);
+// console.log('결제 금액:', totalPrice);
 var storeName = $("#storeName").text();
-console.log('스토어 이름:', storeName);
+// console.log('스토어 이름:', storeName);
 var totalCount = parseInt($('#totalCount').text().replace(/,/g, ''));
-console.log('총개수:', totalCount);
+// console.log('총개수:', totalCount);
 
 
 function requestPay() {

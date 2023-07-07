@@ -78,7 +78,8 @@
                                             <c:forEach var="store" items="${storeMap['storeList']}">
                                                 <c:choose>
                                                     <c:when test="${store.storeCategory eq '음료'}">
-                                                        <li class="">
+                                                        <li class="" onmouseenter="zoomIn(event)"
+                                                        onmouseleave="zoomOut(event)" >
                                                             <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
                                                                 title="${store.storeName}">
                                                                 <div class="img">
@@ -126,7 +127,8 @@
                                             <c:forEach var="store" items="${storeMap['storeList']}">
                                                 <c:choose>
                                                     <c:when test="${store.storeCategory eq '팝콘'}">
-                                                        <li class="">
+                                                        <li class=""  onmouseenter="zoomIn(event)"
+                                                        onmouseleave="zoomOut(event)">
                                                             <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
                                                                 title="${store.storeName}">
                                                                 <div class="img">
@@ -175,7 +177,8 @@
                                             <c:forEach var="store" items="${storeMap['storeList']}">
                                                 <c:choose>
                                                     <c:when test="${store.storeCategory eq '스낵'}">
-                                                        <li class="">
+                                                        <li class=""  onmouseenter="zoomIn(event)"
+                                                        onmouseleave="zoomOut(event)">
                                                             <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
                                                                 title="${store.storeName}">
                                                                 <div class="img">
@@ -221,7 +224,8 @@
                                             <c:forEach var="store" items="${storeMap['storeList']}">
                                                 <c:choose>
                                                     <c:when test="${store.storeCategory eq '티켓'}">
-                                                        <li class="">
+                                                        <li class=""  onmouseenter="zoomIn(event)"
+                                                        onmouseleave="zoomOut(event)">
                                                             <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
                                                                 title="${store.storeName}">
                                                                 <div class="img">

@@ -65,7 +65,7 @@ main>div:nth-child(1) img {
 }
 
 #wrapper>div:nth-child(2)>ul>li>a:hover {
-    color: darkgoldenrod;
+    color: #FFC400;
 
 
 }
@@ -87,11 +87,15 @@ main>div:nth-child(1) img {
 }
 
 .storeTab:not(.clicked) {
-    border-bottom: 1px solid orange;
+    border-bottom: 1px solid #FFC400;
+
 }
 
 .storeTab.clicked {
-    border: 1px solid orange;
+    border: 1px solid #FFC400;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    color:#FFC400;
     border-bottom: none;
 }
 
@@ -136,7 +140,15 @@ main>div:nth-child(1) img {
     margin-bottom: 40px;
     margin-right: calc(77px/3);
 
+
+
+    /* margin-right: 26px; */
+
+    background-color: #FFC400;
+
 }
+
+
 
 #wrapper>div:nth-child(3)>ul>li:nth-child(4n) {
 
@@ -173,8 +185,9 @@ main>div:nth-child(1) img {
 #wrapper>div:nth-child(3)>ul>li>a>div:nth-child(1)>img {
     width: 225px;
     height: 187px;
-    border-radius: 10px;
     position: relative;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 }
 
 
@@ -187,7 +200,7 @@ main>div:nth-child(1) img {
 #wrapper>div:nth-child(3)>ul>li>a>div:nth-child(2)>div:nth-child(1) {
     font-size: 1.5rem;
     margin: 20px 0px;
-    padding-left: 20px;
+    padding-left: 5px;
 }
 
 #wrapper>div:nth-child(3)>ul>li>a>div:nth-child(2)>div:nth-child(1)>p {
@@ -203,7 +216,7 @@ main>div:nth-child(1) img {
     align-items: center;
     margin: 20px 0;
     font-size: 0.9rem;
-    padding-left: 20px;
+    padding-left: 5px;
 }
 
 #wrapper>div:nth-child(3)>ul>li>div:nth-child(2)>div>p:nth-child(1) {
@@ -218,4 +231,13 @@ main>div:nth-child(1) img {
 
 .navBar:nth-child(6)>a:nth-child(1) {
     color: rgb(255, 196, 0);
+}
+
+.tit *{
+color:black !important;
+font-size: 1.3rem;
+}
+
+.price *{
+    color:black;
 }
