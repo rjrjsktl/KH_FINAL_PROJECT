@@ -60,7 +60,8 @@ main>div:nth-child(2)>ol>li>div:nth-child(1)>span {
     line-height: 28px;
     font-size: 2rem;
     z-index: 1;
-    color:#FFC400;    font-style: italic;
+    color: #FFC400;
+    font-style: italic;
 
 }
 
@@ -154,8 +155,8 @@ main>div:nth-child(2)>ol>li>div:nth-child(3)>a:hover {
 .age-img-area {
     position: absolute;
     z-index: 5;
-    top: -12px;
-    left: 160px;
+    top: 0px;
+    left: 170px;
     width: 35px;
     opacity: 0.9;
 }
@@ -193,13 +194,13 @@ main>div:nth-child(2)>ol>li>div:nth-child(3)>a:hover {
 }
 
 
-.noList{
-    padding-top:30px;
-    padding-left:10px;
-    font-size:1.5rem;
+.noList {
+    padding-top: 30px;
+    padding-left: 10px;
+    font-size: 1.5rem;
 }
 
-.hkeywordss{
-    color:#FCC400;
+.hkeywordss {
+    color: #FCC400;
     font-size: 1.5rem;
 }

@@ -73,7 +73,7 @@ $(document).ready(function () {
         if ($('.movie_image1').val() == "") {
 
             //console.log("이미지 변경 X 시 기존 값 : " + $('.movie_image1').val());
-            imageUrl1 = hiddenImg1.val();
+            imageUrl1 = hiddenImg.val();
 
             //console.log("이미지를 변경하지 않아 숨겨진 값을 추가함. : " + imageUrl1);
 
