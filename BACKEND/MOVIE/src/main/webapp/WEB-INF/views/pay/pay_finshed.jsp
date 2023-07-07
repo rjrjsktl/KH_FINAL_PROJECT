@@ -60,10 +60,41 @@
 
                         <!-- 할인&혜택 영역 -->
                         <div class="discount_step">
-                            <span>예매하신 코드번호 :</span>
-                            <span>${finalMap.payOrder}</span>
-                            <span>${finalMap.payOrder}</span>
-                            <span>${finalMap.userPlay.movie.movieTitle}</span>
+                            
+                            <img src="${finalMap.userPlay.movie.movieImg1}">
+
+                            <div>
+                                <div>
+                                    <c:choose>
+                                        <c:when test="${fn:contains(userPlay.movie.mgNo, '전체')}">
+                                            <div class="age00">All</div>
+                                        </c:when>
+                                        <c:when test="${fn:contains(userPlay.movie.mgNo, '12')}">
+                                            <div class="age12">12</div>
+                                        </c:when>
+                                        <c:when test="${fn:contains(userPlay.movie.mgNo, '15')}">
+                                            <div class="age15">15</div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="age18">18</div>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
+
+                                <span>${finalMap.userPlay.movie.movieTitle}</span>
+
+                                <div>
+                                    ${finalMap.userPlay.screen.cinemaName} 
+                                    ${finalMap.userPlay.screen.screenName}관
+                                    (${finalMap.userPlay.screen.screenStyle})
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <span>예매하신 코드번호 :</span>
+                                <span>${finalMap.payOrder}</span>
+                            </div>
+                            
                         </div>
 
                         <!-- 결제 api 전 단계 영역-->
