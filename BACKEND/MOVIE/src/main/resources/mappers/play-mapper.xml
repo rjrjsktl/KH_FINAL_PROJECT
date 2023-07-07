@@ -400,6 +400,12 @@ WHERE s.SCREEN_NO = #{screenNo}
         WHERE BOOK_NO = #{bookNo}
     </select>
     
+
+    <select id="serchBook" parameterType="_int" resultType="book_rm">
+        SELECT *
+        FROM BOOK
+        WHERE BOOK_NO = #{bookNo}
+
     <select id="getPastPlayList" resultMap="play_rm">
     <![CDATA[
         SELECT * FROM PLAY
