@@ -56,7 +56,7 @@ main>section {
 	height: 50px;
 	background-color: rgb(49, 49, 49);
 	outline: none;
-	border: none;
+	border: none;	border-radius: 10px;
 }
 
 .btn_wraper button:nth-child(1) {
@@ -67,6 +67,7 @@ main>section {
 	background-color: rgb(255, 196, 0);
 	color: black;
 	cursor: pointer;
+	border-radius: 10px;
 }
 
 a.hover {
