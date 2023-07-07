@@ -66,9 +66,14 @@
                             <!-- 예매한 영화 이미지 -->
                             <img src="${finalMap.userPlay.movie.movieImg1}">
 
+<<<<<<< HEAD
+                            <div>
+                     
+=======
                             
                             <div class="ticketInfo">
                                 <!-- 관람제한 나이 -->
+>>>>>>> 3ec81d7a3fcfa6419860db72bf993859d6f513d1
                                 <div>
                                     <c:choose>
                                         <c:when test="${fn:contains(userPlay.movie.mgNo, '전체')}">
@@ -84,7 +89,8 @@
                                             <div class="age18">18</div>
                                         </c:otherwise>
                                     </c:choose>
-                                </div>
+                                </div>  
+                           
 
                                 <!-- 영화제목 -->
                                 <span>${finalMap.userPlay.movie.movieTitle}</span> 
