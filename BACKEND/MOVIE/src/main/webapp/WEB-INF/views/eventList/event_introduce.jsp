@@ -35,10 +35,10 @@
                                         </div>
                                         <table id="dateArea">
                                             <tr id="regDate">
-                                                <th>
+                                                <th >
                                                     등록일&nbsp;&nbsp;&nbsp;|
                                                 </th>
-                                                <td>
+                                                <td class="regdate">
                                                     ${eventDetail['eventReg']}
                                                 </td>
                                             </tr>
@@ -60,9 +60,11 @@
                                     <c:out value="${eventDetail['eventContent']}" escapeXml="false" />
                                 </div>
 
-                                <input id="returnBtn" type="button" onclick="goBack()" value="목록으로">
+                                <a id="returnBtn" href="${contextPath}/eventList/detail_List" onclick="goBack()" value="목록으로">
+                                    목록으로
+                                </a>
 
-                                </input>
+
                             </div>
                         </main>
 
@@ -73,7 +75,6 @@
 
 
                         <script src="${contextPath}/resources/js/main/header.js"></script>
-                        <script src="${contextPath}/resources/js/introduce/event_introduce.js"></script>
                         </div>
                     </body>
 

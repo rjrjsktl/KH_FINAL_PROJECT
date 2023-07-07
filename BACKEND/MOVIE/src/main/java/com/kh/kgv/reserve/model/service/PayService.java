@@ -36,6 +36,9 @@ public interface PayService {
 	// Book 
 	Book serchBook(int bookNo);
 	
+	// book 상태 변경
+	int changeSt(int bookNo);
+	
 	
 	
 

@@ -422,7 +422,7 @@ header > section{
 .go_top_area{
 position: absolute;
 bottom:-580%;
-right:150px;
+right:0;
 display: none;
 }
 
@@ -447,7 +447,7 @@ display: none;
     }
   }
 
-.go_top_area > div > a:nth-child(1){
+.go_top_area > div > a:nth-child(2){
     width:135px;
     height:40px;
     border-radius: 10px;
@@ -458,11 +458,11 @@ display: none;
     animation: slideInFromRight 1s forwards;
 }
 
-.go_top_area > div > a:nth-child(1).slide-in {
+.go_top_area > div > a:nth-child(2).slide-in {
     animation: slideInFromRight 1s forwards;
 }
 
-.go_top_area > div > a:nth-child(2){
+.go_top_area > div > a:nth-child(1){
     width:40px;
     height:40px;
     border:1px solid white;
@@ -472,7 +472,7 @@ display: none;
     align-items: center;
 }
 
-.go_top_area > div > a:nth-child(2) img{
+.go_top_area > div > a:nth-child(1) img{
     width:100%;
     height:100%;
     border:none;
