@@ -26,7 +26,7 @@
 	</select>
 
 
-	<select id="getReviewList-mvn" resultMap="rewview_rm">
+	<select id="getReviewList-mvn" resultMap="review_rm">
 		SELECT
 		REV_NO,
 		MOVIE_NO,
