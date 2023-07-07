@@ -66,37 +66,49 @@ $(document).ready(function () {
     });
   });
 
+  $(window).scroll(function () {
+    document.cookie = "scroll=" + $(document).scrollTop();
+  });
+
+  var scrollCookie = document.cookie
+    .split(";")
+    .map((cookie) => cookie.trim())
+    .find((cookie) => cookie.startsWith("scroll="));
+
+  if (scrollCookie) {
+    var scrollValue = scrollCookie.split("=")[1];
+    var scrollTop = parseInt(scrollValue, 10);
+    $(window).scrollTop(scrollTop);
+  }
   $(".info-btn").click(function () {
-    $(".movie-detail").show();
-    $(".movie-reply").hide();
-    $(".star-btn").css("background", "#191919");
-    $(".star-btn").css("color", "white");
-    $(this).css("background", "rgb(21,21,21)");
-    $(this).css("color", "#FFC400");
+    let movieNo = $(this).data("movieno");
+    window.location.href = "/movie/movieList/detail_List/introduce/" + movieNo;
   });
 
   if (reviewParam === "1") {
-    console.log("reviewParam=1이라서 실행");
     $(".movie-detail").hide();
     $(".movie-reply").show();
     $(".info-btn").css("background", "rgb(25,25,25");
     $(".info-btn").css("color", "white");
     $(".star-btn").css("background", "rgb(21,21,21)");
-    $(".star-btn").css("color", "white");
+    $(".star-btn").css("color", "#FFC400");
     $("#addRevContent").focus();
   }
-  updateData();
 
-  function updateData() {
-    $(".star-btn").click(function () {
-      $(".movie-detail").hide();
-      $(".movie-reply").show();
-      $(".info-btn").css("background", "#191919");
-      $(".info-btn").css("color", "white");
-      $(this).css("background", "rgb(21,21,21)");
-      $(this).css("color", "#FFC400");
-    });
+  if (reviewParam === "2") {
+    $(".movie-detail").hide();
+    $(".movie-reply").show();
+    $(".info-btn").css("background", "#191919");
+    $(".info-btn").css("color", "white");
+    $(".star-btn").css("background", "rgb(21,21,21)");
+    $(".star-btn").css("color", "#FFC400");
   }
+
+  $(".star-btn").click(function () {
+    var currentUrl = window.location.href;
+    var reviewUrl = currentUrl + "?review=2";
+    window.location.href = reviewUrl;
+  });
 
   $(".star_rating a").click(function () {
     $(this).parent().children("a").removeClass("on");
@@ -149,65 +161,75 @@ $(document).ready(function () {
   loginBtn.on("click", function () {
     window.location.href = "/movie/user/login";
   });
-
-  var itemsToShow = 5;
   var cp = 1;
-  $(".review").hide().slice(0, itemsToShow).show();
-  $(".morePage").on("click", function () {
+  var isFetching = false;
+  var movieNo = document.getElementById("movieNo").value;
+
+  $(window).scroll(function () {
+    if (
+      $(window).scrollTop() >
+      $(document).height() - $(window).height() - 200
+    ) {
+      if (!isFetching) {
+        fetchMoreData();
+      }
+    }
+  });
+
+  function fetchMoreData() {
     cp += 1;
-    var movieNo = document.getElementById("movieNo").value;
+    isFetching = true;
+
     $.ajax({
       url: "/movie/movieList/detail_List/introduce/" + movieNo + "/" + cp,
       type: "GET",
       success: function (data) {
         if (data.length === 0) {
-          // 데이터가 더 이상 없으므로 '더보기' 버튼을 숨김
-          console.log("????????????????????????????????????? ");
           $(".morePage").hide();
           return;
+        } else if (data.length < 5) {
+          $(".morePage").hide();
         }
 
         data.forEach(function (review) {
           const li = $(document.createElement("li"));
-          var userNo = document.getElementById("userNo").value;
-          var userMst = document.getElementById("userMst").value;
-
-          console.log(userMst);
+          let userNo = document.getElementById("userNo").value;
+          let userMst = document.getElementById("userMst").value;
           let deleteButton = "";
-          li.addClass("review");
-          console.log("userNo:", userNo);
-          console.log("review.userNo:", review.userNo);
 
           if (userNo == review.userNo || userMst == "Y") {
             deleteButton = `<div><button class="deleteReview" data-revno="${review.revNo}">Delete</button></div>`;
           } else {
             deleteButton = "<div></div>";
           }
-          li.html(`
-                        <div class="rvWrap">
-                            <div class="user_info">
 
-                                <p>${review.userNick}</p>
-                            </div>
-                            <div class="review_content">
-                                <div>리뷰</div>
-                                <div>${review.revLike}</div>
-                                <div>${review.revContent}</div>
-                                ${deleteButton}
-                            </div>
-                        </div>
-                    `);
-          li.hide(); // initially hide the li
-          const replyList = $(".replyList ul");
-          replyList.append(li);
-          li.slideDown(); // animate to show the li
+          li.html(`
+            <div class="rvWrap">
+              <div class="user_info">
+                <p>${review.userNick}</p>
+              </div>
+              <div class="review_content">
+                <div>리뷰</div>
+                <div>${review.revLike}</div>
+                <div>${review.revContent}</div>
+                ${deleteButton}
+              </div>
+            </div>
+          `);
+
+          li.hide();
+          $(".replyList ul").append(li);
+          li.slideDown();
         });
+
+        isFetching = false;
       },
       error: function (error) {
         console.error(error);
+        isFetching = false;
       },
     });
-  });
+  }
 
   $(document).on("click", ".deleteReview", function () {
     var movieNo = document.getElementById("movieNo").value;

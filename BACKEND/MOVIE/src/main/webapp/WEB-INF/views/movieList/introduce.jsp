@@ -91,7 +91,8 @@
                                             <ul>
                                                 <li>관람객평점 <span class="revlikeVal">${revLike}</span> / 5 점</li>
                                                 <li>예매율 <span class="revlikeVal">${bookPercent}</span>%</li>
-                                                <li>누적관객수 <span class="revlikeVal">${MovieDetail.movieWatched}</span>명</li>
+                                                <li>누적관객수 <span class="revlikeVal">${MovieDetail.movieWatched}</span>명
+                                                </li>
                                             </ul>
 
                                             <ul class="movie-makers-wrap">
@@ -105,7 +106,7 @@
                                                         <c:forTokens var="name" items="${MovieDetail.movieCast}"
                                                             delims=",">
                                                             <li>
-                                                                <a >
+                                                                <a>
                                                                     <c:out value="${name}" />
                                                                 </a>
                                                             </li>
@@ -133,7 +134,7 @@
                                 <div class="steal-reply-wrap">
                                     <div>
                                         <div class="movide-expalin-wrap">
-                                            <p class="info-btn">영화정보</p>
+                                            <p class="info-btn" data-movieno="${MovieDetail.movieNo}">영화정보</p>
                                             <p class="star-btn">평점 및 리뷰</p>
                                         </div>
                                         <!-- 영화정보 -->
@@ -251,134 +252,135 @@
                                         </div>
 
                                         <div class="movie-reply" style="display:none">
-
                                             <div class="replywritewrap">
                                                 <span>평점 리뷰 작성</span>
-                                                <div class="star-wrapper">
-
-
-                                                    <p class="star_rating">
-                                                        <a>★</a>
-                                                        <a>★</a>
-                                                        <a>★</a>
-                                                        <a>★</a>
-                                                        <a>★</a>
-                                                    </p>
-
-                                                </div>
-                                                <div>
-                                                    <form action="" class="replywrite">
-
-                                    
-                                                        <c:choose>
-                                                            
-                                                            <c:when test="${not empty loginUser.userNo}">
-                                                                <textarea name="" id="addRevContent" cols="30"
-                                                                rows="3" placeholder="이쁘고 고운말만 써주세영!"></textarea>
-                                                                <div class="replyBtn">리뷰작성</div>
-                                                            </c:when>
-
-                                                            <c:otherwise>
-                                
-                                                        <textarea name="" id="addRevContent" cols="30"
-                                                        rows="3" placeholder="작성 전 로그인해주세요!"></textarea>
-                                                                <div class="loginBtn">로그인</div>
-                                                            </c:otherwise>
-                                                        </c:choose>
-
-                                                    </form>
-                                                </div>
+                                                <c:choose>
+                                                    <c:when test="${empty loginUser.userNo}">
+                                                        <div class="loginBtn">로그인</div>
                                             </div>
+                                            </c:when>
 
-
-                                            <div class="replywrap">
-                                                <div>
-                                                    <p>관람객 리뷰</p>
-
-                                                </div>
-                                            </div>
-
-                                            <div class="replyList">
-
-                                                <ul>
-                                                    <c:choose>
-                                                        <c:when test="${empty reviewList.reviewList}">
-                                                            <li>
-                                                                <p style="text-align: center;">리뷰가 존재하지 않습니다.</p>
-                                                            </li>
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <c:forEach var="review" items="${reviewList.reviewList}">
-                                                                <li class="review">
-                                                                    <div class="rvWrap">
-                                                                        <div class="user_info">
-                                                                            <p>${review.userNick}</p>
-                                                                        </div>
-                                                                        <div class="review_content">
-                                                                            <div>리뷰</div>
-                                                                            <div>${review.revLike}</div>
-                                                                            <c:choose>
-                                                                            <c:when test="${loginUser.userNo == review.userNo || loginUser.userManagerSt == 'Y'}">
-                                                                                <!-- When the condition is true, text color is yellow -->
-                                                                                <div style="color: #FFC400;">${review.revContent}</div>
-                                                                            </c:when>
-                                                                            <c:otherwise>
-                                                                                <!-- When the condition is false, text color is default (or choose other color) -->
-                                                                                <div>${review.revContent}</div>
-                                                                            </c:otherwise>
-                                                                        </c:choose>
-
-                                                                            <c:choose>
-                                                                                <c:when
-                                                                                    test="${loginUser.userNo == review.userNo || loginUser.userManagerSt == 'Y'}">
-                                                                                    <div>
-                                                                                        <button class="deleteReview"
-                                                                                            data-revno="${review.revNo}">Delete</button>
-                                                                                    </div>
-                                                                                </c:when>
-                                                                                <c:otherwise>
-                                                                                    <div></div>
-                                                                                </c:otherwise>
-                                                                            </c:choose>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </li>
-                                                            </c:forEach>
-                                                        </c:otherwise>
-                                                    </c:choose>
-
-                                                </ul>
-
-                                               
-                                            </div>
-                                          
-                                    <c:choose>
-                                        <c:when test="${empty reviewList.reviewList}">
-                                            <div></div>
+                                            <c:when test="${not empty loginUser.userNo}">
+                                                <c:choose>
+                                                    <c:when test="${countMyReview >= 1}">
+                                                        <div class="writtenReview">리뷰참여 정말 감사합니당!</div>
+                                        </div>
                                         </c:when>
+
                                         <c:otherwise>
-                                            <div class="morePage">더보기</div>
-                                        </c:otherwise>
+                                            <div class="star-wrapper">
+                                                <p class="star_rating">
+                                                    <a>★</a>
+                                                    <a>★</a>
+                                                    <a>★</a>
+                                                    <a>★</a>
+                                                    <a>★</a>
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <form action="" class="replywrite">
+                                                    <textarea name="" id="addRevContent" cols="30" rows="3"
+                                                        placeholder="이쁘고 고운말만 써주세영!"></textarea>
+                                                    <div class="replyBtn">리뷰작성</div>
+                                                </form>
+                                            </div>
+                                    </div>
+                                    </c:otherwise>
+                                    </c:choose>
+                                    </c:when>
                                     </c:choose>
 
 
-
-                                            <input type="hidden" id="movieNo" value="${movieNo}">
-                                            <input type="hidden" id="userNo" value="${loginUser.userNo}">
-                                            <input type="hidden" id="userNick" value="${userNick}">
-                                            <input type="hidden" id="userMst" value="${loginUser.userManagerSt}">
+                                    <div class="replywrap">
+                                        <div>
+                                            <p>관람객 리뷰</p>
 
                                         </div>
+                                    </div>
+
+                                    <div class="replyList">
+
+                                        <ul>
+                                            <c:choose>
+                                                <c:when test="${empty reviewList.reviewList}">
+                                                    <li>
+                                                        <p style="text-align: center;">리뷰가 존재하지 않습니다.</p>
+                                                    </li>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <c:forEach var="review" items="${reviewList.reviewList}">
+                                                        <li class="review">
+                                                            <div class="rvWrap">
+                                                                <div class="user_info">
+                                                                    <p>${review.userNick}</p>
+                                                                </div>
+                                                                <div class="review_content">
+                                                                    <div>리뷰</div>
+                                                                    <div>${review.revLike}</div>
+                                                                    <c:choose>
+                                                                        <c:when
+                                                                            test="${loginUser.userNo == review.userNo || loginUser.userManagerSt == 'Y'}">
+                                                                            <div style="color: #FFC400;">
+                                                                                ${review.revContent}</div>
+                                                                        </c:when>
+                                                                        <c:otherwise>
+                                                                            <div>${review.revContent}</div>
+                                                                        </c:otherwise>
+                                                                    </c:choose>
+
+                                                                    <c:choose>
+                                                                        <c:when
+                                                                            test="${loginUser.userNo == review.userNo || loginUser.userManagerSt == 'Y'}">
+                                                                            <div>
+                                                                                <button class="deleteReview"
+                                                                                    data-revno="${review.revNo}">Delete</button>
+                                                                            </div>
+                                                                        </c:when>
+                                                                        <c:otherwise>
+                                                                            <div></div>
+                                                                        </c:otherwise>
+                                                                    </c:choose>
+                                                                </div>
+
+                                                            </div>
+                                                        </li>
+                                                    </c:forEach>
+                                                </c:otherwise>
+                                            </c:choose>
+
+                                        </ul>
+
 
                                     </div>
-                                    </section>
+
+                                    <c:choose>
+                                        <c:when test="${empty reviewList.reviewList or reviewCount == 5}">
+                                            <div></div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="morePage">scroll</div>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
 
 
-                                    <div id="btnContainer">
-                                        <input id="returnBtn" type="button" onclick="goBack()" value="목록으로">
-                                    </div>
-                            </main>
+
+
+                                <input type="hidden" id="movieNo" value="${movieNo}">
+                                <input type="hidden" id="userNo" value="${loginUser.userNo}">
+                                <input type="hidden" id="userNick" value="${userNick}">
+                                <input type="hidden" id="userMst" value="${loginUser.userManagerSt}">
+
+                        </div>
+
+                        </div>
+                        </section>
+
+
+                        <div id="btnContainer">
+                            <input id="returnBtn" type="button" onclick="goBack()" value="목록으로">
+                        </div>
+                        </main>
 
                         </div>
 
