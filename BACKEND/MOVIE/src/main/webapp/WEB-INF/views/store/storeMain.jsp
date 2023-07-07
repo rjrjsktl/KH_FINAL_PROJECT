@@ -47,7 +47,7 @@
                                     <div><span>스토어</span></div>
 
 
-                                    <div class="tab-list fixed">
+                                    <div class="tab-list ">
                                         <ul>
 
                                             <li><a href="#none" id="storeTab_1" class="storeTab clicked"
