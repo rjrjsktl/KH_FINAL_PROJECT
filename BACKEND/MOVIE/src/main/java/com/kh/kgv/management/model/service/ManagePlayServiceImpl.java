@@ -112,13 +112,6 @@ public class ManagePlayServiceImpl implements ManagePlayService {
 			
  			// 상영 등록 성공 시, 영화 테이블 누적 상영횟수 추가
  			int PlayCountAdd = dao.addPlayCount(movieNo); 
- 			
- 			if(PlayCountAdd > 0) {
- 				System.out.println("상영횟수 추가 완료!!!!");
- 			} else {
- 				System.out.println("상영횟수 추가 실패!!!!");
- 			}
-			
 			
 		}
 		
@@ -168,6 +161,50 @@ public class ManagePlayServiceImpl implements ManagePlayService {
 	public int screenNo(TimeCheck tc) {
 		return dao.screenNo(tc);
 	}
+
+	@Override
+	public int enrollSuperPlay(String areaName, int screenName, int movieNo, int startTime, int endTime,
+			String startDate, String endDate) {
+		List<Cinema> areaCinemaList = dao.getAreaCinemaList(areaName);
+		int enrollCount = 0;
+		int PlayCountAdd = 0;
+		
+		for(Cinema cinema : areaCinemaList) {
+			String cinemaName = cinema.getCinemaName();
+			if(screenName <= cinema.getCinemaScreen()) {
+				
+				Screen screen = new Screen();
+				screen.setCinemaName(cinemaName);
+				screen.setScreenName(screenName);
+				int screenNo = dao.getScreenNo(screen);
+				
+				List<String> dateTimeList = getDateTimeList(startTime, endTime, startDate, endDate);
+				System.out.println(dateTimeList.size());
+				System.out.println(dateTimeList.size()/2);
+				Play play;
+				
+				
+				for(int i=0; i < dateTimeList.size()/2; i++) {
+					play = new Play();
+					play.setScreenNo(screenNo);
+					play.setPlayStart(startDate);
+					play.setMovieNo(movieNo);
+					play.setPlayStart(dateTimeList.get(2*i));
+					play.setPlayEnd(dateTimeList.get(2*i +1));
+					
+					enrollCount += dao.enrollPlay(play);
+					
+					
+		 			// 상영 등록 성공 시, 영화 테이블 누적 상영횟수 추가
+		 			PlayCountAdd += dao.addPlayCount(movieNo); 
+				}
+				
+			}
+		}
+		
+		return enrollCount;
+	}
+
 
 	
 	
