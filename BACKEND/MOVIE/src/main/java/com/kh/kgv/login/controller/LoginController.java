@@ -60,6 +60,8 @@ public class LoginController {
 		String referer = req.getHeader("Referer"); 
 		if(referer != null) { 
 			session.setAttribute("prevPage", referer); 
+			
+			
 		} 
 
 		System.out.println(referer+"================================================= 현재 리퍼럴은?");
@@ -79,9 +81,6 @@ public class LoginController {
 			SessionStatus status,
 			@RequestParam(value="saveId", required=false) String saveId) throws IOException {
 
-
-
-
 		User loginUser = service.login(inputUser);
 		String path = null;
 
@@ -89,10 +88,12 @@ public class LoginController {
 
 			String prevPage = (String) session.getAttribute("prevPage");
 			String path1 = "http://localhost:8080/movie/signUp/signUp_sns";
-			String path2 = "https://kgv.co.kr/movie/signUp/signUp_sns";
+			String path2 = "http://localhost:8080/movie/user/login";
+			String path3 = "https://kgv.co.kr/movie/signUp/signUp_sns";
+			String path4 = "https://kgv.co.kr/movie/user/login";
 
 
-			if(prevPage.equals(path1) || prevPage.equals(path2)) {
+			if(prevPage.equals(path1) || prevPage.equals(path2) || prevPage.equals(path3) || prevPage.equals(path4)) {
 				path = "redirect:/";
 			} else if(
 					prevPage != null && !prevPage.isEmpty()
