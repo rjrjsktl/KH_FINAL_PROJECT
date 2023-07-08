@@ -57,54 +57,102 @@
                                             </div>
 
 
-                                            <!-- 할인&혜택 영역 -->
+                                            <!-- 티켓 영역 -->
                                             <div class="discount_step">
 
                                                 <!-- 예매한 영화 이미지 -->
-                                                <img src="${finalMap.userPlay.movie.movieImg1}">
+                                                <img class="ticketImg" src="${finalMap.userPlay.movie.movieImg1}">
 
 
 
+                                                <!-- 티켓인포 -->
                                                 <div class="ticketInfo">
-                                                    <!-- 관람제한 나이 -->
-                                                    <div>
-                                                        <c:choose>
-                                                            <c:when test="${fn:contains(userPlay.movie.mgNo, '전체')}">
-                                                                <div class="age00">All</div>
-                                                            </c:when>
-                                                            <c:when test="${fn:contains(userPlay.movie.mgNo, '12')}">
-                                                                <div class="age12">12</div>
-                                                            </c:when>
-                                                            <c:when test="${fn:contains(userPlay.movie.mgNo, '15')}">
-                                                                <div class="age15">15</div>
-                                                            </c:when>
-                                                            <c:otherwise>
-                                                                <div class="age18">18</div>
-                                                            </c:otherwise>
-                                                        </c:choose>
+
+                                                    <!-- ticketInfo 의 첫번째영역 -->
+                                                    <div class="ticketInfo_1">
+
+                                                        <!-- 상영날짜 -->
+                                                        <div id="movie_detail">
+                                                            <div id="play_date">
+                                                                <span id="up_year"></span>
+                                                                <span id="up_month"></span>
+                                                                <span id="up_date"></span>
+                                                                <span id="up_day"></span>
+                                                            </div>
+                                                            <div id="play_time">
+                                                                <span id="start_hour"></span>
+                                                                <span id="start_minute"></span>
+                                                                <span id="end_hour"></span>
+                                                                <span id="end_minute"></span>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div>
+                                                            <!-- 관람제한 나이 -->
+                                                            <div class="age">
+                                                                <c:choose>
+                                                                    <c:when test="${fn:contains(finalMap.userPlay.movie.mgNo, '전체')}">
+                                                                        <div class="age00">All</div>
+                                                                    </c:when>
+                                                                    <c:when test="${fn:contains(finalMap.userPlay.movie.mgNo, '12')}">
+                                                                        <div class="age12">12</div>
+                                                                    </c:when>
+                                                                    <c:when test="${fn:contains(finalMap.userPlay.movie.mgNo, '15')}">
+                                                                        <div class="age15">15</div>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <div class="age18">18</div>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+
+                                                                <div class="movieTitle">
+                                                                    <span>${finalMap.userPlay.movie.movieTitle}&nbsp;|</span>
+                                                                    <div>
+                                                                        ${finalMap.userPlay.screen.cinemaName}
+                                                                        ${finalMap.userPlay.screen.screenName}관
+                                                                        (${finalMap.userPlay.screen.screenStyle})
+
+                                                                    </div>
+                                                                    <div>
+                                                                        <c:set var="seats" value="${finalMap.bookAll.bookSeat}" />
+                                                                        <c:set var="seats" value="${fn:replace(seats, '[', '')}" />
+                                                                        <c:set var="seats" value="${fn:replace(seats, ']', '')}" />
+                                                                        <c:set var="seats" value="${fn:replace(seats, '\"', '')}" />
+                                                                        &nbsp;${seats}
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <!-- 영화제목 -->
+
+
+                                                            <div>
+
+                                                            </div>
+                                                            <!-- 지역,관,스크린 -->
+
+
+                                                        </div>
                                                     </div>
 
 
-                                                    <!-- 영화제목 -->
-                                                    <span>${finalMap.userPlay.movie.movieTitle}</span>
+                                                    <!-- ticketInfo의두번째영역 예매코드번호 -->
+                                                    <div class="ticketInfo_2">
 
-                                                    <div>
+                                                        <div class="codeArea">
+                                                            <span>예매하신 코드번호 :</span>
+                                                            <div class="codeNo">
+                                                                <span>${finalMap.payOrder}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                                                    </div>
-                                                    <!-- 지역,관,스크린 -->
-                                                    <div>
-                                                        ${finalMap.userPlay.screen.cinemaName}
-                                                        ${finalMap.userPlay.screen.screenName}관
-                                                        (${finalMap.userPlay.screen.screenStyle})
-                                                        ${finalMap.bookAll.bookSeat}
-                                                    </div>
                                                 </div>
 
-                                                <!-- 예매코드번호 -->
-                                                <div>
-                                                    <span>예매하신 코드번호 :</span>
-                                                    <span>${finalMap.payOrder}</span>
-                                                </div>
 
                                             </div>
 
@@ -113,7 +161,7 @@
 
                                             </div>
 
-                                            <!-- 결제하기 영역 -->
+                                            <!-- 바텀 영역 -->
                                             <div>
                                                 <div class="bottom_area">
                                                     <a href="${contextPath}">

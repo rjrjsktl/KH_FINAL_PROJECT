@@ -402,7 +402,7 @@ WHERE s.SCREEN_NO = #{screenNo}
     </select>
     
 
-    <select id="serchBook" parameterType="_int" resultType="book">
+    <select id="serchBook" parameterType="_int" resultMap="book_rm">
         SELECT *
         FROM BOOK
         WHERE BOOK_NO = #{bookNo}
@@ -433,6 +433,12 @@ WHERE s.SCREEN_NO = #{screenNo}
 	    UPDATE Movie
 		SET MOVIE_WATCHED = #{movieWatched}
 		WHERE MOVIE_NO = #{movieNo}
+	</update>
+	
+	<update id="changeSt" parameterType="_int">
+	    UPDATE BOOK
+		SET BOOK_ST = 'Y'
+		WHERE BOOK_NO = #{bookNo}
 	</update>
 	
 </mapper>

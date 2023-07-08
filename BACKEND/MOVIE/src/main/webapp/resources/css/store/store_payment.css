@@ -1,3 +1,9 @@
+* {
+    white-space: normal;
+
+}
+
+
 main {
     width: 100%;
 }
@@ -16,7 +22,7 @@ main {
 #wrapper>div {
     height: 500px;
     display: flex;
-    /* background-color: white; */
+
 }
 
 
@@ -36,14 +42,14 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: rgba(255, 166, 0, 0.699); */
+
 
 }
 
 #wrapper>div:first-child>div:nth-child(1)>div:nth-child(2) {
     width: 100%;
     height: 90%;
-    /* background-color: white; */
+
     border-left: 1px solid #a3a3a3;
 
     border-bottom: 1px solid #a3a3a3;
@@ -126,16 +132,16 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: rgba(255, 166, 0, 0.699); */
+
 }
 
 #wrapper>div:first-child>div:nth-child(2)>div:nth-child(2) {
     width: 100%;
     height: 90%;
-    /* background-color: white; */
+
     border-left: 1px solid #a3a3a3;
     ;
-    /* border-right: 1px solid #a3a3a3;  */
+
     ;
     border-bottom: 1px solid #a3a3a3;
     ;
@@ -144,19 +150,11 @@ main {
 #wrapper>div:first-child>div:nth-child(2)>div:nth-child(2)>div:nth-child(1) {
     width: 100%;
     height: 70%;
-    /* border-right: 1px solid #a3a3a3;s */
+
     padding: 30px;
 }
 
-/* #wrapper>div:first-child>div:nth-child(2)>div:nth-child(2)>div:nth-child(1) button {
-    border: 2px solid #fff;
-    cursor: pointer;
-    background-color: #fff;
-    height: 55px;
-    width: 90px;
-    border-radius: 5px;
 
-} */
 #wrapper>div:first-child>div:nth-child(2)>div:nth-child(2)>div:nth-child(1) button {
     border: 2px solid #fff;
     cursor: pointer;
@@ -165,19 +163,16 @@ main {
     width: 90px;
     border-radius: 5px;
     border-color: transparent;
-    /* Set initial border color as transparent */
+
 }
 
 
 
 #wrapper>div:first-child>div:nth-child(2)>div:nth-child(2)>div:nth-child(1) button.active {
     border-color: #ffc400;
-    /* Apply border color when button is active */
+
 }
 
-/* #wrapper>div:first-child>div:nth-child(2)>div:nth-child(2)>div:nth-child(1) button:active {
-    border-color: #ffc400;
-} */
 
 
 
@@ -213,14 +208,13 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: rgba(255, 166, 0, 0.699); */
+
 }
 
 .payment {
     width: 100%;
     height: 90%;
-    /* background-color: white; */
-    /* border-right: 1px solid white; */
+
 
 }
 
@@ -252,7 +246,7 @@ main {
 
 .payment>div:nth-child(1)>div:first-child>div:nth-child(2) {
     padding: 10px 0px 10px 10px;
-    /* display: flex; */
+
     width: 100%;
     height: 100%;
 
@@ -278,25 +272,6 @@ main {
 
 
 
-/* .payment>div:nth-child(1)>div:first-child input {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    border: 1px solid #000000;
-    cursor: pointer;
-} */
-
-/* .payment>div:nth-child(1)>div:first-child .checkbox {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    border: 1px solid #000000;
-    cursor: pointer;
-} */
 
 input[type="checkbox"] {
     width: 1rem;
@@ -309,11 +284,7 @@ input[type="checkbox"] {
 
 }
 
-/* input[type="checkbox"]:checked {
-    background: white;
 
-    border: none;
-} */
 
 input[type='checkbox']:checked {
     -webkit-appearance: none;
@@ -337,10 +308,7 @@ input[type='checkbox']:checked {
     cursor: pointer;
 }
 
-.payment>div:nth-child(1)>div:first-child>div:nth-child(2) li:nth-child(2)>button {}
 
-
-.payment>div:nth-child(1)>div:first-child>div:nth-child(2)>div {}
 
 
 
@@ -421,7 +389,7 @@ input[type='checkbox']:checked {
 .modal {
     background-color: rgba(212, 29, 29, 0);
 
-    top: 20%;
+    top: 10%;
 }
 
 .modal>:nth-child(1) {
@@ -441,7 +409,7 @@ input[type='checkbox']:checked {
     margin: auto;
     background-color: rgb(55, 54, 54);
     width: 800px;
-    height: 550px;
+    /* height: 550px; */
 
     padding: 10px;
     display: flex;
@@ -464,17 +432,86 @@ input[type='checkbox']:checked {
 }
 
 
-.tab_wrap>li>.tab_tit {
-    position: absolute;
-    top: 0;
+
+
+
+
+
+.tab-list {
+    width: 100%;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-around;
 }
 
-.txtarea_box {
-    overflow-y: scroll;
-    height: 300px;
-    line-height: 1.4;
-    padding: 20px;
-    border-bottom: 1px solid #CCC;
+.tab-list>ul {
+    display: flex;
+}
 
+.tab-list>ul>li>a {
+    color: white;
+    display: block;
+    width: 100%;
+
+    /* line-height: 40px; */
+
+    text-align: center;
+
+    font-size: 1.0667em;
+    padding-left: 20px;
+
+}
+
+.tab-list>ul>li>a:hover {
+    color: darkgoldenrod;
+
+
+}
+
+
+
+
+
+
+
+
+.terms-content {
+
+
+    overflow: hidden;
+    overflow-y: scroll;
+
+    position: relative;
+    height: 550px !important;
+    margin: 10px 0 0 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+
+
+
+
+
+/* 모달 버튼*/
+.box_btn {
+    width: 780px;
+    display: flex;
+    justify-content: center;
+}
+
+.box_btn button {
+    margin: 30px 5px;
+    width: 150px;
+    height: 40px;
+
+    border-radius: 4px;
+    border: 1px solid #414141;
+    font-size: 14px;
+
+    /* text-align: center; */
+
+    background-color: #414141;
+    cursor: pointer;
 
 }

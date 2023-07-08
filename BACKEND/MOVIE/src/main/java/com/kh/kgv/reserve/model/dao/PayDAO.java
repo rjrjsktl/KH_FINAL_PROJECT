@@ -66,6 +66,11 @@ public class PayDAO {
 	public Book serchBook(int bookNo) {
 		return sqlSession.selectOne("playMapper.serchBook", bookNo);
 	}
+	
+	// book 상태 변경
+	public int changeSt(int bookNo) {
+		return sqlSession.update("playMapper.changeSt",bookNo);
+	}
 
 	
 
