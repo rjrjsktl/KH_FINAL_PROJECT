@@ -310,9 +310,11 @@ text-decoration: underline;
 
 .swiper-wrapper{
     width:980px;
-    justify-content: space-around;
 }
 
+.swiper-slide {
+    width:32%;
+}
 
 
 .swiper-slide > a {
@@ -324,9 +326,10 @@ text-decoration: underline;
 }
 
 .swiper-slide>a>img {
+    width:100%;
+    height:202px;
+    padding:0 2px;
     border-radius: 10px;
-    width:304px;
-    height: 207px;
 }
 
 
@@ -357,7 +360,7 @@ text-decoration: underline;
     text-align: center;
     font-weight: bold;
     cursor: pointer;
-    top: 110px;
+    top: 100px;
     z-index: 5;
 }
 

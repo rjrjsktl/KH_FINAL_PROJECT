@@ -103,7 +103,7 @@ $(document).ready(function () {
   );
 
   var isChecked = $("#checkbox1").is(":checked");
-  updateOpenStatus(isChecked);	
+  updateOpenStatus(isChecked);
 
   $("#checkbox1").change(function () {
     isChecked = $(this).is(":checked");
@@ -112,10 +112,10 @@ $(document).ready(function () {
 
   function updateOpenStatus(isChecked) {
     if (isChecked) {
-    alert("현재 작성하신 글이 공개됩니다.")
-      $("#openStatus").text("현재 공개 상태 입니다.");
-    } else {	
-      $("#openStatus").text("현재 비공개 상태 입니다.");
+      alert("현재 작성하신 글이 공개됩니다.");
+      $("#openStatus").text("공개 글 입니다.");
+    } else {
+      $("#openStatus").text("현재 비공개 상태입니다.");
     }
   }
 
