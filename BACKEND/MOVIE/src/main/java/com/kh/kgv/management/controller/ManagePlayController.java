@@ -81,48 +81,71 @@ public class ManagePlayController {
 	
 	
 	@PostMapping("/enroll")
-	public String enrollPlay(String areaIndex, String cinemaIndex, String screenIndex, 
+	@ResponseBody
+	public int enrollPlay(String areaIndex, String cinemaIndex, String screenIndex, 
                              String movieIndex, String timeIndex, String startDate, String endDate, HttpServletResponse response) {
 		
         List<Play> playList = null;
-        String url = "redirect:/";
-		
+        int result = 0;
+
 		try {
 			
 			playList = timeCheck(areaIndex, cinemaIndex, screenIndex, movieIndex, timeIndex, startDate, endDate);
+			
+			if(playList.size() == 0) {
+				areaName = areaArray[Integer.parseInt(areaIndex)];
+			    cinemaList = service.getAreaCinemaList(areaName);
+			    cinemaName = cinemaList.get(Integer.parseInt(cinemaIndex)).getCinemaName();
+			    screenName = Integer.parseInt(screenIndex) + 1;
+				
+			    movieList = service.getPlayingMovieList();
+			    movieNo = movieList.get(Integer.parseInt(movieIndex)).getMovieNo();
+			    
+			    result = service.enrollPlay(cinemaName, screenName, movieNo, startTime, endTime, startDate, endDate);
+			    
+			}
 
 		} catch(ArrayIndexOutOfBoundsException e) {
 			System.out.println("배열 범위 이외의 숫자입니다.");
 		} catch(NumberFormatException e) {
 			System.out.println("잘못된 인덱스입니다.");
 		}
-		
-		if(playList.size() == 0) {
-			areaName = areaArray[Integer.parseInt(areaIndex)];
-		    cinemaList = service.getAreaCinemaList(areaName);
-		    cinemaName = cinemaList.get(Integer.parseInt(cinemaIndex)).getCinemaName();
-		    screenName = Integer.parseInt(screenIndex) + 1;
-			
-		    movieList = service.getPlayingMovieList();
-		    movieNo = movieList.get(Integer.parseInt(movieIndex)).getMovieNo();
-		    
-		    int result = service.enrollPlay(cinemaName, screenName, movieNo, startTime, endTime, startDate, endDate);
-		    
-		    if(result > 0) {
- 		try {
 
-			Util.alert(response, "상영 시간 등록 성공!");
-			url = "redirect:/manager/play_list";
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		    }
-		    
-		}
-	
-		return url;
+		return result;
 	}
 	
+	
+	@PostMapping("/enrollSuper")
+	@ResponseBody
+	public int enrollSuperPlay(String areaIndex, String cinemaIndex, String screenIndex, 
+                                   String movieIndex, String timeIndex, String startDate, String endDate, HttpServletResponse response) {
+		
+        List<Play> playList = null;
+        int result = 0;
+
+		try {
+			
+			playList = timeCheck(areaIndex, cinemaIndex, screenIndex, movieIndex, timeIndex, startDate, endDate);
+			
+			if(playList.size() == 0) {
+				areaName = areaArray[Integer.parseInt(areaIndex)];
+			    screenName = Integer.parseInt(screenIndex) + 1;
+				
+			    movieList = service.getPlayingMovieList();
+			    movieNo = movieList.get(Integer.parseInt(movieIndex)).getMovieNo();
+			    
+			    result = service.enrollSuperPlay(areaName, screenName, movieNo, startTime, endTime, startDate, endDate);
+			    
+			}
+
+		} catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println("배열 범위 이외의 숫자입니다.");
+		} catch(NumberFormatException e) {
+			System.out.println("잘못된 인덱스입니다.");
+		}
+
+		return result;
+	}
 	
 	
 	public List<Play> timeCheck(String areaIndex, String cinemaIndex, String screenIndex, 

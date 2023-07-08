@@ -1,6 +1,7 @@
 package com.kh.kgv.mypage.controller;
 
 import java.io.IOException;
+import java.net.http.HttpRequest;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -394,7 +395,8 @@ public class MyPageController {
 
 	@GetMapping("/myMovie")
 	public String myMovie(Model model) {
-
+		
+		
 		// 메인 이벤트 목록 가지고 오기 - 7개
 		Map<String, Object> getEvnetList = null;
 		getEvnetList = managerService.mainEventList();
@@ -410,7 +412,7 @@ public class MyPageController {
 		Map<String, Object> getEvnetList = null;
 		getEvnetList = managerService.mainEventList();
 		model.addAttribute("getEvnetList", getEvnetList);
-
+		
 		return "myPage/myPage_changePw";
 	}
 
@@ -473,7 +475,8 @@ public class MyPageController {
 	// 회원 비밀번호 변경
 	@PostMapping("/changePw")
 	public String changePw(@RequestParam Map<String, Object> paramMap, @ModelAttribute("loginUser") User loginUser,
-			RedirectAttributes ra) {
+			RedirectAttributes ra, SessionStatus status, HttpServletRequest req,
+			HttpServletResponse resp) {
 
 		// 로그인된 회원의 번호를 paramMap 추가
 		paramMap.put("userNo", loginUser.getUserNo());
@@ -482,17 +485,30 @@ public class MyPageController {
 		int result = service.changePw(paramMap);
 
 		String message = null;
+		String path = null;
 
 		if (result > 0) {
 			// 변경 -> info
 			message = "비밀번호가 변경되었습니다.";
+
+			// 세션 없애기
+			status.setComplete();
+
+			// 쿠키 없애기
+			Cookie cookie = new Cookie("saveId", "");
+			cookie.setMaxAge(0);
+			cookie.setPath(req.getContextPath());
+			resp.addCookie(cookie);
+			
+		    path = "/";
 		} else {
 			// 실패 -> changePw
 			message = "현재 비밀번호가 일치하지 않습니다.";
+			path = "myPage/myPage_changePw";
 		}
 		ra.addFlashAttribute("message", message);
 
-		return "redirect:changePw";
+		return "redirect:" + path;
 	}
 
 	// ===========================================================================================
