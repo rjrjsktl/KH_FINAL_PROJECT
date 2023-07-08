@@ -164,9 +164,10 @@ $(document).ready(function () {
 
   function updateOpenStatus(isChecked) {
     if (isChecked) {
+      alert("현재 작성하신 글이 공개됩니다.");
       $("#openStatus").text("공개 글 입니다.");
     } else {
-      $("#openStatus").text("비공개 글 입니다.");
+      $("#openStatus").text("현재 비공개 상태입니다.");
     }
   }
 

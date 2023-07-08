@@ -72,7 +72,8 @@
 
 															<a
 																href="${contextPath}/movieList/detail_List/introduce/${movie['movieNo']}">
-																<img src="${movie['movieImg1']}" class="target1"></a>
+																<img src="${movie['movieImg1']}" class="target1" onmouseenter="zoomIn(event)"
+																onmouseleave="zoomOut(event)" ></a>
 														</div>
 
 														<div>
@@ -113,7 +114,6 @@
 						<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 						<script src="${contextPath}/resources/js/introduce/detail_list.js"></script>
-						<!-- <script src="${contextPath}/resources/js/introduce/introduce.js"></script> -->
 
 
 						<script>
