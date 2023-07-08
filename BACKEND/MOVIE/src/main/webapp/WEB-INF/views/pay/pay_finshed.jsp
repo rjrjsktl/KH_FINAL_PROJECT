@@ -61,13 +61,13 @@
                                             <div class="discount_step">
 
                                                 <!-- 예매한 영화 이미지 -->
-                                                <img class="ticketImg"  src="${finalMap.userPlay.movie.movieImg1}">
+                                                <img class="ticketImg" src="${finalMap.userPlay.movie.movieImg1}">
 
 
 
                                                 <!-- 티켓인포 -->
                                                 <div class="ticketInfo">
-                                                    
+
                                                     <!-- ticketInfo 의 첫번째영역 -->
                                                     <div class="ticketInfo_1">
 
@@ -88,7 +88,7 @@
                                                         </div>
 
 
-                                                        
+
                                                         <div>
                                                             <!-- 관람제한 나이 -->
                                                             <div class="age">
@@ -106,43 +106,47 @@
                                                                         <div class="age18">18</div>
                                                                     </c:otherwise>
                                                                 </c:choose>
-                                                                
+
                                                                 <div class="movieTitle">
                                                                     <span>${finalMap.userPlay.movie.movieTitle}&nbsp;|</span>
                                                                     <div>
                                                                         ${finalMap.userPlay.screen.cinemaName}
                                                                         ${finalMap.userPlay.screen.screenName}관
                                                                         (${finalMap.userPlay.screen.screenStyle})
-                                                                        
+
                                                                     </div>
                                                                     <div>
+                                                                        <c:set var="seats" value="${finalMap.bookAll.bookSeat}" />
+                                                                        <c:set var="seats" value="${fn:replace(seats, '[', '')}" />
+                                                                        <c:set var="seats" value="${fn:replace(seats, ']', '')}" />
+                                                                        <c:set var="seats" value="${fn:replace(seats, '\"', '')}" />
+                                                                        &nbsp;${seats}
                                                                         
-                                                                        ${finalMap.bookAll.bookSeat}
                                                                     </div>
                                                                 </div>
                                                             </div>
-    
-    
+
+
                                                             <!-- 영화제목 -->
-                                                            
-    
+
+
                                                             <div>
-    
+
                                                             </div>
                                                             <!-- 지역,관,스크린 -->
-                                                            
-                                                            
+
+
                                                         </div>
                                                     </div>
 
-                                                    
+
                                                     <!-- ticketInfo의두번째영역 예매코드번호 -->
                                                     <div class="ticketInfo_2">
-                                                        
+
                                                         <div class="codeArea">
                                                             <span>예매하신 코드번호 :</span>
                                                             <div class="codeNo">
-                                                                <span>${finalMap.payOrder}</span>    
+                                                                <span>${finalMap.payOrder}</span>
                                                             </div>
                                                         </div>
                                                     </div>
