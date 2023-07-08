@@ -60,7 +60,8 @@
 															</span>
 
 															<a href="${contextPath}/movieList/detail_List/introduce/${movie['movieNo']}">
-																<img src="${movie['movieImg1']}"></a>
+																<img src="${movie['movieImg1']}" onmouseenter="zoomIn(event)"
+																onmouseleave="zoomOut(event)" ></a>
 														</div>
 
 														<div>
