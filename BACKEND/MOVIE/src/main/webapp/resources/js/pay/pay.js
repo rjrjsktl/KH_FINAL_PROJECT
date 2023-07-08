@@ -9,7 +9,7 @@ let tempCouponArray = [];
 
 $(document).ready(function () {
   $(".payBtn").on("click", function () {
-    var confirmMessage = "결제하실?";
+    var confirmMessage = "결제 하시겠습니까?";
     if (confirm(confirmMessage)) {
       requestPay();
     }
