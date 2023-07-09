@@ -37,13 +37,13 @@
 									<jsp:include page="/WEB-INF/views/common/noticeAside.jsp" />
 
 									<div class="container">
-
+			
 										<div class="content-wrap">
-
+			
 											<h2>분실물 문의</h2>
-
-
-
+			
+			
+			
 											<div class="notice-contents">
 												<div>
 													<span>${lostdetail.lostTitle}</span>
@@ -52,94 +52,92 @@
 													<span>${lostdetail.lostLocation} <span> | </span> <span>${lostdetail.lostItem}</span> </span>
 													<span><span>${lostdetail.lostWriter}</span> <span>|</span>
 														<span>${lostdetail.lostDate} </span></span>
-
+			
 												</div>
 												<div class="contentText-wrap">
-													<c:out value="${lostdetail.lostContent}" escapeXml="true" />
-												</div>
+													<c:out value="${lostdetail.lostContent}" escapeXml="true"/></div>
 											</div>
 										</div>
-
-									</div>
-									<div class="contentText-wrap">
-										<c:out value="${lostdetail.lostContent}" escapeXml="true" />
-									</div>
-									
-								</div>
-							</div>
-
-							<div class="imageArea">
-								<c:choose>
-									<c:when test="${not empty lostdetail.lostFile}">
-										<img src="${lostdetail.lostFile}" onclick="showImage('${lostdetail.lostFile}')">
-									</c:when>
-									<c:otherwise>
+			
+										<div class="imageArea">
+											<c:choose>
+												<c:when test="${not empty lostdetail.lostFile}">
+													<img src="${lostdetail.lostFile}" onclick="showImage('${lostdetail.lostFile}')">
+												</c:when>
+												<c:otherwise>
+			
 												</c:otherwise>
 											</c:choose>
 										</div>
-
+			
 										<c:if test="${lostdetail.lostRepSt == 'Y'}">
-
+			
 											<div class="reply">
 												<div class="reply-info">
 													<p>${lostdetail.lostWriter}님답변드립니다.</p>
-													<span class="reply-writer-info"><span>${lostdetail.lostRepWriter}</span><span>|</span><span>${lostdetail.lostRepDate}</span></span>
+													<span
+														class="reply-writer-info"><span>${lostdetail.lostRepWriter}</span><span>|</span><span>${lostdetail.lostRepDate}</span></span>
 												</div>
 												<div>
 													<div class="reply-content">
-														<c:out value="${lostdetail.lostRepContent}" escapeXml="true" />
+														<c:out value="${lostdetail.lostRepContent}" escapeXml="true"/></div>
+												
 													</div>
 												</div>
 											</div>
-
+			
 											<c:if test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y'}">
-												<button class="reply_delete" data-lostno="${lostdetail.lostNo}" id="reply_deleteBtn">
+												<button class="reply_delete" data-lostno="${lostdetail.lostNo}"
+													id="reply_deleteBtn">
 													<a>답변 삭제하기</a>
 												</button>
 											</c:if>
 										</c:if>
-
-
-										<c:if test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y' && lostdetail.lostRepSt == 'N'}">
-
+			
+			
+										<c:if
+											test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y' && lostdetail.lostRepSt == 'N'}">
+			
 											<div class="reply_wrap btn_wraper">
 												<textarea id="contentTextarea"></textarea>
 												<button data-lostno="${lostdetail.lostNo}" id="reply_writeBtn">
 													<a>등록하기</a>
 												</button>
 											</div>
-
+			
 										</c:if>
-
-
+			
+			
 										<div class="btn_wraper">
-											<c:if test="${not empty loginUser.userNo and loginUser.userManagerSt == 'Y' or loginUser.userNo == lostdetail.userNo}">
-												<button data-lostno="${lostdetail.lostNo}" id="updateLost">
+											<c:if
+											test="${not empty loginUser.userNo and loginUser.userManagerSt == 'Y' or loginUser.userNo == lostdetail.userNo}">
+											<button data-lostno="${lostdetail.lostNo}" id="updateLost">
 													<input type="hidden" id="cp" value="${cp}">
 													<a>수정</a>
 												</button>
 											</c:if>
-
-											<c:if test="${not empty loginUser.userNo and loginUser.userManagerSt == 'Y' or loginUser.userNo == lostdetail.userNo}">
+			
+											<c:if
+												test="${not empty loginUser.userNo and loginUser.userManagerSt == 'Y' or loginUser.userNo == lostdetail.userNo}">
 												<button id="deleteLost" data-lostno="${lostdetail.lostNo}">
 													<input type="hidden" id="cp" value="${cp}">
 													<a>삭제</a>
 												</button>
 											</c:if>
-
+			
 											<button class="goback">
 												<a href="${contextPath}/helpDesk/lost_List?cp=${param.cp}">목록으로</a>
 											</button>
-
+			
 										</div>
-
+			
 									</div>
-
-
-
+			
+			
+			
 								</section>
 							</main>
-
+			
 						</div>
 						<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
