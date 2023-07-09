@@ -131,10 +131,7 @@ const cBtn = document.getElementById("cBtn");
 
 // 인증번호 인풋에 값을 적었을때
 cNumber.addEventListener("input", function () {
-<<<<<<< HEAD
-  console.log(checkObj);
-=======
->>>>>>> 1bac3c086b56ffe57f55651084620d9548966d80
+
   // 1. 인증번호 받기 버튼이 클릭되어 이메일 발송되었는지 확인
   if (checkObj.sendEmail) {
     // 2. 입력된 인증번호가 6자리가 맞는지 확인
@@ -152,36 +149,25 @@ cNumber.addEventListener("input", function () {
           // 3 : 인증번호 일치 X
           if (result == 1) {
             clearInterval(checkInterval); // 타이머 멈춤
-<<<<<<< HEAD
-=======
 
-            checkObj.cNumber = true;
-
->>>>>>> 1bac3c086b56ffe57f55651084620d9548966d80
             cMessage.innerText = "success";
             cMessage.style.color = "greenyellow";
             cMessage.classList.add("confirm");
             cMessage.classList.remove("error");
-<<<<<<< HEAD
+
             
             checkObj.cNumber = true;
 
-=======
->>>>>>> 1bac3c086b56ffe57f55651084620d9548966d80
+
           } else if (result == 2) {
             alert("만료된 인증 번호 입니다.");
           } else {
             alert("인증 번호가 일치하기 않습니다.");
           }
         },
-<<<<<<< HEAD
-        error: function () {
-          console.log("이메일 인증 실패");
-        },
-=======
 
         error: function () {},
->>>>>>> 1bac3c086b56ffe57f55651084620d9548966d80
+
       });
     } else {
       alert("인증번호를 정확하게 입력해주세요.");
