@@ -54,11 +54,7 @@
 
 						<div class="btn_wraper">
 
-
-					
 								<a  class="goback" href="${contextPath}/helpDesk/mTm_List/?cp=${param.cp}">확인</a>
-							
-
 
 						</div>
 					</div>
