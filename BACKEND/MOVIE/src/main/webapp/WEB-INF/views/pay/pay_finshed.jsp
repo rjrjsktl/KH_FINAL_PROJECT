@@ -144,10 +144,13 @@
                                                     <div class="ticketInfo_2">
 
                                                         <div class="codeArea">
-                                                            <span>예매하신 코드번호 :</span>
-                                                            <div class="codeNo">
-                                                                <span>${finalMap.payOrder}</span>
+                                                            <div class="box1">
+                                                                <span id="codeNumber">예매하신 코드번호 :</span>
+                                                                <div class="codeNo">
+                                                                    <span>${finalMap.payOrder}</span>
+                                                                </div>
                                                             </div>
+                                                            <span class="box2">※예매번호코드를 클릭하여 복사하세요.</span>
                                                         </div>
                                                     </div>
 
