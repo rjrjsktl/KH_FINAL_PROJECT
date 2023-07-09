@@ -73,6 +73,7 @@ $(document).ready(function () {
   $(document).on("click", ".deleteImage", function () {
     $(this).parent().remove();
     $("#fileInput").val("");
+    imageUrl1 = "";
   });
 
   fileInput.on("change", function (e) {
