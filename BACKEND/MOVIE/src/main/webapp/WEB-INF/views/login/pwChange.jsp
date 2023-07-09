@@ -34,7 +34,7 @@
     	<!-- header -->
 		<jsp:include page="/WEB-INF/views/common/header.jsp" />
     	
-        <main>
+        <!-- <main>
             <form action="finshedchangePw" method="POST" onsubmit="return PwChangeValidate();">
                 <div>
                     <span>비밀번호 재설정</span>
@@ -45,13 +45,39 @@
                     <input type="password" placeholder="비밀번호 확인" name="userPwConfirm" id="userPwConfirm">
                     <span id="pwMessage"></span>
                 
-                    <!-- <button onclick="location.href='finshedchangePw'">비밀번호 변경</button> -->
-                    <!-- <button onclick="location.href='finshedchangePw?userPw=' + document.getElementById('userPw').value">비밀번호 변경</button> -->
                     <button type="submit">비밀번호 변경</button>
                 </div>
             </form>
             
-        </main>
+        </main> -->
+
+        <div class="cont_wrap">
+            <div class="user-info">
+                <div class="img_wrap">
+                    <a id="mainLogo" href="${contextPath}">
+                    <img src="${contextPath}/resources/images/logo/logo.png" alt="logo"></a>
+                </div>
+                <div class="find_wrap">
+                    <p>비밀번호 재설정</p>
+                    
+                    <form action="finshedchangePw" method="POST"  onsubmit="return PwChangeValidate();">
+                        <div class="formArea">
+                            <span>새로운 비밀번호를 기입해주세요!!</span>
+                            <input type="password" placeholder="비밀번호" name="userPw" id="userPw">
+                            <input type="password" placeholder="비밀번호 확인" name="userPwConfirm" id="userPwConfirm">
+                            <span id="pwMessage"></span>
+                        
+                            <!-- <button onclick="location.href='finshedchangePw'">비밀번호 변경</button> -->
+                            <!-- <button onclick="location.href='finshedchangePw?userPw=' + document.getElementById('userPw').value">비밀번호 변경</button> -->
+                            <button id="cBtn" type="submit">비밀번호 변경</button>
+                        </div>
+                    </form>
+                    
+
+                    
+                </div>
+            </div>
+        </div>
     </div>
     
     <!-- footer -->

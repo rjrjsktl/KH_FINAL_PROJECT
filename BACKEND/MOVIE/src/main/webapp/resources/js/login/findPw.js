@@ -151,13 +151,10 @@ const cBtn = document.getElementById("cBtn");
 // 인증번호 인풋에 값을 적었을때
 cNumber.addEventListener("input", function () {
   console.log(checkObj);
-  
   // 1. 인증번호 받기 버튼이 클릭되어 이메일 발송되었는지 확인
   if (checkObj.sendEmail) {
     // 2. 입력된 인증번호가 6자리가 맞는지 확인
     if (cNumber.value.length == 6) {
-      // 6자리 맞음
-
       $.ajax({
         url: "checkNumber",
         data: {
@@ -170,31 +167,26 @@ cNumber.addEventListener("input", function () {
           // 1 : 인증번호 일치 O, 시간 만족O
           // 2 : 인증번호 일치 O, 시간 만족X
           // 3 : 인증번호 일치 X
-
           if (result == 1) {
             clearInterval(checkInterval); // 타이머 멈춤
-            
-			      checkObj.cNumber = true;
-			
             cMessage.innerText = "success";
             cMessage.style.color = "greenyellow";
             cMessage.classList.add("confirm");
             cMessage.classList.remove("error");
             
+            checkObj.cNumber = true;
+
           } else if (result == 2) {
             alert("만료된 인증 번호 입니다.");
           } else {
-            // 3
             alert("인증 번호가 일치하기 않습니다.");
           }
         },
-
         error: function () {
           console.log("이메일 인증 실패");
         },
       });
     } else {
-      // 6자리 아님
       alert("인증번호를 정확하게 입력해주세요.");
       cNumber.focus();
       checkObj.cNumber = false;
