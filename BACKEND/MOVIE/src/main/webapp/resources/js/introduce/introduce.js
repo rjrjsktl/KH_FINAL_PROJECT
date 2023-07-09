@@ -218,10 +218,7 @@ $(document).ready(function () {
               </div>
               <div class="review_content">
                 <div>리뷰</div>
-                <div>${review.revLike}</div>
-                <div>${reviewContent}</div>
-                ${deleteButton}
-              </div>
+                <div>${review.revLike}</div><div>${reviewContent}</div>${deleteButton}</div>
             </div>
           `);
 
