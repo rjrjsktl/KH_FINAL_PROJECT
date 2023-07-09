@@ -4,8 +4,6 @@ import java.util.Map;
 
 import javax.mail.internet.MimeMessage;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -30,7 +28,6 @@ public class SignUpController {
 	@Autowired
 	private JavaMailSender mailSender;
 	
-	private Logger logger = LoggerFactory.getLogger(SignUpController.class);
 	
 	// 회원가입 sns 화면
 		@RequestMapping("/signUp_sns")

@@ -1,14 +1,8 @@
-console.log("loginPage.js loaded..");
-
-console.log(document.cookie);
-
 const userEmail = document.getElementById("userEmail");
 const userPw = document.getElementById("userPw");
 
 // 로그인 유효성 검사
 function loginValidate() {
-  console.log("loginValidate function loaded..");
-
   // validate : 유효하다
   // invalidate : 무효하다
 

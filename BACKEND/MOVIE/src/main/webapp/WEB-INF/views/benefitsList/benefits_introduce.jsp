@@ -63,8 +63,7 @@
 						</div>
 
 
-						<script src="${contextPath}/resources/js/main/header.js"></script>
-						<%-- <script src="${contextPath}/resources/js/introduce/event_introduce.js"></script> --%>
+						 <!-- <script src="${}/resources/js//event_introduce.js"></script>  -->
 							<script>
 								function goBack() {
 									history.back();
