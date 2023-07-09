@@ -59,10 +59,8 @@ public class MainController {
 		int result = enterService.inputEnter(de);
 
 		if (result > 0) {
-			System.out.println("접속한 아이피 주소는 : " + ip);
 			pageMove = "common/main";
 		} else {
-			System.out.println("접속 기록을 추가하지 못함.");
 		}
 		
 		
@@ -87,15 +85,12 @@ public class MainController {
 		getBannerList = service.getBannerList(cp);
 		model.addAttribute("getBannerList", getBannerList);
 		
-		System.out.println("예매율 시작");
 		// 영화 예매율 불러오기
 		List<Movie> movieList = (List<Movie>) getMovieList.get("cleanedList");
 	    List<Double> revLike = new ArrayList<>();
 	    List<Double> bookPercent = new ArrayList<>();
 		
-		System.out.println("movieList::: " + movieList);
 		if (movieList != null && !movieList.isEmpty()) {
-	        System.out.println("들어옴?");
 	        for (Movie movie : movieList) {
 	            int movieNo = movie.getMovieNo();
 	            double revLikeList = movieService.allLike(movieNo);
@@ -104,7 +99,6 @@ public class MainController {
 	            bookPercent.add(bookPercentList);
 	        }
 	    } else {
-	        System.out.println("null임");
 	    }
 
 	    model.addAttribute("revLike", revLike);

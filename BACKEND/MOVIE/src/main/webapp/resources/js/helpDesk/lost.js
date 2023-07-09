@@ -23,7 +23,7 @@ $(document).ready(function () {
     });
   });
 
-  $(".submitBTN").click(function () {
+  $(".submitBTNs").click(function () {
     var area = $("#lostArea").val();
     var name = $("#lostName").val();
     var keyword = $("input[name='keyword']").val();
@@ -164,9 +164,10 @@ $(document).ready(function () {
 
   function updateOpenStatus(isChecked) {
     if (isChecked) {
+      alert("현재 작성하신 글이 공개됩니다.");
       $("#openStatus").text("공개 글 입니다.");
     } else {
-      $("#openStatus").text("비공개 글 입니다.");
+      $("#openStatus").text("현재 비공개 상태입니다.");
     }
   }
 
@@ -269,29 +270,32 @@ $(document).ready(function () {
       alert("내용을 입력해주세요");
       return;
     }
-
-    $.ajax({
-      type: "POST",
-      url: "/movie/helpDesk/lost_form/" + lostNo,
-      data: {
-        titleInput: title,
-        lostItem: item,
-        lostArea: area,
-        lostDate: date,
-        contentTextarea: details,
-        open: open,
-        imageUrl1: imageUrl1,
-      },
-      success: function (response) {
-        var lostNo = response.lostNo;
-        alert("수정성공");
-        var url = `/movie/helpDesk/lost_detail/${lostNo}`;
-        location.href = url;
-      },
-      error: function (xhr, status, error) {
-        alert("오류 발생");
-      },
-    });
+    var confirmation = confirm("정말로 이 문의를 수정하시겠습니까?");
+    if (confirmation) {
+      $.ajax({
+        type: "POST",
+        url: "/movie/helpDesk/lost_form/" + lostNo,
+        data: {
+          titleInput: title,
+          lostItem: item,
+          lostArea: area,
+          lostDate: date,
+          contentTextarea: details,
+          open: open,
+          imageUrl1: imageUrl1,
+        },
+        success: function (response) {
+          var lostNo = response.lostNo;
+          alert("수정을 완료하였습니다.");
+          var url = `/movie/helpDesk/lost_detail/${lostNo}`;
+          location.href = url;
+        },
+        error: function (xhr, status, error) {
+          alert("오류 발생");
+        },
+      });
+    } else {
+    }
   });
 });
 
@@ -300,12 +304,12 @@ $(document).ready(function () {
 
   deleteLost.on("click", function () {
     let lostNo = $(this).data("lostno");
-    let cp = $("#cp").val(); // HTML에서 'cp' 값 가져오기
+    let cp = $("#cp").val();
 
     let url = `/movie/helpDesk/deleteLost/${lostNo}?cp=` + cp;
 
     if (confirm("정말로 삭제 하시겠습니까?")) {
-      window.location.href = url; // get방식으로 url에 요청
+      window.location.href = url;
     }
   });
 });
@@ -326,7 +330,7 @@ $(document).ready(function () {
     const url = `/movie/helpDesk/replyLostDelete/${lostno}`;
 
     if (confirm(" 답변을 정말로 삭제 하시겠습니까?")) {
-      window.location.href = url; // get방식으로 url에 요청
+      window.location.href = url;
     }
   });
 });
@@ -385,7 +389,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  $("form").on("submit", function (e) {
+  $(".lostform").on("submit", function (e) {
     var area = $("#lostArea").val();
     var name = $("#lostName").val();
 

@@ -105,9 +105,8 @@ $(document).ready(function () {
   }
 
   $(".star-btn").click(function () {
-    var currentUrl = window.location.href;
-    var reviewUrl = currentUrl + "?review=2";
-    window.location.href = reviewUrl;
+    let movieNo = $(this).data("movieno");
+    window.location.href = "/movie/movieList/detail_List/introduce/" + movieNo + "?review=2";
   });
 
   $(".star_rating a").click(function () {
@@ -203,6 +202,14 @@ $(document).ready(function () {
             deleteButton = "<div></div>";
           }
 
+          let reviewContent = "";
+
+          if (userNo == review.userNo) {
+            reviewContent = `<div class="revcons" style="color: #FFC400;">${review.revContent}</div>`;
+          } else {
+            reviewContent = `<div class="revcons">${review.revContent}</div>`;
+          }
+
           li.html(`
             <div class="rvWrap">
               <div class="user_info">
@@ -211,7 +218,7 @@ $(document).ready(function () {
               <div class="review_content">
                 <div>리뷰</div>
                 <div>${review.revLike}</div>
-                <div>${review.revContent}</div>
+                <div>${reviewContent}</div>
                 ${deleteButton}
               </div>
             </div>
@@ -234,18 +241,24 @@ $(document).ready(function () {
   $(document).on("click", ".deleteReview", function () {
     var movieNo = document.getElementById("movieNo").value;
     var revNo = $(this).data("revno");
-    $.ajax({
-      url: "/movie/movieList/detail_List/introduce/deleteReview/" + revNo,
-      type: "POST",
-      success: function (data) {
-        alert("리뷰가 삭제되었습니다.");
-        window.location.href =
-          "/movie/movieList/detail_List/introduce/" + movieNo + "?review=1";
-      },
-      error: function (xhr, status, error) {
-        alert("오류가 발생되었습니다.");
-      },
-    });
+
+    var confirmation = confirm("정말로 이 리뷰를 삭제하시겠습니까?");
+
+    if (confirmation) {
+      $.ajax({
+        url: "/movie/movieList/detail_List/introduce/deleteReview/" + revNo,
+        type: "POST",
+        success: function (data) {
+          alert("리뷰가 삭제되었습니다.");
+          window.location.href =
+            "/movie/movieList/detail_List/introduce/" + movieNo + "?review=1";
+        },
+        error: function () {
+          alert("오류가 발생되었습니다.");
+        },
+      });
+    } else {
+    }
   });
 });
 function goBack() {

@@ -20,6 +20,7 @@
                         <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
                         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
+                        <script src="${contextPath}/resources/js/event/event.js"></script>
                     </head>
 
                     <body>
@@ -60,7 +61,7 @@
                                     <c:out value="${eventDetail['eventContent']}" escapeXml="false" />
                                 </div>
 
-                                <a id="returnBtn" href="${contextPath}/eventList/detail_List" onclick="goBack()" value="목록으로">
+                                <a id="returnBtn" value="목록으로">
                                     목록으로
                                 </a>
 
@@ -74,7 +75,6 @@
                         </div>
 
 
-                        <script src="${contextPath}/resources/js/main/header.js"></script>
                         </div>
                     </body>
 

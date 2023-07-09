@@ -51,7 +51,7 @@
 								<div class="cont-search-wrap">
 									<span>빠른검색</span>
 
-									<form action="/movie/helpDesk/question_home" method="GET">
+									<form class="qesform" action="/movie/helpDesk/question_home" method="GET">
 										<input type="text" placeholder=" 질문을 입력해주세요!" name="keyword">
 										<button>
 											<img

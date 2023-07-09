@@ -545,18 +545,7 @@ $(document).ready(function () {
     // 상영시간 유효성 검사
     function timeCheck() {
         if (screen_Arr.length && movie_Arr.length && time_Arr.length && endDate.val()) {
-            // console.log('상영 지역 : ' + area_Arr);
-            // console.log('상영 지역 인덱스 : ' + areaIndex);
-            // console.log('상영 영화관 : ' + cinema_Arr);
-            // console.log('상영 영화관 인덱스 : ' + cinemaIndex);
-            // console.log('상영 스크린 : ' + screen_Arr);
-            // console.log('상영 스크린 인덱스 : ' + screenIndex);
-            // console.log('상영 영화 : ' + movie_Arr);
-            // console.log('상영 영화 인덱스 : ' + movieIndex);
-            // console.log('상영 시간 : ' + time_Arr);
-            // console.log('상영 시간 인덱스 : ' + timeIndex);
-            // console.log('상영 시작일 : ' + startDate.val());
-            // console.log('상영 종료일 : ' + endDate.val());
+ 
             $.ajax({
                 url: "play_add/playTimeCheck",
                 data: { areaIndex, cinemaIndex, screenIndex, movieIndex, timeIndex, "startDate": startDate.val(), "endDate": endDate.val() },
@@ -568,21 +557,12 @@ $(document).ready(function () {
 
                         let playData = result[0];
 
-                        // console.log(result);
                         alert(playData.playUploader + " 관의 선택하신 상영 시간은 다른 시간과 겹칩니다.\n"
                             + "가장 빠른 상영일 : " + playData.playStart + " " + playData.playBookSeat + "\n"
                             + "가장 늦은 상영일 : " + playData.playEnd + " " + playData.playRegDate + "\n"
                             + "등록된 기간 : " + playData.playStart + " ~ " + playData.playEnd
                         );
 
-                        // if (!$(playData.startDate)) {
-
-                        //     alert("히힛, 등록하셔유");
-                        //     console.log("result : " + result);
-                        // } else {
-
-                        //     alert("글쎄");
-                        // }
                     } else {
                         enrollCheck = true;
                         alert("해당하는 상영 정보가 없습니다. \n"
@@ -601,52 +581,85 @@ $(document).ready(function () {
 
     // ===============================================================================
     // 결과값 확인용
+    
+    
+    function enrollPlayAjax() {
+      $.ajax({
+        url: "play_add/enroll",
+        data: {"areaIndex" : areaIndex, "cinemaIndex" : cinemaIndex, "screenIndex" : screenIndex, 
+                "movieIndex" : movieIndex, "timeIndex" : timeIndex, "startDate" : startDate.val(), "endDate" : endDate.val() },
+        type: "POST",
+        success: function(result) {
+
+        },
+        error: function () {
+          // console.log("상영 등록 중 에러 발생");
+        }
+      });
+    }
+
+    function ask(question, yes, no) { // 등록 후 상영 목록 이동 여부 물어보기.
+      if (confirm(question)) {
+        yes(); // 상영 목록 이동 희망
+      } else {
+        e.preventDefault();
+        no(); // 거부 시, 현재 화면에 계속 머물기
+      }
+    };
+    
+    
 
     const submitBtn = $('.bottom_Submit');
 
 
     submitBtn.on('click', () => {
-        // console.log('상영 지역 : ' + area_Arr);
-        // console.log('상영 지역 인덱스 : ' + areaIndex);
-        // console.log('상영 영화관 : ' + cinema_Arr);
-        // console.log('상영 영화관 인덱스 : ' + cinemaIndex);
-        // console.log('상영 스크린 : ' + screen_Arr);
-        // console.log('상영 스크린 인덱스 : ' + screenIndex);
-        // console.log('상영 영화 : ' + movie_Arr);
-        // console.log('상영 영화 인덱스 : ' + movieIndex);
-        // console.log('상영 시간 : ' + time_Arr);
-        // console.log('상영 시간 인덱스 : ' + timeIndex);
-        // console.log('상영 시작일 : ' + startDate.val());
-        // console.log('상영 종료일 : ' + endDate.val());
 
         if (enrollCheck) {
-            let dataName = ["areaIndex", "cinemaIndex", "screenIndex", "movieIndex", "timeIndex", "startDate", "endDate"];
-            let dataValue = [areaIndex, cinemaIndex, screenIndex, movieIndex, timeIndex, startDate.val(), endDate.val()];
-            let el;
+        
+            enrollPlayAjax();
 
-            for (let i = 0; i < dataName.length; i++) {
-
-                el = document.createElement("input");
-                el.type = "hidden";
-                el.name = dataName[i];
-                el.value = dataValue[i];
-
-                $("#playAddForm").append(el);
-            }
-
-            $("#playAddForm").submit();
-
-
+            ask( // function ask() 용 질의 구문
+              "상영이 등록되었습니다. 상영 목록 페이지로 이동하시겠습니까?",
+              (ask) => location.href = "play_list",
+              (ask) => location.href = "play_add"
+            );
+            
         }
 
     });
+    
 
     const delBtn = $('.deleteEvent');
+    
     delBtn.on('click', (e) => {
         e.preventDefault();
         alert('삭제기능은 비활성화 하였습니다');
     })
 
+    // 임시 버튼
+    
+     function enrollSuperPlayAjax() {
+      $.ajax({
+        url: "play_add/enrollSuper",
+        data: {"areaIndex" : areaIndex, "cinemaIndex" : cinemaIndex, "screenIndex" : screenIndex, 
+                "movieIndex" : movieIndex, "timeIndex" : timeIndex, "startDate" : startDate.val(), "endDate" : endDate.val() },
+        type: "POST",
+        success: function(result) {
+            if(result > 0) {
+              location.href="play_list";
+            }
 
+        },
+        error: function () {
+          // console.log("상영 등록 중 에러 발생");
+        }
+      });
+    }
+    
+    const superSubmitBtn = $('.bottom_SuperSubmit');
+    
+    superSubmitBtn.on("click", (e)=> {
+       enrollSuperPlayAjax();
+    })
 
 });

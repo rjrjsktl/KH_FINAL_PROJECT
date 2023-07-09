@@ -189,7 +189,7 @@
         INNER JOIN CINEMA c ON s.CINEMA_NAME = c.CINEMA_NAME
         INNER JOIN MOVIE m ON p.MOVIE_NO = m.MOVIE_NO
         WHERE c.CINEMA_NO = #{cinemaNo} AND TO_CHAR(p.PLAY_START, 'YYYYMMDD') = #{strDate} AND p.PLAY_START > SYSDATE
-        ORDER BY m.MOVIE_TITLE DESC
+        ORDER BY m.MOVIE_TITLE ASC, p.PLAY_START ASC
 	]]>
 	</select>
 	
@@ -204,6 +204,7 @@
         INNER JOIN MOVIE m ON p.MOVIE_NO = m.MOVIE_NO
         WHERE c.CINEMA_NO = #{cinemaNo} AND TO_CHAR(p.PLAY_START, 'YYYYMMDD') = #{strDate} AND p.PLAY_START > SYSDATE
               AND m.MOVIE_NO = #{movieNo}
+        ORDER BY p.PLAY_START ASC
 	]]>
 	</select>
 	
@@ -219,7 +220,7 @@
         INNER JOIN MOVIE m ON p.MOVIE_NO = m.MOVIE_NO
         WHERE TO_CHAR(p.PLAY_START, 'YYYYMMDD') = #{strDate} AND p.PLAY_START > SYSDATE
                   AND s.SCREEN_STYLE = #{screenStyle} AND s.CINEMA_NAME = #{cinemaName}
-        ORDER BY m.MOVIE_TITLE DESC
+        ORDER BY m.MOVIE_TITLE ASC, p.PLAY_START ASC
 	]]>
 	</select>
 	
@@ -234,6 +235,7 @@
         INNER JOIN MOVIE m ON p.MOVIE_NO = m.MOVIE_NO
         WHERE TO_CHAR(p.PLAY_START, 'YYYYMMDD') = #{strDate} AND p.PLAY_START > SYSDATE
                   AND s.SCREEN_STYLE = #{screenStyle} AND s.CINEMA_NAME = #{cinemaName} AND m.MOVIE_NO = #{movieNo}
+        ORDER BY  p.PLAY_START ASC
 	]]>
 	</select>
 	

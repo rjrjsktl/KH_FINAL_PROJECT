@@ -127,7 +127,7 @@
                                     <div>
                                         <div class="movide-expalin-wrap">
                                             <p class="info-btn" data-movieno="${MovieDetail.movieNo}">영화정보</p>
-                                            <p class="star-btn">평점 및 리뷰</p>
+                                            <p class="star-btn" data-movieno="${MovieDetail.movieNo}">평점 및 리뷰</p>
                                         </div>
                                         <!-- 영화정보 -->
                                         <div class="movie-detail">
@@ -304,12 +304,13 @@
                                                                     <div>리뷰</div>
                                                                     <div>${review.revLike}</div>
                                                                     <c:choose>
-                                                                        <c:when test="${loginUser.userNo == review.userNo || loginUser.userManagerSt == 'Y'}">
-                                                                            <div style="color: #FFC400;">
-                                                                                ${review.revContent}</div>
+                                                                        <c:when test="${loginUser.userNo == review.userNo}">
+                                                                            <div class="revcons" style="color: #FFC400;">
+                                                                                <c:out value="${review.revContent}" escapeXml="false" />
+                                                                                </div>
                                                                         </c:when>
                                                                         <c:otherwise>
-                                                                            <div>${review.revContent}</div>
+                                                                            <div class="revcons"> <c:out value="${review.revContent}" escapeXml="false" /> </div>
                                                                         </c:otherwise>
                                                                     </c:choose>
 
@@ -376,7 +377,6 @@
                             const revLike = "${revLike}";
                            // console.log("revLike::::" + revLike);
                         </script>
-                        <script src="${contextPath}/resources/js/main/header.js"></script>
                         <script src="${contextPath}/resources/js/introduce/introduce.js"></script>
                         </div>
                     </body>
