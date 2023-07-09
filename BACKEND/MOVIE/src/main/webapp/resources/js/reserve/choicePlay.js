@@ -677,7 +677,6 @@ function updatePlaySection(playMap) {
       questScreen = playMap.screenList.filter((screen) => {
         return screen.screenNo = play.screenNo
       });
-      console.log(questScreen[0]);
       clonePlay.find('.open_hour').html(play.playStart.substring(11,13));
       clonePlay.find('.open_minute').html(play.playStart.substring(14,16));
       playBundle.find('.playlist').append(clonePlay);   

@@ -636,30 +636,5 @@ $(document).ready(function () {
         alert('삭제기능은 비활성화 하였습니다');
     })
 
-    // 임시 버튼
-    
-     function enrollSuperPlayAjax() {
-      $.ajax({
-        url: "play_add/enrollSuper",
-        data: {"areaIndex" : areaIndex, "cinemaIndex" : cinemaIndex, "screenIndex" : screenIndex, 
-                "movieIndex" : movieIndex, "timeIndex" : timeIndex, "startDate" : startDate.val(), "endDate" : endDate.val() },
-        type: "POST",
-        success: function(result) {
-            if(result > 0) {
-              location.href="play_list";
-            }
-
-        },
-        error: function () {
-          // console.log("상영 등록 중 에러 발생");
-        }
-      });
-    }
-    
-    const superSubmitBtn = $('.bottom_SuperSubmit');
-    
-    superSubmitBtn.on("click", (e)=> {
-       enrollSuperPlayAjax();
-    })
 
 });

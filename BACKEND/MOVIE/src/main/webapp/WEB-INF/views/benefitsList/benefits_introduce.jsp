@@ -59,19 +59,15 @@
 
 
 						<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-
-						</div>
-
-
-						 <!-- <script src="${}/resources/js//event_introduce.js"></script>  -->
-							<script>
-								function goBack() {
-									history.back();
-								}
-							</script>
+						
+						<script>
+							function goBack() {
+								history.back();
+							}
+						</script>
 
 
-							</div>
+						
 					</body>
 
 					</html>
