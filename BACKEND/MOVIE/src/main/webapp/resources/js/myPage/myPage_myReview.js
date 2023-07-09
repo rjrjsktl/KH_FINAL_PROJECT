@@ -26,6 +26,8 @@ $(document).ready(function () {
         if (response.length > 0) {
           response.forEach(function (review) {
             var cardData = review;
+            var userReview1 = review.review.revContent;
+            var userReview = userReview1.replace(/<br>/g, "\n");
             // var contextPath = "${contextPath}";
             // console.log("${cardData.movie.movieNo}::::" + cardData.movie.movieNo);
             // console.log("${cardData.review.totalRow}::::앞:::" + cardData.review.totalRow);
@@ -52,7 +54,7 @@ $(document).ready(function () {
                      
                     </div>
                     <div>
-                      <textarea>${cardData.review.revContent}</textarea>
+                      <textarea disabled>${userReview}</textarea>
                     </div>
                   </div>
                 </div>
