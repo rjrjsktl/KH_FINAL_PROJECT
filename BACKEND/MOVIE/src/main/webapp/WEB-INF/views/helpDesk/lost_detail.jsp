@@ -42,8 +42,7 @@
 			
 											<h2>분실물 문의</h2>
 			
-			
-			
+		
 											<div class="notice-contents">
 												<div>
 													<span>${lostdetail.lostTitle}</span>
@@ -55,7 +54,7 @@
 			
 												</div>
 												<div class="contentText-wrap">
-													<c:out value="${lostdetail.lostContent}" escapeXml="true"/></div>
+													<c:out value="${lostdetail.lostContent}" escapeXml="false"/></div>
 											</div>
 										</div>
 			
@@ -80,7 +79,7 @@
 												</div>
 												<div>
 													<div class="reply-content">
-														<c:out value="${lostdetail.lostRepContent}" escapeXml="true"/></div>
+														<c:out value="${lostdetail.lostRepContent}" escapeXml="false"/></div>
 												
 													</div>
 												</div>

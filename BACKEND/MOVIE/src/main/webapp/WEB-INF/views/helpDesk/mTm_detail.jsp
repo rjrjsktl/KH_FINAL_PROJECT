@@ -53,7 +53,7 @@
 														<span>${mTmdetail.mtmRegdate} </span></span>
 												</div>
 												<div class="contentText-wrap">
-													<c:out value="${mTmdetail.mtmContent}" escapeXml="true" />
+													<c:out value="${mTmdetail.mtmContent}" escapeXml="false" />
 												</div>
 											</div>
 										</div>
@@ -71,7 +71,7 @@
 												</div>
 												<div>
 													<div class="reply-content">
-														<c:out value="${mTmdetail.mtmRepContent}" escapeXml="true" />
+														<c:out value="${mTmdetail.mtmRepContent}" escapeXml="false" />
 													</div>
 												</div>
 											</div>

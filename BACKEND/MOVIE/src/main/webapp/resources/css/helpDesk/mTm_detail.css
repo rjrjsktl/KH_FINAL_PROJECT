@@ -20,7 +20,6 @@ main>section {
     height:480px;
     display:flex;
     flex-direction: column;
-     border-bottom:1px solid rgb(73, 73, 73);
 }
 
 h2 {
@@ -37,7 +36,6 @@ h2 {
 
 .notice-contents>div:nth-child(1) {
     padding: 10px 0 10px 0;
-    height:40%;
 
 }
 
@@ -49,8 +47,7 @@ h2 {
 }
 
 .notice-contents>div:nth-child(2) {
-    padding: 10px 0 20px 0;
-      height:30%;
+    padding: 10px 0 ;
       display:flex;
       justify-content:space-between;
 }
@@ -60,13 +57,19 @@ h2 {
 	padding:0 5px;
 }
 
-.notice-contents>div:nth-child(3) {
-    border-top: 1px solid rgb(73, 73, 73);
-    padding: 20px 0;
+
+
+.contentText-wrap{
+	margin-top:20px;
+	height:296px;
+	background-color: #191919;
     padding-bottom: 30px;
-    height:64%;
 	word-wrap: break-word;
 	white-space: normal;
+	overflow-y: auto;
+	padding:15px;
+	border-radius: 10px;
+	
 }
 
 
