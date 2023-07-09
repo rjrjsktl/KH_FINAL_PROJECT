@@ -13,8 +13,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>에러페이지</title>
 
-<script src="https://kit.fontawesome.com/dc6e43e0ad.js"
-	crossorigin="anonymous"></script>
 
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/common/outline.css">
