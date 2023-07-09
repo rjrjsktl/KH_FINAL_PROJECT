@@ -361,6 +361,9 @@ main>section:nth-child(3)>div>div:nth-child(3) {
     background-color: rgb(31, 31, 31);
     color: white;
     border-radius: 10px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    overflow-y: auto;
 }
 
 .replywrite>button {
