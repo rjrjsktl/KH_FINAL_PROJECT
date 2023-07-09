@@ -374,7 +374,7 @@ public class HelpDeskController {
 		String path = null;
 
 		if ( userNo > 0) {
-			path = "helpDesk/mTm_form";
+			path = "helpDesk/mTm_form";	
 		} else {
 		
 
