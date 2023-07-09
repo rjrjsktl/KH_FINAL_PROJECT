@@ -95,7 +95,7 @@ main>div:nth-child(1) img {
     border: 1px solid #FFC400;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
-    color:#FFC400;
+    color: #FFC400;
     border-bottom: none;
 }
 
@@ -134,8 +134,8 @@ main>div:nth-child(1) img {
 
 #wrapper>div:nth-child(3)>ul>li {
 
-    border-radius: 12px;
-    width: 23%;
+    border-radius: 5px;
+    width: 225px;
 
     margin-bottom: 40px;
     margin-right: calc(77px/3);
@@ -144,7 +144,7 @@ main>div:nth-child(1) img {
 
     /* margin-right: 26px; */
 
-    background-color: #FFC400;
+    border: 1px solid #414141;
 
 }
 
@@ -183,11 +183,13 @@ main>div:nth-child(1) img {
 
 /* 카드 이미지 절대크기 */
 #wrapper>div:nth-child(3)>ul>li>a>div:nth-child(1)>img {
-    width: 225px;
+    width: 223px;
     height: 187px;
     position: relative;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    background-color: white;
+    border-bottom: 1px solid #414141;
 }
 
 
@@ -200,7 +202,7 @@ main>div:nth-child(1) img {
 #wrapper>div:nth-child(3)>ul>li>a>div:nth-child(2)>div:nth-child(1) {
     font-size: 1.5rem;
     margin: 20px 0px;
-    padding-left: 5px;
+    padding-left: 15px;
 }
 
 #wrapper>div:nth-child(3)>ul>li>a>div:nth-child(2)>div:nth-child(1)>p {
@@ -216,7 +218,7 @@ main>div:nth-child(1) img {
     align-items: center;
     margin: 20px 0;
     font-size: 0.9rem;
-    padding-left: 5px;
+    padding-left: 15px;
 }
 
 #wrapper>div:nth-child(3)>ul>li>div:nth-child(2)>div>p:nth-child(1) {
@@ -231,13 +233,4 @@ main>div:nth-child(1) img {
 
 .navBar:nth-child(6)>a:nth-child(1) {
     color: rgb(255, 196, 0);
-}
-
-.tit *{
-color:black !important;
-font-size: 1.3rem;
-}
-
-.price *{
-    color:black;
 }

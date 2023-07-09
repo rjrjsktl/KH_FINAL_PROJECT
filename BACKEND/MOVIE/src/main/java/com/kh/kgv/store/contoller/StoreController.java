@@ -209,7 +209,6 @@ public class StoreController {
 	//결제성공 정보 받아오는 ajax
 	@ResponseBody
 	@PostMapping("/storeMain/store_detail/store_payment/{storeNo}/successPayment") 	
-
 	public int successPayment(
 			@RequestParam("orderPrice") int orderPrice
 			,@RequestParam("orderCount") int orderCount,
@@ -255,14 +254,26 @@ public class StoreController {
 	// 결제 완료페이지로 이동하기
 	@GetMapping("/store_Success")
 	public String storeSuccess( HttpSession session
-			, Model model) {
+			, Model model
+			,HttpServletResponse response) throws Exception {
+		
+		User  loginUser = (User) SessionUtil.getSession().getAttribute("loginUser");
 
+
+
+		if(loginUser == null ) {
+			Util.alertAndMovePage(response, "로그인을 하셔야 합니다.", "/movie/user/login");
+
+
+
+			return "store/store_Success";
+		}
 
 
 		int sorderNo = (int) session.getAttribute("generatedOrderNo");
 	//	logger.debug(" SorderNo################************************* : " + sorderNo);
-
-		storePaymentMap = new HashMap<>(); 
+		
+		
 
 		storeList = service.getstoreList(sorderNo);
 		storeOrderList = service.getstoreOrderList(sorderNo);
