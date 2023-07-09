@@ -41,60 +41,27 @@
 										<div class="content-wrap">
 
 											<h2>분실물 문의</h2>
-<<<<<<< HEAD
-			
-		
-=======
 
-
-
->>>>>>> cf4dea1c4e9e849a4170e3499e5a75605c8ecee8
 											<div class="notice-contents">
+
 												<div>
 													<span>${lostdetail.lostTitle}</span>
 												</div>
+
 												<div>
 													<span>${lostdetail.lostLocation} <span> | </span> <span>${lostdetail.lostItem}</span> </span>
 													<span><span>${lostdetail.lostWriter}</span> <span>|</span>
 														<span>${lostdetail.lostDate} </span></span>
+												</div>
 
-												</div>
 												<div class="contentText-wrap">
-<<<<<<< HEAD
-													<c:out value="${lostdetail.lostContent}" escapeXml="false"/></div>
-											</div>
-										</div>
-			
-										<div class="imageArea">
-											<c:choose>
-												<c:when test="${not empty lostdetail.lostFile}">
-													<img src="${lostdetail.lostFile}" onclick="showImage('${lostdetail.lostFile}')">
-												</c:when>
-												<c:otherwise>
-			
-												</c:otherwise>
-											</c:choose>
-										</div>
-			
-										<c:if test="${lostdetail.lostRepSt == 'Y'}">
-			
-											<div class="reply">
-												<div class="reply-info">
-													<p>${lostdetail.lostWriter}님답변드립니다.</p>
-													<span
-														class="reply-writer-info"><span>${lostdetail.lostRepWriter}</span><span>|</span><span>${lostdetail.lostRepDate}</span></span>
-												</div>
-												<div>
-													<div class="reply-content">
-														<c:out value="${lostdetail.lostRepContent}" escapeXml="false"/></div>
-												
-=======
 													<div>
-														<c:out value="${lostdetail.lostContent}" escapeXml="true" />
+														<c:out value="${lostdetail.lostContent}" escapeXml="false" />
 													</div>
 												</div>
-											</div>
 
+											</div>
+	</div>
 											<div class="imageArea">
 												<c:choose>
 													<c:when test="${not empty lostdetail.lostFile}">
@@ -118,7 +85,7 @@
 															<c:out value="${lostdetail.lostRepContent}" escapeXml="false" />
 														</div>
 
->>>>>>> cf4dea1c4e9e849a4170e3499e5a75605c8ecee8
+
 													</div>
 												</div>
 												<c:if test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y'}">
@@ -168,7 +135,7 @@
 
 
 
-									</div>
+							
 
 
 
