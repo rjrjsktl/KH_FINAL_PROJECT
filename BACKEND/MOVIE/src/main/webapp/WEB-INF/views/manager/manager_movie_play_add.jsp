@@ -142,12 +142,16 @@
 													</div>
 													<div class="table_bottom">
 														<button class="bottom_Submit">저장</button>
+														<button class="bottom_SuperSubmit">고급 저장</button>
 														<button class="bottom_Cancel">취소</button>
 													</div>
 												</div>
-
+												
+												<!-- 
 												<form action="play_add/enroll" method="post" id="playAddForm">
 												</form>
+												 -->												
+												
 
 
 											</div>

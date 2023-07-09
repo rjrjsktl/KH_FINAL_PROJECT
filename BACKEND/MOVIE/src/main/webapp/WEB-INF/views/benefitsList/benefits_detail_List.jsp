@@ -71,7 +71,6 @@
 						<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 						<script src="${contextPath}/resources/js/introduce/detail_list.js"></script>
-						<!-- <script src="${contextPath}/resources/js/introduce/introduce.js"></script> -->
 
 					</body>
 

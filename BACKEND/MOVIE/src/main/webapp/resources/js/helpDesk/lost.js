@@ -2,14 +2,11 @@ $(document).ready(function () {
   $("#lostArea").change(function () {
     var area = $(this).val();
 
-    console.log(area);
-
     $.ajax({
       url: "/movie/helpDesk/lost_List/selectName",
       type: "GET",
       data: { area: area },
       success: function (response) {
-        console.log(response);
         var options = "<option disabled selected>상영관선택</option>";
         for (var i = 0; i < response.cinemaNameList.length; i++) {
           var cinemaName = response.cinemaNameList[i].cinemaName;
@@ -23,12 +20,10 @@ $(document).ready(function () {
     });
   });
 
-  $(".submitBTN").click(function () {
+  $(".submitBTNs").click(function () {
     var area = $("#lostArea").val();
     var name = $("#lostName").val();
     var keyword = $("input[name='keyword']").val();
-
-    console.log(area, name, keyword);
   });
 });
 
@@ -73,11 +68,10 @@ $(document).ready(function () {
   $(document).on("click", ".deleteImage", function () {
     $(this).parent().remove();
     $("#fileInput").val("");
+    imageUrl1 = "";
   });
 
   fileInput.on("change", function (e) {
-    console.log(e.target.files); // 파일 목록 출력
-
     // 파일 업로드(다중업로드를 위해 반복문 사용)
     for (var i = 0; i < e.target.files.length; i++) {
       if (!checkExtension(e.target.files[i].name, e.target.files[i].size)) {
@@ -118,14 +112,10 @@ $(document).ready(function () {
       contentType: false,
       processData: false,
       success: function (data1) {
-        console.log("성공 후 반환 메시지11", data1);
         let jsonObject = JSON.parse(data1); // JSON 문자열을 파싱하여 객체로 변환
         imageUrl1 = jsonObject.url; // "url" 키에 해당하는 이미지 URL 선택
-        console.log("이미지 URL:", imageUrl1);
       },
-      error: function (e) {
-        console.log(e);
-      },
+      error: function (e) {},
     });
   }
 
@@ -164,9 +154,10 @@ $(document).ready(function () {
 
   function updateOpenStatus(isChecked) {
     if (isChecked) {
+      alert("현재 작성하신 글이 공개됩니다.");
       $("#openStatus").text("공개 글 입니다.");
     } else {
-      $("#openStatus").text("비공개 글 입니다.");
+      $("#openStatus").text("현재 비공개 상태입니다.");
     }
   }
 
@@ -179,7 +170,7 @@ $(document).ready(function () {
     var date = $("#lostDate").val();
     var details = $("#contentTextarea").val();
     var open = $("#checkbox1").is(":checked") ? 0 : 1111;
-    console.log(area);
+
     if (!title) {
       alert("제목을 입력해주세요");
       return;
@@ -235,19 +226,9 @@ $(document).ready(function () {
     var details = $("#contentTextarea").val();
     var open = $("#checkbox1").is(":checked") ? 0 : 1111;
 
-    console.log(lostNo);
-    console.log(title);
-    console.log(item);
-    console.log(area);
-    console.log(date);
-    console.log(details);
-    console.log(open);
-
     if (!$("#fileInput").val() && $(".upimgList img").length > 0) {
       imageUrl1 = $(".upimgList img").attr("src");
     }
-    console.log("hj");
-    console.log(imageUrl1);
 
     if (!title) {
       alert("제목을 입력해주세요");
@@ -269,29 +250,32 @@ $(document).ready(function () {
       alert("내용을 입력해주세요");
       return;
     }
-
-    $.ajax({
-      type: "POST",
-      url: "/movie/helpDesk/lost_form/" + lostNo,
-      data: {
-        titleInput: title,
-        lostItem: item,
-        lostArea: area,
-        lostDate: date,
-        contentTextarea: details,
-        open: open,
-        imageUrl1: imageUrl1,
-      },
-      success: function (response) {
-        var lostNo = response.lostNo;
-        alert("수정성공");
-        var url = `/movie/helpDesk/lost_detail/${lostNo}`;
-        location.href = url;
-      },
-      error: function (xhr, status, error) {
-        alert("오류 발생");
-      },
-    });
+    var confirmation = confirm("정말로 이 문의를 수정하시겠습니까?");
+    if (confirmation) {
+      $.ajax({
+        type: "POST",
+        url: "/movie/helpDesk/lost_form/" + lostNo,
+        data: {
+          titleInput: title,
+          lostItem: item,
+          lostArea: area,
+          lostDate: date,
+          contentTextarea: details,
+          open: open,
+          imageUrl1: imageUrl1,
+        },
+        success: function (response) {
+          var lostNo = response.lostNo;
+          alert("수정을 완료하였습니다.");
+          var url = `/movie/helpDesk/lost_detail/${lostNo}`;
+          location.href = url;
+        },
+        error: function (xhr, status, error) {
+          alert("오류 발생");
+        },
+      });
+    } else {
+    }
   });
 });
 
@@ -300,12 +284,12 @@ $(document).ready(function () {
 
   deleteLost.on("click", function () {
     let lostNo = $(this).data("lostno");
-    let cp = $("#cp").val(); // HTML에서 'cp' 값 가져오기
+    let cp = $("#cp").val();
 
     let url = `/movie/helpDesk/deleteLost/${lostNo}?cp=` + cp;
 
     if (confirm("정말로 삭제 하시겠습니까?")) {
-      window.location.href = url; // get방식으로 url에 요청
+      window.location.href = url;
     }
   });
 });
@@ -313,7 +297,7 @@ $(document).ready(function () {
 const updateLost = $("#updateLost");
 updateLost.on("click", function () {
   let lostNo = $(this).data("lostno");
-  console.log(lostNo);
+
   let url = `/movie/helpDesk/lost_form/` + lostNo;
   window.location.href = url;
 });
@@ -326,7 +310,7 @@ $(document).ready(function () {
     const url = `/movie/helpDesk/replyLostDelete/${lostno}`;
 
     if (confirm(" 답변을 정말로 삭제 하시겠습니까?")) {
-      window.location.href = url; // get방식으로 url에 요청
+      window.location.href = url;
     }
   });
 });
@@ -385,7 +369,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  $("form").on("submit", function (e) {
+  $(".lostform").on("submit", function (e) {
     var area = $("#lostArea").val();
     var name = $("#lostName").val();
 

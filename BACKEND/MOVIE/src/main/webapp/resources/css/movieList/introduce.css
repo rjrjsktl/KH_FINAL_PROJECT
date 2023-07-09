@@ -189,7 +189,7 @@ main section>div:nth-child(3)::after {
 
 .reservePageMove-wrap>div:last-child>ul>li:last-child>a {
 
-    background-color: #494949 ;
+    background-color: #494949;
     padding: 15px 30px;
     border-radius: 10px;
     height: 50px;
@@ -198,7 +198,7 @@ main section>div:nth-child(3)::after {
 
 .reservePageMove-wrap>div:last-child>ul>li:last-child>a:hover {
     background-color: rgb(255, 196, 0);
-    color:black;
+    color: black;
 }
 
 
@@ -270,7 +270,7 @@ main section>div:nth-child(3)::after {
 
 .fold_content {
     font-size: 0.9rem;
-    padding: 0 20px 20px 20px;    
+    padding: 0 20px 20px 20px;
     background-color: #151515;
     white-space: pre-line;
     border-bottom-left-radius: 10px;
@@ -285,12 +285,13 @@ main section>div:nth-child(3)::after {
     justify-content: center;
     cursor: pointer;
     border-bottom: 1px solid #494949;
-    padding:20px;
+    padding: 20px;
+    background-color: #151515;
 }
 
 .more_btn:hover {
     border-bottom: 1px solid #FFC400;
-    color:#FFC400;
+    color: #FFC400;
 }
 
 
@@ -310,7 +311,7 @@ main>section:nth-child(3)>div>div:nth-child(3) {
     padding: 20px;
     width: 100%;
     height: 100%;
-    background-color: rgb(21,21,21);
+    background-color: rgb(21, 21, 21);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -435,7 +436,7 @@ main>section:nth-child(3)>div>div:nth-child(3) {
 }
 
 .rvWrap>div:nth-child(1) {
-    padding:0 10px;
+    padding: 0 10px;
     border-radius: 10px;
     width: 10%;
     display: flex;
@@ -445,8 +446,8 @@ main>section:nth-child(3)>div>div:nth-child(3) {
 
 }
 
-.rvWrap>div:nth-child(1) > p {
-    width:100%;
+.rvWrap>div:nth-child(1)>p {
+    width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
 
@@ -496,9 +497,10 @@ main>section:nth-child(3)>div>div:nth-child(3) {
     cursor: pointer;
 }
 
-.review_content>div:nth-child(4)>button:hover{
-    border:1px solid #FCC400;;
-    color:#FCC400;
+.review_content>div:nth-child(4)>button:hover {
+    border: 1px solid #FCC400;
+    ;
+    color: #FCC400;
 }
 
 .morePage {
@@ -537,7 +539,7 @@ main>section:nth-child(3)>div>div:nth-child(3) {
 }
 
 .actor_wrap>div {
-    margin-top:30px;
+    margin-top: 30px;
     border-radius: 10px;
     width: 100%;
     height: 510px;
@@ -704,7 +706,7 @@ main>section:nth-child(3)>div>div:nth-child(3) {
 
 .star_rating a {
     font-size: 70px;
-   
+
     letter-spacing: 0;
     margin-left: 5px;
     color: #ccc;
@@ -775,12 +777,12 @@ main>section:nth-child(3)>div>div:nth-child(3) {
     height: 50px;
     border-radius: 10px;
     outline: none;
-    border:none;
+    border: none;
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 80px;
-    background-color: #494949 ;
-    color:white;
+    background-color: #494949;
+    color: white;
     cursor: pointer;
 }
 
@@ -800,7 +802,7 @@ img[src=""] {
     border-radius: 10px;
     font-size: 1.2rem;
     font-weight: lighter;
-    background-color:  #494949 ;
+    background-color: #494949;
     cursor: pointer;
     margin-left: 30px;
     width: 120px;
@@ -819,22 +821,22 @@ img[src=""] {
     border-radius: 10px;
     font-size: 1.2rem;
     font-weight: lighter;
-    color:white;
-    background-color: #494949 ;
+    color: white;
+    background-color: #494949;
     cursor: pointer;
 
-    width:50% !important;
+    width: 50% !important;
     height: 40px !important;
     line-height: 38px;
-    padding:0 !important;
-    margin-top:20px;
+    padding: 0 !important;
+    margin-top: 20px;
 }
 
 .loginBtn:hover {
     background-color: #FCC400;
     color: rgb(21, 21, 21);
 
-    width:50%;
+    width: 50%;
 }
 
 .actorList ul {
@@ -843,15 +845,20 @@ img[src=""] {
     flex-wrap: wrap;
 }
 
-.revlikeVal{
-    color:#FFC400;
+.revlikeVal {
+    color: #FFC400;
 }
 
 
-.writtenReview{
+.writtenReview {
     line-height: 100px;
     text-align: center;
     font-size: 1.2rem;
-    color:#FFC400;
+    color: #FFC400;
 }
 
+.revcons{
+    font-size: 1.2rem !important;    
+    word-wrap: break-word;
+    white-space: normal;
+}

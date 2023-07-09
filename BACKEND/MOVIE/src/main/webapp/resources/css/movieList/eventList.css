@@ -86,17 +86,18 @@ main>div:nth-child(2)>ol>li>div:nth-child(2)>a {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-text-align: center;
+    text-align: center;
 
 }
 
 main>div:nth-child(2)>ol>li>div:nth-child(2)>div {
     display: flex;
-    width:100%;
+    width: 100%;
     text-align: center;
     align-items: center;
     margin: 10px 0;
     font-size: 0.9rem;
+    justify-content: center;
 }
 
 main>div:nth-child(2)>ol>li>div:nth-child(2)>div>p:nth-child(1) {
@@ -106,8 +107,8 @@ main>div:nth-child(2)>ol>li>div:nth-child(2)>div>p:nth-child(1) {
     align-items: center;
 }
 
-.evedate{
-    width:225px;
+.evedate {
+    width: 225px;
     text-align: center;
 }
 
