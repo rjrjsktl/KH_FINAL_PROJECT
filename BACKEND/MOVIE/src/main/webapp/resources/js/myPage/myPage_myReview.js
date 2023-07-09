@@ -40,20 +40,16 @@ $(document).ready(function () {
                   </div>
                   <div>
                     <div>
-                      <div>${cardData.movie.movieTitle}</div>
+                      <div class=mvtit>${cardData.movie.movieTitle}</div>
                       <a class="delete-review-btn" data-revno="${cardData.review.revNo}">
                         <i class="fa-regular fa-circle-xmark"></i>
                       </a>
                     </div>
                     <div>
                       <ul>
-                        <li>작성 날짜 :</li>
-                        <li>작성 시간 :</li>
+                        <li>작성일 : ${cardData.review.revDate} ${cardData.review.revTime}</li>
                       </ul>
-                      <ul>
-                        <li>${cardData.review.revDate}</li>
-                        <li>${cardData.review.revTime}</li>
-                      </ul>
+                     
                     </div>
                     <div>
                       <textarea>${cardData.review.revContent}</textarea>

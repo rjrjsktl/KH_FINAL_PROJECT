@@ -58,7 +58,6 @@ public class StoreController {
 
 
 
-	private Logger logger = LoggerFactory.getLogger(StoreController.class);
 
 
 

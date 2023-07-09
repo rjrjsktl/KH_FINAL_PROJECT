@@ -304,7 +304,7 @@
                                                                     <div>리뷰</div>
                                                                     <div>${review.revLike}</div>
                                                                     <c:choose>
-                                                                        <c:when test="${loginUser.userNo == review.userNo || loginUser.userManagerSt == 'Y'}">
+                                                                        <c:when test="${loginUser.userNo == review.userNo}">
                                                                             <div style="color: #FFC400;">
                                                                                 ${review.revContent}</div>
                                                                         </c:when>

@@ -66,7 +66,6 @@ public class NaverServiceImple implements NaverService {
 
 			// 결과 코드가 200이라면 성공
 			int responseCode = conn.getResponseCode();
-			System.out.println("네아로 결과코드 :: " + responseCode);
 
 			if(responseCode==200){
 				//요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
@@ -80,7 +79,6 @@ public class NaverServiceImple implements NaverService {
 				}
 				
 				
-				System.out.println(result);
 
 				//Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
 				JsonParser parser = new JsonParser();
@@ -115,7 +113,6 @@ public class NaverServiceImple implements NaverService {
 
 	         int responseCode = conn.getResponseCode();
 	         
-	         System.out.println(responseCode + "--=======================-- 겟 유저 인포 엑세스코드~!!!");
 	         	         
 	         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
@@ -126,7 +123,6 @@ public class NaverServiceImple implements NaverService {
 	            result += line;
 	         }
 	         
-	         System.out.println(result);
 
 	         JsonParser parser = new JsonParser();
 	         JsonElement element = parser.parse(result);

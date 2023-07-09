@@ -14,8 +14,7 @@ import javax.servlet.http.HttpSession;
 //import javax.websocket.server.PathParam;
 
 import org.apache.commons.text.StringEscapeUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -47,7 +46,6 @@ import com.kh.kgv.mypage.model.service.MyPageService;
 @SessionAttributes({ "loginUser" }) // session scope에서 loginUser를 얻어옴
 public class MyPageController {
 
-	private Logger logger = LoggerFactory.getLogger(MyPageController.class);
 
 	@Autowired
 	private MyPageService service;
@@ -65,17 +63,14 @@ public class MyPageController {
 //						, HttpServletResponse resp
 			, RedirectAttributes ra, Model model) throws IOException {
 
-		logger.info("마이페이지 이동");
 		
 		String message = null;
 		String path = null;
 
 		HttpSession session = req.getSession(false);
 		if (session != null && session.getAttribute("loginUser") != null) {
-			logger.info("로그인 o");
 			path = "myPage/myPage_home";
 		} else {
-			logger.info("로그인 x");
 			message = "서비스 사용을 위해 로그인 하세요.";
 
 //			String referer = req.getHeader("Referer"); // 이전 페이지의 URL을 가져옵니다.
@@ -113,7 +108,6 @@ public class MyPageController {
 	public String myMtm(@RequestParam(value = "cp", required = false, defaultValue = "1") int cp,
 			@ModelAttribute("loginUser") User loginUser, @RequestParam Map<String, Object> paramMap, Model model) {
 
-		logger.info("1대1 문의 리스트 뿌리자잇");
 
 		paramMap.put("userNo", loginUser.getUserNo());
 		paramMap.put("cp", cp);
@@ -203,7 +197,6 @@ public class MyPageController {
 			}
 		}
 
-		System.out.println("=========================================================================" + mTmdetail);
 		String unescapedContent = StringEscapeUtils.unescapeHtml4(mTmdetail.getMtmContent());
 		mTmdetail.setMtmContent(unescapedContent);
 
@@ -243,7 +236,6 @@ public class MyPageController {
 	public String myLostItem(@RequestParam(value = "cp", required = false, defaultValue = "1") int cp,
 			@ModelAttribute("loginUser") User loginUser, @RequestParam Map<String, Object> paramMap, Model model) {
 
-		logger.info("LostList페이지 들어옴");
 
 		paramMap.put("userNo", loginUser.getUserNo());
 		paramMap.put("cp", cp);
@@ -338,7 +330,6 @@ public class MyPageController {
 		lostdetail.setLostContent(unescapedContent);
 		model.addAttribute("lostdetail", lostdetail);
 		model.addAttribute("cp", cp);
-		logger.info("lostDetail 다 돌았냐?");
 		return "myPage/myPage_myLostDetail";
 	}
 
@@ -382,8 +373,6 @@ public class MyPageController {
 //							, @RequestParam Map<String,Object> paramMap
 			, @ModelAttribute("loginUser") User loginUser, RedirectAttributes ra) {
 
-		logger.info("review페이지 시작");
-		logger.info("loginUserNo:::::" + loginUser.getUserNo());
 
 		// 메인 이벤트 목록 가지고 오기 - 7개
 		Map<String, Object> getEvnetList = null;
@@ -436,7 +425,6 @@ public class MyPageController {
 	public String updateInfo(@ModelAttribute("loginUser") User loginUser, @RequestParam Map<String, Object> paramMap,
 			String[] updateAddr, RedirectAttributes ra) {
 
-		logger.info("뜬다 updateInfo.info 페이지 들어왔다");
 
 		// 파라미터를 저장한 paramMap에 회원번호, 주소를 추가
 		String userAddr = String.join(",,", updateAddr); // 주소 배열 -> 문자열 변환
@@ -557,7 +545,6 @@ public class MyPageController {
 	@ResponseBody
 	public List<Review> loadReviewCards(@RequestParam int startRow, @RequestParam int endRow,
 			@ModelAttribute("loginUser") User loginUser, @RequestParam Map<String, Object> paramMap, Model model) {
-		logger.info("reviewCards시작됨?");
 
 		int userNo = loginUser.getUserNo();
 		paramMap.put("userNo", userNo);
@@ -574,8 +561,6 @@ public class MyPageController {
 	@GetMapping("/deleteReview/{revNo}")
 	public String reviewDelete(@PathVariable("revNo") int revNo, HttpServletRequest req, HttpServletResponse resp,
 			RedirectAttributes ra, @RequestHeader("referer") String referer) {
-		logger.info("리뷰 삭제 드가자");
-		logger.info("revNo:::::::::::" + revNo);
 
 		String path = null;
 		String message = null;
@@ -601,7 +586,6 @@ public class MyPageController {
 	@ResponseBody
 	public List<Review> loadMovieCards(@RequestParam int startRow, @RequestParam int endRow,
 			@ModelAttribute("loginUser") User loginUser, @RequestParam Map<String, Object> paramMap, Model model) {
-		logger.info("reviewCards시작됨?");
 
 		int userNo = loginUser.getUserNo();
 		paramMap.put("userNo", userNo);
@@ -618,8 +602,6 @@ public class MyPageController {
 	@GetMapping("/deleteBook/{bookNo}")
 	public String deleteBook(@PathVariable("bookNo") int bookNo, HttpServletRequest req, HttpServletResponse resp,
 			RedirectAttributes ra, @RequestHeader("referer") String referer) {
-		logger.info("리뷰 삭제 드가자");
-		logger.info("bookNo:::::::::::" + bookNo);
 		
 		String path = null;
 		String message = null;

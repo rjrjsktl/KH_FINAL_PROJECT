@@ -20,7 +20,6 @@ import com.kh.kgv.mypage.model.dao.MyPageDAO;
 @Service
 public class MyPageServiceImpl implements MyPageService {
 
-	private Logger logger = LoggerFactory.getLogger(MyPageController.class);
 
 	@Autowired
 	private MyPageDAO dao;
@@ -135,7 +134,6 @@ public class MyPageServiceImpl implements MyPageService {
 	 */
 	@Override
 	public int updateInfo(Map<String, Object> paramMap) {
-		logger.info("뜬다 updateInfo.service 페이지 들어왔다");
 		return dao.updateInfo(paramMap);
 	}
 
@@ -149,12 +147,9 @@ public class MyPageServiceImpl implements MyPageService {
 		int userNo = (int) paramMap.get("userNo");
 		int cp = (int) paramMap.get("cp");
 		
-		logger.info("DAO.userNo::::" + userNo);
-		logger.info("DAO.cp::::" + cp);
 		
 		int userMtmCount = dao.getUserMtmCount(userNo);
 		
-		logger.info("ServiceImpl.userMtmCount::::" + userMtmCount);
 		
 		Pagination pagination = new Pagination(cp, userMtmCount);
 		
@@ -180,12 +175,9 @@ public class MyPageServiceImpl implements MyPageService {
 		int userNo = (int) paramMap.get("userNo");
 		int cp = (int) paramMap.get("cp");
 		
-		logger.info("DAO.userNo::::" + userNo);
-		logger.info("DAO.cp::::" + cp);
 		
 		int userLostCount = dao.getUserLostCount(userNo);
 		
-		logger.info("ServiceImpl.userMtmCount::::" + userLostCount);
 		
 		Pagination pagination = new Pagination(cp, userLostCount);
 		

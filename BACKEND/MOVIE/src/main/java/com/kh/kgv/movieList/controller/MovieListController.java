@@ -52,7 +52,6 @@ public class MovieListController {
 	public String moveList(Model model) {
 
 		Map<String, Object>getMovieList = null;
-		System.out.println("DB에서 가지고온 getMovieList : =============================================" + getMovieList);
 		getMovieList = service.movieList();
 
 		model.addAttribute("getMovieList", getMovieList);
@@ -61,9 +60,7 @@ public class MovieListController {
 	    List<Double> revLike = new ArrayList<>();
 	    List<Double> bookPercent = new ArrayList<>();
 		
-		System.out.println("movieList::: " + movieList);
 		if (movieList != null && !movieList.isEmpty()) {
-	        System.out.println("들어옴?");
 	        for (Movie movie : movieList) {
 	            int movieNo = movie.getMovieNo();
 	            double revLikeList = service.allLike(movieNo);
@@ -72,7 +69,6 @@ public class MovieListController {
 	            bookPercent.add(bookPercentList);
 	        }
 	    } else {
-	        System.out.println("null임");
 	    }
 
 	    model.addAttribute("revLike", revLike);
@@ -106,9 +102,7 @@ public class MovieListController {
 	    List<Double> revLike = new ArrayList<>();
 	    List<Double> bookPercent = new ArrayList<>();
 		
-		System.out.println("movieList::: " + movieList);
 		if (movieList != null && !movieList.isEmpty()) {
-	        System.out.println("들어옴?");
 	        for (Movie movie : movieList) {
 	            int movieNo = movie.getMovieNo();
 	            double revLikeList = service.allLike(movieNo);
@@ -117,7 +111,6 @@ public class MovieListController {
 	            bookPercent.add(bookPercentList);
 	        }
 	    } else {
-	        System.out.println("null임");
 	    }
 
 	    model.addAttribute("revLike", revLike);
@@ -142,24 +135,20 @@ public class MovieListController {
 			) throws Exception {
 
 		List<String> mgradelist = services.mgradeList();
-		System.out.println("mgradelist 값 :::::" + mgradelist);
 
 		model.addAttribute("mgradelist", mgradelist);
 		// movie genre 값 얻어오기
 		List<String> mgenrelist = services.mgenreList();
-		System.out.println("mgenrelist 값 :::::" + mgenrelist);
 
 		model.addAttribute("mgenrelist", mgenrelist);
 
 		// REV_LIKE 불러오기
 		double revLike = service.allLike(movieNo);
-		System.out.println("revLike:::" + revLike);
 		
 		model.addAttribute("revLike", revLike);
 		
 		// bookPercent 불러오기
 		double bookPercent = service.allBook(movieNo);
-		System.out.println("bookPercent" + bookPercent);
 		
 		model.addAttribute("bookPercent", bookPercent);
 		
@@ -208,11 +197,8 @@ public class MovieListController {
 			// 연도만 가져오기
 			int year = Year.now().getValue();
 
-			System.out.println("userDate =============================================" + userDate);
-			System.out.println("year =============================================" + year);
 			//  현재 연도- 사용자 출생연도
 			int ageCheck =  year - userDate;
-			System.out.println("ageCheck =============================================" + ageCheck);
 
 			// 성인 확인 절차
 			if(ageCheck < 18) {
@@ -247,7 +233,6 @@ public class MovieListController {
 		countMyReview = service.countMyReview(movieNo, userNo);
 
 		
-		System.out.println(countMyReview+"====================================================================");
 
 		model.addAttribute("reviewCount",reviewCount);
 		model.addAttribute("reviewList", reviewList);
