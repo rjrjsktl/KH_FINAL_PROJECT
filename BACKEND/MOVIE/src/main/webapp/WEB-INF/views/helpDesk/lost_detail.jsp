@@ -52,13 +52,7 @@
 													<span>${lostdetail.lostLocation} <span> | </span> <span>${lostdetail.lostItem}</span> </span>
 													<span><span>${lostdetail.lostWriter}</span> <span>|</span>
 														<span>${lostdetail.lostDate} </span></span>
-												</div>
-
-												<div class="contentText-wrap">
-													<div>
-														<c:out value="${lostdetail.lostContent}" escapeXml="true" />
-													</div>
-												</div>
+												</div><div class="contentText-wrap"><div><c:out value="${lostdetail.lostContent}" escapeXml="true" /></div></div>
 
 											</div>
 										</div>
@@ -73,19 +67,23 @@
 											</c:choose>
 										</div>
 
-										<c:if test="${lostdetail.lostRepSt == 'Y'}">
+										<c:if test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y' && lostdetail.lostRepSt == 'N'}">
+											<div class="reply_wrap btn_wraper">
+												<textarea id="contentTextarea"></textarea>
+												<button data-lostno="${lostdetail.lostNo}" id="reply_writeBtn">
+													<a>등록하기</a>
+												</button>
+											</div>
+										</c:if>
 
+										<c:if test="${lostdetail.lostRepSt == 'Y'}">
 											<div class="reply">
 												<div class="reply-info">
 													<p>${lostdetail.lostWriter}님답변드립니다.</p>
 													<span class="reply-writer-info"><span>${lostdetail.lostRepWriter}</span><span>|</span><span>${lostdetail.lostRepDate}</span></span>
 												</div>
 												<div>
-													<div class="reply-content">
-														<c:out value="${lostdetail.lostRepContent}" escapeXml="false" />
-													</div>
-
-
+													<div class="reply-content"><c:out value="${lostdetail.lostRepContent}" escapeXml="true" /></div>
 												</div>
 											</div>
 											<c:if test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y'}">
@@ -95,18 +93,7 @@
 											</c:if>
 										</c:if>
 
-
-										<c:if test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y' && lostdetail.lostRepSt == 'N'}">
-
-											<div class="reply_wrap btn_wraper">
-												<textarea id="contentTextarea"></textarea>
-												<button data-lostno="${lostdetail.lostNo}" id="reply_writeBtn">
-													<a>등록하기</a>
-												</button>
-											</div>
-
-										</c:if>
-
+										
 										<div class="btn_wraper">
 											<c:if test="${not empty loginUser.userNo and loginUser.userManagerSt == 'Y' or loginUser.userNo == lostdetail.userNo}">
 												<button data-lostno="${lostdetail.lostNo}" id="updateLost">

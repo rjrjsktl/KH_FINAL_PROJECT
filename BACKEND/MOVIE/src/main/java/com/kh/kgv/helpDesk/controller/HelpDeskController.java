@@ -355,11 +355,23 @@ public class HelpDeskController {
 			}
 		}
 
-		String unescapedContent = StringEscapeUtils.unescapeHtml4(mTmdetail.getMtmContent());
-		mTmdetail.setMtmContent(unescapedContent);
+	
 
-		model.addAttribute("mTmdetail", mTmdetail);
 		mTmdetail.setUserNo(userNo);
+
+		String unescapedContent = StringEscapeUtils.unescapeHtml4(mTmdetail.getMtmContent());
+		String unescapedContent2 = StringEscapeUtils.unescapeHtml4(mTmdetail.getMtmRepContent());
+        String replacedContent = unescapedContent.replaceAll("<br\\s*/?>", "\n");
+        String replacedContent2 = "";
+        if (unescapedContent2 != null) {
+            replacedContent2 = unescapedContent2.replaceAll("<br\\s*/?>", "\n");
+        }
+		mTmdetail.setMtmContent(replacedContent);
+		mTmdetail.setMtmRepContent(replacedContent2);
+		
+		
+		model.addAttribute("mTmdetail", mTmdetail);
+		
 		model.addAttribute("cp", cp);
 
 
@@ -404,6 +416,11 @@ public class HelpDeskController {
 		Mtm mtm = services.getforUpdateValue(mtmNo);
 		model.addAttribute("mtm", mtm);
 		model.addAttribute("mtmNo", mtmNo);
+		
+		String unescapedContent = StringEscapeUtils.unescapeHtml4(mtm.getMtmContent());
+        String replacedContent = unescapedContent.replaceAll("<br\\s*/?>", "\n");
+        mtm.setMtmContent(replacedContent);
+		
 		return "helpDesk/mTm_form";
 	}
 
@@ -471,6 +488,8 @@ public class HelpDeskController {
 		content = content.replaceAll("\n", "<br>");
 		content = content.replaceAll("\r\n", "<br>");
 		content = content.replaceAll(" ", "&nbsp;");
+		
+		
 
 
 		mtm.setMtmTitle(title);
@@ -805,8 +824,24 @@ public class HelpDeskController {
 		}
 
 
+		lostdetail.setUserNo(userNo);
+
+		
+        
 		String unescapedContent = StringEscapeUtils.unescapeHtml4(lostdetail.getLostContent());
-		lostdetail.setLostContent(unescapedContent);
+		String unescapedContent2 = StringEscapeUtils.unescapeHtml4(lostdetail.getLostRepContent());
+	
+        String replacedContent = unescapedContent.replaceAll("<br\\s*/?>", "\n");
+        
+        String replacedContent2 = "";
+        if (unescapedContent2 != null) {
+            replacedContent2 = unescapedContent2.replaceAll("<br\\s*/?>", "\n");
+        }
+        
+        lostdetail.setLostContent(replacedContent);
+        lostdetail.setLostRepContent(replacedContent2);
+    
+        
 		model.addAttribute("lostdetail", lostdetail);
 		model.addAttribute("cp", cp);
 

@@ -64,12 +64,18 @@ h2 {
     padding: 15px;
     padding-bottom: 30px;
     height:310px;
-	word-wrap: break-word;
-	white-space: normal;
-	overflow-y: auto;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    overflow-y: auto;
 	border-radius: 10px;
 	background-color: #191919;
 	margin-top:20px;
+}
+
+.contentText-wrap > div {
+	word-wrap: break-word;
+    white-space: pre-wrap;
+    overflow-y: auto;
 }
 
 
@@ -198,6 +204,9 @@ a.hover {
 
 .reply-content{
 	padding:15px 20px;
+	word-wrap: break-word;
+    white-space: pre-wrap;
+    overflow-y: auto;
 }
 
 .reply_delete{
