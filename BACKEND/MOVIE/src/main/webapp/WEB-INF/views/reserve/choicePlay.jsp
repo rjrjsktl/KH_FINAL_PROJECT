@@ -134,8 +134,8 @@
                                 </div>
                                 <div>
                                   <div>
-                                    <div>예매율 : <strong><span>10.0</span>%</strong></div>
-                                    <div><i class="fa solid fa-star"></i><strong><span>9.0</span></strong></div>
+                                    <div>예매율 : <strong><span class="reserve_rate">10.0</span>%</strong></div>
+                                    <div><i class="fa solid fa-star"></i><strong><span class="review_score">9.0</span></strong></div>
                                   </div>
                                   <div>개봉일 : <span>${movie['movieOpen']}</span></div>
                                 </div>

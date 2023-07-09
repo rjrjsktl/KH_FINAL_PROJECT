@@ -101,3 +101,23 @@ $(document).ready(function () {
     );
   }
 });
+
+$(document).ready(function () {
+  $(".qesform").on("submit", function (e) {
+    var input = $('input[name="keyword"]').val().trim();
+    var regex = /^[A-Za-z가-힣]{2,}$/;
+    var entityRegex =
+      /<[^>]*>|&[a-zA-Z0-9#]+;|&lt;br&gt;|<br>|br|nb|bs|sp|nbs|bsp/;
+
+    if (!regex.test(input) || entityRegex.test(input)) {
+      e.preventDefault();
+      if (input.length == 0) {
+        alert("검색어를 입력해주세요");
+      } else if (entityRegex.test(input)) {
+        window.location.href = "/movie/helpDesk/question_home";
+      } else {
+        alert("두 글자 이상의 한글 혹은 영어를 입력해주세요");
+      }
+    }
+  });
+});

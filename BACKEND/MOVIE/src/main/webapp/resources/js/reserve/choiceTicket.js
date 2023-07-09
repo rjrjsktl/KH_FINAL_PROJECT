@@ -12,7 +12,7 @@ let countArray = [];
 let choiceArray = [];
 let ageArray = [0, 0, 0, 0];
 
-let priceArray = [Number(adultPrice), Number(youthPrice), Number(seniorPrice), Number(specialPrice)];
+let priceArray = [];
 let totalPrice = 0;
 
 let maxRow;

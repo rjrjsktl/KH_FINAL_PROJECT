@@ -26,6 +26,8 @@ public interface ManagePlayService {
 	// screenName + cinemaName 으로 screenNo 구해오기
 	int screenNo(TimeCheck tc);
 
+	int enrollSuperPlay(String areaName, int screenName, int movieNo, int startTime, int endTime, String startDate, String endDate);
+
 	
 	
 

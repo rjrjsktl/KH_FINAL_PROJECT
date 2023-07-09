@@ -169,6 +169,7 @@ $(document).ready(function () {
 
   if (getCookie("modal_closed") != "true") {
     $("body").addClass("modal-open");
+    $(".modal_wrap").css("display", "flex");
   } else {
     $(".modal_wrap").css("display", "none");
   }

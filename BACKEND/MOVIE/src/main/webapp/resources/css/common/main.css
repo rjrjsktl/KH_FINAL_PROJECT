@@ -45,7 +45,7 @@ main>section:nth-child(1)>.swiper-container .swiper-button-prev {
 }
 
 main>section:nth-child(1)>.swiper-container .swiper-button-next:hover,
-main>section:nth-child(1)>.swiper-container .swiper-button-prev:hover{
+main>section:nth-child(1)>.swiper-container .swiper-button-prev:hover {
     background-color: #FCC400;
     opacity: 1;
 
@@ -142,12 +142,12 @@ main>section:nth-child(2) .swiper-slide>div:nth-child(2) {
 }
 
 main>section:nth-child(2) .swiper-slide>div:nth-child(2) a {
-    width:221px;
+    width: 221px;
     display: flex;
 }
 
 main>section:nth-child(2) .swiper-slide>div:nth-child(2)>a>span {
-    width:100%;
+    width: 100%;
     font-size: 0.9rem;
     font-weight: bold;
     text-overflow: ellipsis;
@@ -221,7 +221,7 @@ main>section:nth-child(2)>div:nth-child(4) {
 }
 
 main>section:nth-child(2)>div:nth-child(3):hover,
-main>section:nth-child(2)>div:nth-child(4):hover{
+main>section:nth-child(2)>div:nth-child(4):hover {
     background-color: #FCC400;
     opacity: 1;
 }
@@ -344,7 +344,7 @@ main>section:nth-child(3)>div:nth-child(1)>.swiper-container>div:nth-child(3) {
 }
 
 main>section:nth-child(3)>div:nth-child(1)>.swiper-container>div:nth-child(2):hover,
-main>section:nth-child(3)>div:nth-child(1)>.swiper-container>div:nth-child(3):hover{
+main>section:nth-child(3)>div:nth-child(1)>.swiper-container>div:nth-child(3):hover {
     background-color: #FCC400;
     opacity: 1;
 }
@@ -498,7 +498,7 @@ main>section:nth-child(5)>div {
 /* 좌측랩퍼 암코리안탑클래스힙합모범노블레스.. */
 main>section:nth-child(5)>div>div:nth-child(1) {
     width: 65%;
-    background-color: rgb(32,32,32);
+    background-color: rgb(32, 32, 32);
     border-radius: 10px;
     padding: 30px;
 }
@@ -537,8 +537,8 @@ main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(1)> :nth-child(3) {
     font-size: 0.8rem;
 }
 
-main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(1)> :nth-child(3):hover{
-    color:#FFC400;
+main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(1)> :nth-child(3):hover {
+    color: #FFC400;
     text-decoration: underline;
 }
 
@@ -548,12 +548,12 @@ main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(2)> :nth-child(1) {
     font-weight: bold;
 }
 
-.nottitle{
-    color:white;
+.nottitle {
+    color: white;
 }
 
-.nottitle:hover{
-    color:#FCC400;
+.nottitle:hover {
+    color: #FCC400;
     text-decoration: underline;
 }
 
@@ -595,13 +595,13 @@ main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(3)>a {
     color: #FCFCFC;
     padding: 0 20px;
     cursor: pointer;
-    background-color: rgb(49,49,49);
+    background-color: rgb(49, 49, 49);
     line-height: 30px;
 }
 
-main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(3)>a:hover{
+main>section:nth-child(5)>div>div:nth-child(1)>div:nth-child(3)>a:hover {
     background-color: #FFC400;
-    color:black;
+    color: black;
 }
 
 
@@ -657,67 +657,67 @@ main>section:nth-child(5)>div>div:nth-child(2) {
 
 }
 
-.revlikeVal{
-    color:#FCC400;
+.revlikeVal {
+    color: #FCC400;
 }
 
 body.modal-open {
     overflow: hidden;
 }
 
-.modal_wrap{
-    display: flex;
-    width:100vw;
-    height:100%;
-  top:0;
-    background-color: rgb(0,0,0,0.7);
+.modal_wrap {
+    display: none;
+    width: 100vw;
+    height: 100%;
+    top: 0;
+    background-color: rgb(0, 0, 0, 0.7);
     position: absolute;
     z-index: 9999;
 }
 
-.mdContWrap{
-    width:100%;
-    height:100%;
+.mdContWrap {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
 }
 
-.mdCont{
-    width:50%;
-    height:50%;
-    margin:0 auto;
-   background-color: rgb(255,255,255);
-   border-radius: 10px;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
+.mdCont {
+    width: 50%;
+    height: 50%;
+    margin: 0 auto;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.mdCont > p:nth-child(1){
-    color:red;
+.mdCont>p:nth-child(1) {
+    color: red;
     font-size: 1.5rem;
     font-weight: bold;
-    padding:30px 0;
+    padding: 30px 0;
     text-align: center;
 }
 
-.closemdp{
-    height:50px;
+.closemdp {
+    height: 50px;
     background-color: red;
-    color:white;
-    margin:0 auto;
+    color: white;
+    margin: 0 auto;
     outline: none;
-    border:none;
+    border: none;
     font-weight: bold;
-    padding:0 30px;
+    padding: 0 30px;
     border-radius: 10px;
     line-height: 48px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.mdCont > p:nth-child(1) > span{
-    color:red;
+.mdCont>p:nth-child(1)>span {
+    color: red;
     font-size: 1.5rem;
     text-decoration: underline;
 }

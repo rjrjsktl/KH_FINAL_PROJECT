@@ -275,7 +275,6 @@
 
 
                         <script src="${contextPath}/resources/js/store/storeMain.js"></script>
-                        <script src="${contextPath}/resources/js/common/header.js"></script>
 
                     </body>
 

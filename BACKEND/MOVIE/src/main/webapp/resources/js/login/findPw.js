@@ -21,14 +21,12 @@ $(document).ready(function () {
   );
 });
 
-console.log("findPw.js loaded..");
-
 const checkObj = {
   userPw: false,
   userPwConfirm: false,
   userNick: false,
   cNumber: false,
-  sendEmail: false // 인증번호 발송 체크
+  sendEmail: false, // 인증번호 발송 체크
 };
 
 // 비밀번호 찾기 인풋값들
@@ -47,9 +45,6 @@ let sec = 59;
 
 // 인증받기 버튼을 눌렀을때
 sendBtn.addEventListener("click", function () {
-  console.log("인증버튼 클릭");
-  console.log("checkObj 값 : " + checkObj);
-
   if (userName.value.length == 0) {
     alert("이름을 기입해주세요");
     userName.focus();
@@ -82,28 +77,16 @@ sendBtn.addEventListener("click", function () {
     type: "GET",
 
     success: function (result) {
-      console.log("checkUser controller에서 받아온 값 : " + result);
-
       if (result > 0) {
-        console.log("기입한 유저가 DB에 있는것으로 확인됨");
-
-        console.log("sendemail 날라가기 일보직전");
-
         $.ajax({
           url: "sendEmail",
           data: { userEmail: userEmail.value },
           type: "GET",
           success: function (result) {
-            console.log("이메일 발송 성공");
-            console.log(result);
-
             alert("인증번호가 발송되었습니다.");
             checkObj.sendEmail = true;
-            console.log(checkObj.sendEmail);
           },
-          error: function () {
-            console.log("이메일 발송 실패");
-          },
+          error: function () {},
         });
 
         cMessage.innerText = "3:00"; // 초기값 3분
@@ -135,11 +118,9 @@ sendBtn.addEventListener("click", function () {
           }
         }, 1000); // 1초 지연 후 수행
       } else {
-        console.log("KGV 회원이 아닙니다");
       }
     },
     error: function () {
-      console.log("가입된적 없는 유저입니다");
       alert("이름,생년월일,이메일이 올바르지 않습니다");
     },
   });
@@ -150,7 +131,10 @@ const cBtn = document.getElementById("cBtn");
 
 // 인증번호 인풋에 값을 적었을때
 cNumber.addEventListener("input", function () {
+<<<<<<< HEAD
   console.log(checkObj);
+=======
+>>>>>>> 1bac3c086b56ffe57f55651084620d9548966d80
   // 1. 인증번호 받기 버튼이 클릭되어 이메일 발송되었는지 확인
   if (checkObj.sendEmail) {
     // 2. 입력된 인증번호가 6자리가 맞는지 확인
@@ -163,28 +147,41 @@ cNumber.addEventListener("input", function () {
         },
         type: "GET",
         success: function (result) {
-          console.log(result);
           // 1 : 인증번호 일치 O, 시간 만족O
           // 2 : 인증번호 일치 O, 시간 만족X
           // 3 : 인증번호 일치 X
           if (result == 1) {
             clearInterval(checkInterval); // 타이머 멈춤
+<<<<<<< HEAD
+=======
+
+            checkObj.cNumber = true;
+
+>>>>>>> 1bac3c086b56ffe57f55651084620d9548966d80
             cMessage.innerText = "success";
             cMessage.style.color = "greenyellow";
             cMessage.classList.add("confirm");
             cMessage.classList.remove("error");
+<<<<<<< HEAD
             
             checkObj.cNumber = true;
 
+=======
+>>>>>>> 1bac3c086b56ffe57f55651084620d9548966d80
           } else if (result == 2) {
             alert("만료된 인증 번호 입니다.");
           } else {
             alert("인증 번호가 일치하기 않습니다.");
           }
         },
+<<<<<<< HEAD
         error: function () {
           console.log("이메일 인증 실패");
         },
+=======
+
+        error: function () {},
+>>>>>>> 1bac3c086b56ffe57f55651084620d9548966d80
       });
     } else {
       alert("인증번호를 정확하게 입력해주세요.");
@@ -197,15 +194,11 @@ cNumber.addEventListener("input", function () {
   }
 });
 
-
-
-function goChangPw(){
-	if(checkObj.cNumber==true){
-		let url = 'pwChange';
-		window.location.href = url;
-	} else {
-		alert("필수기입항목들이 기입되지 않았습니다");
-	}
+function goChangPw() {
+  if (checkObj.cNumber == true) {
+    let url = "pwChange";
+    window.location.href = url;
+  } else {
+    alert("필수기입항목들이 기입되지 않았습니다");
+  }
 }
-
-
