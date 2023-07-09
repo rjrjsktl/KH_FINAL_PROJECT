@@ -12,10 +12,7 @@ main>section {
 }
 
 
-
-
-* {
-    white-space: normal;
+*{
     scroll-behavior: smooth;
 }
 
@@ -108,9 +105,9 @@ h2 {
 
 .terms-content {
 
-
     overflow: hidden;
     overflow-y: scroll;
+    overflow-y: auto;
 
     position: relative;
     height: 550px !important;
@@ -119,7 +116,11 @@ h2 {
     border: 1px solid #ccc;
 }
 
-
+.terms-content dd {
+    width:745px;white-space: normal; 
+    word-wrap: break-word;
+    padding-right:10px;
+}
 
 
 

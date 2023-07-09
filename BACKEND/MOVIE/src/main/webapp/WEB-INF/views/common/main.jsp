@@ -93,7 +93,6 @@
 											<c:forEach var="movie" items="${getMovieList['cleanedList']}" varStatus="status">
 												<div class="swiper-slide">
 													<div id="positionSet">
-														<em>${status.count}</em>
 														<c:choose>
 															<c:when test="${fn:contains(movie['mgNo'], '전체')}">
 																<img src="${contextPath}/resources/images/age/aage.png" class="age-img-area">
