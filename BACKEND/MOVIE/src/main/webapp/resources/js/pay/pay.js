@@ -22,11 +22,8 @@ $.ajax({
   type: "GET",
   success: function (seatCount) {
     totalCount = seatCount;
-    console.log("total Count ::::" + totalCount);
   },
-  error: function () {
-    console.log("페이지 로딩 중 에러 발생");
-  },
+  error: function () {},
 });
 
 // DOMContentLoaded 이벤트 핸들러
@@ -76,7 +73,6 @@ $(document).ready(function () {
       $(".ticketTable_2").empty();
       $(".modal").hide(); // 모달 숨기기
       usedCouponArray = [];
-      console.log(usedCouponArray);
     }
   });
 });
@@ -118,8 +114,6 @@ box1.addEventListener("mouseleave", function () {
 const movieTicket = document.getElementById("movieTicket");
 const ticketCode = document.getElementById("ticketCode");
 movieTicket.addEventListener("click", function () {
-  console.log("관람권을 찾으러 가보자");
-
   $.ajax({
     url: "selectTicket",
     data: {
@@ -128,12 +122,8 @@ movieTicket.addEventListener("click", function () {
     type: "POST",
     success: function (couponMap) {
       if (couponMap.category == "티켓") {
-        console.log(couponArray);
         if (couponArray.indexOf(ticketCode.value) == -1) {
           couponArray.push(ticketCode.value);
-          console.log(couponMap.storeCouponList);
-          console.log(couponMap.category);
-          console.log("입력한 관람권코드가 유효합니다");
 
           couponMap.storeCouponList.forEach(function (coupon) {
             var couponStatus = coupon.couponSt === "Y" ? "미사용" : "사용";
@@ -153,18 +143,14 @@ movieTicket.addEventListener("click", function () {
           alert("이미 찾아온 코드입니다");
         }
       } else if (couponMap.category == null) {
-        console.log("존재하지 않는 코드번호 입니다");
         alert("존재하지 않는 코드번호 입니다");
       } else {
-        console.log("관람권코드가 잘못되었거나 찾을 수 없습니다");
         alert("코드가 올바르지 않거나 찾을 수 없습니다");
       }
 
       ticketCode.value = ""; // 검색후 코드 인풋란 초기화
     },
-    error: function () {
-      console.log("관람권을 찾으러 가기 실패했습니다");
-    },
+    error: function () {},
   });
 });
 
@@ -203,8 +189,6 @@ $(".useBtn").on("click", function () {
       Number($(".reservePrice").text()) - usedCouponArray.length * 5000;
     $(".finshPrice").text(Math.max(finishPrice, 0));
 
-    console.log(usedCouponArray);
-
     $(".modal").hide();
   }
 });
@@ -221,14 +205,10 @@ function updateCouponStatus() {
       type: "POST",
       success: function (result) {
         if (result > 0) {
-          console.log("관람권 상태를 변경했습니다");
         } else {
-          console.log("관람권 상태 변경에 실패했습니다");
         }
       },
-      error: function () {
-        console.log("관람권 상태 업데이트 중 오류가 발생했습니다");
-      },
+      error: function () {},
     });
   }
 }

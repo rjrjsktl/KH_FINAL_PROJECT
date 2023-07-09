@@ -1,9 +1,9 @@
 $(".star_rating a").click(function () {
   $(this).parent().children("a").removeClass("on");
   $(this).addClass("on").prevAll("a").addClass("on");
-  // 'on' 클래스 개수 확인
+
   var numberOfOnClasses = $(this).parent().children("a.on").length;
-  console.log(numberOfOnClasses);
+
   return false;
 });
 

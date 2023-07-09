@@ -37,7 +37,6 @@ $(document).ready(function () {
   });
 
   fileInput.on("change", function (e) {
-    console.log(e.target.files);
     for (var i = 0; i < e.target.files.length; i++) {
       if (!checkExtension(e.target.files[i].name, e.target.files[i].size)) {
         movie_image1.val("");
@@ -170,7 +169,7 @@ $(document).ready(function () {
 
   $("#submitButton").click(function (e) {
     let imageUrl1 = $(".upimgList img").attr("src");
-    console.log("이미지 : " + imageUrl1);
+
     var title = $("#titleInput").val();
     var inquiry = $("#inquirySelect").val();
     var content = $("#contentTextarea").val();
@@ -223,16 +222,9 @@ $(document).ready(function () {
     var content = $("#contentTextarea").val();
     var open = $("#checkbox1").is(":checked") ? 0 : 1111;
 
-    console.log(mtmNo);
-    console.log(title);
-    console.log(inquiry);
-    console.log(content);
-    console.log(open);
     if (!$("#fileInput").val() && $(".upimgList img").length > 0) {
       imageUrl1 = $(".upimgList img").attr("src");
     }
-    console.log("hj");
-    console.log(imageUrl1);
 
     if (!title) {
       alert("제목을 입력해주세요");
