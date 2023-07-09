@@ -265,7 +265,7 @@
 		ORDER BY MTM_NO DESC
 		)
 		WHERE ROWNUM 				<![CDATA[ <= ]]>
-		6
+		6 AND MTM_ST = 'N'
 	</select>
 
 	<!-- 관리자 메인 일일 접속자 수 조회 -->
@@ -699,8 +699,8 @@
 
 	<!--1:1 문의 목록 수 조회 -->
 	<select id="getMTMCount" resultType="_int">
-		SELECT COUNT(MTM_NO) FROM
-		MTM_TBL
+		SELECT COUNT(MTM_NO) FROM MTM_TBL
+		WHERE MTM_ST = 'N'
 	</select>
 
 
@@ -730,6 +730,7 @@
 		FROM MTM_TBL
 		m
 		INNER JOIN USERS u ON m.USER_NO = u.USER_NO
+		WHERE MTM_ST = 'N'
 		ORDER BY m.MTM_REGDATE
 		DESC
 	</select>
@@ -765,6 +766,7 @@
 		FROM
 		LOST_PACKAGE l
 		INNER JOIN USERS u ON l.USER_NO = u.USER_NO
+		WHERE LOST_ST = 'N'
 		ORDER BY
 		l.LOST_DATE DESC
 	</select>
@@ -889,22 +891,22 @@
 		<trim prefix="where">
 			<choose>
 				<when test="searchType == 'USER_EMAIL'">
-					UPPER(u.USER_EMAIL) LIKE '%' ||	UPPER(#{searchContext}) || '%'
+					UPPER(u.USER_EMAIL) LIKE '%' ||	UPPER(#{searchContext}) || '%' AND MTM_ST = 'N'
 				</when>
 				<when test="searchType == 'MTM_TYPE'">
-					UPPER(m.MTM_TYPE) LIKE '%' || UPPER(#{searchContext}) || '%'
+					UPPER(m.MTM_TYPE) LIKE '%' || UPPER(#{searchContext}) || '%' AND MTM_ST = 'N'
 				</when>
 				<when test="searchType == 'MTM_TITLE'">
-					UPPER(m.MTM_TITLE) LIKE '%' || UPPER(#{searchContext}) || '%'
+					UPPER(m.MTM_TITLE) LIKE '%' || UPPER(#{searchContext}) || '%' AND MTM_ST = 'N'
 				</when>
 				<when test="searchType == 'MTM_REGDATE'">
-					TO_CHAR(m.MTM_REGDATE, 'YYYY-MM-DD') = #{searchContext}
+					TO_CHAR(m.MTM_REGDATE, 'YYYY-MM-DD') = #{searchContext} AND MTM_ST = 'N'
 				</when>
 				<when test="searchType == 'MTM_REPDATE'">
-					TO_CHAR(m.MTM_REPDATE, 'YYYY-MM-DD') = #{searchContext}
+					TO_CHAR(m.MTM_REPDATE, 'YYYY-MM-DD') = #{searchContext} AND MTM_ST = 'N'
 				</when>
 				<otherwise>
-					UPPER(m.MTM_REPWRITER) LIKE '%' || UPPER(#{searchContext}) || '%'
+					UPPER(m.MTM_REPWRITER) LIKE '%' || UPPER(#{searchContext}) || '%' AND MTM_ST = 'N'
 				</otherwise>
 			</choose>
 		</trim>
@@ -939,6 +941,7 @@
 				</otherwise>
 			</choose>
 		</trim>
+		AND MTM_ST = 'N'
 	</select>
 
 	<!-- 검색한 분실물 수 조회 -->
@@ -949,22 +952,22 @@
 		<trim prefix="where" prefixOverrides="AND |OR ">
 			<choose>
 				<when test="searchType == 'USER_EMAIL'">
-                AND UPPER(u.USER_EMAIL) LIKE '%' || UPPER(#{searchContext}) || '%'
+                AND UPPER(u.USER_EMAIL) LIKE '%' || UPPER(#{searchContext}) || '%' AND LOST_ST = 'N'
 				</when>
 				<when test="searchType == 'LOST_TITLE'">
-                AND UPPER(l.LOST_TITLE) LIKE '%' || UPPER(#{searchContext}) || '%'
+                AND UPPER(l.LOST_TITLE) LIKE '%' || UPPER(#{searchContext}) || '%' AND LOST_ST = 'N'
 				</when>
 				<when test="searchType == 'LOST_ITEM'">
-                AND UPPER(l.LOST_ITEM) LIKE '%' || UPPER(#{searchContext}) || '%'
+                AND UPPER(l.LOST_ITEM) LIKE '%' || UPPER(#{searchContext}) || '%' AND LOST_ST = 'N'
 				</when>
 				<when test="searchType == 'LOST_DATE'">
-                AND TO_CHAR(l.LOST_DATE) = #{searchContext}
+                AND TO_CHAR(l.LOST_DATE) = #{searchContext} AND LOST_ST = 'N'
 				</when>
 				<when test="searchType == 'LOST_REPDATE'">
-                AND TO_CHAR(l.LOST_REPDATE, 'YYYY-MM-DD') = #{searchContext}
+                AND TO_CHAR(l.LOST_REPDATE, 'YYYY-MM-DD') = #{searchContext} AND LOST_ST = 'N'
 				</when>
 				<otherwise>
-                AND UPPER(l.LOST_REPWRITER) LIKE '%' || UPPER(#{searchContext}) || '%'
+                AND UPPER(l.LOST_REPWRITER) LIKE '%' || UPPER(#{searchContext}) || '%' AND LOST_ST = 'N'
 				</otherwise>
 			</choose>
 		</trim>
@@ -999,6 +1002,7 @@
 				</otherwise>
 			</choose>
 		</trim>
+		AND LOST_ST = 'N'
 	</select>
 
 	<!-- 검색한 영화 수 조회 -->

@@ -44,9 +44,15 @@ $.ajax({
     areaCinemaList = initialMap.cinemaList;
     titleRankList = initialMap.titleRankList;
     rateRankList = initialMap.rateRankList;
+    
+    for(let i=0; i<initialMap.scoreList.length; i++) {
+      $("#movielist_thumb > li").eq(i).find(".review_score").html(initialMap.scoreList[i]["평점"].toFixed(1));
+      $("#movielist_thumb > li").eq(i).find(".reserve_rate").html(initialMap.rateList[i]["예매율"].toFixed(1));
+    }
   },
   error: function () {},
 });
+
 
 // [ajax] 특정 영화의 상영만 불러옴
 
@@ -243,18 +249,11 @@ $(".swiper-slide > .date").on("click", function () {
   playDay = new Date();
   playDay.setDate(today.getDate() + dateIndex);
 
-  strPlayDay =
-    playDay.getMonth() +
-    1 +
-    "월 " +
-    playDay.getDate() +
-    "일 " +
-    weeks[playDay.getDay()] +
-    "요일";
-  $("#play_select").html(strPlayDay);
+  strPlayDay = (playDay.getMonth()+1) + "월 " + playDay.getDate() + "일 " + weeks[playDay.getDay()] + "요일";
+  $('#play_select').html(strPlayDay);
 
-  if (movieIndex == -1) {
-    if ($("#cinema_option1").hasClass("clicked") && cinemaIndex != -1) {
+  if(movieIndex == -1) {
+    if($('#cinema_option1').hasClass("clicked") && cinemaIndex != -1) {
       updateGreatPlayAjax();
     } else if ($("#cinema_option2").hasClass("clicked") && roomIndex != -1) {
       updateSpecialPlayAjax();
@@ -336,7 +335,8 @@ screenType.on("click", function () {
 function clickCinema(e) {
   cinemaIndex = $(e.target).parent().index();
   prevAreaIndex = areaIndex;
-
+  movieIndex = -1;
+  
   $("#cinema_select").html(areaCinemaList[cinemaIndex].cinemaName);
   $("#movie_select").html("영화 선택");
   $("#cinema_list > li > a").removeClass("clicked");

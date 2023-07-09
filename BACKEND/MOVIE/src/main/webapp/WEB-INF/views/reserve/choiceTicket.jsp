@@ -88,15 +88,18 @@
                         <div style="background-color: #FF243E"></div>
                         <span>선택좌석</span>
                       </div>
+                      <!-- 
                       <div>
                         <div style="background-color:  #ccc; color: #666">X</div>
                         <span>선택불가</span>
                       </div>
+                      -->
                       <div>
                         <div style="background-color: #888"></div>
                         <span>예매완료</span>
                       </div>
-
+                      
+                      <!--  
                       <div>
                         <div style="background-color: hotpink"></div>
                         <span>스위트석</span>
@@ -105,6 +108,7 @@
                         <div style="background-color: green"></div>
                         <span>장애인석</span>
                       </div>
+                      -->
                     </div>
                   </div>
                   <div>
@@ -205,16 +209,6 @@
               </main>
 
               <jsp:include page="/WEB-INF/views/common/footer.jsp" />
-
-
-              <script>
-                // [Server] 가격
-
-                let adultPrice = 15000;
-                let youthPrice = 12000;
-                let seniorPrice = 7000;
-                let specialPrice = 5000;
-              </script>
 
             </div>
           </body>
