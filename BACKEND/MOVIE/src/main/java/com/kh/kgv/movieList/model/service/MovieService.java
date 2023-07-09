@@ -41,4 +41,6 @@ public interface MovieService {
 	int countMyReview(int movieNo, int userNo);
 
 
+
+
 }
