@@ -232,8 +232,6 @@ public class MovieListController {
 
 		countMyReview = service.countMyReview(movieNo, userNo);
 
-		
-
 		model.addAttribute("reviewCount",reviewCount);
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("userNick", userNick);

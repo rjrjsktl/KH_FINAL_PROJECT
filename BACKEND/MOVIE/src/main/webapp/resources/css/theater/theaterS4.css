@@ -108,7 +108,6 @@ main>div:nth-child(3)>div {
     padding: 0 30px;
     height: 100%;
     border-radius: 10px;
-    background-image: url("../../images/imax_03.png");
     background-size: 100%;
     position: relative;
     border-radius: 10px;
@@ -240,15 +239,15 @@ main>div:nth-child(6) p {
     width: 100%;
     height: 100%;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     padding-bottom: 30px;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    margin:0 auto;
 
 }
 
 .stheater_wrap>ul>li {
-    width: 23%;
+    width: 225px;
     height: 60px;
     padding: 10px;
     text-align: center;
@@ -256,6 +255,7 @@ main>div:nth-child(6) p {
     margin-bottom: 10px;
     background-color: #494949;
     display: flex;
+    margin:10px;
 }
 
 .stheater_wrap ul li a {

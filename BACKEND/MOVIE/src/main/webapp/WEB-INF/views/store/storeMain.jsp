@@ -39,8 +39,7 @@
                             <main>
 
                                 <div>
-                                    <img src="${contextPath}/resources/images/storeimg/cd29de8de4104808ac9a22160cfcff76.png"
-                                        alt="">
+                                    <img src="${contextPath}/resources/images/storeimg/02.jpg" alt="">
                                 </div>
 
                                 <div id="wrapper">
@@ -79,7 +78,7 @@
                                                 <c:choose>
                                                     <c:when test="${store.storeCategory eq '음료'}">
                                                         <li class="" onmouseenter="zoomIn(event)"
-                                                        onmouseleave="zoomOut(event)" >
+                                                            onmouseleave="zoomOut(event)">
                                                             <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
                                                                 title="${store.storeName}">
                                                                 <div class="img">
@@ -127,8 +126,8 @@
                                             <c:forEach var="store" items="${storeMap['storeList']}">
                                                 <c:choose>
                                                     <c:when test="${store.storeCategory eq '팝콘'}">
-                                                        <li class=""  onmouseenter="zoomIn(event)"
-                                                        onmouseleave="zoomOut(event)">
+                                                        <li class="" onmouseenter="zoomIn(event)"
+                                                            onmouseleave="zoomOut(event)">
                                                             <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
                                                                 title="${store.storeName}">
                                                                 <div class="img">
@@ -177,8 +176,8 @@
                                             <c:forEach var="store" items="${storeMap['storeList']}">
                                                 <c:choose>
                                                     <c:when test="${store.storeCategory eq '스낵'}">
-                                                        <li class=""  onmouseenter="zoomIn(event)"
-                                                        onmouseleave="zoomOut(event)">
+                                                        <li class="" onmouseenter="zoomIn(event)"
+                                                            onmouseleave="zoomOut(event)">
                                                             <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
                                                                 title="${store.storeName}">
                                                                 <div class="img">
@@ -224,8 +223,8 @@
                                             <c:forEach var="store" items="${storeMap['storeList']}">
                                                 <c:choose>
                                                     <c:when test="${store.storeCategory eq '티켓'}">
-                                                        <li class=""  onmouseenter="zoomIn(event)"
-                                                        onmouseleave="zoomOut(event)">
+                                                        <li class="" onmouseenter="zoomIn(event)"
+                                                            onmouseleave="zoomOut(event)">
                                                             <a href="${contextPath}/store/storeMain/store_detail/${store['storeNo']}"
                                                                 title="${store.storeName}">
                                                                 <div class="img">
@@ -275,7 +274,6 @@
 
 
                         <script src="${contextPath}/resources/js/store/storeMain.js"></script>
-                        <script src="${contextPath}/resources/js/common/header.js"></script>
 
                     </body>
 

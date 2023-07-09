@@ -43,20 +43,23 @@
 											<h2>1:1 문의</h2>
 
 
-
 											<div class="notice-contents">
+
 												<div>
 													<span>${mTmdetail.mtmTitle}</span>
 												</div>
+
 												<div>
 													<span>[ ${mTmdetail.mtmType} ]</span>
 													<span><span>${mTmdetail.mtmWriter}</span> <span>|</span>
 														<span>${mTmdetail.mtmRegdate} </span></span>
 												</div>
+
 												<div class="contentText-wrap">
 													<c:out value="${mTmdetail.mtmContent}" escapeXml="true" />
 												</div>
 											</div>
+
 										</div>
 
 										<div class="imageArea">
@@ -72,7 +75,7 @@
 												</div>
 												<div>
 													<div class="reply-content">
-														<c:out value="${mTmdetail.mtmRepContent}" escapeXml="true" />
+														<c:out value="${mTmdetail.mtmRepContent}" escapeXml="false" />
 													</div>
 												</div>
 											</div>
