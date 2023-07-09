@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -39,11 +40,22 @@ public class KakaoController {
 	private KakaoService service;
 	@Autowired
 	private HttpSession session;
+	
+	@GetMapping("/login") 
+	public String showLogin(HttpServletRequest req, HttpSession session) { 
+		String referer = req.getHeader("Referer"); 
+		if(referer != null) { 
+			session.setAttribute("prevPage", referer); 
+		} 
+
+		return "/login"; 
+	}
+
 
 	@RequestMapping("/sign_Up/sns/kakao")
 	public String kakaoLogin(
 			@RequestParam(value = "code" , required = false) String code,
-			Model model
+			Model model,			HttpServletRequest req
 			) throws Exception {
 		String access_Token = service.getAccessToken(code);
 		
@@ -53,7 +65,26 @@ public class KakaoController {
 		if(loginUser !=null) {
 			session.setAttribute("loginUser", loginUser);
 			session.setAttribute("access_Token", access_Token);
-			return "redirect:/";
+
+			String prevPage = (String) session.getAttribute("prevPage");
+			String path1 = "http://localhost:8080/movie/signUp/signUp_sns";
+			String path2 = "http://localhost:8080/movie/user/login";
+			String path3 = "https://kgv.co.kr/movie/signUp/signUp_sns";
+			String path4 = "https://kgv.co.kr/movie/user/login";
+			String path = "";
+
+			if(prevPage.equals(path1) || prevPage.equals(path2) || prevPage.equals(path3) || prevPage.equals(path4)) {
+				path = "redirect:/";
+			} else if(
+					prevPage != null && !prevPage.isEmpty()
+					) {
+				path = "redirect:"+prevPage;;
+				session.removeAttribute("prevPage");
+			} else {
+				path = "redirect:/";
+			}
+			
+			return path;
 		} else {
 			model.addAttribute("message", "로그인에 실패하였습니다.");
 			return "redirect:/signUp/signUp_sns";
