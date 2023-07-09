@@ -186,19 +186,6 @@
 	
 	
 	<!-- 전체 평점 -->
-	<!-- 
-
-	<select id="getAllScore" resultType="map">
-	    SELECT (SELECT ROUND(SUM(r.REV_LIKE) / COUNT(r.REV_LIKE) ,1) FROM REVIEW r 
-                    WHERE r.MOVIE_NO = m.MOVIE_NO AND r.REV_ST = 'N') AS "평점"
-        FROM MOVIE m
-        LEFT OUTER JOIN REVIEW r ON m.MOVIE_NO = r.MOVIE_NO
-        WHERE m.MOVIE_ST = 'Y'
-        GROUP BY m.MOVIE_NO, m.MOVIE_TITLE
-        ORDER BY (SELECT COUNT(b.MOVIE_NO)*100 FROM Book b WHERE b.MOVIE_NO = m.MOVIE_NO AND b.BOOK_ST = 'Y') DESC, 
-                       m.MOVIE_TITLE ASC
-	</select>
-	-->
 	
 	<select id="getAllScore" resultType="map">
 		SELECT COALESCE((SELECT ROUND(SUM(r.REV_LIKE) / COUNT(r.REV_LIKE), 1) FROM REVIEW r 
