@@ -358,8 +358,6 @@ public class HelpDeskController {
 		String unescapedContent = StringEscapeUtils.unescapeHtml4(mTmdetail.getMtmContent());
 		mTmdetail.setMtmContent(unescapedContent);
 
-
-
 		model.addAttribute("mTmdetail", mTmdetail);
 		mTmdetail.setUserNo(userNo);
 		model.addAttribute("cp", cp);

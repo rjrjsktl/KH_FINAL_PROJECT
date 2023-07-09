@@ -36,17 +36,12 @@ $(document).ready(function () {
       type: "GET",
       data: { area: area },
       success: function (response) {
-        // clear cname-wrap
         $(".cname-wrap").empty();
-        // iterate over response.cinemaNameList
         for (var i = 0; i < response.cinemaNameList.length; i++) {
-          // create new anchor element with cinema name and href attribute
           var cinemaNameAnchor = $("<a class='gogo'></a>")
             .attr("href", "/movie/reserve/choicePlay")
             .text(response.cinemaNameList[i].cinemaName + "점");
-          // create new span element and append the anchor
           var cinemaNameSpan = $("<span></span>").append(cinemaNameAnchor);
-          // append span to cname-wrap
           $(".cname-wrap").append(cinemaNameSpan);
         }
       },
