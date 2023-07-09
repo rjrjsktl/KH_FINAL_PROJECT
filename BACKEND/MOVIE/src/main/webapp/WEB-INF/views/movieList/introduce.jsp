@@ -307,7 +307,7 @@
                                                                         <c:when test="${loginUser.userNo == review.userNo}">
                                                                             <div class="revcons" style="color: #FFC400;"><c:out value="${review.revContent}" escapeXml="true" /></div>
                                                                         </c:when>
-                                                                        <c:otherwise><div class="revcons"> <c:out value="${review.revContent}" escapeXml="ture" /> </div></c:otherwise>
+                                                                        <c:otherwise><div class="revcons"><c:out value="${review.revContent}" escapeXml="true" /></div></c:otherwise>
                                                                     </c:choose>
 
                                                                     <c:choose>

@@ -217,9 +217,7 @@ $(document).ready(function () {
                 <p>${review.userNick}</p>
               </div>
               <div class="review_content">
-                <div>리뷰</div>
-                <div>${review.revLike}</div><div>${reviewContent}</div>${deleteButton}</div>
-            </div>
+                <div>리뷰</div><div>${review.revLike}</div><div>${reviewContent}</div>${deleteButton}</div></div>
           `);
 
           li.hide();
