@@ -9,15 +9,12 @@ $(document).ready(function () {
 
   $("#fileInput").on("change", function () {
     if (this.files && this.files[0]) {
-      // Clear the previous image
       $(".addfileList").empty();
 
       var file = this.files[0];
       var reader = new FileReader();
 
       reader.onload = function (e) {
-        // 이미지를 브라우저에 표시합니다.
-        // Add the delete button (x) to the image
         $(".addfileList").append(
           '<div class="upimgList">' +
             '<span class="deleteImage">X</span>' +
@@ -29,7 +26,6 @@ $(document).ready(function () {
         imageUrl1 = e.target.result;
       };
 
-      // 이미지 파일을 읽습니다.
       reader.readAsDataURL(file);
     }
   });
@@ -40,15 +36,13 @@ $(document).ready(function () {
   });
 
   fileInput.on("change", function (e) {
-    console.log(e.target.files); // 파일 목록 출력
-
-    // 파일 업로드(다중업로드를 위해 반복문 사용)
+    console.log(e.target.files);
     for (var i = 0; i < e.target.files.length; i++) {
       if (!checkExtension(e.target.files[i].name, e.target.files[i].size)) {
         movie_image1.val("");
         return false;
       }
-      uploadImageFile1(e.target.files[i]); // 파일 전달
+      uploadImageFile1(e.target.files[i]);
     }
   });
 
@@ -83,8 +77,8 @@ $(document).ready(function () {
       processData: false,
       success: function (data1) {
         console.log("성공 후 반환 메시지11", data1);
-        var jsonObject = JSON.parse(data1); // JSON 문자열을 파싱하여 객체로 변환
-        imageUrl1 = jsonObject.url; // "url" 키에 해당하는 이미지 URL 선택
+        var jsonObject = JSON.parse(data1);
+        imageUrl1 = jsonObject.url;
         console.log("이미지 URL:", imageUrl1);
       },
       error: function (e) {
@@ -149,7 +143,7 @@ $(document).ready(function () {
     const url = `/movie/helpDesk/replyDelete/${mtmNo}`;
 
     if (confirm(" 답변을 정말로 삭제 하시겠습니까?")) {
-      window.location.href = url; // get방식으로 url에 요청
+      window.location.href = url;
     }
   });
 
@@ -158,8 +152,8 @@ $(document).ready(function () {
 
   deleteMtm.on("click", function () {
     let mtmNo = $(this).data("mtmno");
-    let cp = $("#cp").val(); // HTML에서 'cp' 값 가져오기
-    let url = `/movie/helpDesk/deleteMtm/${mtmNo}?cp=` + cp; // URL에 'cp' 파라미터 값을 추가합니다.
+    let cp = $("#cp").val();
+    let url = `/movie/helpDesk/deleteMtm/${mtmNo}?cp=` + cp;
 
     if (confirm("정말로 삭제 하시겠습니까?")) {
       window.location.href = url;
@@ -168,7 +162,7 @@ $(document).ready(function () {
 
   updateMtm.on("click", function () {
     let mtmNo = $(this).data("mtmno");
-    let url = `/movie/helpDesk/mTm_form/` + mtmNo; // URL에 'cp' 파라미터 값을 추가합니다.
+    let url = `/movie/helpDesk/mTm_form/` + mtmNo;
     window.location.href = url;
   });
 
@@ -188,17 +182,17 @@ $(document).ready(function () {
 
     if (!title) {
       alert("제목을 입력해주세요");
-      e.preventDefault(); // Prevent the form from submitting
+      e.preventDefault();
       return;
     }
     if (!inquiry || inquiry === "문의 내용을 선택해주세요.") {
       alert("문의종류를 선택해주세요");
-      e.preventDefault(); // Prevent the form from submitting
+      e.preventDefault();
       return;
     }
     if (!content) {
       alert("내용을 입력해주세요");
-      e.preventDefault(); // Prevent the form from submitting
+      e.preventDefault();
       return;
     }
 
@@ -245,40 +239,45 @@ $(document).ready(function () {
 
     if (!title) {
       alert("제목을 입력해주세요");
-      e.preventDefault(); // Prevent the form from submitting
+      e.preventDefault();
       return;
     }
     if (!inquiry || inquiry === "문의 내용을 선택해주세요.") {
       alert("문의종류를 선택해주세요");
-      e.preventDefault(); // Prevent the form from submitting
+      e.preventDefault();
       return;
     }
     if (!content) {
       alert("내용을 입력해주세요");
-      e.preventDefault(); // Prevent the form from submitting
+      e.preventDefault();
       return;
     }
 
-    $.ajax({
-      type: "POST",
-      url: "/movie/helpDesk/mTm_form/" + mtmNo,
-      data: {
-        titleInput: title,
-        inquirySelect: inquiry,
-        contentTextarea: content,
-        open: open,
-        imageUrl1: imageUrl1,
-      },
-      success: function (response) {
-        var mtmNo = response.mtmNo;
-        alert("수정성공");
-        var url = `/movie/helpDesk/mTm_detail/${mtmNo}`;
-        location.href = url;
-      },
-      error: function (xhr, status, error) {
-        alert("오류 발생");
-      },
-    });
+    var confirmation = confirm("정말로 이 문의를 수정하시겠습니까?");
+
+    if (confirmation) {
+      $.ajax({
+        type: "POST",
+        url: "/movie/helpDesk/mTm_form/" + mtmNo,
+        data: {
+          titleInput: title,
+          inquirySelect: inquiry,
+          contentTextarea: content,
+          open: open,
+          imageUrl1: imageUrl1,
+        },
+        success: function (response) {
+          var mtmNo = response.mtmNo;
+          alert("수정을 완료하였습니다.");
+          var url = `/movie/helpDesk/mTm_detail/${mtmNo}`;
+          location.href = url;
+        },
+        error: function (xhr, status, error) {
+          alert("오류 발생");
+        },
+      });
+    } else {
+    }
   });
 });
 
