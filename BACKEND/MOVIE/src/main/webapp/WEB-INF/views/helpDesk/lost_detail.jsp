@@ -84,52 +84,56 @@
 												
 													</div>
 												</div>
-											</div>
-			
-											<c:if test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y'}">
-												<button class="reply_delete" data-lostno="${lostdetail.lostNo}"
-													id="reply_deleteBtn">
-													<a>답변 삭제하기</a>
-												</button>
+												<c:if test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y'}">
+													<button class="reply_delete" data-lostno="${lostdetail.lostNo}"
+														id="reply_deleteBtn">
+														<a>답변 삭제하기</a>
+													</button>
+												</c:if>
 											</c:if>
-										</c:if>
-			
-			
-										<c:if
-											test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y' && lostdetail.lostRepSt == 'N'}">
-			
-											<div class="reply_wrap btn_wraper">
-												<textarea id="contentTextarea"></textarea>
-												<button data-lostno="${lostdetail.lostNo}" id="reply_writeBtn">
-													<a>등록하기</a>
-												</button>
-											</div>
-			
-										</c:if>
-			
-			
-										<div class="btn_wraper">
+				
+				
 											<c:if
-											test="${not empty loginUser.userNo and loginUser.userManagerSt == 'Y' or loginUser.userNo == lostdetail.userNo}">
-											<button data-lostno="${lostdetail.lostNo}" id="updateLost">
-													<input type="hidden" id="cp" value="${cp}">
-													<a>수정</a>
-												</button>
+												test="${loginUser.userNo != null && loginUser.userManagerSt == 'Y' && lostdetail.lostRepSt == 'N'}">
+				
+												<div class="reply_wrap btn_wraper">
+													<textarea id="contentTextarea"></textarea>
+													<button data-lostno="${lostdetail.lostNo}" id="reply_writeBtn">
+														<a>등록하기</a>
+													</button>
+												</div>
+				
 											</c:if>
-			
-											<c:if
+
+											<div class="btn_wraper">
+												<c:if
 												test="${not empty loginUser.userNo and loginUser.userManagerSt == 'Y' or loginUser.userNo == lostdetail.userNo}">
-												<button id="deleteLost" data-lostno="${lostdetail.lostNo}">
-													<input type="hidden" id="cp" value="${cp}">
-													<a>삭제</a>
+												<button data-lostno="${lostdetail.lostNo}" id="updateLost">
+														<input type="hidden" id="cp" value="${cp}">
+														<a>수정</a>
+													</button>
+												</c:if>
+				
+												<c:if
+													test="${not empty loginUser.userNo and loginUser.userManagerSt == 'Y' or loginUser.userNo == lostdetail.userNo}">
+													<button id="deleteLost" data-lostno="${lostdetail.lostNo}">
+														<input type="hidden" id="cp" value="${cp}">
+														<a>삭제</a>
+													</button>
+												</c:if>
+				
+												<button class="goback">
+													<a href="${contextPath}/helpDesk/lost_List?cp=${param.cp}">목록으로</a>
 												</button>
-											</c:if>
+				
+											</div>
+
+											</div>
 			
-											<button class="goback">
-												<a href="${contextPath}/helpDesk/lost_List?cp=${param.cp}">목록으로</a>
-											</button>
+											
 			
-										</div>
+			
+										
 			
 									</div>
 			
