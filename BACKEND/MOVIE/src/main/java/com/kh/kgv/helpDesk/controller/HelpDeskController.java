@@ -533,12 +533,13 @@ public class HelpDeskController {
 
 		if(result > 0 ) {
 			path = "helpDesk/mTm_List"+"?cp="+cp;
-			message = "글 삭제에 성공했다.";
+			message = "글 삭제에 성공했습니다.";
 
 		}else {
 			path = "referer";  
 		}
 
+	
 		ra.addFlashAttribute("message",message);
 
 
@@ -1000,7 +1001,7 @@ public class HelpDeskController {
 
 		if(result > 0 ) {
 			path = "helpDesk/lost_List"+"?cp="+cp;
-			message = "글 삭제에 성공했다.";
+			message = "글 삭제에 성공했습니다.";
 
 		}else {
 			path = "referer";  
