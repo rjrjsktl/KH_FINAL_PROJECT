@@ -111,6 +111,14 @@ public class ReserveDAO {
 		return sqlSession.update("playMapper.updateTotalTicket", movieMap);
 	}
 
+	public List<Double> getAllScore() {
+		return sqlSession.selectList("playMapper.getAllScore");
+	}
+	
+	public List<Double> getAllRate() {
+		return sqlSession.selectList("playMapper.getAllRate");
+	}
+
 
 
 }
