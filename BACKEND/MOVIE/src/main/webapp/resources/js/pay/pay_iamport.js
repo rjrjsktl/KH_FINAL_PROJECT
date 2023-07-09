@@ -12,18 +12,9 @@ let payPrice;
 
 const bookNo = $("#bookNo").val();
 
-console.log("-------------------------");
-console.log("이름       :" + userName);
-console.log("이메일     :" + userEmail);
-console.log("최종가격   :" + payPrice);
-console.log("북넘버   :" + bookNo);
-console.log("-------------------------");
-
 function requestPay() {
-  console.log("시스템가동준비완료");
   payPrice = $(".finshPrice").text();
 
-  console.log($(".finshPrice").text());
   IMP.request_pay(
     {
       pg: "kakaopay.TC0ONETIME",
@@ -37,18 +28,11 @@ function requestPay() {
     function (rsp) {
       // callback
 
-      console.log("rep : " + rsp);
-      console.log("payPrice : " + payPrice);
-      console.log("rsp.imp_uid : " + rsp.imp_uid);
-
       // 결제 검증
       $.ajax({
         type: "POST",
         url: "/movie/pay/pay/verifyIamport/" + rsp.imp_uid,
       }).done(function (data) {
-        console.log(data);
-        console.log(rsp.merchant_uid);
-
         if (rsp.paid_amount == data.response.amount) {
           alert("결제가 완료되었습니다");
 
@@ -66,8 +50,6 @@ function requestPay() {
 
           reserveCodeNo = "KGV" + year + month + day + randomNum; // 예약 코드 번호 생성
 
-          console.log("예약 코드 번호 출력 : " + reserveCodeNo); // 예약 코드 번호 출력
-
           // DB에 가서 테이블에 정보를 저장하는 ajax
           $.ajax({
             url: "/movie/pay/pay/successPayment",
@@ -78,20 +60,15 @@ function requestPay() {
             type: "POST",
 
             success: function (result) {
-              console.log("결제성공");
-
               if (result > 0) {
                 let url = "/movie/pay/finshed";
 
                 window.location.href = url;
               } else {
-                console.log("에러 발생으로 인해 등록 실패");
               }
             },
 
-            error: function () {
-              console.log("에러 발생으로 인해 등록 실패");
-            },
+            error: function () {},
           });
         } else {
           alert("결제 실패하였습니다");
