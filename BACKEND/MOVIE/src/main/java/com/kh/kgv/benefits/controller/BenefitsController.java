@@ -73,7 +73,7 @@ public class BenefitsController {
 	
 	
 		
-	// 진행중이였었던것이였던 혜택 페이지 이동
+	// 지난 혜택 페이지 이동
 	@GetMapping("benefits_end_List")
 	public String moveEndBenefitsList(Model model,
 			   						  Benefits bene) {
@@ -93,7 +93,7 @@ public class BenefitsController {
 		return "benefitsList/benefits_end_List";
 	}
 	
-	// 진행중인 혜택 상세보기
+	// 지난 혜택 상세보기
 	@GetMapping("/benefits_end_List/introduce/{benefitsNo}")
 	public String EndBenfits(Model model,
 							 Benefits bene,

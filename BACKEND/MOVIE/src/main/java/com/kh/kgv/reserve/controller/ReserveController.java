@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.google.gson.Gson;
+import com.kh.kgv.common.scheduling.UpdatePlayScheduling;
 import com.kh.kgv.customer.model.vo.User;
 import com.kh.kgv.items.model.vo.Movie;
 import com.kh.kgv.management.model.vo.Cinema;
@@ -38,6 +41,8 @@ public class ReserveController {
 	@Autowired
 	private ReserveService service;
 	
+	Logger logger =LoggerFactory.getLogger(ReserveController.class);
+	
 	private String[] areaArray = {"서울", "경기", "충청", "전라", "경남", "경북", "강원", "제주"};
 	private String[] specialArray = {"KMAX", "DOLBY", "CHEF &amp; CINE", "PUPPY &amp; ME", "YES KIDS"};
 	private List<Cinema> cinemaList = null;
@@ -49,6 +54,8 @@ public class ReserveController {
 	private Map<String, Object> priceMap = null; 
 	
 	
+	
+	// 상영 선택 페이지로 이동
 
 	@GetMapping("/choicePlay")
 	public String enterChoicePlay(Model model) {
@@ -68,6 +75,9 @@ public class ReserveController {
 	}
 	
 	
+	
+	// 상영 선택 페이지에 진입하면 바로 실행하여 필요한 정보를 가져옴
+	
 	@GetMapping("/initialMap")
 	@ResponseBody
 	public Map<String, Object> getInitialMap() {
@@ -77,13 +87,17 @@ public class ReserveController {
 			String areaName = areaArray[0];
 			initialMap = service.getInitialMap(areaName);	
 		} catch(ArrayIndexOutOfBoundsException e) {
-			System.out.println("배열 범위 이외의 숫자입니다.");
+			e.printStackTrace();
 		} catch(NumberFormatException e) {
-			System.out.println("잘못된 인덱스입니다.");
+			e.printStackTrace();
 		}
 		
 		return initialMap;
 	}
+	
+	
+	
+	// 지역을 클릭하면 해당 지역의 영화관 정보를 가져옴
 	
 	@GetMapping("/cinemaList")
 	@ResponseBody
@@ -92,14 +106,17 @@ public class ReserveController {
 			String areaName = areaArray[Integer.parseInt(areaIndex)];
 			cinemaList = service.getAreaCinemaList(areaName);
 		} catch(ArrayIndexOutOfBoundsException e) {
-			System.out.println("배열 범위 이외의 숫자입니다.");
+			e.printStackTrace();
 		} catch(NumberFormatException e) {
-			System.out.println("잘못된 인덱스입니다.");
+			e.printStackTrace();
 		}
 		
 		return cinemaList;
 	}
 	
+	
+	
+	// 스크린 스타일을 클릭하면 해당 스타일의 상영관 정보를 가져옴
 	
 	@GetMapping("/specialScreenList")
 	@ResponseBody
@@ -108,14 +125,17 @@ public class ReserveController {
 			String type = specialArray[Integer.parseInt(typeIndex)];
 			specialScreenList = service.getSpecialScreenList(type);
 		} catch(ArrayIndexOutOfBoundsException e) {
-			System.out.println("배열 범위 이외의 숫자입니다.");
+			e.printStackTrace();
 		} catch(NumberFormatException e) {
-			System.out.println("잘못된 인덱스입니다.");
+			e.printStackTrace();
 		}
 		
 		return specialScreenList;
 	}
 	
+	
+	
+	// 극장과 날짜를 모두 클릭하면 해당 극장의 모든 상영 정보를 가져옴
 	
 	@GetMapping("/playList")
 	@ResponseBody
@@ -125,13 +145,17 @@ public class ReserveController {
 			String areaName = areaArray[Integer.parseInt(areaIndex)];
 			joinPlayList = service.getTotalPlayList(areaName, cinemaIndex, dateIndex);
 		} catch(ArrayIndexOutOfBoundsException e) {
-			System.out.println("배열 범위 이외의 숫자입니다.");
+			e.printStackTrace();
 		} catch(NumberFormatException e) {
-			System.out.println("잘못된 인덱스입니다.");
+			e.printStackTrace();
 		}
 		
 		return joinPlayList;
 	}
+	
+	
+	
+	// 극장과 날짜만 선택하면 그날 해당 극장의 모든 상영 정보를 가져옴
 	
 	@GetMapping("/specialPlayList")
 	@ResponseBody
@@ -144,14 +168,17 @@ public class ReserveController {
 			String cinemaName = specialScreenList.get(Integer.parseInt(roomIndex)).getCinemaName();
 			joinPlayList = service.getSpecialPlayList(screenStyle, cinemaName, dateIndex);
 		} catch(ArrayIndexOutOfBoundsException e) {
-			System.out.println("배열 범위 이외의 숫자입니다.");
+			e.printStackTrace();
 		} catch(NumberFormatException e) {
-			System.out.println("잘못된 인덱스입니다.");
+			e.printStackTrace();
 		}
 		
 		return joinPlayList;
 	}
 	
+	
+	
+	// 극장, 날짜, 영화를 모두 선택하면 그날 해당 극장의 해당 영화 상영 정보를 가져옴
 	
 	@GetMapping("/moviePlayList")
 	@ResponseBody
@@ -162,14 +189,17 @@ public class ReserveController {
 			String areaName = areaArray[Integer.parseInt(areaIndex)];
 			joinPlayList = service.getMoviePlayList(areaName, cinemaIndex, dateIndex, movieOptionIndex, movieIndex);
 		} catch(ArrayIndexOutOfBoundsException e) {
-			System.out.println("배열 범위 이외의 숫자입니다.");
+			e.printStackTrace();
 		} catch(NumberFormatException e) {
-			System.out.println("잘못된 인덱스입니다.");
+			e.printStackTrace();
 		}
 		
 		return joinPlayList;
 	}
 	
+	
+	
+	// 극장, 특별관 유형, 날짜를 모두 선택하면 그날 해당 특별관의 상영 정보를 가져옴
 	
 	@GetMapping("/roomPlayList")
 	@ResponseBody
@@ -183,14 +213,17 @@ public class ReserveController {
 			String cinemaName = specialScreenList.get(Integer.parseInt(roomIndex)).getCinemaName();
 			joinPlayList = service.getRoomPlayList(screenStyle, cinemaName, dateIndex, movieOptionIndex, movieIndex);
 		} catch(ArrayIndexOutOfBoundsException e) {
-			System.out.println("배열 범위 이외의 숫자입니다.");
+			e.printStackTrace();
 		} catch(NumberFormatException e) {
-			System.out.println("잘못된 인덱스입니다.");
+			e.printStackTrace();
 		}
 		
 		return joinPlayList;
 	}
 	
+	
+	
+	// 좌석 선택을 클릭할 때
 	
 	@GetMapping("/selectPlay")
 	@ResponseBody
@@ -202,10 +235,9 @@ public class ReserveController {
 			session.setAttribute("playNo", playNo);
 			
 			if(session.getAttribute("loginUser") != null) {
+				logger.info(playNo + "번 상영 티켓 페이지 접속");
 				result = "choiceTicket";
-			}
-			
-		    System.out.println(playNo);		
+			}	
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -214,13 +246,15 @@ public class ReserveController {
 	}
 	
 	
-	// 추후 PostMapping으로 변경함
 	
+	// 좌석 선택 페이지에 진입할 때
+
 	@GetMapping("/choiceTicket")
 	public String enterChoiceTicket(HttpServletRequest req, Model model) {
 		
+		HttpSession session = req.getSession();
+		
 		try {
-			HttpSession session = req.getSession();
 			int playNo = Integer.parseInt( (String) session.getAttribute("playNo"));
 			JoinPlay userPlay = service.getUserPlay(playNo);
 			model.addAttribute("userPlay", userPlay);
@@ -228,9 +262,17 @@ public class ReserveController {
 			e.printStackTrace();
 		}
 		
-		return "reserve/choiceTicket";
+		if(session.getAttribute("loginUser") != null) {
+			return "reserve/choiceTicket";
+		} else {
+			return "redirect:/reserve/choicePlay";
+		}
+		
 	}
 	
+	
+	
+	// 티켓 선택 페이지에 진입했을 때 바로 실행하여 상영 정보를 가져옴
 	
 	@GetMapping("/loadPlay")
 	@ResponseBody
@@ -244,8 +286,6 @@ public class ReserveController {
 			
 			int priceNo = service.getPriceNo(playNo);
 			session.setAttribute("priceNo", priceNo);
-			System.out.println(priceNo);
-
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -253,6 +293,9 @@ public class ReserveController {
 		return userPlay;
 	}
 	
+	
+	
+	// 좌석을 선택할 때마다 총 가격을 계산함
 	
 	@PostMapping("/updatePrice")
 	@ResponseBody
@@ -271,6 +314,9 @@ public class ReserveController {
 		return priceMap;
 	}
 	
+	
+	
+	// 결제하기 버튼을 클릭했을 때 좌석과 가격이 유효한지 확인함
 	
 	@PostMapping("/checkTicket")
 	@ResponseBody
@@ -317,14 +363,14 @@ public class ReserveController {
 	        		url = "/movie/pay/pay";
 	        	}		
 			}
+	        
+	        logger.info(Integer.toString(userNo) + "번 회원이 " + Integer.toString(playNo) + "번 상영의 티켓을 결제합니다." );
 
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
 		// 유효성 검사가 통과되면 예매 테이블에 데이터 축적
-		// 1. PLAY_NO, USER_NO, BOOK_AGE(countArray), BOOK_SEAT(seatArray), BOOK_PRICE가 전달됨
-		// 2. 성공하면 숫자 1이 전달됨.
 		
 		return url;
 	}

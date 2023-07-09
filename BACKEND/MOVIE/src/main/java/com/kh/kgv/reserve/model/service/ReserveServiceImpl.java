@@ -202,6 +202,9 @@ public class ReserveServiceImpl implements ReserveService {
 		movieList = dao.getPlayingMovieList();
 		thumbList = dao.getPlayingThumbList();
 		
+		List<Double> scoreList = dao.getAllScore();
+		List<Double> rateList = dao.getAllRate();
+		
 		for(Movie movie : movieList) {
 			titleRankList.add(movie.getMovieNo());
 		}
@@ -210,9 +213,12 @@ public class ReserveServiceImpl implements ReserveService {
 			rateRankList.add(movie.getMovieNo());
 		}
 		
+		
 		initialMap.put("cinemaList", cinemaList);
 		initialMap.put("titleRankList", titleRankList);
 		initialMap.put("rateRankList", rateRankList);
+		initialMap.put("scoreList", scoreList);
+		initialMap.put("rateList", rateList);
 		return initialMap;
 	}
 

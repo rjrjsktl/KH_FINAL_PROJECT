@@ -2,14 +2,11 @@ $(document).ready(function () {
   $("#lostArea").change(function () {
     var area = $(this).val();
 
-    console.log(area);
-
     $.ajax({
       url: "/movie/helpDesk/lost_List/selectName",
       type: "GET",
       data: { area: area },
       success: function (response) {
-        console.log(response);
         var options = "<option disabled selected>상영관선택</option>";
         for (var i = 0; i < response.cinemaNameList.length; i++) {
           var cinemaName = response.cinemaNameList[i].cinemaName;
@@ -27,8 +24,6 @@ $(document).ready(function () {
     var area = $("#lostArea").val();
     var name = $("#lostName").val();
     var keyword = $("input[name='keyword']").val();
-
-    console.log(area, name, keyword);
   });
 });
 
@@ -73,11 +68,10 @@ $(document).ready(function () {
   $(document).on("click", ".deleteImage", function () {
     $(this).parent().remove();
     $("#fileInput").val("");
+    imageUrl1 = "";
   });
 
   fileInput.on("change", function (e) {
-    console.log(e.target.files); // 파일 목록 출력
-
     // 파일 업로드(다중업로드를 위해 반복문 사용)
     for (var i = 0; i < e.target.files.length; i++) {
       if (!checkExtension(e.target.files[i].name, e.target.files[i].size)) {
@@ -118,14 +112,10 @@ $(document).ready(function () {
       contentType: false,
       processData: false,
       success: function (data1) {
-        console.log("성공 후 반환 메시지11", data1);
         let jsonObject = JSON.parse(data1); // JSON 문자열을 파싱하여 객체로 변환
         imageUrl1 = jsonObject.url; // "url" 키에 해당하는 이미지 URL 선택
-        console.log("이미지 URL:", imageUrl1);
       },
-      error: function (e) {
-        console.log(e);
-      },
+      error: function (e) {},
     });
   }
 
@@ -180,7 +170,7 @@ $(document).ready(function () {
     var date = $("#lostDate").val();
     var details = $("#contentTextarea").val();
     var open = $("#checkbox1").is(":checked") ? 0 : 1111;
-    console.log(area);
+
     if (!title) {
       alert("제목을 입력해주세요");
       return;
@@ -236,19 +226,9 @@ $(document).ready(function () {
     var details = $("#contentTextarea").val();
     var open = $("#checkbox1").is(":checked") ? 0 : 1111;
 
-    console.log(lostNo);
-    console.log(title);
-    console.log(item);
-    console.log(area);
-    console.log(date);
-    console.log(details);
-    console.log(open);
-
     if (!$("#fileInput").val() && $(".upimgList img").length > 0) {
       imageUrl1 = $(".upimgList img").attr("src");
     }
-    console.log("hj");
-    console.log(imageUrl1);
 
     if (!title) {
       alert("제목을 입력해주세요");
@@ -317,7 +297,7 @@ $(document).ready(function () {
 const updateLost = $("#updateLost");
 updateLost.on("click", function () {
   let lostNo = $(this).data("lostno");
-  console.log(lostNo);
+
   let url = `/movie/helpDesk/lost_form/` + lostNo;
   window.location.href = url;
 });

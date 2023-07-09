@@ -21,8 +21,6 @@ $(document).ready(function () {
   );
 });
 
-console.log("findEmaile.js loaded..");
-
 const checkObj = {
   // 인증번호 발송 체크
 };
@@ -36,9 +34,6 @@ const sendBtn = document.getElementById("sendBtn");
 
 // 아이디 찾기 버튼을 눌렀을때
 sendBtn.addEventListener("click", function () {
-  console.log("아이디 찾기 버튼 클릭");
-  console.log("checkObj 값 : " + checkObj);
-
   if (userName.value.length == 0) {
     alert("이름을 기입해주세요");
     userName.focus();

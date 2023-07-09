@@ -106,7 +106,8 @@ $(document).ready(function () {
 
   $(".star-btn").click(function () {
     let movieNo = $(this).data("movieno");
-    window.location.href = "/movie/movieList/detail_List/introduce/" + movieNo + "?review=2";
+    window.location.href =
+      "/movie/movieList/detail_List/introduce/" + movieNo + "?review=2";
   });
 
   $(".star_rating a").click(function () {
