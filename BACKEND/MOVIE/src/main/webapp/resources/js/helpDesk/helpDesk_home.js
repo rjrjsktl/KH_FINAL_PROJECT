@@ -61,3 +61,9 @@ $(document).ready(function () {
     }
   });
 });
+
+$(document).ready(function () {
+  $(".notyet").click(function () {
+    alert("준비중입니다.");
+  });
+});
