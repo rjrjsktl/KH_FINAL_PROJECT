@@ -64,6 +64,8 @@ h2 {
     padding: 15px;
     padding-bottom: 30px;
     height:310px;
+	word-wrap: break-word;
+	white-space: normal;
 	overflow-y: auto;
 	border-radius: 10px;
 	background-color: #191919;
