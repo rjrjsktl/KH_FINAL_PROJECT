@@ -223,7 +223,6 @@
             <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
             <script src="${contextPath}/resources/js/signUp/signUp.js"></script>
-            <script src="${contextPath}/resources/js/common/header.js"></script>
 
         </body>
 

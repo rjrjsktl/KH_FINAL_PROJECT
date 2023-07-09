@@ -206,9 +206,9 @@ $(document).ready(function () {
           let reviewContent = "";
 
           if (userNo == review.userNo) {
-            reviewContent = `<div style="color: #FFC400;">${review.revContent}</div>`;
+            reviewContent = `<div class="revcons" style="color: #FFC400;">${review.revContent}</div>`;
           } else {
-            reviewContent = `<div>${review.revContent}</div>`;
+            reviewContent = `<div class="revcons">${review.revContent}</div>`;
           }
 
           li.html(`

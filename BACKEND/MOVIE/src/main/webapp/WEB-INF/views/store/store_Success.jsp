@@ -161,7 +161,6 @@
                             crossorigin="anonymous"></script>
 
                         <script src="${contextPath}/resources/js/store/store_Success.js"></script>
-                        <script src="${contextPath}/resources/js/common/header.js"></script>
                         <script src="${contextPath}/resources/js/manager/apikey.js"></script>
                     </body>
 

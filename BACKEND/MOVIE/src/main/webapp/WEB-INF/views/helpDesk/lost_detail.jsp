@@ -54,7 +54,10 @@
 											<span>${lostdetail.lostDate} </span></span>
 
 									</div>
-									<div class="contentText-wrap">${lostdetail.lostContent}</div>
+									<div class="contentText-wrap">
+										<c:out value="${lostdetail.lostContent}" escapeXml="true" />
+									</div>
+									
 								</div>
 							</div>
 
@@ -78,7 +81,9 @@
 											class="reply-writer-info"><span>${lostdetail.lostRepWriter}</span><span>|</span><span>${lostdetail.lostRepDate}</span></span>
 									</div>
 									<div>
-										<div class="reply-content">${lostdetail.lostRepContent}</div>
+										<div class="reply-content">
+											<c:out value="${lostdetail.lostRepContent}" escapeXml="false" />
+											</div>
 									</div>
 								</div>
 

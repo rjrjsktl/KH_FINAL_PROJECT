@@ -1,37 +1,3 @@
-/*
-$(document).ready(function() {
-  var modal = $('#myModal');
-  var btn = $('#myBtn');
-  var span = $('.close-button').eq(0);
-
-  btn.click(function() {
-    modal.css('display', 'block');
-  });
-
-  span.click(function() {
-    modal.css('display', 'none');
-  });
-
-  $(window).click(function(event) {
-    if (event.target == modal[0]) {
-      modal.css('display', 'none');
-    }
-  });
-});
-
-
-//   span.click(function() {
-//     modal.css('display', 'none');
-//   });
-
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-*/
-
 $(document).ready(function () {
   $(".navBar, .dummy").hover(
     function () {
@@ -61,11 +27,21 @@ $(document).ready(function () {
     return false;
   });
 
-  $(".submitBTN").click(function (e) {
-    var inputLength = $('input[name="hkeyword"]').val().length;
-    if (inputLength < 2) {
+  $("#submitBTN").click(function (e) {
+    var input = $('input[name="hkeyword"]').val().trim();
+    var regex = /^[A-Za-z가-힣]{2,}$/;
+    var entityRegex =
+      /<[^>]*>|&[a-zA-Z0-9#]+;|&lt;br&gt;|<br>|br|nb|bs|sp|nbs|bsp/;
+
+    if (!regex.test(input) || entityRegex.test(input)) {
       e.preventDefault();
-      alert("두 글자 이상 입력해주세요");
+      if (input.length == 0) {
+        alert("검색어를 입력해주세요");
+      } else if (entityRegex.test(input)) {
+        window.location.href = "/movie/movieList/all_List";
+      } else {
+        alert("두 글자 이상의 한글 혹은 영어를 입력해주세요");
+      }
     }
   });
 });
