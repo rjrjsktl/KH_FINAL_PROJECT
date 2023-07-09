@@ -67,7 +67,21 @@ public class HelpDeskController {
 	private ManagerService service;
 	@Autowired
 	private HelpDeskService services;
-
+	
+	@GetMapping("/helpDesk_term")
+	public String term() {
+	return "helpDesk/helpDesk_term";	
+	}
+	@GetMapping("/helpDesk_criteria")
+	public String criteria() {
+	return "helpDesk/helpDesk_criteria";	
+	}
+	@GetMapping("/helpDesk_information")
+	public String information() {
+	return "helpDesk/helpDesk_information";	
+	}
+	
+	
 	// 고객센터 접속
 	@RequestMapping("/helpDesk_home")
 	public String helpDesk(
