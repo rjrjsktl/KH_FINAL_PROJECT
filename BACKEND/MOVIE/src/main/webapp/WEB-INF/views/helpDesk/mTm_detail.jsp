@@ -48,7 +48,7 @@
 												<div>
 													<span>${mTmdetail.mtmTitle}</span>
 												</div>
-												
+
 												<div>
 													<span>[ ${mTmdetail.mtmType} ]</span>
 													<span><span>${mTmdetail.mtmWriter}</span> <span>|</span>
@@ -56,7 +56,7 @@
 												</div>
 
 												<div class="contentText-wrap">
-													<c:out value="${mTmdetail.mtmContent}" escapeXml="false" />
+													<c:out value="${mTmdetail.mtmContent}" escapeXml="true" />
 												</div>
 											</div>
 
