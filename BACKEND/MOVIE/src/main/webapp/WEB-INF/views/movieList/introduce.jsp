@@ -127,7 +127,7 @@
                                     <div>
                                         <div class="movide-expalin-wrap">
                                             <p class="info-btn" data-movieno="${MovieDetail.movieNo}">영화정보</p>
-                                            <p class="star-btn">평점 및 리뷰</p>
+                                            <p class="star-btn" data-movieno="${MovieDetail.movieNo}">평점 및 리뷰</p>
                                         </div>
                                         <!-- 영화정보 -->
                                         <div class="movie-detail">
