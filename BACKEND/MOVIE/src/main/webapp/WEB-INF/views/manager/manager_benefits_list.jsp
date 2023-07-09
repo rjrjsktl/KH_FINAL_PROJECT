@@ -109,7 +109,8 @@
 															</td>
 															<td>
 																<a href="${contextPath}/manager/benefits_list/delete/${getBenefits['benefitsNo']}"
-																	class="deleteEvent" onclick="checkDelete()">
+																	class="deleteEvent">
+																	<!-- 삭제기능 함수 사용원할시 checkDelete() onclick에 추가하기 -->
 																	<i class="fa-sharp fa-solid fa-xmark"></i>
 																</a>
 															</td>

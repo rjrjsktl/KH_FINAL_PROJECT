@@ -75,7 +75,7 @@
 													</div>
 													<div>
 														<div class="reply-content">
-															<c:out value="${lostdetail.lostRepContent}" escapeXml="true" />
+															<c:out value="${lostdetail.lostRepContent}" escapeXml="false" />
 														</div>
 													</div>
 												</div>

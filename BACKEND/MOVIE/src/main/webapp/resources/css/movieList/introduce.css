@@ -361,6 +361,9 @@ main>section:nth-child(3)>div>div:nth-child(3) {
     background-color: rgb(31, 31, 31);
     color: white;
     border-radius: 10px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    overflow-y: auto;
 }
 
 .replywrite>button {
@@ -475,9 +478,9 @@ main>section:nth-child(3)>div>div:nth-child(3) {
 }
 
 .review_content>div:nth-child(3) {
-    display: block;
     word-wrap: break-word;
-    white-space: normal;
+    white-space: pre-wrap;
+    overflow-y: auto;
     width: 60%;
     font-size: 1.2rem;
     padding: 20px 30px;

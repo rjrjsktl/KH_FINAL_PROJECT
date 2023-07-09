@@ -142,7 +142,6 @@
             <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 
-            <script src="${contextPath}/resources/js/common/header.js"></script>
             <script src="${contextPath}/resources/js/theater/special-detail.js"></script>
         </body>
 

@@ -44,18 +44,20 @@
 
 
 											<div class="notice-contents">
+
 												<div>
 													<span>${mTmdetail.mtmTitle}</span>
 												</div>
+
 												<div>
 													<span>[ ${mTmdetail.mtmType} ]</span>
 													<span><span>${mTmdetail.mtmWriter}</span> <span>|</span>
 														<span>${mTmdetail.mtmRegdate} </span></span>
 												</div>
-												<div class="contentText-wrap">
-													<c:out value="${mTmdetail.mtmContent}" escapeXml="true" />
-												</div>
+
+												<div class="contentText-wrap"><c:out value="${mTmdetail.mtmContent}" escapeXml="true" /></div>
 											</div>
+
 										</div>
 
 										<div class="imageArea">
@@ -63,16 +65,13 @@
 										</div>
 
 										<c:if test="${mTmdetail.mtmRepSt == 'Y'}">
-
 											<div class="reply">
 												<div class="reply-info">
 													<p>[ ${mTmdetail.mtmWriter} ]님! 답변드립니다.</p>
 													<span class="reply-writer-info"><span>${mTmdetail.mtmRepWriter}</span><span>|</span><span>${mTmdetail.mtmRepDate}</span></span>
 												</div>
 												<div>
-													<div class="reply-content">
-														<c:out value="${mTmdetail.mtmRepContent}" escapeXml="true" />
-													</div>
+													<div class="reply-content"><c:out value="${mTmdetail.mtmRepContent}" escapeXml="true" /></div>
 												</div>
 											</div>
 

@@ -305,13 +305,9 @@
                                                                     <div>${review.revLike}</div>
                                                                     <c:choose>
                                                                         <c:when test="${loginUser.userNo == review.userNo}">
-                                                                            <div class="revcons" style="color: #FFC400;">
-                                                                                <c:out value="${review.revContent}" escapeXml="false" />
-                                                                                </div>
+                                                                            <div class="revcons" style="color: #FFC400;"><c:out value="${review.revContent}" escapeXml="true" /></div>
                                                                         </c:when>
-                                                                        <c:otherwise>
-                                                                            <div class="revcons"> <c:out value="${review.revContent}" escapeXml="false" /> </div>
-                                                                        </c:otherwise>
+                                                                        <c:otherwise><div class="revcons"><c:out value="${review.revContent}" escapeXml="true" /></div></c:otherwise>
                                                                     </c:choose>
 
                                                                     <c:choose>

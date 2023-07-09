@@ -20,7 +20,7 @@
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/common/outline.css">
 <link rel="stylesheet"
-	href="${contextPath}/resources/css/helpDesk/mtm_List.css">
+	href="${contextPath}/resources/css/helpDesk/mTm_List.css">
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/common/notice_Aside.css">
 
@@ -28,7 +28,6 @@
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
 
-<script src="${contextPath}/resources/js/helpDesk/mtmcheck.js"></script>
 
 
 
@@ -56,9 +55,9 @@
 						<div class="btn_wraper">
 
 
-							<button class="goback">
-								<a href="${contextPath}/helpDesk/lost_List/?cp=${param.cp}">확인</a>
-							</button>
+					
+								<a class="goback" href="${contextPath}/helpDesk/lost_List/?cp=${param.cp}">확인</a>
+						
 
 
 						</div>

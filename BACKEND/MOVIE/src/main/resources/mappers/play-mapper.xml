@@ -382,9 +382,9 @@ WHERE s.SCREEN_NO = #{screenNo}
     
     <select id="selectCategory" parameterType="string" resultType="string">
 		SELECT s.STORE_CATEGORY
-		FROM STORE_COUPON S
-			INNER JOIN STORE_ORDER so ON sc.S_ORDER_NO = so.S_ORDER_NO 
-			INNER JOIN STORE s ON so.STORE_NO = s.STORE_NO 
+		FROM STORE_COUPON sc
+		INNER JOIN STORE_ORDER so ON sc.S_ORDER_NO = so.S_ORDER_NO 
+		INNER JOIN STORE s ON so.STORE_NO = s.STORE_NO 
 		WHERE COUPON_DETAIL_NO = #{couponNo}
     </select>
     
