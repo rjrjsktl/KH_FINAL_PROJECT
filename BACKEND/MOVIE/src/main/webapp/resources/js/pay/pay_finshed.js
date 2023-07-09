@@ -53,3 +53,19 @@ function updateRunTime(userPlay) {
     .find("#end_minute")
     .html(String(up_end.getMinutes()).padStart(2, "0") + "분");
 }
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var codeElement = document.querySelector(".codeNo span");
+  codeElement.classList.add("pointer");
+  codeElement.addEventListener("click", function() {
+    var code = codeElement.textContent.trim();
+
+    navigator.clipboard.writeText(code).then(function() {
+      alert("예매 코드 번호가 복사되었습니다.");
+    }, function() {
+      alert("예매 코드 번호 복사에 실패했습니다.");
+    });
+  });
+});
+

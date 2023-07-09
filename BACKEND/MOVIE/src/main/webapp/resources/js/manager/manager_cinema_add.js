@@ -725,8 +725,6 @@ $(document).ready(function () {
     $('#room_area').css('display', 'none');
     $('#room_area').css('z-index', '0');
 
-    //console.log(tempRoom);
-    //console.log(tempSeat);
   });
 
 

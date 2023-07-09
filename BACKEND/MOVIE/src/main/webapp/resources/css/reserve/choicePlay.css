@@ -512,6 +512,7 @@ main>section:first-child>div:last-child>div:nth-child(3) {
   position: relative;
   overflow-y: scroll;
   padding: 0 3%;
+  height: calc(100% - 200px);
 }
 
 main>section:first-child>div:last-child>div:nth-child(3)>ul {

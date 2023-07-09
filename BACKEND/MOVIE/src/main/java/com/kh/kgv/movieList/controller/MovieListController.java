@@ -223,16 +223,33 @@ public class MovieListController {
 
 		int reviewCount = service.getCountReviews(movieNo);
 
-
+	
 		Map<String, Object>reviewList = null;
 
 		reviewList = service.getReviewList(movieNo, cp);
 		
+		List<Review> reviews = (List<Review>) reviewList.get("reviewList");
+
+		for (Review review : reviews) {
+		    String unescapedContent2 = StringEscapeUtils.unescapeHtml4(review.getRevContent());
+		    String replacedContent2 = "";
+		    if (unescapedContent2 != null) {
+		        replacedContent2 = unescapedContent2.replaceAll("<br\\s*/?>", "\n");
+		    }
+		    review.setRevContent(replacedContent2);
+		}
+		
+		
+		
 		int countMyReview = 0;
 
 		countMyReview = service.countMyReview(movieNo, userNo);
+		
+		
+    
 
 		model.addAttribute("reviewCount",reviewCount);
+		
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("userNick", userNick);
 		model.addAttribute("countMyReview",countMyReview);
@@ -298,8 +315,20 @@ public class MovieListController {
 	    @PathVariable("movieNo") int movieNo,
 	    @PathVariable("cp") int cp) throws Exception {
 
-	    Map<String, Object> reviewList = service.getReviewList(movieNo, cp);
-	    
+		Map<String, Object> reviewList = service.getReviewList(movieNo, cp);
+		
+		List<Review> reviews = (List<Review>) reviewList.get("reviewList");
+
+		for (Review review : reviews) {
+		    String unescapedContent2 = StringEscapeUtils.unescapeHtml4(review.getRevContent());
+		    String replacedContent2 = "";
+		    if (unescapedContent2 != null) {
+		        replacedContent2 = unescapedContent2.replaceAll("<br\\s*/?>", "\n");
+		    }
+		    review.setRevContent(replacedContent2);
+		}
+		
+		
 	    return (List<Review>) reviewList.get("reviewList");
 	}
 	

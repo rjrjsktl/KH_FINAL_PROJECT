@@ -258,3 +258,21 @@ tbody {
 .selected_Cp {
     color: rgb(255, 196, 0);
 }
+
+.goback{
+	color:white !important;
+	width:200px;
+	height:40px;
+	background-color: #343434;
+	outline: none;
+	border:none;
+	margin-top:10px;
+	line-height: 38px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.goback:hover{
+	background-color: #FFC400;
+	color:black !important;
+}
