@@ -464,6 +464,14 @@ $("#summary").on("click", function (e) {
       (ask) => alert("취소 버튼을 누르셨습니다.")
     );
   }
+  
+  if(totalCount == 0) {
+    alert("1명 이상 선택해주세요.");
+  } else if(totalCount > choiceCount) {
+    alert("총 인원만큼 좌석을 선택하지 않았습니다.");
+  }
+  
+  
 })
 
 
