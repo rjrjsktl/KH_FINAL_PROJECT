@@ -28,12 +28,10 @@ public class MainEventController {
 	@RequestMapping("/detail_List")
 	public String eventList(Model model, Event event) {
 		
-		System.out.println("메인 -> 이벤트 리스트 이동");
 		
 		Map<String, Object>getEvnetList = null;
 		getEvnetList=service.selectEventList();
 		
-		System.out.println("===========================================================" + getEvnetList);
 		
 		
 		model.addAttribute("getEvnetList", getEvnetList);
@@ -52,7 +50,6 @@ public class MainEventController {
 		Event eventDetail = null;
 		
 		eventDetail = service.getEventList(event);
-		System.out.println("DAO에서 가지고 온 editEvent : " + eventDetail);
 		
 		String unescapedContent = StringEscapeUtils.unescapeHtml4(eventDetail.getEventContent());
 		eventDetail.setEventContent(unescapedContent);
@@ -68,12 +65,10 @@ public class MainEventController {
 		@RequestMapping("/end_List")
 		public String endEventList(Model model, Event event) {
 			
-			System.out.println("메인 -> 이벤트 리스트 이동");
 			
 			Map<String, Object>getEvnetList = null;
 			getEvnetList=service.selectEventList();
 			
-			System.out.println("===========================================================" + getEvnetList);
 			
 			
 			model.addAttribute("getEvnetList", getEvnetList);
@@ -92,7 +87,6 @@ public class MainEventController {
 			Event eventDetail = null;
 			
 			eventDetail = service.getEventList(event);
-			System.out.println("DAO에서 가지고 온 editEvent : " + eventDetail);
 			
 			String unescapedContent = StringEscapeUtils.unescapeHtml4(eventDetail.getEventContent());
 			eventDetail.setEventContent(unescapedContent);
