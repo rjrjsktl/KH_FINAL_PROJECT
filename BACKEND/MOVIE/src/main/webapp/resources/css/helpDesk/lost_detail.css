@@ -162,6 +162,7 @@ h2 {
 	background-color:rgb(49,49,49);
 	outline:none;
 	border:none;
+	border-radius: 5px;
 }
 
 .btn_wraper button:hover{
