@@ -19,7 +19,6 @@ public class BenefitsServiceImpl implements BenefitsService{
 	@Autowired
 	private BenefitsDAO dao;
 	
-	private Logger logger = LoggerFactory.getLogger(BenefitsServiceImpl.class);
 	
 	// 진행중인 혜택 리스트 불러오기
 	@Override

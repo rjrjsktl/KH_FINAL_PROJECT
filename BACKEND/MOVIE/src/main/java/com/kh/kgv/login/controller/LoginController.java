@@ -45,7 +45,6 @@ import com.kh.kgv.login.model.service.LoginService;
 public class LoginController {
 
 
-	private Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 	@Autowired
 	private LoginService service;
@@ -64,7 +63,6 @@ public class LoginController {
 			
 		} 
 
-		System.out.println(referer+"================================================= 현재 리퍼럴은?");
 		return "login/login"; 
 	}
 
@@ -109,14 +107,12 @@ public class LoginController {
 			String blockUser = loginUser.getUserBlock();
 
 			if(blockUser.equals("Y")) {
-				System.out.println("차단 당한 유저");
 				ra.addFlashAttribute("message", "차단 당함 ㅅㄱ");
 				status.setComplete(); 
 
 				return "redirect:/"; 
 			}
 
-			logger.info("로그인 성공!");
 
 			model.addAttribute("loginUser", loginUser);
 
@@ -126,10 +122,8 @@ public class LoginController {
 
 			if(saveId != null) { // 아이디 저장이 체크 되었을 때
 				cookie.setMaxAge(60 * 60 * 24 * 7); // 초 단위로 지정 (일주일)
-				logger.info("cookie run !");
 			} else { // 체크 되지 않았을 때
 				cookie.setMaxAge(0); // 0초 -> 생성 되자마자 사라짐 == 쿠키 삭제
-				logger.info("cookie death !");
 			}
 
 			// 쿠키가 적용될 범위(경로) 지정
@@ -142,7 +136,6 @@ public class LoginController {
 
 		} else {
 
-			logger.info("로그인 실패");
 
 			//model.addAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
 
@@ -167,7 +160,6 @@ public class LoginController {
 			SessionStatus status) {
 		// * @SessionAttributes을 이용해서 session scope에 배치된 데이터는
 		//   SessionStatus라는 별도 객체를 이용해야만 없앨 수 있다.
-		logger.info("로그아웃 수행됨");
 
 		// session.invalidate(); // 기존 세션 무효화 방식으로는 안된다!
 		status.setComplete(); 
@@ -183,7 +175,6 @@ public class LoginController {
 			HttpServletRequest req,
 			HttpSession session) {
 
-		logger.info("비밀번호 찾기 위한 준비 !");
 
 		return "login/findPwEmail_2";
 	}
@@ -197,7 +188,6 @@ public class LoginController {
 			HttpServletRequest req,
 			HttpSession session) {
 
-		logger.info("아이디 찾기 위한 준비 !");
 
 		return "login/findPwEmail_1";
 	}
@@ -210,7 +200,6 @@ public class LoginController {
 		// 1. User 객체 생성
 		User user = new User();
 
-		logger.info("비밀번호를 찾으러 떠나자!");
 
 		// 2. User 객체 안에 값을 넣어줌.
 		user.setUserName(userName);
@@ -220,7 +209,6 @@ public class LoginController {
 		// 3. 1과 0 보다는 값의 존재 여부 확인하는게 더 '낳'은거 같아서 boolean으로 넘김
 		Boolean checkPw = service.checkUser(user);
 
-		logger.info("찾아야될 User : " + checkPw);
 		// 9. AJAX에서 result값을 받을때 1과 0으로 구분한다. 그래서 받아온 값이 true이면 1 아니면 0을 반납한다.
 		// -> result가 아니어도 값이 넘어갑니다.
 		return checkPw ? 1 : 0;
@@ -231,7 +219,6 @@ public class LoginController {
 	@GetMapping("/sendEmail")
 	public int sendEmail( String userEmail ) {
 
-		logger.debug("<<이메일 보내기>> userEmail : " + userEmail);
 
 		String cNumber = "";
 
@@ -260,7 +247,6 @@ public class LoginController {
 						"<br>" + 
 						"해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
 
-		logger.debug("<<이메일 보내기>> mailSender : " + mailSender);
 
 
 		try {
@@ -292,17 +278,12 @@ public class LoginController {
 			Model model,
 			HttpSession session ) {
 
-		logger.debug("<<인증번호 인증하기>> userEmail : " + userEmail);
-		logger.debug("<<인증번호 인증하기>> cnum : " + cNumber);
 
 
 		int result =  service.checkNumber(cNumber, userEmail);
 
-		//model.addAttribute("userEmail", userEmail);
 		session.setAttribute("userEmail", userEmail);
 
-		logger.info("<<인증번호 인증하기>> 찾고있는 비밀번호의 아이디 : " + userEmail);
-		logger.debug("result : " + result);
 
 		return result;
 	}
@@ -311,7 +292,6 @@ public class LoginController {
 	@GetMapping("/pwChange")
 	public String pwChange(HttpSession session) {
 		String userEmail = (String) session.getAttribute("userEmail");
-		logger.info(userEmail);
 		return "login/pwChange";
 	}
 
@@ -324,8 +304,6 @@ public class LoginController {
 
 		String userEmail = (String) session.getAttribute("userEmail");
 
-		System.out.println("userEmail ::::::::::::::::" + userEmail);
-		System.out.println("userPw    ::::::::::::::::" + userPw);
 
 		int result = service.changePw(userEmail,userPw);
 
@@ -334,12 +312,10 @@ public class LoginController {
 
 		if(result > 0 ) {
 			message = "비밀번호 재설정이 완료되었습니다";
-			logger.info("성공 렛쯔기릿~~~~~");
 			session.removeAttribute("userEmail");
 			path = "redirect:/";
 		} else {
 			message = "비밀번호 재설정에 실패하였습니다.";
-			logger.info("실패 tlqkf~~~~~");
 			path = "login/pwChange";
 		}
 		ra.addFlashAttribute("message",message);
@@ -357,11 +333,9 @@ public class LoginController {
 			String userBirth,
 			String userTel,
 			RedirectAttributes ra) {
-		logger.info("userName :"+ userName + " // " +"userBirth :"+ userBirth + " // " + "userTel :"+ userTel  );
 
 		User user = new User();
 
-		logger.info("아이디를 찾으러 떠나자!");
 
 		// 2. User 객체 안에 값을 넣어줌.
 		user.setUserName(userName);
@@ -370,7 +344,6 @@ public class LoginController {
 
 		String findEmail = service.findEmail(user);
 
-		logger.info("받아온 findEmail : " + findEmail);
 
 		String message = null;
 		String path = null;

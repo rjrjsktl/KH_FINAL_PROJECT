@@ -1,11 +1,5 @@
 package com.kh.kgv.login.model.service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,19 +16,14 @@ public class LoginServiceImpl implements LoginService{
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
 	
-	private Logger logger = LoggerFactory.getLogger(LoginServiceImpl.class);
 	
 	// 로그인 서비스 구현
 	@Override
 	public User login(User inputUser) {
 		
-		logger.info("2. 로그인 Service 진입");
-		
-		logger.debug( inputUser.getUserPw() + " / " +  bcrypt.encode(inputUser.getUserPw()) );
 		
 		User loginUser = dao.login(inputUser);
 		
-		logger.info("5. DAO에서 넘어온 loginUser :" + loginUser);
 		
 		if(loginUser != null) { // 일치하는 이메일을 가진 회원 정보가 있을 경우
 			
@@ -57,7 +46,6 @@ public class LoginServiceImpl implements LoginService{
 	// 비밀번호 찾기 checkUser 서비스 구현
 	@Override
 	public Boolean checkUser(User user) {
-		System.out.println("=================================================" + user);
 		return dao.checkUser(user);
 	}
 	
@@ -90,7 +78,6 @@ public class LoginServiceImpl implements LoginService{
 	// 아이디 찾기 서비스 구현
 	@Override
 	public String findEmail(User user) {
-		System.out.println("찾고싶은 아이디의 정보들 : " + user);
 		return dao.findEmail(user);
 	}
 	

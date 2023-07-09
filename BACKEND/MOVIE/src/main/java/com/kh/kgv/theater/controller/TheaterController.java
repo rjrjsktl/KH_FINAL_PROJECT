@@ -105,11 +105,9 @@ public class TheaterController {
 		}
 		
 		List<Screen> screenInfo =  services.getScreenInfo(special);
-		System.out.println("screenInfo::: " + screenInfo);
 		model.addAttribute("screenInfo", screenInfo);
 		
 		List<Movie> randomMovie = services.randomMovie(special);
-		System.out.println("randomMovie::: " + randomMovie);
 		model.addAttribute("randomMovie", randomMovie);
 
 
