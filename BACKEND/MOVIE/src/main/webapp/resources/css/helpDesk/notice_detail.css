@@ -53,6 +53,10 @@ h2 {
     margin-bottom: 30px;
 }
 
+.notice-contents>div:nth-child(3)  img {
+    max-width:784px;
+}
+
 .content-wrap>div:nth-child(3) {
 
     border-top: 1px solid rgb(73, 73, 73);
