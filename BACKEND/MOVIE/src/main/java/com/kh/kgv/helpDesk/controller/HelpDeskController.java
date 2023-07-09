@@ -273,7 +273,6 @@ public class HelpDeskController {
 
 		User loginUser = (User)session.getAttribute("loginUser");
 
-		// Add password check here
 		String checkResult = services.checkPasswordAccess(mtmNo, loginUser, cp);
 		if (!("redirect:/helpDesk/mTm_detail/" + mtmNo + "?cp=" + cp).equals(checkResult)) {
 			return checkResult;

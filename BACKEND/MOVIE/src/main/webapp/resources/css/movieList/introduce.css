@@ -856,3 +856,7 @@ img[src=""] {
     font-size: 1.2rem;
     color: #FFC400;
 }
+
+.revcons{
+    font-size: 1.2rem !important;
+}

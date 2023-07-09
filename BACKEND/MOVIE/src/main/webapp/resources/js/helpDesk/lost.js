@@ -23,7 +23,7 @@ $(document).ready(function () {
     });
   });
 
-  $(".submitBTN").click(function () {
+  $(".submitBTNs").click(function () {
     var area = $("#lostArea").val();
     var name = $("#lostName").val();
     var keyword = $("input[name='keyword']").val();
@@ -389,7 +389,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  $("form").on("submit", function (e) {
+  $(".lostform").on("submit", function (e) {
     var area = $("#lostArea").val();
     var name = $("#lostName").val();
 

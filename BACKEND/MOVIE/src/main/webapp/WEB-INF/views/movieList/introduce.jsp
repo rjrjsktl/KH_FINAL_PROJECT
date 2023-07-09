@@ -305,11 +305,12 @@
                                                                     <div>${review.revLike}</div>
                                                                     <c:choose>
                                                                         <c:when test="${loginUser.userNo == review.userNo}">
-                                                                            <div style="color: #FFC400;">
-                                                                                ${review.revContent}</div>
+                                                                            <div class="revcons" style="color: #FFC400;">
+                                                                                <c:out value="${review.revContent}" escapeXml="false" />
+                                                                                </div>
                                                                         </c:when>
                                                                         <c:otherwise>
-                                                                            <div>${review.revContent}</div>
+                                                                            <div class="revcons"> <c:out value="${review.revContent}" escapeXml="false" /> </div>
                                                                         </c:otherwise>
                                                                     </c:choose>
 
@@ -376,7 +377,6 @@
                             const revLike = "${revLike}";
                            // console.log("revLike::::" + revLike);
                         </script>
-                        <script src="${contextPath}/resources/js/main/header.js"></script>
                         <script src="${contextPath}/resources/js/introduce/introduce.js"></script>
                         </div>
                     </body>

@@ -1,5 +1,3 @@
-console.log(" specail.js js loaded");
-
 $(document).ready(function () {
   $(".theater1").hover(
     function () {

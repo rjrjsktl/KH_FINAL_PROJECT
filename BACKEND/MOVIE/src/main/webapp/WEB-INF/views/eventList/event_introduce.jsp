@@ -75,7 +75,6 @@
                         </div>
 
 
-                        <script src="${contextPath}/resources/js/main/header.js"></script>
                         </div>
                     </body>
 

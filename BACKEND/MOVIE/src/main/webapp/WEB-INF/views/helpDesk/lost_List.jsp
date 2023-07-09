@@ -38,7 +38,7 @@
 										<p>
 											분실물 게시글 총<span>${lostCount}</span>건
 										</p>
-										<form action="/movie/helpDesk/lost_List" method="GET">
+										<form class="lostform" action="/movie/helpDesk/lost_List" method="GET">
 
 											<select id="lostArea" name="area">
 												<option disabled selected>지역</option>
@@ -65,7 +65,7 @@
 											</select>
 
 											<input type="text" name="keyword" placeholder="분실물을 입력하세요">
-											<button class="submitBTN">검색</button>
+											<button class="submitBTNs">검색</button>
 
 										</form>
 									</div>
@@ -183,7 +183,6 @@
 			</div>
 			<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 			<script src="${contextPath}/resources/js/helpDesk/lost.js"></script>
-			<script src="${contextPath}/resources/js/helpDesk/lostSearch.js"></script>
 		</body>
 
 		</html>
