@@ -11,18 +11,18 @@ main>section {
     width: 18%;
 }
 
-
-
-
-* {
-    white-space: normal;
+*{
     scroll-behavior: smooth;
 }
+
 
 .container {
     width: 80%;
     margin-bottom: 70px;
 
+}
+.notice-content-wrap > p {
+    white-space: normal; 
 }
 
 
@@ -150,4 +150,28 @@ table {
 
 .none {
     display: none;
+}
+
+
+.terms-content {
+
+    overflow: hidden;
+    overflow-y: scroll;
+    overflow-y: auto;
+
+    position: relative;
+    height: 550px !important;
+    margin: 10px 0 0 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.terms-content dd {
+    width:745px;white-space: normal; 
+    word-wrap: break-word;
+    padding-right:10px;
+}
+
+.terms-content td{
+    white-space: normal; 
 }

@@ -18,6 +18,9 @@
                         <link rel="stylesheet" href="${contextPath}/resources/css/store/store_payment.css">
                         <script src="https://kit.fontawesome.com/dc6e43e0ad.js" crossorigin="anonymous"></script>
 
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                            crossorigin="anonymous"></script>
                         <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
                         <!-- iamport.payment.js -->
                         <script type="text/javascript"
@@ -615,9 +618,6 @@
 
 
 
-                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-                            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-                            crossorigin="anonymous"></script>
                         <script src="${contextPath}/resources/js/store/store_payment.js"></script>
                         <script src="${contextPath}/resources/js/manager/apikey.js"></script>
                     </body>
