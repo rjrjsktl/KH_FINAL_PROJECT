@@ -60,13 +60,20 @@
 											</div>
 										</div>
 
-										<div class="imageArea">
-											<c:choose>
-												<c:when test="${not empty lostdetail.lostFile}">
-													<img src="${lostdetail.lostFile}" onclick="showImage('${lostdetail.lostFile}')">
-												</c:when>
-												<c:otherwise>
+									</div>
+									<div class="contentText-wrap">
+										<c:out value="${lostdetail.lostContent}" escapeXml="true" />
+									</div>
+									
+								</div>
+							</div>
 
+							<div class="imageArea">
+								<c:choose>
+									<c:when test="${not empty lostdetail.lostFile}">
+										<img src="${lostdetail.lostFile}" onclick="showImage('${lostdetail.lostFile}')">
+									</c:when>
+									<c:otherwise>
 												</c:otherwise>
 											</c:choose>
 										</div>

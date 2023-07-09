@@ -43,7 +43,6 @@
 											<h2>1:1 문의</h2>
 
 
-
 											<div class="notice-contents">
 												<div>
 													<span>${mTmdetail.mtmTitle}</span>

@@ -161,7 +161,6 @@
 
 
                         <script src="${contextPath}/resources/js/store/store_detail.js"></script>
-                        <script src="${contextPath}/resources/js/common/header.js"></script>
                     </body>
 
                     </html>

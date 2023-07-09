@@ -105,9 +105,8 @@ $(document).ready(function () {
   }
 
   $(".star-btn").click(function () {
-    var currentUrl = window.location.href;
-    var reviewUrl = currentUrl + "?review=2";
-    window.location.href = reviewUrl;
+    let movieNo = $(this).data("movieno");
+    window.location.href = "/movie/movieList/detail_List/introduce/" + movieNo + "?review=2";
   });
 
   $(".star_rating a").click(function () {
@@ -206,9 +205,9 @@ $(document).ready(function () {
           let reviewContent = "";
 
           if (userNo == review.userNo) {
-            reviewContent = `<div style="color: #FFC400;">${review.revContent}</div>`;
+            reviewContent = `<div class="revcons" style="color: #FFC400;">${review.revContent}</div>`;
           } else {
-            reviewContent = `<div>${review.revContent}</div>`;
+            reviewContent = `<div class="revcons">${review.revContent}</div>`;
           }
 
           li.html(`
