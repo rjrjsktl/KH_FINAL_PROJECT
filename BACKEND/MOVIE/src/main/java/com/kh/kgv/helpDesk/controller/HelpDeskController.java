@@ -49,14 +49,12 @@ import com.kh.kgv.helpDesk.model.service.HelpDeskService;
 import com.kh.kgv.helpDesk.model.vo.LostPackage;
 import com.kh.kgv.helpDesk.model.vo.Mtm;
 import com.kh.kgv.helpDesk.model.vo.Quest;
-import com.kh.kgv.login.controller.LoginController;
 import com.kh.kgv.management.model.service.ManagerService;
 import com.kh.kgv.management.model.vo.Notice;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.text.StringEscapeUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 
 
@@ -65,7 +63,6 @@ import org.slf4j.LoggerFactory;
 @SessionAttributes({"loginUser"})
 public class HelpDeskController {
 
-	private Logger logger = LoggerFactory.getLogger(LoginController.class);
 	@Autowired
 	private ManagerService service;
 	@Autowired
