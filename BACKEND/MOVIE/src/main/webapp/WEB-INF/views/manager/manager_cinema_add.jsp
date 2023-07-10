@@ -184,8 +184,6 @@
                                                                             <option>공간 없애기</option>
                                                                             <option style="color: magenta;">스위트석 지정
                                                                             </option>
-                                                                            <option style="color: green;">장애인석 지정
-                                                                            </option>
                                                                             <option>특수석 없애기</option>
                                                                         </select>
                                                                     </div>

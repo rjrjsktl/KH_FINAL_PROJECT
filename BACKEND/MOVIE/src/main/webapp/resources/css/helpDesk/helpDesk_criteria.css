@@ -14,10 +14,6 @@ main>section {
 
 
 
-* {
-    white-space: normal;
-
-}
 
 .container {
     width: 80%;
@@ -127,7 +123,10 @@ h2 {
 
 
 
-
+.criteria_con *{ 
+    white-space: normal; 
+    word-wrap: break-word;
+}
 
 
 

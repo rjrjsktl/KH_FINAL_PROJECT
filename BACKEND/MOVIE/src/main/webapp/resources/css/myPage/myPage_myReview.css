@@ -149,7 +149,7 @@ h2 {
     height: 100%;
     border-radius: 10px;
     background-color: #191919;
-    padding:20px 10px;
+    padding: 5px 10px;
 
     font-size: 1rem;
     font-weight: lighter;
@@ -159,16 +159,24 @@ h2 {
     width: 100%;    background-color: #191919 !important;
     height: 100%;
     /* 지정된 범위에 가면 자동 줄바꿈이 이뤄짐 개꿀 */
-    white-space: normal;
+    white-space: pre-wrap;
     word-break: break-all;
     word-wrap: normal;
     background-color: rgb(44, 44, 44);
     resize: none;
     /* border-top: 0.1px solid rgb(255, 196, 0);  */
     border: hidden; 
-    overflow: hidden;
-    pointer-events: none;
-    /* user-select: none; */
+    overflow-y: auto;
+    pointer-events: auto;
+}
+.myreview>div>div:nth-child(2)>div:nth-child(3)>textarea::-webkit-scrollbar {
+    background-color: transparent;
+}
+
+.myreview>div>div:nth-child(2)>div:nth-child(3)>textarea::-webkit-scrollbar-thumb {
+    background-color: rgb(44, 44 , 44);
+    background-clip: padding-box;
+    border: 2px solid transparent;
 }
 
 #list-more-btn{

@@ -206,24 +206,25 @@ $(document).ready(function () {
           let reviewContent = "";
 
           if (userNo == review.userNo) {
-            reviewContent = `<div class="revcons" style="color: #FFC400;">${review.revContent}</div>`;
+            reviewContent = $(
+              '<div class="revcons" style="color: #FFC400;"></div>'
+            ).text(review.revContent);
           } else {
-            reviewContent = `<div class="revcons">${review.revContent}</div>`;
+            reviewContent = $('<div class="revcons"></div>').text(
+              review.revContent
+            );
           }
 
           li.html(`
-            <div class="rvWrap">
-              <div class="user_info">
-                <p>${review.userNick}</p>
-              </div>
-              <div class="review_content">
-                <div>리뷰</div>
-                <div>${review.revLike}</div>
-                <div>${reviewContent}</div>
-                ${deleteButton}
-              </div>
-            </div>
-          `);
+    <div class="rvWrap">
+      <div class="user_info">
+        <p>${review.userNick}</p>
+      </div>
+      <div class="review_content">
+        <div>리뷰</div><div>${
+          review.revLike
+        }</div><div>${reviewContent.prop("outerHTML")}</div>${deleteButton}</div></div>
+  `);
 
           li.hide();
           $(".replyList ul").append(li);

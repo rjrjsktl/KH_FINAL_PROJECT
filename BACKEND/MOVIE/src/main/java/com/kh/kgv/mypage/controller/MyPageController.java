@@ -538,7 +538,7 @@ public class MyPageController {
 
 		return "redirect:" + path;
 	}
-
+	
 	// Java 서버 예시 (Spring Framework)
 	// review 카드 불러오기
 	@PostMapping("/loadReviewCards")
@@ -553,6 +553,12 @@ public class MyPageController {
 
 		List<Review> myReviewList = service.loadReviewCards(paramMap); // 데이터베이스에서 추가 데이터 조회
 
+		// 각 Review 객체의 내용에서 <br> 제거
+//	    for (Review review : myReviewList) {
+//	        String modifiedContent = review.getRevContent().replace("<br>", "");
+//	        review.setRevContent(modifiedContent);
+//	    }
+		
 		model.addAttribute("myReviewList", myReviewList);
 		return myReviewList;
 	}
