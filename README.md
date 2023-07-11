@@ -5,7 +5,7 @@
 ## Project Channel_KGV
 
 
-<p align="center"><img src="/ReadMeImgimg/kgv2.png" /></p>
+<p align="center"><img src="/ReadMeImg/kgv2.png" /></p>
 
 ## Team Channel KGV WEB
   KH정보교육원 자바개발 A10 3조 Team Channel_KGV<br>
