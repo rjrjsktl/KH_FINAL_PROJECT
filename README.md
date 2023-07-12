@@ -2,21 +2,24 @@
 
 약 2달간의 과정 힘들었따! 하지만 뿌듯.
 
+***
 ## Project Channel_KGV
 
 
-<p align="center"><img src="/ReadMeImg/kgv2.png" /></p>
+<p align="center><img src="/ReadMeImg/kgv2.png" /></p>
 
+***
 ## Team Channel KGV WEB
   KH정보교육원 자바개발 A10 3조 Team Channel_KGV<br>
   조장 - 김민수, 팀원 - 김윤석, 이도근, 권지훈, 최영탁, 정지민
   개발기간 : 2023.05.15 ~ 2023.07.10
-
+  
+***
 ## 배포주소
  [ kgv.co.kr / 웹 주소 ](https://kgv.co.kr)<br>
  [ gitHub / 깃허브 주소 ](https://github.com/rjrjsktl/KH_FINAL_PROJECT))
 
-
+***
 ## KGV소개
 
  국비지원 파이널 프로젝트로 영화관 예매 사이트를 제작.<br>
@@ -25,6 +28,7 @@
  - HTML, CSS, JS와 Java, oracle 기반으로 제작하였으며 AWS EC2, RD5 를 적용.
  - 보안을 위하여 xss, HTTPS를 적용하였으며 강제적 접근을 막기 위한 기능을 추가.
 
+***
 ## 사용기술 및개발환경 
 
  프론트엔드<br>
@@ -45,8 +49,9 @@
 Collaboration<br>
 <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
 
+***
 ## 내가 참여한 주요 기능
------------------------ 추가예정
+
 <h3>1. 마이페이지 전체</h3>
 
  - 내가 본 영화
@@ -83,9 +88,22 @@ Collaboration<br>
  - DB재설정을 위한 RDS 설정  - 참여자 : [ 김민수(팀장) GITHUB ](https://github.com/MSKY219), [ 김윤석 GITHUB ](https://github.com/rjrjsktl) , [ 이도근 GITHUB ](https://github.com/DogeunLee)
  - HTTPS 설정을 위한 ROUTE53 설정 - 참여자 : [ 김민수(팀장) GITHUB ](https://github.com/MSKY219)
  - 도메인 설정 - 참여자 : [ 김민수(팀장) GITHUB ](https://github.com/MSKY219)
-
+ 
+***
 ## 프로젝트 진행 중 어려웠던 상황
--------------------------- 추가예정
+
+ 처음에는 어떻게 해야 할지 모르겠고 정말 막막했다. 그래도 내가 선택한 길이기 때문에 어떻게든 구현을 하려고 잠도 줄이면서 정말 열심히했다.
+
+ 그 중 제일 어려웠다고 생각하는 부분은 아무래도 데이터의 이동 방식을 처음에 잘 몰랐던 것이 아닐까 싶다.
+ 분명히 백에서는 잘 받아오는거 같은데 내가 원하는 값을 페이지에 잘 뿌려주지 못하더라.....
+ 그래서 나는 그 상황을 sysout과 log 도배로 풀어 나갔다.
+ 이 두가지 기능만 잘 사용해도 왠만한 버그는 다 잡을 수 있었고 앞으로 내가 이 일을 하면서도 이 초심을 잃지 않고 계속 써먹어야겠다고 다짐했다.
+
+ - 예제
+<p><img src="/ReadMeImg/ex1.png" width="225" height="150" /> <img src="/ReadMeImg/ex2.png" width="225" height="150" />
+<img src="/ReadMeImg/ex3.png" width="225" height="150" /> <img src="/ReadMeImg/ex4.png" width="225" height="150" /></p>
+
+***
 ## 프로젝트 후기
 
 팀원은 총 6명
