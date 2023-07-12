@@ -93,7 +93,7 @@ Collaboration<br>
  - HTTPS 설정을 위한 ROUTE53 설정 
    - 참여자 : [ 김민수(팀장) GITHUB ](https://github.com/MSKY219)
  - 도메인 설정 
-   - 참여자 : [ 김민수(팀장) GITHUB ](https://github.com/MSKY219)
+   - 참여자 : [ 김민수(팀장) GITHUB ](https://github.com/MSKY219), [ 이도근 GITHUB ](https://github.com/DogeunLee)
  
 ***
 ## 프로젝트 진행 중 어려웠던 상황
