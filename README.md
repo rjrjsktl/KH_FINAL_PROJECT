@@ -78,7 +78,7 @@ Collaboration<br>
  - 그로 인해서 내가 모르던 것들을 알게되고 내가 아는 것들은 알려주면서 더 많은 발전을 했다고 생각
  - 도움이 필요한 기능과 페이지 구현을 했기 때문에 모두가 같이 했다고 할 수 있다(그래도 팀에선 비중이 좀 있는 편일지도?ㅎㅎ).
   
-<h3>8. AWS EC2, RDS, ROUTE53 설정협업과 도메인 설정 </h3>
+<h3>AWS EC2, RDS, ROUTE53 설정협업과 도메인 설정 </h3>
  - 배포를 위한 ec2 설정 - 참여자 : [ 김민수(팀장) GITHUB ](https://github.com/MSKY219), [ 김윤석 GITHUB ](https://github.com/rjrjsktl), [ 이도근 GITHUB ](https://github.com/DogeunLee)
  - DB재설정을 위한 RDS 설정  - 참여자 : [ 김민수(팀장) GITHUB ](https://github.com/MSKY219), [ 김윤석 GITHUB ](https://github.com/rjrjsktl) , [ 이도근 GITHUB ](https://github.com/DogeunLee)
  - HTTPS 설정을 위한 ROUTE53 설정 - 참여자 : [ 김민수(팀장) GITHUB ](https://github.com/MSKY219)
