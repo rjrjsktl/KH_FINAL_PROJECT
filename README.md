@@ -85,10 +85,14 @@ Collaboration<br>
    (그래도 팀에선 비중이 좀 있는 편일지도?ㅎㅎ).
   
 <h3>AWS EC2, RDS, ROUTE53 설정협업과 도메인 설정 </h3>
- - 배포를 위한 ec2 설정 - 참여자 : [ 김민수(팀장) GITHUB ](https://github.com/MSKY219), [ 김윤석 GITHUB ](https://github.com/rjrjsktl), [ 이도근 GITHUB ](https://github.com/DogeunLee)
- - DB재설정을 위한 RDS 설정  - 참여자 : [ 김민수(팀장) GITHUB ](https://github.com/MSKY219), [ 김윤석 GITHUB ](https://github.com/rjrjsktl) , [ 이도근 GITHUB ](https://github.com/DogeunLee)
- - HTTPS 설정을 위한 ROUTE53 설정 - 참여자 : [ 김민수(팀장) GITHUB ](https://github.com/MSKY219)
- - 도메인 설정 - 참여자 : [ 김민수(팀장) GITHUB ](https://github.com/MSKY219)
+ - 배포를 위한 ec2 설정 
+   - 참여자 : [ 김민수(팀장) GITHUB ](https://github.com/MSKY219), [ 김윤석 GITHUB ](https://github.com/rjrjsktl), [ 이도근 GITHUB ](https://github.com/DogeunLee)
+ - DB재설정을 위한 RDS 설정  
+   - 참여자 : [ 김민수(팀장) GITHUB ](https://github.com/MSKY219), [ 김윤석 GITHUB ](https://github.com/rjrjsktl) , [ 이도근 GITHUB ](https://github.com/DogeunLee)
+ - HTTPS 설정을 위한 ROUTE53 설정 
+   - 참여자 : [ 김민수(팀장) GITHUB ](https://github.com/MSKY219)
+ - 도메인 설정 
+   - 참여자 : [ 김민수(팀장) GITHUB ](https://github.com/MSKY219)
  
 ***
 ## 프로젝트 진행 중 어려웠던 상황
