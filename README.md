@@ -100,8 +100,8 @@ Collaboration<br>
  이 두가지 기능만 잘 사용해도 왠만한 버그는 다 잡을 수 있었고 앞으로 내가 이 일을 하면서도 이 초심을 잃지 않고 계속 써먹어야겠다고 다짐했다.
 
  - 예제
-<p><img src="/ReadMeImg/ex1.png" width="225" height="150" /> <img src="/ReadMeImg/ex2.png" width="225" height="150" />
-<img src="/ReadMeImg/ex3.png" width="225" height="150" /> <img src="/ReadMeImg/ex4.png" width="225" height="150" /></p>
+<p><img src="/ReadMeImg/ex1.png" width="200" height="150" /> <img src="/ReadMeImg/ex2.png" width="200" height="150" />
+<img src="/ReadMeImg/ex3.png" width="200" height="150" /> <img src="/ReadMeImg/ex4.png" width="200" height="150" /></p>
 
 ***
 ## 프로젝트 후기
